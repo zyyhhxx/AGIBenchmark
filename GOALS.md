@@ -22,3 +22,17 @@ Design high-quality cognitive ability benchmarks for the Kaggle "Measuring Progr
 - Must be resistant to shortcut solutions (data contamination, memorisation)
 - Reproducible — anyone can run the evaluation
 - Well-documented methodology
+
+## Research Directions
+<!-- Big-picture themes for exploration sub-agent to draw from when generating TODO items.
+     Ian or the main agent can add directions here at any time. -->
+- Investigate metacognitive monitoring paradigms from cognitive psychology (FOK, JOL, tip-of-tongue)
+- Explore learning curve analysis methods from educational psychology
+- Study attention benchmark designs from neuroscience (selective, sustained, divided attention)
+- Research executive function tests (Wisconsin Card Sort, Tower of London, Stroop analogues)
+- Investigate social cognition measures (theory of mind, pragmatic inference, sarcasm detection)
+- Explore adversarial benchmark design to prevent shortcut solutions
+- Study how existing AGI benchmarks (ARC, BIG-bench) handle contamination resistance
+- Research calibration measurement techniques for LLM confidence estimation
+- Investigate multi-step reasoning evaluation beyond single-turn Q&A
+- Explore cross-cultural cognitive assessment methodologies
