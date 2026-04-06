@@ -174,15 +174,165 @@ def generate_learning_curves():
     return make_notebook(cells, "Learning Curves Benchmark")
 
 
+def generate_learning_transfer():
+    """Generate the transfer benchmark notebook."""
+    rules_data = read_file("benchmarks/learning/data/rule_systems.py")
+    task = read_file("benchmarks/learning/task_transfer.py")
+    task = task.replace(
+        "from data.rule_systems import (\n    generate_symbol_system, generate_number_system\n)",
+        "# Rule system generators defined above"
+    )
+    cells = [
+        make_cell(
+            "# Near vs. Far Transfer Benchmark\n\n"
+            "Tests generalization across similarity distances.\n\n"
+            "**Cognitive Science**: Thorndike & Woodworth (1901), Barnett & Ceci (2002)",
+            "markdown"
+        ),
+        make_cell(rules_data),
+        make_cell(task),
+    ]
+    return make_notebook(cells, "Near vs Far Transfer Benchmark")
+
+
+def generate_learning_interference():
+    rules_data = read_file("benchmarks/learning/data/rule_systems.py")
+    task = read_file("benchmarks/learning/task_interference.py")
+    task = task.replace(
+        "from data.rule_systems import generate_symbol_system",
+        "# generate_symbol_system defined above"
+    )
+    cells = [
+        make_cell(
+            "# Proactive & Retroactive Interference Benchmark\n\n"
+            "**Cognitive Science**: Underwood (1957), Anderson (2003)",
+            "markdown"
+        ),
+        make_cell(rules_data),
+        make_cell(task),
+    ]
+    return make_notebook(cells, "Interference Benchmark")
+
+
+def generate_learning_curriculum():
+    rules_data = read_file("benchmarks/learning/data/rule_systems.py")
+    task = read_file("benchmarks/learning/task_curriculum.py")
+    task = task.replace(
+        "from data.rule_systems import generate_symbol_system",
+        "# generate_symbol_system defined above"
+    )
+    cells = [
+        make_cell(
+            "# Curriculum Sensitivity Benchmark\n\n"
+            "Tests whether example ordering affects learning.\n\n"
+            "**Cognitive Science**: Rohrer & Taylor (2007), Bengio et al. (2009)",
+            "markdown"
+        ),
+        make_cell(rules_data),
+        make_cell(task),
+    ]
+    return make_notebook(cells, "Curriculum Sensitivity Benchmark")
+
+
+def generate_metacog_learning_monitoring():
+    rules_data = read_file("benchmarks/metacognition/data/rule_systems.py")
+    task = read_file("benchmarks/metacognition/task_learning_monitoring.py")
+    task = task.replace(
+        "from data.rule_systems import generate_symbol_system, generate_number_system",
+        "# Rule system generators defined above"
+    )
+    cells = [
+        make_cell(
+            "# Metacognitive Monitoring During Learning\n\n"
+            "Cross-domain benchmark testing metacognition while learning.\n\n"
+            "**Cognitive Science**: Dunlosky & Nelson (1992), Zimmerman (2000)",
+            "markdown"
+        ),
+        make_cell(rules_data),
+        make_cell(task),
+    ]
+    return make_notebook(cells, "Metacognitive Monitoring During Learning")
+
+
+def generate_attention_selective():
+    data = read_file("benchmarks/attention/data/attention_stimuli.py")
+    task = read_file("benchmarks/attention/task_selective.py")
+    task = task.replace(
+        "from data.attention_stimuli import STROOP_ITEMS",
+        "# STROOP_ITEMS defined above"
+    )
+    cells = [
+        make_cell(
+            "# Selective Attention (Stroop Analogue) Benchmark\n\n"
+            "**Cognitive Science**: Stroop (1935)\n"
+            "Tests ability to focus on relevant info while ignoring distractors",
+            "markdown"
+        ),
+        make_cell(data),
+        make_cell(task),
+    ]
+    return make_notebook(cells, "Selective Attention Benchmark")
+
+
+def generate_attention_vigilance():
+    data = read_file("benchmarks/attention/data/attention_stimuli.py")
+    task = read_file("benchmarks/attention/task_vigilance.py")
+    task = task.replace(
+        "from data.attention_stimuli import VIGILANCE_SEQUENCE",
+        "# VIGILANCE_SEQUENCE defined above"
+    )
+    cells = [
+        make_cell(
+            "# Sustained Attention (Vigilance) Benchmark\n\n"
+            "**Cognitive Science**: Mackworth (1948)\n"
+            "Tests whether performance degrades over long monitoring tasks",
+            "markdown"
+        ),
+        make_cell(data),
+        make_cell(task),
+    ]
+    return make_notebook(cells, "Sustained Attention Benchmark")
+
+
+def generate_attention_divided():
+    data = read_file("benchmarks/attention/data/attention_stimuli.py")
+    task = read_file("benchmarks/attention/task_divided.py")
+    task = task.replace(
+        "from data.attention_stimuli import DUAL_TASK_ITEMS",
+        "# DUAL_TASK_ITEMS defined above"
+    )
+    cells = [
+        make_cell(
+            "# Divided Attention (Dual-Task) Benchmark\n\n"
+            "**Cognitive Science**: Pashler (1994), Kahneman (1973)\n"
+            "Tests performance cost of simultaneous task execution",
+            "markdown"
+        ),
+        make_cell(data),
+        make_cell(task),
+    ]
+    return make_notebook(cells, "Divided Attention Benchmark")
+
+
 def main():
     os.makedirs("notebooks", exist_ok=True)
 
     notebooks = {
+        # Metacognition track
         "metacog_calibration": generate_metacog_calibration,
         "metacog_fok": generate_metacog_fok,
         "metacog_jol": generate_metacog_jol,
         "metacog_error_detection": generate_metacog_error,
+        "metacog_learning_monitoring": generate_metacog_learning_monitoring,
+        # Learning track
         "learning_curves": generate_learning_curves,
+        "learning_transfer": generate_learning_transfer,
+        "learning_interference": generate_learning_interference,
+        "learning_curriculum": generate_learning_curriculum,
+        # Attention track
+        "attention_selective": generate_attention_selective,
+        "attention_vigilance": generate_attention_vigilance,
+        "attention_divided": generate_attention_divided,
     }
 
     for name, generator in notebooks.items():

@@ -1,15 +1,15 @@
 # STATUS.md — AGI Benchmark Project
 
-**Last updated**: 2026-04-06 06:00 UTC (10:57 PM PDT, Apr 5)
+**Last updated**: 2026-04-06 06:20 UTC
 
-## Project Status: 🟢 Strong Progress
+## Project Status: 🟢 Strong Progress — 12 Benchmarks across 3 Tracks
 
 ### Competition
 - **Deadline**: April 16, 2026 (10 days remaining)
-- **Tracks**: Metacognition (#1 priority), Learning (#2 priority)
+- **Tracks**: Metacognition (#1), Learning (#2), Attention (#3)
 - **Prize pool**: $200,000
 
-### Benchmark Suite: 9 Tasks Implemented
+### Benchmark Suite: 12 Tasks Implemented
 
 #### Metacognition Track (5 tasks)
 | Task | File | Status | Score Range |
@@ -37,10 +37,19 @@
 
 ### Remaining Work (Priority Order)
 1. **Test on frontier models** — Run all benchmarks on Kaggle platform
-2. **Test shortcut resistance** — Verify benchmarks can't be gamed
-3. **Add human baselines** — Collect/cite human performance data
-4. **Documentation polish** — Competition writeup finalization
-5. **Cross-validate** — Run across model families
+2. **Cross-validate** — Run across model families
+3. **Documentation polish** — Competition writeup finalization with results
+4. **Create submission notebook** — Final polished Kaggle submission
+
+### Attention Track (3 tasks)
+| Task | File | Status | Score Range |
+|------|------|--------|-------------|
+| Selective (Stroop) | `task_selective.py` | ✅ Implemented | 0-1 (interference) |
+| Vigilance | `task_vigilance.py` | ✅ Implemented | 0-1 (decrement) |
+| Divided (Dual-Task) | `task_divided.py` | ✅ Implemented | 0-1 (dual cost) |
+
+### Kaggle Notebooks
+All 12 benchmarks have self-contained Kaggle notebooks in `notebooks/`.
 
 ### File Tree
 ```
@@ -61,12 +70,20 @@ benchmarks/
 │       ├── jol_stimuli.py (15 word pairs, 2 rule systems)
 │       ├── error_detection_chains.py (17 chains, 7 with errors)
 │       └── rule_systems.py (generator for novel rule systems)
-└── learning/
-    ├── DESIGN.md
-    ├── task_learning_curves.py
-    ├── task_transfer.py
-    ├── task_interference.py
-    ├── task_curriculum.py
-    └── data/
-        └── rule_systems.py (procedural rule system generator)
+├── learning/
+│   ├── DESIGN.md
+│   ├── task_learning_curves.py
+│   ├── task_transfer.py
+│   ├── task_interference.py
+│   ├── task_curriculum.py
+│   └── data/
+│       └── rule_systems.py (procedural rule system generator)
+├── attention/
+│   ├── DESIGN.md
+│   ├── task_selective.py
+│   ├── task_vigilance.py
+│   ├── task_divided.py
+│   └── data/
+│       └── attention_stimuli.py (Stroop, vigilance, dual-task data)
+└── shortcut_analysis.py
 ```

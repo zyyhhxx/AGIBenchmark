@@ -94,12 +94,29 @@ def compute_f1(tp: int, fp: int, fn: int) -> float:
 
 
 def compute_dprime(hit_rate: float, false_alarm_rate: float) -> float:
-    """Compute d' (signal detection sensitivity)."""
-    from scipy.stats import norm  # type: ignore
-    # Clamp to avoid infinite values
+    """Compute d' (signal detection sensitivity) without scipy."""
+    # Approximate inverse normal CDF using rational approximation
+    # (Abramowitz & Stegun, 1964)
+    def norminv(p):
+        if p <= 0:
+            return -4.0
+        if p >= 1:
+            return 4.0
+        # Rational approximation for central region
+        if p < 0.5:
+            t = np.sqrt(-2 * np.log(p))
+            c0, c1, c2 = 2.515517, 0.802853, 0.010328
+            d1, d2, d3 = 1.432788, 0.189269, 0.001308
+            return -(t - (c0 + c1 * t + c2 * t**2) / (1 + d1 * t + d2 * t**2 + d3 * t**3))
+        else:
+            t = np.sqrt(-2 * np.log(1 - p))
+            c0, c1, c2 = 2.515517, 0.802853, 0.010328
+            d1, d2, d3 = 1.432788, 0.189269, 0.001308
+            return t - (c0 + c1 * t + c2 * t**2) / (1 + d1 * t + d2 * t**2 + d3 * t**3)
+
     hr = min(max(hit_rate, 0.01), 0.99)
     far = min(max(false_alarm_rate, 0.01), 0.99)
-    return float(norm.ppf(hr) - norm.ppf(far))
+    return float(norminv(hr) - norminv(far))
 
 
 # ─── The Benchmark Task ────────────────────────────────────────────

@@ -39,6 +39,14 @@ Current AI benchmarks overwhelmingly test **what** models know, not **how** they
 | `learning_interference` | Memory Interaction | Learn A, learn B, retest A | Interference index |
 | `learning_curriculum` | Curriculum Sensitivity | Same content, different orderings | Ordering effect |
 
+### Attention Track (3 benchmarks)
+
+| Benchmark | Construct | Protocol | Primary Metric |
+|-----------|-----------|----------|----------------|
+| `attention_selective` | Selective Attention | Stroop-analogue interference | Interference score |
+| `attention_vigilance` | Sustained Attention | Long-sequence target detection | Vigilance decrement |
+| `attention_divided` | Divided Attention | Single vs dual-task cost | Dual-task cost |
+
 ## Task & Benchmark Construction
 
 ### Key Design Principles
@@ -109,6 +117,16 @@ learning_curves:    0.30 × asymptotic + 0.30 × learning_rate + 0.20 × efficie
 ## Results, Insights, and Conclusions
 
 *(To be populated after running on frontier models)*
+
+### Attention Track
+
+Our attention benchmarks are grounded in foundational attention research:
+
+**Selective Attention (Stroop Analogue)**: Based on Stroop (1935), we test whether models can follow precise instructions while ignoring conflicting information. The Stroop effect is one of the most replicated findings in cognitive psychology — even simple color-word conflicts cause significant interference in humans. Our analogue uses instruction-following with misleading context.
+
+**Sustained Attention (Vigilance)**: Based on Mackworth's (1948) clock test, we present long sequences where the model must detect rare targets. Target frequency decreases across the sequence, testing whether models show the classic vigilance decrement (10-30% accuracy drop over time).
+
+**Divided Attention (Dual-Task)**: Based on Pashler (1994) and Kahneman (1973), we measure the cost of performing two cognitive tasks simultaneously. The dual-task cost reveals attentional capacity limitations.
 
 ### Expected Findings
 

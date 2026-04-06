@@ -1,17 +1,13 @@
 # TODO — AGI Benchmark Task Queue
 
 ## In Progress
-- [ ] Create Kaggle submission notebooks [1 cycle]
+- [ ] Update notebook generator for all 12 benchmarks [1 cycle]
 
 ## Queue
 - [ ] Test metacognition benchmarks against frontier models [1 cycle]
-- [ ] Review existing Kaggle submissions for inspiration/gaps [1 cycle]
-- [ ] Add human baseline methodology / reference data [1 cycle]
-- [ ] Cross-embed metacognitive probes within learning tasks [1 cycle]
-- [ ] Document methodology thoroughly [1 cycle]
-- [ ] Test shortcut resistance [1 cycle]
-- [ ] Benchmarks for Attention or Social Cognition tracks [2 cycles]
 - [ ] Cross-validate across model families [1 cycle]
+- [ ] Polish competition writeup with results [1 cycle]
+- [ ] Create comprehensive Kaggle submission notebook [1 cycle]
 
 ## Done
 - [x] Read competition page, rules, and submission format
@@ -33,3 +29,5 @@
 - [x] Document methodology thoroughly → METHODOLOGY.md
 - [x] Test shortcut resistance → shortcut_analysis.py + added 4 more error chains
 - [x] Add human baseline methodology / reference data → HUMAN_BASELINES.md
+- [x] Benchmarks for Attention track → task_selective.py, task_vigilance.py, task_divided.py
+- [x] Create Kaggle submission notebooks → 5 initial notebooks generated

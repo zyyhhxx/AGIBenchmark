@@ -310,4 +310,25 @@ FOK_QUESTIONS = [
         "category": "unanswerable",
         "accept_patterns": [],
     },
+    {
+        "id": "U06",
+        "question": "What did Julius Caesar eat for breakfast on March 14, 44 BC?",
+        "answer": "__UNANSWERABLE__",
+        "category": "unanswerable",
+        "accept_patterns": [],
+    },
+    {
+        "id": "U07",
+        "question": "How many times did Shakespeare sneeze during his lifetime?",
+        "answer": "__UNANSWERABLE__",
+        "category": "unanswerable",
+        "accept_patterns": [],
+    },
+    {
+        "id": "U08",
+        "question": "What is the correct moral thing to do in every possible situation?",
+        "answer": "__UNANSWERABLE__",
+        "category": "unanswerable",
+        "accept_patterns": [],
+    },
 ]
