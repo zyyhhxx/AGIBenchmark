@@ -1,10 +1,9 @@
 # TODO — AGI Benchmark Task Queue
 
 ## In Progress
+- [ ] Design Feeling-of-Knowing (FOK) benchmark for LLMs [1 cycle]
 
 ## Queue
-- [ ] Research Nelson & Narens (1990) metacognitive monitoring framework [1 cycle]
-- [ ] Design Feeling-of-Knowing (FOK) benchmark for LLMs [1 cycle]
 - [ ] Design Judgment-of-Learning (JOL) calibration benchmark [1 cycle]
 - [ ] Design error detection benchmark (model reviews own prior reasoning) [1 cycle]
 - [ ] Implement first benchmark using kaggle-benchmarks SDK patterns [2 cycles]
