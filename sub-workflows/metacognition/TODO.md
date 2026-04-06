@@ -1,7 +1,7 @@
 # TODO — AGI Benchmark Task Queue
 
 ## In Progress
-- [ ] Add human baseline methodology / reference data [1 cycle]
+- [ ] Create Kaggle submission notebooks [1 cycle]
 
 ## Queue
 - [ ] Test metacognition benchmarks against frontier models [1 cycle]
@@ -32,3 +32,4 @@
 - [x] Design Learning track: curriculum sensitivity → task_curriculum.py
 - [x] Document methodology thoroughly → METHODOLOGY.md
 - [x] Test shortcut resistance → shortcut_analysis.py + added 4 more error chains
+- [x] Add human baseline methodology / reference data → HUMAN_BASELINES.md
