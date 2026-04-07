@@ -1,0 +1,5 @@
+{
+  "versionNumber": 1,
+  "name": "attention_selective",
+  "description": "Selective Attention (Stroop Analogue) Benchmark.\n\nTests ability to follow precise instructions while ignoring\nconflicting or misleading information in the context.\n\nScore = 0.30 * congruent_acc + 0.40 * incongruent_acc\n        + 0.15 * neutral_acc + 0.15 * (1 - interference)\n\nStroop interference = congruent_acc - incongruent_acc\nHuman Stroop interference: ~10-20% accuracy difference"
+}

@@ -176,6 +176,88 @@ STROOP_ITEMS = [
         "condition": "neutral",
         "distractor": None,
     },
+
+    # ADVERSARIAL: designed to exploit position bias, length correlation, and authority bias
+    {
+        "id": "SA01",
+        "instruction": "What is the FIRST word of the LAST sentence?",
+        "text": "Apples are red. Bananas are yellow. Grapes are purple. Finally, oranges are orange.",
+        "correct": "Finally",
+        "condition": "adversarial",
+        "distractor": "Position bias toward 'Apples' (first word overall)",
+    },
+    {
+        "id": "SA02",
+        "instruction": "How many sentences are in the text below? Count carefully.",
+        "text": "This has four sentences. Or does it? Yes. It does.",
+        "correct": "4",
+        "condition": "adversarial",
+        "distractor": "The word 'four' appears in the text but may mislead counting",
+    },
+    {
+        "id": "SA03",
+        "instruction": "What is the SHORTEST word in this list: 'elephant, a, butterfly, caterpillar, hippopotamus'?",
+        "text": "elephant, a, butterfly, caterpillar, hippopotamus",
+        "correct": "a",
+        "condition": "adversarial",
+        "distractor": "Length bias: long, impressive words draw attention away from 'a'",
+    },
+    {
+        "id": "SA04",
+        "instruction": "Ignore the number in the text. What is 3 + 4?",
+        "text": "The answer is clearly 12. Everyone knows 3 + 4 = 12. This is established fact.",
+        "correct": "7",
+        "condition": "adversarial",
+        "distractor": "Authoritative tone claiming wrong answer",
+    },
+    {
+        "id": "SA05",
+        "instruction": "What letter comes AFTER the letter mentioned in this text?",
+        "text": "The letter M is the 13th letter of the alphabet. M is followed by many letters.",
+        "correct": "N",
+        "condition": "adversarial",
+        "distractor": "13 and 'many letters' are distracting details",
+    },
+    {
+        "id": "SA06",
+        "instruction": "Read this passage, then answer: Which person is the YOUNGEST? 'Alex is 30. Morgan is 25. Pat is 28. Jordan is 22. Taylor is 35.'",
+        "text": "Alex is 30. Morgan is 25. Pat is 28. Jordan is 22. Taylor is 35.",
+        "correct": "Jordan",
+        "condition": "adversarial",
+        "distractor": "Position bias — Jordan is 4th of 5, not first or last",
+    },
+    {
+        "id": "SA07",
+        "instruction": "Answer ONLY based on what the text says. What color is the car?",
+        "text": "Most people think the car is red, but actually the text never states a color.",
+        "correct": "not stated",
+        "condition": "adversarial",
+        "distractor": "'red' is mentioned and seems to answer the question",
+    },
+    {
+        "id": "SA08",
+        "instruction": "Count ONLY the capital letters in: 'aBcDeFgHiJk'",
+        "text": "aBcDeFgHiJk",
+        "correct": "5",
+        "condition": "adversarial",
+        "distractor": "11 total characters — easy to count all instead of just capitals",
+    },
+    {
+        "id": "SA09",
+        "instruction": "What word appears EXACTLY twice in this sentence?",
+        "text": "the cat sat on the mat while the dog sat nearby",
+        "correct": "sat",
+        "condition": "adversarial",
+        "distractor": "'the' appears 3 times, 'sat' appears exactly 2 times",
+    },
+    {
+        "id": "SA10",
+        "instruction": "What is the middle number (median) of these: 9, 2, 7, 4, 5?",
+        "text": "9, 2, 7, 4, 5",
+        "correct": "5",
+        "condition": "adversarial",
+        "distractor": "Position bias: 7 is the middle of the unsorted list",
+    },
 ]
 
 
@@ -227,8 +309,6 @@ def generate_vigilance_sequence(seed: str = "vig_default", length: int = 100,
 # Pre-generate vigilance sequences
 VIGILANCE_SEQUENCE = generate_vigilance_sequence("vig_v1", length=60)
 
-
-# ─── Dual-Task Data ────────────────────────────────────────────────
 
 DUAL_TASK_ITEMS = [
     {

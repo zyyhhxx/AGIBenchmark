@@ -16,9 +16,15 @@ Categories:
 - OBSCURE: Highly specific facts unlikely to be reliably known
 - REASONING: Require computation/inference, not just retrieval
 - UNANSWERABLE: Have no single correct answer or are trick questions
+- PROC_ARITHMETIC: Procedurally generated arithmetic (contamination-resistant)
+- PROC_SYLLOGISM: Novel syllogisms with fictional entities (contamination-resistant)
+- PROC_SEQUENCE: Generated pattern completion (contamination-resistant)
+- PROC_LOGIC: Novel logic puzzles (contamination-resistant)
 """
 
-FOK_QUESTIONS = [
+from data.procedural_fok import PROCEDURAL_FOK_QUESTIONS
+
+_HANDCRAFTED_QUESTIONS = [
     # === RETRIEVABLE: High-confidence items (models should know) ===
     {
         "id": "R01",
@@ -331,4 +337,36 @@ FOK_QUESTIONS = [
         "category": "unanswerable",
         "accept_patterns": [],
     },
+    {
+        "id": "U09",
+        "question": "What will be the most popular baby name in 2050?",
+        "answer": "__UNANSWERABLE__",
+        "category": "unanswerable",
+        "accept_patterns": [],
+    },
+    {
+        "id": "C06",
+        "question": "What is the sum of all prime numbers less than 30?",
+        "answer": "129",
+        "category": "reasoning",
+        "accept_patterns": ["129"],
+    },
+    {
+        "id": "C07",
+        "question": "A rope is cut into 3 pieces. The longest piece is twice as long as the middle piece, which is 3 times as long as the shortest piece. If the total rope is 30 meters, how long is the shortest piece?",
+        "answer": "3",
+        "category": "reasoning",
+        "accept_patterns": ["3"],
+        "numeric_tolerance": 0.01,
+    },
+    {
+        "id": "C08",
+        "question": "How many squares of any size are on a standard 8×8 chessboard?",
+        "answer": "204",
+        "category": "reasoning",
+        "accept_patterns": ["204"],
+    },
 ]
+
+# Combine handcrafted + procedurally generated questions
+FOK_QUESTIONS = _HANDCRAFTED_QUESTIONS + PROCEDURAL_FOK_QUESTIONS

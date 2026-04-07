@@ -1,0 +1,220 @@
+{
+  "metacog_fok": {
+    "track": "metacognition",
+    "scores": {
+      "always_confident": 0.2791,
+      "always_uncertain": 0.4592,
+      "random": 0.3419,
+      "perfect": 0.425
+    },
+    "checks": []
+  },
+  "metacog_jol": {
+    "track": "metacognition",
+    "scores": {
+      "always_confident": 0.215,
+      "always_uncertain": 0.485,
+      "random": 0.3158,
+      "perfect": 0.275
+    },
+    "checks": [
+      "\u26a0 Perfect (0.275) < Uncertain (0.485)"
+    ]
+  },
+  "metacog_calibration": {
+    "track": "metacognition",
+    "scores": {
+      "always_confident": 0.05,
+      "always_uncertain": 0.95,
+      "random": 0.6922,
+      "perfect": 0.25
+    },
+    "checks": [
+      "\u26a0 Perfect (0.250) < Uncertain (0.950)"
+    ]
+  },
+  "metacog_error_detection": {
+    "track": "metacognition",
+    "scores": {
+      "always_confident": 0.4613,
+      "always_uncertain": 0.1957,
+      "random": 0.3181,
+      "perfect": 0.5291
+    },
+    "checks": []
+  },
+  "metacog_learning_monitoring": {
+    "track": "metacognition",
+    "scores": {
+      "always_confident": 0.16,
+      "always_uncertain": 0.34,
+      "random": 0.2529,
+      "perfect": 0.2
+    },
+    "checks": []
+  },
+  "metacog_canary": {
+    "track": "metacognition",
+    "scores": {
+      "always_confident": 0.0,
+      "always_uncertain": 1.0,
+      "random": 0.4,
+      "perfect": 0.0
+    },
+    "checks": [
+      "\u26a0 Perfect (0.000) < Uncertain (1.000)"
+    ]
+  },
+  "learning_curves": {
+    "track": "learning",
+    "scores": {
+      "always_confident": 0.24,
+      "always_uncertain": 0.2,
+      "random": 0.2117,
+      "perfect": 0.2
+    },
+    "checks": []
+  },
+  "learning_interference": {
+    "track": "learning",
+    "scores": {
+      "always_confident": 0.4,
+      "always_uncertain": 0.4,
+      "random": 0.4,
+      "perfect": 0.4
+    },
+    "checks": [
+      "\u26a0 All strategies produce identical scores"
+    ]
+  },
+  "learning_transfer": {
+    "track": "learning",
+    "scores": {
+      "always_confident": 0.07,
+      "always_uncertain": 0.0,
+      "random": 0.07,
+      "perfect": 0.0
+    },
+    "checks": []
+  },
+  "learning_curriculum": {
+    "track": "learning",
+    "scores": {
+      "always_confident": 0.3,
+      "always_uncertain": 0.3,
+      "random": 0.3,
+      "perfect": 0.3
+    },
+    "checks": [
+      "\u26a0 All strategies produce identical scores"
+    ]
+  },
+  "attention_selective": {
+    "track": "attention",
+    "scores": {
+      "always_confident": 0.27,
+      "always_uncertain": 0.15,
+      "random": 0.26,
+      "perfect": 0.19
+    },
+    "checks": []
+  },
+  "attention_vigilance": {
+    "track": "attention",
+    "scores": {
+      "always_confident": 0.8667,
+      "always_uncertain": 0.8667,
+      "random": 0.7333,
+      "perfect": 0.8667
+    },
+    "checks": []
+  },
+  "attention_divided": {
+    "track": "attention",
+    "scores": {
+      "always_confident": 0.0,
+      "always_uncertain": 0.0,
+      "random": 0.1,
+      "perfect": 0.0
+    },
+    "checks": []
+  },
+  "exec_func_wcst": {
+    "track": "executive_functions",
+    "scores": {
+      "always_confident": 0.4713,
+      "always_uncertain": 0.4713,
+      "random": 0.4547,
+      "perfect": 0.4713
+    },
+    "checks": []
+  },
+  "exec_func_tol": {
+    "track": "executive_functions",
+    "scores": {
+      "always_confident": 0.0,
+      "always_uncertain": 0.0,
+      "random": 0.0,
+      "perfect": 0.0
+    },
+    "checks": [
+      "\u26a0 All strategies produce identical scores"
+    ]
+  },
+  "exec_func_nback": {
+    "track": "executive_functions",
+    "scores": {
+      "always_confident": 0.0,
+      "always_uncertain": 0.1031,
+      "random": 0.0224,
+      "perfect": 0.0119
+    },
+    "checks": []
+  },
+  "exec_func_task_switch": {
+    "track": "executive_functions",
+    "scores": {
+      "always_confident": 0.3,
+      "always_uncertain": 0.3,
+      "random": 0.3,
+      "perfect": 0.3
+    },
+    "checks": [
+      "\u26a0 All strategies produce identical scores"
+    ]
+  },
+  "social_cog_false_belief": {
+    "track": "social_cognition",
+    "scores": {
+      "always_confident": 0.0,
+      "always_uncertain": 0.0,
+      "random": 0.0,
+      "perfect": 0.0
+    },
+    "checks": [
+      "\u26a0 All strategies produce identical scores"
+    ]
+  },
+  "social_cog_pragmatic": {
+    "track": "social_cognition",
+    "scores": {
+      "always_confident": 0.0,
+      "always_uncertain": 0.0,
+      "random": 0.0,
+      "perfect": 0.0
+    },
+    "checks": [
+      "\u26a0 All strategies produce identical scores"
+    ]
+  },
+  "social_cog_sarcasm": {
+    "track": "social_cognition",
+    "scores": {
+      "always_confident": 0.265,
+      "always_uncertain": 0.265,
+      "random": 0.6318,
+      "perfect": 0.325
+    },
+    "checks": []
+  }
+}

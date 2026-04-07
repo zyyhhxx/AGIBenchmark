@@ -1,0 +1,74 @@
+{
+  "WCST (Exec Functions)": {
+    "status": "PASS",
+    "results": {
+      "always_card1": {
+        "accuracy": 0.2375,
+        "n_correct": 19
+      },
+      "random": {
+        "accuracy": 0.25
+      },
+      "perfect": {
+        "accuracy": 1.0
+      }
+    }
+  },
+  "Tower of London (Exec Functions)": {
+    "status": "PASS",
+    "results": {
+      "optimal": {
+        "valid": 15,
+        "total": 15
+      },
+      "empty": {
+        "invalid": 15,
+        "total": 15
+      }
+    }
+  },
+  "N-back d-prime (Exec Functions)": {
+    "status": "PASS",
+    "results": {
+      "perfect": {
+        "dprime": 4.1576
+      },
+      "random": {
+        "dprime": -0.0512
+      },
+      "always_yes": {
+        "dprime": -0.4322
+      },
+      "always_no": {
+        "dprime": 0.4322
+      }
+    }
+  },
+  "False Belief (Social Cognition)": {
+    "status": "PASS",
+    "results": {
+      "correct_belief": {
+        "correct": 20,
+        "total": 20
+      },
+      "reality_error": {
+        "belief_correct": 0,
+        "total": 20
+      }
+    }
+  },
+  "Sarcasm AUC (Social Cognition)": {
+    "status": "PASS",
+    "results": {
+      "perfect": {
+        "auc": 1.0
+      },
+      "random": {
+        "auc": 0.6025
+      },
+      "inverted": {
+        "auc": 0.0
+      }
+    }
+  }
+}
