@@ -59,3 +59,29 @@ Humans struggle to perform two attention-demanding tasks simultaneously
 ### Metrics
 - Dual-task cost: single_accuracy - dual_accuracy
 - Cost asymmetry: which task suffers more?
+
+## Benchmark 4: Attention to Instruction Updates
+
+### Cognitive science basis
+Task-switching paradigm (Monsell, 2003): when task instructions change mid-sequence,
+there is a measurable switch cost reflecting cognitive flexibility. Perseveration
+(continued application of now-invalid rules) is a hallmark of impaired executive attention.
+
+### Design
+1. Present initial classification instructions (e.g., categorise words by semantic category)
+2. Model processes items under those instructions
+3. Mid-sequence, instructions update subtly (woven into the stream, not a hard break)
+4. Some trials have NO switch (catch trials) to test false alarm rate
+5. Measure: pre-switch accuracy, post-switch accuracy, adaptation speed, perseveration rate
+
+### Metrics
+- Pre-switch accuracy (baseline)
+- Post-switch accuracy (adaptation)
+- Adaptation speed (trials to recover)
+- Perseveration rate (applying old rules after switch)
+- Catch trial accuracy (no false switches)
+
+### Shortcut resistance
+- Instructions are embedded in a continuous stream
+- Updates are subtle — not "STOP! New rules!" but woven into the sequence
+- Catch trials with no switch test for false positives

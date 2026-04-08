@@ -1,7 +1,7 @@
 # Metacognition Benchmark Suite — Design Document
 
 ## Overview
-Three benchmarks testing distinct metacognitive abilities, grounded in the Nelson & Narens (1990) framework.
+Seven benchmarks (plus sub-metric variants) testing distinct metacognitive abilities, grounded in the Nelson & Narens (1990) framework of metacognitive monitoring and control.
 
 ## Benchmark 1: Feeling-of-Knowing (FOK)
 
@@ -65,7 +65,99 @@ Metacognitive monitoring includes the ability to detect errors in one's own reas
 - Metacognitive sensitivity (meta-d') for error detection confidence
 - Self vs. other monitoring comparison
 
+## Benchmark 4: Retrospective Confidence Calibration
+
+### Cognitive science basis
+Retro­spective confidence — rating confidence *after* answering — is the most common paradigm in metacognition research (Nelson & Narens, 1990). Well-calibrated agents should be right ~80 % of the time when they say 80 % confident.
+
+### Design
+1. Present diverse questions across domains and difficulty levels
+2. Model answers AND rates confidence (0-100) in the same turn
+3. Bin answers by confidence level
+4. Compute Expected Calibration Error (ECE) = weighted |accuracy_bin − confidence_bin|
+
+### Metrics
+- **ECE** (primary): Lower is better; score = 1 − ECE
+- **Gamma correlation**: Rank-order relationship between confidence and accuracy
+- Human baseline ECE: 0.10–0.20
+
+---
+
+## Benchmark 5: Metacognitive Monitoring During Learning
+
+### Cognitive science basis
+Good learners monitor their own learning accurately (Dunlosky & Nelson, 1992; Zimmerman, 2000). Poor learners overestimate their understanding (Dunning-Kruger adjacent).
+
+### Design
+1. Present a novel rule system one rule at a time
+2. After each new rule, test application AND ask self-assessment ("How well do you understand so far?", 0-100)
+3. Compute tracking accuracy: does self-assessment track the actual learning curve?
+
+### Metrics
+- Learning accuracy (how well the rules are applied)
+- Monitoring calibration (correlation between self-assessment and actual performance)
+- Combined composite score
+
+### Key innovation
+Measures metacognition *during* learning rather than in isolation, capturing the self-regulated learning cycle.
+
+---
+
+## Benchmark 6: Metacognitive Control (Strategic Re-Reading)
+
+### Cognitive science basis
+Metacognitive *control* is the regulation of cognition based on monitoring output (Nelson & Narens, 1990). The allocation-of-study-time paradigm (Son & Metcalfe, 2000) tests whether learners strategically distribute study effort.
+
+### Design
+1. Present a 10-section passage on an unfamiliar topic
+2. Present 5 questions (each maps to 1–2 relevant sections)
+3. Model chooses exactly 3 sections to "re-read" (limited study budget)
+4. Model answers the 5 questions
+
+### Metrics
+- **Selection relevance**: proportion of chosen sections relevant to questions
+- **Answer accuracy**: proportion correct
+- **Strategic gain**: accuracy on re-read-relevant questions vs. non-re-read questions
+
+### Shortcut resistance
+Two distinct passage topics. Questions require specific section knowledge, not general gist.
+
+---
+
+## Benchmark 7: Epistemic Revision (Belief Updating)
+
+### Cognitive science basis
+Rational agents must revise beliefs when confronted with contradicting evidence (Gärdenfors, 1988; AGM postulates). Cognitive flexibility (Miyake & Friedman, 2012) is the ability to adapt mental representations.
+
+### Design
+1. Teach 10 rules in a novel "Zorblatt Chemistry" system with 3 examples each
+2. Test comprehension (10 verification questions)
+3. Present 3 contradicting observations
+4. Model must: (a) identify violated rules, (b) propose revised rules consistent with all evidence
+5. Test with 10 new questions that differentiate original vs. revised rules
+
+### Metrics
+- Violation detection accuracy
+- Rule revision quality
+- Transfer accuracy under revised rules
+- Perseveration rate (sticking with original rules despite revision)
+
+### Key innovation
+Tests belief *revision* rather than just accumulation — a critical component of metacognitive regulation.
+
+---
+
+## Sub-Metric Benchmarks
+
+Three additional notebooks break out fine-grained sub-metrics for leaderboard visibility:
+- **FOK Sub-metrics**: fok_gamma, fok_ece, fok_resolution, fok_discrimination
+- **JOL Sub-metrics**: jol_gamma, jol_ece, jol_recall_accuracy
+- **Error Detection Sub-metrics**: error_f1, error_localization, error_ece, error_gamma
+
+---
+
 ## Implementation Plan
 Each benchmark implemented as a kaggle-benchmarks task using the `@kbench.task` decorator.
-Tasks return `tuple[float, float]` (score, confidence_interval) or `float` for leaderboard.
+Tasks return `float` score in [0, 1] for leaderboard.
 All use `kbench.llm` as the default model placeholder for cross-model comparison.
+10 total Kaggle notebooks for this track (7 benchmarks + 3 sub-metric notebooks).

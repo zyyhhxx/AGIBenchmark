@@ -161,5 +161,38 @@ WCST and task-switching both involve shifting but differ: WCST requires rule *in
 ### Contamination Resistance
 All stimuli are procedurally generated with fixed seeds. No items are drawn from published test batteries. The WCST uses a novel card set, ToL problems are BFS-verified, and N-back sequences use consonant-only alphabets.
 
+---
+
+## Benchmark 5: Cognitive Reflection Test (CRT)
+
+### What it tests
+**Response inhibition.** The ability to override intuitive-but-wrong answers (System 1) with deliberate reasoning (System 2).
+
+### Design
+- 12 novel CRT-style questions (not from published tests)
+- Each has a compelling intuitive wrong answer and a correct answer requiring deliberation
+- 3 difficulty levels: easy (4), medium (3), hard (5)
+- Model provides answer + confidence + reasoning
+
+### Scoring
+| Metric | Weight | What it measures |
+|--------|--------|------------------|
+| Accuracy | 0.40 | Correct (System 2) answers |
+| 1 - Trap rate | 0.30 | Resistance to intuitive traps |
+| Difficulty bonus | 0.20 | Harder items weighted more |
+| Calibration | 0.10 | Higher confidence on correct answers |
+
+### Shortcut Resistance
+- Novel items avoid contamination from published CRT tests
+- Specific intuitive wrong answers are tracked — random errors ≠ trap errors
+- Difficulty stratification reveals genuine reasoning vs. memorization
+
+### Human Baselines
+- General public: ~30% accuracy (Frederick, 2005)
+- MIT students: ~48% accuracy
+- Intuitive trap rate: ~60-70% (general public)
+
+---
+
 ### Scoring Philosophy
 Each benchmark composite score is in [0, 1]. We weight metrics that are most diagnostic of the target executive function most heavily (e.g., perseveration for WCST, d-prime at high N for N-back).

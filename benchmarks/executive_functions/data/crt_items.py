@@ -1,0 +1,135 @@
+"""
+Cognitive Reflection Test (CRT) data items.
+
+Novel items inspired by Frederick (2005) but using original questions
+to avoid contamination from published CRT tests.
+
+Each item has an intuitive-but-wrong answer (System 1 response) and
+a correct answer requiring deliberate reasoning (System 2 override).
+
+Design principle: The intuitive answer is COMPELLINGLY wrong — it feels
+obviously right, requiring active inhibition to override.
+"""
+
+CRT_ITEMS = [
+    {
+        "id": "CRT01",
+        "question": "A printer and a cable together cost $37. The printer costs $30 more than the cable. How much does the cable cost?",
+        "intuitive_wrong": "7",
+        "correct": "3.50",
+        "answer_unit": "dollars",
+        "explanation": "If cable = x, printer = x + 30. x + (x + 30) = 37 → 2x = 7 → x = 3.50",
+        "difficulty": "easy",
+        "cognitive_trap": "anchoring on the $30 difference",
+    },
+    {
+        "id": "CRT02",
+        "question": "If 3 robots can assemble 3 widgets in 3 minutes, how many minutes would it take 100 robots to assemble 100 widgets?",
+        "intuitive_wrong": "100",
+        "correct": "3",
+        "answer_unit": "minutes",
+        "explanation": "Each robot makes 1 widget in 3 minutes. 100 robots make 100 widgets in 3 minutes.",
+        "difficulty": "easy",
+        "cognitive_trap": "linear proportional scaling",
+    },
+    {
+        "id": "CRT03",
+        "question": "In a pond, there is a patch of algae. Every day, the patch doubles in size. If it takes 30 days for the patch to cover the entire pond, how many days does it take to cover half the pond?",
+        "intuitive_wrong": "15",
+        "correct": "29",
+        "answer_unit": "days",
+        "explanation": "Doubles daily; full on day 30 means half on day 29.",
+        "difficulty": "easy",
+        "cognitive_trap": "halving the time for half the result",
+    },
+    {
+        "id": "CRT04",
+        "question": "A farmer has 15 sheep. All but 8 run away. How many sheep does the farmer have left?",
+        "intuitive_wrong": "7",
+        "correct": "8",
+        "answer_unit": "sheep",
+        "explanation": "'All but 8' = 8 remain.",
+        "difficulty": "medium",
+        "cognitive_trap": "subtraction reflex (15 - 8)",
+    },
+    {
+        "id": "CRT05",
+        "question": "You're running a race and you overtake the person in 2nd place. What position are you now in?",
+        "intuitive_wrong": "1",
+        "correct": "2",
+        "answer_unit": "position",
+        "explanation": "Overtaking 2nd place puts you in 2nd, not 1st.",
+        "difficulty": "medium",
+        "cognitive_trap": "equating 'overtake' with 'move ahead of everyone'",
+    },
+    {
+        "id": "CRT06",
+        "question": "A store marks up all items by 25%, then offers a 25% discount. What is the net percentage change from the original price?",
+        "intuitive_wrong": "0",
+        "correct": "-6.25",
+        "answer_unit": "percent",
+        "explanation": "1.25 × 0.75 = 0.9375 → 6.25% decrease.",
+        "difficulty": "hard",
+        "cognitive_trap": "+25% and -25% seem to cancel out",
+    },
+    {
+        "id": "CRT07",
+        "question": "A clock takes 5 seconds to strike 6 o'clock (6 strikes). How many seconds does it take to strike 12 o'clock?",
+        "intuitive_wrong": "10",
+        "correct": "11",
+        "answer_unit": "seconds",
+        "explanation": "6 strikes = 5 gaps of 1s each. 12 strikes = 11 gaps = 11 seconds.",
+        "difficulty": "hard",
+        "cognitive_trap": "doubling strikes = doubling time",
+    },
+    {
+        "id": "CRT08",
+        "question": "A snail climbs 3 meters up a wall during the day but slides back 2 meters at night. The wall is 10 meters high. How many days does it take to reach the top?",
+        "intuitive_wrong": "10",
+        "correct": "8",
+        "answer_unit": "days",
+        "explanation": "After 7 days: 7m net. Day 8: climbs to 10m — done. No night slide needed.",
+        "difficulty": "hard",
+        "cognitive_trap": "10m ÷ 1m/day = 10 days",
+    },
+    {
+        "id": "CRT09",
+        "question": "Emily's mother has 4 children. The first is named April, the second is May, the third is June. What is the fourth child's name?",
+        "intuitive_wrong": "July",
+        "correct": "Emily",
+        "answer_unit": "name",
+        "explanation": "The question says 'Emily's mother' — the fourth child is Emily.",
+        "difficulty": "medium",
+        "cognitive_trap": "pattern continuation (month names)",
+    },
+    {
+        "id": "CRT10",
+        "question": "A bat and a ball cost $1.10 in total. The bat costs exactly $1.00 more than the ball. How much does the ball cost, in cents?",
+        "intuitive_wrong": "10",
+        "correct": "5",
+        "answer_unit": "cents",
+        "explanation": "ball = x, bat = x + 100 cents. x + x + 100 = 110 → x = 5 cents.",
+        "difficulty": "easy",
+        "cognitive_trap": "anchoring on $1.00 and $0.10",
+    },
+    {
+        "id": "CRT11",
+        "question": "You have a book with 100 pages. You tear out pages 7, 8, 23, 24, 95, and 96. How many individual LEAVES (physical sheets) did you remove?",
+        "intuitive_wrong": "6",
+        "correct": "3",
+        "answer_unit": "leaves",
+        "explanation": "Pages 7-8, 23-24, 95-96 are front/back of the same leaves. 3 leaves removed.",
+        "difficulty": "hard",
+        "cognitive_trap": "conflating pages with leaves",
+    },
+    {
+        "id": "CRT12",
+        "question": "How many times can you subtract 5 from 25?",
+        "intuitive_wrong": "5",
+        "correct": "1",
+        "answer_unit": "times",
+        "explanation": "After the first subtraction, you're subtracting from 20, not 25.",
+        "difficulty": "medium",
+        "cognitive_trap": "25 ÷ 5 = 5 (division instead of literal reading)",
+    },
+]

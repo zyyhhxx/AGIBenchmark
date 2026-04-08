@@ -11,7 +11,7 @@ We present a comprehensive benchmark suite measuring **five core cognitive abili
 
 **Key numbers:**
 - **5 cognitive tracks** spanning the full taxonomy from DeepMind's AGI framework
-- **24 individual benchmarks** with distinct cognitive science rationales
+- **25 individual benchmarks** with distinct cognitive science rationales
 - **Contamination-resistant design** using procedural generation and canary items
 - **Human baselines** referenced from the empirical literature for calibrated scoring
 - **All scores normalized to [0, 1]** with clear cognitive interpretations
@@ -64,7 +64,7 @@ Translates classic attention paradigms from cognitive neuroscience to the langua
 | `attention_divided` | Divided attention | Dual-task cost |
 | `attention_instruction_update` | Adaptation | Task-switching speed |
 
-### Track 4: Executive Functions (4 benchmarks)
+### Track 4: Executive Functions (5 benchmarks)
 *"Can the model plan, adapt, and inhibit?"*
 
 Follows the **Miyake et al. (2000) unity/diversity framework** of executive function.
@@ -75,6 +75,7 @@ Follows the **Miyake et al. (2000) unity/diversity framework** of executive func
 | `exec_func_tol` | Planning | Move efficiency on Tower of London |
 | `exec_func_nback` | Working memory updating | d' (signal detection) |
 | `exec_func_task_switch` | Task switching | Switch cost |
+| `exec_func_crt` | Response inhibition | System 1 trap resistance |
 
 ### Track 5: Social Cognition (3 benchmarks)
 *"Can the model understand other minds?"*
@@ -131,7 +132,7 @@ Every benchmark maps to an established construct from the psychology literature 
 | Confidence | Not measured | Core metric (calibration, gamma, ECE) |
 | Learning | Not measured | Learning curves, transfer, interference |
 | Metacognition | Not measured | FOK, JOL, error detection |
-| Coverage | Single ability | 5 tracks, 24 benchmarks |
+| Coverage | Single ability | 5 tracks, 25 benchmarks |
 
 ---
 
@@ -141,7 +142,7 @@ Every benchmark maps to an established construct from the psychology literature 
 - Each benchmark is a self-contained Python file with inline documentation
 - Structured output schemas (dataclasses) for reliable response parsing
 - Fallback parsing for models that don't support structured output
-- All benchmarks validated via mock testing (4 strategies × 24 benchmarks)
+- All benchmarks validated via mock testing (4 strategies × 25 benchmarks)
 
 ---
 

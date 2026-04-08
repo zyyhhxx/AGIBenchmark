@@ -67,3 +67,25 @@ When learning multiple things:
 ## Implementation Plan
 Each benchmark uses `@kbench.task` decorator. Rule systems are generated
 algorithmically with controlled difficulty parameters.
+
+## Benchmark 4: Curriculum Sensitivity
+
+### Cognitive science basis
+The order of training examples affects learning outcomes (Rohrer & Taylor, 2007;
+Bengio et al., 2009). A genuine learning system should show sensitivity to
+example ordering — a key finding from educational psychology.
+
+### Design
+1. Present the same rule system under 5 different orderings:
+   a. RANDOM, b. EASY→HARD, c. HARD→EASY, d. BLOCKED, e. INTERLEAVED
+2. After each curriculum, test on the same held-out items
+3. Measure: Does ordering matter? Which ordering works best?
+
+### Metrics
+- Curriculum sensitivity: variance in performance across orderings
+- Optimal ordering: does easy→hard outperform random? (human-like)
+- Per-curriculum accuracy
+
+### Key innovation
+Tests whether the model genuinely *learns* from examples (ordering should matter)
+vs. retrieving from parametric memory (ordering wouldn't matter).

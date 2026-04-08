@@ -20,12 +20,12 @@
 - [ ] Cross-validate top-5 benchmarks against Claude 3.5 Sonnet + Gemini 1.5 Pro — check for model-specific scoring anomalies [2 cycles]
 
 **QUALITY & POLISH (Priority 2)**
-- [ ] Create per-track results summary: compile frontier model scores into `results/FRONTIER_MODEL_RESULTS.md` with pass/fail thresholds [1 cycle]
+- [x] Create per-track results summary: compile frontier model scores into `results/FRONTIER_MODEL_RESULTS.md` with pass/fail thresholds [1 cycle]
 - [x] Review notebook markdown cells: ensure title, cognitive science rationale, interpretation guide in each [1 cycle]
 - [ ] Verify contamination canary notebook works end-to-end on Kaggle [1 cycle]
 - [ ] Update SUBMISSION_NARRATIVE.md with actual frontier model results (replace mock data) [1 cycle]
-- [ ] Final pass on all 5 DESIGN.md files: ensure they match actual implementation [1 cycle]
-- [ ] Review submission_overview.ipynb: verify it references all 24 benchmarks correctly [1 cycle]
+- [x] Final pass on all 5 DESIGN.md files: ensure they match actual implementation [1 cycle]
+- [x] Review submission_overview.ipynb: verify it references all 25 benchmarks correctly [1 cycle]
 - [ ] Git tag `v1.0-submission` and push final clean commit [1 cycle]
 
 **ROBUSTNESS (Priority 3 — if time permits)**
@@ -34,7 +34,8 @@
 - [x] Verify all data/ directories contain required stimuli files, no hardcoded absolute paths [1 cycle]
 
 **NEW HIGH-IMPACT BENCHMARKS (Priority 4 — only if core submission is solid)**
-- [ ] Implement "Cognitive Reflection Test" (CRT) benchmark for Executive Functions (Frederick 2005) [2 cycles]
+- [x] Implement "Cognitive Reflection Test" (CRT) benchmark for Executive Functions (Frederick 2005) [2 cycles]
+- [ ] Upload CRT notebook to Kaggle when rate limit lifts [1 cycle]
 - [ ] Implement "Epistemic Humility" benchmark for Metacognition: unanswerable questions, measure confabulation vs uncertainty [2 cycles]
 - [ ] Implement "Emotional Prosody in Text" benchmark for Social Cognition: emotional tone shift detection in dialogues [2 cycles]
 

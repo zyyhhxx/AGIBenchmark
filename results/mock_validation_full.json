@@ -2,19 +2,21 @@
   "metacog_fok": {
     "track": "metacognition",
     "scores": {
-      "always_confident": 0.2791,
-      "always_uncertain": 0.4592,
-      "random": 0.3419,
-      "perfect": 0.425
+      "always_confident": 0.3361,
+      "always_uncertain": 0.553,
+      "random": 0.4785,
+      "perfect": 0.3755
     },
-    "checks": []
+    "checks": [
+      "\u26a0 Perfect (0.376) < Uncertain (0.553)"
+    ]
   },
   "metacog_jol": {
     "track": "metacognition",
     "scores": {
       "always_confident": 0.215,
       "always_uncertain": 0.485,
-      "random": 0.3158,
+      "random": 0.3664,
       "perfect": 0.275
     },
     "checks": [
@@ -26,7 +28,7 @@
     "scores": {
       "always_confident": 0.05,
       "always_uncertain": 0.95,
-      "random": 0.6922,
+      "random": 0.738,
       "perfect": 0.25
     },
     "checks": [
@@ -38,7 +40,7 @@
     "scores": {
       "always_confident": 0.4613,
       "always_uncertain": 0.1957,
-      "random": 0.3181,
+      "random": 0.4681,
       "perfect": 0.5291
     },
     "checks": []
@@ -48,7 +50,7 @@
     "scores": {
       "always_confident": 0.16,
       "always_uncertain": 0.34,
-      "random": 0.2529,
+      "random": 0.2532,
       "perfect": 0.2
     },
     "checks": []
@@ -58,7 +60,7 @@
     "scores": {
       "always_confident": 0.0,
       "always_uncertain": 1.0,
-      "random": 0.4,
+      "random": 0.6,
       "perfect": 0.0
     },
     "checks": [
@@ -70,7 +72,7 @@
     "scores": {
       "always_confident": 0.24,
       "always_uncertain": 0.2,
-      "random": 0.2117,
+      "random": 0.2017,
       "perfect": 0.2
     },
     "checks": []
@@ -92,7 +94,7 @@
     "scores": {
       "always_confident": 0.07,
       "always_uncertain": 0.0,
-      "random": 0.07,
+      "random": 0.0,
       "perfect": 0.0
     },
     "checks": []
@@ -112,10 +114,10 @@
   "attention_selective": {
     "track": "attention",
     "scores": {
-      "always_confident": 0.27,
-      "always_uncertain": 0.15,
-      "random": 0.26,
-      "perfect": 0.19
+      "always_confident": 0.215,
+      "always_uncertain": 0.125,
+      "random": 0.18,
+      "perfect": 0.18
     },
     "checks": []
   },
@@ -124,7 +126,7 @@
     "scores": {
       "always_confident": 0.8667,
       "always_uncertain": 0.8667,
-      "random": 0.7333,
+      "random": 0.1333,
       "perfect": 0.8667
     },
     "checks": []
@@ -134,7 +136,7 @@
     "scores": {
       "always_confident": 0.0,
       "always_uncertain": 0.0,
-      "random": 0.1,
+      "random": 0.15,
       "perfect": 0.0
     },
     "checks": []
@@ -212,7 +214,7 @@
     "scores": {
       "always_confident": 0.265,
       "always_uncertain": 0.265,
-      "random": 0.6318,
+      "random": 0.6487,
       "perfect": 0.325
     },
     "checks": []
