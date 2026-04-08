@@ -145,3 +145,5 @@ def social_cog_false_belief(llm) -> float:
     })
     
     return score
+
+social_cog_false_belief.run(llm=kbench.llm)

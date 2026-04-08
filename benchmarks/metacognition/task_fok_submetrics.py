@@ -180,3 +180,7 @@ def metacog_fok_auc(llm) -> float:
     """
     ratings, acc = _collect_fok_data(llm)
     return compute_auc(ratings, acc)
+
+metacog_fok_gamma.run(llm=kbench.llm)
+metacog_fok_ece.run(llm=kbench.llm)
+metacog_fok_auc.run(llm=kbench.llm)

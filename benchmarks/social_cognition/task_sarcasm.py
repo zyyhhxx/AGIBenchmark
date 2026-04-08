@@ -180,3 +180,5 @@ def social_cog_sarcasm(llm) -> float:
     })
     
     return score
+
+social_cog_sarcasm.run(llm=kbench.llm)

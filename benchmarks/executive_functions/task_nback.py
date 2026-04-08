@@ -215,3 +215,5 @@ def exec_func_nback(llm) -> float:
     })
     
     return score
+
+exec_func_nback.run(llm=kbench.llm)

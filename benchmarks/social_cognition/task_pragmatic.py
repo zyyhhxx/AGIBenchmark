@@ -133,3 +133,5 @@ def social_cog_pragmatic(llm) -> float:
     })
     
     return score
+
+social_cog_pragmatic.run(llm=kbench.llm)

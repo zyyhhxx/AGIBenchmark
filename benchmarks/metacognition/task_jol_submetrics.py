@@ -187,3 +187,7 @@ def metacog_jol_recall(llm) -> float:
     """JOL Recall Rate — proportion of items successfully recalled (in-context learning)."""
     jols, accs = _collect_jol_data(llm)
     return round(sum(accs) / len(accs), 4)
+
+metacog_jol_gamma.run(llm=kbench.llm)
+metacog_jol_ece.run(llm=kbench.llm)
+metacog_jol_recall.run(llm=kbench.llm)

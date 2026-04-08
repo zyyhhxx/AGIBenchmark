@@ -275,3 +275,5 @@ def exec_func_wcst(llm) -> float:
     })
 
     return score
+
+exec_func_wcst.run(llm=kbench.llm)

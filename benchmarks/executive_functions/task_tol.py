@@ -200,3 +200,5 @@ def exec_func_tol(llm) -> float:
     })
 
     return score
+
+exec_func_tol.run(llm=kbench.llm)

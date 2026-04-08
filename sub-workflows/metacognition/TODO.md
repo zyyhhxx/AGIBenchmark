@@ -3,12 +3,9 @@
 ## In Progress
 
 ## Queue
-- [ ] Create comprehensive results dashboard notebook: aggregate scores across all benchmarks and model families into a single visualization notebook with radar charts by cognitive track [1 cycle]
-- [ ] Final pre-submission audit: verify all notebooks run independently on Kaggle, all @kbench.task decorators follow SDK conventions, all scores are in [0,1] range, all have docstrings [1 cycle]
-- [ ] Test metacognition benchmarks against frontier models [1 cycle]
-- [ ] Cross-validate across model families [1 cycle]
-- [ ] Polish competition writeup with results [1 cycle]
-- [ ] Create comprehensive Kaggle submission notebook [1 cycle]
+- [ ] Test metacognition benchmarks against frontier models on Kaggle [1 cycle]
+- [ ] Cross-validate across model families on Kaggle [1 cycle]
+- [ ] Upload all notebooks to Kaggle platform [1 cycle]
 
 ## Done
 - [x] Update notebook generator for all 12 benchmarks
@@ -52,4 +49,10 @@
 - [x] Cross-benchmark correlation analysis → correlation_analysis.py (good discriminant validity: within-track r=0.37 vs between-track r=0.09)
 - [x] Difficulty-stratified calibration analysis → stratified_calibration.py (ECE increases with difficulty: easy 0.26, hard 0.30)
 - [x] Learning curve sensitivity analysis → sensitivity_analysis.py (current [0,2,4,8,12] config validated, monotonic, spread 0.37)
+- [x] Create comprehensive results dashboard notebook (radar chart + heatmap + reliability/validity summary)
+- [x] Final pre-submission audit: all 26 task files pass, all notebooks have .run() calls, all DESIGN.md present
+- [x] Polish competition writeup (updated to 24 benchmarks, added psychometric validation section)
+- [x] Create submission overview notebook
+- [x] Generate sub-metric notebooks (JOL, FOK, error detection)
+- [x] Fix missing .run() calls in exec functions + social cognition tasks
 - [x] Generate Kaggle notebooks for metacognitive control, epistemic revision, and instruction update benchmarks

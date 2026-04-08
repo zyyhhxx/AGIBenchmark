@@ -157,3 +157,5 @@ def exec_func_task_switch(llm) -> float:
     })
     
     return score
+
+exec_func_task_switch.run(llm=kbench.llm)

@@ -140,3 +140,8 @@ def metacog_error_detection_gamma(llm) -> float:
         [int(r["detection_correct"]) for r in results]
     )
     return round((gamma + 1) / 2, 4)
+
+metacog_error_detection_f1.run(llm=kbench.llm)
+metacog_error_detection_localization.run(llm=kbench.llm)
+metacog_error_detection_ece.run(llm=kbench.llm)
+metacog_error_detection_gamma.run(llm=kbench.llm)

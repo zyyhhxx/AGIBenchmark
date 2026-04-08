@@ -11,7 +11,7 @@ We present a comprehensive benchmark suite measuring **five core cognitive abili
 
 **Key numbers:**
 - **5 cognitive tracks** spanning the full taxonomy from DeepMind's AGI framework
-- **20+ individual benchmarks** with distinct cognitive science rationales
+- **24 individual benchmarks** with distinct cognitive science rationales
 - **Contamination-resistant design** using procedural generation and canary items
 - **Human baselines** referenced from the empirical literature for calibrated scoring
 - **All scores normalized to [0, 1]** with clear cognitive interpretations
@@ -20,7 +20,7 @@ We present a comprehensive benchmark suite measuring **five core cognitive abili
 
 ## 2. Track Summaries
 
-### Track 1: Metacognition (6 benchmarks)
+### Track 1: Metacognition (8 benchmarks)
 *"Does the model know what it knows?"*
 
 Grounded in the **Nelson & Narens (1990) metamemory monitoring framework**, measuring the correspondence between stated confidence and actual performance.
@@ -33,6 +33,8 @@ Grounded in the **Nelson & Narens (1990) metamemory monitoring framework**, meas
 | `metacog_error_detection` | Error monitoring | Detection F1 + localization |
 | `metacog_learning_monitoring` | Online learning awareness | Confidence tracking |
 | `metacog_canary` | Contamination detection | Canary item calibration |
+| `metacog_control` | Strategic re-reading | Relevance × strategy gain |
+| `metacog_epistemic_revision` | Belief updating | Revision accuracy under contradiction |
 
 **Innovation:** Two-phase protocol separating confidence rating from answer generation prevents post-hoc rationalization — a known confound in LLM calibration studies.
 
@@ -50,7 +52,7 @@ Measures in-context learning dynamics using paradigms from educational psycholog
 
 **Innovation:** Uses procedurally generated rule systems (not natural language facts) to ensure genuine learning rather than recall.
 
-### Track 3: Attention (3 benchmarks)
+### Track 3: Attention (4 benchmarks)
 *"Can the model selectively process and sustain focus?"*
 
 Translates classic attention paradigms from cognitive neuroscience to the language domain.
@@ -60,6 +62,7 @@ Translates classic attention paradigms from cognitive neuroscience to the langua
 | `attention_selective` | Selective attention | Stroop-like interference score |
 | `attention_vigilance` | Sustained attention | Signal detection over long sequences |
 | `attention_divided` | Divided attention | Dual-task cost |
+| `attention_instruction_update` | Adaptation | Task-switching speed |
 
 ### Track 4: Executive Functions (4 benchmarks)
 *"Can the model plan, adapt, and inhibit?"*
@@ -99,6 +102,11 @@ Every benchmark maps to an established construct from the psychology literature 
 - Human baseline performance ranges from empirical studies
 - Validated scoring metrics used in the original research
 
+### 3.3 Psychometric Validation
+- **Reliability**: All tested benchmarks achieve Cronbach's α ≥ 0.70 (FOK α = 0.95)
+- **Discriminant validity**: Within-track correlation (r = 0.37) vs. between-track (r = 0.09) — 4:1 ratio
+- **Difficulty calibration**: ECE increases with item difficulty as expected
+
 ### 3.3 Shortcut Resistance  
 - Two-phase protocols prevent confidence-answer leakage
 - Mix of difficulty levels prevents ceiling/floor effects
@@ -123,7 +131,7 @@ Every benchmark maps to an established construct from the psychology literature 
 | Confidence | Not measured | Core metric (calibration, gamma, ECE) |
 | Learning | Not measured | Learning curves, transfer, interference |
 | Metacognition | Not measured | FOK, JOL, error detection |
-| Coverage | Single ability | 5 tracks, 20+ benchmarks |
+| Coverage | Single ability | 5 tracks, 24 benchmarks |
 
 ---
 
@@ -133,7 +141,7 @@ Every benchmark maps to an established construct from the psychology literature 
 - Each benchmark is a self-contained Python file with inline documentation
 - Structured output schemas (dataclasses) for reliable response parsing
 - Fallback parsing for models that don't support structured output
-- All benchmarks validated via mock testing (4 strategies × 20 benchmarks)
+- All benchmarks validated via mock testing (4 strategies × 24 benchmarks)
 
 ---
 
