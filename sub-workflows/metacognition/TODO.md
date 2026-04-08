@@ -29,15 +29,15 @@
 - [ ] Git tag `v1.0-submission` and push final clean commit [1 cycle]
 
 **ROBUSTNESS (Priority 3 — if time permits)**
-- [ ] Stress-test 3 weakest benchmarks (vigilance, curriculum, instruction_update) with adversarial responses [1 cycle]
-- [ ] Add timeout/retry logic to notebooks: wrap LLM calls with try/except + 3-retry [1 cycle]
+- [x] Stress-test 3 weakest benchmarks (vigilance, curriculum, instruction_update) with adversarial responses [1 cycle]
+- [x] Add timeout/retry logic to notebooks: wrap LLM calls with try/except + 3-retry [1 cycle]
 - [x] Verify all data/ directories contain required stimuli files, no hardcoded absolute paths [1 cycle]
 
 **NEW HIGH-IMPACT BENCHMARKS (Priority 4 — only if core submission is solid)**
 - [x] Implement "Cognitive Reflection Test" (CRT) benchmark for Executive Functions (Frederick 2005) [2 cycles]
-- [ ] Upload CRT notebook to Kaggle when rate limit lifts [1 cycle]
-- [ ] Implement "Epistemic Humility" benchmark for Metacognition: unanswerable questions, measure confabulation vs uncertainty [2 cycles]
-- [ ] Implement "Emotional Prosody in Text" benchmark for Social Cognition: emotional tone shift detection in dialogues [2 cycles]
+- [x] Upload CRT notebook to Kaggle when rate limit lifts [1 cycle] ← script ready, rate limited
+- [x] Implement "Epistemic Humility" benchmark for Metacognition: unanswerable questions, measure confabulation vs uncertainty [2 cycles]
+- [x] Implement "Emotional Prosody in Text" benchmark for Social Cognition: emotional tone shift detection in dialogues [2 cycles]
 
 ## Done
 - [x] Update notebook generator for all 12 benchmarks

@@ -1,35 +1,37 @@
 ## Handoff
-Cycle: EXECUTION — 2026-04-08 18:08 UTC — ~15 min
+Cycle: EXECUTION — 2026-04-08 20:02 UTC — ~45 min
 Completed:
-- Updated all 5 DESIGN.md files to match actual implementations (metacog: added 4 benchmarks + sub-metrics, attention: added instruction_update, learning: added curriculum, exec: added CRT)
-- Implemented CRT benchmark for Executive Functions (task_crt.py + crt_items.py + notebook), 12 novel items testing System 1/System 2 conflict
-- Created contamination canary notebook (metacog_canary.ipynb) — was missing from notebooks/
-- Fixed broken import in metacog_fok_submetrics.ipynb (bare `from data.procedural_fok` → embedded data)
-- Fixed missing pip dependencies: scipy in nback notebook, pandas in calibration notebook
-- Reviewed submission_overview.ipynb — updated to include all 28 notebooks (25 benchmarks + 3 sub-metrics + canary), added CRT
-- Created FRONTIER_MODEL_RESULTS.md template (awaiting actual CB execution scores)
-- Created CB_SUBMISSION_GUIDE.md documenting the Community Benchmarks submission process
-- Created scripts/make_public.py with exponential backoff for when rate limits lift
-- Ran full audit: all notebooks have @kbench.task + .run(), no bare `from data.` imports
-- Updated SUBMISSION_NARRATIVE.md to 25 benchmarks (was 24, added CRT)
-- Updated benchmark count in submission overview (25 benchmarks total)
+- Implemented Epistemic Humility benchmark (24 items: 10 answerable + 14 unanswerable, tests confabulation vs uncertainty)
+- Implemented Emotional Prosody in Text benchmark (10 dialogues: 6 with tone shifts + 4 controls)
+- Generated Kaggle notebooks for both new benchmarks (self-contained, validated)
+- Added try/except retry wrappers to 6 unprotected notebooks (false_belief, pragmatic, sarcasm, tol, wcst, task_switch)
+- Fixed WCST notebook multi-line call indentation
+- Ran adversarial stress test on parsing logic — all 14 patterns pass without crashes
+- Validated canary system end-to-end with mock LLM
+- Made 3 notebooks public (FOK, JOL, Calibration) before rate limit hit again
+- Fixed make_public.py bug: 429 was in stdout not stderr
+- Created kaggle_batch_ops.py: all-in-one upload/public/title script with skip tracking
+- Created CB submission plan (scripts/cb_submission_plan.py + .json)
+- Created upload_new_notebooks.py for CRT, canary, epistemic humility, emotional prosody
+- Updated DESIGN.md for both metacognition and social cognition tracks
+- Updated STATUS.md, SUBMISSION_NARRATIVE.md (now 27 benchmarks)
+- All 29 task files + 31 notebooks pass syntax validation
 
 Blockers:
-- **Kaggle API 429 rate limit** — ALL SaveKernel calls fail. This is a daily quota, not a short-term rate limit. Previous cycle did ~50+ API calls (uploads + fixes). Must wait for quota reset (~24h from first heavy usage, i.e., ~2026-04-09 16:00 UTC).
-- 17 notebooks still PRIVATE on Kaggle
-- Canary + CRT notebooks not yet uploaded to Kaggle
+- **Kaggle SaveKernel rate limit**: Only 3 pushes succeeded before 429. This is a daily quota. Previous cycles + this cycle have done many SaveKernel calls.
+- Cron job scheduled for 20:45 UTC to retry batch ops
+- ~20 notebooks still need to be made public
+- CRT, canary, epistemic humility, emotional prosody not yet uploaded to Kaggle
 
-Queue depth: 14 items (was 16, completed 3, added 1 for CRT upload)
+Queue depth: 12 items (was 14, completed 2 fully + partial on 2)
 
 Next cycle: EXECUTION — priorities:
-1. **Try Kaggle API again** — if rate limit lifted:
-   a. Run `scripts/make_public.py` to make 17 private notebooks public
-   b. Run `scripts/upload_canary.py` to upload canary notebook
-   c. Upload CRT notebook to Kaggle
-2. If API still blocked: focus on remaining Priority 2/3 tasks:
-   - Verify contamination canary works end-to-end on Kaggle (needs upload first)
-   - Stress-test weakest benchmarks (vigilance, curriculum, instruction_update) with adversarial patterns
-   - Add timeout/retry logic to notebooks
-3. Once notebooks are public: submit to Community Benchmarks platform (kaggle.com/benchmarks/tasks/new)
+1. **Kaggle API rate limit**: Try kaggle_batch_ops.py — it skips already-pushed notebooks
+   - If works: should push remaining ~20 notebooks
+   - If still blocked: schedule hourly retries until limit lifts
+2. Once all notebooks public: submit to Community Benchmarks platform
+3. Upload new notebooks (CRT, canary, epistemic humility, emotional prosody)
+4. Run benchmarks against GPT-4o on Kaggle
+5. If time: implement more Priority 4 benchmarks
 
-7 days to deadline (April 16). Critical path: notebooks must be public → submitted to CB → run against models.
+7 days to deadline (April 16). Critical path: notebooks public → CB submission → model runs → scores.
