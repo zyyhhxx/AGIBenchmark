@@ -1,0 +1,5 @@
+{
+  "versionNumber": 1,
+  "name": "metacog_epistemic_revision",
+  "description": "Epistemic Revision Benchmark: Belief Updating Under Contradiction.\n\nTests whether a model can revise learned rules when presented with\ncontradicting evidence.\n\nScore = 0.25 * violation_detection + 0.25 * revision_quality +\n        0.30 * transfer_accuracy + 0.20 * (1 - perseveration_rate)\n\nCognitive Science Basis: G\u00e4rdenfors (1988), AGM postulates."
+}

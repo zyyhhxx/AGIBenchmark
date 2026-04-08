@@ -1,0 +1,18 @@
+{
+  "easy_ece": 0.2595,
+  "medium_ece": 0.1944,
+  "hard_ece": 0.2995,
+  "overall_ece": 0.1438,
+  "degrades_with_difficulty": false,
+  "difficulty_mapping": {
+    "retrievable": "easy",
+    "proc_arithmetic": "easy",
+    "proc_sequence": "medium",
+    "proc_syllogism": "medium",
+    "boundary": "medium",
+    "reasoning": "hard",
+    "proc_logic": "hard",
+    "obscure": "hard",
+    "unanswerable": "hard"
+  }
+}

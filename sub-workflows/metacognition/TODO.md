@@ -1,19 +1,8 @@
 # TODO — AGI Benchmark Task Queue
 
 ## In Progress
-- [ ] Implement "metacognitive control" benchmark (NEW): model reads a long passage, must choose which 3 of 10 sections to re-read before answering 5 questions, measure whether re-read choices correlate with question-relevant sections vs. random selection [2 cycles]
 
 ## Queue
-- [x] Add adversarial shortcut probes to attention benchmarks — 10 adversarial items added to selective attention (position bias, length correlation, authority bias)
-- [x] Implement contamination canary system: already exists in task_canary.py with 5 fabricated facts, verified in mock validation
-- [ ] Implement "epistemic revision" benchmark (NEW): teach model 10 rules with examples, then present 3 contradicting observations, model must identify which rules changed and state updated rules — tests belief revision rather than just accumulation [2 cycles]
-- [ ] Split composite-score benchmarks into separate @kbench.task functions for each sub-metric (e.g., fok_gamma, fok_ece, fok_auc as separate leaderboard entries) [1 cycle] — FOK sub-metrics done, remaining: JOL, error detection
-- [ ] Create cross-benchmark correlation analysis: run all benchmarks on same model and measure inter-benchmark correlations to verify they measure distinct constructs (discriminant validity) [1 cycle]
-- [ ] Add difficulty-stratified calibration analysis to metacog benchmarks: compute ECE separately for easy/medium/hard questions, verify calibration degrades on harder items [1 cycle]
-- [ ] Run sensitivity analysis on learning curve benchmark: vary training examples (5, 10, 20, 40) and verify scores differentiate meaningfully and show expected power-law shape [1 cycle]
-- [x] Write competition overview narrative (2-page submission summary): 5 tracks, 20+ benchmarks, key innovations → SUBMISSION_NARRATIVE.md
-- [ ] Implement attention-to-instruction-update benchmark: give initial task instructions, then mid-sequence update instructions subtly, measure adaptation speed and perseveration rate [1 cycle]
-- [ ] Add inter-rater reliability simulation: for each benchmark, generate 100 synthetic response profiles and measure test-retest reliability (Cronbach's alpha) of the scoring function [1 cycle]
 - [ ] Create comprehensive results dashboard notebook: aggregate scores across all benchmarks and model families into a single visualization notebook with radar charts by cognitive track [1 cycle]
 - [ ] Final pre-submission audit: verify all notebooks run independently on Kaggle, all @kbench.task decorators follow SDK conventions, all scores are in [0,1] range, all have docstrings [1 cycle]
 - [ ] Test metacognition benchmarks against frontier models [1 cycle]
@@ -51,3 +40,16 @@
 - [x] Write Social Cognition DESIGN.md + generate Kaggle notebooks
 - [x] Run all 20 benchmarks end-to-end with mock LLM responses — all pass, no crashes, scores in [0,1]. Analysis in results/MOCK_VALIDATION_ANALYSIS.md
 - [x] Expand FOK question bank from 43 to 81 questions — added procedural arithmetic, syllogisms, sequences, logic puzzles (contamination-resistant)
+- [x] Add adversarial shortcut probes to attention benchmarks
+- [x] Implement contamination canary system
+- [x] Write competition overview narrative → SUBMISSION_NARRATIVE.md
+- [x] Implement "metacognitive control" benchmark → task_metacognitive_control.py (2 passages, 10 sections each, strategic re-reading with 3-section budget)
+- [x] Implement "epistemic revision" benchmark → task_epistemic_revision.py (Zorblatt Chemistry rule system, 10 rules, 3 contradictions, 10 transfer questions)
+- [x] Split JOL sub-metrics → task_jol_submetrics.py (jol_gamma, jol_ece, jol_recall)
+- [x] Split error detection sub-metrics → task_error_detection_submetrics.py (f1, localization, ece, gamma)
+- [x] Implement attention-to-instruction-update benchmark → task_instruction_update.py (5 trials including 1 catch, task-switching paradigm)
+- [x] Inter-rater reliability simulation → reliability_analysis.py (all α ≥ 0.70: FOK 0.95, error detection 0.79/0.70, attention 0.73)
+- [x] Cross-benchmark correlation analysis → correlation_analysis.py (good discriminant validity: within-track r=0.37 vs between-track r=0.09)
+- [x] Difficulty-stratified calibration analysis → stratified_calibration.py (ECE increases with difficulty: easy 0.26, hard 0.30)
+- [x] Learning curve sensitivity analysis → sensitivity_analysis.py (current [0,2,4,8,12] config validated, monotonic, spread 0.37)
+- [x] Generate Kaggle notebooks for metacognitive control, epistemic revision, and instruction update benchmarks

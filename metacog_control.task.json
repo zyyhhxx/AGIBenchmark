@@ -1,0 +1,5 @@
+{
+  "versionNumber": 1,
+  "name": "metacog_control",
+  "description": "Metacognitive Control Benchmark: Strategic Re-Reading.\n\nTests whether a model can strategically allocate limited study effort\nto sections most relevant to upcoming questions.\n\nProtocol per passage:\n1. Present full passage (all 10 sections)\n2. Present 5 questions\n3. Model selects exactly 3 sections to \"re-read\" (limited budget)\n4. Re-present selected sections + questions \u2192 model answers\n\nScore = 0.35 * selection_relevance + 0.35 * strategic_gain + 0.30 * accuracy\n\nCognitive Science Basis:\n- Allocation of study time (Son & Metcalfe, 2000)\n- Metacognitive control (Nelson & Narens, 1990)"
+}

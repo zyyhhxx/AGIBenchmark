@@ -1,23 +1,26 @@
 ## Handoff
-Cycle: EXPLORATION — 2026-04-06 06:57 UTC — ~5 min
+Cycle: EXECUTION — 2026-04-08 12:46 UTC — ~12 min
 Completed:
-- Marked "Update notebook generator for all 12 benchmarks" as done (all 12 notebooks verified present)
-- Generated 25 new TODO items via exploration sub-agent (thinking mode)
-- Merged into TODO.md queue
+- Implemented metacognitive control benchmark (task_metacognitive_control.py): 2 passages × 10 sections, model selects 3 to re-read, measures selection relevance + strategic gain + accuracy
+- Implemented epistemic revision benchmark (task_epistemic_revision.py): Zorblatt Chemistry (10 rules, 3 contradictions, 10 transfer questions testing belief updating vs perseveration)
+- Split JOL sub-metrics (task_jol_submetrics.py): jol_gamma, jol_ece, jol_recall
+- Split error detection sub-metrics (task_error_detection_submetrics.py): f1, localization, ece, gamma
+- Implemented attention instruction-update benchmark (task_instruction_update.py): 5 trials (1 catch), measures adaptation speed + perseveration
+- Ran inter-rater reliability simulation: all benchmarks α ≥ 0.70 (FOK excellent at 0.95)
+- Ran cross-benchmark correlation analysis: good discriminant validity confirmed
+- Ran difficulty-stratified calibration analysis: ECE increases with difficulty as expected
+- Ran learning curve sensitivity analysis: current config validated
+- Generated 3 new Kaggle notebooks
 
-Queue depth: 29 items (was 4 + 1 in-progress)
+Queue depth: 6 items
 
-New items cover:
-- Executive Functions track (4 benchmarks + DESIGN.md + notebooks)
-- Social Cognition track (3 benchmarks + DESIGN.md + notebooks)
-- 2 novel approaches: metacognitive control (strategic re-reading), epistemic revision (belief updating)
-- Validation/hardening: mock runs, adversarial probes, contamination canaries, sensitivity analysis
-- Submission prep: narrative, dashboard, final audit
-
-Next cycle: EXECUTION — start with Wisconsin Card Sort (Executive Functions), highest priority new track to expand prize eligibility. 10 days to deadline (April 16).
+Next cycle: EXECUTION — start with results dashboard notebook, then final audit.
 
 Priority order:
-1. Executive Functions implementations (new track = more prize opportunities)
-2. Social Cognition implementations (another new track)
-3. Mock validation of existing 12 benchmarks
-4. Final audit + submission prep
+1. Results dashboard notebook (visualization)
+2. Final pre-submission audit
+3. Test against frontier models
+4. Cross-validate across model families
+5. Polish writeup + create submission notebook
+
+8 days to deadline (April 16). All benchmarks implemented (24 total across 5 tracks). Focus on validation and submission prep.

@@ -1,0 +1,5 @@
+{
+  "versionNumber": 1,
+  "name": "attention_instruction_update",
+  "description": "Attention to Instruction Updates Benchmark.\n\nTests whether a model can adapt when task instructions change mid-sequence.\n\nScore = 0.25 * pre_switch_accuracy + 0.35 * post_switch_accuracy\n        + 0.25 * adaptation_speed + 0.15 * (1 - false_switch_rate)\n\nCognitive Science Basis: Monsell (2003) task-switching, Meiran (1996) set-shifting."
+}

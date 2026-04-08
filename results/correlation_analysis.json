@@ -1,0 +1,7 @@
+{
+  "n_models": 50,
+  "n_benchmarks": 22,
+  "within_track_mean_r": 0.3659,
+  "between_track_mean_r": 0.0941,
+  "discriminant_validity": "good"
+}

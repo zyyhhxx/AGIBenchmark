@@ -1,0 +1,15 @@
+{
+  "fok": {
+    "alpha": 0.9489,
+    "score_std": 0.1939,
+    "split_half_r": 0.9145,
+    "spearman_brown": 0.9553
+  },
+  "error_detection": {
+    "alpha_detection": 0.7926,
+    "alpha_localization": 0.7033
+  },
+  "attention": {
+    "alpha": 0.7336
+  }
+}
