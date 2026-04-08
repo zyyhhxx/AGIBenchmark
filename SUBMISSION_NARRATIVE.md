@@ -132,7 +132,7 @@ Every benchmark maps to an established construct from the psychology literature 
 | Confidence | Not measured | Core metric (calibration, gamma, ECE) |
 | Learning | Not measured | Learning curves, transfer, interference |
 | Metacognition | Not measured | FOK, JOL, error detection |
-| Coverage | Single ability | 5 tracks, 25 benchmarks |
+| Coverage | Single ability | 5 tracks, 27 benchmarks |
 
 ---
 
@@ -142,7 +142,7 @@ Every benchmark maps to an established construct from the psychology literature 
 - Each benchmark is a self-contained Python file with inline documentation
 - Structured output schemas (dataclasses) for reliable response parsing
 - Fallback parsing for models that don't support structured output
-- All benchmarks validated via mock testing (4 strategies × 25 benchmarks)
+- All benchmarks validated via mock testing (4 strategies × 27 benchmarks)
 
 ---
 

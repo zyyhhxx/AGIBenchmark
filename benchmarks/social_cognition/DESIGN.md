@@ -137,3 +137,29 @@ A model could theoretically score high on sarcasm detection via pattern matching
 
 ### Cultural Considerations
 Current items are primarily Western-context. Future iterations should include cross-cultural pragmatic norms (directness varies by culture).
+
+---
+
+## Benchmark 4: Emotional Prosody in Text
+
+### Cognitive Science Basis
+- Emotional prosody perception (Scherer, 1986): detecting emotion from vocal/textual cues
+- Text-based emotion recognition (Barrett et al., 2019)
+- Emotion regulation detection (Gross, 2015)
+
+### Design
+1. Present multi-turn dialogues (6 with emotional tone shifts, 4 controls with no shift)
+2. Shift types: friendly→hostile, professional→anxious, sympathetic→frustrated, neutral→excited, cheerful→melancholic, confident→defensive
+3. Model must: detect shift presence, identify turn, label emotions before/after, identify trigger
+
+### Metrics
+- Shift detection accuracy (sensitivity)
+- Emotion labeling accuracy (with synonym matching)
+- Trigger identification quality
+- False alarm rate on control dialogues
+
+### Score formula
+`0.40 * shift_detection + 0.30 * emotion_labeling + 0.20 * trigger_id + 0.10 * (1 - false_alarm)`
+
+### Files
+- `task_emotional_prosody.py`

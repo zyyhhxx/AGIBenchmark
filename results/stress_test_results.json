@@ -1,0 +1,11 @@
+{
+  "attention_vigilance": {
+    "import_error": "No module named 'data'"
+  },
+  "learning_curriculum": {
+    "import_error": "No module named 'data'"
+  },
+  "attention_instruction_update": {
+    "import_error": "'NoneType' object has no attribute 'prompt'"
+  }
+}

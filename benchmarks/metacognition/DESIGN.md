@@ -156,8 +156,33 @@ Three additional notebooks break out fine-grained sub-metrics for leaderboard vi
 
 ---
 
+## Benchmark 8: Epistemic Humility
+
+### Cognitive science basis
+Epistemic humility — recognizing the limits of one's own knowledge (Whitcomb et al., 2017). Related to calibration under ignorance (Fischhoff et al., 1977) and the Dunning-Kruger effect. Distinct from FOK/JOL in that it tests outright refusal vs confabulation on genuinely unanswerable questions.
+
+### Design
+1. Present mix of answerable (10) and genuinely unanswerable (14) questions
+2. Unanswerable categories: future events, fabricated entities, underspecified, paradoxical, private info, subjective
+3. Model must classify each as answerable or not, provide answer or explanation of why not
+4. Answerable questions include obscure-but-real items to test against over-refusal
+
+### Metrics
+- **Unanswerable detection rate**: Sensitivity to genuinely unanswerable questions
+- **Confabulation rate**: Fraction of unanswerable questions answered with high confidence
+- **False refusal rate**: Fraction of answerable questions incorrectly refused
+- **Explanation quality**: How well the model explains WHY it cannot answer
+
+### Score formula
+`0.35 * detection + 0.25 * (1 - confabulation) + 0.20 * (1 - false_refusal) + 0.20 * explanation_quality`
+
+### Files
+- `task_epistemic_humility.py`
+
+---
+
 ## Implementation Plan
 Each benchmark implemented as a kaggle-benchmarks task using the `@kbench.task` decorator.
 Tasks return `float` score in [0, 1] for leaderboard.
 All use `kbench.llm` as the default model placeholder for cross-model comparison.
-10 total Kaggle notebooks for this track (7 benchmarks + 3 sub-metric notebooks).
+11 total Kaggle notebooks for this track (8 benchmarks + 3 sub-metric notebooks).

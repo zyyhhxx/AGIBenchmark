@@ -63,15 +63,16 @@ for slug, nb_path in KERNELS.items():
                 print(f"✅ {slug}")
                 success.append(slug)
                 pushed = True
-                time.sleep(5)  # gentle delay between successes
+                time.sleep(15)  # delay between successes to avoid rate limit
                 break
-            elif "429" in result.stderr:
+            elif "429" in result.stderr or "429" in result.stdout:
                 delay = BASE_DELAY * (2 ** attempt)
                 print(f"⏳ {slug}: 429 rate limited, retry in {delay}s (attempt {attempt+1}/{MAX_RETRIES})")
                 time.sleep(delay)
             else:
-                print(f"❌ {slug}: {result.stderr.strip()}")
-                failed.append((slug, result.stderr.strip()))
+                err = result.stderr.strip() or result.stdout.strip()
+                print(f"❌ {slug}: {err}")
+                failed.append((slug, err))
                 break
         else:
             if not pushed:
