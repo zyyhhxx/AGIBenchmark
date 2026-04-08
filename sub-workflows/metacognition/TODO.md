@@ -5,7 +5,7 @@
 ## Queue
 
 **SUBMISSION-CRITICAL (Priority 1)**
-- [ ] Add pip install cells to all 27 notebooks: ensure `!pip install kaggle-benchmarks` + deps in cell 0 [1 cycle]
+- [x] Add pip install cells to all 27 notebooks: ensure `!pip install kaggle-benchmarks` + deps in cell 0 [1 cycle]
 - [ ] Batch upload Metacognition track notebooks (8) to Kaggle Community Benchmarks platform [1 cycle]
 - [ ] Batch upload Learning track notebooks (4) to Kaggle [1 cycle]
 - [ ] Batch upload Attention track notebooks (4) to Kaggle [1 cycle]

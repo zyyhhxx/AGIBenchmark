@@ -1,22 +1,18 @@
 ## Handoff
-Cycle: EXECUTION — 2026-04-08 14:23 UTC — ~7 min
+Cycle: EXECUTION — 2026-04-08 15:22 UTC — ~3 min
 Completed:
-- Created results dashboard notebook (radar chart, heatmap, reliability/validity summary, benchmark inventory)
-- Pre-submission audit: all 26 task files pass (syntax, docstrings, decorators), all 5 DESIGN.md present
-- Fixed missing .run() calls in 7 task files (4 exec functions, 3 social cognition)
-- Regenerated exec function, social cognition, and sub-metric notebooks
-- Generated 3 new sub-metric notebooks (JOL, FOK, error detection)
-- Created submission overview notebook
-- Updated SUBMISSION_NARRATIVE.md (24 benchmarks, psychometric validation section)
-- Updated STATUS.md (comprehensive project status)
+- Updated TODO.md with 25 prioritized, actionable items from planning subagent
+- Added pip install cells (`!pip install -q kaggle-benchmarks numpy`) to all 27 notebooks
+- Committed and pushed to GitHub
 
-Queue depth: 3 items
+Queue depth: 24 items (first pip install task done)
 
-Next cycle: EXECUTION — test against frontier models if Kaggle access available, otherwise upload notebooks to Kaggle platform.
+Next cycle: EXECUTION — batch upload Metacognition track notebooks (8) to Kaggle Community Benchmarks platform.
 
 Priority order:
-1. Upload all 27 notebooks to Kaggle platform
-2. Test against frontier models on Kaggle
-3. Cross-validate across model families
+1. Batch upload Metacognition notebooks to Kaggle
+2. Batch upload Learning notebooks to Kaggle
+3. Batch upload Attention notebooks to Kaggle
+4. Continue through remaining upload batches
 
-8 days to deadline (April 16). All 24 benchmarks implemented and audited. 27 notebooks ready. Focus on Kaggle platform submission.
+8 days to deadline (April 16). All 24 benchmarks implemented, audited, notebooks ready with pip install cells. Focus on Kaggle platform upload.
