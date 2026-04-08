@@ -3,9 +3,37 @@
 ## In Progress
 
 ## Queue
-- [ ] Test metacognition benchmarks against frontier models on Kaggle [1 cycle]
-- [ ] Cross-validate across model families on Kaggle [1 cycle]
-- [ ] Upload all notebooks to Kaggle platform [1 cycle]
+
+**SUBMISSION-CRITICAL (Priority 1)**
+- [ ] Add pip install cells to all 27 notebooks: ensure `!pip install kaggle-benchmarks` + deps in cell 0 [1 cycle]
+- [ ] Batch upload Metacognition track notebooks (8) to Kaggle Community Benchmarks platform [1 cycle]
+- [ ] Batch upload Learning track notebooks (4) to Kaggle [1 cycle]
+- [ ] Batch upload Attention track notebooks (4) to Kaggle [1 cycle]
+- [ ] Batch upload Executive Functions track notebooks (4) to Kaggle [1 cycle]
+- [ ] Batch upload Social Cognition track notebooks (3) + sub-metric notebooks (3) + submission overview to Kaggle [1 cycle]
+- [ ] Run Metacognition benchmarks against GPT-4o on Kaggle platform, record scores, verify outputs parse correctly [1 cycle]
+- [ ] Run Learning + Attention benchmarks against GPT-4o on Kaggle, record scores [1 cycle]
+- [ ] Run Executive Functions + Social Cognition benchmarks against GPT-4o on Kaggle, record scores [1 cycle]
+- [ ] Cross-validate top-5 benchmarks against Claude 3.5 Sonnet + Gemini 1.5 Pro — check for model-specific scoring anomalies [2 cycles]
+
+**QUALITY & POLISH (Priority 2)**
+- [ ] Create per-track results summary: compile frontier model scores into `results/FRONTIER_MODEL_RESULTS.md` with pass/fail thresholds [1 cycle]
+- [ ] Review notebook markdown cells: ensure title, cognitive science rationale, interpretation guide in each [1 cycle]
+- [ ] Verify contamination canary notebook works end-to-end on Kaggle [1 cycle]
+- [ ] Update SUBMISSION_NARRATIVE.md with actual frontier model results (replace mock data) [1 cycle]
+- [ ] Final pass on all 5 DESIGN.md files: ensure they match actual implementation [1 cycle]
+- [ ] Review submission_overview.ipynb: verify it references all 24 benchmarks correctly [1 cycle]
+- [ ] Git tag `v1.0-submission` and push final clean commit [1 cycle]
+
+**ROBUSTNESS (Priority 3 — if time permits)**
+- [ ] Stress-test 3 weakest benchmarks (vigilance, curriculum, instruction_update) with adversarial responses [1 cycle]
+- [ ] Add timeout/retry logic to notebooks: wrap LLM calls with try/except + 3-retry [1 cycle]
+- [ ] Verify all data/ directories contain required stimuli files, no hardcoded absolute paths [1 cycle]
+
+**NEW HIGH-IMPACT BENCHMARKS (Priority 4 — only if core submission is solid)**
+- [ ] Implement "Cognitive Reflection Test" (CRT) benchmark for Executive Functions (Frederick 2005) [2 cycles]
+- [ ] Implement "Epistemic Humility" benchmark for Metacognition: unanswerable questions, measure confabulation vs uncertainty [2 cycles]
+- [ ] Implement "Emotional Prosody in Text" benchmark for Social Cognition: emotional tone shift detection in dialogues [2 cycles]
 
 ## Done
 - [x] Update notebook generator for all 12 benchmarks
