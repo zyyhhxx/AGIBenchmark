@@ -103,19 +103,37 @@ def push_kernel(slug, nb_path, title):
         shutil.rmtree(tmpdir)
 
 
+# ─── Skip already-pushed ─────
+SKIP_FILE = os.path.join(REPO, "scripts/.kaggle_pushed_public.txt")
+already_pushed = set()
+if os.path.exists(SKIP_FILE):
+    with open(SKIP_FILE) as f:
+        for line in f:
+            line = line.strip()
+            if line and not line.startswith('#'):
+                already_pushed.add(line)
+
 # ─── Main ─────
 print(f"{'='*60}")
 print(f"Kaggle Batch Operations {'(DRY RUN)' if DRY_RUN else ''}")
 print(f"{'='*60}")
 print(f"Total notebooks to manage: {len(DESIRED_STATE)}")
+print(f"Already pushed: {len(already_pushed)}")
 
 success, failed, skipped = [], [], []
 
 for slug, (nb_path, title) in DESIRED_STATE.items():
+    if slug in already_pushed:
+        print(f"⏭️ {title} (already pushed)")
+        skipped.append((slug, "already pushed"))
+        continue
     status, msg = push_kernel(slug, nb_path, title)
     if status == "success":
         print(f"✅ {title}")
         success.append(slug)
+        # Track successful push
+        with open(SKIP_FILE, 'a') as f:
+            f.write(f"{slug}\n")
         time.sleep(SUCCESS_DELAY)
     elif status == "skip":
         print(f"⏭️ {slug}: {msg}")
