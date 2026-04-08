@@ -1,0 +1,13 @@
+# Notebooks successfully made public (pushed with is_private=False)
+# Updated by kaggle_batch_ops.py — do not edit manually
+ianstudy/agi-bench-feeling-of-knowing-fok
+ianstudy/agi-bench-judgment-of-learning-jol
+ianstudy/agi-bench-calibration
+# Previously public (uploaded as public originally):
+ianstudy/agi-bench-selective-attention
+ianstudy/agi-bench-curriculum-sensitivity
+ianstudy/agi-bench-proactive-retroactive-interference
+ianstudy/agi-bench-near-vs-far-transfer
+ianstudy/agi-bench-learning-curves
+ianstudy/agi-bench-jol-sub-metrics
+ianstudy/agi-bench-fok-sub-metrics
