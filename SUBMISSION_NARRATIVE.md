@@ -145,8 +145,37 @@ Model interactions use structured output schemas (Python dataclasses) defining:
 - **Output**: Structured response (e.g., `answer: str`, `confidence: float`, `reasoning: str`)
 - **Scoring**: Automated comparison against ground truth with multiple metrics
 
+### Item Schema (columns and data types)
+Each stimulus item is a Python dictionary with the following fields:
+
+| Field | Type | Description | Example |
+|-------|------|-------------|---------|
+| `id` | `str` | Unique item identifier | `"FB01"`, `"PA03"`, `"SI02"` |
+| `question` / `scenario` | `str` | The prompt text presented to the model | Natural language question or scenario |
+| `answer` / `belief_answer` | `str` | Ground-truth correct answer | `"basket"`, `"0.10"`, `"yes"` |
+| `accept_patterns` | `list[str]` | Acceptable string patterns for scoring | `["basket", "the basket"]` |
+| `category` / `type` | `str` | Cognitive sub-construct category | `"scalar_implicature"`, `"proc_arithmetic"` |
+| `difficulty` | `str` (optional) | Difficulty tier for stratified analysis | `"easy"`, `"medium"`, `"hard"` |
+| `confidence` | `float` (output) | Model's self-rated confidence [0–100] | `85.0` |
+| `reasoning` | `str` (output) | Model's explanation of its answer | Free text |
+
+### Response Schemas (dataclasses)
+Each benchmark defines a structured response format:
+- **FOK**: `FOKResponse(confidence: float, answer: str, reasoning: str)` — two-phase: confidence rated in separate chat from answer
+- **CRT**: `CRTResponse(answer: float, reasoning: str)` — numerical answer + reasoning chain
+- **ToM**: `BeliefResponse(location: str, reasoning: str)` — predicted belief location
+- **Pragmatic**: `PragmaticResponse(speaker_intent: str, is_literal: bool, reasoning: str)`
+
+Models that don't support structured output use fallback regex parsing on free-text responses.
+
 ### Contamination Canary System
 10 fabricated "facts" (fictional physical constants, prizes, treaties) are embedded across benchmarks. High model confidence on canary items signals potential data contamination.
+
+### Provenance & Licensing
+- **All stimuli are original creations** — no copyrighted material, no external datasets
+- Procedurally generated items use deterministic seeds (`seed=2026`) for reproducibility
+- Hand-crafted items are inspired by established paradigms (Sally-Anne, CRT, Stroop) but use novel parameters/scenarios
+- Licensed for open research use under the competition terms
 
 ---
 

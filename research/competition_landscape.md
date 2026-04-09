@@ -43,6 +43,16 @@
 
 5. **Need to test on multiple models** — at minimum Gemini 2.5/3, Claude, DeepSeek
 
+### New Competitor: CASK (Context-Aware Sensitivity to Knowledge) — April 2026
+- **17 models tested** on metacognition track
+- Key finding: **Gemma 3 family collapses to <5% accuracy under misleading context** — scale makes it worse
+- **Claude Sonnet 4.6** is the only frontier model that improves calibration under misleading context (delta = +0.059)
+- **DeepSeek-R1** scores 0.168 on clean calibration but 0.702 under misleading context — a +0.534 swing ("can't stop reasoning" hypothesis)
+- The misleading context manipulation is clever — tests robustness of metacognitive monitoring
+- **Our differentiator vs CASK**: We test 9 metacognition sub-constructs (FOK, JOL, calibration, error detection, learning monitoring, metacognitive control, epistemic revision, epistemic humility, canary) vs their single CASK metric. We also cover 5 tracks, not just metacognition.
+- **Potential synergy**: Their misleading-context paradigm could inspire a future addition to our suite
+- CASK focuses on *context-sensitivity* while ours focuses on *self-model accuracy* — complementary approaches
+
 ### Design Principles from Q&A (from search snippet)
 - Cognitive faculties "interact, overlap, and build on one another"
 - But evaluated on separate axes to build cognitive profiles

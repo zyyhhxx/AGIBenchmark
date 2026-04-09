@@ -77,34 +77,34 @@ def create_llm(model: str):
     _llm = GoogleGenAI(client=client, model=model)
     
     class CallableLLM:
-    """Wrapper to make LLMChat callable with retry and response_format handling."""
-    def __init__(self, llm, max_retries=3, retry_delay=5):
-        self._llm = llm
-        self._max_retries = max_retries
-        self._retry_delay = retry_delay
-    
-    def _call_with_retry(self, prompt, **kw):
-        import time as _time
-        for attempt in range(self._max_retries):
-            try:
-                return self._llm.prompt(prompt, **kw)
-            except Exception as e:
-                if '503' in str(e) or '429' in str(e) or 'UNAVAILABLE' in str(e) or 'RESOURCE_EXHAUSTED' in str(e):
-                    delay = self._retry_delay * (2 ** attempt)
-                    print(f"  [retry {attempt+1}/{self._max_retries}] {str(e)[:60]}... waiting {delay}s")
-                    _time.sleep(delay)
-                else:
-                    raise
-        return self._llm.prompt(prompt, **kw)  # Final attempt without catch
-    
-    def __call__(self, prompt, **kw):
-        kw.pop('response_format', None)  # Not supported locally
-        return self._call_with_retry(prompt, **kw)
-    def prompt(self, prompt, **kw):
-        kw.pop('schema', None)
-        return self._call_with_retry(prompt, **kw)
-    def __getattr__(self, name):
-        return getattr(self._llm, name)
+        """Wrapper to make LLMChat callable with retry and response_format handling."""
+        def __init__(self, llm, max_retries=3, retry_delay=5):
+            self._llm = llm
+            self._max_retries = max_retries
+            self._retry_delay = retry_delay
+        
+        def _call_with_retry(self, prompt, **kw):
+            import time as _time
+            for attempt in range(self._max_retries):
+                try:
+                    return self._llm.prompt(prompt, **kw)
+                except Exception as e:
+                    if '503' in str(e) or '429' in str(e) or 'UNAVAILABLE' in str(e) or 'RESOURCE_EXHAUSTED' in str(e):
+                        delay = self._retry_delay * (2 ** attempt)
+                        print(f"  [retry {attempt+1}/{self._max_retries}] {str(e)[:60]}... waiting {delay}s")
+                        _time.sleep(delay)
+                    else:
+                        raise
+            return self._llm.prompt(prompt, **kw)  # Final attempt without catch
+        
+        def __call__(self, prompt, **kw):
+            kw.pop('response_format', None)  # Not supported locally
+            return self._call_with_retry(prompt, **kw)
+        def prompt(self, prompt, **kw):
+            kw.pop('schema', None)
+            return self._call_with_retry(prompt, **kw)
+        def __getattr__(self, name):
+            return getattr(self._llm, name)
     
     return CallableLLM(_llm)
 

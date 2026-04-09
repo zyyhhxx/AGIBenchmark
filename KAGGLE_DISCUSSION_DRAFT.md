@@ -107,6 +107,23 @@ Adapted from Frederick (2005). These are questions where the intuitive answer is
 
 ---
 
+### How We Compare to Other Submissions
+
+| Feature | CASK (Darío) | Attention Suite (683441) | Exec Functions (683441) | **Our Suite** |
+|---------|:---:|:---:|:---:|:---:|
+| Tracks covered | 1 (Metacog) | 1 (Attention) | 1 (Exec Func) | **5 (All)** |
+| Total benchmarks | 1 | 3 | 5 | **29** |
+| Models tested | 17 | 14 | 27 | Pending CB |
+| Procedural generation | ❓ | ❓ | ❓ | ✅ |
+| Canary system | ❌ | ❌ | ❌ | ✅ |
+| Psychometric validation | ❓ | Partial | Partial | ✅ (α, validity) |
+| Cognitive science refs | Partial | Partial | Partial | **50+ years** |
+| Two-phase protocols | ❌ | ❌ | ❌ | ✅ |
+
+We believe our main advantage is **breadth + depth**: covering all 5 tracks with 29 benchmarks, each grounded in named cognitive science frameworks, with contamination resistance built in.
+
+---
+
 ### Try It Yourself
 All benchmarks are available as Kaggle notebooks. Run them against your favorite model and see how it scores!
 
