@@ -1,5 +1,7 @@
 # 🚨 IAN'S ACTION ITEMS — Quick Reference
-**Last updated:** 2026-04-09 02:45 UTC | **Deadline: April 16, 2026**
+**Last updated:** 2026-04-09 03:56 UTC | **Deadline: April 16, 2026**
+
+> **Agent update (3:56 UTC):** Hardened 8 benchmarks with structured output fallbacks (they would have crashed on some models). Added second rule system to epistemic revision for better reliability. Discussion post enhanced. All notebooks regenerated. Kaggle API still rate-limited.
 
 ## Priority 1: Upload 4 Missing Notebooks (10 min)
 The Kaggle API is rate-limited and has been for ~6 hours. These 4 notebooks need manual upload.

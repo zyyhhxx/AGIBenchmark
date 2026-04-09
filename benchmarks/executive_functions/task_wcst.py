@@ -172,13 +172,19 @@ def exec_func_wcst(llm) -> float:
             # Build full prompt with history for context
             full_prompt = history + trial_prompt
 
-            response = llm(
-                full_prompt,
-                response_format=WCSTResponse
-            )
+            try:
+                response = llm(
+                    full_prompt,
+                    response_format=WCSTResponse
+                )
+                choice = response.choice
+            except Exception:
+                import re as _re
+                raw = llm(full_prompt)
+                nums = _re.findall(r'\b([1-4])\b', raw)
+                choice = int(nums[0]) if nums else 1
 
             # Parse choice
-            choice = response.choice
             if choice < 1 or choice > 4:
                 choice = 1  # default on parse failure
 
