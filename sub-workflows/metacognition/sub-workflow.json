@@ -4,15 +4,15 @@
   "mode": "definitive",
   "agent_id": "agi-bench",
   "models": {
-    "planner": "amazon-bedrock/us.anthropic.claude-opus-4-6-v1",
-    "executor": "amazon-bedrock/us.anthropic.claude-opus-4-6-v1",
-    "validator": "amazon-bedrock/us.anthropic.claude-sonnet-4-6",
+    "planning": "amazon-bedrock/us.anthropic.claude-opus-4-6-v1",
+    "executing": "amazon-bedrock/us.anthropic.claude-opus-4-6-v1",
+    "validating": "amazon-bedrock/us.anthropic.claude-sonnet-4-6",
     "scribe": "amazon-bedrock/us.anthropic.claude-sonnet-4-6"
   },
   "thinking": {
-    "planner": true,
-    "executor": false,
-    "validator": false,
+    "planning": "high",
+    "executing": false,
+    "validating": false,
     "scribe": false
   }
 }

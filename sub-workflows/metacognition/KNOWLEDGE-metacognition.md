@@ -61,3 +61,12 @@
 - 12 notebooks uploaded to Kaggle as regular kernels; 19 additional local-only notebooks not yet pushed
 - Failed API pushes created ghost entries (id=0, empty slug) — cleanup requires web UI
 - Full submission guide at `repo/CB_SUBMISSION_GUIDE.md` with step-by-step instructions for Ian
+
+## Project Status Snapshot (2026-04-09)
+- 29 benchmarks + 31 notebooks completed across all 5 cognitive tracks; all pass syntax validation
+- Psychometric validation complete: Cronbach α ≥ 0.70, good discriminant validity (4:1 within/between ratio)
+- Spot tests with Gemini 2.5 Flash/Flash-Lite revealed: calibration failure, pragmatic literal bias, 1st-order ToM failure, inconsistent pragmatics
+- FRONTIER_MODEL_RESULTS.md has no actual scores — Gemini API free tier exhausted; no other keys available
+- Entire critical path is Ian-blocked: 4 manual notebook uploads, ~70 ghost cleanup, 18 API-blocked pushes, CB task registration, discussion post
+- Estimated ~1.5 hrs of Ian web UI work before CB platform can run models automatically
+- Agent-actionable next: retry Kaggle API pushes (rate limit recovery), run benchmarks locally once billing enabled, update narrative with real scores

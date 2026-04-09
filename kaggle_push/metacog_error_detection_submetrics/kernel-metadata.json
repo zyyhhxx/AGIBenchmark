@@ -1,0 +1,20 @@
+{
+  "id": "ianstudy/agi-bench-2026-error-detection-submetrics-v2",
+  "title": "Agi Bench 2026 Error Detection Submetrics V2",
+  "code_file": "metacog_error_detection_submetrics.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "competition_sources": [
+    "kaggle-measuring-agi"
+  ],
+  "keywords": [
+    "metacognition",
+    "agi-benchmark"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": []
+}
