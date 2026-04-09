@@ -23,7 +23,7 @@ from dataclasses import dataclass
 import numpy as np
 import re
 import json
-from data.attention_stimuli import VIGILANCE_SEQUENCE
+from benchmarks.attention.data.attention_stimuli import VIGILANCE_SEQUENCE
 
 
 @dataclass
@@ -145,4 +145,5 @@ def attention_vigilance(llm) -> float:
 
 
 # ─── Run ────────────────────────────────────────────────────────────
-attention_vigilance.run(llm=kbench.llm)
+if __name__ == "__main__":
+    attention_vigilance.run(llm=kbench.llm)

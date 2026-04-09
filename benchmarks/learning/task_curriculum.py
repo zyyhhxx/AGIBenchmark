@@ -30,7 +30,7 @@ import numpy as np
 import re
 import json
 import random
-from data.rule_systems import generate_symbol_system
+from benchmarks.learning.data.rule_systems import generate_symbol_system
 
 
 @dataclass
@@ -188,4 +188,5 @@ def learning_curriculum(llm) -> float:
 
 
 # ─── Run ────────────────────────────────────────────────────────────
-learning_curriculum.run(llm=kbench.llm)
+if __name__ == "__main__":
+    learning_curriculum.run(llm=kbench.llm)

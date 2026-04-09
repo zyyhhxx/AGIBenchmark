@@ -300,4 +300,5 @@ def attention_instruction_update(llm) -> float:
 
 
 # ─── Run ────────────────────────────────────────────────────────────
-attention_instruction_update.run(llm=kbench.llm)
+if __name__ == "__main__":
+    attention_instruction_update.run(llm=kbench.llm)

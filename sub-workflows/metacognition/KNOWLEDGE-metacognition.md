@@ -1,5 +1,12 @@
 # KNOWLEDGE.md — AGI Benchmark
 
+## Import Fixes — attention_vigilance, learning_curriculum, attention_instruction_update (2026-04-09)
+
+- **Problem 1:** `from data import ...` relative imports in `task_vigilance.py` and `task_curriculum.py` failed when modules were loaded from repo root; rewritten as absolute imports.
+- **Problem 2:** Module-level `.run(kbench.llm)` calls in all three files executed on import outside a Kaggle notebook, causing errors. Wrapped in `if __name__ == '__main__'` guards.
+- **Pattern:** All benchmark `.py` files must guard `.run()` calls — the kaggle-benchmarks SDK only provides `kbench.llm` inside a running notebook kernel.
+- All three files now pass `py_compile` and import cleanly with `kaggle-benchmarks` installed.
+
 ## BSS Scoring Fix — FOK, JOL, Calibration, Canary (2026-04-09)
 
 - **Root cause:** ECE-based scoring (1-ECE) was inverted: always-uncertain agents (constant 50%) outscored perfect metacognitors because low ECE ≠ good discrimination.
