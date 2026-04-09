@@ -150,6 +150,29 @@
 - Section 8 rewritten: contamination canaries, sub-metric decomposition (gamma + ECE + Brier), and procedural generation highlighted as unique differentiators
 - 10 new references added: Botvinick, Chhikara, Dunlosky & Rawson, Fleming ×2, Koriat, Mercier & Sperber, Nelson & Dunlosky, Steyvers & Peters, Vuorre & Metcalfe
 
+## Claude Sonnet 4 Metacognition Benchmark Results — Bedrock Run (2026-04-09)
+
+Model: `us.anthropic.claude-sonnet-4-20250514-v1:0` via Amazon Bedrock
+
+| Benchmark | Score | vs. Human Baseline | Notes |
+|-----------|-------|--------------------|-------|
+| Canary Detection | 0.951 | — | Near-perfect fabrication detection |
+| Epistemic Humility | 0.926 | — | Strong admission of knowledge limits |
+| Error Detection (F1) | 0.882 | 0.75–0.85 | **Above** human baseline |
+| Epistemic Revision | 0.820 | 0.70–0.85 | Near top of human range |
+| Learning Monitoring | 0.698 | 0.60–0.75 | Mid-range human |
+| Metacog Control | 0.689 | 0.65–0.80 | Mid-range human |
+| JOL (composite) | 0.465 | 0.50–0.70 | **Below** human baseline |
+| FOK (composite) | 0.449 | 0.60–0.80 | **Below** human baseline |
+| Calibration (BSS) | 0.000 | 0.80–0.90 | **Complete failure** |
+
+**Key insights:**
+- Claude's metacognition is bimodal: near-perfect at detecting fabrications and admitting ignorance (external-facing), but poor at self-monitoring confidence accuracy (internal-facing)
+- BSS=0.000 on calibration means Claude's expressed confidence is uncorrelated with accuracy — this is a fundamental limitation, not a benchmark artifact
+- FOK and JOL both below human range — Claude cannot reliably predict what it does/doesn't know before being tested
+- Error detection exceeds human baseline — Claude catches logical/factual errors in text better than humans
+- Pattern: Claude is strong at "do I know this? (no)" but weak at "how confident should I be? (calibrated)"
+
 ## Project Status Snapshot (2026-04-09)
 - 29 benchmarks + 31 notebooks completed across all 5 cognitive tracks; all pass syntax validation
 - Psychometric validation complete: Cronbach α ≥ 0.70, good discriminant validity (4:1 within/between ratio)

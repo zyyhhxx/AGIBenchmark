@@ -1,22 +1,25 @@
 # Frontier Model Results Summary
 
-> **Status:** Awaiting Community Benchmarks execution on Kaggle.
-> Kaggle API rate limits prevented notebook publication on 2026-04-08.
-> Will be updated with actual scores once notebooks are public and run on the CB platform.
+> **Status:** Metacognition track scored with Claude Sonnet 4 via Amazon Bedrock (2026-04-09).
+> Other tracks awaiting Community Benchmarks execution on Kaggle.
 
 ## Benchmark Scores
 
 ### Metacognition Track
 
-| Benchmark | GPT-4o | Claude 3.5 | Gemini 1.5 Pro | Human Baseline |
-|-----------|--------|-------------|----------------|----------------|
-| FOK (gamma) | — | — | — | 0.60–0.80 |
-| JOL (composite) | — | — | — | 0.50–0.70 |
-| Calibration (1-ECE) | — | — | — | 0.80–0.90 |
-| Error Detection (F1) | — | — | — | 0.75–0.85 |
-| Learning Monitoring | — | — | — | 0.60–0.75 |
-| Metacog Control | — | — | — | 0.65–0.80 |
-| Epistemic Revision | — | — | — | 0.70–0.85 |
+Model: **Claude Sonnet 4** (Amazon Bedrock, `us.anthropic.claude-sonnet-4-20250514-v1:0`)
+
+| Benchmark | Claude Sonnet 4 | Human Baseline | Notes |
+|-----------|----------------|----------------|-------|
+| Canary Detection | **0.951** | — | Near-perfect fabrication detection |
+| FOK (composite) | **0.449** | 0.60–0.80 | Below human; weak feeling-of-knowing discrimination |
+| JOL (composite) | **0.465** | 0.50–0.70 | Low-end human range |
+| Calibration (BSS) | **0.000** | 0.80–0.90 | Complete calibration failure (BSS=0) |
+| Error Detection (F1) | **0.882** | 0.75–0.85 | Above human baseline |
+| Learning Monitoring | **0.698** | 0.60–0.75 | Mid-range human |
+| Metacog Control | **0.689** | 0.65–0.80 | Mid-range human |
+| Epistemic Revision | **0.820** | 0.70–0.85 | Near top of human range |
+| Epistemic Humility | **0.926** | — | Strong recognition of knowledge limits |
 
 ### Learning Track
 

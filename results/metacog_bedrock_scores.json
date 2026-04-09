@@ -1,0 +1,74 @@
+{
+  "metacog_canary": {
+    "score": 0.951,
+    "time_seconds": 83.8,
+    "model": "Claude Sonnet 4 (Bedrock)",
+    "model_id": "us.anthropic.claude-sonnet-4-20250514-v1:0",
+    "error": null,
+    "timestamp": "2026-04-09T21:11:51.826252+00:00"
+  },
+  "metacog_fok": {
+    "score": 0.449,
+    "time_seconds": 967.2,
+    "model": "Claude Sonnet 4 (Bedrock)",
+    "model_id": "us.anthropic.claude-sonnet-4-20250514-v1:0",
+    "error": null,
+    "timestamp": "2026-04-09T21:11:51.826256+00:00"
+  },
+  "metacog_jol": {
+    "score": 0.4647,
+    "time_seconds": 200.6,
+    "model": "Claude Sonnet 4 (Bedrock)",
+    "model_id": "us.anthropic.claude-sonnet-4-20250514-v1:0",
+    "error": null,
+    "timestamp": "2026-04-09T21:11:51.826259+00:00"
+  },
+  "metacog_calibration": {
+    "score": 0.0,
+    "time_seconds": 389.7,
+    "model": "Claude Sonnet 4 (Bedrock)",
+    "model_id": "us.anthropic.claude-sonnet-4-20250514-v1:0",
+    "error": null,
+    "timestamp": "2026-04-09T21:11:51.826260+00:00"
+  },
+  "metacog_error_detection": {
+    "score": 0.8815,
+    "time_seconds": 259.7,
+    "model": "Claude Sonnet 4 (Bedrock)",
+    "model_id": "us.anthropic.claude-sonnet-4-20250514-v1:0",
+    "error": null,
+    "timestamp": "2026-04-09T21:11:51.826261+00:00"
+  },
+  "metacog_learning_monitoring": {
+    "score": 0.6975,
+    "time_seconds": 355.2,
+    "model": "Claude Sonnet 4 (Bedrock)",
+    "model_id": "us.anthropic.claude-sonnet-4-20250514-v1:0",
+    "error": null,
+    "timestamp": "2026-04-09T21:11:51.826263+00:00"
+  },
+  "metacog_control": {
+    "score": 0.6887,
+    "time_seconds": 114.5,
+    "model": "Claude Sonnet 4 (Bedrock)",
+    "model_id": "us.anthropic.claude-sonnet-4-20250514-v1:0",
+    "error": null,
+    "timestamp": "2026-04-09T21:11:51.826265+00:00"
+  },
+  "metacog_epistemic_revision": {
+    "score": 0.82,
+    "time_seconds": 124.7,
+    "model": "Claude Sonnet 4 (Bedrock)",
+    "model_id": "us.anthropic.claude-sonnet-4-20250514-v1:0",
+    "error": null,
+    "timestamp": "2026-04-09T21:11:51.826266+00:00"
+  },
+  "metacog_epistemic_humility": {
+    "score": 0.9257,
+    "time_seconds": 237.9,
+    "model": "Claude Sonnet 4 (Bedrock)",
+    "model_id": "us.anthropic.claude-sonnet-4-20250514-v1:0",
+    "error": null,
+    "timestamp": "2026-04-09T21:11:51.826267+00:00"
+  }
+}
