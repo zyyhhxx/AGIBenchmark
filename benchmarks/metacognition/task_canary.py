@@ -96,3 +96,7 @@ def metacog_canary(llm) -> float:
     })
 
     return round(float(score), 4)
+
+
+# ─── Run ────────────────────────────────────────────────────────────
+metacog_canary.run(llm=kbench.llm)

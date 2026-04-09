@@ -162,6 +162,13 @@ BENCHMARKS = [
     ("social_cog_false_belief", "social_cognition/task_false_belief.py", "social_cog_false_belief", "social_cognition"),
     ("social_cog_pragmatic", "social_cognition/task_pragmatic.py", "social_cog_pragmatic", "social_cognition"),
     ("social_cog_sarcasm", "social_cognition/task_sarcasm.py", "social_cog_sarcasm", "social_cognition"),
+    # Added 2026-04-09: newer benchmarks
+    ("metacog_control", "metacognition/task_metacognitive_control.py", "metacog_control", "metacognition"),
+    ("metacog_epistemic_revision", "metacognition/task_epistemic_revision.py", "metacog_epistemic_revision", "metacognition"),
+    ("metacog_epistemic_humility", "metacognition/task_epistemic_humility.py", "metacog_epistemic_humility", "metacognition"),
+    ("attention_instruction_update", "attention/task_instruction_update.py", "attention_instruction_update", "attention"),
+    ("exec_func_crt", "executive_functions/task_crt.py", "exec_func_crt", "executive_functions"),
+    ("social_cog_emotional_prosody", "social_cognition/task_emotional_prosody.py", "social_cog_emotional_prosody", "social_cognition"),
 ]
 
 

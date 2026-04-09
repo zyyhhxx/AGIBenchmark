@@ -1,11 +1,11 @@
 # STATUS.md — AGI Benchmark Project
 
-**Last updated**: 2026-04-08 20:20 UTC
+**Last updated: 2026-04-09 00:30 UTC
 
 ## Project Status: 🟢 Submission-Ready — 27 Benchmarks across 5 Tracks
 
 ### Competition
-- **Deadline**: April 16, 2026 (7 days remaining)
+- **Deadline**: April 16, 2026 (7 days remaining (deadline April 16))
 - **Tracks**: All 5 — Metacognition, Learning, Attention, Executive Functions, Social Cognition
 - **Prize pool**: $200,000
 

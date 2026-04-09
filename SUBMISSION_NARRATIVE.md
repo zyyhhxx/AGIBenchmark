@@ -11,7 +11,7 @@ We present a comprehensive benchmark suite measuring **five core cognitive abili
 
 **Key numbers:**
 - **5 cognitive tracks** spanning the full taxonomy from DeepMind's AGI framework
-- **25 individual benchmarks** with distinct cognitive science rationales
+- **27 individual benchmarks** with distinct cognitive science rationales
 - **Contamination-resistant design** using procedural generation and canary items
 - **Human baselines** referenced from the empirical literature for calibrated scoring
 - **All scores normalized to [0, 1]** with clear cognitive interpretations

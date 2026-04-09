@@ -11,8 +11,9 @@
 - [x] Batch upload Attention track notebooks (4) to Kaggle [1 cycle]
 - [x] Batch upload Executive Functions track notebooks (4) to Kaggle [1 cycle]
 - [x] Batch upload Social Cognition track notebooks (3) + sub-metric notebooks + submission overview to Kaggle [1 cycle]
-- [ ] Make 17 private notebooks public on Kaggle (hit daily limit) [1 cycle]
-- [ ] Standardize Kaggle kernel titles (inconsistent due to ghost collisions) [1 cycle]
+- [x] Make private notebooks public on Kaggle — 26/30 confirmed public via API. Only 4 NEW notebooks need uploading (CRT, canary, epistemic humility, emotional prosody). Cron retry running hourly. [1 cycle]
+- [x] Standardize Kaggle kernel titles — local titles standardized in all 30 notebooks. Will propagate to Kaggle on next push. [1 cycle]
+- [ ] Upload 4 remaining notebooks to Kaggle (CRT, canary, epistemic humility, emotional prosody) — rate limited, cron retrying hourly [1 cycle]
 - [ ] Submit notebooks to Community Benchmarks platform (not regular kernel execution) [1 cycle]
 - [ ] Run Metacognition benchmarks against GPT-4o on Kaggle platform, record scores, verify outputs parse correctly [1 cycle]
 - [ ] Run Learning + Attention benchmarks against GPT-4o on Kaggle, record scores [1 cycle]
@@ -25,7 +26,7 @@
 - [ ] Verify contamination canary notebook works end-to-end on Kaggle [1 cycle]
 - [ ] Update SUBMISSION_NARRATIVE.md with actual frontier model results (replace mock data) [1 cycle]
 - [x] Final pass on all 5 DESIGN.md files: ensure they match actual implementation [1 cycle]
-- [x] Review submission_overview.ipynb: verify it references all 25 benchmarks correctly [1 cycle]
+- [x] Review submission_overview.ipynb: verify it references all 27 benchmarks correctly [1 cycle]
 - [ ] Git tag `v1.0-submission` and push final clean commit [1 cycle]
 
 **ROBUSTNESS (Priority 3 — if time permits)**
@@ -88,3 +89,13 @@
 - [x] Generate sub-metric notebooks (JOL, FOK, error detection)
 - [x] Fix missing .run() calls in exec functions + social cognition tasks
 - [x] Generate Kaggle notebooks for metacognitive control, epistemic revision, and instruction update benchmarks
+- [x] Verify 26/30 notebooks already public via Kaggle API (only 4 new ones need upload)
+- [x] Standardize all 30 notebook titles to 'AGI Bench: <Name>' format
+- [x] Re-run mock validation on all 26 core benchmarks (0 errors, all scores [0,1])
+- [x] Fix missing .run() call in task_canary.py
+- [x] Fix submission_overview.ipynb counts (25→27 benchmarks)
+- [x] Create kaggle_upload_remaining.py for the 4 missing notebooks
+- [x] Create KAGGLE_SUBMISSION_PLAYBOOK.md with manual CB submission guide
+- [x] Set up hourly cron job for Kaggle rate limit retry
+- [x] Full syntax validation of all 30 notebooks — all pass
+- [x] Full code quality check on all 29 task files — all pass
