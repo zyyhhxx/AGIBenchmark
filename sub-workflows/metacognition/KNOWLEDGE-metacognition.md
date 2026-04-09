@@ -14,7 +14,34 @@
 - `task_calibration.py` had inline `CALIBRATION_QUESTIONS` bypassing the data module — fixed to import from data module
 - Pattern: always check task files for inline data that may shadow the data module
 
+## Difficulty Calibration Findings — Spot Test Analysis (2026-04-09)
+
+### Ceiling Effect Benchmarks (score ≥90%, models trivially pass)
+- **CRT classic items**: 100% for Flash and Flash-Lite — contaminated in training data; must replace with procedurally generated variants
+- **Stroop**: trivially passed by LLMs (no perceptual interference in text); redesign as semantic Stroop
+- **N-back (short)**: 5-item 2-back is trivial with full context windows; needs 50+ items and 3-back/4-back conditions
+- **Epistemic revision (simple)**: 3/3 perfect — add partial/ambiguous revision items and multi-step revision chains
+- **2nd-order ToM**: both models pass; upgrade to 3rd/4th-order nested belief scenarios
+- **Epistemic humility fabricated names**: too easy (models learned "if unrecognized → say I don't know"); add near-miss items with real-but-obscure entities
+- **WCST single-trial**: trivial; needs full 128-card protocol with perseveration error scoring
+
+### Broken/Inverted Scoring Benchmarks
+- **FOK, JOL, Calibration, Canary mock scores**: perfect metacognition agent scores LOWER than always-uncertain baseline
+- **Root cause**: scoring calibration alone (1-ECE) rewards uncertainty over accuracy; need resolution component (Brier skill score or Murphy decomposition) that rewards discrimination
+- **Learning interference**: all four mock strategies score identically at 0.4 — benchmark cannot discriminate any behavior; scoring must measure proactive/retroactive interference magnitude from baseline
+- **Import failures**: `attention_vigilance`, `learning_curriculum`, `attention_instruction_update` all fail with import errors — must fix `from data import ...` paths before these benchmarks can run
+
+### Working Benchmarks (good discrimination between models)
+- domain-specific calibration, pragmatic inference, 1st-order ToM, sarcasm, error detection, Tower of London
+- 1st-order ToM and scalar implicature discriminate between Flash vs Flash-Lite by model size
+- Tower of London and domain calibration challenge even Flash (genuine failures)
+
+### Stratified Calibration Issue
+- Easy ECE: 0.260, Medium: 0.194, Hard: 0.300 — medium tier is actually easiest
+- Difficulty tiers don't align with actual calibration difficulty; should derive empirically from model accuracy
+
 ## Competition Framework
+
 - Google DeepMind's "Measuring Progress Toward AGI: A Cognitive Taxonomy"
 - 10 cognitive abilities identified; hackathon focuses on 5 with largest evaluation gaps:
   1. **Learning** — acquiring new knowledge through experience and instruction
