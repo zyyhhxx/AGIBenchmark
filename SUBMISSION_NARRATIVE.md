@@ -178,7 +178,18 @@ Model interactions use structured output schemas (Python dataclasses) defining:
 
 *Results from running benchmarks against frontier models on the Kaggle Community Benchmarks platform.*
 
-### 7.1 Cognitive Profiles
+### 7.1 Preliminary Results
+*Partial results from Gemini 2.5 Flash (free tier, limited quota):*
+
+| Benchmark | Model | N Items | Score | Notes |
+|-----------|-------|---------|-------|-------|
+| CRT (classic items) | Gemini 2.5 Flash | 3 | 3/3 (100%) | All classic CRT items solved correctly with CoT |
+
+**Key observation:** Gemini 2.5 Flash solves all classic CRT items (Frederick, 2005) when allowed chain-of-thought reasoning. Human accuracy on these items is 30–48%. This suggests frontier models can override System 1 intuitions when prompted to reason, but our **procedurally generated CRT variants** (novel numbers, novel structures) are specifically designed to test whether this ability generalizes beyond memorizable items.
+
+*Full results pending Community Benchmarks platform execution.*
+
+### 7.2 Cognitive Profiles
 *[To be populated with radar charts and per-model profiles after CB submission]*
 
 ### 7.2 Key Insights
