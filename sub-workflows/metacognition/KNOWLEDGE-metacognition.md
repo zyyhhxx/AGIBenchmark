@@ -45,3 +45,11 @@
 - The kaggle-benchmarks SDK cookbook is the essential reference for implementation
 - Competition emphasizes going "beyond recall" — must test genuine cognitive ability not memorization
 - Shortcut resistance is critical: tasks must not be solvable by pattern matching or data contamination
+
+## Kaggle API Limitations (2026-04-09)
+- `kaggle kernels list --mine` returns `is_private=None` for all notebooks — visibility field not populated by API
+- Toggling notebook visibility via API (pull → set `is_private:false` → push) triggers `SaveKernel` endpoint; repeated failed pushes cause 429 rate-limiting that persists
+- Failed API pushes create ghost notebook entries (id=0, empty slug/ref, title="[Private Notebook]") that cannot be deleted via API — must use web UI
+- **Recommendation:** Toggle notebook visibility and delete ghost entries through Kaggle web UI, not the API
+- 4 target notebooks (CRT v2, canary metacog, epistemic humility v2, emotional prosody v2) under `ianstudy/` account need manual public toggle
+- 8 other named notebooks already public (epistemic revision, WCST, divided attention, sarcasm detection, tower of london, instruction update, vigilance attention, learning monitoring)
