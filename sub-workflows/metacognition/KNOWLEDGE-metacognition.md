@@ -53,3 +53,11 @@
 - **Recommendation:** Toggle notebook visibility and delete ghost entries through Kaggle web UI, not the API
 - 4 target notebooks (CRT v2, canary metacog, epistemic humility v2, emotional prosody v2) under `ianstudy/` account need manual public toggle
 - 8 other named notebooks already public (epistemic revision, WCST, divided attention, sarcasm detection, tower of london, instruction update, vigilance attention, learning monitoring)
+
+## Community Benchmarks Submission Process (2026-04-09)
+- CB task registration is **entirely UI-driven** — no API or CLI path exists
+- Must use "Create Task" button at kaggle.com/benchmarks/tasks/new for each notebook
+- Notebooks must be PUBLIC before they can be registered as CB tasks
+- 12 notebooks uploaded to Kaggle as regular kernels; 19 additional local-only notebooks not yet pushed
+- Failed API pushes created ghost entries (id=0, empty slug) — cleanup requires web UI
+- Full submission guide at `repo/CB_SUBMISSION_GUIDE.md` with step-by-step instructions for Ian
