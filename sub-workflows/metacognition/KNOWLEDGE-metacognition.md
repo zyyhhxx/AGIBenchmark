@@ -173,6 +173,16 @@ Model: `us.anthropic.claude-sonnet-4-20250514-v1:0` via Amazon Bedrock
 - Error detection exceeds human baseline — Claude catches logical/factual errors in text better than humans
 - Pattern: Claude is strong at "do I know this? (no)" but weak at "how confident should I be? (calibrated)"
 
+## Claude Sonnet 4 — Three-Tier Metacognition Profile (2026-04-09)
+
+Mapping of 9 metacognition benchmark scores to Fleming's (2024) taxonomy:
+
+- **Tier 1 (>0.85) — external monitoring:** Canary (0.951), Epistemic Humility (0.926), Error Detection (0.882). Shared structure: detecting external anomalies (fabricated facts, unknowable questions, reasoning errors).
+- **Tier 2 (0.65–0.85) — self-monitoring over time:** Epistemic Revision (0.820), Learning Monitoring (0.698), Metacog Control (0.689). Moderate/inconsistent self-tracking of cognitive state across turns.
+- **Tier 3 (<0.50) — prospective self-assessment:** JOL (0.465), FOK (0.449), Calibration (0.000). Prospective prediction of own performance before being tested — Claude fundamentally fails here.
+
+**Key ratio:** External monitoring mean = 0.920 vs. internal self-assessment mean = 0.305 → 3:1 dissociation. This is a testable structural prediction: any model with strong external monitoring but weak internal self-assessment should cluster in this same three-tier pattern.
+
 ## Project Status Snapshot (2026-04-09)
 - 29 benchmarks + 31 notebooks completed across all 5 cognitive tracks; all pass syntax validation
 - Psychometric validation complete: Cronbach α ≥ 0.70, good discriminant validity (4:1 within/between ratio)
