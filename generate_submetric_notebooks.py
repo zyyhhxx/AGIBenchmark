@@ -14,13 +14,16 @@ def make_cell(source, cell_type="code"):
     return cell
 
 def make_notebook(cells, title):
+    pip_cell = {"cell_type": "code", "metadata": {"trusted": True},
+                "source": ["!pip install -q protobuf==5.29.6 kaggle-benchmarks numpy 2>/dev/null\n"],
+                "execution_count": None, "outputs": []}
     return {
         "metadata": {
             "kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
             "language_info": {"name": "python", "version": "3.10.0"},
             "kaggle": {"title": title}
         },
-        "nbformat": 4, "nbformat_minor": 5, "cells": cells
+        "nbformat": 4, "nbformat_minor": 5, "cells": [pip_cell] + cells
     }
 
 os.chdir(os.path.dirname(__file__))

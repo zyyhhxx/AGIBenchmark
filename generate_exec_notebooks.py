@@ -12,6 +12,13 @@ def make_notebook(title, description, code_cells):
     """Create a Jupyter notebook dict."""
     cells = [
         {
+            "cell_type": "code",
+            "metadata": {"trusted": True},
+            "source": ["!pip install -q protobuf==5.29.6 kaggle-benchmarks numpy 2>/dev/null\n"],
+            "execution_count": None,
+            "outputs": []
+        },
+        {
             "cell_type": "markdown",
             "metadata": {},
             "source": description

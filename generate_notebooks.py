@@ -26,7 +26,8 @@ def make_cell(source: str, cell_type: str = "code") -> dict:
 
 
 def make_notebook(cells: list[dict], title: str) -> dict:
-    """Create a Jupyter notebook structure."""
+    """Create a Jupyter notebook structure with pip install cell."""
+    pip_cell = make_cell("!pip install -q protobuf==5.29.6 kaggle-benchmarks numpy 2>/dev/null\n")
     return {
         "metadata": {
             "kernelspec": {
@@ -44,7 +45,7 @@ def make_notebook(cells: list[dict], title: str) -> dict:
         },
         "nbformat": 4,
         "nbformat_minor": 5,
-        "cells": cells,
+        "cells": [pip_cell] + cells,
     }
 
 
