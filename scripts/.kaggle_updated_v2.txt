@@ -4,3 +4,5 @@ ianstudy/metacognitive-calibration-benchmark
 ianstudy/agi-bench-learning-curves
 ianstudy/agi-bench-near-vs-far-transfer
 ianstudy/agi-bench-proactive-retroactive-interference
+ianstudy/agi-bench-curriculum-sensitivity
+ianstudy/agi-bench-selective-attention

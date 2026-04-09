@@ -27,7 +27,7 @@
 - [ ] Update SUBMISSION_NARRATIVE.md with actual frontier model results (replace mock data) [1 cycle]
 - [x] Final pass on all 5 DESIGN.md files: ensure they match actual implementation [1 cycle]
 - [x] Review submission_overview.ipynb: verify it references all 27 benchmarks correctly [1 cycle]
-- [ ] Git tag `v1.0-submission` and push final clean commit [1 cycle]
+- [x] Git tag `v1.0-submission` and push final clean commit [1 cycle]
 
 **ROBUSTNESS (Priority 3 — if time permits)**
 - [x] Stress-test 3 weakest benchmarks (vigilance, curriculum, instruction_update) with adversarial responses [1 cycle]
