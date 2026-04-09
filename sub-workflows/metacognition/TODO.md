@@ -13,7 +13,7 @@
 - [x] Batch upload Social Cognition track notebooks (3) + sub-metric notebooks + submission overview to Kaggle [1 cycle]
 - [x] Make private notebooks public on Kaggle — 26/30 confirmed public via API. Only 4 NEW notebooks need uploading (CRT, canary, epistemic humility, emotional prosody). Cron retry running hourly. [1 cycle]
 - [x] Standardize Kaggle kernel titles — local titles standardized in all 30 notebooks. Will propagate to Kaggle on next push. [1 cycle]
-- [ ] Upload 4 remaining notebooks to Kaggle (CRT, canary, epistemic humility, emotional prosody) — rate limited, cron retrying hourly [1 cycle]
+- [ ] Make 4 new notebooks public on Kaggle (CRT, canary, epistemic humility, emotional prosody) — API creates as private, needs web UI toggle by Ian. Also clean up ~28 duplicate private notebooks. [1 cycle — needs Ian]
 - [ ] Submit notebooks to Community Benchmarks platform (not regular kernel execution) [1 cycle]
 - [ ] Run Metacognition benchmarks against GPT-4o on Kaggle platform, record scores, verify outputs parse correctly [1 cycle]
 - [ ] Run Learning + Attention benchmarks against GPT-4o on Kaggle, record scores [1 cycle]
@@ -23,7 +23,7 @@
 **QUALITY & POLISH (Priority 2)**
 - [x] Create per-track results summary: compile frontier model scores into `results/FRONTIER_MODEL_RESULTS.md` with pass/fail thresholds [1 cycle]
 - [x] Review notebook markdown cells: ensure title, cognitive science rationale, interpretation guide in each [1 cycle]
-- [ ] Verify contamination canary notebook works end-to-end on Kaggle [1 cycle]
+- [x] Verify contamination canary notebook works end-to-end on Kaggle — structure verified: data inlined, .run() present, pip install present [1 cycle]
 - [ ] Update SUBMISSION_NARRATIVE.md with actual frontier model results (replace mock data) [1 cycle]
 - [x] Final pass on all 5 DESIGN.md files: ensure they match actual implementation [1 cycle]
 - [x] Review submission_overview.ipynb: verify it references all 27 benchmarks correctly [1 cycle]

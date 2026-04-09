@@ -55,3 +55,17 @@
 - [ ] Write strong writeup connecting to cognitive science
 - [ ] Test on 3+ frontier models to show discrimination
 - [ ] Consider cross-embedding metacognitive probes in learning tasks (unique differentiator)
+
+## Judging Criteria (Updated April 2026)
+From Kaggle discussion #684184:
+- **Novelty, insights, and discriminatory power: 30%** (expanded from original 15%)
+  - Must show benchmarks discriminate between models
+  - Unique insights about model cognitive profiles
+- **Community upvotes: 15%** — writeup quality + visibility matter
+- **Other criteria: ~55%** — task quality, construction, documentation
+
+### Implications for our submission:
+1. MUST run benchmarks against multiple frontier models (not just mock data)
+2. MUST present insights about how models differ (cognitive profiles)
+3. Writeup must be compelling and easy to upvote
+4. Need to post early for maximum upvote collection time

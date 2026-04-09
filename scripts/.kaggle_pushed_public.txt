@@ -27,3 +27,7 @@ ianstudy/metacog-ctrl-test-apr08
 ianstudy/sarcasm-detection-benchmark-agi-2026a
 ianstudy/submission-overview-agi-bench-apr08
 ianstudy/wcst-benchmark-agi-2026a
+ianstudy/agi-bench-2026-crt-exec-func
+ianstudy/agi-bench-2026-emotional-prosody
+ianstudy/agi-bench-2026-epistemic-humility
+ianstudy/agi-bench-2026-metacog-canary

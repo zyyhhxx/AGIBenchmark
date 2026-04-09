@@ -1,27 +1,17 @@
 # 🚀 Kaggle Submission Playbook
 
-**Last updated:** 2026-04-09 00:30 UTC  
-**Status:** 10/30 notebooks public. 20 blocked by Kaggle SaveKernel 429 rate limit.
+**Last updated:** 2026-04-09 00:55 UTC  
+**Status:** ✅ **26 notebooks confirmed public on Kaggle.** 4 new notebooks (CRT, canary, epistemic humility, emotional prosody) exist as private — need manual web UI toggle. ~28 duplicate private notebooks from retry attempts (safe to delete via web UI).
 
-## Current Blocker: Rate Limit
+## Current Issue: New Notebooks Created as Private
 
-The Kaggle API `SaveKernel` endpoint has a daily quota. We've been hitting 429 since ~18:00 UTC on April 8. The limit appears to be ~10-15 saves/day.
+The Kaggle API `kernels push` with `is_private: false` **still creates private notebooks**. The 4 new benchmarks were pushed successfully but are private. They must be made public via the web UI.
 
-### To Retry Pushing (run periodically):
-```bash
-cd /home/ubuntu/.openclaw/workspace-agi-bench/repo
-.venv/bin/python3 scripts/kaggle_push_retry.py
-```
-This script is idempotent — tracks what's already pushed in `scripts/.kaggle_pushed_public.txt`.
-
-### Alternative: Manual Web UI Push
-If API stays blocked, notebooks can be made public via kaggle.com:
-1. Go to `kaggle.com/ianstudy/<notebook-slug>/settings`
-2. Change visibility from Private → Public
-3. This does NOT count against the API rate limit
-
-### Notebooks Still Private (20):
-See `scripts/.kaggle_pushed_public.txt` for the pushed list. Everything in `scripts/kaggle_batch_ops.py` DESIRED_STATE that's NOT in that file needs pushing.
+### To fix (Ian — web UI required):
+1. Go to `kaggle.com/ianstudy/kernels` 
+2. Find the 4 new notebooks (sort by newest): CRT, Canary, Epistemic Humility, Emotional Prosody
+3. For each: Settings → Change visibility to Public
+4. Delete any obvious duplicates (~28 duplicate private notebooks from retry attempts)
 
 ---
 

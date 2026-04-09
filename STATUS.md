@@ -1,15 +1,15 @@
 # STATUS.md — AGI Benchmark Project
 
-**Last updated: 2026-04-09 00:30 UTC
+**Last updated: 2026-04-09 00:50 UTC
 
-## Project Status: 🟢 Submission-Ready — 27 Benchmarks across 5 Tracks
+## Project Status: 🟢 Submission-Ready — 29 Benchmarks across 5 Tracks
 
 ### Competition
 - **Deadline**: April 16, 2026 (7 days remaining (deadline April 16))
 - **Tracks**: All 5 — Metacognition, Learning, Attention, Executive Functions, Social Cognition
 - **Prize pool**: $200,000
 
-### Benchmark Suite: 27 Tasks Implemented
+### Benchmark Suite: 29 Tasks Implemented
 
 #### Metacognition Track (12 tasks)
 | Task | File | Status |
@@ -61,10 +61,10 @@
 | Emotional Prosody | `task_emotional_prosody.py` | ✅ NEW |
 
 ### Kaggle Submission Status
-- **Notebooks**: 31 (27 benchmarks + 3 sub-metrics + 1 canary)
-- **Uploaded**: ~27 on Kaggle (some still private due to rate limits)
-- **Public**: In progress (batch script with backoff running)
-- **Community Benchmarks**: Not yet submitted (needs public notebooks)
+- **Notebooks**: 31 total (29 benchmarks + 1 overview + 1 dashboard)
+- **Uploaded to Kaggle**: 26/30 public and confirmed
+- **4 remaining**: CRT, canary, epistemic humility, emotional prosody — rate limited, cron retrying hourly with new slug scheme
+- **Community Benchmarks**: Not yet submitted (needs web UI — Ian required)
 
 ### Validation
 - All 29 task files pass syntax check ✅
@@ -76,5 +76,6 @@
 - Discriminant validity: within-track r=0.37 vs between-track r=0.09 ✅
 
 ### Blockers
-- **Kaggle SaveKernel rate limit**: intermittent 429s, using exponential backoff
-- **Critical path**: notebooks public → submit to CB → run against models → record scores
+- **Kaggle SaveKernel rate limit**: 4 new notebooks still need upload, cron retrying hourly
+- **CB submission needs web UI**: no API available, Ian must submit manually
+- **Critical path**: 4 notebooks uploaded → CB submission (Ian) → run against models → record scores
