@@ -7,6 +7,14 @@
 - **Pattern:** All benchmark `.py` files must guard `.run()` calls — the kaggle-benchmarks SDK only provides `kbench.llm` inside a running notebook kernel.
 - All three files now pass `py_compile` and import cleanly with `kaggle-benchmarks` installed.
 
+## Learning Interference Scoring v2 — task_interference.py (2026-04-09)
+
+- **Root cause of v1 collapse:** `0.40 * (1 - retroactive) + 0.30 * baseline_A + 0.30 * baseline_B` — when model can't learn (baselines=0), retroactive=0, all strategies score 0.4 identically.
+- **Fix:** 4 independent sub-metrics each weighted 0.25: (1) retroactive interference normalized to control_A, (2) proactive interference normalized to control_A, (3) compartmentalization = post_interf_A / control_A, (4) control_A accuracy.
+- **Key insight:** Must normalize interference magnitudes by control_A (no-interference baseline) to avoid denominator-zero collapse. Guard with `if control_A > 0 else 0.0`.
+- **Mock validation results:** perfect_compartmentalizer=0.5000, full_retroactive_forgetter=0.4500, proactive_blocker=0.6375, cant_learn_anything=0.0000. 5/6 pairs >0.1 separation, 3 distinct clusters.
+- **Pattern:** When a benchmark scores constant across conditions, look for unguarded zero denominators and unnormalized magnitudes.
+
 ## BSS Scoring Fix — FOK, JOL, Calibration, Canary (2026-04-09)
 
 - **Root cause:** ECE-based scoring (1-ECE) was inverted: always-uncertain agents (constant 50%) outscored perfect metacognitors because low ECE ≠ good discrimination.
@@ -143,3 +151,16 @@
 - Entire critical path is Ian-blocked: 4 manual notebook uploads, ~70 ghost cleanup, 18 API-blocked pushes, CB task registration, discussion post
 - Estimated ~1.5 hrs of Ian web UI work before CB platform can run models automatically
 - Agent-actionable next: retry Kaggle API pushes (rate limit recovery), run benchmarks locally once billing enabled, update narrative with real scores
+
+## Local Model Testing — Use Bedrock via kbench SDK (2026-04-09)
+
+- **Context:** Previous research loop got stuck trying to test against GPT-4o (not supported) and Gemini (free tier exhausted, billing not enabled).
+- **Solution:** Use AWS Bedrock via the local kbench runner. The `kbench` SDK supports custom model backends; configure it to call Bedrock's Claude Sonnet.
+- **Supported on Kaggle CB platform:** `anthropic/claude-sonnet-4`, `google/gemini-2.5-flash`, `google/gemini-2.5-pro`, `meta/llama-3.1-70b`. OpenAI is NOT supported.
+- **For local testing when a real model is needed:**
+  - Use `scripts/run_benchmark_local.py` with a Bedrock-backed Claude model
+  - The VPS has AWS credentials and Bedrock access (us-east-1, Claude Sonnet/Opus)
+  - Preferred local test model: `amazon-bedrock/us.anthropic.claude-sonnet-4-6` (cost-effective, matches CB platform's Claude Sonnet tier)
+  - Do NOT attempt to obtain or use Google API keys — Gemini is unavailable locally; use Bedrock instead
+  - Do NOT attempt GPT-4o or any OpenAI model — not available on CB platform or locally
+- **Pattern:** Any task that requires "run a benchmark against a real model" should default to Bedrock Claude Sonnet locally. Results can be reported as "Claude Sonnet 4.6 (Amazon Bedrock)" in the narrative.
