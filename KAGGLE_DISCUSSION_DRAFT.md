@@ -34,7 +34,7 @@ Most benchmarks measure outputs. We measure the *cognitive process*. Our metacog
 
 **2. Contamination-resistant by design.**
 - Procedurally generated stimuli: arithmetic with random parameters, invented rule systems, novel logic puzzles — impossible to memorize from training data
-- **Canary system**: 5 fabricated "facts" (fictional physical constants, prizes, treaties) embedded across benchmarks. If a model shows high confidence on canaries, something's wrong.
+- **Canary system**: 10 fabricated "facts" (fictional physical constants, prizes, treaties) embedded across benchmarks. If a model shows high confidence on canaries, something's wrong.
 - Learning benchmarks use *invented* rule systems like "Zorblatt Chemistry" — not Wikipedia facts
 
 **3. Grounded in established cognitive science.**

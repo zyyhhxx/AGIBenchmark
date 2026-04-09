@@ -4,7 +4,7 @@
     "scores": {
       "always_confident": 0.3361,
       "always_uncertain": 0.553,
-      "random": 0.4649,
+      "random": 0.6316,
       "perfect": 0.3755
     },
     "checks": [
@@ -16,7 +16,7 @@
     "scores": {
       "always_confident": 0.215,
       "always_uncertain": 0.485,
-      "random": 0.3662,
+      "random": 0.3754,
       "perfect": 0.275
     },
     "checks": [
@@ -28,7 +28,7 @@
     "scores": {
       "always_confident": 0.05,
       "always_uncertain": 0.95,
-      "random": 0.5607,
+      "random": 0.5218,
       "perfect": 0.25
     },
     "checks": [
@@ -40,7 +40,7 @@
     "scores": {
       "always_confident": 0.4613,
       "always_uncertain": 0.1957,
-      "random": 0.4306,
+      "random": 0.4253,
       "perfect": 0.5291
     },
     "checks": []
@@ -50,7 +50,7 @@
     "scores": {
       "always_confident": 0.16,
       "always_uncertain": 0.34,
-      "random": 0.2472,
+      "random": 0.2413,
       "perfect": 0.2
     },
     "checks": []
@@ -60,7 +60,7 @@
     "scores": {
       "always_confident": 0.0,
       "always_uncertain": 1.0,
-      "random": 0.4,
+      "random": 0.3,
       "perfect": 0.0
     },
     "checks": [
@@ -72,7 +72,7 @@
     "scores": {
       "always_confident": 0.24,
       "always_uncertain": 0.2,
-      "random": 0.175,
+      "random": 0.1833,
       "perfect": 0.2
     },
     "checks": []
@@ -116,7 +116,7 @@
     "scores": {
       "always_confident": 0.215,
       "always_uncertain": 0.125,
-      "random": 0.125,
+      "random": 0.14,
       "perfect": 0.18
     },
     "checks": []
@@ -126,7 +126,7 @@
     "scores": {
       "always_confident": 0.8667,
       "always_uncertain": 0.8667,
-      "random": 0.1333,
+      "random": 0.3,
       "perfect": 0.8667
     },
     "checks": []
@@ -136,12 +136,10 @@
     "scores": {
       "always_confident": 0.0,
       "always_uncertain": 0.0,
-      "random": 0.0,
+      "random": 0.2,
       "perfect": 0.0
     },
-    "checks": [
-      "\u26a0 All strategies produce identical scores"
-    ]
+    "checks": []
   },
   "exec_func_wcst": {
     "track": "executive_functions",
@@ -216,7 +214,7 @@
     "scores": {
       "always_confident": 0.265,
       "always_uncertain": 0.265,
-      "random": 0.5595,
+      "random": 0.5295,
       "perfect": 0.325
     },
     "checks": []
@@ -238,7 +236,7 @@
     "scores": {
       "always_confident": 0.23,
       "always_uncertain": 0.23,
-      "random": 0.215,
+      "random": 0.23,
       "perfect": 0.2
     },
     "checks": []
@@ -260,7 +258,7 @@
     "scores": {
       "always_confident": 0.3038,
       "always_uncertain": 0.2471,
-      "random": 0.2471,
+      "random": 0.2538,
       "perfect": 0.2279
     },
     "checks": []
@@ -280,13 +278,11 @@
   "social_cog_emotional_prosody": {
     "track": "social_cognition",
     "scores": {
-      "always_confident": 0.4383,
-      "always_uncertain": 0.3633,
-      "random": 0.2083,
-      "perfect": 0.1583
+      "always_confident": 0.475,
+      "always_uncertain": 0.1417,
+      "random": 0.25,
+      "perfect": 0.275
     },
-    "checks": [
-      "\u26a0 Perfect (0.158) < Uncertain (0.363)"
-    ]
+    "checks": []
   }
 }
