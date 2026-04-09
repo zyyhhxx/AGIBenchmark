@@ -110,6 +110,14 @@
 - Failed API pushes created ghost entries (id=0, empty slug) — cleanup requires web UI
 - Full submission guide at `repo/CB_SUBMISSION_GUIDE.md` with step-by-step instructions for Ian
 
+## SUBMISSION_NARRATIVE.md — Theoretical Grounding Update (2026-04-09)
+- Track 1 metacognition section rewritten with 4 paragraphs citing Nelson & Narens (1990), Fleming (2024), Koriat (1997), Steyvers & Peters (2025), Chhikara et al. (2025), Vuorre & Metcalfe (2021), AFCE NeurIPS 2024
+- Benchmark table now includes "Theoretical Basis" column linking each of 9 benchmarks to named frameworks
+- Section 5 split into 5.1 (vs. traditional benchmarks) and 5.2 (vs. CASK) with 7-dimension comparison table
+- Key CASK differentiation: CASK tests 1 construct (context-sensitivity of calibration); our suite tests 9 constructs with Fleming sensitivity/bias/efficiency decomposition
+- Section 8 rewritten: contamination canaries, sub-metric decomposition (gamma + ECE + Brier), and procedural generation highlighted as unique differentiators
+- 10 new references added: Botvinick, Chhikara, Dunlosky & Rawson, Fleming ×2, Koriat, Mercier & Sperber, Nelson & Dunlosky, Steyvers & Peters, Vuorre & Metcalfe
+
 ## Project Status Snapshot (2026-04-09)
 - 29 benchmarks + 31 notebooks completed across all 5 cognitive tracks; all pass syntax validation
 - Psychometric validation complete: Cronbach α ≥ 0.70, good discriminant validity (4:1 within/between ratio)

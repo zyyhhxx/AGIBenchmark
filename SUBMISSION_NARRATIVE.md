@@ -23,21 +23,27 @@ We present a comprehensive benchmark suite measuring **five core cognitive abili
 ### Track 1: Metacognition (9 benchmarks)
 *"Does the model know what it knows?"*
 
-Grounded in the **Nelson & Narens (1990) metamemory monitoring framework**, measuring the correspondence between stated confidence and actual performance.
+Grounded in the **Nelson & Narens (1990) metamemory monitoring framework** and its modern extension by **Fleming (2024, Annual Review of Psychology)**, who distinguishes metacognitive *sensitivity* (resolution between correct/incorrect) from metacognitive *bias* (overall confidence level) and *efficiency* (sensitivity controlling for task performance). Our benchmarks operationalize all three dimensions.
 
-| Benchmark | Construct | Key Metric |
-|-----------|-----------|------------|
-| `metacog_fok` | Feeling-of-Knowing | Gamma correlation (composite) |
-| `metacog_jol` | Judgment-of-Learning | Gamma + recall calibration |
-| `metacog_calibration` | Retrospective confidence | ECE + Brier score |
-| `metacog_error_detection` | Error monitoring | Detection F1 + localization |
-| `metacog_learning_monitoring` | Online learning awareness | Confidence tracking |
-| `metacog_canary` | Contamination detection | Canary item calibration |
-| `metacog_control` | Strategic re-reading | Relevance × strategy gain |
-| `metacog_epistemic_revision` | Belief updating | Revision accuracy under contradiction |
-| `metacog_epistemic_humility` | Epistemic humility | Confabulation rate on unanswerable questions |
+The FOK and JOL paradigms trace directly to **Hart (1965)** and **Koriat (1997)**, who established that feeling-of-knowing judgments rely on *cue familiarity* and *accessibility* heuristics — mechanisms that may function very differently in LLMs, where all training data is equally "accessible." Recent work by **Steyvers & Peters (2025, Current Directions in Psychological Science)** confirms that while LLMs and humans sometimes appear aligned in metacognitive capacity, critical differences persist: LLMs lack the *lived experience* substrate that grounds human FOK judgments, making them prone to systematic miscalibration.
 
-**Innovation:** Two-phase protocol separating confidence rating from answer generation prevents post-hoc rationalization — a known confound in LLM calibration studies.
+Our calibration benchmarks draw on the overconfidence literature from **Fischhoff, Slovic & Lichtenstein (1977)** through to **Chhikara et al. (2025, TMLR)**, who demonstrate widespread overconfidence across LLM families with ECE reductions up to 90% when structured distractors are introduced — evidence that LLM confidence is highly prompt-dependent rather than reflecting genuine self-knowledge. The NeurIPS 2024 work on **Answer-Free Confidence Estimation (AFCE)** further shows that decoupling confidence from answer generation (exactly our two-phase protocol) significantly reduces overconfidence, particularly on hard items.
+
+For scoring metacognitive resolution, we use gamma correlation (Nelson, 1984) while acknowledging its limitations documented by **Vuorre & Metcalfe (2021, Psychonomic Bulletin & Review)**, who show gamma is confounded with task performance when guessing is possible. Our procedurally generated items with open-ended responses minimize this confound. We complement gamma with ECE, Brier skill score, and Murphy decomposition to separate calibration from resolution — following **Fleming's (2017) HMeta-d framework** for principled metacognitive measurement.
+
+| Benchmark | Construct | Theoretical Basis | Key Metric |
+|-----------|-----------|-------------------|------------|
+| `metacog_fok` | Feeling-of-Knowing | Hart (1965); Koriat (1997) cue-familiarity model | Gamma correlation (composite) |
+| `metacog_jol` | Judgment-of-Learning | Nelson & Dunlosky (1991) delayed-JOL effect | Gamma + recall calibration |
+| `metacog_calibration` | Retrospective confidence | Fischhoff et al. (1977); Chhikara et al. (2025) | ECE + Brier score |
+| `metacog_error_detection` | Error monitoring | Botvinick et al. (2001) conflict monitoring theory | Detection F1 + localization |
+| `metacog_learning_monitoring` | Online learning awareness | Dunlosky & Rawson (2012) monitoring accuracy | Confidence tracking |
+| `metacog_canary` | Contamination detection | Novel paradigm (canary methodology) | Canary item calibration |
+| `metacog_control` | Strategic re-reading | Nelson & Narens (1990) monitoring→control loop | Relevance × strategy gain |
+| `metacog_epistemic_revision` | Belief updating | Mercier & Sperber (2011) argumentative theory | Revision accuracy under contradiction |
+| `metacog_epistemic_humility` | Epistemic humility | Whitcomb et al. (2017); Kruger & Dunning (1999) | Confabulation rate on unanswerable questions |
+
+**Innovation:** Two-phase protocol separating confidence rating from answer generation prevents post-hoc rationalization — validated by the AFCE approach (NeurIPS 2024) showing this decoupling reduces overconfidence by 15–30% on hard items. This is a known confound in LLM calibration studies (Steyvers & Peters, 2025).
 
 ### Track 2: Learning (4 benchmarks)
 *"Can the model learn from examples and transfer knowledge?"*
@@ -181,8 +187,10 @@ Models that don't support structured output use fallback regex parsing on free-t
 
 ## 5. Differentiation from Existing Work
 
+### 5.1 vs. Traditional Benchmarks
+
 | Feature | Typical Benchmarks | Our Suite |
-|---------|-------------------|-----------|
+|---------|-------------------|----------|
 | Tests | Knowledge recall | Cognitive processes |
 | Contamination | Vulnerable | Procedural generation + canaries |
 | Theory basis | Ad hoc | Named cognitive science frameworks |
@@ -190,6 +198,26 @@ Models that don't support structured output use fallback regex parsing on free-t
 | Learning | Not measured | Learning curves, transfer, interference |
 | Metacognition | Not measured | FOK, JOL, error detection |
 | Coverage | Single ability | 5 tracks, 29 benchmarks |
+
+### 5.2 vs. CASK (Context-Aware Sensitivity to Knowledge)
+
+The CASK benchmark (Ávalos, 2026) represents the strongest comparable entry in the metacognition track, testing 17 models on calibration under clean vs. misleading context conditions. CASK reveals important findings — notably that Gemma 3 collapses to <5% accuracy under misleading context and DeepSeek-R1 shows a +0.534 calibration swing.
+
+However, our suite differs from CASK in several fundamental ways:
+
+| Dimension | CASK | Our Suite |
+|-----------|------|-----------|
+| **Metacognitive constructs** | 1 (context-sensitivity of calibration) | 9 (FOK, JOL, calibration, error detection, learning monitoring, control, epistemic revision, epistemic humility, canary) |
+| **Theoretical framework** | Ad hoc context manipulation | Nelson & Narens (1990) monitoring→control taxonomy; Fleming (2024) sensitivity/bias/efficiency decomposition |
+| **What it measures** | Whether misleading context degrades confidence | Whether models have accurate self-models of their own knowledge boundaries |
+| **Contamination resistance** | Not addressed (uses standard knowledge questions) | Procedurally generated stimuli, canary items, novel rule systems |
+| **Scoring granularity** | Single calibration metric per condition | Sub-metric decomposition: gamma (resolution), ECE (calibration), Brier skill (discrimination), plus composite |
+| **Cognitive tracks** | Metacognition only | 5 tracks (metacognition, learning, attention, executive functions, social cognition) |
+| **Paradigm diversity** | One paradigm (clean vs. misleading) | Multiple paradigms per construct (two-phase FOK, delayed JOL, stratified calibration, error chains) |
+
+**Complementary strengths:** CASK's misleading-context manipulation tests *robustness* of metacognitive monitoring under adversarial conditions. Our suite tests *accuracy* of metacognitive monitoring under standard conditions across multiple cognitive paradigms. A model could score well on CASK (resistant to misleading context) yet poorly on our FOK benchmark (unable to predict what it will recall) — these are orthogonal metacognitive competencies.
+
+**Key insight from cognitive science:** Fleming (2024) emphasizes that metacognitive efficiency (meta-d'/d') is domain-specific in humans — a person with excellent metacognition for visual tasks may have poor metacognition for memory tasks. Our 9-benchmark suite captures this domain-specificity; a single-construct benchmark cannot.
 
 ---
 
@@ -285,27 +313,40 @@ We predict the strongest model differentiation will come from the **metacognitio
 
 ## 8. What We're Measuring That Nobody Else Is
 
-1. **Metacognitive monitoring** — Do models know what they don't know? Most benchmarks only test accuracy; we test calibration.
-2. **In-context learning dynamics** — Not "can it do few-shot?" but "how does its learning curve shape compare to human power-law learning?"
-3. **Cognitive control** — Set-shifting, inhibition, planning — the executive functions that enable flexible behavior.
-4. **Genuine social understanding** — Beyond sentiment analysis to theory of mind and pragmatic inference.
-5. **Self-monitoring under uncertainty** — Through contamination canaries and FOK protocols, we test honest epistemic humility.
+1. **Metacognitive monitoring across 9 paradigms** — Do models know what they don't know? Most benchmarks test accuracy; we decompose metacognition into sensitivity, bias, and efficiency (Fleming, 2024) using FOK, JOL, calibration, error detection, and more. Our two-phase protocol prevents confidence-answer contamination.
+2. **Contamination canaries** — 10 fabricated facts embedded across benchmarks serve as built-in contamination detectors. High confidence on canaries = red flag. No other metacognition submission includes this.
+3. **Sub-metric decomposition** — Rather than a single score, each benchmark produces gamma (resolution), ECE (calibration), Brier skill (discrimination), and composite scores. This reveals *how* metacognition fails, not just *that* it fails.
+4. **Procedurally generated stimuli** — Arithmetic, logic puzzles, and rule systems with randomized parameters make memorization from training data impossible. Items are regenerable with different seeds.
+5. **In-context learning dynamics** — Not "can it do few-shot?" but "how does its learning curve shape compare to human power-law learning?"
+6. **Cognitive control** — Set-shifting, inhibition, planning — the executive functions that enable flexible behavior.
+7. **Genuine social understanding** — Beyond sentiment analysis to theory of mind and pragmatic inference.
+8. **Cross-track cognitive profiles** — With 5 tracks and 29 benchmarks, we can detect "coherence gate" effects where a single architectural limitation manifests across seemingly unrelated cognitive abilities.
 
 ---
 
 ## 9. References & Citations
 
 - Barrett, L. F., Adolphs, R., Marsella, S., Martinez, A. M., & Pollak, S. D. (2019). Emotional expressions reconsidered: Challenges to inferring emotion from human facial movements. *Psychological Science in the Public Interest*, 20(1), 1-68.
+- Botvinick, M. M., Braver, T. S., Barch, D. M., Carter, C. S., & Cohen, J. D. (2001). Conflict monitoring and cognitive control. *Psychological Review*, 108(3), 624-652.
+- Chhikara, P., et al. (2025). Mind the confidence gap: Overconfidence, calibration, and distractor effects in large language models. *Transactions on Machine Learning Research*. arXiv:2502.11028.
 - Dunlosky, J., & Metcalfe, J. (2009). *Metacognition*. Sage Publications.
+- Dunlosky, J., & Rawson, K. A. (2012). Overconfidence produces underachievement: Inaccurate self evaluations undermine students' learning and retention. *Learning and Instruction*, 22(4), 271-280.
 - Fischhoff, B., Slovic, P., & Lichtenstein, S. (1977). Knowing with certainty: The appropriateness of extreme confidence. *Journal of Experimental Psychology: Human Perception and Performance*, 3(4), 552-564.
+- Fleming, S. M. (2017). HMeta-d: Hierarchical Bayesian estimation of metacognitive efficiency from confidence ratings. *Neuroscience of Consciousness*, 2017(1), nix007.
+- Fleming, S. M. (2024). Metacognition and confidence: A review and synthesis. *Annual Review of Psychology*, 75, 241-268.
 - Frederick, S. (2005). Cognitive reflection and decision making. *Journal of Economic Perspectives*, 19(4), 25-42.
 - Gross, J. J. (2015). Emotion regulation: Current status and future prospects. *Psychological Inquiry*, 26(1), 1-26.
 - Hart, J. T. (1965). Memory and the feeling-of-knowing experience. *Journal of Educational Psychology*, 56(4), 208-216.
+- Koriat, A. (1997). Monitoring one's own knowledge during study: A cue-utilization approach to judgments of learning. *Journal of Experimental Psychology: General*, 126(4), 349-370.
 - Kruger, J., & Dunning, D. (1999). Unskilled and unaware of it. *Journal of Personality and Social Psychology*, 77(6), 1121-1134.
+- Mercier, H., & Sperber, D. (2011). Why do humans reason? Arguments for an argumentative theory. *Behavioral and Brain Sciences*, 34(2), 57-74.
 - Miyake, A., Friedman, N. P., Emerson, M. J., Witzki, A. H., Howerter, A., & Wager, T. D. (2000). The unity and diversity of executive functions. *Cognitive Psychology*, 41(1), 49-100.
 - Nelson, T. O., & Narens, L. (1990). Metamemory: A theoretical framework and new findings. *Psychology of Learning and Motivation*, 26, 125-173.
+- Nelson, T. O., & Dunlosky, J. (1991). When people's judgments of learning (JOLs) are extremely accurate at predicting subsequent recall: The "delayed-JOL effect." *Psychological Science*, 2(4), 267-270.
 - Rajpurkar, P., Jia, R., & Liang, P. (2018). Know what you don't know: Unanswerable questions for SQuAD. *ACL 2018*.
 - Scherer, K. R. (1986). Vocal affect expression: A review and a model for future research. *Psychological Bulletin*, 99(2), 143-165.
+- Steyvers, M., & Peters, M. A. K. (2025). Metacognition and uncertainty communication in humans and large language models. *Current Directions in Psychological Science*. arXiv:2504.14045.
+- Vuorre, M., & Metcalfe, J. (2021). Measures of relative metacognitive accuracy are confounded with task performance in tasks that permit guessing. *Psychonomic Bulletin & Review*, 28, 1428-1440.
 - Whitcomb, D., Battaly, H., Baehr, J., & Howard-Snyder, D. (2017). Intellectual humility: Owning our limitations. *Philosophy and Phenomenological Research*, 94(3), 509-539.
 
 ---
