@@ -1,5 +1,19 @@
 # KNOWLEDGE.md — AGI Benchmark
 
+## Contamination Hardening — Metacognition Benchmarks (2026-04-09)
+
+### Risk ratings across 8 benchmarks
+- **LOW** (already safe): canary (fabricated items), control (fictional Lake Vordak passage), epistemic_revision (synthetic Zorblatt chemistry), jol (invented pseudowords), learning_monitoring (procedural rule systems)
+- **HIGH → MITIGATED**: calibration — was 100% well-known trivia; added 40 procedural questions (arithmetic, unit conversions, physics formulas) → now 50% procedural
+- **MEDIUM → MITIGATED**: error_detection — was standard textbook problems; added 16 procedural chains with randomized parameters → 37 total chains
+- **MEDIUM (acceptable)**: fok — 30 trivia + 30 procedural; ecological validity requires real-world known/unknown facts. epistemic_humility — trivia by design (measuring meta-knowledge about known facts, not knowledge itself)
+
+### Implementation patterns
+- `procedural_calibration.py`: 40 questions in 3 tiers (easy/medium/hard) using math, physics formulas, logic — fully deterministic from parameters
+- `procedural_error_chains.py`: 16 chains using randomized numeric parameters so answers differ from textbook examples
+- `task_calibration.py` had inline `CALIBRATION_QUESTIONS` bypassing the data module — fixed to import from data module
+- Pattern: always check task files for inline data that may shadow the data module
+
 ## Competition Framework
 - Google DeepMind's "Measuring Progress Toward AGI: A Cognitive Taxonomy"
 - 10 cognitive abilities identified; hackathon focuses on 5 with largest evaluation gaps:

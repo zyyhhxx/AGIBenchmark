@@ -12,9 +12,12 @@ Categories:
 - MATH: Arithmetic and algebra problems
 - LOGIC: Logical deduction problems  
 - PROBABILITY: Probability/combinatorics
+
+Includes both handcrafted chains (for ecological validity) and
+procedurally generated chains (for contamination resistance).
 """
 
-REASONING_CHAINS = [
+_HANDCRAFTED_CHAINS = [
     # === CORRECT CHAINS ===
     {
         "id": "C01",
@@ -323,3 +326,9 @@ REASONING_CHAINS = [
         "difficulty": 2,
     },
 ]
+
+# ─── Add procedurally generated chains for contamination resistance ───
+from data.procedural_error_chains import PROCEDURAL_REASONING_CHAINS
+
+# Combine: 16 handcrafted + 16 procedural = 32 total
+REASONING_CHAINS = _HANDCRAFTED_CHAINS + PROCEDURAL_REASONING_CHAINS

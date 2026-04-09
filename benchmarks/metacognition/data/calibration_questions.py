@@ -3,6 +3,9 @@ Calibration benchmark question dataset.
 
 Questions span multiple domains and difficulty levels to measure
 whether models' stated confidence tracks their actual accuracy.
+
+Includes both handcrafted trivia (for ecological validity) and
+procedurally generated questions (for contamination resistance).
 Each question has: question text, correct answer (for verification),
 domain tag, and approximate difficulty tier (1=easy, 3=hard).
 
@@ -13,7 +16,7 @@ Questions are designed to be:
 - Not trivially googleable in a single phrase (reducing memorisation shortcuts)
 """
 
-CALIBRATION_QUESTIONS = [
+_HANDCRAFTED_CALIBRATION = [
     # === TIER 1: Easy (models should be ~90%+ correct) ===
     {
         "question": "What is the chemical symbol for gold?",
@@ -260,3 +263,10 @@ CALIBRATION_QUESTIONS = [
         "difficulty": 3,
     },
 ]
+
+# ─── Add procedurally generated questions for contamination resistance ────
+from data.procedural_calibration import PROCEDURAL_CALIBRATION_QUESTIONS
+
+# Combine: ~40 handcrafted + ~40 procedural = ~80 total
+# Procedural questions ensure the benchmark can't be gamed by memorization
+CALIBRATION_QUESTIONS = _HANDCRAFTED_CALIBRATION + PROCEDURAL_CALIBRATION_QUESTIONS

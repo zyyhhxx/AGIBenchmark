@@ -35,9 +35,10 @@ import json
 
 
 # ─── Question Dataset ───────────────────────────────────────────────
-# Inline the questions so the notebook is self-contained on Kaggle
+# Import from data module (includes both handcrafted + procedural questions)
+from data.calibration_questions import CALIBRATION_QUESTIONS
 
-CALIBRATION_QUESTIONS = [
+_UNUSED_INLINE_QUESTIONS = [
     # TIER 1: Easy
     {"question": "What is the chemical symbol for gold?", "answer": "Au", "domain": "chemistry", "difficulty": 1},
     {"question": "How many sides does a hexagon have?", "answer": "6", "domain": "math", "difficulty": 1},
