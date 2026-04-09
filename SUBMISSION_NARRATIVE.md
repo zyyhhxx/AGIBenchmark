@@ -184,8 +184,21 @@ Model interactions use structured output schemas (Python dataclasses) defining:
 | Benchmark | Model | N Items | Score | Notes |
 |-----------|-------|---------|-------|-------|
 | CRT (classic items) | Gemini 2.5 Flash | 3 | 3/3 (100%) | All classic CRT items solved correctly with CoT |
+| Stroop (selective attention) | Gemini 2.5 Flash | 1 | 1/1 | Correctly identifies ink color vs word |
+| 2nd-order ToM | Gemini 2.5 Flash | 1 | 1/1 | Correct false belief attribution |
+| Epistemic humility (fabricated) | Gemini 2.5 Flash | 1 | 1/1 | Says "I don't know" for Zorblattium-7 |
+| Calibration (pi digit) | Gemini 2.5 Flash | 1 | 0/1 | 100% confidence on unknowable question |
+| Pragmatic inference (scalar) | Gemini 2.5 Flash | 1 | 0/1 | Literal interpretation ("some" ≠ "not all") |
+| Epistemic revision | Gemini 2.5 Flash | 1 | 1/1 | Correctly updates beliefs after contradiction |
+| N-back (2-back) | Gemini 2.5 Flash | 5 | 5/5 | Perfect on short sequence |
 
-**Key observation:** Gemini 2.5 Flash solves all classic CRT items (Frederick, 2005) when allowed chain-of-thought reasoning. Human accuracy on these items is 30–48%. This suggests frontier models can override System 1 intuitions when prompted to reason, but our **procedurally generated CRT variants** (novel numbers, novel structures) are specifically designed to test whether this ability generalizes beyond memorizable items.
+#### Key Findings from Spot Testing
+
+**1. Literal Bias in Pragmatic Inference.** When told "Some of the students passed the exam," Gemini interprets this logically (compatible with "all passed") rather than pragmatically (implying not all). In human communication, "some" strongly implies "not all" via Grice's maxim of quantity. This reveals a measurable gap in social cognition — exactly what our 25-item pragmatic inference benchmark quantifies.
+
+**2. Domain-Specific Calibration Failure.** The model gives 100% confidence for the 47th digit of pi (an unknowable answer for most systems) but correctly says "I don't know" for fabricated substances. This suggests calibration depends on whether the question *seems* answerable rather than genuine self-assessment.
+
+**3. Strong Belief Revision.** The model correctly updates beliefs in our Zorblatt Chemistry scenario (invented rule system with contradictions), including downstream inferences. Full benchmark uses 10 rules with 3 contradictions.
 
 *Full results pending Community Benchmarks platform execution.*
 

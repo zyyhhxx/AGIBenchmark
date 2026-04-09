@@ -53,6 +53,9 @@ We ran the full suite through reliability and validity analyses:
 - **Discriminant validity**: Within-track correlations (r = 0.37) are **4× higher** than between-track (r = 0.09) — confirming the cognitive taxonomy is meaningful for LLMs, not just humans
 - **Difficulty calibration**: ECE increases from 0.26 (easy) → 0.30 (hard) — models don't adequately downgrade confidence on harder problems
 
+**5. Early insight from spot testing.**
+We found Gemini 2.5 Flash shows a **literal bias in pragmatic inference** — interpreting "some students passed" as logically compatible with "all passed," rather than the pragmatic human reading ("not all"). This is exactly the kind of social cognition gap our benchmark detects.
+
 ---
 
 ### Track Overview
