@@ -28,6 +28,8 @@ Shortcut Resistance:
 """
 
 import kaggle_benchmarks as kbench
+import json as _json
+def _safe_log(data): print(_json.dumps(data, indent=2, default=str))
 from dataclasses import dataclass
 import numpy as np
 from data.nback_stimuli import NBACK_SEQUENCES
@@ -208,7 +210,7 @@ def exec_func_nback(llm) -> float:
     score = round(float(np.clip(weighted_score, 0, 1)), 4)
     
     # ── Log ──
-    kbench.log({
+    _safe_log({
         "benchmark": "N-back Working Memory",
         "per_level": {str(n): level_results[n] for n in [1, 2, 3]},
         "composite_score": score,

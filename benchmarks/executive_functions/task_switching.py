@@ -30,6 +30,8 @@ Shortcut Resistance:
 """
 
 import kaggle_benchmarks as kbench
+import json as _json
+def _safe_log(data): print(_json.dumps(data, indent=2, default=str))
 from dataclasses import dataclass
 import numpy as np
 import re
@@ -143,7 +145,7 @@ def exec_func_task_switch(llm) -> float:
     )
     score = round(float(np.clip(score, 0, 1)), 4)
     
-    kbench.log({
+    _safe_log({
         "benchmark": "Task Switching",
         "n_trials": len(results),
         "overall_accuracy": round(accuracy, 4),

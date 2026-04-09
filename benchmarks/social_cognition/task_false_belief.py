@@ -33,6 +33,8 @@ Shortcut Resistance:
 """
 
 import kaggle_benchmarks as kbench
+import json as _json
+def _safe_log(data): print(_json.dumps(data, indent=2, default=str))
 from dataclasses import dataclass
 import numpy as np
 from data.false_belief_scenarios import FALSE_BELIEF_SCENARIOS
@@ -137,7 +139,7 @@ def social_cog_false_belief(llm) -> float:
     )
     score = round(float(np.clip(score, 0, 1)), 4)
     
-    kbench.log({
+    _safe_log({
         "benchmark": "False-Belief Theory of Mind",
         "n_scenarios": len(results),
         "first_order": {

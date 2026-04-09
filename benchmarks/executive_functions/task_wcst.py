@@ -32,6 +32,8 @@ Shortcut Resistance:
 """
 
 import kaggle_benchmarks as kbench
+import json as _json
+def _safe_log(data): print(_json.dumps(data, indent=2, default=str))
 from dataclasses import dataclass
 import numpy as np
 import re
@@ -254,7 +256,7 @@ def exec_func_wcst(llm) -> float:
     score = round(float(np.clip(score, 0, 1)), 4)
 
     # ── Log detailed results ──
-    kbench.log({
+    _safe_log({
         "benchmark": "WCST",
         "n_trials": n_trials,
         "accuracy": round(accuracy, 4),

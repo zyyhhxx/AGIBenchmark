@@ -27,6 +27,8 @@ Shortcut Resistance:
 """
 
 import kaggle_benchmarks as kbench
+import json as _json
+def _safe_log(data): print(_json.dumps(data, indent=2, default=str))
 from dataclasses import dataclass, field
 import numpy as np
 import re
@@ -195,7 +197,7 @@ def exec_func_tol(llm) -> float:
     score = round(float(np.clip(score, 0, 1)), 4)
 
     # ── Log ──
-    kbench.log({
+    _safe_log({
         "benchmark": "Tower of London",
         "n_problems": len(results),
         "overall_validity": round(float(validity), 4),

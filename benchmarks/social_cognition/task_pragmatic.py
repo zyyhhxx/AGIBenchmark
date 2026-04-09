@@ -32,6 +32,8 @@ Shortcut Resistance:
 """
 
 import kaggle_benchmarks as kbench
+import json as _json
+def _safe_log(data): print(_json.dumps(data, indent=2, default=str))
 from dataclasses import dataclass
 import numpy as np
 from data.pragmatic_items import PRAGMATIC_ITEMS
@@ -130,7 +132,7 @@ def social_cog_pragmatic(llm) -> float:
     score = intended_acc - 0.1 * literal_trap
     score = round(float(np.clip(score, 0, 1)), 4)
     
-    kbench.log({
+    _safe_log({
         "benchmark": "Pragmatic Inference",
         "n_items": len(results),
         "intended_accuracy": round(intended_acc, 4),

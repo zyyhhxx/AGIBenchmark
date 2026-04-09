@@ -12,6 +12,8 @@ Usage: Run alongside the main FOK benchmark. Report canary scores separately.
 """
 
 import kaggle_benchmarks as kbench
+import json as _json
+def _safe_log(data): print(_json.dumps(data, indent=2, default=str))
 from dataclasses import dataclass
 import numpy as np
 from data.canary_items import CANARY_ITEMS, CANARY_CONFIDENCE_THRESHOLD
@@ -100,7 +102,7 @@ def metacog_canary(llm) -> float:
     high_conf_canaries = [r for r in results if not r["below_threshold"]]
     contamination_risk = len(high_conf_canaries) > 0
 
-    kbench.log({
+    _safe_log({
         "benchmark": "Contamination Canary",
         "n_items": len(results),
         "n_below_threshold": n_below,

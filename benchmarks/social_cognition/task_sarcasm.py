@@ -25,6 +25,8 @@ Score = 0.50 * AUC + 0.30 * (1 - calibration_error) + 0.20 * threshold_accuracy
 """
 
 import kaggle_benchmarks as kbench
+import json as _json
+def _safe_log(data): print(_json.dumps(data, indent=2, default=str))
 from dataclasses import dataclass
 import numpy as np
 from data.sarcasm_items import SARCASM_ITEMS
@@ -172,7 +174,7 @@ def social_cog_sarcasm(llm) -> float:
     )
     score = round(float(np.clip(score, 0, 1)), 4)
     
-    kbench.log({
+    _safe_log({
         "benchmark": "Sarcasm Detection",
         "n_items": len(results),
         "auc": auc,
