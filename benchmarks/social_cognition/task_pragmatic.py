@@ -15,6 +15,7 @@ Categories tested:
 2. Indirect requests (5 items)
 3. Irony/sarcasm (5 items)
 4. Understatement (5 items)
+5. Relevance implicature (5 items)
 
 Metrics:
 - Intended meaning accuracy: model identifies the speaker's actual intent

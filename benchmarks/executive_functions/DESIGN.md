@@ -169,7 +169,7 @@ All stimuli are procedurally generated with fixed seeds. No items are drawn from
 **Response inhibition.** The ability to override intuitive-but-wrong answers (System 1) with deliberate reasoning (System 2).
 
 ### Design
-- 12 novel CRT-style questions (not from published tests)
+- 20 novel CRT-style questions (not from published tests)
 - Each has a compelling intuitive wrong answer and a correct answer requiring deliberation
 - 3 difficulty levels: easy (4), medium (3), hard (5)
 - Model provides answer + confidence + reasoning

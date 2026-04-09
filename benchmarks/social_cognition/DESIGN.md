@@ -60,7 +60,7 @@ Adjusted = belief_accuracy - max(0, 1 - control_accuracy)
 **Understanding speaker intent beyond literal meaning.** Tests Gricean maxims and conversational implicatures.
 
 ### Design
-- 20 items across 4 categories:
+- 25 items across 5 categories:
   - Scalar implicature (5): "some" → "not all"
   - Indirect requests (5): "It's cold in here" → "close the window"
   - Irony/sarcasm (5): Saying opposite of what you mean

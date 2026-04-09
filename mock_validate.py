@@ -33,6 +33,13 @@ def import_from_dir(module_name, package_dir):
         to_remove = [k for k in sys.modules if k == module_name or k.startswith('data')]
         for k in to_remove:
             del sys.modules[k]
+        # Mock kbench attributes so task files that call .run(llm=kbench.llm)
+        # at module level don't crash during import
+        import kaggle_benchmarks as kbench
+        if not hasattr(kbench, 'llm'):
+            kbench.llm = lambda *a, **kw: 'mock'
+        if not hasattr(kbench, 'log'):
+            kbench.log = lambda *a, **kw: None
         mod = importlib.import_module(module_name)
         return mod
     finally:

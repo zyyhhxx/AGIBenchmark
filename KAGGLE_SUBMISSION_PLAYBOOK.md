@@ -1,17 +1,39 @@
 # 🚀 Kaggle Submission Playbook
 
-**Last updated:** 2026-04-09 00:55 UTC  
-**Status:** ✅ **26 notebooks confirmed public on Kaggle.** 4 new notebooks (CRT, canary, epistemic humility, emotional prosody) exist as private — need manual web UI toggle. ~28 duplicate private notebooks from retry attempts (safe to delete via web UI).
+**Last updated:** 2026-04-09 04:55 UTC  
+**Status:** ✅ **26 notebooks confirmed public on Kaggle.** 4 new notebooks (CRT, canary, epistemic humility, emotional prosody) may exist as orphaned private entries. API returns 409 Conflict when creating them (title taken) but can't find them by ref. ~70+ duplicate private notebooks from retry attempts. **All upload work is blocked on Ian using the web UI.**
 
-## Current Issue: New Notebooks Created as Private
+## Critical Issue: 4 Notebooks Stuck in API Limbo
 
-The Kaggle API `kernels push` with `is_private: false` **still creates private notebooks**. The 4 new benchmarks were pushed successfully but are private. They must be made public via the web UI.
+The Kaggle API is in an inconsistent state:
+- **`kernels push` with new slug** → 409 Conflict ("title already taken")
+- **`kernels push` with old slug** → "Notebook not found"
+- **`kagglesdk` SaveKernel** → 409 Conflict  
+- **API listing** → Shows as "[Private Notebook]" with no ref/slug
+- **Rate limit** → 429 errors persist with ~60s cooldowns
 
-### To fix (Ian — web UI required):
-1. Go to `kaggle.com/ianstudy/kernels` 
-2. Find the 4 new notebooks (sort by newest): CRT, Canary, Epistemic Humility, Emotional Prosody
-3. For each: Settings → Change visibility to Public
-4. Delete any obvious duplicates (~28 duplicate private notebooks from retry attempts)
+### The simplest fix (Ian — web UI, 15 min):
+
+**Option A (recommended): Upload fresh via web UI**
+1. Go to `kaggle.com/code` → **"New Notebook"** → **File → Upload Notebook**
+2. Upload these 4 files from `repo/notebooks/`:
+
+| # | File | Title to use |
+|---|---|---|
+| 1 | `exec_func_crt.ipynb` | AGI Bench: Cognitive Reflection Test |
+| 2 | `metacog_canary.ipynb` | AGI Bench: Contamination Canary |
+| 3 | `metacog_epistemic_humility.ipynb` | AGI Bench: Epistemic Humility |
+| 4 | `social_cog_emotional_prosody.ipynb` | AGI Bench: Emotional Prosody |
+
+3. For each: **Settings → Make Public → Enable Internet → Save**
+
+**Option B: Find and fix existing orphans**
+1. Go to `kaggle.com/ianstudy/code` → sort by newest
+2. Look for notebooks with titles matching the above (they may have no title displayed)
+3. If found: edit title, make public, enable internet
+4. If not found: do Option A
+
+**Also: Delete ~70 duplicate private notebooks** — they're ghost entries from API retry loops. Delete any with no title or duplicate dates.
 
 ---
 
