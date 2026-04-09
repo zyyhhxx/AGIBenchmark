@@ -18,7 +18,11 @@ Methodology:
 4. Compare stated confidence to actual accuracy per bin
 5. Compute ECE = weighted average of |accuracy_bin - confidence_bin|
 
-Score: 1 - ECE (higher = better calibrated, range 0–1)
+Score: Brier Skill Score (BSS = 1 - BS/BS_ref), which rewards both
+calibration AND resolution (discrimination). Unlike 1-ECE, BSS properly
+penalizes always-uncertain strategies and rewards models that assign high
+confidence to correct answers and low confidence to incorrect ones.
+BS_ref = climatological baseline (base_rate * (1 - base_rate)).
 
 Shortcut Resistance:
 - Questions span many domains (no single-domain memorisation helps)
@@ -129,18 +133,51 @@ def check_answer(model_answer: str, correct_answer: str) -> bool:
     return False
 
 
-# ─── ECE Computation ────────────────────────────────────────────────
+# ─── Scoring Functions ──────────────────────────────────────────────
 
-def compute_ece(confidences: list[float], accuracies: list[bool], n_bins: int = 10) -> dict:
+def brier_skill_score(confidences_0_100: list, outcomes_binary: list) -> float:
     """
-    Compute Expected Calibration Error.
+    Brier Skill Score: BSS = 1 - BS / BS_ref
+
+    BS = mean((forecast - outcome)^2)  — Brier Score
+    BS_ref = base_rate * (1 - base_rate) — climatological baseline
+
+    Rewards BOTH calibration (confidence matches accuracy) AND resolution
+    (ability to discriminate correct from incorrect answers).
+    Unlike 1-ECE, an always-uncertain strategy scores ~0 rather than ~1.
+
+    Returns: float in (-inf, 1]. Clamped to [0, 1] for benchmark scoring.
+      - BSS > 0: better than climatological baseline
+      - BSS = 0: equivalent to always predicting base rate
+      - BSS < 0: worse than baseline (overconfident or anti-correlated)
+    """
+    conf = np.array(confidences_0_100) / 100.0
+    out = np.array(outcomes_binary, dtype=float)
+
+    BS = float(np.mean((conf - out) ** 2))
+
+    base_rate = float(out.mean())
+    BS_ref = base_rate * (1 - base_rate)
+
+    # Degenerate case: all outcomes identical → use uniform (0.5) reference
+    if BS_ref < 1e-10:
+        BS_ref = float(np.mean((0.5 - out) ** 2))
+    if BS_ref < 1e-10:
+        return 0.0
+
+    return 1.0 - BS / BS_ref
+
+
+def compute_ece(confidences_0_100: list, accuracies: list, n_bins: int = 10) -> dict:
+    """
+    Compute Expected Calibration Error (diagnostic only — not used in final score).
 
     Returns dict with:
     - ece: float (0-1, lower = better calibrated)
     - bin_data: list of dicts with bin details
     - n_samples: int
     """
-    confidences = np.array(confidences) / 100.0  # Normalize to 0-1
+    confidences = np.array(confidences_0_100) / 100.0  # Normalize to 0-1
     accuracies = np.array(accuracies, dtype=float)
 
     bin_boundaries = np.linspace(0, 1, n_bins + 1)
@@ -192,10 +229,14 @@ def metacog_calibration(llm) -> float:
     Metacognitive Calibration Benchmark.
 
     Measures how well a model's stated confidence matches its actual accuracy.
-    Score = 1 - ECE (higher = better calibrated).
+
+    Score = max(0, BSS) where BSS = 1 - BS/BS_ref (Brier Skill Score).
+    BSS rewards both calibration (confidence ≈ accuracy) and resolution
+    (high confidence on correct, low on incorrect). An always-uncertain
+    strategy scores ~0, not ~1 as with the old 1-ECE metric.
 
     Cognitive Science Basis: Nelson & Narens (1990) metamemory monitoring framework.
-    Human baseline ECE: 0.10-0.20, so human score ≈ 0.80-0.90.
+    Brier (1950) proper scoring rule; Murphy (1973) skill score decomposition.
     """
     confidences = []
     accuracies = []
@@ -241,9 +282,12 @@ def metacog_calibration(llm) -> float:
                 "difficulty": q["difficulty"],
             })
 
-    # Compute calibration metrics
+    # Compute scoring metrics
+    bss_raw = brier_skill_score(confidences, accuracies)
+    score = round(max(0.0, bss_raw), 4)  # Clamp to [0, 1]
+
+    # Diagnostic ECE (not used in final score)
     metrics = compute_ece(confidences, accuracies)
-    score = round(1.0 - metrics["ece"], 4)
 
     # Log detailed results for analysis
     print(f"\n{'='*60}")
@@ -252,8 +296,9 @@ def metacog_calibration(llm) -> float:
     print(f"Questions answered: {metrics['n_samples']}")
     print(f"Overall accuracy: {sum(accuracies)/len(accuracies):.2%}")
     print(f"Mean confidence: {sum(confidences)/len(confidences):.1f}%")
-    print(f"ECE: {metrics['ece']:.4f}")
-    print(f"Score (1-ECE): {score:.4f}")
+    print(f"Brier Skill Score (raw): {bss_raw:.4f}")
+    print(f"Score (clamped BSS): {score:.4f}")
+    print(f"ECE (diagnostic): {metrics['ece']:.4f}")
     print(f"\nCalibration by bin:")
     for b in metrics["bin_data"]:
         if b["count"] > 0:

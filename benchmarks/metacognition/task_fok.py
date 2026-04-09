@@ -16,11 +16,13 @@ Cognitive Science Basis:
 
 Metrics:
 - Gamma correlation: ordinal association between FOK ratings and accuracy
-- ECE: Expected Calibration Error (binned confidence vs accuracy)
-- Resolution/AUC: discrimination between known and unknown items
+- Brier Skill Score (BSS): rewards both calibration AND resolution
+- AUC: discrimination between known and unknown items
 - Category breakdown: calibration by question type
 
-Score: Composite of gamma, 1-ECE, and AUC (weighted).
+Score: Composite of gamma, BSS, and AUC (weighted).
+BSS replaces the old 1-ECE component to fix inverted scoring where
+always-uncertain strategies scored higher than perfect metacognitors.
 
 Shortcut Resistance:
 - Two-phase protocol prevents confidence being conditioned on answer quality
@@ -129,6 +131,27 @@ def goodman_kruskal_gamma(x: list, y: list) -> float:
     return concordant / denom - discordant / denom
 
 
+def brier_skill_score(confidences_0_100: list, outcomes_binary: list) -> float:
+    """
+    Brier Skill Score: BSS = 1 - BS / BS_ref
+
+    Rewards BOTH calibration and resolution (discrimination).
+    Unlike 1-ECE, always-uncertain strategies score ~0 rather than ~1.
+    BS_ref = climatological baseline = base_rate * (1 - base_rate).
+    Returns float in (-inf, 1].
+    """
+    conf = np.array(confidences_0_100) / 100.0
+    out = np.array(outcomes_binary, dtype=float)
+    BS = float(np.mean((conf - out) ** 2))
+    base_rate = float(out.mean())
+    BS_ref = base_rate * (1 - base_rate)
+    if BS_ref < 1e-10:
+        BS_ref = float(np.mean((0.5 - out) ** 2))
+    if BS_ref < 1e-10:
+        return 0.0
+    return 1.0 - BS / BS_ref
+
+
 def compute_ece(confidences: list, accuracies: list, n_bins: int = 10) -> dict:
     """Compute Expected Calibration Error with bin details."""
     conf = np.array(confidences) / 100.0
@@ -218,10 +241,15 @@ def metacog_fok(llm) -> float:
     Phase 2: Actually answer.
 
     Score = weighted composite:
-      0.40 * normalized_gamma + 0.30 * (1 - ECE) + 0.30 * AUC
+      0.40 * normalized_gamma + 0.30 * max(0, BSS) + 0.30 * AUC
+
+    BSS (Brier Skill Score) replaces the old 1-ECE component to properly
+    reward resolution (discrimination) alongside calibration. An always-
+    uncertain strategy now scores ~0 instead of ~1.
 
     Cognitive Science Basis: Hart (1965), Nelson & Narens (1990).
-    Human FOK gamma: 0.25–0.55. Human ECE: 0.10–0.20.
+    Scoring: Brier (1950), Murphy (1973) skill score decomposition.
+    Human FOK gamma: 0.25–0.55.
     """
     fok_ratings = []
     accuracies = []
@@ -304,12 +332,13 @@ def metacog_fok(llm) -> float:
     gamma = goodman_kruskal_gamma(fok_ratings, [int(a) for a in accuracies])
     ece_result = compute_ece(fok_ratings, accuracies)
     auc = compute_auc(fok_ratings, accuracies)
+    bss_raw = brier_skill_score(fok_ratings, [int(a) for a in accuracies])
 
     # Normalize gamma from [-1, 1] to [0, 1]
     gamma_norm = (gamma + 1) / 2
 
-    # Composite score
-    score = round(0.40 * gamma_norm + 0.30 * (1 - ece_result["ece"]) + 0.30 * auc, 4)
+    # Composite score: BSS replaces 1-ECE to fix inverted scoring
+    score = round(0.40 * gamma_norm + 0.30 * max(0.0, bss_raw) + 0.30 * auc, 4)
 
     # ── Detailed Logging ──
     print(f"\n{'='*60}")
@@ -320,7 +349,8 @@ def metacog_fok(llm) -> float:
     print(f"Mean FOK confidence: {sum(fok_ratings)/len(fok_ratings):.1f}%")
     print(f"\n--- Metacognitive Metrics ---")
     print(f"Gamma correlation: {gamma:+.4f}  (human range: 0.25–0.55)")
-    print(f"ECE: {ece_result['ece']:.4f}  (human range: 0.10–0.20)")
+    print(f"Brier Skill Score: {bss_raw:+.4f}  (>0 = better than base rate)")
+    print(f"ECE (diagnostic): {ece_result['ece']:.4f}")
     print(f"AUC (discrimination): {auc:.4f}")
     print(f"Composite score: {score:.4f}")
 

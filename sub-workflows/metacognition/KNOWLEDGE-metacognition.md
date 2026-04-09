@@ -1,5 +1,15 @@
 # KNOWLEDGE.md — AGI Benchmark
 
+## BSS Scoring Fix — FOK, JOL, Calibration, Canary (2026-04-09)
+
+- **Root cause:** ECE-based scoring (1-ECE) was inverted: always-uncertain agents (constant 50%) outscored perfect metacognitors because low ECE ≠ good discrimination.
+- **Fix:** Replaced 1-ECE with Brier Skill Score (BSS = 1 - BS/BS_ref) in all four benchmarks.
+  - BS_ref = base_rate × (1 - base_rate) for FOK/JOL/Calibration; BS_ref = 0.25 (uniform) for Canary.
+- **Validated (N=60 mock):** Perfect metacognitor: FOK 0.963, JOL 0.858, Calibration 0.927, Canary 0.958. Always-uncertain: FOK 0.350, JOL 0.380, Calibration 0.000, Canary 0.000.
+- **Pattern:** BSS is the correct scoring rule for confidence-outcome alignment benchmarks. ECE alone lacks resolution discrimination and rewards hedging.
+- **Negative BSS** clamped to 0 (floor) in all tasks. ECE retained as a diagnostic-only metric.
+- FOK/JOL composite: `0.40 * gamma_norm + 0.30 * max(0, BSS) + 0.30 * AUC`.
+
 ## Contamination Hardening — Metacognition Benchmarks (2026-04-09)
 
 ### Risk ratings across 8 benchmarks

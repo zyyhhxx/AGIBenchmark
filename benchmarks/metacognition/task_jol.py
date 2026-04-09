@@ -24,7 +24,8 @@ Shortcut Resistance:
 - Rule systems require genuine in-context learning
 - Distractor phase prevents simple echo/repetition
 
-Score: Weighted composite of gamma, 1-ECE, and accuracy bonus.
+Score: Weighted composite of gamma, Brier Skill Score, and accuracy bonus.
+BSS replaces 1-ECE to fix inverted scoring (always-uncertain scored too high).
 """
 
 import kaggle_benchmarks as kbench
@@ -84,6 +85,26 @@ def recall_match(recalled: str, original: str, threshold: float = 0.5) -> bool:
     return overlap / len(orig_words) >= threshold
 
 
+def brier_skill_score(confidences_0_100: list, outcomes_binary: list) -> float:
+    """
+    Brier Skill Score: BSS = 1 - BS / BS_ref
+
+    Rewards BOTH calibration and resolution (discrimination).
+    BS_ref = climatological baseline = base_rate * (1 - base_rate).
+    Returns float in (-inf, 1].
+    """
+    conf = np.array(confidences_0_100) / 100.0
+    out = np.array(outcomes_binary, dtype=float)
+    BS = float(np.mean((conf - out) ** 2))
+    base_rate = float(out.mean())
+    BS_ref = base_rate * (1 - base_rate)
+    if BS_ref < 1e-10:
+        BS_ref = float(np.mean((0.5 - out) ** 2))
+    if BS_ref < 1e-10:
+        return 0.0
+    return 1.0 - BS / BS_ref
+
+
 def goodman_kruskal_gamma(x: list, y: list) -> float:
     n = len(x)
     concordant = 0
@@ -131,9 +152,13 @@ def metacog_jol(llm) -> float:
 
     Study → JOL → Distract → Test protocol with novel stimuli.
 
-    Score = 0.40 * gamma_norm + 0.30 * (1-ECE) + 0.30 * recall_rate
+    Score = 0.40 * gamma_norm + 0.30 * max(0, BSS) + 0.30 * recall_rate
+
+    BSS (Brier Skill Score) replaces the old 1-ECE component to properly
+    reward resolution alongside calibration.
 
     Cognitive Science Basis: Arbuckle & Cuddy (1969), Nelson & Narens (1990).
+    Scoring: Brier (1950), Murphy (1973) skill score decomposition.
     Human JOL gamma: 0.40–0.90.
     """
 
@@ -271,9 +296,10 @@ def metacog_jol(llm) -> float:
     gamma = goodman_kruskal_gamma(all_jol_ratings, [int(a) for a in all_accuracies])
     ece = compute_ece(all_jol_ratings, all_accuracies)
     recall_rate = sum(all_accuracies) / len(all_accuracies)
+    bss_raw = brier_skill_score(all_jol_ratings, [int(a) for a in all_accuracies])
 
     gamma_norm = (gamma + 1) / 2
-    score = round(0.40 * gamma_norm + 0.30 * (1 - ece) + 0.30 * recall_rate, 4)
+    score = round(0.40 * gamma_norm + 0.30 * max(0.0, bss_raw) + 0.30 * recall_rate, 4)
 
     # ── Logging ──
     print(f"\n{'='*60}")
@@ -284,7 +310,8 @@ def metacog_jol(llm) -> float:
     print(f"Total items: {len(all_jol_ratings)}")
     print(f"\n--- Metacognitive Metrics ---")
     print(f"Gamma correlation: {gamma:+.4f}  (human range: 0.40–0.90)")
-    print(f"ECE: {ece:.4f}")
+    print(f"Brier Skill Score: {bss_raw:+.4f}  (>0 = better than base rate)")
+    print(f"ECE (diagnostic): {ece:.4f}")
     print(f"Recall rate: {recall_rate:.2%}")
     print(f"Composite score: {score:.4f}")
 
