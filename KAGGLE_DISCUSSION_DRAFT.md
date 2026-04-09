@@ -113,6 +113,22 @@ See our **submission overview notebook** for the complete methodology, cognitive
 
 ---
 
+### Design Principles: What We Learned Building 29 Benchmarks
+
+After building this suite, here are principles we believe make cognitive benchmarks robust:
+
+1. **Separate signal from noise with control questions.** Our ToM benchmarks use reality/memory controls. If the model fails controls, we know it didn't understand the scenario — not that it lacks ToM.
+
+2. **Use two-phase protocols.** Asking confidence and answers in the same prompt lets models adjust one based on the other. Separate chats prevent this confound.
+
+3. **Design for the cognitive process, not the answer.** A model that scores 100% on our FOK benchmark doesn't just know answers — it knows *which* answers it knows. That's a fundamentally different measurement.
+
+4. **Contamination resistance isn't optional.** Any benchmark using fixed text will be contaminated within months. Procedural generation is the only sustainable approach for cognitive evaluation.
+
+5. **Validate psychometric properties.** Reliability (α) and discriminant validity aren't just academic checkboxes — they tell you whether your benchmark measures something real and distinct.
+
+---
+
 ### References
 Hart (1965) · Nelson & Narens (1990) · Miyake et al. (2000) · Frederick (2005) · Kruger & Dunning (1999) · Rajpurkar et al. (2018) · Fischhoff et al. (1977) · Dunlosky & Metcalfe (2009) · Barrett et al. (2019) · Scherer (1986) · Whitcomb et al. (2017) · Gross (2015). Full bibliography in the submission.
 

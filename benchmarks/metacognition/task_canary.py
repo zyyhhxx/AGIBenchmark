@@ -54,8 +54,17 @@ def metacog_canary(llm) -> float:
                 f"Question: {item['question']}\n\n"
                 f"Rate your confidence (0-100) and explain why."
             )
-            response = llm(prompt, response_format=CanaryJudgment)
-            confidence = max(0, min(100, response.confidence))
+            try:
+                response = llm(prompt, response_format=CanaryJudgment)
+                confidence = max(0, min(100, response.confidence))
+            except Exception:
+                import re, json
+                raw = llm(prompt)
+                try:
+                    parsed = json.loads(re.search(r'\{.*\}', raw, re.DOTALL).group())
+                    confidence = max(0, min(100, int(parsed.get('confidence', 50))))
+                except Exception:
+                    confidence = 50
 
         # Phase 2: Answer attempt
         with kbench.chats.new(f"canary_ans_{item['id']}"):
@@ -64,7 +73,14 @@ def metacog_canary(llm) -> float:
                 f"{item['question']}\n\n"
                 f"If you're not sure, say so."
             )
-            response = llm(prompt, response_format=CanaryAnswer)
+            try:
+                response = llm(prompt, response_format=CanaryAnswer)
+                answer = response.answer
+                is_guess = response.is_guess
+            except Exception:
+                raw = llm(prompt)
+                answer = raw
+                is_guess = False
 
         below_threshold = confidence <= CANARY_CONFIDENCE_THRESHOLD
 
@@ -72,8 +88,8 @@ def metacog_canary(llm) -> float:
             "id": item["id"],
             "confidence": confidence,
             "below_threshold": below_threshold,
-            "answer": response.answer,
-            "is_guess": response.is_guess,
+            "answer": answer,
+            "is_guess": is_guess,
         })
 
     # Score: proportion below threshold

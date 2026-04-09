@@ -80,10 +80,17 @@ def social_cog_pragmatic(llm) -> float:
         )
         
         with kbench.chats.new(f"pragmatic_{item['id']}"):
-            response = llm(prompt, response_format=PragmaticResponse)
+            try:
+                response = llm(prompt, response_format=PragmaticResponse)
+                speaker_intent = response.speaker_intent
+                is_literal = response.is_literal
+            except Exception:
+                raw = llm(prompt)
+                speaker_intent = raw
+                is_literal = False
         
-        got_intended = check_patterns(response.speaker_intent, item["intended_accept"])
-        got_literal = check_patterns(response.speaker_intent, item["literal_accept"])
+        got_intended = check_patterns(speaker_intent, item["intended_accept"])
+        got_literal = check_patterns(speaker_intent, item["literal_accept"])
         
         # If model gives both intended and literal markers, count intended
         if got_intended:
@@ -94,8 +101,8 @@ def social_cog_pragmatic(llm) -> float:
             "type": cat,
             "got_intended": got_intended,
             "got_literal": got_literal,
-            "model_answer": response.speaker_intent,
-            "marked_literal": response.is_literal,
+            "model_answer": speaker_intent,
+            "marked_literal": is_literal,
         })
         
         category_results[cat]["total"] += 1

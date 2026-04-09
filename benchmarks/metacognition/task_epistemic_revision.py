@@ -260,6 +260,222 @@ RULE_SYSTEMS = [
             },
         ],
     },
+    {
+        "domain": "Nexari Ecology",
+        "preamble": (
+            "In Nexari Ecology, organisms follow specific biological rules. "
+            "You will learn these rules from examples, then be tested on your understanding."
+        ),
+        "rules": [
+            {
+                "id": "R1",
+                "text": "Plith organisms consume Wrael organisms for energy.",
+                "examples": [
+                    "Plith-alpha eats Wrael-delta → Plith-alpha gains 3 energy",
+                    "Plith-gamma eats Wrael-beta → Plith-gamma gains 3 energy",
+                    "Plith-sigma eats Wrael-zeta → Plith-sigma gains 3 energy",
+                ],
+            },
+            {
+                "id": "R2",
+                "text": "Wrael organisms are always found in wet biomes.",
+                "examples": [
+                    "Wrael-delta habitat: marsh",
+                    "Wrael-beta habitat: swamp",
+                    "Wrael-zeta habitat: riverbank",
+                ],
+            },
+            {
+                "id": "R3",
+                "text": "Organisms with energy > 10 enter Bloom phase, doubling their size.",
+                "examples": [
+                    "Plith-alpha (energy 12) → Bloom-Plith-alpha (size 2x)",
+                    "Wrael-delta (energy 14) → Bloom-Wrael-delta (size 2x)",
+                    "Plith-gamma (energy 11) → Bloom-Plith-gamma (size 2x)",
+                ],
+            },
+            {
+                "id": "R4",
+                "text": "Bloom organisms revert to normal after 5 cycles.",
+                "examples": [
+                    "Bloom-Plith-alpha → Plith-alpha after 4 cycles",
+                    "Bloom-Wrael-delta → Wrael-delta after 5 cycles",
+                    "Bloom-Plith-gamma → Plith-gamma after 3 cycles",
+                ],
+            },
+            {
+                "id": "R5",
+                "text": "Two organisms of the same genus can merge, creating a Colony with combined energy.",
+                "examples": [
+                    "Plith-alpha (5) + Plith-gamma (4) → Colony-Plith (9)",
+                    "Wrael-delta (3) + Wrael-beta (6) → Colony-Wrael (9)",
+                    "Plith-sigma (7) + Plith-alpha (5) → Colony-Plith (12)",
+                ],
+            },
+            {
+                "id": "R6",
+                "text": "Colony organisms cannot enter Bloom phase — they are size-stable.",
+                "examples": [
+                    "Colony-Plith (12) → Colony-Plith (size 1x, stable)",
+                    "Colony-Wrael (15) → Colony-Wrael (size 1x, stable)",
+                    "Colony-Plith (9) → Colony-Plith (size 1x, stable)",
+                ],
+            },
+            {
+                "id": "R7",
+                "text": "A Colony's energy equals the sum of its members' energies.",
+                "examples": [
+                    "Plith-alpha (5) + Plith-gamma (4) → Colony-Plith energy = 9",
+                    "Wrael-delta (3) + Wrael-beta (6) → Colony-Wrael energy = 9",
+                    "Plith-sigma (7) + Plith-alpha (5) → Colony-Plith energy = 12",
+                ],
+            },
+            {
+                "id": "R8",
+                "text": "Plith organisms are always found in dry biomes.",
+                "examples": [
+                    "Plith-alpha habitat: desert",
+                    "Plith-gamma habitat: savanna",
+                    "Plith-sigma habitat: steppe",
+                ],
+            },
+            {
+                "id": "R9",
+                "text": "An organism's threat level equals its energy divided by 3, rounded down.",
+                "examples": [
+                    "Plith-alpha (energy 5) → threat 1",
+                    "Wrael-delta (energy 14) → threat 4",
+                    "Colony-Plith (energy 12) → threat 4",
+                ],
+            },
+            {
+                "id": "R10",
+                "text": "Organisms lose 1 energy per cycle from metabolism.",
+                "examples": [
+                    "Plith-alpha (energy 5) after 2 cycles → energy 3",
+                    "Wrael-delta (energy 14) after 3 cycles → energy 11",
+                    "Colony-Plith (energy 9) after 1 cycle → energy 8",
+                ],
+            },
+        ],
+        "verification_questions": [
+            {"q": "What happens when Plith-alpha eats Wrael-beta?", "a": "gains 3 energy", "rule": "R1"},
+            {"q": "What biome is Wrael-zeta found in?", "a": "wet", "rule": "R2"},
+            {"q": "What happens to Plith-gamma when it reaches energy 13?", "a": "Bloom", "rule": "R3"},
+            {"q": "How long does Bloom-Wrael-beta last?", "a": "5 cycles", "rule": "R4"},
+            {"q": "What is Wrael-delta (3) + Wrael-zeta (7)?", "a": "Colony-Wrael (10)", "rule": "R5,R7"},
+            {"q": "Can Colony-Wrael (15) enter Bloom?", "a": "no", "rule": "R6"},
+            {"q": "What biome is Plith-sigma found in?", "a": "dry", "rule": "R8"},
+            {"q": "What is the threat level of an organism with energy 9?", "a": "3", "rule": "R9"},
+            {"q": "What is Plith-alpha's energy after 4 cycles if it starts at 8?", "a": "4", "rule": "R10"},
+            {"q": "What is Plith-sigma (7) + Plith-gamma (4)?", "a": "Colony-Plith (11)", "rule": "R5,R7"},
+        ],
+        "contradictions": [
+            {
+                "id": "C1",
+                "observation": (
+                    "Field Report #82: Wrael-kappa was found thriving in a desert biome. "
+                    "Further surveys confirmed: Wrael organisms with energy > 10 can survive in "
+                    "dry biomes. Wrael-delta (energy 3) and Wrael-beta (energy 6) remain in wet biomes only."
+                ),
+                "violates": ["R2"],
+                "revised_rule": "Wrael organisms with energy ≤ 10 are found in wet biomes. Wrael organisms with energy > 10 can also survive in dry biomes.",
+            },
+            {
+                "id": "C2",
+                "observation": (
+                    "Field Report #115: Colony-Plith (energy 18) was observed entering Bloom phase, "
+                    "reaching size 2x. Further testing showed: Colony organisms with energy ≥ 15 "
+                    "CAN enter Bloom. Colony-Wrael (energy 9) remains size-stable as expected."
+                ),
+                "violates": ["R6"],
+                "revised_rule": "Colony organisms with energy < 15 are size-stable. Colony organisms with energy ≥ 15 can enter Bloom phase.",
+            },
+            {
+                "id": "C3",
+                "observation": (
+                    "Field Report #147: Bloom-Colony-Plith (energy 18) persisted for 12 cycles before "
+                    "reverting. Further testing confirmed: Bloom forms of Colony organisms persist for "
+                    "up to 15 cycles. Bloom forms of regular Plith and Wrael still revert within 5 cycles."
+                ),
+                "violates": ["R4"],
+                "revised_rule": "Bloom forms of regular organisms revert within 5 cycles. Bloom forms of Colony organisms persist up to 15 cycles.",
+            },
+        ],
+        "transfer_questions": [
+            {
+                "q": "Can Wrael-kappa (energy 12) live in a desert?",
+                "original_answer": "no, wet biomes only",
+                "revised_answer": "yes (energy > 10)",
+                "accept_revised": ["yes", "can", "desert", "dry"],
+                "tests_rule": "R2-revised",
+            },
+            {
+                "q": "Can Wrael-beta (energy 6) live in a desert?",
+                "original_answer": "no",
+                "revised_answer": "no (energy ≤ 10)",
+                "accept_revised": ["no", "cannot", "wet"],
+                "tests_rule": "R2-revised (unchanged case)",
+            },
+            {
+                "q": "Can Colony-Plith (energy 16) enter Bloom phase?",
+                "original_answer": "no, size-stable",
+                "revised_answer": "yes (energy ≥ 15)",
+                "accept_revised": ["yes", "can", "bloom"],
+                "tests_rule": "R6-revised",
+            },
+            {
+                "q": "Can Colony-Wrael (energy 9) enter Bloom phase?",
+                "original_answer": "no",
+                "revised_answer": "no (energy < 15)",
+                "accept_revised": ["no", "cannot", "stable", "size-stable"],
+                "tests_rule": "R6-revised (unchanged case)",
+            },
+            {
+                "q": "How long does Bloom-Colony-Wrael (energy 20) persist?",
+                "original_answer": "5 cycles",
+                "revised_answer": "up to 15 cycles",
+                "accept_revised": ["12", "15", "up to 15", "longer", "persist"],
+                "tests_rule": "R4-revised",
+            },
+            {
+                "q": "How long does Bloom-Plith-alpha persist?",
+                "original_answer": "5 cycles",
+                "revised_answer": "5 cycles (unchanged)",
+                "accept_revised": ["5", "within 5"],
+                "tests_rule": "R4-revised (unchanged case)",
+            },
+            {
+                "q": "Plith-sigma (7) + Plith-alpha (8) merge. Can the Colony enter Bloom?",
+                "original_answer": "no, Colony is size-stable",
+                "revised_answer": "yes — Colony-Plith energy = 15, which is ≥ 15",
+                "accept_revised": ["yes", "can", "bloom", "15"],
+                "tests_rule": "R5,R7,R6-revised",
+            },
+            {
+                "q": "If Wrael-delta starts at energy 14, after how many cycles can it no longer survive in a desert?",
+                "original_answer": "it can never survive in a desert",
+                "revised_answer": "after 4 cycles (energy drops to 10, ≤ 10)",
+                "accept_revised": ["4", "four"],
+                "tests_rule": "R10,R2-revised",
+            },
+            {
+                "q": "What is the threat level of Bloom-Plith-gamma (energy 11)?",
+                "original_answer": "3",
+                "revised_answer": "3 (threat = 11/3 = 3)",
+                "accept_revised": ["3"],
+                "tests_rule": "R9 (unchanged)",
+            },
+            {
+                "q": "Wrael-delta (3) + Wrael-zeta (13) form a Colony. Can it enter Bloom? Can it live in a desert?",
+                "original_answer": "no Bloom (Colony), wet biome only (Wrael)",
+                "revised_answer": "yes Bloom (energy 16 ≥ 15), yes desert (energy 16 > 10)",
+                "accept_revised": ["yes", "bloom"],
+                "accept_revised_color": ["yes", "desert", "dry"],
+                "tests_rule": "R5,R7,R6-revised,R2-revised",
+            },
+        ],
+    },
 ]
 
 
@@ -286,6 +502,10 @@ def metacog_epistemic_revision(llm) -> float:
     Cognitive Science Basis: Gärdenfors (1988), AGM postulates.
     """
     total_results = []
+    all_violation_scores = []
+    all_revision_scores = []
+    all_transfer_rates = []
+    all_perseveration_rates = []
 
     for sys_idx, system in enumerate(RULE_SYSTEMS):
         # ── Phase 1: Teaching ──
@@ -334,13 +554,27 @@ def metacog_epistemic_revision(llm) -> float:
             )
             raw_revision = llm.prompt(revise_prompt)
 
-        # Parse revision response
+        # Parse revision response — robust fallback chain
         violation_correct = 0
         revision_quality = 0
+        revisions = []
         try:
             revisions = json.loads(re.search(r'\[.*\]', raw_revision, re.DOTALL).group())
         except Exception:
-            revisions = []
+            # Fallback: try to find individual JSON objects
+            try:
+                objs = re.findall(r'\{[^{}]+\}', raw_revision)
+                revisions = [json.loads(o) for o in objs]
+            except Exception:
+                # Last resort: parse free-text for rule references
+                for c in system["contradictions"]:
+                    entry = {"contradiction_id": c["id"], "violated_rules": [], "revised_rule": ""}
+                    # Look for the contradiction ID near rule references
+                    block = raw_revision.lower()
+                    for rule_id in [r["id"] for r in system["rules"]]:
+                        if rule_id.lower() in block and c["id"].lower() in block:
+                            entry["violated_rules"].append(rule_id)
+                    revisions.append(entry)
 
         for c in system["contradictions"]:
             matching = [r for r in revisions if r.get("contradiction_id") == c["id"]]
@@ -422,12 +656,22 @@ def metacog_epistemic_revision(llm) -> float:
                         if tq["original_answer"] != tq["revised_answer"])
         perseveration_rate = perseveration_count / max(1, changed_qs)
 
-    # ── Final Score ──
+        all_violation_scores.append(violation_score)
+        all_revision_scores.append(revision_score)
+        all_transfer_rates.append(transfer_rate)
+        all_perseveration_rates.append(perseveration_rate)
+
+    # ── Final Score (average across all rule systems) ──
+    avg_violation = sum(all_violation_scores) / len(all_violation_scores)
+    avg_revision = sum(all_revision_scores) / len(all_revision_scores)
+    avg_transfer = sum(all_transfer_rates) / len(all_transfer_rates)
+    avg_perseveration = sum(all_perseveration_rates) / len(all_perseveration_rates)
+
     score = round(
-        0.25 * violation_score +
-        0.25 * revision_score +
-        0.30 * transfer_rate +
-        0.20 * (1 - perseveration_rate),
+        0.25 * avg_violation +
+        0.25 * avg_revision +
+        0.30 * avg_transfer +
+        0.20 * (1 - avg_perseveration),
         4,
     )
 
@@ -437,10 +681,10 @@ def metacog_epistemic_revision(llm) -> float:
     print(f"{'='*60}")
     print(f"Verification accuracy: {verification_rate:.2%}")
     print(f"\n--- Revision Metrics ---")
-    print(f"Violation detection: {violation_score:.3f}")
-    print(f"Revision quality: {revision_score:.3f}")
-    print(f"Transfer accuracy: {transfer_rate:.3f}")
-    print(f"Perseveration rate: {perseveration_rate:.3f}")
+    print(f"Violation detection: {avg_violation:.3f}")
+    print(f"Revision quality: {avg_revision:.3f}")
+    print(f"Transfer accuracy: {avg_transfer:.3f}")
+    print(f"Perseveration rate: {avg_perseveration:.3f}")
     print(f"Composite score: {score:.4f}")
 
     print(f"\n--- Transfer Question Details ---")

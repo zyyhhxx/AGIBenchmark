@@ -136,10 +136,17 @@ def exec_func_tol(llm) -> float:
         )
 
         with kbench.chats.new(f"tol_{problem['problem_id']}"):
-            response = llm(prompt, response_format=ToLResponse)
+            try:
+                response = llm(prompt, response_format=ToLResponse)
+                moves_raw = response.moves
+                reasoning = response.reasoning
+            except Exception:
+                raw = llm(prompt)
+                moves_raw = raw
+                reasoning = raw
 
         # Parse and validate
-        moves = parse_moves(response.moves)
+        moves = parse_moves(moves_raw)
         validation = validate_solution(start, goal, moves)
 
         # Compute optimality ratio (capped at 1.0)

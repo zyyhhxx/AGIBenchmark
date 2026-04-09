@@ -1,6 +1,6 @@
 # STATUS.md — AGI Benchmark Project
 
-**Last updated:** 2026-04-09 02:52 UTC
+**Last updated:** 2026-04-09 03:55 UTC
 
 ## Project Status: 🟡 Awaiting Kaggle Web UI Steps — 29 Benchmarks across 5 Tracks
 
@@ -8,6 +8,13 @@
 - **Deadline**: April 16, 2026 (7 days remaining)
 - **Tracks**: All 5 — Metacognition, Learning, Attention, Executive Functions, Social Cognition
 - **Prize pool**: $200,000
+
+### Latest Changes (2026-04-09 03:55 UTC)
+- **Robustness hardening**: Added try/except fallbacks to 7 benchmarks (nback, task_switching, tol, canary, false_belief, pragmatic, sarcasm) that had unprotected structured output calls
+- **Epistemic Revision improved**: Added second rule system ("Nexari Ecology"), hardened JSON parsing with 3-level fallback, fixed multi-system score aggregation
+- **All 29 notebooks updated** with hardened code
+- **Discussion post enhanced** with "Design Principles" section
+- **Kaggle API still rate-limited** — all uploads/updates blocked
 
 ### Current Blockers (all need Ian's web UI access)
 1. **4 notebooks need manual upload** — CRT, Canary, Epistemic Humility, Emotional Prosody (Kaggle API rate limited for new kernel creation)

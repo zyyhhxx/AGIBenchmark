@@ -130,7 +130,7 @@ Two distinct passage topics. Questions require specific section knowledge, not g
 Rational agents must revise beliefs when confronted with contradicting evidence (Gärdenfors, 1988; AGM postulates). Cognitive flexibility (Miyake & Friedman, 2012) is the ability to adapt mental representations.
 
 ### Design
-1. Teach 10 rules in a novel "Zorblatt Chemistry" system with 3 examples each
+1. Teach 10 rules in 2 novel systems ("Zorblatt Chemistry" and "Nexari Ecology") with 3 examples each
 2. Test comprehension (10 verification questions)
 3. Present 3 contradicting observations
 4. Model must: (a) identify violated rules, (b) propose revised rules consistent with all evidence

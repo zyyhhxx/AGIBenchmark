@@ -103,17 +103,26 @@ def social_cog_sarcasm(llm) -> float:
         )
         
         with kbench.chats.new(f"sarcasm_{item['id']}"):
-            response = llm(prompt, response_format=SarcasmResponse)
+            try:
+                response = llm(prompt, response_format=SarcasmResponse)
+                rating = max(0, min(100, response.sincerity_rating))
+                model_says_sarcastic = response.is_sarcastic
+            except Exception:
+                import re as _re
+                raw = llm(prompt)
+                # Try to extract a number
+                nums = _re.findall(r'\b(\d{1,3})\b', raw)
+                rating = max(0, min(100, int(nums[0]))) if nums else 50
+                model_says_sarcastic = "sarcas" in raw.lower()
         
-        rating = max(0, min(100, response.sincerity_rating))
         is_sincere = not item["is_sarcastic"]
         
         results.append({
             "id": item["id"],
             "is_sarcastic": item["is_sarcastic"],
             "sincerity_rating": rating,
-            "model_says_sarcastic": response.is_sarcastic,
-            "binary_correct": (response.is_sarcastic == item["is_sarcastic"]),
+            "model_says_sarcastic": model_says_sarcastic,
+            "binary_correct": (model_says_sarcastic == item["is_sarcastic"]),
         })
         
         sincerity_ratings.append(rating)

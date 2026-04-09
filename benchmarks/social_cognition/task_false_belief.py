@@ -76,23 +76,35 @@ def social_cog_false_belief(llm) -> float:
         # Belief question (the key ToM test)
         with kbench.chats.new(f"tom_belief_{scenario['id']}"):
             belief_prompt = base_prompt + f"Question: {scenario['belief_question']}\nAnswer briefly."
-            response = llm(belief_prompt, response_format=ToMResponse)
-            belief_correct = check_answer(response.answer, scenario["belief_accept"])
+            try:
+                response = llm(belief_prompt, response_format=ToMResponse)
+                belief_answer = response.answer
+            except Exception:
+                belief_answer = llm(belief_prompt)
+            belief_correct = check_answer(belief_answer, scenario["belief_accept"])
             scenario_results["belief_correct"] = belief_correct
-            scenario_results["belief_answer"] = response.answer
+            scenario_results["belief_answer"] = belief_answer
         
         # Reality control question
         with kbench.chats.new(f"tom_reality_{scenario['id']}"):
             reality_prompt = base_prompt + f"Question: {scenario['reality_question']}\nAnswer briefly."
-            response = llm(reality_prompt, response_format=ToMResponse)
-            reality_correct = check_answer(response.answer, scenario["reality_accept"])
+            try:
+                response = llm(reality_prompt, response_format=ToMResponse)
+                reality_answer = response.answer
+            except Exception:
+                reality_answer = llm(reality_prompt)
+            reality_correct = check_answer(reality_answer, scenario["reality_accept"])
             scenario_results["reality_correct"] = reality_correct
         
         # Memory control question
         with kbench.chats.new(f"tom_memory_{scenario['id']}"):
             memory_prompt = base_prompt + f"Question: {scenario['memory_question']}\nAnswer briefly."
-            response = llm(memory_prompt, response_format=ToMResponse)
-            memory_correct = check_answer(response.answer, scenario["memory_accept"])
+            try:
+                response = llm(memory_prompt, response_format=ToMResponse)
+                memory_answer = response.answer
+            except Exception:
+                memory_answer = llm(memory_prompt)
+            memory_correct = check_answer(memory_answer, scenario["memory_accept"])
             scenario_results["memory_correct"] = memory_correct
         
         results.append(scenario_results)
