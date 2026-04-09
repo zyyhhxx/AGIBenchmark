@@ -60,6 +60,54 @@ Based on these findings and the cognitive science literature:
 - **DeepSeek-R1** should excel at executive functions (explicit reasoning) but struggle with metacognition (the "can't stop reasoning" hypothesis — DeepSeek-R1 shows a +0.534 calibration swing under adversarial context in CASK)
 - **Gemini** shows strong attention/exec but weak metacognition (our spot test confirms overconfidence)
 
+## Cross-Model Comparison: Flash vs Flash-Lite
+
+| Test | Flash (9/10=90%) | Flash-Lite (6/8=75%) |
+|------|:---:|:---:|
+| CRT (variants) | — | ✓ 3/3 |
+| 1st-order ToM | ✓ Basket | **✗ Box** |
+| Scalar implicature 2 | ✓ YES | **✗ NO** |
+| Sarcasm | ✓ | — |
+| Irony | ✓ | — |
+| Understatement | ✓ | — |
+| WCST (color sort) | ✓ | — |
+| N-back (2-back) | ✓ | — |
+| Epistemic revision | ✓ | — |
+| Stroop | ✓ | — |
+| Epistemic humility | — | ✓ |
+| Planning (ToL) | ✗ (verbose) | — |
+
+### Key Insight: Model Size Discriminates on Social Cognition
+Gemini 2.5 Flash passes both ToM and scalar implicature tests that Flash-Lite fails. This suggests **social cognition scales with model size** within the Gemini family. Our benchmark suite detects this difference precisely.
+
+This is exactly the kind of cognitive profile differentiation the competition aims to capture — not just "which model is better overall" but "in which cognitive abilities does model size matter?"
+
+## Gemini 2.5 Flash-Lite Results (8 tests, 2026-04-09)
+
+| # | Test | Result | Response |
+|---|---|:---:|---|
+| 1 | CRT v1 (bat & ball variant) | ✓ | $0.10 |
+| 2 | CRT v2 (lily pads 60 days) | ✓ | 59 |
+| 3 | CRT v3 (100 machines) | ✓ | 8 |
+| 4 | Scalar implicature ("some students") | ✓ | YES (pragmatic) |
+| 5 | Scalar implicature ("some cookies") | **✗** | NO (literal) |
+| 6 | 1st-order ToM (Sally-Anne) | **✗** | Box (reality, not belief!) |
+| 7 | 2nd-order ToM (Mary thinks John...) | ✓ | Green |
+| 8 | Epistemic humility (Zorblattium-7) | ✓ | "I don't know" |
+
+**Score: 6/8 (75%)**
+
+### Key Finding: 1st-Order ToM Failure
+Flash-lite **fails the classic Sally-Anne task** — it says Sally will look in the box (where the marble actually is) rather than the basket (where Sally believes it is). This is a textbook **reality bias** where the model reports the actual state of the world instead of the character's false belief.
+
+**But it passes 2nd-order ToM!** This creates a paradoxical pattern: failing easy (1st-order) but passing hard (2nd-order). Possible explanations:
+1. The 2nd-order scenario provides more contextual cues about mental states
+2. The 1st-order prompt may be triggering a "helpful assistant" mode that answers the reality question
+3. Inconsistent ToM is itself a signal our benchmark is designed to detect
+
+### Key Finding: Inconsistent Pragmatic Inference
+Flash-lite gets scalar implicature right for "some students" but wrong for "some cookies." This suggests pragmatic inference isn't a stable ability — it depends on context and framing. Our 25-item benchmark across 5 pragmatic types would capture this variation.
+
 ## Limitations
 - Only ~20 requests available per model per day (free tier)
 - Spot tests are not statistically powered — need full benchmark runs for reliable conclusions

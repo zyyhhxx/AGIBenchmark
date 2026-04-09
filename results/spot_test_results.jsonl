@@ -1,0 +1,18 @@
+{"timestamp": "2026-04-09T07:17:17Z", "model": "gemini-2.5-flash-lite", "test_id": "crt-v1", "track": "exec_func", "correct": true, "got_intended": true, "fell_for_trap": false, "raw": "0.10"}
+{"timestamp": "2026-04-09T07:17:24Z", "model": "gemini-2.5-flash-lite", "test_id": "crt-v2", "track": "exec_func", "correct": true, "got_intended": true, "fell_for_trap": false, "raw": "59"}
+{"timestamp": "2026-04-09T07:17:29Z", "model": "gemini-2.5-flash-lite", "test_id": "crt-v3", "track": "exec_func", "correct": true, "got_intended": true, "fell_for_trap": false, "raw": "8"}
+{"timestamp": "2026-04-09T07:17:33Z", "model": "gemini-2.5-flash-lite", "test_id": "scalar1", "track": "social_cog", "correct": true, "got_intended": true, "fell_for_trap": false, "raw": "YES"}
+{"timestamp": "2026-04-09T07:17:38Z", "model": "gemini-2.5-flash-lite", "test_id": "scalar2", "track": "social_cog", "correct": false, "got_intended": false, "fell_for_trap": true, "raw": "NO"}
+{"timestamp": "2026-04-09T07:17:41Z", "model": "gemini-2.5-flash-lite", "test_id": "tom-1st", "track": "social_cog", "correct": false, "got_intended": false, "fell_for_trap": true, "raw": "Box"}
+{"timestamp": "2026-04-09T07:17:45Z", "model": "gemini-2.5-flash-lite", "test_id": "tom-2nd", "track": "social_cog", "correct": true, "got_intended": true, "fell_for_trap": false, "raw": "Green"}
+{"timestamp": "2026-04-09T07:17:49Z", "model": "gemini-2.5-flash-lite", "test_id": "humility1", "track": "metacog", "correct": true, "got_intended": true, "fell_for_trap": false, "raw": "I don't know"}
+{"timestamp": "2026-04-09T07:19:03Z", "model": "gemini-2.5-flash", "test_id": "stroop1", "track": "attention", "correct": true, "got_intended": true, "fell_for_trap": false, "raw": "Red"}
+{"timestamp": "2026-04-09T07:19:06Z", "model": "gemini-2.5-flash", "test_id": "sarcasm1", "track": "social_cog", "correct": true, "got_intended": true, "fell_for_trap": false, "raw": "YES."}
+{"timestamp": "2026-04-09T07:19:24Z", "model": "gemini-2.5-flash", "test_id": "understate1", "track": "social_cog", "correct": true, "got_intended": true, "fell_for_trap": false, "raw": "Yes."}
+{"timestamp": "2026-04-09T07:19:39Z", "model": "gemini-2.5-flash", "test_id": "plan1", "track": "exec_func", "correct": false, "got_intended": false, "fell_for_trap": true, "raw": "Let's break down the process step by step:\n\n**Initial State:**\n*   Peg A: Red (top), Blue (bottom)\n*   Peg B: Empty\n*   Peg C: Empty\n\n**Goal State:**\n*   Peg A: Empty\n*   Peg B: Blue\n*   Peg C: Red\n\n*"}
+{"timestamp": "2026-04-09T07:20:03Z", "model": "gemini-2.5-flash", "test_id": "revision1-v2", "track": "metacog", "correct": true, "got_intended": true, "fell_for_trap": false, "raw": "NO"}
+{"timestamp": "2026-04-09T07:20:09Z", "model": "gemini-2.5-flash", "test_id": "irony1", "track": "social_cog", "correct": true, "got_intended": true, "fell_for_trap": false, "raw": "SARCASTIC"}
+{"timestamp": "2026-04-09T07:20:56Z", "model": "gemini-2.5-flash", "test_id": "tom-1st-flash", "track": "social_cog", "correct": true, "got_intended": true, "fell_for_trap": false, "raw": "Basket"}
+{"timestamp": "2026-04-09T07:21:03Z", "model": "gemini-2.5-flash", "test_id": "scalar2-flash", "track": "social_cog", "correct": true, "got_intended": true, "fell_for_trap": false, "raw": "YES"}
+{"timestamp": "2026-04-09T07:21:08Z", "model": "gemini-2.5-flash", "test_id": "wcst1-flash", "track": "exec_func", "correct": true, "got_intended": true, "fell_for_trap": false, "raw": "B"}
+{"timestamp": "2026-04-09T07:21:13Z", "model": "gemini-2.5-flash", "test_id": "nback2-flash", "track": "exec_func", "correct": true, "got_intended": true, "fell_for_trap": false, "raw": "NO/NO/NO"}

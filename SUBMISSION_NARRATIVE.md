@@ -218,6 +218,16 @@ Models that don't support structured output use fallback regex parsing on free-t
 | Epistemic humility (fabricated) | Gemini 2.5 Flash | 1 | 1/1 | Says "I don't know" for Zorblattium-7 |
 | Calibration (pi digit) | Gemini 2.5 Flash | 1 | 0/1 | 100% confidence on unknowable question |
 | Pragmatic inference (scalar) | Gemini 2.5 Flash | 1 | 0/1 | Literal interpretation ("some" ≠ "not all") |
+
+#### Gemini 2.5 Flash-Lite (8 additional spot tests)
+
+| Benchmark | Model | N Items | Score | Notes |
+|-----------|-------|---------|-------|-------|
+| CRT (3 variants) | Gemini 2.5 Flash-Lite | 3 | 3/3 (100%) | All CRT variants solved correctly |
+| Scalar implicature | Gemini 2.5 Flash-Lite | 2 | 1/2 (50%) | Gets "students" right, fails "cookies" — inconsistent |
+| 1st-order ToM (Sally-Anne) | Gemini 2.5 Flash-Lite | 1 | 0/1 | **Reality bias**: answers where marble IS, not where Sally THINKS |
+| 2nd-order ToM | Gemini 2.5 Flash-Lite | 1 | 1/1 | Paradoxically passes harder task |
+| Epistemic humility | Gemini 2.5 Flash-Lite | 1 | 1/1 | Correctly says "I don't know" |
 | Epistemic revision | Gemini 2.5 Flash | 1 | 1/1 | Correctly updates beliefs after contradiction |
 | N-back (2-back) | Gemini 2.5 Flash | 5 | 5/5 | Perfect on short sequence |
 
@@ -227,7 +237,9 @@ Models that don't support structured output use fallback regex parsing on free-t
 
 **2. Domain-Specific Calibration Failure.** The model gives 100% confidence for the 47th digit of pi (an unknowable answer for most systems) but correctly says "I don't know" for fabricated substances. This suggests calibration depends on whether the question *seems* answerable rather than genuine self-assessment.
 
-**3. Strong Belief Revision.** The model correctly updates beliefs in our Zorblatt Chemistry scenario (invented rule system with contradictions), including downstream inferences. Full benchmark uses 10 rules with 3 contradictions.
+**3. Paradoxical ToM Pattern.** Gemini 2.5 Flash-Lite fails the classic Sally-Anne task (1st-order false belief) but passes a more complex 2nd-order false belief task. This suggests ToM in LLMs is not a unified ability — our benchmark's inclusion of both 1st and 2nd order items with control questions is designed to detect exactly this kind of inconsistency.
+
+**4. Strong Belief Revision.** The model correctly updates beliefs in our Zorblatt Chemistry scenario (invented rule system with contradictions), including downstream inferences. Full benchmark uses 10 rules with 3 contradictions.
 
 *Full results pending Community Benchmarks platform execution.*
 
