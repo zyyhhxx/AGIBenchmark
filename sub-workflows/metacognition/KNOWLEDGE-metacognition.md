@@ -152,6 +152,16 @@
 - Estimated ~1.5 hrs of Ian web UI work before CB platform can run models automatically
 - Agent-actionable next: retry Kaggle API pushes (rate limit recovery), run benchmarks locally once billing enabled, update narrative with real scores
 
+## CRT Procedural Generator — Contamination Replacement (2026-04-09)
+
+- **Problem:** Classic CRT items (bat-and-ball, lily pad, widget factory) score 100% for Flash and Flash-Lite — fully contaminated in training data.
+- **Solution:** 15 generator functions with randomizable numeric seeds replace static items. `generate_crt_items(seed, n_items)` is deterministic per seed but produces different correct answers across seeds.
+- **Trap taxonomy implemented:** algebraic anchoring, rate independence, exponential growth, complement misread, percentage asymmetry, fence-post, boundary escape, self-reference, cuts-vs-pieces, interval counting, denomination irrelevance, total-time shortcut, recursive weight, meeting point, linear-vs-exponential.
+- **Contamination test (mock):** intuitive-answer model drops from ~1.0 → 0.05; easy-correct model 0.27; perfect model 0.95. Difficulty spread: 4 easy / 6 medium / 5 hard.
+- **12/15 generators** produce different `correct` answers with different seeds; 3 (meeting-point, boundary-escape) have fixed conceptual answers independent of parameters.
+- **File:** `repo/benchmarks/executive_functions/data/crt_items.py` — backward-compatible: exports `CRT_ITEMS` (seed=42) so `task_crt.py` requires no changes.
+- **Pattern:** Replace any static "classic puzzle" dataset with a parametric generator; seed=42 as default preserves reproducibility while alternate seeds defeat memorization.
+
 ## Local Model Testing — Use Bedrock via kbench SDK (2026-04-09)
 
 - **Context:** Previous research loop got stuck trying to test against GPT-4o (not supported) and Gemini (free tier exhausted, billing not enabled).
