@@ -1,7 +1,7 @@
 {
-  "id": "ianstudy/epistemic-revision-benchmark-agi-2026a",
-  "title": "Epistemic Revision Benchmark Agi 2026a",
-  "code_file": "metacog_epistemic_revision.ipynb",
+  "id": "ianstudy/agi-bench-pragmatic-inference",
+  "title": "Agi Bench Pragmatic Inference",
+  "code_file": "social_cog_pragmatic.ipynb",
   "language": "python",
   "kernel_type": "notebook",
   "is_private": false,

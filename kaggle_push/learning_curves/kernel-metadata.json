@@ -1,7 +1,7 @@
 {
-  "id": "ianstudy/epistemic-revision-benchmark-agi-2026a",
-  "title": "Epistemic Revision Benchmark Agi 2026a",
-  "code_file": "metacog_epistemic_revision.ipynb",
+  "id": "ianstudy/agi-bench-learning-curves",
+  "title": "Agi Bench Learning Curves",
+  "code_file": "learning_curves.ipynb",
   "language": "python",
   "kernel_type": "notebook",
   "is_private": false,

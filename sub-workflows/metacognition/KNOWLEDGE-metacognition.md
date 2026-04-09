@@ -1,5 +1,12 @@
 # KNOWLEDGE.md — AGI Benchmark
 
+## Kaggle API Rate Limits — Bulk Push Strategy (2026-04-09)
+- **Rate limit:** ~20 `kaggle kernels push` calls per session before 429 errors
+- **Safe batching:** groups of 3 pushes with 60s delays stays under limit for ~18 notebooks
+- **Recovery:** ~24h wait or toggle visibility via Kaggle web UI for already-uploaded private notebooks
+- **Pattern:** For large batches (>20), split across multiple sessions or days. Push directories with `kernel-metadata.json is_private: false` persist — safe to retry after rate limit resets
+- **v2 push result:** 20/26 notebooks pushed to public; 6 remain private pending manual toggle or retry: metacog_epistemic_humility, metacog_error_detection_submetrics, metacog_fok, metacog_fok_submetrics, metacog_jol, metacog_jol_submetrics
+
 ## Import Fixes — attention_vigilance, learning_curriculum, attention_instruction_update (2026-04-09)
 
 - **Problem 1:** `from data import ...` relative imports in `task_vigilance.py` and `task_curriculum.py` failed when modules were loaded from repo root; rewritten as absolute imports.

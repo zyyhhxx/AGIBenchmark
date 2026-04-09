@@ -1,7 +1,7 @@
 {
-  "id": "ianstudy/epistemic-revision-benchmark-agi-2026a",
-  "title": "Epistemic Revision Benchmark Agi 2026a",
-  "code_file": "metacog_epistemic_revision.ipynb",
+  "id": "ianstudy/agi-bench-2026-instruction-update-task",
+  "title": "Agi Bench 2026 Instruction Update Task",
+  "code_file": "attention_instruction_update.ipynb",
   "language": "python",
   "kernel_type": "notebook",
   "is_private": false,

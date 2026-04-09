@@ -1,10 +1,10 @@
 {
-  "id": "ianstudy/agi-bench-2026-error-detection-v2",
-  "title": "Agi Bench 2026 Error Detection V2",
+  "id": "ianstudy/agi-bench-2026-error-detection-metacog",
+  "title": "Agi Bench 2026 Error Detection Metacog",
   "code_file": "metacog_error_detection.ipynb",
   "language": "python",
   "kernel_type": "notebook",
-  "is_private": true,
+  "is_private": false,
   "enable_gpu": false,
   "enable_tpu": false,
   "enable_internet": true,
@@ -12,7 +12,6 @@
     "kaggle-measuring-agi"
   ],
   "keywords": [
-    "metacognition",
     "agi-benchmark"
   ],
   "dataset_sources": [],
