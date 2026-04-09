@@ -41,14 +41,32 @@ The Kaggle API is in an inconsistent state:
 Either via API retry or web UI (see above).
 
 ## Step 2: Submit to Community Benchmarks
-The CB platform has **no API** — must use the web UI.
+The CB platform requires notebooks to be created via the benchmarks page.
 
-### For each benchmark notebook:
-1. Go to **https://www.kaggle.com/benchmarks/tasks/new**
-2. Select "Import from Notebook"
-3. Search for the notebook (e.g., "agi-bench-feeling-of-knowing-fok")
-4. The `@kbench.task` decorator auto-registers the task
-5. Run the notebook — this creates the CB task
+### IMPORTANT: Task creation flow
+1. Go to **https://www.kaggle.com/benchmarks**
+2. Click **"+ Create"** (or "Create Task")
+3. This opens a NEW notebook pre-loaded with the kbench SDK
+4. **Copy-paste the content from our .ipynb file** into this new notebook
+5. The `@kbench.task` decorator auto-registers the task when the notebook runs
+6. Run the notebook — this creates the CB task
+
+**Note:** You MUST create via the benchmarks page — regular notebooks won't work as tasks.
+
+**Quota:** All hackathon participants get $50/day and $500/month in AI model quota.
+
+### Process for each benchmark:
+1. Click "+ Create" on kaggle.com/benchmarks
+2. In the new notebook, paste the code from our .ipynb file (all code cells)
+3. Set the title (e.g., "AGI Bench: Feeling-of-Knowing")
+4. Run the notebook to register the task
+5. Verify the task appears on your benchmarks page
+
+### Alternative: Import from existing notebook
+If the "Create Task" page allows importing from existing notebooks:
+1. Select "Import from Notebook"
+2. Search for the notebook slug
+3. This should auto-import the code
 
 ### Create the Benchmark Collection:
 1. Go to **https://www.kaggle.com/benchmarks/new**
