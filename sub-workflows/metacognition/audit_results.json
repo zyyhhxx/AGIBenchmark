@@ -1,0 +1,541 @@
+{
+  "metacog_calibration.ipynb": {
+    "issues": [
+      "MISSING: `!pip install kaggle-benchmarks` cell",
+      "Cell 5: %choose instead but function 'instead' not found in @kbench.task decorated functions: ['normalize', 'check_answer', 'compute_ece', 'metacog_calibration']"
+    ],
+    "task_funcs": [
+      [
+        5,
+        "normalize"
+      ],
+      [
+        5,
+        "check_answer"
+      ],
+      [
+        5,
+        "compute_ece"
+      ],
+      [
+        5,
+        "metacog_calibration"
+      ]
+    ],
+    "has_pip_install": false,
+    "has_task_decorator": true,
+    "has_run_call": true,
+    "has_choose": true,
+    "has_evaluate": false,
+    "choose_tasks": [
+      [
+        5,
+        "instead"
+      ],
+      [
+        5,
+        "metacog_calibration"
+      ],
+      [
+        6,
+        "metacog_calibration"
+      ]
+    ]
+  },
+  "metacog_canary.ipynb": {
+    "issues": [
+      "MISSING: `!pip install kaggle-benchmarks` cell",
+      "Cell 6: %choose instead but function 'instead' not found in @kbench.task decorated functions: ['_safe_log', 'metacog_canary']"
+    ],
+    "task_funcs": [
+      [
+        6,
+        "_safe_log"
+      ],
+      [
+        6,
+        "metacog_canary"
+      ]
+    ],
+    "has_pip_install": false,
+    "has_task_decorator": true,
+    "has_run_call": true,
+    "has_choose": true,
+    "has_evaluate": false,
+    "choose_tasks": [
+      [
+        6,
+        "instead"
+      ],
+      [
+        7,
+        "metacog_canary"
+      ]
+    ]
+  },
+  "metacog_control.ipynb": {
+    "issues": [
+      "MISSING: `!pip install kaggle-benchmarks` cell",
+      "Cell 5: %choose instead but function 'instead' not found in @kbench.task decorated functions: ['check_answer', 'metacog_control']"
+    ],
+    "task_funcs": [
+      [
+        5,
+        "check_answer"
+      ],
+      [
+        5,
+        "metacog_control"
+      ]
+    ],
+    "has_pip_install": false,
+    "has_task_decorator": true,
+    "has_run_call": true,
+    "has_choose": true,
+    "has_evaluate": false,
+    "choose_tasks": [
+      [
+        5,
+        "instead"
+      ],
+      [
+        6,
+        "metacog_control"
+      ]
+    ]
+  },
+  "metacog_epistemic_humility.ipynb": {
+    "issues": [
+      "MISSING: `!pip install kaggle-benchmarks` cell",
+      "Cell 5: %choose instead but function 'instead' not found in @kbench.task decorated functions: ['normalize', 'check_answerable_correct', 'assess_explanation_quality', 'metacog_epistemic_humility']"
+    ],
+    "task_funcs": [
+      [
+        5,
+        "normalize"
+      ],
+      [
+        5,
+        "check_answerable_correct"
+      ],
+      [
+        5,
+        "assess_explanation_quality"
+      ],
+      [
+        5,
+        "metacog_epistemic_humility"
+      ]
+    ],
+    "has_pip_install": false,
+    "has_task_decorator": true,
+    "has_run_call": true,
+    "has_choose": true,
+    "has_evaluate": false,
+    "choose_tasks": [
+      [
+        5,
+        "instead"
+      ],
+      [
+        6,
+        "metacog_epistemic_humility"
+      ]
+    ]
+  },
+  "metacog_epistemic_revision.ipynb": {
+    "issues": [
+      "MISSING: `!pip install kaggle-benchmarks` cell",
+      "MISSING: @kbench.task() decorator \u2014 no task functions found",
+      "Cell 5: %choose instead but function 'instead' not found in @kbench.task decorated functions: []"
+    ],
+    "task_funcs": [],
+    "has_pip_install": false,
+    "has_task_decorator": false,
+    "has_run_call": true,
+    "has_choose": true,
+    "has_evaluate": false,
+    "choose_tasks": [
+      [
+        5,
+        "instead"
+      ]
+    ]
+  },
+  "metacog_error_detection.ipynb": {
+    "issues": [
+      "MISSING: `!pip install kaggle-benchmarks` cell",
+      "Cell 6: %choose instead but function 'instead' not found in @kbench.task decorated functions: ['goodman_kruskal_gamma', 'compute_ece', 'compute_f1', 'compute_dprime', 'metacog_error_detection']"
+    ],
+    "task_funcs": [
+      [
+        6,
+        "goodman_kruskal_gamma"
+      ],
+      [
+        6,
+        "compute_ece"
+      ],
+      [
+        6,
+        "compute_f1"
+      ],
+      [
+        6,
+        "compute_dprime"
+      ],
+      [
+        6,
+        "metacog_error_detection"
+      ]
+    ],
+    "has_pip_install": false,
+    "has_task_decorator": true,
+    "has_run_call": true,
+    "has_choose": true,
+    "has_evaluate": false,
+    "choose_tasks": [
+      [
+        6,
+        "instead"
+      ],
+      [
+        7,
+        "metacog_error_detection"
+      ]
+    ]
+  },
+  "metacog_error_detection_submetrics.ipynb": {
+    "issues": [
+      "MISSING: `!pip install kaggle-benchmarks` cell",
+      "Cell 3: %choose instead but function 'instead' not found in @kbench.task decorated functions: ['goodman_kruskal_gamma', 'compute_ece', 'compute_f1', '_collect_error_detection_data', 'metacog_error_detection_f1', 'metacog_error_detection_localization', 'metacog_error_detection_ece', 'metacog_error_detection_gamma']",
+      "Cell 3: %choose instead but function 'instead' not found in @kbench.task decorated functions: ['goodman_kruskal_gamma', 'compute_ece', 'compute_f1', '_collect_error_detection_data', 'metacog_error_detection_f1', 'metacog_error_detection_localization', 'metacog_error_detection_ece', 'metacog_error_detection_gamma']",
+      "Cell 3: %choose instead but function 'instead' not found in @kbench.task decorated functions: ['goodman_kruskal_gamma', 'compute_ece', 'compute_f1', '_collect_error_detection_data', 'metacog_error_detection_f1', 'metacog_error_detection_localization', 'metacog_error_detection_ece', 'metacog_error_detection_gamma']",
+      "Cell 3: %choose instead but function 'instead' not found in @kbench.task decorated functions: ['goodman_kruskal_gamma', 'compute_ece', 'compute_f1', '_collect_error_detection_data', 'metacog_error_detection_f1', 'metacog_error_detection_localization', 'metacog_error_detection_ece', 'metacog_error_detection_gamma']"
+    ],
+    "task_funcs": [
+      [
+        3,
+        "goodman_kruskal_gamma"
+      ],
+      [
+        3,
+        "compute_ece"
+      ],
+      [
+        3,
+        "compute_f1"
+      ],
+      [
+        3,
+        "_collect_error_detection_data"
+      ],
+      [
+        3,
+        "metacog_error_detection_f1"
+      ],
+      [
+        3,
+        "metacog_error_detection_localization"
+      ],
+      [
+        3,
+        "metacog_error_detection_ece"
+      ],
+      [
+        3,
+        "metacog_error_detection_gamma"
+      ]
+    ],
+    "has_pip_install": false,
+    "has_task_decorator": true,
+    "has_run_call": true,
+    "has_choose": true,
+    "has_evaluate": false,
+    "choose_tasks": [
+      [
+        3,
+        "instead"
+      ],
+      [
+        3,
+        "instead"
+      ],
+      [
+        3,
+        "instead"
+      ],
+      [
+        3,
+        "instead"
+      ],
+      [
+        4,
+        "metacog_error_detection_f1"
+      ]
+    ]
+  },
+  "metacog_fok.ipynb": {
+    "issues": [
+      "MISSING: `!pip install kaggle-benchmarks` cell",
+      "Cell 6: %choose instead but function 'instead' not found in @kbench.task decorated functions: ['normalize', 'check_answer', 'goodman_kruskal_gamma', 'compute_ece', 'compute_auc', 'metacog_fok']"
+    ],
+    "task_funcs": [
+      [
+        6,
+        "normalize"
+      ],
+      [
+        6,
+        "check_answer"
+      ],
+      [
+        6,
+        "goodman_kruskal_gamma"
+      ],
+      [
+        6,
+        "compute_ece"
+      ],
+      [
+        6,
+        "compute_auc"
+      ],
+      [
+        6,
+        "metacog_fok"
+      ]
+    ],
+    "has_pip_install": false,
+    "has_task_decorator": true,
+    "has_run_call": true,
+    "has_choose": true,
+    "has_evaluate": false,
+    "choose_tasks": [
+      [
+        6,
+        "instead"
+      ],
+      [
+        7,
+        "metacog_fok"
+      ]
+    ]
+  },
+  "metacog_fok_submetrics.ipynb": {
+    "issues": [
+      "MISSING: `!pip install kaggle-benchmarks` cell",
+      "Cell 4: %choose instead but function 'instead' not found in @kbench.task decorated functions: ['normalize', 'check_answer', 'goodman_kruskal_gamma', 'compute_ece', 'compute_auc', '_collect_fok_data', 'metacog_fok_gamma', 'metacog_fok_ece', 'metacog_fok_auc']",
+      "Cell 4: %choose instead but function 'instead' not found in @kbench.task decorated functions: ['normalize', 'check_answer', 'goodman_kruskal_gamma', 'compute_ece', 'compute_auc', '_collect_fok_data', 'metacog_fok_gamma', 'metacog_fok_ece', 'metacog_fok_auc']",
+      "Cell 4: %choose instead but function 'instead' not found in @kbench.task decorated functions: ['normalize', 'check_answer', 'goodman_kruskal_gamma', 'compute_ece', 'compute_auc', '_collect_fok_data', 'metacog_fok_gamma', 'metacog_fok_ece', 'metacog_fok_auc']"
+    ],
+    "task_funcs": [
+      [
+        4,
+        "normalize"
+      ],
+      [
+        4,
+        "check_answer"
+      ],
+      [
+        4,
+        "goodman_kruskal_gamma"
+      ],
+      [
+        4,
+        "compute_ece"
+      ],
+      [
+        4,
+        "compute_auc"
+      ],
+      [
+        4,
+        "_collect_fok_data"
+      ],
+      [
+        4,
+        "metacog_fok_gamma"
+      ],
+      [
+        4,
+        "metacog_fok_ece"
+      ],
+      [
+        4,
+        "metacog_fok_auc"
+      ]
+    ],
+    "has_pip_install": false,
+    "has_task_decorator": true,
+    "has_run_call": true,
+    "has_choose": true,
+    "has_evaluate": false,
+    "choose_tasks": [
+      [
+        4,
+        "instead"
+      ],
+      [
+        4,
+        "instead"
+      ],
+      [
+        4,
+        "instead"
+      ],
+      [
+        5,
+        "metacog_fok_gamma"
+      ]
+    ]
+  },
+  "metacog_jol.ipynb": {
+    "issues": [
+      "MISSING: `!pip install kaggle-benchmarks` cell",
+      "Cell 6: %choose instead but function 'instead' not found in @kbench.task decorated functions: ['normalize', 'recall_match', 'goodman_kruskal_gamma', 'compute_ece', 'metacog_jol']"
+    ],
+    "task_funcs": [
+      [
+        6,
+        "normalize"
+      ],
+      [
+        6,
+        "recall_match"
+      ],
+      [
+        6,
+        "goodman_kruskal_gamma"
+      ],
+      [
+        6,
+        "compute_ece"
+      ],
+      [
+        6,
+        "metacog_jol"
+      ]
+    ],
+    "has_pip_install": false,
+    "has_task_decorator": true,
+    "has_run_call": true,
+    "has_choose": true,
+    "has_evaluate": false,
+    "choose_tasks": [
+      [
+        6,
+        "instead"
+      ],
+      [
+        7,
+        "metacog_jol"
+      ]
+    ]
+  },
+  "metacog_jol_submetrics.ipynb": {
+    "issues": [
+      "MISSING: `!pip install kaggle-benchmarks` cell",
+      "Cell 3: %choose instead but function 'instead' not found in @kbench.task decorated functions: ['normalize', 'recall_match', 'goodman_kruskal_gamma', 'compute_ece', '_collect_jol_data', 'metacog_jol_gamma', 'metacog_jol_ece', 'metacog_jol_recall']",
+      "Cell 3: %choose instead but function 'instead' not found in @kbench.task decorated functions: ['normalize', 'recall_match', 'goodman_kruskal_gamma', 'compute_ece', '_collect_jol_data', 'metacog_jol_gamma', 'metacog_jol_ece', 'metacog_jol_recall']",
+      "Cell 3: %choose instead but function 'instead' not found in @kbench.task decorated functions: ['normalize', 'recall_match', 'goodman_kruskal_gamma', 'compute_ece', '_collect_jol_data', 'metacog_jol_gamma', 'metacog_jol_ece', 'metacog_jol_recall']"
+    ],
+    "task_funcs": [
+      [
+        3,
+        "normalize"
+      ],
+      [
+        3,
+        "recall_match"
+      ],
+      [
+        3,
+        "goodman_kruskal_gamma"
+      ],
+      [
+        3,
+        "compute_ece"
+      ],
+      [
+        3,
+        "_collect_jol_data"
+      ],
+      [
+        3,
+        "metacog_jol_gamma"
+      ],
+      [
+        3,
+        "metacog_jol_ece"
+      ],
+      [
+        3,
+        "metacog_jol_recall"
+      ]
+    ],
+    "has_pip_install": false,
+    "has_task_decorator": true,
+    "has_run_call": true,
+    "has_choose": true,
+    "has_evaluate": false,
+    "choose_tasks": [
+      [
+        3,
+        "instead"
+      ],
+      [
+        3,
+        "instead"
+      ],
+      [
+        3,
+        "instead"
+      ],
+      [
+        4,
+        "metacog_jol_gamma"
+      ]
+    ]
+  },
+  "metacog_learning_monitoring.ipynb": {
+    "issues": [
+      "MISSING: `!pip install kaggle-benchmarks` cell",
+      "Cell 6: %choose instead but function 'instead' not found in @kbench.task decorated functions: ['normalize_output', 'check_output', 'goodman_kruskal_gamma', 'metacog_learning_monitoring']"
+    ],
+    "task_funcs": [
+      [
+        6,
+        "normalize_output"
+      ],
+      [
+        6,
+        "check_output"
+      ],
+      [
+        6,
+        "goodman_kruskal_gamma"
+      ],
+      [
+        6,
+        "metacog_learning_monitoring"
+      ]
+    ],
+    "has_pip_install": false,
+    "has_task_decorator": true,
+    "has_run_call": true,
+    "has_choose": true,
+    "has_evaluate": false,
+    "choose_tasks": [
+      [
+        6,
+        "instead"
+      ],
+      [
+        7,
+        "metacog_learning_monitoring"
+      ]
+    ]
+  }
+}

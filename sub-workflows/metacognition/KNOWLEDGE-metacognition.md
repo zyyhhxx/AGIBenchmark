@@ -40,6 +40,13 @@
 - Existing gap areas (hackathon focus): Learning, Metacognition, Attention, Executive Functions, Social Cognition
 - Paper acknowledges problem solving and perception already have decent benchmarks
 
+## Metacognition Notebook Suite — SDK Audit (2026-04-09)
+- 12 metacognition notebooks in `repo/notebooks/metacog_*.ipynb`: all pass kbench SDK compatibility after one fix
+- Pattern: implementation `.py` files in `repo/benchmarks/metacognition/` may be ahead of their notebook counterparts — always cross-check stubs against these sources
+- `metacog_epistemic_revision.ipynb` was a stub with no code; rebuilt from `task_epistemic_revision.py` (30K chars)
+- Audit checklist: `!pip install kaggle-benchmarks` in cell 0, `@kbench.task()` decorator, `%choose <task>` as final cell, no direct openai/anthropic imports
+- `jupyter nbconvert --to notebook` is a reliable notebook syntax validator
+
 ## Key Learnings
 - Kaggle pages require JS rendering — can't scrape directly, use search snippets instead
 - The kaggle-benchmarks SDK cookbook is the essential reference for implementation
