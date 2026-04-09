@@ -1,0 +1,18 @@
+{
+  "name": "metacognition",
+  "description": "AGI benchmark hackathon — cognitive ability benchmarks for Kaggle competition",
+  "mode": "definitive",
+  "agent_id": "agi-bench",
+  "models": {
+    "planner": "amazon-bedrock/us.anthropic.claude-opus-4-6-v1",
+    "executor": "amazon-bedrock/us.anthropic.claude-opus-4-6-v1",
+    "validator": "amazon-bedrock/us.anthropic.claude-sonnet-4-6",
+    "scribe": "amazon-bedrock/us.anthropic.claude-sonnet-4-6"
+  },
+  "thinking": {
+    "planner": true,
+    "executor": false,
+    "validator": false,
+    "scribe": false
+  }
+}

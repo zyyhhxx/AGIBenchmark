@@ -16,3 +16,5 @@
 {"timestamp": "2026-04-09T07:21:03Z", "model": "gemini-2.5-flash", "test_id": "scalar2-flash", "track": "social_cog", "correct": true, "got_intended": true, "fell_for_trap": false, "raw": "YES"}
 {"timestamp": "2026-04-09T07:21:08Z", "model": "gemini-2.5-flash", "test_id": "wcst1-flash", "track": "exec_func", "correct": true, "got_intended": true, "fell_for_trap": false, "raw": "B"}
 {"timestamp": "2026-04-09T07:21:13Z", "model": "gemini-2.5-flash", "test_id": "nback2-flash", "track": "exec_func", "correct": true, "got_intended": true, "fell_for_trap": false, "raw": "NO/NO/NO"}
+{"timestamp": "2026-04-09T07:22:02Z", "model": "gemini-2.5-flash", "test_id": "fok1-flash", "track": "metacog", "type": "calibration", "confidence": 100, "model_answer": "2", "correct_answer": "2", "correct": true, "raw": "Confidence: 100, Answer: 2"}
+{"timestamp": "2026-04-09T07:22:06Z", "model": "gemini-2.5-flash", "test_id": "cal-easy-flash", "track": "metacog", "type": "calibration", "confidence": 100, "model_answer": "paris", "correct_answer": null, "correct": true, "raw": "Answer: Paris, Confidence: 100"}

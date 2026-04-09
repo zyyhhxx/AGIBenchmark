@@ -9,3 +9,6 @@ logs/
 *.task.json
 *.run.json
 !notebooks/*.json
+
+# v2 coordinator
+coordinator_state.json
