@@ -1,7 +1,7 @@
 # 🚀 Kaggle Submission Playbook
 
-**Last updated:** 2026-04-09 04:55 UTC  
-**Status:** ✅ **26 notebooks confirmed public on Kaggle.** 4 new notebooks (CRT, canary, epistemic humility, emotional prosody) may exist as orphaned private entries. API returns 409 Conflict when creating them (title taken) but can't find them by ref. ~70+ duplicate private notebooks from retry attempts. **All upload work is blocked on Ian using the web UI.**
+**Last updated:** 2026-04-09 06:10 UTC  
+**Status:** ✅ **8/26 notebooks updated on Kaggle.** 18 remaining (rate limited). 4 new notebooks need manual web UI upload. Backoff cron running every 30 min to push remaining. **Preliminary Gemini results obtained** (CRT 3/3, literal bias in pragmatic inference, calibration overconfidence).
 
 ## Critical Issue: 4 Notebooks Stuck in API Limbo
 
