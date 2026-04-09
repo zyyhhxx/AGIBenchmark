@@ -376,4 +376,134 @@ DUAL_TASK_ITEMS = [
             "recall_prompt": "What word were you asked to remember?",
         },
     },
+    {
+        "id": "DT06",
+        "task_a": {
+            "instruction": "Solve this math problem",
+            "problem": "What is 156 divided by 12?",
+            "answer": "13",
+        },
+        "task_b": {
+            "instruction": "Remember this word",
+            "word": "labyrinthine",
+            "recall_prompt": "What word were you asked to remember?",
+        },
+    },
+    {
+        "id": "DT07",
+        "task_a": {
+            "instruction": "Count the consonants in this sentence",
+            "problem": "She sells seashells by the seashore",
+            "answer": "19",
+        },
+        "task_b": {
+            "instruction": "Remember this number sequence",
+            "word": "4-8-2-6-0-3",
+            "recall_prompt": "What number sequence were you asked to remember?",
+        },
+    },
+    {
+        "id": "DT08",
+        "task_a": {
+            "instruction": "Unscramble this word",
+            "problem": "ROGANE (fruit)",
+            "answer": "ORANGE",
+        },
+        "task_b": {
+            "instruction": "Remember this phrase",
+            "word": "frozen turquoise marble",
+            "recall_prompt": "What phrase were you asked to remember?",
+        },
+    },
+    {
+        "id": "DT09",
+        "task_a": {
+            "instruction": "What is the next number in the sequence?",
+            "problem": "1, 1, 2, 3, 5, 8, 13, ?",
+            "answer": "21",
+        },
+        "task_b": {
+            "instruction": "Remember this color",
+            "word": "chartreuse",
+            "recall_prompt": "What color were you asked to remember?",
+        },
+    },
+    {
+        "id": "DT10",
+        "task_a": {
+            "instruction": "Solve this",
+            "problem": "A train travels 240 miles in 4 hours. What is its average speed in mph?",
+            "answer": "60",
+        },
+        "task_b": {
+            "instruction": "Remember this word",
+            "word": "ephemeral",
+            "recall_prompt": "What word were you asked to remember?",
+        },
+    },
+    {
+        "id": "DT11",
+        "task_a": {
+            "instruction": "Solve this math problem",
+            "problem": "What is 17 times 6?",
+            "answer": "102",
+        },
+        "task_b": {
+            "instruction": "Remember this phrase",
+            "word": "silver clockwork penguin",
+            "recall_prompt": "What phrase were you asked to remember?",
+        },
+    },
+    {
+        "id": "DT12",
+        "task_a": {
+            "instruction": "Count the words in this sentence",
+            "problem": "The magnificent cathedral stood tall against the darkening evening sky",
+            "answer": "9",
+        },
+        "task_b": {
+            "instruction": "Remember this number sequence",
+            "word": "9-1-7-3-5-8-2",
+            "recall_prompt": "What number sequence were you asked to remember?",
+        },
+    },
+    {
+        "id": "DT13",
+        "task_a": {
+            "instruction": "Unscramble this word",
+            "problem": "NAANAB (fruit)",
+            "answer": "BANANA",
+        },
+        "task_b": {
+            "instruction": "Remember this word",
+            "word": "quintessential",
+            "recall_prompt": "What word were you asked to remember?",
+        },
+    },
+    {
+        "id": "DT14",
+        "task_a": {
+            "instruction": "What is the next number in the sequence?",
+            "problem": "3, 6, 12, 24, 48, ?",
+            "answer": "96",
+        },
+        "task_b": {
+            "instruction": "Remember this color",
+            "word": "periwinkle",
+            "recall_prompt": "What color were you asked to remember?",
+        },
+    },
+    {
+        "id": "DT15",
+        "task_a": {
+            "instruction": "Solve this",
+            "problem": "If you buy 3 items at $7.50 each and pay with $50, how much change do you get?",
+            "answer": "27.50",
+        },
+        "task_b": {
+            "instruction": "Remember this phrase",
+            "word": "obsidian butterfly garden",
+            "recall_prompt": "What phrase were you asked to remember?",
+        },
+    },
 ]

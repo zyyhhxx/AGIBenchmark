@@ -1,52 +1,57 @@
 # STATUS.md — AGI Benchmark Project
 
-**Last updated:** 2026-04-09 04:58 UTC
+**Last updated:** 2026-04-09 05:50 UTC
 
-## Project Status: 🟡 Pushing Updates to Kaggle — 29 Benchmarks across 5 Tracks
+## Project Status: 🟡 Kaggle API Rate Limited — All Code Complete
 
 ### Competition
 - **Deadline**: April 16, 2026 (7 days remaining)
 - **Tracks**: All 5 — Metacognition, Learning, Attention, Executive Functions, Social Cognition
 - **Prize pool**: $200,000
 
-### Latest Changes (2026-04-09 04:58 UTC)
-- **Fixed mock_validate.py** — all 5 scoring pipeline tests pass again (needed kbench.llm/log mocks)
-- **Discovered correct Kaggle slugs** — original push used different titles than `agi-bench-*`, fixed batch update script
-- **Batch updating 26 public notebooks** with latest hardened code (3/26 done, rate-limited, running in background)
-- **New upload script** using kagglesdk (newer API) — confirmed 409 Conflict (notebooks exist but stuck as private)
-- **Updated IAN_TODO.md and KAGGLE_SUBMISSION_PLAYBOOK.md** with clearer instructions
+### Latest Changes (2026-04-09 05:50 UTC)
+- **Expanded divided attention items** 5 → 15 (was critically low for statistical significance)
+- **Regenerated attention_divided.ipynb** with expanded data
+- **Created validate_all_benchmarks.py** — comprehensive import + function validation for all 29 tasks
+- **Updated SUBMISSION_NARRATIVE.md** — added 5 testable hypotheses for cognitive profiles
+- **Created predicted_cognitive_profiles.md** — literature-based model predictions
+- **Improved Kaggle push strategy** — backoff cron + batch push script
+- **Disabled broken push cron**, replaced with exponential backoff version
+- **All 29 benchmarks pass import validation ✓**
+- **All 5 scoring pipeline tests pass ✓**
+- **All 31 notebooks pass quality checks ✓**
 
 ### Current Blockers (all need Ian's web UI access)
-1. **4 notebooks stuck in API limbo** — CRT, Canary, Epistemic Humility, Emotional Prosody (409 Conflict: titles taken but can't be found/updated; need manual web UI upload)
-2. **~70 private ghost notebooks** need cleanup via web UI (not ~32 as previously estimated)
-3. **Community Benchmarks submission** requires web UI (no API)
-4. **Frontier model results** require CB platform to be live
+1. **18/26 notebooks need Kaggle update** — rate limited (429) since ~04:00 UTC. Backoff cron running.
+2. **4 notebooks need manual web UI upload** — CRT, Canary, Epistemic Humility, Emotional Prosody
+3. **~70 private ghost notebooks** need cleanup via web UI
+4. **Community Benchmarks submission** requires web UI
+5. **Frontier model results** require CB platform
 
 ### What's Done ✅
 - 29 benchmarks implemented, validated, and tested
-- 26 notebooks public on Kaggle (being updated with latest code)
-- Submission narrative with all required sections
-- Discussion post draft ready
+- 8/26 notebooks updated on Kaggle (18 pending rate limit)
+- Submission narrative with testable hypotheses
+- Discussion post draft ready (optimized for upvotes)
 - Psychometric validation complete (α ≥ 0.70, discriminant validity 4:1)
 - Human baselines from cognitive science literature
-- All DESIGN.md files up to date
-- Contamination canary system implemented
-- Batch update script with correct slugs running
+- Contamination canary system (10 fabricated facts)
+- Comprehensive validation scripts
 
-### Benchmark Suite: 29 Tasks + Sub-metrics
+### Benchmark Suite: 29 Tasks
 
-| Track | Tasks | Status |
-|-------|-------|--------|
-| Metacognition | 9 (+ 3 sub-metric notebooks) | ✅ All implemented |
-| Learning | 4 | ✅ All implemented |
-| Attention | 4 | ✅ All implemented |
-| Executive Functions | 5 | ✅ All implemented |
-| Social Cognition | 4 | ✅ All implemented |
+| Track | Tasks | Items | Status |
+|-------|-------|-------|--------|
+| Metacognition | 9 + 3 sub-metric | FOK:81, JOL:15, Cal:40, Err:21, Canary:10 | ✅ |
+| Learning | 4 | Procedurally generated | ✅ |
+| Attention | 4 | Stroop:30, Vig:60, Dual:15, InstUpd:5 | ✅ |
+| Executive Functions | 5 | CRT:20, ToL:15, Switch:40, WCST+NBack | ✅ |
+| Social Cognition | 4 | FB:20, Prag:25, Sarc:40, Prosody:inline | ✅ |
 
-### Kaggle Notebook Status
-- **26/30** notebooks public on Kaggle ✅ (updating with latest code)
-- **4** need manual upload via web UI (API can't create them)
-- **~70** phantom private notebooks need deletion
-- **0/29** submitted to Community Benchmarks (needs web UI)
+### Scripts Available
+- `scripts/kaggle_push_all.py` — batch push all remaining notebooks (30s delay between)
+- `scripts/kaggle_push_backoff.py` — single push with exponential backoff (for cron)
+- `scripts/validate_all_benchmarks.py` — import + function validation for all 29 tasks
+- `mock_validate.py` — scoring pipeline tests (5 tests)
 
 ### Next Steps → See `IAN_TODO.md` for actionable checklist

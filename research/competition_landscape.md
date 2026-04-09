@@ -69,3 +69,20 @@ From Kaggle discussion #684184:
 2. MUST present insights about how models differ (cognitive profiles)
 3. Writeup must be compelling and easy to upvote
 4. Need to post early for maximum upvote collection time
+
+## Update: April 9, 2026
+
+### New Competitor Intelligence
+- **CASK benchmark** (Darío Ávalos, discussion/684407): 17 models tested on "Context-Aware Sensitivity to Knowledge"
+  - Gemma 3 collapses to <5% accuracy under misleading context — scale makes it worse
+  - Claude Sonnet 4.6 is the ONLY model that improves calibration under misleading context (delta +0.059)
+  - DeepSeek-R1: clean calibration 0.168, misleading context 0.702 — a +0.534 swing
+  - This supports the "can't stop reasoning" hypothesis
+  - **Implication for us**: Our epistemic revision and metacognitive control benchmarks test similar constructs. DeepSeek-R1 may score high on epistemic revision (it reasons through contradictions) but low on calibration (can't judge when reasoning is wrong).
+  - **Our differentiator vs CASK**: We test metacognition through multiple paradigms (FOK, JOL, calibration, error detection, control, revision, humility) — CASK appears focused on one dimension.
+
+### Competition Status
+- 9 days to deadline
+- Multiple strong entries with 17+ model results
+- Our submission needs frontier model results ASAP to be competitive
+- Community upvotes important — discussion post + results needed

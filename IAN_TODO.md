@@ -1,7 +1,7 @@
 # 🚨 IAN'S ACTION ITEMS — Quick Reference
-**Last updated:** 2026-04-09 04:55 UTC | **Deadline: April 16, 2026**
+**Last updated:** 2026-04-09 05:55 UTC | **Deadline: April 16, 2026**
 
-> **Agent update (04:55 UTC):** Fixed mock_validate.py (all 5 tests pass now). Tried multiple Kaggle API approaches (old CLI, new kagglesdk) — all fail with 409 Conflict or rate limits. The 4 notebooks exist as orphaned private entries that can't be accessed via API. ~70 "[Private Notebook]" ghost entries on the account. **All Kaggle work needs web UI.**
+> **Agent update (05:55 UTC):** Kaggle API still rate limited (429). Expanded divided attention items 5→15. Created local benchmark runner — confirmed Gemini API works with kbench SDK! Free tier quota exhausted though. **Key discovery: we can run benchmarks locally against Gemini if billing is enabled.** All Kaggle web UI work still needs Ian.
 
 ## Priority 1: Upload 4 Missing Notebooks (15 min)
 The Kaggle API cannot create or find these notebooks. Upload fresh via web UI.
@@ -55,3 +55,17 @@ Community upvotes = **15% of the final score**.
 - ✅ Submission narrative, methodology, cognitive rationale written
 - ✅ Psychometric validation complete
 - ✅ All DESIGN.md files up to date
+- ✅ Local benchmark runner ready: `scripts/run_benchmark_local.py`
+- ✅ Expanded divided attention items (5→15)
+- ✅ Predicted cognitive profiles for frontier models
+
+## NEW: Get Frontier Model Results Locally
+The agent discovered that benchmarks can run locally against Gemini via the kbench SDK.
+**If billing is enabled on the Gemini API key:**
+```bash
+cd repo
+.venv/bin/python3 scripts/run_benchmark_local.py --model gemini-2.5-flash --benchmark metacog_canary
+# Or run all:
+.venv/bin/python3 scripts/run_benchmark_local.py --model gemini-2.5-pro --benchmark all --output results/gemini_2.5_pro.json
+```
+This would give us actual frontier model results for the narrative — a major differentiator vs just mock data.

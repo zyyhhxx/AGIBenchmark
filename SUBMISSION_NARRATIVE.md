@@ -190,6 +190,15 @@ Model interactions use structured output schemas (Python dataclasses) defining:
 - **Inhibition is a consistent weakness**: CRT-style problems where intuitive answers are wrong should discriminate strongly between models — human accuracy is only 30–48%, and models that "think fast" will score even lower.
 - **Cross-track failure patterns may reveal meta-cognitive architecture**: Recent community findings suggest some models (e.g., DeepSeek-R1) fail consistently across attention, metacognition, and social cognition tasks. Our suite's 5-track coverage enables detecting such "coherence gate" effects — where a single architectural limitation manifests across seemingly unrelated cognitive abilities.
 
+### 7.2.1 Testable Hypotheses
+Our benchmark suite is designed to test five specific hypotheses about frontier model cognition:
+
+1. **Calibration–reasoning tradeoff**: Models with explicit chain-of-thought (e.g., DeepSeek-R1) may show *worse* metacognitive calibration because explicit reasoning enables post-hoc rationalization of incorrect answers, inflating stated confidence.
+2. **Honesty training → epistemic humility**: Models trained with constitutional AI or RLHF honesty emphasis (e.g., Claude) should score higher on epistemic humility and lower on confabulation for unanswerable questions.
+3. **Context length → sustained attention**: Models trained on longer contexts (e.g., Gemini 1.5 Pro with 1M tokens) should show less vigilance decrement in our sustained attention benchmark.
+4. **CRT as orthogonal discriminator**: CRT performance should correlate poorly with standard benchmark scores (MMLU, HumanEval), revealing a new axis of cognitive differentiation that existing benchmarks miss entirely.
+5. **Social cognition coherence**: False belief, pragmatic inference, and sarcasm detection should form a coherent cluster — models that fail one should systematically underperform on all three, suggesting a unified social cognition module (or lack thereof).
+
 ### 7.3 Expected Discriminatory Power
 Based on our mock validation and the cognitive science literature, we predict the following patterns:
 
