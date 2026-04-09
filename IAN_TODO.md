@@ -25,8 +25,21 @@ There are ~70 private notebooks (ghost entries from API retry loops). Delete any
 - Duplicate titles or slugs
 - Keep only the ones with proper "AGI Bench:" titles and 2026 dates
 
-## Priority 3: Make Any Private Benchmarks Public (2 min)
-If any of the 26 existing benchmark notebooks show as private, toggle them to public via Settings.
+## Priority 3: Make 6 Rate-Limited Notebooks Public (2 min)
+**These notebooks were uploaded correctly but remain private due to API rate limits.**
+
+**Go to:** https://www.kaggle.com/ianstudy/code → find each notebook → Settings → Make Public
+
+| # | Kaggle Slug | Direct Link |
+|---|-------------|-------------|
+| 1 | agi-bench-2026-epistemic-humility-v2 | https://www.kaggle.com/code/ianstudy/agi-bench-2026-epistemic-humility-v2 |
+| 2 | agi-bench-2026-error-detection-submetrics-v2 | https://www.kaggle.com/code/ianstudy/agi-bench-2026-error-detection-submetrics-v2 |
+| 3 | agi-bench-2026-fok-v2 | https://www.kaggle.com/code/ianstudy/agi-bench-2026-fok-v2 |
+| 4 | agi-bench-2026-fok-submetrics-v2 | https://www.kaggle.com/code/ianstudy/agi-bench-2026-fok-submetrics-v2 |
+| 5 | agi-bench-2026-jol-v2 | https://www.kaggle.com/code/ianstudy/agi-bench-2026-jol-v2 |
+| 6 | agi-bench-2026-jol-submetrics-v2 | https://www.kaggle.com/code/ianstudy/agi-bench-2026-jol-submetrics-v2 |
+
+For each: Settings → **Make Public** → Save. That's all — content is already correct.
 
 ## Priority 4: Submit to Community Benchmarks (30 min)
 **Go to:** https://www.kaggle.com/benchmarks/tasks/new
