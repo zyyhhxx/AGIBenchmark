@@ -96,7 +96,7 @@ Tests theory of mind, pragmatic understanding, and affective inference.
 
 ### 3.1 Contamination Resistance
 - **Procedurally generated stimuli**: 34+ FOK questions use algorithmically generated arithmetic, syllogisms, and logic puzzles with random parameters — impossible to memorize from training data
-- **Canary items**: 5 fabricated "facts" (fictional constants, prizes, treaties) embedded in benchmarks. High confidence on canaries = contamination red flag
+- **Canary items**: 10 fabricated "facts" (fictional constants, prizes, treaties) embedded in benchmarks. High confidence on canaries = contamination red flag
 - **Novel rule systems**: Learning benchmarks use invented rule systems, not Wikipedia facts
 
 ### 3.2 Cognitive Science Grounding
@@ -146,7 +146,7 @@ Model interactions use structured output schemas (Python dataclasses) defining:
 - **Scoring**: Automated comparison against ground truth with multiple metrics
 
 ### Contamination Canary System
-5 fabricated "facts" (fictional physical constants, prizes, treaties) are embedded across benchmarks. High model confidence on canary items signals potential data contamination.
+10 fabricated "facts" (fictional physical constants, prizes, treaties) are embedded across benchmarks. High model confidence on canary items signals potential data contamination.
 
 ---
 

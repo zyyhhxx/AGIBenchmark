@@ -1,3 +1,6 @@
 ianstudy/feeling-of-knowing-fok-benchmark
 ianstudy/judgment-of-learning-jol-benchmark
 ianstudy/metacognitive-calibration-benchmark
+ianstudy/agi-bench-learning-curves
+ianstudy/agi-bench-near-vs-far-transfer
+ianstudy/agi-bench-proactive-retroactive-interference
