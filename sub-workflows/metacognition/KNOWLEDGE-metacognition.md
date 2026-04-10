@@ -12,6 +12,16 @@
 - **No incomplete notebooks:** 0 TODOs, stubs, or placeholder text found across all 31.
 - **Audit artifact:** `repo/NOTEBOOK_AUDIT.md`
 
+## Submission Status Cross-Reference — IAN_TODO_FINAL_v2.md (2026-04-10)
+- Competition requires 3 deliverables: CB task collection, discussion thread writeup (7 required sections), model results
+- Critical path to submission: ~87 min of manual Ian action on Kaggle web UI
+- Single largest item: registering 26–29 CB tasks (~60 min)
+- Notebook public status: ~20 still private; must be toggled before CB task registration
+- Ghost notebooks (~70) must be cleared before CB task creation to avoid confusion
+- SUBMISSION_NARRATIVE.md missing 2 sections: Dataset provenance and organizational affiliation
+- Community upvotes = 15% of score — polish discussion thread after benchmark is live
+- Checklist artifact: `repo/IAN_TODO_FINAL_v2.md`
+
 ## CB Submission Checklist Structure — IAN_TODO_FINAL.md (2026-04-09)
 - 29 total benchmarks: 9 metacognition (incl. canary + 3 sub-metric), 4 learning, 4 attention, 5 exec_func, 4 social_cog, 3 sub-metrics
 - 6 notebooks needed manual public toggle due to API 429 rate limits on push day
