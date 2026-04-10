@@ -130,12 +130,12 @@ def exec_func_crt(llm) -> float:
 
         with kbench.chats.new(f"crt_{item['id']}"):
             try:
-                response = llm(prompt, response_format=CRTResponse)
+                response = llm.prompt(prompt, schema=CRTResponse)
                 answer = response.answer
                 confidence = max(0, min(100, response.confidence))
                 reasoning = response.reasoning
             except Exception:
-                raw = llm(prompt)
+                raw = llm.prompt(prompt)
                 answer = raw.strip()
                 confidence = 50
                 reasoning = ""

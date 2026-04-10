@@ -148,10 +148,10 @@ def exec_func_nback(llm) -> float:
             
             with kbench.chats.new(f"nback_{n_level}_{i}"):
                 try:
-                    response = llm(prompt, response_format=NbackResponse)
+                    response = llm.prompt(prompt, schema=NbackResponse)
                     model_says_match = response.is_match
                 except Exception:
-                    raw = llm(prompt)
+                    raw = llm.prompt(prompt)
                     model_says_match = "match" in raw.lower() and "no match" not in raw.lower()
             
             is_target = trial["is_target"]

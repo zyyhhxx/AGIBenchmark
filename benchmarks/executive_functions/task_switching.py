@@ -98,10 +98,10 @@ def exec_func_task_switch(llm) -> float:
         
         with kbench.chats.new(f"switch_{trial['trial_num']}"):
             try:
-                response = llm(rule_instruction, response_format=TaskSwitchResponse)
+                response = llm.prompt(rule_instruction, schema=TaskSwitchResponse)
                 raw_answer = response.answer
             except Exception:
-                raw_answer = llm(rule_instruction)
+                raw_answer = llm.prompt(rule_instruction)
         
         model_answer = normalize_answer(raw_answer, trial["rule"])
         correct = (model_answer == trial["correct_answer"])

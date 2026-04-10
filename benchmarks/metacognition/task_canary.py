@@ -62,11 +62,11 @@ def metacog_canary(llm) -> float:
                 f"Rate your confidence (0-100) and explain why."
             )
             try:
-                response = llm(prompt, response_format=CanaryJudgment)
+                response = llm.prompt(prompt, schema=CanaryJudgment)
                 confidence = max(0, min(100, response.confidence))
             except Exception:
                 import re, json
-                raw = llm(prompt)
+                raw = llm.prompt(prompt)
                 try:
                     parsed = json.loads(re.search(r'\{.*\}', raw, re.DOTALL).group())
                     confidence = max(0, min(100, int(parsed.get('confidence', 50))))
@@ -81,11 +81,11 @@ def metacog_canary(llm) -> float:
                 f"If you're not sure, say so."
             )
             try:
-                response = llm(prompt, response_format=CanaryAnswer)
+                response = llm.prompt(prompt, schema=CanaryAnswer)
                 answer = response.answer
                 is_guess = response.is_guess
             except Exception:
-                raw = llm(prompt)
+                raw = llm.prompt(prompt)
                 answer = raw
                 is_guess = False
 

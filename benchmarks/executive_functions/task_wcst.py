@@ -175,14 +175,14 @@ def exec_func_wcst(llm) -> float:
             full_prompt = history + trial_prompt
 
             try:
-                response = llm(
+                response = llm.prompt(
                     full_prompt,
                     response_format=WCSTResponse
                 )
                 choice = response.choice
             except Exception:
                 import re as _re
-                raw = llm(full_prompt)
+                raw = llm.prompt(full_prompt)
                 nums = _re.findall(r'\b([1-4])\b', raw)
                 choice = int(nums[0]) if nums else 1
 

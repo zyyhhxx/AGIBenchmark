@@ -84,11 +84,11 @@ def social_cog_pragmatic(llm) -> float:
         
         with kbench.chats.new(f"pragmatic_{item['id']}"):
             try:
-                response = llm(prompt, response_format=PragmaticResponse)
+                response = llm.prompt(prompt, schema=PragmaticResponse)
                 speaker_intent = response.speaker_intent
                 is_literal = response.is_literal
             except Exception:
-                raw = llm(prompt)
+                raw = llm.prompt(prompt)
                 speaker_intent = raw
                 is_literal = False
         

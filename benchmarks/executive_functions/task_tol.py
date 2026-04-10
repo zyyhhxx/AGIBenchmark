@@ -139,11 +139,11 @@ def exec_func_tol(llm) -> float:
 
         with kbench.chats.new(f"tol_{problem['problem_id']}"):
             try:
-                response = llm(prompt, response_format=ToLResponse)
+                response = llm.prompt(prompt, schema=ToLResponse)
                 moves_raw = response.moves
                 reasoning = response.reasoning
             except Exception:
-                raw = llm(prompt)
+                raw = llm.prompt(prompt)
                 moves_raw = raw
                 reasoning = raw
 
