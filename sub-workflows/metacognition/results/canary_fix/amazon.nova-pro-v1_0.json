@@ -1,0 +1,12 @@
+{
+  "model": "amazon.nova-pro-v1:0",
+  "model_label": "Nova Pro",
+  "timestamp": "2026-04-10T22:08:35.727807+00:00",
+  "scores": {
+    "metacog_canary": {
+      "score": 0.6375,
+      "error": null,
+      "duration_s": 37.1
+    }
+  }
+}

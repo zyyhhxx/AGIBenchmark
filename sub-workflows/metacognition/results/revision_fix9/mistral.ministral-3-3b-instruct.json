@@ -1,12 +1,12 @@
 {
   "model": "mistral.ministral-3-3b-instruct",
   "model_label": "Ministral 3B",
-  "timestamp": "2026-04-10T22:37:33.689570+00:00",
+  "timestamp": "2026-04-10T23:06:51.067024+00:00",
   "scores": {
     "metacog_epistemic_revision": {
-      "score": 0.74,
+      "score": 0.75,
       "error": null,
-      "duration_s": 11.5
+      "duration_s": 25.6
     }
   }
 }

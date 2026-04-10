@@ -1,0 +1,12 @@
+{
+  "model": "anthropic.claude-opus-4-6-v1",
+  "model_label": "Claude Opus 4.6",
+  "timestamp": "2026-04-10T22:21:38.892496+00:00",
+  "scores": {
+    "metacog_epistemic_revision": {
+      "score": 0.975,
+      "error": null,
+      "duration_s": 153.9
+    }
+  }
+}

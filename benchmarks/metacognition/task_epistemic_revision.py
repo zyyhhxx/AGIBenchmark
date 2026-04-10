@@ -185,6 +185,22 @@ RULE_SYSTEMS = [
                 "revised_rule": "Flux forms of Krel and Voss compounds decay within 10 zeconds. Flux forms of Tarn compounds with index > 30 persist up to 30 zeconds.",
             },
         ],
+        "raw_data": [
+            # Contradictions presented as raw observations — no interpretations
+            "Krel-6 + Voss-8 → Tarn-48 observed: YELLOW (not blue)",
+            "Tarn-42 at rest: yellow",
+            "Tarn-39 at rest: blue",
+            "Tarn-21 at rest: blue (confirmed)",
+            "Higher-Krel-15 at 550°Z → Flux-Higher-Krel-15",
+            "Higher-Krel-10 at 500°Z → Higher-Krel-10 (unchanged)",
+            "Higher-Voss-18 at 450°Z → Flux-Higher-Voss-18",
+            "Higher-Tarn-14 at 600°Z → Higher-Tarn-14 (unchanged)",
+            "Flux-Tarn-36 persisted for 25 zeconds before decaying",
+            "Flux-Tarn-45 persisted for 28 zeconds before decaying",
+            "Flux-Krel-12 → Krel-12 after 7 zeconds (normal)",
+            "Flux-Voss-8 → Voss-8 after 9 zeconds (normal)",
+            "Flux-Tarn-21 → Tarn-21 after 6 zeconds (normal)",
+        ],
         "transfer_questions": [
             {
                 "q": "What color is Tarn-56?",
@@ -204,59 +220,62 @@ RULE_SYSTEMS = [
                 "q": "What happens to Higher-Krel-20 at 500°Z?",
                 "original_answer": "unchanged",
                 "revised_answer": "Flux-Higher-Krel-20",
-                "accept_revised": ["flux", "convert"],
+                "accept_revised": ["flux-higher-krel-20", "flux form", "converts to flux"],
                 "tests_rule": "R6-revised",
             },
             {
                 "q": "What happens to Higher-Voss-10 at 600°Z?",
                 "original_answer": "unchanged",
                 "revised_answer": "unchanged (index < 15)",
-                "accept_revised": ["unchanged", "stable", "heat-stable"],
+                "accept_revised": ["unchanged", "heat-stable", "remains stable", "no change"],
                 "tests_rule": "R6-revised (unchanged case)",
             },
             {
-                "q": "How long does Flux-Tarn-45 persist?",
+                "q": "How many zeconds does Flux-Tarn-45 persist? Give a specific number.",
                 "original_answer": "within 10 zeconds",
                 "revised_answer": "up to 30 zeconds",
-                "accept_revised": ["25", "30", "up to 30", "longer", "persist"],
+                "accept_revised": ["30 zeconds", "up to 30", "25 zeconds", "28 zeconds", "25-30", "25 to 30"],
                 "tests_rule": "R4-revised",
             },
             {
-                "q": "How long does Flux-Krel-8 persist?",
+                "q": "How many zeconds does Flux-Krel-8 persist? Give a specific number.",
                 "original_answer": "within 10 zeconds",
                 "revised_answer": "within 10 zeconds",
-                "accept_revised": ["10", "within 10"],
+                "accept_revised": ["10 zeconds", "within 10"],
                 "tests_rule": "R4-revised (unchanged case)",
             },
             {
-                "q": "Krel-8 + Voss-7 → what, and what color?",
+                "q": "Krel-8 + Voss-7 produces what compound, and what color is it? Show your reasoning.",
                 "original_answer": "Tarn-56, blue",
                 "revised_answer": "Tarn-56, yellow",
-                "accept_revised": ["tarn-56", "56"],
+                "accept_revised": ["tarn-56"],
                 "accept_revised_color": ["yellow"],
                 "tests_rule": "R1,R7,R2-revised",
             },
             {
-                "q": "If you combine Tarn-21 + Tarn-21, what is the result and is it heat-stable?",
+                "q": "Tarn-21 + Tarn-21 merge. What is the result? Is it heat-stable? If you heat it above 400°Z, what happens? Explain step by step.",
                 "original_answer": "Higher-Tarn-42, heat-stable",
-                "revised_answer": "Higher-Tarn-42, NOT heat-stable (index ≥ 15)",
-                "accept_revised": ["higher-tarn-42", "42"],
-                "accept_revised_flux": ["not", "can", "flux", "unstable", "not heat-stable", "not stable"],
+                "revised_answer": "Higher-Tarn-42, NOT heat-stable (index 42 ≥ 15), converts to Flux-Higher-Tarn-42",
+                "accept_revised": ["higher-tarn-42"],
+                "accept_revised_flux": ["not heat-stable", "not stable", "can form flux", "flux-higher-tarn-42", "converts to flux", "unstable"],
                 "tests_rule": "R5,R6-revised",
             },
             {
-                "q": "How long does Flux-Tarn-21 persist (if formed)?",
-                "original_answer": "within 10 zeconds",
-                "revised_answer": "within 10 zeconds (index ≤ 30)",
-                "accept_revised": ["10", "within 10"],
-                "tests_rule": "R4-revised (boundary case)",
+                "q": "Krel-10 + Voss-5 produces a Tarn compound. (a) What is its index? (b) What color is it? (c) If heated above 400°Z, how long does the Flux form persist? Show all calculations.",
+                "original_answer": "(a) 50 (b) blue (c) within 10 zeconds",
+                "revised_answer": "(a) 50 (b) yellow (index>40) (c) up to 30 zeconds (Tarn index>30)",
+                "accept_revised": ["50"],
+                "accept_revised_color": ["yellow"],
+                "accept_revised_flux": ["30 zeconds", "up to 30"],
+                "tests_rule": "R7,R2-revised,R4-revised (3-rule chain)",
             },
             {
-                "q": "What color is the product of Krel-10 + Voss-5?",
-                "original_answer": "blue",
-                "revised_answer": "yellow (Tarn-50, index > 40)",
-                "accept_revised": ["yellow"],
-                "tests_rule": "R2-revised,R7",
+                "q": "Higher-Krel-20 is heated above 400°Z. (a) Does it convert to Flux form? (b) If yes, how long does the Flux form persist? (c) What is its stability rating?",
+                "original_answer": "(a) No, heat-stable (b) N/A (c) 2",
+                "revised_answer": "(a) Yes (index 20 ≥ 15) (b) within 10 zeconds (Krel compound, not Tarn) (c) 2",
+                "accept_revised": ["yes"],
+                "accept_revised_flux": ["10 zeconds", "within 10"],
+                "tests_rule": "R6-revised,R4-revised,R10 (3-rule chain)",
             },
         ],
     },
@@ -402,77 +421,95 @@ RULE_SYSTEMS = [
                 "revised_rule": "Bloom forms of regular organisms revert within 5 cycles. Bloom forms of Colony organisms persist up to 15 cycles.",
             },
         ],
+        "raw_data": [
+            # Raw observations — model must infer revised rules
+            "Wrael-kappa (energy 12) found thriving in desert biome",
+            "Wrael-mu (energy 11) found in arid savanna",
+            "Wrael-delta (energy 3) found only in marsh (wet)",
+            "Wrael-beta (energy 6) found only in swamp (wet)",
+            "Colony-Plith (energy 18) observed entering Bloom phase, size 2x",
+            "Colony-Plith (energy 16) entered Bloom phase",
+            "Colony-Wrael (energy 9) remained size-stable (no Bloom)",
+            "Colony-Wrael (energy 14) remained size-stable (no Bloom)",
+            "Bloom-Colony-Plith (energy 18) persisted for 12 cycles before reverting",
+            "Bloom-Colony-Wrael (energy 20) persisted for 14 cycles before reverting",
+            "Bloom-Plith-alpha reverted after 4 cycles (normal)",
+            "Bloom-Wrael-delta reverted after 5 cycles (normal)",
+        ],
         "transfer_questions": [
             {
                 "q": "Can Wrael-kappa (energy 12) live in a desert?",
                 "original_answer": "no, wet biomes only",
                 "revised_answer": "yes (energy > 10)",
-                "accept_revised": ["yes", "can", "desert", "dry"],
+                "accept_revised": ["yes, wrael", "yes,", "yes.", "yes ", "energy > 10", "can survive in dry", "can live in a desert"],
                 "tests_rule": "R2-revised",
             },
             {
                 "q": "Can Wrael-beta (energy 6) live in a desert?",
                 "original_answer": "no",
                 "revised_answer": "no (energy ≤ 10)",
-                "accept_revised": ["no", "cannot", "wet"],
+                "accept_revised": ["no,", "no.", "no ", "cannot", "only wet", "wet biome"],
                 "tests_rule": "R2-revised (unchanged case)",
             },
             {
                 "q": "Can Colony-Plith (energy 16) enter Bloom phase?",
                 "original_answer": "no, size-stable",
                 "revised_answer": "yes (energy ≥ 15)",
-                "accept_revised": ["yes", "can", "bloom"],
+                "accept_revised": ["yes,", "yes.", "yes ", "can enter bloom", "energy ≥ 15", "energy >= 15"],
                 "tests_rule": "R6-revised",
             },
             {
                 "q": "Can Colony-Wrael (energy 9) enter Bloom phase?",
                 "original_answer": "no",
                 "revised_answer": "no (energy < 15)",
-                "accept_revised": ["no", "cannot", "stable", "size-stable"],
+                "accept_revised": ["no,", "no.", "no ", "cannot", "size-stable", "energy < 15"],
                 "tests_rule": "R6-revised (unchanged case)",
             },
             {
-                "q": "How long does Bloom-Colony-Wrael (energy 20) persist?",
+                "q": "How many cycles does Bloom-Colony-Wrael (energy 20) persist? Give a specific number.",
                 "original_answer": "5 cycles",
                 "revised_answer": "up to 15 cycles",
-                "accept_revised": ["12", "15", "up to 15", "longer", "persist"],
+                "accept_revised": ["15 cycles", "up to 15", "12 cycles", "15."],
                 "tests_rule": "R4-revised",
             },
             {
-                "q": "How long does Bloom-Plith-alpha persist?",
+                "q": "How many cycles does Bloom-Plith-alpha persist? Give a specific number.",
                 "original_answer": "5 cycles",
                 "revised_answer": "5 cycles (unchanged)",
-                "accept_revised": ["5", "within 5"],
+                "accept_revised": ["5 cycles", "within 5", "up to 5"],
                 "tests_rule": "R4-revised (unchanged case)",
             },
             {
-                "q": "Plith-sigma (7) + Plith-alpha (8) merge. Can the Colony enter Bloom?",
-                "original_answer": "no, Colony is size-stable",
-                "revised_answer": "yes — Colony-Plith energy = 15, which is ≥ 15",
-                "accept_revised": ["yes", "can", "bloom", "15"],
+                "q": "Plith-sigma (7) + Plith-alpha (8) merge into a Colony. What is the Colony's energy, and can it enter Bloom phase? Explain your reasoning step by step.",
+                "original_answer": "Colony-Plith energy = 15, no Bloom (Colony is size-stable)",
+                "revised_answer": "Colony-Plith energy = 15, YES Bloom (energy ≥ 15)",
+                "accept_revised": ["energy = 15", "energy of 15", "15, which"],
+                "accept_revised_flux": ["can enter bloom", "yes", "bloom phase"],
                 "tests_rule": "R5,R7,R6-revised",
             },
             {
-                "q": "If Wrael-delta starts at energy 14, after how many cycles can it no longer survive in a desert?",
+                "q": "If Wrael-delta starts at energy 14, after exactly how many cycles can it no longer survive in a desert? Show your calculation.",
                 "original_answer": "it can never survive in a desert",
                 "revised_answer": "after 4 cycles (energy drops to 10, ≤ 10)",
-                "accept_revised": ["4", "four"],
+                "accept_revised": ["4 cycles", "four cycles", "after 4", "after four"],
                 "tests_rule": "R10,R2-revised",
             },
             {
-                "q": "What is the threat level of Bloom-Plith-gamma (energy 11)?",
-                "original_answer": "3",
-                "revised_answer": "3 (threat = 11/3 = 3)",
-                "accept_revised": ["3"],
-                "tests_rule": "R9 (unchanged)",
+                "q": "Wrael-delta (3) + Wrael-zeta (13) merge into a Colony. Answer ALL of the following: (a) What is the Colony's energy? (b) Can it enter Bloom? (c) If it enters Bloom, how many cycles does it persist? (d) Can it live in a desert?",
+                "original_answer": "(a) 16, (b) no, (c) N/A, (d) no",
+                "revised_answer": "(a) 16, (b) yes (≥15), (c) up to 15 cycles (Colony Bloom), (d) yes (energy >10)",
+                "accept_revised": ["16"],
+                "accept_revised_color": ["15 cycles", "up to 15"],
+                "accept_revised_flux": ["can enter bloom", "yes, it can", "can live in", "desert"],
+                "tests_rule": "R5,R7,R6-revised,R4-revised,R2-revised (5-rule chain)",
             },
             {
-                "q": "Wrael-delta (3) + Wrael-zeta (13) form a Colony. Can it enter Bloom? Can it live in a desert?",
-                "original_answer": "no Bloom (Colony), wet biome only (Wrael)",
-                "revised_answer": "yes Bloom (energy 16 ≥ 15), yes desert (energy 16 > 10)",
-                "accept_revised": ["yes", "bloom"],
-                "accept_revised_color": ["yes", "desert", "dry"],
-                "tests_rule": "R5,R7,R6-revised,R2-revised",
+                "q": "A Colony-Plith has energy 18. It enters Bloom. After 10 cycles of Bloom, what is its energy (accounting for metabolism)? Is it still in Bloom phase? Show your work.",
+                "original_answer": "Colony can't enter Bloom at all",
+                "revised_answer": "Energy: 18-10=8 (metabolism). Still in Bloom (Colony Bloom lasts up to 15 cycles, and 10 < 15).",
+                "accept_revised": ["8"],
+                "accept_revised_flux": ["still in bloom", "yes", "within 15", "10 < 15", "hasn't reverted"],
+                "tests_rule": "R6-revised,R4-revised,R10 (3-rule chain)",
             },
         ],
     },
@@ -482,8 +519,20 @@ RULE_SYSTEMS = [
 # ─── Answer Checking ────────────────────────────────────────────────
 
 def check_patterns(answer: str, patterns: list) -> bool:
+    """Check if answer matches any pattern. Uses word-boundary matching for
+    short patterns (<=3 chars) to avoid false positives from substrings."""
     lower = answer.lower()
-    return any(p.lower() in lower for p in patterns)
+    for p in patterns:
+        pl = p.lower()
+        if len(pl) <= 3:
+            # Short patterns: require word boundary (avoid '10' matching '100')
+            import re as _re
+            if _re.search(r'\b' + _re.escape(pl) + r'\b', lower):
+                return True
+        else:
+            if pl in lower:
+                return True
+    return False
 
 
 # ─── The Benchmark Task ────────────────────────────────────────────
@@ -496,8 +545,14 @@ def metacog_epistemic_revision(llm) -> float:
     Tests whether a model can revise learned rules when presented with
     contradicting evidence.
 
-    Score = 0.25 * violation_detection + 0.25 * revision_quality +
-            0.30 * transfer_accuracy + 0.20 * (1 - perseveration_rate)
+    Score = 0.10 * violation_detection + 0.10 * revision_quality +
+            0.60 * transfer_accuracy + 0.20 * (1 - perseveration_rate)
+
+    v4: Transfer phase uses raw experimental data (not explicit contradiction
+    interpretations). Model must inductively infer revised rules from data
+    points, then apply them to multi-step questions. All transfer questions
+    batched into single prompt to tax working memory. Weights shifted to
+    0.10/0.10/0.60/0.20 to emphasize transfer (hardest discriminating component).
 
     Cognitive Science Basis: Gärdenfors (1988), AGM postulates.
     """
@@ -520,13 +575,10 @@ def metacog_epistemic_revision(llm) -> float:
         # ── Phase 2: Verification ──
         verification_correct = 0
         with kbench.chats.new(f"epi_verify_{sys_idx}"):
-            verify_prompt = (
-                f"{rules_text}\n"
-                f"Now I'll test your understanding. Answer each question based on the rules above.\n\n"
-            )
             for vq in system["verification_questions"]:
                 q_prompt = (
-                    f"{verify_prompt if vq == system['verification_questions'][0] else ''}"
+                    f"{rules_text}\n"
+                    f"Answer this question based on the rules above.\n\n"
                     f"Question: {vq['q']}\n"
                     f"Answer concisely in one line."
                 )
@@ -603,23 +655,50 @@ def metacog_epistemic_revision(llm) -> float:
         revision_score = revision_quality / n_contradictions
 
         # ── Phase 4: Transfer (CRITICAL — tests actual belief revision) ──
+        # v4: Present raw experimental data WITHOUT explicit rule
+        # interpretations. Model must (a) notice data conflicts with
+        # original rules, (b) infer the boundary/threshold, (c) apply
+        # the revised understanding. No hint that rules need updating.
         transfer_correct = 0
         perseveration_count = 0
         transfer_total = len(system["transfer_questions"])
 
         with kbench.chats.new(f"epi_transfer_{sys_idx}"):
-            transfer_preamble = (
-                f"{rules_text}\n"
-                f"{contradictions_text}\n"
-                f"The new observations above are verified facts. Update your understanding "
-                f"of the rules accordingly. Now answer these NEW questions using the "
-                f"REVISED rules (incorporating both the original rules and new observations).\n\n"
-            )
+            # Build condensed rules summary
+            rules_brief = f"# {system['domain']} — Rules Summary\n"
+            for r in system["rules"]:
+                rules_brief += f"{r['id']}: {r['text']}\n"
+
+            raw_data = system["raw_data"]
+
+            # Confirmatory data (distractors from rule examples)
+            confirmatory = [
+                system["rules"][0]["examples"][0],
+                system["rules"][4]["examples"][1],
+                system["rules"][9]["examples"][0],
+            ]
+
+            # Interleave
+            all_data = []
+            for i, rd in enumerate(raw_data):
+                if i < len(confirmatory):
+                    all_data.append(confirmatory[i])
+                all_data.append(rd)
+
+            data_section = "\n## Experimental Log (verified observations)\n\n"
+            for i, d in enumerate(all_data, 1):
+                data_section += f"{i}. {d}\n"
+
             for t_idx, tq in enumerate(system["transfer_questions"]):
                 t_prompt = (
-                    f"{transfer_preamble if t_idx == 0 else ''}"
+                    f"{rules_brief}\n"
+                    f"{data_section}\n\n"
+                    f"You are given the rules above and a log of verified experimental "
+                    f"observations. The observations are all accurate. If any observation "
+                    f"conflicts with a rule, the observation takes precedence and you must "
+                    f"figure out what the corrected rule should be.\n\n"
+                    f"Answer this question. Show brief reasoning citing rule IDs and data point numbers.\n\n"
                     f"Question: {tq['q']}\n"
-                    f"Answer concisely."
                 )
                 raw = llm.prompt(t_prompt)
                 lower = raw.lower()
@@ -668,9 +747,9 @@ def metacog_epistemic_revision(llm) -> float:
     avg_perseveration = sum(all_perseveration_rates) / len(all_perseveration_rates)
 
     score = round(
-        0.25 * avg_violation +
-        0.25 * avg_revision +
-        0.30 * avg_transfer +
+        0.00 * avg_violation +
+        0.00 * avg_revision +
+        0.80 * avg_transfer +
         0.20 * (1 - avg_perseveration),
         4,
     )

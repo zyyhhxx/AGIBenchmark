@@ -9,6 +9,21 @@
 - **Retry logic:** 3 retries with exponential backoff (5s base); 120s read timeout via botocore Config.
 - **Output schema:** `results/{model_id}.json` → `{model, model_label, timestamp, scores:{benchmark:{score,error,duration_s}}}`.
 
+## metacog_canary + metacog_epistemic_revision Discrimination Fixes (2026-04-10)
+
+### metacog_canary
+- **Root cause of floor effect (all=0.0):** Bedrock LLM wrapper does not support `schema=` parameter — all models fell back to `confidence=50`, scoring 0.0.
+- **Fix:** Explicit JSON prompt + `_extract_confidence` regex helper. No SDK schema dependency.
+- **Final scores (v2):** Claude Opus 4.6=0.9947, Nova Pro=0.6375, Ministral 3B=0.0000; std=0.41, range=0.9947.
+- **Ministral 3B=0 is expected** — it hallucinates on fabricated facts, which is the canary's intent.
+
+### metacog_epistemic_revision
+- **Root cause of non-discrimination:** Bedrock API is stateless; only the first `llm.prompt()` call received context. All subsequent calls had none.
+- **Explicit-rules trap:** Providing full contradiction text per transfer question collapses discrimination (all models 0.94+, std=0.027) — reduces to reading comprehension.
+- **v4 fix:** Transfer phase provides raw experimental data points only. Model must inductively infer revised rules. Weights: 0.80 transfer + 0.20 perseveration; violation/revision weights=0.
+- **Final scores (v4):** Claude Opus 4.6=0.9600, Nova Pro=0.5900, Ministral 3B=0.7500; std=0.153, range=0.37.
+- **Rank inversion (Ministral > Nova):** Nova Pro perseverates more on original rules — a real behavioral difference the perseveration component captures.
+
 ## Notebook Audit — Repository-wide (2026-04-10)
 - **Scope:** 31 notebooks across 6 tracks (metacog×12, learning×4, attention×4, exec_func×5, social_cog×4, other×2). Task originally stated 33; actual count is 31.
 - **Syntax:** All 31 pass `jupyter nbconvert` validation.

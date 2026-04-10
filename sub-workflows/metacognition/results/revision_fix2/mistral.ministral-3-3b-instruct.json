@@ -1,0 +1,12 @@
+{
+  "model": "mistral.ministral-3-3b-instruct",
+  "model_label": "Ministral 3B",
+  "timestamp": "2026-04-10T22:14:30.075874+00:00",
+  "scores": {
+    "metacog_epistemic_revision": {
+      "score": null,
+      "error": "An error occurred (ValidationException) when calling the Converse operation: The model returned the following errors: {\"error\":{\"code\":\"validation_error\",\"message\":\"Internal server error\",\"param\":null",
+      "duration_s": 0.9
+    }
+  }
+}
