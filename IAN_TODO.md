@@ -82,3 +82,24 @@ cd repo
 .venv/bin/python3 scripts/run_benchmark_local.py --model gemini-2.5-pro --benchmark all --output results/gemini_2.5_pro.json
 ```
 This would give us actual frontier model results for the narrative — a major differentiator vs just mock data.
+
+## Priority 6: Fix Non-Discriminatory Benchmarks (Post-Upload)
+**Based on 10-model cross-validation results (discriminatory_analysis.md):**
+
+These 5 benchmarks showed zero or near-zero variance across models and need redesign:
+
+| Benchmark | Problem | Fix |
+|-----------|---------|-----|
+| `attention_vigilance` | All 10 models score 1.0 | Add harder distractors, longer sequences, adversarial items |
+| `metacog_canary` | All 10 models score 0.0 | Verify scoring logic isn't broken; simplify if intentionally hard |
+| `metacog_epistemic_revision` | Std=0.013, all ~0.81 | Add harder contradictions, deeper inference chains |
+| `attention_divided` | Std=0.013, all ~0.92 | Increase dual-task complexity |
+| `exec_func_crt` | Std=0.028, all ~0.36 | Generate harder procedural variants |
+
+**After fixing:** re-upload fixed notebooks to Kaggle and re-register as CB tasks.
+
+## Priority 7: Fill Missing Model Results
+Many benchmarks errored on specific models (marked "—" in score matrix). Re-run with:
+- Longer timeouts for reasoning models (DeepSeek-R1, Opus)
+- Better error handling for structured output failures
+- Priority: fill gaps for Opus 4.6 (most ERRORs) and GPT-OSS 120B

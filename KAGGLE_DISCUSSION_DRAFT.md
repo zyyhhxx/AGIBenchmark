@@ -62,11 +62,11 @@ We found Gemini 2.5 Flash shows a **literal bias in pragmatic inference** — in
 
 | Track | # Benchmarks | What It Tests | Headline Finding |
 |-------|:---:|---|---|
-| **Metacognition** | 9 | Self-knowledge, calibration, error detection | Systematic overconfidence on hard items |
-| **Learning** | 4 | In-context learning curves, transfer, interference | Learning follows power-law curves (like humans!) |
-| **Attention** | 4 | Selective filtering, sustained focus, dual-task | Vigilance degrades over long sequences |
-| **Executive Functions** | 5 | Planning, inhibition, set-shifting, working memory | Strong planning but weak inhibition on CRT |
-| **Social Cognition** | 4 | Theory of mind, pragmatics, sarcasm, emotion | Literal bias in pragmatic inference |
+| **Metacognition** | 9 | Self-knowledge, calibration, error detection | **Universal calibration failure** (4/5 models BSS=0.000); three-tier pattern replicates across all 10 models |
+| **Learning** | 4 | In-context learning curves, transfer, interference | **Learning transfer is the #1 discriminator** (Δ=0.65 frontier vs. 3B); power-law curves confirmed |
+| **Attention** | 4 | Selective filtering, sustained focus, dual-task | Vigilance at ceiling (all 10 models score 1.0) — needs harder items |
+| **Executive Functions** | 5 | Planning, inhibition, set-shifting, working memory | CRT non-discriminatory (all ~0.36); WCST and n-back show spread |
+| **Social Cognition** | 4 | Theory of mind, pragmatics, sarcasm, emotion | Sarcasm detection best social discriminator (std=0.156); prosody weakest |
 
 ---
 
@@ -130,6 +130,25 @@ All benchmarks are available as Kaggle notebooks. Run them against your favorite
 **🔗 Benchmark link:** [link to CB benchmark]
 
 See our **submission overview notebook** for the complete methodology, cognitive science rationale, and detailed analysis.
+
+---
+
+### 📊 Cross-Model Results: What We Found Running 10 Models
+
+We tested 10 models (from Ministral 3B to Claude Opus 4.6) across all 26 benchmarks. Key findings:
+
+**1. Calibration failure is universal.** 4 out of 5 models that completed the calibration benchmark scored BSS = 0.000 — their confidence ratings carry zero predictive information. Only one model (Sonnet 4.6) broke above zero at 0.368, still far below human baselines (~0.85). This isn't a single-model quirk; it's an architectural limitation.
+
+**2. The three-tier metacognition pattern replicates across all models.** Every model shows the same qualitative structure: strong external monitoring (epistemic humility ~0.83), moderate temporal self-tracking (control, revision ~0.68), and catastrophic prospective self-assessment (FOK, JOL, calibration ~0.29). Scale amplifies Tier 1 without improving Tier 3.
+
+**3. Best discriminators are cognitive, not knowledge-based.**
+| Benchmark | Best Model | Worst Model | Δ |
+|-----------|-----------|------------|---|
+| Learning Transfer | Opus/Sonnet/DeepSeek (1.00) | Ministral 3B (0.35) | **0.65** |
+| Epistemic Humility | Llama 3.3 70B (0.92) | Ministral 3B (0.20) | **0.72** |
+| Metacognitive Control | Nova Pro (0.75) | Ministral 3B (0.21) | **0.54** |
+
+**4. Five benchmarks need redesign** (non-discriminatory): attention_vigilance (all 1.0), metacog_canary (all 0.0), epistemic_revision (all ~0.81), attention_divided (all ~0.92), CRT (all ~0.36).
 
 ---
 

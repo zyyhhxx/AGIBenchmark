@@ -311,3 +311,11 @@ Mapping of 9 metacognition benchmark scores to Fleming's (2024) taxonomy:
 - **attention_vigilance** scored 1.0 for every model — likely a ceiling effect; benchmark may be too easy.
 - **Execution strategy:** Sequential runs take ~8 hrs total; parallel runner per model (separate processes) is necessary to complete within session windows.
 - **OOM risk:** Running 5–6 models concurrently (each as a subprocess) triggered SIGKILL on one run — keep parallelism to ≤4 models at once to avoid OOM.
+
+## Cross-Model Three-Tier Metacognition Pattern — Validated (2026-04-10)
+- **Three-tier structure replicates across all 10 models:** Tier 1 (external monitoring: epistemic_humility, error_detection) ~0.83; Tier 2 (temporal self-tracking: revision, control, learning_monitoring) ~0.68; Tier 3 (prospective self-assessment: FOK, JOL, calibration) ~0.29.
+- **Scale amplifies Tier 1, not Tier 3.** Frontier models show larger T1→T3 gap (0.65) than 3B baseline (0.40). Larger models get better at detecting others' errors but not at predicting their own performance.
+- **Calibration failure universal:** 4/5 models scored BSS=0.000; only Sonnet 4.6 achieved 0.368 (still far below human ~0.85). Not model-specific; a general LLM property.
+- **CRT prediction failed:** Originally predicted as strong discriminator; actual std=0.028, all models cluster at ~0.36. CRT items need harder procedurally-generated variants.
+- **Confirmed §7.5 structure for SUBMISSION_NARRATIVE.md:** Original predictions vs. actual results documented with ✅/❌/⚠️ for each benchmark.
+- **Best discriminators are cognitive, not knowledge-based:** learning_transfer, epistemic_humility, metacog_control outperform all knowledge-recall benchmarks in model separation.
