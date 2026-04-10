@@ -53,6 +53,15 @@
 - `task_calibration.py` had inline `CALIBRATION_QUESTIONS` bypassing the data module — fixed to import from data module
 - Pattern: always check task files for inline data that may shadow the data module
 
+## Psychometric Validation — Claude Sonnet 4 on Bedrock (2026-04-10)
+
+- **Three-tier profile:** External monitoring (canary, epistemic_humility, error_detection) mean=0.919; self-monitoring (epistemic_revision, learning_monitoring, control) mean=0.735; prospective self-assessment (jol, fok, calibration) mean=0.305. Clean 3:1 dissociation validates construct coverage.
+- **Discriminant validity:** Between-tier / within-tier variance ratio = 3.9:1 (criterion >2:1). PASS.
+- **Calibration floor:** BSS=0.000 — Claude's expressed confidence is uncorrelated with accuracy. This is a genuine capability gap, not a scoring artifact. Cross-model replication recommended.
+- **Ceiling benchmarks:** canary (0.951) and epistemic_humility (0.926) are expected for frontier models; these are diagnostic baselines, not difficulty targets.
+- **Inter-item α:** FOK α=0.949, Error Detection α=0.793/0.703 — computed from mock simulations (item-level Bedrock data unavailable); validates structural reliability of item sets.
+- **Pattern:** Single-model Bedrock runs yield aggregate scores only; true Cronbach α on real responses requires item-level logging. Add item-level output to future Bedrock runner.
+
 ## Difficulty Calibration Findings — Spot Test Analysis (2026-04-09)
 
 ### Ceiling Effect Benchmarks (score ≥90%, models trivially pass)
