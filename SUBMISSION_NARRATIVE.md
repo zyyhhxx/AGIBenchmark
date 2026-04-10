@@ -233,7 +233,7 @@ However, our suite differs from CASK in several fundamental ways:
 
 Each benchmark has a standalone Kaggle notebook:
 
-**Metacognition (11):** `metacog_fok` · `metacog_jol` · `metacog_calibration` · `metacog_error_detection` · `metacog_learning_monitoring` · `metacog_control` · `metacog_epistemic_revision` · `metacog_epistemic_humility` · `metacog_fok_submetrics` · `metacog_jol_submetrics` · `metacog_error_detection_submetrics`
+**Metacognition (8):** `metacog_fok` · `metacog_jol` · `metacog_calibration` · `metacog_error_detection` · `metacog_learning_monitoring` · `metacog_control` · `metacog_epistemic_revision` · `metacog_epistemic_humility`
 
 **Learning (4):** `learning_curves` · `learning_interference` · `learning_transfer` · `learning_curriculum`
 

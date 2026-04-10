@@ -12,7 +12,6 @@ TRACKS = {
         "task_fok", "task_jol", "task_calibration", "task_error_detection",
         "task_learning_monitoring", "task_canary", "task_metacognitive_control",
         "task_epistemic_revision", "task_epistemic_humility",
-        "task_fok_submetrics", "task_jol_submetrics", "task_error_detection_submetrics",
     ],
     "learning": [
         "task_learning_curves", "task_transfer", "task_interference", "task_curriculum",

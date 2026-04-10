@@ -1,10 +1,10 @@
 # Notebook Audit Report
 
-**Total notebooks:** 30 (1 deleted: submission_overview)
+**Total notebooks:** 27 (4 deleted: submission_overview, metacog_error_detection_submetrics, metacog_fok_submetrics, metacog_jol_submetrics)
 
 ## Notebooks by Track
 
-- **metacog**: 12 — metacog_calibration, metacog_canary, metacog_control, metacog_epistemic_humility, metacog_epistemic_revision, metacog_error_detection, metacog_error_detection_submetrics, metacog_fok, metacog_fok_submetrics, metacog_jol, metacog_jol_submetrics, metacog_learning_monitoring
+- **metacog**: 9 — metacog_calibration, metacog_canary, metacog_control, metacog_epistemic_humility, metacog_epistemic_revision, metacog_error_detection, metacog_fok, metacog_jol, metacog_learning_monitoring
 - **learning**: 4 — learning_curriculum, learning_curves, learning_interference, learning_transfer
 - **attention**: 4 — attention_divided, attention_instruction_update, attention_selective, attention_vigilance
 - **exec_func**: 5 — exec_func_crt, exec_func_nback, exec_func_task_switch, exec_func_tol, exec_func_wcst
@@ -34,11 +34,8 @@
 | metacog_epistemic_humility | ✅ | ✅ | ✅ | ✅ | ✅ | 0 | 0 | ✅ PASS |
 | metacog_epistemic_revision | ✅ | ✅ | ✅ | ✅ | ✅ | 0 | 0 | ✅ PASS |
 | metacog_error_detection | ✅ | ✅ | ✅ | ✅ | ✅ | 0 | 0 | ✅ PASS |
-| metacog_error_detection_submetrics | ✅ | ✅ | ✅ | ✅ | ✅ | 0 | 0 | ✅ PASS |
 | metacog_fok | ✅ | ✅ | ✅ | ✅ | ✅ | 0 | 0 | ✅ PASS |
-| metacog_fok_submetrics | ✅ | ✅ | ✅ | ✅ | ✅ | 0 | 0 | ✅ PASS |
 | metacog_jol | ✅ | ✅ | ✅ | ✅ | ✅ | 0 | 0 | ✅ PASS |
-| metacog_jol_submetrics | ✅ | ✅ | ✅ | ✅ | ✅ | 0 | 0 | ✅ PASS |
 | metacog_learning_monitoring | ✅ | ✅ | ✅ | ✅ | ✅ | 0 | 0 | ✅ PASS |
 | results_dashboard | ✅ | ✅ | N/A | N/A | ✅ | 0 | 0 | ✅ PASS (utility) |
 | social_cog_emotional_prosody | ✅ | ✅ | ✅ | ✅ | ✅ | 0 | 0 | ✅ PASS |
@@ -57,11 +54,8 @@
 - metacog_epistemic_humility: `+normalize`
 - metacog_epistemic_revision: `accuracy`
 - metacog_error_detection: `accuracy`
-- metacog_error_detection_submetrics: `accuracy+normalize`
 - metacog_fok: `BSS/Brier+normalize`
-- metacog_fok_submetrics: `accuracy+normalize`
 - metacog_jol: `BSS/Brier+normalize`
-- metacog_jol_submetrics: `accuracy+normalize`
 - metacog_learning_monitoring: `accuracy+normalize`
 
 ### learning (✅ Consistent)

@@ -15,7 +15,7 @@ repo/
 │   ├── attention/                 # 4 tasks + data/attention_stimuli.py
 │   ├── executive_functions/       # 5 tasks + data/{crt_items,nback_stimuli,task_switch_stimuli,tol_problems,wcst_stimuli}.py
 │   ├── learning/                  # 4 tasks + data/rule_systems.py
-│   ├── metacognition/             # 12 tasks (incl. 3 submetric files) + data/{calibration_questions,canary_items,error_detection_chains,fok_questions,jol_stimuli,procedural_calibration,procedural_error_chains,procedural_fok,rule_systems}.py
+│   ├── metacognition/             # 9 tasks + data/{calibration_questions,canary_items,error_detection_chains,fok_questions,jol_stimuli,procedural_calibration,procedural_error_chains,procedural_fok,rule_systems}.py
 │   ├── social_cognition/          # 4 tasks + data/{false_belief_scenarios,pragmatic_items,sarcasm_items}.py
 │   ├── *.py                       # Analysis utilities (correlation, reliability, sensitivity, shortcut, mock_validation, stratified_calibration)
 │   ├── COGNITIVE_RATIONALE.md, HUMAN_BASELINES.md, METHODOLOGY.md, README.md
@@ -98,14 +98,11 @@ Some files (`task_canary.py`, `task_crt.py`, `task_nback.py`, `task_wcst.py`, `t
 **Recommendation:** Move to `benchmarks/shared/data/rule_systems.py` or have one import from the other.
 
 ### Critical: Duplicated Gamma Correlation Function
-The Goodman-Kruskal gamma correlation function (concordant/discordant pair counting) is independently implemented in **7 files**:
+The Goodman-Kruskal gamma correlation function (concordant/discordant pair counting) is independently implemented in **4 files**:
 1. `task_error_detection.py`
-2. `task_error_detection_submetrics.py`
-3. `task_fok.py`
-4. `task_fok_submetrics.py`
-5. `task_jol.py`
-6. `task_jol_submetrics.py`
-7. `task_learning_monitoring.py`
+2. `task_fok.py`
+3. `task_jol.py`
+4. `task_learning_monitoring.py`
 
 Minor implementation differences exist (e.g., `if denom > 0` vs `if denom`; `/ denom` without guard in `task_jol.py`). The `task_jol.py` version has a **potential division-by-zero bug** — no guard on `denom == 0`.
 

@@ -27,7 +27,7 @@ For each notebook:
 | 16 | `social_cog_pragmatic.ipynb` | AGI Bench: Pragmatic Inference |
 | 17 | `social_cog_sarcasm.ipynb` | AGI Bench: Sarcasm Detection |
 | 18 | `social_cog_emotional_prosody.ipynb` | AGI Bench: Emotional Prosody |
-| 19 | `metacog_fok_submetrics.ipynb` | AGI Bench: FOK Sub-metrics |
-| 20 | `metacog_jol_submetrics.ipynb` | AGI Bench: JOL Sub-metrics |
-| 21 | `metacog_error_detection_submetrics.ipynb` | AGI Bench: Error Detection Sub-metrics |
+| ~~19~~ | ~~`metacog_fok_submetrics.ipynb`~~ | DELETED (sub-metrics consolidated) |
+| ~~20~~ | ~~`metacog_jol_submetrics.ipynb`~~ | DELETED (sub-metrics consolidated) |
+| ~~21~~ | ~~`metacog_error_detection_submetrics.ipynb`~~ | DELETED (sub-metrics consolidated) |
 | 22 | ~~`submission_overview.ipynb`~~ | Merged into `SUBMISSION_NARRATIVE.md` |

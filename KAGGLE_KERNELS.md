@@ -8,12 +8,12 @@ All 27 notebooks + submission overview uploaded to Kaggle. Notebooks fixed with 
 | Benchmark | Kaggle URL | Status |
 |-----------|-----------|--------|
 | FOK | https://www.kaggle.com/code/ianstudy/agi-bench-feeling-of-knowing-fok | Public, v2 |
-| FOK Sub-metrics | https://www.kaggle.com/code/ianstudy/agi-bench-fok-sub-metrics | Public, v2 |
+| ~~FOK Sub-metrics~~ | https://www.kaggle.com/code/ianstudy/agi-bench-fok-sub-metrics | DELETED locally (keep on Kaggle) |
 | JOL | https://www.kaggle.com/code/ianstudy/agi-bench-judgment-of-learning-jol | Public, v2 |
-| JOL Sub-metrics | https://www.kaggle.com/code/ianstudy/agi-bench-jol-sub-metrics | Public, v2 |
+| ~~JOL Sub-metrics~~ | https://www.kaggle.com/code/ianstudy/agi-bench-jol-sub-metrics | DELETED locally (keep on Kaggle) |
 | Calibration | https://www.kaggle.com/code/ianstudy/agi-bench-calibration | Public, v2 |
 | Error Detection | https://www.kaggle.com/code/ianstudy/agi-bench-2026-error-detection-metacog | Private, v2 pending |
-| Error Det Sub-metrics | https://www.kaggle.com/code/ianstudy/agi-bench-metacog-error-det-submetrics | Private, v2 |
+| ~~Error Det Sub-metrics~~ | https://www.kaggle.com/code/ianstudy/agi-bench-metacog-error-det-submetrics | DELETED locally (keep on Kaggle) |
 | Learning Monitoring | https://www.kaggle.com/code/ianstudy/agi-bench-2026-learning-monitoring-task | Private, v2 pending |
 | Metacognitive Control | https://www.kaggle.com/code/ianstudy/metacog-ctrl-test-apr08 | Private, v2 pending |
 | Epistemic Revision | https://www.kaggle.com/code/ianstudy/epistemic-revision-benchmark-agi-2026a | Private, v2 pending |

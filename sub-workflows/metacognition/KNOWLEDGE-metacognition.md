@@ -1,5 +1,12 @@
 # KNOWLEDGE.md — AGI Benchmark
 
+## Sub-metrics Cleanup (2026-04-10)
+- Deleted 3 sub-metrics notebooks (metacog_error_detection_submetrics, metacog_fok_submetrics, metacog_jol_submetrics) and their corresponding benchmark modules.
+- These were experimental breakdowns of parent tasks; their removal reduces metacognition notebook count from 11→8.
+- Kaggle-side slugs for these notebooks still exist but are NOT to be deleted (Ian must keep them on Kaggle per IAN_TODO_FINAL_v2.md).
+- Operational scripts referencing these slugs were intentionally left unchanged — they fail gracefully since local notebooks no longer exist.
+- After deletion: no broken imports remain in benchmarks/metacognition/.
+
 ## Bedrock Multi-Model Runner — run_benchmark_bedrock.py (2026-04-10)
 - **MODEL_CATALOG:** 10 models; some require `us.` cross-region inference prefix (DeepSeek R1, Nova Pro, Llama 4 Maverick, Claude Haiku 4.5).
 - **Benchmark count:** 26 live benchmarks across 5 tracks (GOALS.md says 29 — discrepancy; 26 is actual codebase count).

@@ -41,14 +41,16 @@ The competition requires **three deliverables**:
 **Why:** Notebooks must be public before they can be registered as CB tasks.
 
 Per `KAGGLE_KERNELS.md`, these are still **private**:
-- Error Detection, Error Det Sub-metrics
+- Error Detection
 - Learning Monitoring, Metacognitive Control, Epistemic Revision
 - Vigilance, Divided Attention, Instruction Update
 - Task Switching, N-Back, WCST, Tower of London
 - False Belief ToM, Sarcasm Detection
 
 Plus the 6 rate-limited ones from `IAN_TODO_FINAL.md`:
-- Epistemic Humility, FOK, FOK Sub-metrics, JOL, JOL Sub-metrics, Error Detection Sub-metrics
+- Epistemic Humility, FOK, JOL
+
+> **Note:** 3 sub-metrics notebooks (FOK Sub-metrics, JOL Sub-metrics, Error Det Sub-metrics) have been **deleted locally** from the repo. Do NOT delete them from Kaggle — they may still be referenced by existing CB tasks. Just leave them as-is on Kaggle.
 
 **Action:** Go to each notebook → Settings → Make Public → Save.
 ~20 notebooks need toggling. Budget 10 min.
