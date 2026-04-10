@@ -1,6 +1,6 @@
 # Notebook Audit Report
 
-**Total notebooks:** 31
+**Total notebooks:** 30 (1 deleted: submission_overview)
 
 ## Notebooks by Track
 
@@ -40,12 +40,12 @@
 | metacog_jol | ✅ | ✅ | ✅ | ✅ | ✅ | 0 | 0 | ✅ PASS |
 | metacog_jol_submetrics | ✅ | ✅ | ✅ | ✅ | ✅ | 0 | 0 | ✅ PASS |
 | metacog_learning_monitoring | ✅ | ✅ | ✅ | ✅ | ✅ | 0 | 0 | ✅ PASS |
-| results_dashboard | ✅ | ✅ | ❌ | ❌ | ✅ | 0 | 0 | ❌ FAIL |
+| results_dashboard | ✅ | ✅ | N/A | N/A | ✅ | 0 | 0 | ✅ PASS (utility) |
 | social_cog_emotional_prosody | ✅ | ✅ | ✅ | ✅ | ✅ | 0 | 0 | ✅ PASS |
 | social_cog_false_belief | ✅ | ✅ | ✅ | ✅ | ✅ | 0 | 0 | ✅ PASS |
 | social_cog_pragmatic | ✅ | ✅ | ✅ | ✅ | ✅ | 0 | 0 | ✅ PASS |
 | social_cog_sarcasm | ✅ | ✅ | ✅ | ✅ | ✅ | 0 | 0 | ✅ PASS |
-| submission_overview | ✅ | ✅ | ❌ | ❌ | ✅ | 0 | 0 | ❌ FAIL |
+| ~~submission_overview~~ | — | — | — | — | — | — | — | 🗑️ DELETED (merged into SUBMISSION_NARRATIVE.md) |
 
 ## Scoring Consistency
 
@@ -95,16 +95,22 @@
 
 ## Issues to Fix
 
-### results_dashboard
+### results_dashboard — ✅ RESOLVED (not applicable)
 
-- Add `@kbench.task()` decorator
-- Add `%choose` or `.run()` to final cell
+- `results_dashboard` is a **utility/visualization notebook**, not a benchmark task. `@kbench.task` and `%choose` requirements do not apply. Reclassified as PASS (utility).
 
-### submission_overview
+### submission_overview — ✅ RESOLVED (deleted)
 
-- Add `@kbench.task()` decorator
-- Add `%choose` or `.run()` to final cell
+- Notebook was deleted; unique content merged into `SUBMISSION_NARRATIVE.md` (see KNOWLEDGE entry "submission_overview.ipynb Consolidation").
 
+## Scoring Consistency Notes
+
+### metacog — Intentionally heterogeneous
+
+- **BSS/Brier scoring** (calibration, canary, fok, jol): These measure confidence-outcome alignment where Brier Skill Score is the correct metric.
+- **Accuracy scoring** (control, epistemic_revision, error_detection, epistemic_humility, learning_monitoring): These measure discrete correct/incorrect judgments where accuracy is appropriate.
+- **Submetric notebooks** use accuracy+normalize as they report component scores from composite benchmarks.
+- This is by design — see KNOWLEDGE entry "BSS Scoring Fix".
 
 ---
-*Audit generated automatically. 4 total issues across 31 notebooks.*
+*Audit generated automatically. Updated 2026-04-10: 0 remaining issues across 30 notebooks (1 deleted).*
