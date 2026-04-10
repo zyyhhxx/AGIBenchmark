@@ -279,6 +279,15 @@ Mapping of 9 metacognition benchmark scores to Fleming's (2024) taxonomy:
 - After merge, the notebook was deleted. References in 15 files (UPLOAD_INSTRUCTIONS.md, NOTEBOOK_AUDIT.md, GOALS.md, 9 Python scripts) were updated to remove or comment out the submission_overview entry.
 - **Pattern:** When a notebook exists solely as a summary/overview of other content, merge unique elements into the canonical markdown document and delete the notebook. Prefer `SUBMISSION_NARRATIVE.md` as the single source of truth for narrative content.
 
+## Discriminatory Power Analysis — 26 Benchmarks (2026-04-10)
+- **Top discriminators** (Claude Opus 4.6 − Ministral 3B Δ): learning_transfer (+0.65), metacog_epistemic_humility (+0.60), metacog_control (+0.48), exec_func_wcst (+0.14), social_cog_emotional_prosody (+0.12).
+- **Ceiling effect (all models >0.9):** attention_vigilance (all=1.0), social_cog_false_belief (mean=0.964).
+- **Floor effect (all models <0.1):** metacog_canary (all=0.0 — confirms canary design working but uninformative for ranking).
+- **Low variance (std<0.05), non-discriminatory:** attention_divided (0.013), attention_instruction_update (0.017), attention_selective (0.035), exec_func_crt (0.028), metacog_epistemic_revision (0.013).
+- **Zero discrimination (Δ=0.00):** exec_func_task_switch, exec_func_crt, attention_vigilance, metacog_canary — these four add no model-separation signal.
+- **Caveat:** Many benchmarks have only 2–4 valid scores (rest are ERRORs from timeouts); discrimination estimates are uncertain for sparse rows.
+- **Action:** Expand item count / difficulty range for all flagged benchmarks; ceiling/floor cases require redesign not just parameter tweaks.
+
 ## Bedrock Score Matrix — Full 10-Model Run (2026-04-10)
 - **All 10 models** successfully produced 26-entry result files; score_matrix.csv generated (26×10).
 - **Error-heavy models:** GPT-OSS-120B (15/26 errors), Qwen3 Next 80B (16/26 errors), GLM 4.7 (12/26 errors), Claude Opus 4.6 (13/26), DeepSeek-R1 (11/26) — mostly timeouts on complex benchmarks.
