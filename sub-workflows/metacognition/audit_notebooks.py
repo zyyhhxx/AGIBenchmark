@@ -1,135 +1,215 @@
 #!/usr/bin/env python3
-"""Comprehensive kbench SDK audit for metacognition notebooks."""
-import json, os, re
+"""Audit all notebooks in repo/notebooks/ for structure, syntax, and consistency."""
+import json, os, subprocess, sys, re
+from pathlib import Path
+from collections import defaultdict
 
-NOTEBOOKS_DIR = "/home/ubuntu/.openclaw/workspace-agi-bench/repo/notebooks"
-notebooks = sorted([f for f in os.listdir(NOTEBOOKS_DIR) if f.startswith("metacog_") and f.endswith(".ipynb")])
+NB_DIR = Path("/home/ubuntu/.openclaw/workspace-agi-bench/repo/notebooks")
+OUT = Path("/home/ubuntu/.openclaw/workspace-agi-bench/repo/NOTEBOOK_AUDIT.md")
 
-results = {}
+notebooks = sorted(NB_DIR.glob("*.ipynb"))
+print(f"Found {len(notebooks)} notebooks\n")
 
-for nb_name in notebooks:
-    path = os.path.join(NOTEBOOKS_DIR, nb_name)
-    with open(path) as f:
-        nb = json.load(f)
-    cells = nb.get("cells", [])
-    issues = []
-    info = {}
+# Step 1: Categorize
+tracks = {"metacog": [], "learning": [], "attention": [], "exec_func": [], "social_cog": [], "other": []}
+for nb in notebooks:
+    name = nb.stem
+    matched = False
+    for prefix in ["metacog", "learning", "attention", "exec_func", "social_cog"]:
+        if name.startswith(prefix):
+            tracks[prefix].append(nb)
+            matched = True
+            break
+    if not matched:
+        tracks["other"].append(nb)
+
+print("=== Step 1: Categorization ===")
+for t, nbs in tracks.items():
+    print(f"  {t}: {len(nbs)} — {[n.stem for n in nbs]}")
+
+# Step 2: JSON/syntax validation via nbconvert
+print("\n=== Step 2: Syntax Validation (nbconvert) ===")
+syntax_results = {}
+for nb in notebooks:
+    r = subprocess.run(
+        ["/home/ubuntu/.openclaw/workspace-agi-bench/repo/.venv/bin/jupyter", "nbconvert", "--to", "notebook", "--stdout", str(nb)],
+        capture_output=True, timeout=30
+    )
+    ok = r.returncode == 0
+    syntax_results[nb.stem] = ok
+    if not ok:
+        print(f"  FAIL: {nb.stem} — {r.stderr.decode()[:200]}")
+    else:
+        print(f"  OK: {nb.stem}")
+
+# Step 3 & 5: Content checks
+print("\n=== Step 3: Content Checks ===")
+content_results = {}  # name -> {pip_install, kbench_task, choose_cell, no_direct_imports, todos, stubs}
+
+for nb in notebooks:
+    with open(nb) as f:
+        data = json.load(f)
+    cells = data.get("cells", [])
+    sources = [(i, "".join(c.get("source", []))) for i, c in enumerate(cells)]
     
-    # Check pip install (cell 0 typically)
-    all_code = ""
-    for c in cells:
-        if c["cell_type"] == "code":
-            all_code += "".join(c["source"]) + "\n"
+    info = {
+        "pip_install_cell0": False,
+        "has_kbench_task": False,
+        "has_choose": False,
+        "no_direct_imports": True,
+        "todos": [],
+        "stubs": [],
+        "num_cells": len(cells),
+        "scoring_pattern": None,
+    }
     
-    info["pip_install"] = "kaggle-benchmarks" in all_code or "kaggle_benchmarks" in all_code
-    if not info["pip_install"]:
-        issues.append("MISSING: pip install kaggle-benchmarks")
+    # Check cell 0 for pip install
+    if sources:
+        cell0 = sources[0][1]
+        if "pip install" in cell0 and "kaggle-benchmarks" in cell0:
+            info["pip_install_cell0"] = True
     
-    # Check for @kbench.task decorator (not in comments)
-    code_cells = [(i, "".join(c["source"])) for i, c in enumerate(cells) if c["cell_type"] == "code"]
+    all_source = "\n".join(s for _, s in sources)
     
-    task_funcs = []
-    for ci, src in code_cells:
-        # Only count non-commented decorators
-        for line_idx, line in enumerate(src.split("\n")):
-            stripped = line.strip()
-            if stripped.startswith("@") and "kbench.task" in stripped:
-                # Find next def
-                remaining = src.split("\n")[line_idx:]
-                for rl in remaining[1:]:
-                    m = re.match(r'\s*def\s+(\w+)\s*\(', rl)
-                    if m:
-                        task_funcs.append((ci, m.group(1)))
-                        break
+    # kbench.task decorator
+    if "@kbench.task" in all_source:
+        info["has_kbench_task"] = True
     
-    info["task_funcs"] = task_funcs
-    if not task_funcs:
-        issues.append("CRITICAL: No @kbench.task() decorated functions found")
+    # %choose in final code cell
+    code_cells = [(i, s) for i, s in sources if cells[i].get("cell_type") == "code" and s.strip()]
+    if code_cells:
+        last_code = code_cells[-1][1]
+        if "%choose" in last_code or ".run(" in last_code:
+            info["has_choose"] = True
     
-    # Check for %choose (not commented out)
-    choose_cells = []
-    for ci, src in code_cells:
+    # Direct imports
+    for line in all_source.split("\n"):
+        stripped = line.strip()
+        if re.match(r"^(import|from)\s+(openai|anthropic)\b", stripped):
+            info["no_direct_imports"] = False
+    
+    # TODOs and stubs
+    for i, src in sources:
         for line in src.split("\n"):
-            stripped = line.strip()
-            if stripped.startswith("%choose"):
-                m = re.match(r'%choose\s+(\w+)', stripped)
-                if m:
-                    choose_cells.append((ci, m.group(1)))
+            if "TODO" in line or "FIXME" in line:
+                info["todos"].append((i, line.strip()))
+            if "placeholder" in line.lower() or "stub" in line.lower():
+                info["stubs"].append((i, line.strip()))
     
-    info["choose"] = choose_cells
-    if not choose_cells:
-        issues.append("MISSING: %choose cell (uncommented)")
-    elif len(choose_cells) > 1:
-        issues.append(f"WARNING: Multiple %choose cells: {choose_cells}")
+    # Scoring pattern detection (for step 4)
+    if "brier" in all_source.lower() or "bss" in all_source.lower() or "brier_skill" in all_source.lower():
+        info["scoring_pattern"] = "BSS/Brier"
+    elif "accuracy" in all_source.lower():
+        info["scoring_pattern"] = "accuracy"
+    if "normalize" in all_source.lower():
+        info["scoring_pattern"] = (info["scoring_pattern"] or "") + "+normalize"
     
-    # Validate %choose references existing task
-    if choose_cells and task_funcs:
-        defined = [n for _, n in task_funcs]
-        for ci, cname in choose_cells:
-            if cname not in defined:
-                issues.append(f"ERROR: %choose {cname} not in defined tasks: {defined}")
+    content_results[nb.stem] = info
     
-    # Check %choose is in final code cell
-    if choose_cells:
-        last_code_idx = code_cells[-1][0] if code_cells else -1
-        last_choose_idx = choose_cells[-1][0]
-        if last_choose_idx != last_code_idx:
-            issues.append(f"WARNING: %choose in cell {last_choose_idx}, but last code cell is {last_code_idx}")
+    issues = []
+    if not info["pip_install_cell0"]: issues.append("no pip install cell0")
+    if not info["has_kbench_task"]: issues.append("no @kbench.task")
+    if not info["has_choose"]: issues.append("no %choose/.run()")
+    if not info["no_direct_imports"]: issues.append("direct openai/anthropic import")
+    if info["todos"]: issues.append(f"{len(info['todos'])} TODOs")
+    if info["stubs"]: issues.append(f"{len(info['stubs'])} stubs")
     
-    # Check .run() — not needed if using %choose
-    has_run = any(".run()" in src for _, src in code_cells if not src.strip().startswith("#"))
-    info["has_run"] = has_run
-    
-    # Check for .evaluate() pattern
-    has_evaluate = any(".evaluate(" in src for _, src in code_cells)
-    info["has_evaluate"] = has_evaluate
-    
-    # Check return types in task functions
-    info["has_llm_calls"] = any("llm.prompt(" in src or "llm.chat(" in src for _, src in code_cells)
-    
-    # Check for anti-patterns
-    for ci, src in code_cells:
-        if "import openai" in src and not src.strip().startswith("#"):
-            issues.append(f"Cell {ci}: Uses openai directly instead of kbench LLM API")
-        if "import anthropic" in src and not src.strip().startswith("#"):
-            issues.append(f"Cell {ci}: Uses anthropic directly instead of kbench LLM API")
-    
-    if not issues:
-        issues.append("PASS — no issues found")
-    
-    results[nb_name] = {"issues": issues, "info": info, "num_cells": len(cells), "num_code_cells": len(code_cells)}
+    status = "PASS" if not issues else f"ISSUES: {', '.join(issues)}"
+    print(f"  {nb.stem}: {status}")
 
-# Print report
-print(f"kbench SDK Compatibility Audit — {len(notebooks)} metacognition notebooks")
-print("=" * 70)
+# Step 4: Scoring consistency
+print("\n=== Step 4: Scoring Consistency ===")
+for track, nbs in tracks.items():
+    if not nbs or track == "other":
+        continue
+    patterns = {nb.stem: content_results[nb.stem]["scoring_pattern"] for nb in nbs}
+    unique = set(patterns.values())
+    print(f"  {track}: scoring patterns = {dict(patterns)}")
+    if len(unique) > 1:
+        print(f"    ⚠ INCONSISTENT scoring across {track} track")
 
-critical = 0
-warnings = 0
-clean = 0
+# Step 5: Incomplete notebooks summary
+print("\n=== Step 5: Incomplete Notebooks ===")
+incomplete = []
+for name, info in content_results.items():
+    if info["todos"] or info["stubs"] or info["num_cells"] < 3:
+        incomplete.append((name, info))
+        print(f"  {name}: {len(info['todos'])} TODOs, {len(info['stubs'])} stubs, {info['num_cells']} cells")
+        for idx, line in info["todos"][:3]:
+            print(f"    cell {idx}: {line[:100]}")
 
-for nb_name, r in results.items():
-    real_issues = [i for i in r["issues"] if not i.startswith("PASS")]
-    crits = [i for i in real_issues if i.startswith("CRITICAL") or i.startswith("MISSING") or i.startswith("ERROR")]
-    warns = [i for i in real_issues if i.startswith("WARNING")]
-    
-    status = "✅" if not real_issues else "⚠️" if not crits else "❌"
-    if not real_issues:
-        clean += 1
-    
-    print(f"\n{status} {nb_name}")
-    print(f"   Cells: {r['num_cells']} total, {r['num_code_cells']} code")
-    print(f"   Tasks: {[n for _, n in r['info']['task_funcs']]}")
-    print(f"   Choose: {r['info']['choose']}")
-    for iss in r["issues"]:
-        print(f"   → {iss}")
-    
-    critical += len(crits)
-    warnings += len(warns)
+if not incomplete:
+    print("  None found.")
 
-print(f"\n{'=' * 70}")
-print(f"Summary: {clean}/{len(notebooks)} clean, {critical} critical issues, {warnings} warnings")
-print(f"\nNotebooks needing fixes:")
-for nb_name, r in results.items():
-    crits = [i for i in r["issues"] if i.startswith("CRITICAL") or i.startswith("MISSING") or i.startswith("ERROR")]
-    if crits:
-        print(f"  - {nb_name}: {'; '.join(crits)}")
+# Step 6: Write NOTEBOOK_AUDIT.md
+print("\n=== Step 6: Writing NOTEBOOK_AUDIT.md ===")
+lines = ["# Notebook Audit Report\n"]
+lines.append(f"**Total notebooks:** {len(notebooks)}\n")
+lines.append("## Notebooks by Track\n")
+for t, nbs in tracks.items():
+    lines.append(f"- **{t}**: {len(nbs)} — {', '.join(n.stem for n in nbs)}")
+lines.append("")
+
+# Pass/fail table
+lines.append("## Per-Notebook Results\n")
+lines.append("| Notebook | Syntax | pip install | @kbench.task | %choose/.run() | No direct imports | TODOs | Stubs | Overall |")
+lines.append("|----------|--------|-------------|--------------|----------------|-------------------|-------|-------|---------|")
+for nb in notebooks:
+    name = nb.stem
+    s = syntax_results[name]
+    c = content_results[name]
+    issues = []
+    if not s: issues.append("syntax")
+    if not c["pip_install_cell0"]: issues.append("pip")
+    if not c["has_kbench_task"]: issues.append("decorator")
+    if not c["has_choose"]: issues.append("choose")
+    if not c["no_direct_imports"]: issues.append("imports")
+    if c["todos"]: issues.append("todos")
+    if c["stubs"]: issues.append("stubs")
+    overall = "✅ PASS" if not issues else "❌ FAIL"
+    lines.append(f"| {name} | {'✅' if s else '❌'} | {'✅' if c['pip_install_cell0'] else '❌'} | {'✅' if c['has_kbench_task'] else '❌'} | {'✅' if c['has_choose'] else '❌'} | {'✅' if c['no_direct_imports'] else '❌'} | {len(c['todos'])} | {len(c['stubs'])} | {overall} |")
+
+# Scoring consistency
+lines.append("\n## Scoring Consistency\n")
+for track, nbs in tracks.items():
+    if not nbs or track == "other":
+        continue
+    patterns = {nb.stem: content_results[nb.stem]["scoring_pattern"] for nb in nbs}
+    unique = set(patterns.values())
+    consistency = "✅ Consistent" if len(unique) <= 1 else "⚠️ Inconsistent"
+    lines.append(f"### {track} ({consistency})\n")
+    for name, pat in patterns.items():
+        lines.append(f"- {name}: `{pat}`")
+    lines.append("")
+
+# Issues to fix
+lines.append("## Issues to Fix\n")
+issue_count = 0
+for nb in notebooks:
+    name = nb.stem
+    s = syntax_results[name]
+    c = content_results[name]
+    nb_issues = []
+    if not s: nb_issues.append("Fix JSON syntax error")
+    if not c["pip_install_cell0"]: nb_issues.append("Add `!pip install kaggle-benchmarks` to cell 0")
+    if not c["has_kbench_task"]: nb_issues.append("Add `@kbench.task()` decorator")
+    if not c["has_choose"]: nb_issues.append("Add `%choose` or `.run()` to final cell")
+    if not c["no_direct_imports"]: nb_issues.append("Remove direct openai/anthropic imports")
+    for idx, line in c["todos"]:
+        nb_issues.append(f"TODO in cell {idx}: {line[:80]}")
+    for idx, line in c["stubs"]:
+        nb_issues.append(f"Stub in cell {idx}: {line[:80]}")
+    if nb_issues:
+        issue_count += len(nb_issues)
+        lines.append(f"### {name}\n")
+        for issue in nb_issues:
+            lines.append(f"- {issue}")
+        lines.append("")
+
+if issue_count == 0:
+    lines.append("No issues found! All notebooks pass.\n")
+
+lines.append(f"\n---\n*Audit generated automatically. {issue_count} total issues across {len(notebooks)} notebooks.*\n")
+
+OUT.write_text("\n".join(lines))
+print(f"Written to {OUT} ({issue_count} total issues)")

@@ -1,5 +1,17 @@
 # KNOWLEDGE.md — AGI Benchmark
 
+## Notebook Audit — Repository-wide (2026-04-10)
+- **Scope:** 31 notebooks across 6 tracks (metacog×12, learning×4, attention×4, exec_func×5, social_cog×4, other×2). Task originally stated 33; actual count is 31.
+- **Syntax:** All 31 pass `jupyter nbconvert` validation.
+- **kbench structure:** 29/31 pass @kbench.task + .run() checks. The 2 failures (results_dashboard, submission_overview) are utility notebooks, not benchmarks — expected.
+- **Scoring consistency issues (4 total):**
+  - metacog: calibration/FoK/JoL use BSS/Brier; others use accuracy — intentionally different (confidence vs accuracy tasks)
+  - attention: attention_vigilance missing `normalize` — likely needs fix
+  - exec_func: exec_func_tol has no detected scoring pattern — likely needs fix
+  - social_cog: social_cog_sarcasm uses `normalize`; other 3 don't — may need harmonization
+- **No incomplete notebooks:** 0 TODOs, stubs, or placeholder text found across all 31.
+- **Audit artifact:** `repo/NOTEBOOK_AUDIT.md`
+
 ## CB Submission Checklist Structure — IAN_TODO_FINAL.md (2026-04-09)
 - 29 total benchmarks: 9 metacognition (incl. canary + 3 sub-metric), 4 learning, 4 attention, 5 exec_func, 4 social_cog, 3 sub-metrics
 - 6 notebooks needed manual public toggle due to API 429 rate limits on push day
