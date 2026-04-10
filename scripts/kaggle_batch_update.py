@@ -40,7 +40,7 @@ EXISTING_NOTEBOOKS = {
     "social_cog_false_belief.ipynb": "ianstudy/agi-bench-false-belief-tom",
     "social_cog_pragmatic.ipynb": "ianstudy/agi-bench-pragmatic-inference",
     "social_cog_sarcasm.ipynb": "ianstudy/sarcasm-detection-benchmark-agi-2026a",
-    "submission_overview.ipynb": "ianstudy/submission-overview-agi-bench-apr08",
+#    "submission_overview.ipynb": "ianstudy/submission-overview-agi-bench-apr08",  # REMOVED: merged into SUBMISSION_NARRATIVE.md
 }
 
 # New notebooks that need uploading (not yet on Kaggle)

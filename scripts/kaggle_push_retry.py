@@ -32,7 +32,7 @@ DESIRED = {
     "ianstudy/agi-bench-pragmatic-inference": ("notebooks/social_cog_pragmatic.ipynb", "AGI Bench: Pragmatic Inference"),
     "ianstudy/sarcasm-detection-benchmark-agi-2026a": ("notebooks/social_cog_sarcasm.ipynb", "AGI Bench: Sarcasm Detection"),
     "ianstudy/agi-bench-2026-emotional-prosody": ("notebooks/social_cog_emotional_prosody.ipynb", "AGI Bench: Emotional Prosody"),
-    "ianstudy/submission-overview-agi-bench-apr08": ("notebooks/submission_overview.ipynb", "AGI Bench: Submission Overview"),
+#    "ianstudy/submission-overview-agi-bench-apr08": ("notebooks/submission_overview.ipynb", "AGI Bench: Submission Overview"),  # REMOVED: merged into SUBMISSION_NARRATIVE.md
 }
 
 pushed = set()

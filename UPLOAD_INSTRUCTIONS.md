@@ -30,4 +30,4 @@ For each notebook:
 | 19 | `metacog_fok_submetrics.ipynb` | AGI Bench: FOK Sub-metrics |
 | 20 | `metacog_jol_submetrics.ipynb` | AGI Bench: JOL Sub-metrics |
 | 21 | `metacog_error_detection_submetrics.ipynb` | AGI Bench: Error Detection Sub-metrics |
-| 22 | `submission_overview.ipynb` | AGI Bench: Submission Overview |
+| 22 | ~~`submission_overview.ipynb`~~ | Merged into `SUBMISSION_NARRATIVE.md` |

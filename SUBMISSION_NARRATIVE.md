@@ -229,6 +229,22 @@ However, our suite differs from CASK in several fundamental ways:
 - Fallback parsing for models that don't support structured output
 - All benchmarks validated via mock testing (4 strategies × 26 core benchmarks)
 
+### Individual Benchmark Notebooks (30 total)
+
+Each benchmark has a standalone Kaggle notebook:
+
+**Metacognition (11):** `metacog_fok` · `metacog_jol` · `metacog_calibration` · `metacog_error_detection` · `metacog_learning_monitoring` · `metacog_control` · `metacog_epistemic_revision` · `metacog_epistemic_humility` · `metacog_fok_submetrics` · `metacog_jol_submetrics` · `metacog_error_detection_submetrics`
+
+**Learning (4):** `learning_curves` · `learning_interference` · `learning_transfer` · `learning_curriculum`
+
+**Attention (4):** `attention_selective` · `attention_vigilance` · `attention_divided` · `attention_instruction_update`
+
+**Executive Functions (5):** `exec_func_wcst` · `exec_func_tol` · `exec_func_nback` · `exec_func_task_switch` · `exec_func_crt`
+
+**Social Cognition (4):** `social_cog_false_belief` · `social_cog_pragmatic` · `social_cog_sarcasm` · `social_cog_emotional_prosody`
+
+**Cross-Cutting (2):** `metacog_canary` (contamination detection) · `submission_narrative` (this document)
+
 ---
 
 ## 7. Results, Insights, and Conclusions

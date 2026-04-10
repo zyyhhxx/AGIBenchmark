@@ -28,12 +28,8 @@ For each of the 33 notebooks in `repo/notebooks/`:
 - Check consistency of scoring methodology across benchmarks in the same track
 - Flag any notebooks that seem incomplete or have placeholder content
 
-### 3. Convert submission_overview.ipynb to Markdown
-`submission_overview.ipynb` is not runnable code — it's narrative content. Convert it:
-- Extract its content into a well-formatted markdown document
-- Integrate it into either the discussion draft (`KAGGLE_DISCUSSION_DRAFT.md`) or the final submission writeup (`SUBMISSION_NARRATIVE.md`) — choose whichever is more appropriate
-- Delete the notebook after integration
-- Update any references to it in other files
+### 3. ~~Convert submission_overview.ipynb to Markdown~~ ✅ DONE
+`submission_overview.ipynb` has been merged into `SUBMISSION_NARRATIVE.md` and deleted.
 
 ### 4. Submission Requirements Checklist
 Thoroughly review the competition requirements at: https://www.kaggle.com/competitions/kaggle-measuring-agi/overview

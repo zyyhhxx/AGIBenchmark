@@ -45,7 +45,7 @@ NOTEBOOKS = {
     "metacog_fok_submetrics.ipynb": "AGI Bench: FOK Sub-metrics",
     "metacog_jol_submetrics.ipynb": "AGI Bench: JOL Sub-metrics",
     "metacog_error_detection_submetrics.ipynb": "AGI Bench: Error Detection Sub-metrics",
-    "submission_overview.ipynb": "AGI Bench: Submission Overview",
+#    "submission_overview.ipynb": "AGI Bench: Submission Overview",  # REMOVED: merged into SUBMISSION_NARRATIVE.md
 }
 
 def main():

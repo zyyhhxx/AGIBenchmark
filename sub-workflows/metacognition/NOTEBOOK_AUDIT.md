@@ -9,7 +9,7 @@
 - **attention**: 4 — attention_divided, attention_instruction_update, attention_selective, attention_vigilance
 - **exec_func**: 5 — exec_func_crt, exec_func_nback, exec_func_task_switch, exec_func_tol, exec_func_wcst
 - **social_cog**: 4 — social_cog_emotional_prosody, social_cog_false_belief, social_cog_pragmatic, social_cog_sarcasm
-- **other**: 2 — results_dashboard, submission_overview
+- **other**: 1 — results_dashboard (submission_overview merged into SUBMISSION_NARRATIVE.md)
 
 ## Per-Notebook Results
 

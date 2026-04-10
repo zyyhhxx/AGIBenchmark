@@ -19,7 +19,7 @@ KERNELS = {
     "ianstudy/agi-bench-false-belief-tom": "notebooks/social_cog_false_belief.ipynb",
     "ianstudy/agi-bench-pragmatic-inference": "notebooks/social_cog_pragmatic.ipynb",
     "ianstudy/sarcasm-detection-benchmark-agi-2026a": "notebooks/social_cog_sarcasm.ipynb",
-    "ianstudy/submission-overview-agi-bench-apr08": "notebooks/submission_overview.ipynb",
+#    "ianstudy/submission-overview-agi-bench-apr08": "notebooks/submission_overview.ipynb",  # REMOVED: merged into SUBMISSION_NARRATIVE.md
 }
 
 REPO = "/home/ubuntu/.openclaw/workspace-agi-bench/repo"

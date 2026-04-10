@@ -30,7 +30,7 @@ NOTEBOOKS = {
     "ianstudy/fok-sub-metrics-benchmark": "notebooks/metacog_fok_submetrics.ipynb",
     "ianstudy/jol-sub-metrics-benchmark": "notebooks/metacog_jol_submetrics.ipynb",
     "ianstudy/agi-bench-metacog-error-det-submetrics": "notebooks/metacog_error_detection_submetrics.ipynb",
-    "ianstudy/submission-overview-agi-bench-apr08": "notebooks/submission_overview.ipynb",
+#    "ianstudy/submission-overview-agi-bench-apr08": "notebooks/submission_overview.ipynb",  # REMOVED: merged into SUBMISSION_NARRATIVE.md
 }
 
 # Load state

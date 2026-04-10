@@ -252,3 +252,10 @@ Mapping of 9 metacognition benchmark scores to Fleming's (2024) taxonomy:
   - Do NOT attempt to obtain or use Google API keys — Gemini is unavailable locally; use Bedrock instead
   - Do NOT attempt GPT-4o or any OpenAI model — not available on CB platform or locally
 - **Pattern:** Any task that requires "run a benchmark against a real model" should default to Bedrock Claude Sonnet locally. Results can be reported as "Claude Sonnet 4.6 (Amazon Bedrock)" in the narrative.
+
+## submission_overview.ipynb Consolidation (2026-04-10)
+
+- The notebook was entirely redundant with `SUBMISSION_NARRATIVE.md` except for one element: an explicit inventory of 30 individual benchmark notebooks organized by track.
+- That inventory was merged into Section 6 (Technical Implementation) of `SUBMISSION_NARRATIVE.md` as the subsection "Individual Benchmark Notebooks (30 total)".
+- After merge, the notebook was deleted. References in 15 files (UPLOAD_INSTRUCTIONS.md, NOTEBOOK_AUDIT.md, GOALS.md, 9 Python scripts) were updated to remove or comment out the submission_overview entry.
+- **Pattern:** When a notebook exists solely as a summary/overview of other content, merge unique elements into the canonical markdown document and delete the notebook. Prefer `SUBMISSION_NARRATIVE.md` as the single source of truth for narrative content.
