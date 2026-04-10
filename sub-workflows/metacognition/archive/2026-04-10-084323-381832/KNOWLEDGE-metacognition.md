@@ -1,14 +1,5 @@
 # KNOWLEDGE.md — AGI Benchmark
 
-## Bedrock Multi-Model Runner — run_benchmark_bedrock.py (2026-04-10)
-- **MODEL_CATALOG:** 10 models; some require `us.` cross-region inference prefix (DeepSeek R1, Nova Pro, Llama 4 Maverick, Claude Haiku 4.5).
-- **Benchmark count:** 26 live benchmarks across 5 tracks (GOALS.md says 29 — discrepancy; 26 is actual codebase count).
-- **Claude Haiku 4.5** (`us.anthropic.claude-3-5-haiku-20241022-v1:0`) is inaccessible on the current AWS account (legacy/access denied). Use Ministral 3B for cheap smoke tests instead.
-- **Ministral 3B** (`mistral.ministral-3-3b-instruct`) scored 0.0 on `metacog_canary` (expected — model hallucinates on unknowable fake facts). Confirms end-to-end pipeline works.
-- **Rate limiting:** 2s between benchmarks, 5s between models prevents Bedrock throttling.
-- **Retry logic:** 3 retries with exponential backoff (5s base); 120s read timeout via botocore Config.
-- **Output schema:** `results/{model_id}.json` → `{model, model_label, timestamp, scores:{benchmark:{score,error,duration_s}}}`.
-
 ## Notebook Audit — Repository-wide (2026-04-10)
 - **Scope:** 31 notebooks across 6 tracks (metacog×12, learning×4, attention×4, exec_func×5, social_cog×4, other×2). Task originally stated 33; actual count is 31.
 - **Syntax:** All 31 pass `jupyter nbconvert` validation.

@@ -1,0 +1,12 @@
+{
+  "model": "anthropic.claude-haiku-4-5-20251001-v1:0",
+  "model_label": "Claude Haiku 4.5",
+  "timestamp": "2026-04-10T08:49:45.363853+00:00",
+  "scores": {
+    "metacog_canary": {
+      "score": null,
+      "error": "An error occurred (ResourceNotFoundException) when calling the Converse operation: Access denied. This Model is marked by provider as Legacy and you have not been actively using the model in the last ",
+      "duration_s": 0.2
+    }
+  }
+}
