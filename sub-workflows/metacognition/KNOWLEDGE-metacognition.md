@@ -43,6 +43,14 @@
 - **No incomplete notebooks:** 0 TODOs, stubs, or placeholder text found across all 31.
 - **Audit artifact:** `repo/NOTEBOOK_AUDIT.md`
 
+## Competition Requirements Audit — Cross-Reference (2026-04-10)
+- **SUBMISSION_NARRATIVE.md** (10 sections, ~600 lines): all 7 required writeup sections are PRESENT including dataset provenance (Section 4) and org affiliation (Section 10: "Independent submission").
+- **KAGGLE_DISCUSSION_DRAFT.md**: organizational affiliation is still missing; `[link to CB benchmark]` placeholder not yet replaced.
+- **Critical blockers**: 4 items, all requiring Ian manual Kaggle web UI actions (~87 min total): CB task registration, benchmark collection creation, making ~20 notebooks public, deleting ~70 ghost notebooks.
+- **17 models** already run on CB platform; 10-model × 26-benchmark score matrix in SUBMISSION_NARRATIVE.
+- **Scoring:** 85% expert judges + 15% community upvotes.
+- **Checklist artifact:** `repo/COMPETITION_REQUIREMENTS_CHECKLIST.md` (27 items: 20 PRESENT, 5 MISSING, 2 WEAK).
+
 ## Submission Status Cross-Reference — IAN_TODO_FINAL_v2.md (2026-04-10)
 - Competition requires 3 deliverables: CB task collection, discussion thread writeup (7 required sections), model results
 - Critical path to submission: ~87 min of manual Ian action on Kaggle web UI

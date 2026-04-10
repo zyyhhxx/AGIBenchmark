@@ -89,20 +89,21 @@ See `IAN_TODO_FINAL.md` Phase 3 for the full notebook-by-notebook table (still a
 
 ## SHOULD-DO (Improves Score)
 
-### 6. Verify writeup covers all required sections (~15 min)
-`SUBMISSION_NARRATIVE.md` is the writeup. Cross-check it has:
+### 6. Verify writeup covers all required sections — ✅ DONE
+`SUBMISSION_NARRATIVE.md` now covers all 7 required sections:
 
 | Required Section | Status | Notes |
 |-----------------|--------|-------|
 | Problem Statement | ✅ Section 1 | Clear framing |
 | Task & benchmark construction | ✅ Section 2 | All 29 tasks described |
-| Dataset provenance/columns/types | ⚠️ Weak | Add a section on data sources — procedural generators, trivia sources, stimuli provenance |
-| Technical details | ✅ Sections 5, 8 | Scoring, contamination hardening |
-| Results, insights, conclusions | ✅ Section with Claude results | Could add more models if CB platform results are available |
-| Organizational affiliations | ❌ Missing | Add a brief line (independent researcher, university, etc.) |
-| References & citations | ✅ 20+ references | Strong |
+| Dataset provenance/columns/types | ✅ Section 4 | **Fixed** — full provenance, item schema, response schemas, licensing |
+| Technical details | ✅ Section 6 | Scoring, contamination hardening |
+| Results, insights, conclusions | ✅ Section 7 | 10-model cross-validation + Claude full suite |
+| Organizational affiliations | ✅ Section 10 | **Fixed** — "Independent submission" |
+| References & citations | ✅ Section 9 | 20+ references |
 
-**Action:** Add a "Dataset" section describing stimuli provenance (procedural generators, trivia sources). Add organizational affiliation. ~15 min.
+### 6b. Add organizational affiliation to DISCUSSION DRAFT (~2 min)
+The Kaggle discussion post (`KAGGLE_DISCUSSION_DRAFT.md`) does NOT include organizational affiliation. Add "Independent submission" at the bottom before references.
 
 ### 7. Add more CB model results to writeup (~10 min)
 **Why:** "Results, insights, and conclusions" is a scored section. Currently only Claude Sonnet results are documented.
@@ -146,7 +147,8 @@ These don't block submission but could cause unexpected scores on the CB platfor
 | 3 | Register 26–29 CB tasks | 60 min | MUST |
 | 4 | Create benchmark collection | 5 min | MUST |
 | 5 | Update discussion thread link | 2 min | MUST |
-| 6 | Add dataset section + affiliation to writeup | 15 min | SHOULD |
+| 6 | ~~Writeup sections~~ (DONE — all 7 present) | 0 min | ✅ DONE |
+| 6b | Add affiliation to discussion draft | 2 min | SHOULD |
 | 7 | Update writeup with CB model results | 10 min | SHOULD |
 | 8 | Polish discussion for upvotes | 10 min | SHOULD |
 | | **Total MUST-DO** | **~87 min** | |
