@@ -1,5 +1,12 @@
 # KNOWLEDGE.md — AGI Benchmark
 
+## CB Submission Checklist Structure — IAN_TODO_FINAL.md (2026-04-09)
+- 29 total benchmarks: 9 metacognition (incl. canary + 3 sub-metric), 4 learning, 4 attention, 5 exec_func, 4 social_cog, 3 sub-metrics
+- 6 notebooks needed manual public toggle due to API 429 rate limits on push day
+- CB task registration requires running the notebook on CB platform (copy-paste from repo/notebooks/); `@kbench.task` decorator auto-registers
+- Ghost notebooks (~70) from retry storms must be deleted via web UI before CB submission
+- Discussion thread visibility counts for 15% of final score — post after CB tasks are live
+
 ## Kaggle API Rate Limits — Bulk Push Strategy (2026-04-09)
 - **Rate limit:** ~20 `kaggle kernels push` calls per session before 429 errors
 - **Safe batching:** groups of 3 pushes with 60s delays stays under limit for ~18 notebooks
