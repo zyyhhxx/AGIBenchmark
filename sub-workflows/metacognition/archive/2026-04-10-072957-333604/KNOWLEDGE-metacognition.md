@@ -88,17 +88,7 @@
 - Easy ECE: 0.260, Medium: 0.194, Hard: 0.300 — medium tier is actually easiest
 - Difficulty tiers don't align with actual calibration difficulty; should derive empirically from model accuracy
 
-## Repository Architecture — Known Issues (2026-04-10)
-
-- **Division-by-zero bug:** `task_jol.py` gamma correlation (~line 124) has no `if denom > 0` guard — potential ZeroDivisionError when no concordant/discordant pairs exist.
-- **Broken absolute imports:** `task_vigilance.py` and `task_curriculum.py` use `from benchmarks.X.data...` — inconsistent with all other 22 task files using relative imports. These will fail if run from a non-root working directory.
-- **Gamma function duplicated 7×:** `task_error_detection.py`, `task_error_detection_submetrics.py`, `task_fok.py`, `task_fok_submetrics.py`, `task_jol.py`, `task_jol_submetrics.py`, `task_learning_monitoring.py` each implement Goodman-Kruskal gamma independently with minor differences. Extract to `benchmarks/metacognition/scoring.py`.
-- **`rule_systems.py` duplicated:** byte-identical in `benchmarks/metacognition/data/` and `benchmarks/learning/data/`.
-- **25/29 task files** have unguarded module-level `.run(kbench.llm)` calls (no `if __name__ == '__main__'` guard). Confirmed non-issue for Kaggle notebook execution but breaks local import/py_compile.
-- **47 JSON artifacts** (28 `.task.json`, 19 `.run.json`) at repo root — low-priority clutter.
-
 ## Competition Framework
-
 
 - Google DeepMind's "Measuring Progress Toward AGI: A Cognitive Taxonomy"
 - 10 cognitive abilities identified; hackathon focuses on 5 with largest evaluation gaps:

@@ -1,60 +1,50 @@
-# GOALS.md — AGI Benchmark Hackathon
+# GOALS.md — AGI Benchmark Hackathon (Final Review Phase)
 
 ## Active Goal
-Design high-quality cognitive ability benchmarks for the Kaggle "Measuring Progress Toward AGI" hackathon. Deadline: **April 16, 2026**.
+Final review and polish of the AGI benchmark submission. Deadline: **April 16, 2026**.
 
-## 🚨 First Task for Planner — Read This Before Generating Tasks
+## Context
+Ian has already completed:
+- All 29 benchmarks implemented across 5 tracks
+- Notebooks uploaded to Kaggle
+- Benchmarks run against 17 models on Kaggle Community Benchmarks
+- Discussion thread posted
 
-Before generating research or implementation tasks, the planner MUST first generate a single survey task:
+## Tasks for This Phase
 
-**"Survey competition page and existing artifacts to decide what to do next"**
+### 1. Architecture Review
+Carefully review the general architecture of the entire benchmark suite:
+- Repository structure and organization
+- Shared code, imports, dependencies between notebooks
+- Consistency of benchmark interfaces (`@kbench.task` decorators, `.run()` calls, scoring)
+- Are there any design issues, redundancies, or structural problems that need fixing?
+- Document any recommended changes
 
-This task should instruct the executor to:
-1. Check the competition page status and rules: https://www.kaggle.com/competitions/kaggle-measuring-agi/overview
-2. Read `STATUS.md` in the repo root for current project status
-3. Read `IAN_TODO.md` in the repo root for pending human action items
-4. List all notebooks in `repo/notebooks/` and check which ones are complete
-5. Check `repo/results/` for any existing benchmark run results
-6. Based on the above, write a prioritized action plan to `sub-workflows/metacognition/SURVEY.md`
-   — what's done, what's missing, what the remaining days should focus on
+### 2. Notebook Content Audit
+For each of the 33 notebooks in `repo/notebooks/`:
+- Check for code errors, syntax issues, import problems
+- Check for conflicts between notebooks (duplicate function names, conflicting data)
+- Verify each notebook runs end-to-end without errors (syntax check, not execution)
+- Check consistency of scoring methodology across benchmarks in the same track
+- Flag any notebooks that seem incomplete or have placeholder content
 
-Only after this survey task passes validation should the planner generate execution tasks.
+### 3. Convert submission_overview.ipynb to Markdown
+`submission_overview.ipynb` is not runnable code — it's narrative content. Convert it:
+- Extract its content into a well-formatted markdown document
+- Integrate it into either the discussion draft (`KAGGLE_DISCUSSION_DRAFT.md`) or the final submission writeup (`SUBMISSION_NARRATIVE.md`) — choose whichever is more appropriate
+- Delete the notebook after integration
+- Update any references to it in other files
 
----
-
-## Tracks (all five required)
-1. Learning
-2. Metacognition
-3. Attention
-4. Executive Functions
-5. Social Cognition
-
-## Success Criteria
-- All benchmarks submitted to Kaggle Community Benchmarks platform before April 16
-- Each benchmark has clear cognitive science rationale, contamination resistance, and documentation
-- High-quality writeup covering methodology, dataset provenance, results, and insights
-- Tested against frontier models via Kaggle platform (models run by Kaggle — no API key needed)
+### 4. Submission Requirements Checklist
+Thoroughly review the competition requirements at: https://www.kaggle.com/competitions/kaggle-measuring-agi/overview
+- Cross-reference every requirement against what we've done
+- Produce a final TODO list of remaining items for Ian
+- Categorize as: must-do (blocks submission), should-do (improves score), nice-to-have
+- Ian has already done: notebook uploads, running benchmarks against 17 models, posting discussion thread
+- Focus on what's still missing or needs fixing
 
 ## Quality Standards
-- Each benchmark must have a clear cognitive science rationale
-- Must be resistant to shortcut solutions (data contamination, memorisation)
-- Reproducible — anyone can run the evaluation
-- Well-documented methodology
-
-## Research Directions
-- Investigate metacognitive monitoring paradigms from cognitive psychology (FOK, JOL, tip-of-tongue)
-- Explore learning curve analysis methods from educational psychology
-- Study attention benchmark designs from neuroscience (selective, sustained, divided attention)
-- Research executive function tests (Wisconsin Card Sort, Tower of London, Stroop analogues)
-- Investigate social cognition measures (theory of mind, pragmatic inference, sarcasm detection)
-- Explore adversarial benchmark design to prevent shortcut solutions
-- Study how existing AGI benchmarks (ARC, BIG-bench) handle contamination resistance
-- Research calibration measurement techniques for LLM confidence estimation
-- Investigate multi-step reasoning evaluation beyond single-turn Q&A
-- Explore cross-cultural cognitive assessment methodologies
-
-## Key Context
-- Kaggle Community Benchmarks runs models on their side — **no API key needed**
-- OpenAI models are NOT supported by the platform; focus on Gemini/Claude/Llama
-- The platform is free to use; model evaluation happens when notebooks run as CB tasks
-- Ian must manually submit notebooks to CB via Kaggle web UI (agent cannot do this)
+- Be thorough — this is the final review before deadline
+- Flag real issues, not cosmetic nitpicks
+- Provide actionable recommendations with specific file paths
+- Update IAN_TODO.md with the final checklist
