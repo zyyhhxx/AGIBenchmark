@@ -334,3 +334,11 @@ Mapping of 9 metacognition benchmark scores to Fleming's (2024) taxonomy:
 - **CRT prediction failed:** Originally predicted as strong discriminator; actual std=0.028, all models cluster at ~0.36. CRT items need harder procedurally-generated variants.
 - **Confirmed §7.5 structure for SUBMISSION_NARRATIVE.md:** Original predictions vs. actual results documented with ✅/❌/⚠️ for each benchmark.
 - **Best discriminators are cognitive, not knowledge-based:** learning_transfer, epistemic_humility, metacog_control outperform all knowledge-recall benchmarks in model separation.
+
+## attention_vigilance Ceiling Fix — N-back Redesign (2026-04-10)
+- **Root cause of ceiling:** 60 items in 3 chunks of 20 counting ★ symbols — trivially easy, all 10 models scored 1.0.
+- **Fix:** N-back vigilance task (Kirchner 1958): 3-back (80 items) + 4-back (60 items) with near-miss letter distractors (B/D/P, M/N/L confusable pairs).
+- **Scoring formula:** 0.35 * accuracy + 0.35 * sensitivity (hit_rate - FA_rate) + 0.15 * vig_decrement_resistance + 0.15 * (1 - FA_rate). Weighting sensitivity/accuracy higher than vigilance decrement avoids near-free points from short sequences.
+- **Final scores:** Claude Opus 4.6=0.856, Nova Pro=0.591, Ministral 3B=0.600; std=0.123 (>0.10 target), range=0.265.
+- **Lesson:** Vigilance decrement weight should be ≤0.15 when sequences are <100 items total — not long enough to produce real fatigue effects worth 0.30 weight.
+- **Lesson:** 4-back hit rate ~0.545 even for strong models; 3-back alone leaves Opus near ceiling. Always include a hard condition.
