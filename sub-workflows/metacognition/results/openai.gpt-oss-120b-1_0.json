@@ -1,0 +1,137 @@
+{
+  "model": "openai.gpt-oss-120b-1:0",
+  "model_label": "GPT-OSS-120B",
+  "timestamp": "2026-04-10T20:58:07.775535+00:00",
+  "scores": {
+    "metacog_canary": {
+      "score": 0.0,
+      "error": null,
+      "duration_s": 130.8
+    },
+    "metacog_fok": {
+      "score": null,
+      "error": "An error occurred (InternalServerException) when calling the Converse operation (reached max retries: 0): The system encountered an unexpected error during processing. Try your request again.",
+      "duration_s": 466.9
+    },
+    "metacog_jol": {
+      "score": 0.2,
+      "error": null,
+      "duration_s": 448.0
+    },
+    "metacog_calibration": {
+      "score": null,
+      "error": "An error occurred (InternalServerException) when calling the Converse operation (reached max retries: 0): The system encountered an unexpected error during processing. Try your request again.",
+      "duration_s": 2.1
+    },
+    "metacog_error_detection": {
+      "score": 0.8978,
+      "error": null,
+      "duration_s": 166.4
+    },
+    "metacog_learning_monitoring": {
+      "score": null,
+      "error": "timeout (600s)",
+      "duration_s": 600
+    },
+    "attention_vigilance": {
+      "score": 1.0,
+      "error": null,
+      "duration_s": 23.1
+    },
+    "attention_selective": {
+      "score": null,
+      "error": "timeout (90s)",
+      "duration_s": 90
+    },
+    "metacog_control": {
+      "score": 0.6887,
+      "error": null,
+      "duration_s": 412.6
+    },
+    "metacog_epistemic_revision": {
+      "score": null,
+      "error": "Read timeout on endpoint URL: \"https://bedrock-runtime.us-east-1.amazonaws.com/model/openai.gpt-oss-120b-1%3A0/converse\"",
+      "duration_s": 0
+    },
+    "metacog_epistemic_humility": {
+      "score": null,
+      "error": "TIMEOUT after 300s",
+      "duration_s": 300
+    },
+    "learning_curves": {
+      "score": null,
+      "error": "Read timeout on endpoint URL: \"https://bedrock-runtime.us-east-1.amazonaws.com/model/openai.gpt-oss-120b-1%3A0/converse\"",
+      "duration_s": 0
+    },
+    "learning_transfer": {
+      "score": 1.0,
+      "error": null,
+      "duration_s": 295.8
+    },
+    "learning_interference": {
+      "score": null,
+      "error": "TIMEOUT after 300s",
+      "duration_s": 300
+    },
+    "learning_curriculum": {
+      "score": null,
+      "error": "TIMEOUT after 300s",
+      "duration_s": 300
+    },
+    "attention_divided": {
+      "score": null,
+      "error": "TIMEOUT after 300s",
+      "duration_s": 300
+    },
+    "attention_instruction_update": {
+      "score": null,
+      "error": "TIMEOUT after 300s",
+      "duration_s": 300
+    },
+    "exec_func_wcst": {
+      "score": null,
+      "error": "TIMEOUT after 300s",
+      "duration_s": 300
+    },
+    "exec_func_tol": {
+      "score": null,
+      "error": "TIMEOUT after 300s",
+      "duration_s": 300
+    },
+    "exec_func_task_switch": {
+      "score": null,
+      "error": "TIMEOUT after 300s",
+      "duration_s": 300
+    },
+    "exec_func_nback": {
+      "score": null,
+      "error": "TIMEOUT after 300s",
+      "duration_s": 300
+    },
+    "exec_func_crt": {
+      "score": 0.4207,
+      "error": null,
+      "duration_s": 191.8
+    },
+    "social_cog_false_belief": {
+      "score": 0.905,
+      "error": null,
+      "duration_s": 245.4
+    },
+    "social_cog_pragmatic": {
+      "score": 0.868,
+      "error": null,
+      "duration_s": 149.1
+    },
+    "social_cog_sarcasm": {
+      "score": 0.8976,
+      "error": null,
+      "duration_s": 73.0
+    },
+    "social_cog_emotional_prosody": {
+      "score": 0.7472,
+      "error": null,
+      "duration_s": 76.0
+    }
+  }
+}

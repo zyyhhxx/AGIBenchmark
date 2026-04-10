@@ -1,0 +1,9 @@
+run_fill_v12 started at 2026-04-10T17:28:04.714304+00:00
+Benchmarks: 26, Models: 10
+Traceback (most recent call last):
+  File "/home/ubuntu/.openclaw/workspace-agi-bench/repo/sub-workflows/metacognition/run_fill_v12.py", line 237, in <module>
+    main()
+  File "/home/ubuntu/.openclaw/workspace-agi-bench/repo/sub-workflows/metacognition/run_fill_v12.py", line 177, in main
+    models = [(target, MODEL_CATALOG[target])]
+                       ~~~~~~~~~~~~~^^^^^^^^
+KeyError: 'amazon.nova-pro-v1_0'

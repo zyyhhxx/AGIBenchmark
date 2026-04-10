@@ -1,0 +1,22 @@
+run_fill_v12 started at 2026-04-10T17:44:26.664257+00:00
+Benchmarks: 26, Models: 10
+
+[1/1] Nova Pro: 1 gaps to fill
+  [1/1] attention_instruction_update... ERROR: timeout (600s)
+
+============================================================
+Completed in 10.0 min. Ran 1 benchmarks, 0 succeeded.
+
+SUMMARY:
+  Claude Opus 4.6                scored= 4/26  errors= 7
+  DeepSeek-R1                    scored= 2/26  errors= 9
+  GPT-OSS-120B                   scored= 4/26  errors= 4
+  Llama 3.3 70B                  scored=26/26  errors= 0
+  Qwen3 Next 80B                 scored= 2/26  errors= 4
+  Nova Pro                       scored=25/26  errors= 1
+  Llama 4 Maverick 17B           scored=26/26  errors= 0
+  Claude Sonnet 4.6              scored=15/26  errors= 4
+  GLM 4.7                        scored= 2/26  errors= 4
+  Ministral 3B                   scored=16/26  errors=10
+
+Wrote /home/ubuntu/.openclaw/workspace-agi-bench/repo/sub-workflows/metacognition/results/score_matrix.csv (26 benchmarks × 10 models)

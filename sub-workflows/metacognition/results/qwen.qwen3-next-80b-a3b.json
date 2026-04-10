@@ -1,0 +1,137 @@
+{
+  "model": "qwen.qwen3-next-80b-a3b",
+  "model_label": "Qwen3 Next 80B",
+  "timestamp": "2026-04-10T21:43:45.997998+00:00",
+  "scores": {
+    "metacog_canary": {
+      "score": 0.0,
+      "error": null,
+      "duration_s": 490.7
+    },
+    "metacog_fok": {
+      "score": null,
+      "error": "An error occurred (InternalServerException) when calling the Converse operation (reached max retries: 0): The system encountered an unexpected error during processing. Try your request again.",
+      "duration_s": 457.3
+    },
+    "metacog_jol": {
+      "score": null,
+      "error": "An error occurred (InternalServerException) when calling the Converse operation (reached max retries: 0): The system encountered an unexpected error during processing. Try your request again.",
+      "duration_s": 2.4
+    },
+    "attention_vigilance": {
+      "score": 1.0,
+      "error": null,
+      "duration_s": 41.5
+    },
+    "attention_selective": {
+      "score": null,
+      "error": "timeout (90s)",
+      "duration_s": 90
+    },
+    "metacog_calibration": {
+      "score": null,
+      "error": "An error occurred (InternalServerException) when calling the Converse operation (reached max retries: 0): The system encountered an unexpected error during processing. Try your request again.",
+      "duration_s": 2.7
+    },
+    "metacog_error_detection": {
+      "score": 0.7843,
+      "error": null,
+      "duration_s": 454.7
+    },
+    "metacog_learning_monitoring": {
+      "score": null,
+      "error": "TIMEOUT after 600s",
+      "duration_s": 600
+    },
+    "metacog_control": {
+      "score": null,
+      "error": "TIMEOUT after 300s",
+      "duration_s": 300
+    },
+    "metacog_epistemic_revision": {
+      "score": 0.7933,
+      "error": null,
+      "duration_s": 353.6
+    },
+    "metacog_epistemic_humility": {
+      "score": 0.9157,
+      "error": null,
+      "duration_s": 485.3
+    },
+    "learning_curves": {
+      "score": null,
+      "error": "TIMEOUT after 300s",
+      "duration_s": 300
+    },
+    "learning_transfer": {
+      "score": null,
+      "error": "TIMEOUT after 300s",
+      "duration_s": 300
+    },
+    "learning_interference": {
+      "score": 0.55,
+      "error": null,
+      "duration_s": 271.3
+    },
+    "learning_curriculum": {
+      "score": 0.76,
+      "error": null,
+      "duration_s": 235.2
+    },
+    "attention_divided": {
+      "score": null,
+      "error": "TIMEOUT after 300s",
+      "duration_s": 300
+    },
+    "attention_instruction_update": {
+      "score": null,
+      "error": "TIMEOUT after 300s",
+      "duration_s": 300
+    },
+    "exec_func_wcst": {
+      "score": null,
+      "error": "TIMEOUT after 300s",
+      "duration_s": 300
+    },
+    "exec_func_tol": {
+      "score": null,
+      "error": "TIMEOUT after 300s",
+      "duration_s": 300
+    },
+    "exec_func_task_switch": {
+      "score": null,
+      "error": "TIMEOUT after 300s",
+      "duration_s": 300
+    },
+    "exec_func_nback": {
+      "score": null,
+      "error": "TIMEOUT after 300s",
+      "duration_s": 300
+    },
+    "exec_func_crt": {
+      "score": 0.35,
+      "error": null,
+      "duration_s": 96.4
+    },
+    "social_cog_false_belief": {
+      "score": 0.905,
+      "error": null,
+      "duration_s": 213.3
+    },
+    "social_cog_emotional_prosody": {
+      "score": 0.8444,
+      "error": null,
+      "duration_s": 59.8
+    },
+    "social_cog_pragmatic": {
+      "score": null,
+      "error": "TIMEOUT after 300s",
+      "duration_s": 300
+    },
+    "social_cog_sarcasm": {
+      "score": null,
+      "error": "TIMEOUT after 300s",
+      "duration_s": 300
+    }
+  }
+}

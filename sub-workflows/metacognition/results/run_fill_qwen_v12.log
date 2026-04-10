@@ -1,0 +1,6 @@
+run_fill_v12 started at 2026-04-10T17:27:23.052246+00:00
+Benchmarks: 26, Models: 10
+
+[1/1] Qwen3 Next 80B: 25 gaps to fill
+  [1/25] metacog_fok... ERROR: timeout (300s)
+  [2/25] metacog_jol... 

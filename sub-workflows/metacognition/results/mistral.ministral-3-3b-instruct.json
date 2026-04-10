@@ -1,0 +1,137 @@
+{
+  "model": "mistral.ministral-3-3b-instruct",
+  "model_label": "Ministral 3B",
+  "timestamp": "2026-04-10T16:01:05.678510+00:00",
+  "scores": {
+    "metacog_canary": {
+      "score": 0.0,
+      "error": null,
+      "duration_s": 172.8
+    },
+    "metacog_fok": {
+      "score": null,
+      "error": "An error occurred (ValidationException) when calling the Converse operation: The model returned the following errors: {\"error\":{\"code\":\"validation_error\",\"message\":\"Internal server error\",\"param\":null",
+      "duration_s": 66.1
+    },
+    "metacog_calibration": {
+      "score": null,
+      "error": "An error occurred (ValidationException) when calling the Converse operation: The model returned the following errors: {\"error\":{\"code\":\"validation_error\",\"message\":\"Internal server error\",\"param\":null",
+      "duration_s": 19.5
+    },
+    "metacog_error_detection": {
+      "score": null,
+      "error": "An error occurred (ValidationException) when calling the Converse operation: The model returned the following errors: {\"error\":{\"code\":\"validation_error\",\"message\":\"Internal server error\",\"param\":null",
+      "duration_s": 99.1
+    },
+    "metacog_learning_monitoring": {
+      "score": null,
+      "error": "An error occurred (ValidationException) when calling the Converse operation: The model returned the following errors: {\"error\":{\"code\":\"validation_error\",\"message\":\"Internal server error\",\"param\":null",
+      "duration_s": 3.9
+    },
+    "metacog_control": {
+      "score": 0.2125,
+      "error": null,
+      "duration_s": 108.6
+    },
+    "metacog_epistemic_revision": {
+      "score": 0.8017,
+      "error": null,
+      "duration_s": 83.5
+    },
+    "metacog_epistemic_humility": {
+      "score": 0.2,
+      "error": null,
+      "duration_s": 274.6
+    },
+    "learning_curves": {
+      "score": null,
+      "error": "An error occurred (ValidationException) when calling the Converse operation: The model returned the following errors: {\"error\":{\"code\":\"validation_error\",\"message\":\"Internal server error\",\"param\":null",
+      "duration_s": 62.5
+    },
+    "learning_transfer": {
+      "score": 0.35,
+      "error": null,
+      "duration_s": 77.1
+    },
+    "learning_interference": {
+      "score": 0.45,
+      "error": null,
+      "duration_s": 42.8
+    },
+    "learning_curriculum": {
+      "score": 0.68,
+      "error": null,
+      "duration_s": 102.0
+    },
+    "attention_selective": {
+      "score": null,
+      "error": "An error occurred (ValidationException) when calling the Converse operation: The model returned the following errors: {\"error\":{\"code\":\"validation_error\",\"message\":\"Internal server error\",\"param\":null",
+      "duration_s": 62.5
+    },
+    "attention_vigilance": {
+      "score": 1.0,
+      "error": null,
+      "duration_s": 9.9
+    },
+    "attention_divided": {
+      "score": null,
+      "error": "An error occurred (ValidationException) when calling the Converse operation: The model returned the following errors: {\"error\":{\"code\":\"validation_error\",\"message\":\"Internal server error\",\"param\":null",
+      "duration_s": 58.4
+    },
+    "attention_instruction_update": {
+      "score": null,
+      "error": "An error occurred (ValidationException) when calling the Converse operation: The model returned the following errors: {\"error\":{\"code\":\"validation_error\",\"message\":\"Internal server error\",\"param\":null",
+      "duration_s": 5.8
+    },
+    "exec_func_wcst": {
+      "score": 0.4782,
+      "error": null,
+      "duration_s": 199.4
+    },
+    "exec_func_tol": {
+      "score": 0.0,
+      "error": null,
+      "duration_s": 259.0
+    },
+    "exec_func_task_switch": {
+      "score": 1.0,
+      "error": null,
+      "duration_s": 99.0
+    },
+    "exec_func_nback": {
+      "score": null,
+      "error": "An error occurred (ValidationException) when calling the Converse operation: The model returned the following errors: {\"error\":{\"code\":\"validation_error\",\"message\":\"Internal server error\",\"param\":null",
+      "duration_s": 8.5
+    },
+    "exec_func_crt": {
+      "score": 0.35,
+      "error": null,
+      "duration_s": 44.4
+    },
+    "social_cog_pragmatic": {
+      "score": 0.824,
+      "error": null,
+      "duration_s": 136.8
+    },
+    "social_cog_sarcasm": {
+      "score": 0.7972,
+      "error": null,
+      "duration_s": 94.2
+    },
+    "social_cog_emotional_prosody": {
+      "score": 0.6856,
+      "error": null,
+      "duration_s": 53.6
+    },
+    "metacog_jol": {
+      "score": 0.4315,
+      "error": null,
+      "duration_s": 156.8
+    },
+    "social_cog_false_belief": {
+      "score": null,
+      "error": "An error occurred (ValidationException) when calling the Converse operation: The model returned the following errors: {\"error\":{\"code\":\"validation_error\",\"message\":\"Internal server error\",\"param\":null",
+      "duration_s": 1.2
+    }
+  }
+}

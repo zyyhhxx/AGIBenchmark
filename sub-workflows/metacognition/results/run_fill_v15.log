@@ -1,0 +1,7 @@
+v15 retry started at 2026-04-10T17:51:49.249373+00:00
+  Claude Sonnet 4.6: 10 to retry
+  Claude Opus 4.6: 22 to retry
+    Claude Sonnet 4.6/metacog_fok: ERR:timeout (300s) (300s)
+    Claude Opus 4.6/metacog_fok: ERR:timeout (300s) (300s)
+    Claude Sonnet 4.6/attention_instruction_update: ERR:timeout (300s) (300s)
+    Claude Opus 4.6/metacog_jol: ERR:timeout (300s) (300s)

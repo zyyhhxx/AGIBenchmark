@@ -1,0 +1,640 @@
+Starting run_fill_v7 at 2026-04-10T14:39:05.008761+00:00
+Models: 10, Benchmarks per model: 26
+Per-benchmark timeout: 180s, Max runtime: 1500s
+
+[1/10] ✅ Llama 3.3 70B: all 26 done
+
+[2/10] ✅ Llama 4 Maverick 17B: all 26 done
+
+[3/10] Nova Pro: 4 gaps to fill
+  [1/4] attention_instruction_update... ERROR: An HTTP Client raised an unhandled exception: benchmark timeout (180.0s)
+  [2/4] exec_func_nback... {
+  "benchmark": "N-back Working Memory",
+  "per_level": {
+    "1": {
+      "d_prime": 0.4238,
+      "hit_rate": 0.0,
+      "false_alarm_rate": 0.0,
+      "accuracy": 0.7458,
+      "hits": 0,
+      "misses": 15,
+      "false_alarms": 0,
+      "correct_rejections": 44
+    },
+    "2": {
+      "d_prime": 0.4153,
+      "hit_rate": 0.0,
+      "false_alarm_rate": 0.0,
+      "accuracy": 0.7414,
+      "hits": 0,
+      "misses": 15,
+      "false_alarms": 0,
+      "correct_rejections": 43
+    },
+    "3": {
+      "d_prime": 0.4065,
+      "hit_rate": 0.0,
+      "false_alarm_rate": 0.0,
+      "accuracy": 0.7368,
+      "hits": 0,
+      "misses": 15,
+      "false_alarms": 0,
+      "correct_rejections": 42
+    }
+  },
+  "composite_score": 0.1031,
+  "score_weights": {
+    "1": 0.2,
+    "2": 0.3,
+    "3": 0.5
+  },
+  "n_level_scaling": {
+    "1": 0.4238,
+    "2": 0.4153,
+    "3": 0.4065
+  }
+}
+{
+  "benchmark": "N-back Working Memory",
+  "per_level": {
+    "1": {
+      "d_prime": 3.6046,
+      "hit_rate": 0.9333,
+      "false_alarm_rate": 0.0,
+      "accuracy": 0.9831,
+      "hits": 14,
+      "misses": 1,
+      "false_alarms": 0,
+      "correct_rejections": 44
+    },
+    "2": {
+      "d_prime": 3.596,
+      "hit_rate": 0.9333,
+      "false_alarm_rate": 0.0,
+      "accuracy": 0.9828,
+      "hits": 14,
+      "misses": 1,
+      "false_alarms": 0,
+      "correct_rejections": 43
+    },
+    "3": {
+      "d_prime": 2.1908,
+      "hit_rate": 0.4667,
+      "false_alarm_rate": 0.0,
+      "accuracy": 0.8596,
+      "hits": 7,
+      "misses": 8,
+      "false_alarms": 0,
+      "correct_rejections": 42
+    }
+  },
+  "composite_score": 0.7238,
+  "score_weights": {
+    "1": 0.2,
+    "2": 0.3,
+    "3": 0.5
+  },
+  "n_level_scaling": {
+    "1": 3.6046,
+    "2": 3.596,
+    "3": 2.1908
+  }
+}
+score=0.7238 (628.9s)
+  [3/4] social_cog_pragmatic... {
+  "benchmark": "Pragmatic Inference",
+  "n_items": 25,
+  "intended_accuracy": 0.04,
+  "literal_trap_rate": 0.0,
+  "composite_score": 0.04,
+  "by_category": {
+    "scalar_implicature": {
+      "intended_accuracy": 0.0,
+      "literal_trap_rate": 0.0,
+      "count": 5
+    },
+    "indirect_request": {
+      "intended_accuracy": 0.0,
+      "literal_trap_rate": 0.0,
+      "count": 5
+    },
+    "irony": {
+      "intended_accuracy": 0.0,
+      "literal_trap_rate": 0.0,
+      "count": 5
+    },
+    "understatement": {
+      "intended_accuracy": 0.0,
+      "literal_trap_rate": 0.0,
+      "count": 5
+    },
+    "relevance_implicature": {
+      "intended_accuracy": 0.2,
+      "literal_trap_rate": 0.0,
+      "count": 5
+    }
+  },
+  "per_item": [
+    {
+      "id": "SI01",
+      "type": "scalar_implicature",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "SI02",
+      "type": "scalar_implicature",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "SI03",
+      "type": "scalar_implicature",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "SI04",
+      "type": "scalar_implicature",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "SI05",
+      "type": "scalar_implicature",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IR01",
+      "type": "indirect_request",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IR02",
+      "type": "indirect_request",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IR03",
+      "type": "indirect_request",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IR04",
+      "type": "indirect_request",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IR05",
+      "type": "indirect_request",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IS01",
+      "type": "irony",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IS02",
+      "type": "irony",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IS03",
+      "type": "irony",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IS04",
+      "type": "irony",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IS05",
+      "type": "irony",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "US01",
+      "type": "understatement",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "US02",
+      "type": "understatement",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "US03",
+      "type": "understatement",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "US04",
+      "type": "understatement",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "US05",
+      "type": "understatement",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "RI01",
+      "type": "relevance_implicature",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "RI02",
+      "type": "relevance_implicature",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "RI03",
+      "type": "relevance_implicature",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "RI04",
+      "type": "relevance_implicature",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "RI05",
+      "type": "relevance_implicature",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    }
+  ]
+}
+ERROR: An HTTP Client raised an unhandled exception: benchmark timeout (180.0s)
+  [4/4] social_cog_sarcasm... {
+  "benchmark": "Sarcasm Detection",
+  "n_items": 40,
+  "auc": 0.0,
+  "calibration_error": 0.0,
+  "threshold_accuracy": 0.5,
+  "composite_score": 0.4,
+  "rating_distributions": {
+    "sarcastic_mean": 50.0,
+    "sarcastic_std": 0.0,
+    "sincere_mean": 50.0,
+    "sincere_std": 0.0
+  },
+  "per_item": [
+    {
+      "id": "S01",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S02",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S03",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S04",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S05",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S06",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S07",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S08",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S09",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S10",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S11",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S12",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S13",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S14",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S15",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S16",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S17",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S18",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S19",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S20",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "N01",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N02",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N03",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N04",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N05",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N06",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N07",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N08",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N09",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N10",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N11",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N12",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N13",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N14",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N15",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N16",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N17",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N18",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N19",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N20",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    }
+  ]
+}
+ERROR: An HTTP Client raised an unhandled exception: benchmark timeout (180.0s)
+
+[4/10] Ministral 3B: 13 gaps to fill
+  [1/13] metacog_fok... 

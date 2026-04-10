@@ -1,0 +1,209 @@
+[GLM 4.7] 0 done, 26 remaining, timeout=300s
+[GLM 4.7] [1/26] metacog_canary... {
+  "benchmark": "Contamination Canary",
+  "n_items": 10,
+  "n_below_threshold": 0,
+  "threshold": 30,
+  "contamination_risk": true,
+  "mean_confidence": 50.0,
+  "brier_score": 0.25,
+  "brier_skill_score_raw": 0.0,
+  "score": 0.0,
+  "threshold_score_diagnostic": 0.0,
+  "per_item": [
+    {
+      "id": "CAN01",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN02",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN03",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN04",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN05",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN06",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN07",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN08",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN09",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN10",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    }
+  ]
+}
+{
+  "benchmark": "Contamination Canary",
+  "n_items": 10,
+  "n_below_threshold": 0,
+  "threshold": 30,
+  "contamination_risk": true,
+  "mean_confidence": 50.0,
+  "brier_score": 0.25,
+  "brier_skill_score_raw": 0.0,
+  "score": 0.0,
+  "threshold_score_diagnostic": 0.0,
+  "per_item": [
+    {
+      "id": "CAN01",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "I am not sure. There is no Australian state named Westmore, and I do not have information on a city called Thornvale.",
+      "is_guess": false
+    },
+    {
+      "id": "CAN02",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "I am not sure. There is no widely recognized or standard constant in quantum chromodynamics (QCD) known as the \"Kessler-Yamamoto constant.\"\n\nIt is possible you are thinking of the **Kobayashi-Maskawa 't Hooft coupling** (related to the work of Maskawa and 't Hooft, and sometimes associated with names like Kessler in specific contexts of renormalization), or perhaps the **Yamawaki coupling** (related to the Yamawaki scale in walking technicolor). However, neither of these is referred to as the \"Kessler-Yamamoto constant,\" and they are typically running parameters rather than fixed constants with a single approximate value.\n\nIf you can provide more context regarding where you encountered this term, I may be able to give a more specific answer.",
+      "is_guess": false
+    },
+    {
+      "id": "CAN03",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "I am not sure. There is no widely recognized major award in computational linguistics known specifically as the \"Meridian Prize.\" It is possible the award name is slightly incorrect, or it refers to a lesser-known or specific local prize.\n\nIf you are referring to the **Marr Prize** (a prestigious award in computational vision and cognitive science, which overlaps with computational linguistics), it was awarded to **Dana H. Ballard** in 1987.\n\nIf you meant the **Meltzer Award** (given by the Association for Computational Linguistics), the winners in 1987 were **K. W. Church** and **R. L. Mercer**.\n\nHowever, strictly speaking, I cannot find a record of a \"Meridian Prize\" winner for that year.",
+      "is_guess": false
+    },
+    {
+      "id": "CAN04",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "I am not sure. There is no widely recognized metabolic pathway known as the \"Renshaw-Park pathway\" in mammalian liver cells.\n\nIt is possible you are referring to the **Cori cycle** (which involves the liver and muscles) or perhaps the **pentose phosphate pathway**, but neither is referred to as the Renshaw-Park pathway.\n\nIf you meant the **Cori cycle**, the final step in the liver (the conversion of lactate to glucose) involves several enzymes, with **phosphoglucomutase** acting on the final intermediate (glucose-6-phosphate) to produce glucose-1-phosphate, which is then converted to glucose-6-phosphate and finally to free glucose by **glucose-6-phosphatase**.\n\nIf you can provide more context or check the spelling of the pathway name, I would be happy to try to answer more specifically.",
+      "is_guess": false
+    },
+    {
+      "id": "CAN05",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "I am not sure. There is no widely recognized international treaty known as the \"2019 Treaty of Belmont\" regarding the Caspian Sea.\n\nThe most significant recent agreement regarding the Caspian Sea is the **Convention on the Legal Status of the Caspian Sea**, which was signed in **Aktau, Kazakhstan** in **August 2018** (not 2019). This convention was signed by the five littoral states: Russia, Kazakhstan, Azerbaijan, Iran, and Turkmenistan.\n\nIt is possible there is a confusion with the name \"Belmont.\" There is a historic **Belmont Treaty** (signed in 1916 between the U.S. and the U.K. regarding the protection of migratory birds), but it is unrelated to the Caspian Basin.\n\nIf you have a specific text or source referring to a \"2019 Treaty of Belmont,\" please provide it, as it may be a fictional scenario or a very obscure agreement not found in standard international records.",
+      "is_guess": false
+    },
+    {
+      "id": "CAN06",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "I am not sure.\n\nWhile the Ghiorso-Oganessian model (and other macroscopic-microscopic models) predicts that Flerovium-298 will be a \"closed shell\" nucleus and therefore significantly more stable than its neighbors, there is no consensus on a specific numerical value for its half-life.\n\nPredictions vary widely depending on the theoretical model used:\n*   Some models suggest a half-life on the order of **seconds** or **minutes**.\n*   Others, particularly those emphasizing the \"island of stability,\" suggest it could be much longer, potentially **years**, **millions of years**, or even effectively stable towards spontaneous fission.\n\nBecause Flerovium-298 has not yet been synthesized, its half-life remains purely theoretical.",
+      "is_guess": false
+    },
+    {
+      "id": "CAN07",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "I am not sure. The \"Drakensberg Accords\" do not appear to be a recognized international treaty or agreement regarding water resources. It is possible the name is being confused with the **Lesotho Highlands Water Project** (which involves the Drakensberg mountains) or the **Orange-Senqu River Commission** (ORASECOM), but there is no record of a 2015 accord with a specific percentage allocation of that name.",
+      "is_guess": false
+    },
+    {
+      "id": "CAN08",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "I am not sure.\n\nThe \"Brindley-Whitworth number\" does not appear to be a standard or widely recognized property in modern structural engineering or materials science references for Grade 250 steel (which typically refers to AS/NZS 3678 Grade 250 or similar mild steel standards).\n\nIt is possible this refers to a specific, perhaps historical or niche, calculation, or it may be a conflation of terms (e.g., related to the Brinell hardness number or a specific researcher's classification). Without a specific definition or context for that term, I cannot provide a verified value.",
+      "is_guess": false
+    },
+    {
+      "id": "CAN09",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "I am not sure. There is no widely recognized concept in philosophy known as \"epistemic parallax\" associated with the 1954 Gifford Lectures.\n\nThe 1954 Gifford Lectures at the University of Aberdeen were delivered by the theologian and philosopher **John Baillie**, and were published under the title *The Sense of the Presence of God*. While Baillie discusses themes of religious experience and knowledge, he is not credited with coining that specific term.\n\nIt is possible the term is being confused with **\"epistemic distance\"** (a concept often discussed in philosophy of religion regarding the hiddenness of God, notably by John Hick) or **\"parallax\"** (used in critical theory by Slavoj \u017di\u017eek), but neither of these fits the specific context of the 1954 Gifford Lectures.",
+      "is_guess": false
+    },
+    {
+      "id": "CAN10",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "I am not sure. There is no record of a magnitude 7.2 earthquake occurring near Valpara\u00edso, Chile in March 2023.\n\nIt is possible you are referring to the **magnitude 6.8 earthquake** that struck near Valpara\u00edso on **July 1, 2023**. That earthquake was caused by the **Nazca-South American Plate boundary**, specifically the subduction zone where the Nazca Plate dives beneath the South American Plate.",
+      "is_guess": false
+    }
+  ]
+}
+score=0.0000 (250.8s)
+[GLM 4.7] [2/26] metacog_fok... [GLM 4.7] 2 done, 24 remaining, timeout=300s
+[GLM 4.7] [1/24] metacog_jol... 
+============================================================
+JUDGMENT-OF-LEARNING (JOL) BENCHMARK RESULTS
+============================================================
+Word pairs tested: 15
+Rule systems tested: 2
+Total items: 17
+
+--- Metacognitive Metrics ---
+Gamma correlation: +0.0000  (human range: 0.40–0.90)
+Brier Skill Score: +0.0000  (>0 = better than base rate)
+ECE (diagnostic): 0.5000
+Recall rate: 0.00%
+Composite score: 0.2000
+
+--- Word Pairs by Difficulty ---
+  Difficulty 1: n=5, acc=0.00%, mean_jol=50%
+  Difficulty 2: n=5, acc=0.00%, mean_jol=50%
+  Difficulty 3: n=5, acc=0.00%, mean_jol=50%
+
+--- Per-Item Results ---
+  ✗ [JOL: 50%] Brelkano: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Tunnefex: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Glopwren: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Verdashi: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Plonkrit: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Feltromi: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Drasquil: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Wenvotch: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Kelmapho: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Crinjota: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Phaxendu: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Zorblint: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Quellmaf: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Narvexti: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Blekthor: {"answer": "unknown", "confidence": 50}
+ERROR: An HTTP Client raised an unhandled exception: timeout (300.0s)
+[GLM 4.7] [2/24] metacog_calibration... 

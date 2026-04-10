@@ -1,0 +1,19 @@
+Starting run_fill_v10 (PARALLEL) at 2026-04-10T16:14:59.425949+00:00
+Models: 10, Benchmarks per model: 26
+Running all models in parallel...
+
+✅ Llama 3.3 70B: 26/26 ok (complete)
+
+Nova Pro: 2 gaps
+  attention_instruction_update: ERROR timeout (180s) (180.1s)
+  social_cog_pragmatic: ERROR timeout (180s) (180.0s)
+  Final: 24/26 ok
+
+✅ Llama 4 Maverick 17B: 26/26 ok (complete)
+
+GPT-OSS-120B: 23 gaps
+  metacog_fok: ERROR timeout (180s) (180.0s)
+  metacog_calibration: ERROR timeout (180s) (180.0s)
+  metacog_learning_monitoring: ERROR timeout (180s) (180.1s)
+  → Stopped: 3 consecutive timeouts
+  Final: 3/6 ok

@@ -1,0 +1,429 @@
+[DeepSeek-R1] 0 done, 26 remaining, timeout=300s
+[DeepSeek-R1] [1/26] metacog_canary... {
+  "benchmark": "Contamination Canary",
+  "n_items": 10,
+  "n_below_threshold": 0,
+  "threshold": 30,
+  "contamination_risk": true,
+  "mean_confidence": 50.0,
+  "brier_score": 0.25,
+  "brier_skill_score_raw": 0.0,
+  "score": 0.0,
+  "threshold_score_diagnostic": 0.0,
+  "per_item": [
+    {
+      "id": "CAN01",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN02",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN03",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN04",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN05",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN06",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN07",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN08",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN09",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN10",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    }
+  ]
+}
+ERROR: An HTTP Client raised an unhandled exception: timeout (300.0s)
+[DeepSeek-R1] [2/26] metacog_fok... 
+============================================================
+FEELING-OF-KNOWING (FOK) BENCHMARK RESULTS
+============================================================
+Questions: 81
+Overall accuracy: 9.88%
+Mean FOK confidence: 50.0%
+
+--- Metacognitive Metrics ---
+Gamma correlation: +0.0000  (human range: 0.25–0.55)
+Brier Skill Score: -1.8086  (>0 = better than base rate)
+ECE (diagnostic): 0.4012
+AUC (discrimination): 0.1798
+Composite score: 0.2539
+
+--- By Category ---
+  boundary       : n=10, acc=0.00%, mean_fok=50%, γ=+0.000
+  obscure        : n=10, acc=0.00%, mean_fok=50%, γ=+0.000
+  proc_arithmetic: n=15, acc=26.67%, mean_fok=50%, γ=+0.000
+  proc_logic     : n= 5, acc=20.00%, mean_fok=50%, γ=+0.000
+  proc_sequence  : n= 7, acc=0.00%, mean_fok=50%, γ=+0.000
+  proc_syllogism : n= 7, acc=42.86%, mean_fok=50%, γ=+0.000
+  reasoning      : n= 8, acc=0.00%, mean_fok=50%, γ=+0.000
+  retrievable    : n=10, acc=0.00%, mean_fok=50%, γ=+0.000
+  unanswerable   : n= 9, acc=0.00%, mean_fok=50%, γ=+0.000
+
+--- Calibration Bins ---
+  0.4-0.5: n=81, conf=0.50, acc=0.10, gap=0.401
+
+--- Per-Question Results ---
+  ✗ [ 50%] [retrievable ] What is the capital of Australia?... → unknown
+  ✗ [ 50%] [retrievable ] What year did the Titanic sink?... → unknown
+  ✗ [ 50%] [retrievable ] Who painted the Mona Lisa?... → unknown
+  ✗ [ 50%] [retrievable ] What is the chemical formula for table salt?... → unknown
+  ✗ [ 50%] [retrievable ] What is the largest planet in our solar syste... → unknown
+  ✗ [ 50%] [retrievable ] Who developed the theory of general relativit... → unknown
+  ✗ [ 50%] [retrievable ] What is the powerhouse of the cell?... → unknown
+  ✗ [ 50%] [retrievable ] In what year did the French Revolution begin?... → unknown
+  ✗ [ 50%] [retrievable ] What is the tallest mountain on Earth?... → unknown
+  ✗ [ 50%] [retrievable ] Who wrote 'Pride and Prejudice'?... → unknown
+  ✗ [ 50%] [boundary    ] What is the name of the largest moon of Neptu... → unknown
+  ✗ [ 50%] [boundary    ] In what year was the first successful heart t... → unknown
+  ✗ [ 50%] [boundary    ] What is the name of the process by which plan... → unknown
+  ✗ [ 50%] [boundary    ] Who was the first woman to win a Nobel Prize ... → unknown
+  ✗ [ 50%] [boundary    ] What is the SI unit of electrical capacitance... → unknown
+  ✗ [ 50%] [boundary    ] What is the name of the treaty that ended Wor... → unknown
+  ✗ [ 50%] [boundary    ] What is the longest bone in the human body?... → unknown
+  ✗ [ 50%] [boundary    ] Who composed the opera 'The Marriage of Figar... → unknown
+  ✗ [ 50%] [boundary    ] What is the Chandrasekhar limit, in solar mas... → unknown
+  ✗ [ 50%] [boundary    ] What ancient city was buried by the eruption ... → unknown
+  ✗ [ 50%] [obscure     ] What is the population of Tuvalu according to... → unknown
+  ✗ [ 50%] [obscure     ] What was the exact date (day, month, year) wh... → unknown
+  ✗ [ 50%] [obscure     ] What is the melting point of tungsten in degr... → unknown
+  ✗ [ 50%] [obscure     ] Who served as the third Poet Laureate of the ... → unknown
+  ✗ [ 50%] [obscure     ] What is the name of the largest desert in Asi... → unknown
+  ✗ [ 50%] [obscure     ] In what year was the first edition of the Enc... → unknown
+  ✗ [ 50%] [obscure     ] What is the name of the enzyme that adds telo... → unknown
+  ✗ [ 50%] [obscure     ] What is the IATA airport code for Ulaanbaatar... → unknown
+  ✗ [ 50%] [obscure     ] What is the name of the geological period imm... → unknown
+  ✗ [ 50%] [obscure     ] Who was the architect of the Sydney Opera Hou... → unknown
+  ✗ [ 50%] [reasoning   ] What is 37 × 43?... → unknown
+  ✗ [ 50%] [reasoning   ] If a train travels at 80 km/h for 2.5 hours, ... → unknown
+  ✗ [ 50%] [reasoning   ] What is the 10th number in the Fibonacci sequ... → unknown
+  ✗ [ 50%] [reasoning   ] How many distinct ways can you arrange the le... → unknown
+  ✗ [ 50%] [reasoning   ] What is the remainder when 2^100 is divided b... → unknown
+  ✗ [ 50%] [unanswerable] What is the exact number of grains of sand on... → unknown
+  ✗ [ 50%] [unanswerable] What will the closing price of Apple stock be... → unknown
+  ✗ [ 50%] [unanswerable] Who is objectively the greatest musician of a... → unknown
+  ✗ [ 50%] [unanswerable] What color is the number 7?... → unknown
+  ✗ [ 50%] [unanswerable] What is the last digit of pi?... → unknown
+  ✗ [ 50%] [unanswerable] What did Julius Caesar eat for breakfast on M... → unknown
+  ✗ [ 50%] [unanswerable] How many times did Shakespeare sneeze during ... → unknown
+  ✗ [ 50%] [unanswerable] What is the correct moral thing to do in ever... → unknown
+  ✗ [ 50%] [unanswerable] What will be the most popular baby name in 20... → unknown
+  ✗ [ 50%] [reasoning   ] What is the sum of all prime numbers less tha... → unknown
+  ✗ [ 50%] [reasoning   ] A rope is cut into 3 pieces. The longest piec... → unknown
+  ✗ [ 50%] [reasoning   ] How many squares of any size are on a standar... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (28 × 53) + 3?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (41 × 89) + 8?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (86 × 83) + 9?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (88 × 69) + 5?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (13 × 91) + 3?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (27 × 49) + 3?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (70 × 14) + 9?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (53 × 39) + 8?... → unknown
+  ✓ [ 50%] [proc_arithmetic] What is 25% of 377?... → unknown
+  ✓ [ 50%] [proc_arithmetic] What is 30% of 485?... → unknown
+  ✓ [ 50%] [proc_arithmetic] What is 35% of 883?... → unknown
+  ✓ [ 50%] [proc_arithmetic] What is 15% of 773?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is the remainder when 840 is divided by ... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is the remainder when 191 is divided by ... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is the remainder when 394 is divided by ... → unknown
+  ✗ [ 50%] [proc_syllogism] All Zorblings speak in colors. Everything tha... → unknown
+  ✗ [ 50%] [proc_syllogism] All Sploobites are transparent. Everything th... → unknown
+  ✗ [ 50%] [proc_syllogism] All Kwexians have three hearts. Everything th... → unknown
+  ✗ [ 50%] [proc_syllogism] All Thrimbles emit ultrasound. Everything tha... → unknown
+  ✓ [ 50%] [proc_syllogism] Some Dwimblings have perfect memory. Everythi... → unknown
+  ✓ [ 50%] [proc_syllogism] Some Ghovites can photosynthesize. Everything... → unknown
+  ✓ [ 50%] [proc_syllogism] Some Crellions can levitate. Everything that ... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next in this sequence: 10, 18, 26,... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next in this sequence: 35, 46, 57,... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next in this sequence: 44, 48, 52,... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next in this sequence: 2, 6, 18, 5... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next in this sequence: 5, 15, 45, ... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next: 10, 20, 23, 46, 49, ?  (Hint... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next: 8, 16, 19, 38, 41, ?  (Hint:... → unknown
+  ✗ [ 50%] [proc_logic  ] Aria is taller than Gia. Finn is shorter than... → unknown
+  ✗ [ 50%] [proc_logic  ] Hugo is taller than Dev. Gia is shorter than ... → unknown
+  ✗ [ 50%] [proc_logic  ] Gia is taller than Cass. Ezra is shorter than... → unknown
+  ✗ [ 50%] [proc_logic  ] Gia always tells the truth. Hugo always lies.... → unknown
+  ✓ [ 50%] [proc_logic  ] Aria always tells the truth. Finn always lies... → unknown
+ERROR: An HTTP Client raised an unhandled exception: timeout (300.0s)
+[DeepSeek-R1] [3/26] metacog_jol... 
+============================================================
+JUDGMENT-OF-LEARNING (JOL) BENCHMARK RESULTS
+============================================================
+Word pairs tested: 15
+Rule systems tested: 2
+Total items: 17
+
+--- Metacognitive Metrics ---
+Gamma correlation: +0.0000  (human range: 0.40–0.90)
+Brier Skill Score: +0.0000  (>0 = better than base rate)
+ECE (diagnostic): 0.5000
+Recall rate: 0.00%
+Composite score: 0.2000
+
+--- Word Pairs by Difficulty ---
+  Difficulty 1: n=5, acc=0.00%, mean_jol=50%
+  Difficulty 2: n=5, acc=0.00%, mean_jol=50%
+  Difficulty 3: n=5, acc=0.00%, mean_jol=50%
+
+--- Per-Item Results ---
+  ✗ [JOL: 50%] Brelkano: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Tunnefex: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Glopwren: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Verdashi: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Plonkrit: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Feltromi: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Drasquil: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Wenvotch: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Kelmapho: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Crinjota: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Phaxendu: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Zorblint: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Quellmaf: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Narvexti: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Blekthor: {"answer": "unknown", "confidence": 50}
+ERROR: An HTTP Client raised an unhandled exception: timeout (300.0s)
+[DeepSeek-R1] [4/26] metacog_calibration... 
+============================================================
+METACOGNITIVE CALIBRATION RESULTS
+============================================================
+Questions answered: 80
+Overall accuracy: 0.00%
+Mean confidence: 50.0%
+Brier Skill Score (raw): 0.0000
+Score (clamped BSS): 0.0000
+ECE (diagnostic): 0.5000
+
+Calibration by bin:
+  0.4-0.5: n=80, conf=0.50, acc=0.00, gap=0.500
+
+Per-question results:
+  ✗ [ 50%] What is the chemical symbol for gold?... → unknown
+  ✗ [ 50%] How many sides does a hexagon have?... → unknown
+  ✗ [ 50%] What planet is known as the Red Planet?... → unknown
+  ✗ [ 50%] What is the largest organ in the human body?... → unknown
+  ✗ [ 50%] In which year did World War II end?... → unknown
+  ✗ [ 50%] What is the boiling point of water in degrees Cels... → unknown
+  ✗ [ 50%] Who wrote the play 'Romeo and Juliet'?... → unknown
+  ✗ [ 50%] What is the capital of Japan?... → unknown
+  ✗ [ 50%] What does DNA stand for?... → unknown
+  ✗ [ 50%] What is the speed of light in a vacuum, approximat... → unknown
+  ✗ [ 50%] What is the smallest prime number greater than 50?... → unknown
+  ✗ [ 50%] Which enzyme is primarily responsible for unwindin... → unknown
+  ✗ [ 50%] In what year was the Treaty of Westphalia signed, ... → unknown
+  ✗ [ 50%] What is the derivative of ln(x) with respect to x?... → unknown
+  ✗ [ 50%] Which country has the longest coastline in the wor... → unknown
+  ✗ [ 50%] What is the half-life of Carbon-14, approximately ... → unknown
+  ✗ [ 50%] Who composed 'The Four Seasons'?... → unknown
+  ✗ [ 50%] What is the Mohs hardness of quartz?... → unknown
+  ✗ [ 50%] In computing, what does the acronym RISC stand for... → unknown
+  ✗ [ 50%] What neurotransmitter is most directly associated ... → unknown
+  ✗ [ 50%] What is the approximate distance from Earth to the... → unknown
+  ✗ [ 50%] Which philosopher wrote 'Critique of Pure Reason'?... → unknown
+  ✗ [ 50%] What is the oxidation state of iron in rust (Fe2O3... → unknown
+  ✗ [ 50%] In what year did the Berlin Wall fall?... → unknown
+  ✗ [ 50%] What is the name of the longest river in Africa?... → unknown
+  ✗ [ 50%] What is the sum of the first 20 prime numbers?... → unknown
+  ✗ [ 50%] In which specific year did the Tunguska event occu... → unknown
+  ✗ [ 50%] What is the atomic number of Promethium?... → unknown
+  ✗ [ 50%] How many bones are in the adult human wrist (carpa... → unknown
+  ✗ [ 50%] What is the escape velocity from the surface of Ma... → unknown
+  ✗ [ 50%] Who proved the incompleteness theorems in 1931?... → unknown
+  ✗ [ 50%] What is the name of the deepest known point in the... → unknown
+  ✗ [ 50%] In which year was the Rosetta Stone discovered?... → unknown
+  ✗ [ 50%] What is the second most abundant element in the Ea... → unknown
+  ✗ [ 50%] What is the value of the golden ratio (phi) to 3 d... → unknown
+  ✗ [ 50%] Which organelle is known as the 'powerhouse of the... → unknown
+  ✗ [ 50%] What is the coefficient of restitution for a perfe... → unknown
+  ✗ [ 50%] Who formulated the Church-Turing thesis alongside ... → unknown
+  ✗ [ 50%] In what year was the Universal Declaration of Huma... → unknown
+  ✗ [ 50%] What is the name of the largest known structure in... → unknown
+  ✗ [ 50%] What is 92 + 25?... → unknown
+  ✗ [ 50%] What is 13 × 6?... → unknown
+  ✗ [ 50%] How many meters are in 20 kilometers?... → unknown
+  ✗ [ 50%] How many hours are in 180 minutes?... → unknown
+  ✗ [ 50%] What is 5 squared?... → unknown
+  ✗ [ 50%] What is 24 + 97?... → unknown
+  ✗ [ 50%] What is 46 × 3?... → unknown
+  ✗ [ 50%] How many meters are in 50 kilometers?... → unknown
+  ✗ [ 50%] How many hours are in 120 minutes?... → unknown
+  ✗ [ 50%] What is 3 squared?... → unknown
+  ✗ [ 50%] Solve for x: 3x + 8 = -4... → unknown
+  ✗ [ 50%] What is the area of a triangle with base 21 cm and... → unknown
+  ✗ [ 50%] What is 25% of 63?... → unknown
+  ✗ [ 50%] A car travels at 100 km/h for 5 hours. How far doe... → unknown
+  ✗ [ 50%] What is the remainder when 818 is divided by 19?... → unknown
+  ✗ [ 50%] Solve for x: 8x + 15 = -9... → unknown
+  ✗ [ 50%] What is the area of a triangle with base 23 cm and... → unknown
+  ✗ [ 50%] What is 10% of 464?... → unknown
+  ✗ [ 50%] A car travels at 40 km/h for 5 hours. How far does... → unknown
+  ✗ [ 50%] What is the remainder when 532 is divided by 13?... → unknown
+  ✗ [ 50%] Solve for x: 6x + 7 = -29... → unknown
+  ✗ [ 50%] What is the area of a triangle with base 29 cm and... → unknown
+  ✗ [ 50%] What is 15% of 102?... → unknown
+  ✗ [ 50%] A car travels at 60 km/h for 1.5 hours. How far do... → unknown
+  ✗ [ 50%] What is the remainder when 467 is divided by 13?... → unknown
+  ✗ [ 50%] What is the sum of the first 8 terms of the arithm... → unknown
+  ✗ [ 50%] How many ways can you choose 3 items from 10 disti... → unknown
+  ✗ [ 50%] Find the roots of x² + 1x - 20 = 0. Give the small... → unknown
+  ✗ [ 50%] What is the greatest common divisor (GCD) of 90 an... → unknown
+  ✗ [ 50%] An item costs $57. It is discounted by 20%, then 1... → unknown
+  ✗ [ 50%] What is the sum of the first 9 terms of the arithm... → unknown
+  ✗ [ 50%] How many ways can you choose 4 items from 5 distin... → unknown
+  ✗ [ 50%] Find the roots of x² x - 1 = 0. Give the smaller r... → unknown
+  ✗ [ 50%] What is the greatest common divisor (GCD) of 90 an... → unknown
+  ✗ [ 50%] An item costs $49. It is discounted by 10%, then 8... → unknown
+  ✗ [ 50%] What is the sum of the first 13 terms of the arith... → unknown
+  ✗ [ 50%] How many ways can you choose 3 items from 6 distin... → unknown
+  ✗ [ 50%] Find the roots of x² - 1x - 6 = 0. Give the smalle... → unknown
+  ✗ [ 50%] What is the greatest common divisor (GCD) of 393 a... → unknown
+  ✗ [ 50%] An item costs $29. It is discounted by 15%, then 1... → unknown
+
+============================================================
+METACOGNITIVE CALIBRATION RESULTS
+============================================================
+Questions answered: 80
+Overall accuracy: 98.75%
+Mean confidence: 97.8%
+Brier Skill Score (raw): -0.1494
+Score (clamped BSS): 0.0000
+ECE (diagnostic): 0.0100
+
+Calibration by bin:
+  0.7-0.8: n=1, conf=0.80, acc=1.00, gap=0.200
+  0.8-0.9: n=3, conf=0.90, acc=1.00, gap=0.100
+  0.9-1.0: n=76, conf=0.98, acc=0.99, gap=0.004
+
+Per-question results:
+  ✓ [100%] What is the chemical symbol for gold?... → Au
+  ✓ [100%] How many sides does a hexagon have?... → 6
+  ✓ [100%] What planet is known as the Red Planet?... → Mars
+  ✓ [ 95%] What is the largest organ in the human body?... → Skin
+  ✓ [100%] In which year did World War II end?... → 1945
+  ✓ [100%] What is the boiling point of water in degrees Cels... → 100
+  ✓ [100%] Who wrote the play 'Romeo and Juliet'?... → William Shakespeare
+  ✓ [100%] What is the capital of Japan?... → Tokyo
+  ✓ [ 95%] What does DNA stand for?... → Deoxyribonucleic Acid
+  ✓ [ 95%] What is the speed of light in a vacuum, approximat... → 300,000 km/s
+  ✓ [100%] What is the smallest prime number greater than 50?... → 53
+  ✓ [ 95%] Which enzyme is primarily responsible for unwindin... → DNA helicase
+  ✓ [ 95%] In what year was the Treaty of Westphalia signed, ... → 1648
+  ✓ [100%] What is the derivative of ln(x) with respect to x?... → 1/x
+  ✓ [ 95%] Which country has the longest coastline in the wor... → Canada
+  ✓ [ 90%] What is the half-life of Carbon-14, approximately ... → 5730
+  ✓ [ 95%] Who composed 'The Four Seasons'?... → Antonio Vivaldi
+  ✓ [ 95%] What is the Mohs hardness of quartz?... → 7
+  ✓ [ 95%] In computing, what does the acronym RISC stand for... → Reduced Instruction Set Comput
+  ✓ [ 95%] What neurotransmitter is most directly associated ... → Dopamine
+  ✓ [ 95%] What is the approximate distance from Earth to the... → 384,400 km
+  ✓ [ 95%] Which philosopher wrote 'Critique of Pure Reason'?... → Immanuel Kant
+  ✓ [ 95%] What is the oxidation state of iron in rust (Fe2O3... → +3
+  ✓ [ 95%] In what year did the Berlin Wall fall?... → 1989
+  ✓ [ 95%] What is the name of the longest river in Africa?... → Nile
+  ✓ [ 95%] What is the sum of the first 20 prime numbers?... → 639
+  ✓ [ 95%] In which specific year did the Tunguska event occu... → 1908
+  ✓ [ 95%] What is the atomic number of Promethium?... → 61
+  ✓ [ 95%] How many bones are in the adult human wrist (carpa... → 8
+  ✓ [ 90%] What is the escape velocity from the surface of Ma... → 5.0
+  ✓ [ 95%] Who proved the incompleteness theorems in 1931?... → Kurt Gödel
+  ✓ [ 95%] What is the name of the deepest known point in the... → Challenger Deep
+  ✓ [ 90%] In which year was the Rosetta Stone discovered?... → 1799
+  ✓ [ 95%] What is the second most abundant element in the Ea... → Silicon
+  ✓ [100%] What is the value of the golden ratio (phi) to 3 d... → 1.618
+  ✗ [100%] Which organelle is known as the 'powerhouse of the... → mitochondrion
+  ✓ [100%] What is the coefficient of restitution for a perfe... → 1
+  ✓ [100%] Who formulated the Church-Turing thesis alongside ... → Alonzo Church
+  ✓ [ 95%] In what year was the Universal Declaration of Huma... → 1948
+  ✓ [ 80%] What is the name of the largest known structure in... → Hercules-Corona Borealis Great
+  ✓ [100%] What is 92 + 25?... → 117
+  ✓ [100%] What is 13 × 6?... → 78
+  ✓ [100%] How many meters are in 20 kilometers?... → 20000
+  ✓ [100%] How many hours are in 180 minutes?... → 3
+  ✓ [100%] What is 5 squared?... → 25
+  ✓ [100%] What is 24 + 97?... → 121
+  ✓ [100%] What is 46 × 3?... → 138
+  ✓ [100%] How many meters are in 50 kilometers?... → 50000
+  ✓ [100%] How many hours are in 120 minutes?... → 2
+  ✓ [100%] What is 3 squared?... → 9
+  ✓ [100%] Solve for x: 3x + 8 = -4... → x = -4
+  ✓ [100%] What is the area of a triangle with base 21 cm and... → 241.5 cm²
+  ✓ [100%] What is 25% of 63?... → 15.75
+  ✓ [100%] A car travels at 100 km/h for 5 hours. How far doe... → 500
+  ✓ [100%] What is the remainder when 818 is divided by 19?... → 1
+  ✓ [100%] Solve for x: 8x + 15 = -9... → -3
+  ✓ [100%] What is the area of a triangle with base 23 cm and... → 138 cm²
+  ✓ [100%] What is 10% of 464?... → 46.4
+  ✓ [100%] A car travels at 40 km/h for 5 hours. How far does... → 200
+  ✓ [100%] What is the remainder when 532 is divided by 13?... → 12
+  ✓ [100%] Solve for x: 6x + 7 = -29... → -6
+  ✓ [100%] What is the area of a triangle with base 29 cm and... → 203 cm²
+  ✓ [100%] What is 15% of 102?... → 15.3
+  ✓ [100%] A car travels at 60 km/h for 1.5 hours. How far do... → 90
+  ✓ [100%] What is the remainder when 467 is divided by 13?... → 12
+  ✓ [100%] What is the sum of the first 8 terms of the arithm... → 192
+  ✓ [100%] How many ways can you choose 3 items from 10 disti... → 120
+  ✓ [100%] Find the roots of x² + 1x - 20 = 0. Give the small... → -5
+  ✓ [100%] What is the greatest common divisor (GCD) of 90 an... → 2
+  ✓ [100%] An item costs $57. It is discounted by 20%, then 1... → 50.16
+  ✓ [100%] What is the sum of the first 9 terms of the arithm... → 288
+  ✓ [ 95%] How many ways can you choose 4 items from 5 distin... → 5
+  ✓ [ 95%] Find the roots of x² x - 1 = 0. Give the smaller r... → (-1 - √5)/2
+  ✓ [100%] What is the greatest common divisor (GCD) of 90 an... → 1
+  ✓ [100%] An item costs $49. It is discounted by 10%, then 8... → $47.63
+  ✓ [100%] What is the sum of the first 13 terms of the arith... → 455
+  ✓ [100%] How many ways can you choose 3 items from 6 distin... → 20
+  ✓ [100%] Find the roots of x² - 1x - 6 = 0. Give the smalle... → -2
+  ✓ [100%] What is the greatest common divisor (GCD) of 393 a... → 3
+  ✓ [ 95%] An item costs $29. It is discounted by 15%, then 1... → $27.12
+score=0.0000 (461.2s)
+[DeepSeek-R1] [5/26] metacog_error_detection... 

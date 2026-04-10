@@ -1,0 +1,3033 @@
+Starting run_all_v6 at 2026-04-10T14:08:08.991726+00:00
+Models: 10, Benchmarks: 26
+Per-benchmark timeout: 300s
+
+[1/10] SKIP Llama 3.3 70B: all 26 done
+
+[2/10] Ministral 3B: 16 done, 10 remaining
+  [1/10] attention_instruction_update... ERROR: An error occurred (InternalServerException) when calling the (129.4s)
+  [2/10] exec_func_wcst... {
+  "benchmark": "WCST",
+  "n_trials": 80,
+  "accuracy": 0.2375,
+  "perseveration_rate": 0.0,
+  "perseverative_errors": 0,
+  "total_post_switch_errors": 61,
+  "shift_efficiency": 0.0,
+  "categories_completed": 0,
+  "total_episodes": 8,
+  "switch_points": [
+    10,
+    20,
+    30,
+    40,
+    50,
+    60,
+    70
+  ],
+  "composite_score": 0.4713,
+  "score_breakdown": {
+    "accuracy_component": 0.0712,
+    "perseveration_component": 0.4,
+    "shift_component": 0.0
+  },
+  "per_episode": {
+    "0": {
+      "correct": 3,
+      "rule": "color"
+    },
+    "1": {
+      "correct": 1,
+      "rule": "shape"
+    },
+    "2": {
+      "correct": 2,
+      "rule": "number"
+    },
+    "3": {
+      "correct": 5,
+      "rule": "color"
+    },
+    "4": {
+      "correct": 3,
+      "rule": "shape"
+    },
+    "5": {
+      "correct": 1,
+      "rule": "number"
+    },
+    "6": {
+      "correct": 2,
+      "rule": "color"
+    },
+    "7": {
+      "correct": 2,
+      "rule": "shape"
+    }
+  }
+}
+{
+  "benchmark": "WCST",
+  "n_trials": 80,
+  "accuracy": 0.3375,
+  "perseveration_rate": 0.0577,
+  "perseverative_errors": 3,
+  "total_post_switch_errors": 52,
+  "shift_efficiency": 0.0,
+  "categories_completed": 3,
+  "total_episodes": 8,
+  "switch_points": [
+    10,
+    20,
+    30,
+    40,
+    50,
+    60,
+    70
+  ],
+  "composite_score": 0.4782,
+  "score_breakdown": {
+    "accuracy_component": 0.1013,
+    "perseveration_component": 0.3769,
+    "shift_component": 0.0
+  },
+  "per_episode": {
+    "0": {
+      "correct": 1,
+      "rule": "color"
+    },
+    "1": {
+      "correct": 8,
+      "rule": "shape"
+    },
+    "2": {
+      "correct": 0,
+      "rule": "number"
+    },
+    "3": {
+      "correct": 0,
+      "rule": "color"
+    },
+    "4": {
+      "correct": 10,
+      "rule": "shape"
+    },
+    "5": {
+      "correct": 0,
+      "rule": "number"
+    },
+    "6": {
+      "correct": 0,
+      "rule": "color"
+    },
+    "7": {
+      "correct": 8,
+      "rule": "shape"
+    }
+  }
+}
+score=0.4782 (199.4s)
+  [3/10] exec_func_tol... {
+  "benchmark": "Tower of London",
+  "n_problems": 15,
+  "overall_validity": 0.0,
+  "mean_optimality": 0.0,
+  "depth_scaling": {
+    "3": 0.0,
+    "4": 0.0,
+    "5": 0.0
+  },
+  "depth_bonus": 0.0,
+  "composite_score": 0.0,
+  "per_problem": [
+    {
+      "problem_id": "tol_3move_1",
+      "optimal_moves": 3,
+      "model_moves": 0,
+      "valid_moves": true,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": []
+    },
+    {
+      "problem_id": "tol_3move_2",
+      "optimal_moves": 3,
+      "model_moves": 0,
+      "valid_moves": true,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": []
+    },
+    {
+      "problem_id": "tol_3move_3",
+      "optimal_moves": 3,
+      "model_moves": 0,
+      "valid_moves": true,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": []
+    },
+    {
+      "problem_id": "tol_3move_4",
+      "optimal_moves": 3,
+      "model_moves": 0,
+      "valid_moves": true,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": []
+    },
+    {
+      "problem_id": "tol_3move_5",
+      "optimal_moves": 3,
+      "model_moves": 0,
+      "valid_moves": true,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": []
+    },
+    {
+      "problem_id": "tol_4move_1",
+      "optimal_moves": 4,
+      "model_moves": 0,
+      "valid_moves": true,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": []
+    },
+    {
+      "problem_id": "tol_4move_2",
+      "optimal_moves": 4,
+      "model_moves": 0,
+      "valid_moves": true,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": []
+    },
+    {
+      "problem_id": "tol_4move_3",
+      "optimal_moves": 4,
+      "model_moves": 0,
+      "valid_moves": true,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": []
+    },
+    {
+      "problem_id": "tol_4move_4",
+      "optimal_moves": 4,
+      "model_moves": 0,
+      "valid_moves": true,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": []
+    },
+    {
+      "problem_id": "tol_4move_5",
+      "optimal_moves": 4,
+      "model_moves": 0,
+      "valid_moves": true,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": []
+    },
+    {
+      "problem_id": "tol_5move_1",
+      "optimal_moves": 5,
+      "model_moves": 0,
+      "valid_moves": true,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": []
+    },
+    {
+      "problem_id": "tol_5move_2",
+      "optimal_moves": 5,
+      "model_moves": 0,
+      "valid_moves": true,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": []
+    },
+    {
+      "problem_id": "tol_5move_3",
+      "optimal_moves": 5,
+      "model_moves": 0,
+      "valid_moves": true,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": []
+    },
+    {
+      "problem_id": "tol_5move_4",
+      "optimal_moves": 5,
+      "model_moves": 0,
+      "valid_moves": true,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": []
+    },
+    {
+      "problem_id": "tol_5move_5",
+      "optimal_moves": 5,
+      "model_moves": 0,
+      "valid_moves": true,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": []
+    }
+  ]
+}
+{
+  "benchmark": "Tower of London",
+  "n_problems": 15,
+  "overall_validity": 0.0,
+  "mean_optimality": 0.0,
+  "depth_scaling": {
+    "3": 0.0,
+    "4": 0.0,
+    "5": 0.0
+  },
+  "depth_bonus": 0.0,
+  "composite_score": 0.0,
+  "per_problem": [
+    {
+      "problem_id": "tol_3move_1",
+      "optimal_moves": 3,
+      "model_moves": 40,
+      "valid_moves": false,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": [
+        "Move 5: Peg B is empty",
+        "Move 6: Peg B is empty",
+        "Move 7: Peg B is empty",
+        "Move 9: Peg C is empty",
+        "Move 13: Peg B is empty",
+        "Move 19: Peg B is empty",
+        "Move 25: Peg B is empty",
+        "Move 31: Peg B is empty",
+        "Move 37: Peg B is empty"
+      ]
+    },
+    {
+      "problem_id": "tol_3move_2",
+      "optimal_moves": 3,
+      "model_moves": 107,
+      "valid_moves": false,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": [
+        "Move 2: Peg C is full (capacity 1)",
+        "Move 4: Peg B is empty",
+        "Move 5: Peg B is empty",
+        "Move 6: Peg B is empty",
+        "Move 8: Peg C is full (capacity 1)",
+        "Move 9: Peg C is full (capacity 1)",
+        "Move 12: Peg B is empty",
+        "Move 13: Peg B is empty",
+        "Move 15: Peg C is empty",
+        "Move 18: Peg B is empty",
+        "Move 19: Peg B is empty",
+        "Move 20: Peg B is empty",
+        "Move 21: Peg C is full (capacity 1)",
+        "Move 22: Peg C is full (capacity 1)",
+        "Move 23: Peg C is full (capacity 1)",
+        "Move 24: Peg B is empty",
+        "Move 25: Peg B is empty",
+        "Move 26: Peg B is empty",
+        "Move 27: Peg B is empty",
+        "Move 28: Peg B is empty",
+        "Move 30: Peg C is full (capacity 1)",
+        "Move 32: Peg A is empty",
+        "Move 33: Peg A is empty",
+        "Move 34: Peg A is empty",
+        "Move 35: Peg A is empty",
+        "Move 37: Peg C is full (capacity 1)",
+        "Move 38: Peg C is full (capacity 1)",
+        "Move 39: Peg C is full (capacity 1)",
+        "Move 42: Peg C is full (capacity 1)",
+        "Move 45: Peg B is empty",
+        "Move 46: Peg C is full (capacity 1)",
+        "Move 48: Peg C is full (capacity 1)",
+        "Move 49: Peg C is full (capacity 1)",
+        "Move 51: Peg C is empty",
+        "Move 56: Peg C is full (capacity 1)",
+        "Move 57: Peg B is empty",
+        "Move 58: Peg B is empty",
+        "Move 61: Peg A is empty",
+        "Move 65: Peg A is empty",
+        "Move 68: Peg C is full (capacity 1)",
+        "Move 69: Peg C is full (capacity 1)",
+        "Move 72: Peg C is full (capacity 1)",
+        "Move 73: Peg C is full (capacity 1)",
+        "Move 75: Peg B is empty",
+        "Move 77: Peg B is empty",
+        "Move 82: Peg C is full (capacity 1)",
+        "Move 83: Peg C is full (capacity 1)",
+        "Move 84: Peg C is full (capacity 1)",
+        "Move 86: Peg B is empty",
+        "Move 88: Peg C is full (capacity 1)",
+        "Move 89: Peg B is empty",
+        "Move 90: Peg B is empty",
+        "Move 93: Peg A is empty",
+        "Move 94: Peg A is empty",
+        "Move 97: Peg C is full (capacity 1)",
+        "Move 98: Peg C is full (capacity 1)",
+        "Move 99: Peg C is full (capacity 1)",
+        "Move 101: Peg B is empty",
+        "Move 107: Peg C is full (capacity 1)"
+      ]
+    },
+    {
+      "problem_id": "tol_3move_3",
+      "optimal_moves": 3,
+      "model_moves": 2,
+      "valid_moves": false,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": [
+        "Move 2: Peg C is empty"
+      ]
+    },
+    {
+      "problem_id": "tol_3move_4",
+      "optimal_moves": 3,
+      "model_moves": 37,
+      "valid_moves": false,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": [
+        "Move 3: Peg C is full (capacity 1)",
+        "Move 6: Peg B is empty",
+        "Move 7: Peg B is empty",
+        "Move 8: Peg B is empty",
+        "Move 9: Peg C is empty",
+        "Move 10: Peg C is empty",
+        "Move 11: Peg B is empty",
+        "Move 12: Peg B is empty",
+        "Move 13: Peg B is empty",
+        "Move 14: Peg B is empty",
+        "Move 15: Peg B is empty",
+        "Move 16: Peg C is empty",
+        "Move 17: Peg C is empty",
+        "Move 18: Peg B is empty",
+        "Move 19: Peg B is empty",
+        "Move 20: Peg B is empty",
+        "Move 21: Peg C is empty",
+        "Move 23: Peg C is full (capacity 1)",
+        "Move 24: Peg B is empty",
+        "Move 25: Peg B is empty",
+        "Move 26: Peg B is empty",
+        "Move 27: Peg B is empty",
+        "Move 28: Peg B is empty",
+        "Move 29: Peg B is empty",
+        "Move 30: Peg B is empty",
+        "Move 31: Peg B is empty",
+        "Move 32: Peg B is empty",
+        "Move 34: Peg C is empty",
+        "Move 35: Peg B is empty",
+        "Move 36: Peg B is empty",
+        "Move 37: Peg C is empty"
+      ]
+    },
+    {
+      "problem_id": "tol_3move_5",
+      "optimal_moves": 3,
+      "model_moves": 70,
+      "valid_moves": false,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": [
+        "Move 4: Peg C is full (capacity 1)",
+        "Move 6: Peg A is empty",
+        "Move 8: Peg C is full (capacity 1)",
+        "Move 9: Peg C is full (capacity 1)",
+        "Move 10: Peg C is full (capacity 1)",
+        "Move 14: Peg B is empty",
+        "Move 15: Peg B is empty",
+        "Move 16: Peg B is empty",
+        "Move 19: Peg B is full (capacity 2)",
+        "Move 22: Peg B is empty",
+        "Move 23: Peg B is empty",
+        "Move 24: Peg B is empty",
+        "Move 25: Peg B is empty",
+        "Move 26: Peg B is empty",
+        "Move 27: Peg B is empty",
+        "Move 28: Peg B is empty",
+        "Move 33: Peg A is empty",
+        "Move 34: Peg A is empty",
+        "Move 37: Peg B is empty",
+        "Move 38: Peg B is empty",
+        "Move 39: Peg B is empty",
+        "Move 40: Peg B is empty",
+        "Move 43: Peg B is empty",
+        "Move 44: Peg B is empty",
+        "Move 45: Peg C is full (capacity 1)",
+        "Move 46: Peg C is full (capacity 1)",
+        "Move 47: Peg B is empty",
+        "Move 48: Peg B is empty",
+        "Move 49: Peg C is full (capacity 1)",
+        "Move 51: Peg C is empty",
+        "Move 55: Peg B is full (capacity 2)",
+        "Move 56: Peg A is empty",
+        "Move 63: Peg A is empty",
+        "Move 67: Peg C is empty"
+      ]
+    },
+    {
+      "problem_id": "tol_4move_1",
+      "optimal_moves": 4,
+      "model_moves": 79,
+      "valid_moves": false,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": [
+        "Move 4: Peg B is empty",
+        "Move 5: Peg B is empty",
+        "Move 6: Peg C is empty",
+        "Move 7: Peg C is empty",
+        "Move 8: Peg B is empty",
+        "Move 9: Peg B is empty",
+        "Move 10: Peg B is empty",
+        "Move 14: Peg C is full (capacity 1)",
+        "Move 16: Peg B is empty",
+        "Move 17: Peg C is empty",
+        "Move 18: Peg C is empty",
+        "Move 19: Peg C is empty",
+        "Move 20: Peg B is empty",
+        "Move 21: Peg B is empty",
+        "Move 24: Peg C is empty",
+        "Move 25: Peg C is empty",
+        "Move 29: Peg B is empty",
+        "Move 31: Peg C is empty",
+        "Move 34: Peg C is full (capacity 1)",
+        "Move 38: Peg C is empty",
+        "Move 40: Peg B is empty",
+        "Move 41: Peg B is empty",
+        "Move 44: Peg C is empty",
+        "Move 45: Peg B is empty",
+        "Move 46: Peg C is empty",
+        "Move 47: Peg B is empty",
+        "Move 48: Peg C is empty",
+        "Move 49: Peg B is empty",
+        "Move 50: Peg C is empty",
+        "Move 51: Peg B is empty",
+        "Move 52: Peg B is empty",
+        "Move 55: Peg C is empty",
+        "Move 56: Peg B is empty",
+        "Move 59: Peg C is empty",
+        "Move 60: Peg B is empty",
+        "Move 63: Peg C is empty",
+        "Move 64: Peg B is empty",
+        "Move 66: Peg B is empty",
+        "Move 73: Peg B is empty",
+        "Move 78: Peg C is empty",
+        "Move 79: Peg B is empty"
+      ]
+    },
+    {
+      "problem_id": "tol_4move_2",
+      "optimal_moves": 4,
+      "model_moves": 25,
+      "valid_moves": false,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": [
+        "Move 1: Peg C is full (capacity 1)",
+        "Move 2: Peg C is full (capacity 1)",
+        "Move 4: Peg C is empty",
+        "Move 9: Peg B is empty",
+        "Move 13: Peg C is empty",
+        "Move 15: Peg C is full (capacity 1)",
+        "Move 17: Peg B is empty",
+        "Move 21: Peg B is empty",
+        "Move 25: Peg B is empty"
+      ]
+    },
+    {
+      "problem_id": "tol_4move_3",
+      "optimal_moves": 4,
+      "model_moves": 52,
+      "valid_moves": false,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": [
+        "Move 1: Peg C is full (capacity 1)",
+        "Move 3: Peg C is full (capacity 1)",
+        "Move 6: Peg B is empty",
+        "Move 7: Peg B is empty",
+        "Move 8: Peg B is empty",
+        "Move 9: Peg B is empty",
+        "Move 10: Peg B is empty",
+        "Move 15: Peg B is full (capacity 2)",
+        "Move 16: Peg B is full (capacity 2)",
+        "Move 20: Peg C is empty",
+        "Move 21: Peg C is empty",
+        "Move 22: Peg C is empty",
+        "Move 23: Peg C is empty",
+        "Move 24: Peg B is empty",
+        "Move 25: Peg B is empty",
+        "Move 28: Peg C is full (capacity 1)",
+        "Move 29: Peg C is full (capacity 1)",
+        "Move 30: Peg C is full (capacity 1)",
+        "Move 36: Peg B is empty",
+        "Move 37: Peg B is empty",
+        "Move 42: Peg B is empty",
+        "Move 44: Peg C is empty",
+        "Move 48: Peg C is full (capacity 1)"
+      ]
+    },
+    {
+      "problem_id": "tol_4move_4",
+      "optimal_moves": 4,
+      "model_moves": 39,
+      "valid_moves": false,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": [
+        "Move 1: Peg B is empty",
+        "Move 2: Peg C is full (capacity 1)",
+        "Move 3: Peg B is empty",
+        "Move 10: Peg C is empty",
+        "Move 11: Peg B is full (capacity 2)",
+        "Move 13: Peg A is empty",
+        "Move 14: Peg A is empty",
+        "Move 15: Peg A is empty",
+        "Move 19: Peg C is empty",
+        "Move 20: Peg C is empty",
+        "Move 21: Peg C is empty",
+        "Move 22: Peg C is empty",
+        "Move 29: Peg B is full (capacity 2)",
+        "Move 30: Peg A is empty",
+        "Move 33: Peg B is full (capacity 2)",
+        "Move 34: Peg A is empty",
+        "Move 37: Peg B is full (capacity 2)",
+        "Move 38: Peg A is empty"
+      ]
+    },
+    {
+      "problem_id": "tol_4move_5",
+      "optimal_moves": 4,
+      "model_moves": 84,
+      "valid_moves": false,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": [
+        "Move 7: Peg C is full (capacity 1)",
+        "Move 10: Peg B is full (capacity 2)",
+        "Move 13: Peg C is full (capacity 1)",
+        "Move 15: Peg A is empty",
+        "Move 16: Peg A is empty",
+        "Move 17: Peg A is empty",
+        "Move 18: Peg A is empty",
+        "Move 19: Peg A is empty",
+        "Move 20: Peg A is empty",
+        "Move 21: Peg A is empty",
+        "Move 22: Peg A is empty",
+        "Move 26: Peg A is empty",
+        "Move 29: Peg A is empty",
+        "Move 39: Peg A is empty",
+        "Move 40: Peg B is full (capacity 2)",
+        "Move 41: Peg A is empty",
+        "Move 44: Peg A is empty",
+        "Move 45: Peg B is full (capacity 2)",
+        "Move 46: Peg A is empty",
+        "Move 47: Peg A is empty",
+        "Move 48: Peg A is empty",
+        "Move 51: Peg B is full (capacity 2)",
+        "Move 53: Peg B is full (capacity 2)",
+        "Move 54: Peg A is empty",
+        "Move 55: Peg A is empty",
+        "Move 56: Peg A is empty",
+        "Move 59: Peg B is full (capacity 2)",
+        "Move 62: Peg C is full (capacity 1)",
+        "Move 66: Peg B is full (capacity 2)",
+        "Move 68: Peg B is full (capacity 2)",
+        "Move 69: Peg A is empty",
+        "Move 70: Peg A is empty",
+        "Move 71: Peg A is empty",
+        "Move 74: Peg B is full (capacity 2)",
+        "Move 78: Peg A is empty",
+        "Move 79: Peg B is full (capacity 2)",
+        "Move 80: Peg A is empty",
+        "Move 81: Peg A is empty",
+        "Move 82: Peg A is empty"
+      ]
+    },
+    {
+      "problem_id": "tol_5move_1",
+      "optimal_moves": 5,
+      "model_moves": 50,
+      "valid_moves": false,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": [
+        "Move 1: Peg C is full (capacity 1)",
+        "Move 2: Peg C is full (capacity 1)",
+        "Move 3: Peg C is full (capacity 1)",
+        "Move 5: Peg B is full (capacity 2)",
+        "Move 6: Peg B is full (capacity 2)",
+        "Move 8: Peg C is empty",
+        "Move 9: Peg C is empty",
+        "Move 10: Peg B is full (capacity 2)",
+        "Move 11: Peg B is full (capacity 2)",
+        "Move 13: Peg C is full (capacity 1)",
+        "Move 14: Peg C is full (capacity 1)",
+        "Move 17: Peg B is empty",
+        "Move 18: Peg B is empty",
+        "Move 19: Peg B is empty",
+        "Move 20: Peg C is full (capacity 1)",
+        "Move 24: Peg B is empty",
+        "Move 28: Peg B is empty",
+        "Move 29: Peg C is full (capacity 1)",
+        "Move 33: Peg B is empty",
+        "Move 34: Peg C is full (capacity 1)",
+        "Move 38: Peg B is empty",
+        "Move 39: Peg B is empty",
+        "Move 40: Peg B is empty",
+        "Move 41: Peg C is full (capacity 1)",
+        "Move 45: Peg B is empty",
+        "Move 46: Peg C is full (capacity 1)",
+        "Move 50: Peg B is empty"
+      ]
+    },
+    {
+      "problem_id": "tol_5move_2",
+      "optimal_moves": 5,
+      "model_moves": 40,
+      "valid_moves": false,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": [
+        "Move 5: Peg C is full (capacity 1)",
+        "Move 10: Peg C is full (capacity 1)",
+        "Move 11: Peg B is empty",
+        "Move 14: Peg C is full (capacity 1)",
+        "Move 15: Peg B is empty",
+        "Move 19: Peg C is full (capacity 1)",
+        "Move 20: Peg B is empty",
+        "Move 23: Peg C is full (capacity 1)",
+        "Move 24: Peg B is empty",
+        "Move 27: Peg C is full (capacity 1)",
+        "Move 28: Peg C is full (capacity 1)",
+        "Move 29: Peg B is empty",
+        "Move 30: Peg B is empty",
+        "Move 32: Peg C is empty",
+        "Move 34: Peg B is empty",
+        "Move 36: Peg C is full (capacity 1)",
+        "Move 37: Peg C is full (capacity 1)",
+        "Move 38: Peg B is empty"
+      ]
+    },
+    {
+      "problem_id": "tol_5move_3",
+      "optimal_moves": 5,
+      "model_moves": 104,
+      "valid_moves": false,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": [
+        "Move 6: Peg A is empty",
+        "Move 7: Peg A is empty",
+        "Move 8: Peg A is empty",
+        "Move 11: Peg B is full (capacity 2)",
+        "Move 14: Peg C is full (capacity 1)",
+        "Move 16: Peg A is empty",
+        "Move 17: Peg A is empty",
+        "Move 18: Peg A is empty",
+        "Move 22: Peg C is empty",
+        "Move 24: Peg C is full (capacity 1)",
+        "Move 26: Peg A is empty",
+        "Move 27: Peg A is empty",
+        "Move 28: Peg A is empty",
+        "Move 29: Peg B is full (capacity 2)",
+        "Move 30: Peg A is empty",
+        "Move 31: Peg A is empty",
+        "Move 34: Peg B is empty",
+        "Move 35: Peg B is empty",
+        "Move 36: Peg B is empty",
+        "Move 37: Peg B is empty",
+        "Move 38: Peg C is full (capacity 1)",
+        "Move 43: Peg C is full (capacity 1)",
+        "Move 44: Peg C is full (capacity 1)",
+        "Move 46: Peg A is empty",
+        "Move 47: Peg A is empty",
+        "Move 48: Peg A is empty",
+        "Move 49: Peg B is full (capacity 2)",
+        "Move 50: Peg B is full (capacity 2)",
+        "Move 53: Peg B is empty",
+        "Move 54: Peg B is empty",
+        "Move 55: Peg C is full (capacity 1)",
+        "Move 60: Peg C is full (capacity 1)",
+        "Move 65: Peg A is empty",
+        "Move 66: Peg A is empty",
+        "Move 70: Peg A is empty",
+        "Move 71: Peg A is empty",
+        "Move 75: Peg A is empty",
+        "Move 76: Peg A is empty",
+        "Move 80: Peg A is empty",
+        "Move 81: Peg A is empty",
+        "Move 85: Peg A is empty",
+        "Move 86: Peg A is empty",
+        "Move 90: Peg A is empty",
+        "Move 91: Peg A is empty",
+        "Move 95: Peg A is empty",
+        "Move 96: Peg A is empty",
+        "Move 100: Peg A is empty",
+        "Move 101: Peg A is empty"
+      ]
+    },
+    {
+      "problem_id": "tol_5move_4",
+      "optimal_moves": 5,
+      "model_moves": 106,
+      "valid_moves": false,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": [
+        "Move 1: Peg C is full (capacity 1)",
+        "Move 4: Peg C is empty",
+        "Move 5: Peg C is empty",
+        "Move 7: Peg B is empty",
+        "Move 10: Peg A is empty",
+        "Move 11: Peg A is empty",
+        "Move 13: Peg C is empty",
+        "Move 14: Peg C is empty",
+        "Move 15: Peg C is empty",
+        "Move 16: Peg C is empty",
+        "Move 17: Peg C is empty",
+        "Move 18: Peg C is empty",
+        "Move 23: Peg C is empty",
+        "Move 24: Peg C is empty",
+        "Move 31: Peg C is empty",
+        "Move 32: Peg C is empty",
+        "Move 33: Peg C is empty",
+        "Move 37: Peg C is empty",
+        "Move 41: Peg C is empty",
+        "Move 48: Peg C is empty",
+        "Move 50: Peg C is full (capacity 1)",
+        "Move 52: Peg C is empty",
+        "Move 53: Peg C is empty",
+        "Move 54: Peg C is empty",
+        "Move 55: Peg C is empty",
+        "Move 56: Peg B is empty",
+        "Move 59: Peg C is empty",
+        "Move 60: Peg C is empty",
+        "Move 61: Peg B is empty",
+        "Move 64: Peg C is empty",
+        "Move 65: Peg C is empty",
+        "Move 66: Peg B is empty",
+        "Move 69: Peg C is empty",
+        "Move 70: Peg C is empty",
+        "Move 71: Peg B is empty",
+        "Move 74: Peg C is empty",
+        "Move 75: Peg C is empty",
+        "Move 76: Peg C is empty",
+        "Move 77: Peg C is empty",
+        "Move 78: Peg B is empty",
+        "Move 81: Peg C is empty",
+        "Move 82: Peg C is empty",
+        "Move 83: Peg B is empty",
+        "Move 86: Peg C is empty",
+        "Move 87: Peg C is empty",
+        "Move 88: Peg B is empty",
+        "Move 91: Peg C is empty",
+        "Move 92: Peg C is empty",
+        "Move 93: Peg B is empty",
+        "Move 96: Peg C is empty",
+        "Move 97: Peg C is empty",
+        "Move 98: Peg B is empty",
+        "Move 101: Peg C is empty",
+        "Move 102: Peg C is empty",
+        "Move 103: Peg B is empty"
+      ]
+    },
+    {
+      "problem_id": "tol_5move_5",
+      "optimal_moves": 5,
+      "model_moves": 51,
+      "valid_moves": false,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": [
+        "Move 2: Peg B is full (capacity 2)",
+        "Move 4: Peg A is empty",
+        "Move 7: Peg C is full (capacity 1)",
+        "Move 10: Peg C is full (capacity 1)",
+        "Move 11: Peg C is full (capacity 1)",
+        "Move 13: Peg C is empty",
+        "Move 15: Peg A is empty",
+        "Move 16: Peg A is empty",
+        "Move 17: Peg A is empty",
+        "Move 20: Peg C is full (capacity 1)",
+        "Move 21: Peg B is empty",
+        "Move 23: Peg C is full (capacity 1)",
+        "Move 24: Peg C is full (capacity 1)",
+        "Move 26: Peg B is empty",
+        "Move 27: Peg C is full (capacity 1)",
+        "Move 31: Peg B is empty",
+        "Move 33: Peg C is full (capacity 1)",
+        "Move 37: Peg A is empty",
+        "Move 39: Peg C is full (capacity 1)",
+        "Move 41: Peg C is empty",
+        "Move 43: Peg A is empty",
+        "Move 45: Peg C is full (capacity 1)",
+        "Move 48: Peg A is empty",
+        "Move 50: Peg C is full (capacity 1)"
+      ]
+    }
+  ]
+}
+score=0.0000 (259.0s)
+  [4/10] exec_func_task_switch... {
+  "benchmark": "Task Switching",
+  "n_trials": 40,
+  "overall_accuracy": 0.0,
+  "switch_trial_accuracy": 0.0,
+  "repeat_trial_accuracy": 0.0,
+  "switch_cost": 0.0,
+  "consistency": 1.0,
+  "composite_score": 0.3,
+  "per_rule": {
+    "odd_even": 0.0,
+    "greater_less": 0.0
+  }
+}
+ERROR: An error occurred (ValidationException) when calling the Con (50.5s)
+  [5/10] exec_func_nback... {
+  "benchmark": "N-back Working Memory",
+  "per_level": {
+    "1": {
+      "d_prime": 0.4238,
+      "hit_rate": 0.0,
+      "false_alarm_rate": 0.0,
+      "accuracy": 0.7458,
+      "hits": 0,
+      "misses": 15,
+      "false_alarms": 0,
+      "correct_rejections": 44
+    },
+    "2": {
+      "d_prime": 0.4153,
+      "hit_rate": 0.0,
+      "false_alarm_rate": 0.0,
+      "accuracy": 0.7414,
+      "hits": 0,
+      "misses": 15,
+      "false_alarms": 0,
+      "correct_rejections": 43
+    },
+    "3": {
+      "d_prime": 0.4065,
+      "hit_rate": 0.0,
+      "false_alarm_rate": 0.0,
+      "accuracy": 0.7368,
+      "hits": 0,
+      "misses": 15,
+      "false_alarms": 0,
+      "correct_rejections": 42
+    }
+  },
+  "composite_score": 0.1031,
+  "score_weights": {
+    "1": 0.2,
+    "2": 0.3,
+    "3": 0.5
+  },
+  "n_level_scaling": {
+    "1": 0.4238,
+    "2": 0.4153,
+    "3": 0.4065
+  }
+}
+ERROR: An HTTP Client raised an unhandled exception: benchmark time (300.0s)
+  [6/10] exec_func_crt... {
+  "benchmark": "Cognitive Reflection Test",
+  "n_items": 15,
+  "accuracy": 0.0,
+  "intuitive_trap_rate": 0.0,
+  "other_wrong_rate": 1.0,
+  "difficulty_bonus": 0.0,
+  "calibration": 0.5,
+  "composite_score": 0.35,
+  "difficulty_breakdown": {
+    "easy": 0.0,
+    "medium": 0.0,
+    "hard": 0.0
+  },
+  "per_item": [
+    {
+      "id": "CRT01",
+      "difficulty": "easy",
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "correct_answer": "1.50",
+      "intuitive_wrong": "3.0",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "algebraic anchoring \u2014 subtracting difference from total instead of solving"
+    },
+    {
+      "id": "CRT02",
+      "difficulty": "easy",
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "correct_answer": "7",
+      "intuitive_wrong": "75",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "rate independence \u2014 assuming parallel workers scale time linearly"
+    },
+    {
+      "id": "CRT03",
+      "difficulty": "easy",
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "correct_answer": "23",
+      "intuitive_wrong": "12",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "exponential growth \u2014 halving the time for half the quantity"
+    },
+    {
+      "id": "CRT04",
+      "difficulty": "medium",
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "correct_answer": "5",
+      "intuitive_wrong": "7",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "complement misread \u2014 'all but N' parsed as subtraction N-K"
+    },
+    {
+      "id": "CRT05",
+      "difficulty": "hard",
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "correct_answer": "-2.25",
+      "intuitive_wrong": "0",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "percentage asymmetry \u2014 +P% and -P% seem to cancel"
+    },
+    {
+      "id": "CRT06",
+      "difficulty": "hard",
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "correct_answer": "33",
+      "intuitive_wrong": "28",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "fence-post error \u2014 confusing ring count with gap count"
+    },
+    {
+      "id": "CRT07",
+      "difficulty": "hard",
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "correct_answer": "19",
+      "intuitive_wrong": "20",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "boundary escape \u2014 dividing total by net rate ignores the final day's escape"
+    },
+    {
+      "id": "CRT08",
+      "difficulty": "medium",
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "correct_answer": "Alex",
+      "intuitive_wrong": "Winter",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "self-reference \u2014 pattern continuation overrides the embedded answer"
+    },
+    {
+      "id": "CRT09",
+      "difficulty": "easy",
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "correct_answer": "11",
+      "intuitive_wrong": "12",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "pieces-vs-cuts \u2014 equating piece count with cut count"
+    },
+    {
+      "id": "CRT10",
+      "difficulty": "medium",
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "correct_answer": "180",
+      "intuitive_wrong": "225",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "interval counting \u2014 forgetting first dose is at t=0"
+    },
+    {
+      "id": "CRT11",
+      "difficulty": "medium",
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "correct_answer": "12",
+      "intuitive_wrong": "2",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "denomination irrelevance \u2014 dividing by value ratio"
+    },
+    {
+      "id": "CRT12",
+      "difficulty": "hard",
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "correct_answer": "375",
+      "intuitive_wrong": "complicated",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "total-time shortcut \u2014 attempting infinite series instead of simple time \u00d7 speed"
+    },
+    {
+      "id": "CRT13",
+      "difficulty": "medium",
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "correct_answer": "2",
+      "intuitive_wrong": "1.5",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "treating 'half a crate' as half the given weight instead of half the unknown"
+    },
+    {
+      "id": "CRT14",
+      "difficulty": "medium",
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "correct_answer": "same",
+      "intuitive_wrong": "Hiker B",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "computing distances instead of realizing they meet at the same point"
+    },
+    {
+      "id": "CRT15",
+      "difficulty": "hard",
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "correct_answer": "1/16",
+      "intuitive_wrong": "1/8",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "linear vs exponential \u2014 assuming 1/(2\u00d7K) instead of 1/2^K"
+    }
+  ]
+}
+
+============================================================
+COGNITIVE REFLECTION TEST RESULTS
+============================================================
+  ✗ CRT01 [easy  ] [ 50%] Got: {"answer": "unknown" Correct: 1.50       Trap: 3.0   → other_wrong
+  ✗ CRT02 [easy  ] [ 50%] Got: {"answer": "unknown" Correct: 7          Trap: 75    → other_wrong
+  ✗ CRT03 [easy  ] [ 50%] Got: {"answer": "unknown" Correct: 23         Trap: 12    → other_wrong
+  ✗ CRT04 [medium] [ 50%] Got: {"answer": "unknown" Correct: 5          Trap: 7     → other_wrong
+  ✗ CRT05 [hard  ] [ 50%] Got: {"answer": "unknown" Correct: -2.25      Trap: 0     → other_wrong
+  ✗ CRT06 [hard  ] [ 50%] Got: {"answer": "unknown" Correct: 33         Trap: 28    → other_wrong
+  ✗ CRT07 [hard  ] [ 50%] Got: {"answer": "unknown" Correct: 19         Trap: 20    → other_wrong
+  ✗ CRT08 [medium] [ 50%] Got: {"answer": "unknown" Correct: Alex       Trap: Winter → other_wrong
+  ✗ CRT09 [easy  ] [ 50%] Got: {"answer": "unknown" Correct: 11         Trap: 12    → other_wrong
+  ✗ CRT10 [medium] [ 50%] Got: {"answer": "unknown" Correct: 180        Trap: 225   → other_wrong
+  ✗ CRT11 [medium] [ 50%] Got: {"answer": "unknown" Correct: 12         Trap: 2     → other_wrong
+  ✗ CRT12 [hard  ] [ 50%] Got: {"answer": "unknown" Correct: 375        Trap: complicated → other_wrong
+  ✗ CRT13 [medium] [ 50%] Got: {"answer": "unknown" Correct: 2          Trap: 1.5   → other_wrong
+  ✗ CRT14 [medium] [ 50%] Got: {"answer": "unknown" Correct: same       Trap: Hiker B → other_wrong
+  ✗ CRT15 [hard  ] [ 50%] Got: {"answer": "unknown" Correct: 1/16       Trap: 1/8   → other_wrong
+
+--- Summary ---
+Accuracy:           0.00% (0/15)
+Intuitive trap rate: 0.00% (0/15)
+Other wrong:         100.00%
+Difficulty bonus:    0.0000
+Calibration:         0.5000
+Composite score:     0.3500
+{
+  "benchmark": "Cognitive Reflection Test",
+  "n_items": 15,
+  "accuracy": 0.0,
+  "intuitive_trap_rate": 0.0,
+  "other_wrong_rate": 1.0,
+  "difficulty_bonus": 0.0,
+  "calibration": 0.5,
+  "composite_score": 0.35,
+  "difficulty_breakdown": {
+    "easy": 0.0,
+    "medium": 0.0,
+    "hard": 0.0
+  },
+  "per_item": [
+    {
+      "id": "CRT01",
+      "difficulty": "easy",
+      "model_answer": "**Adapter cost: $1.50**\n\n**Confidence: 95%**\n\n**Reasoning:**\nLet the adapter cost be **x** dollars.\n",
+      "correct_answer": "1.50",
+      "intuitive_wrong": "3.0",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "algebraic anchoring \u2014 subtracting difference from total instead of solving"
+    },
+    {
+      "id": "CRT02",
+      "difficulty": "easy",
+      "model_answer": "**Answer:** 7 minutes\n**Confidence:** 95%\n\n**Reasoning:**\nThe rate is **1 part per loom per 7 minute",
+      "correct_answer": "7",
+      "intuitive_wrong": "75",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "rate independence \u2014 assuming parallel workers scale time linearly"
+    },
+    {
+      "id": "CRT03",
+      "difficulty": "easy",
+      "model_answer": "**Day 23**\n**Confidence: 95%**\n\n*Reasoning:* If the cluster doubles daily, filling the chamber on da",
+      "correct_answer": "23",
+      "intuitive_wrong": "12",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "exponential growth \u2014 halving the time for half the quantity"
+    },
+    {
+      "id": "CRT04",
+      "difficulty": "medium",
+      "model_answer": "**7**\n**Confidence: 95%**\n\nExplanation: The farmer starts with 12 chickens. If all but 5 fly away, t",
+      "correct_answer": "5",
+      "intuitive_wrong": "7",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "complement misread \u2014 'all but N' parsed as subtraction N-K"
+    },
+    {
+      "id": "CRT05",
+      "difficulty": "hard",
+      "model_answer": "**Net change: \u201310%**\n**Confidence: 95%**\n\n*Reasoning:*\n1. A 15% price increase multiplies the origin",
+      "correct_answer": "-2.25",
+      "intuitive_wrong": "0",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "percentage asymmetry \u2014 +P% and -P% seem to cancel"
+    },
+    {
+      "id": "CRT06",
+      "difficulty": "hard",
+      "model_answer": "**Answer:** 24 seconds\n\n**Confidence:** 95%\n\n**Reasoning:**\nAssuming each ring is independent and ta",
+      "correct_answer": "33",
+      "intuitive_wrong": "28",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "fence-post error \u2014 confusing ring count with gap count"
+    },
+    {
+      "id": "CRT07",
+      "difficulty": "hard",
+      "model_answer": "**Answer:** 17 days\n\n**Confidence:** 95%\n\n**Reasoning:**\nThe caterpillar makes a net gain of 2 meter",
+      "correct_answer": "19",
+      "intuitive_wrong": "20",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "boundary escape \u2014 dividing total by net rate ignores the final day's escape"
+    },
+    {
+      "id": "CRT08",
+      "difficulty": "medium",
+      "model_answer": "**Answer:** Alex\n\n**Confidence Level:** 95%\n\n**Reasoning:** The names given are seasonal (Spring, Su",
+      "correct_answer": "Alex",
+      "intuitive_wrong": "Winter",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "self-reference \u2014 pattern continuation overrides the embedded answer"
+    },
+    {
+      "id": "CRT09",
+      "difficulty": "easy",
+      "model_answer": "**Answer:** 11\n\n**Confidence:** 100%\n\n**Reasoning:** Each cut increases the number of pieces by 1. S",
+      "correct_answer": "11",
+      "intuitive_wrong": "12",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "pieces-vs-cuts \u2014 equating piece count with cut count"
+    },
+    {
+      "id": "CRT10",
+      "difficulty": "medium",
+      "model_answer": "**225 minutes**\n**Confidence: 100%**\n\nExplanation: The first pill is taken at time 0, the second at ",
+      "correct_answer": "180",
+      "intuitive_wrong": "225",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "interval counting \u2014 forgetting first dose is at t=0"
+    },
+    {
+      "id": "CRT11",
+      "difficulty": "medium",
+      "model_answer": "**Answer:** 8\n\n**Confidence:** 95%\n\n**Reasoning:**\nA dozen = 12 stamps.\nIf 12 stamps = 3\u00a2 each, then",
+      "correct_answer": "12",
+      "intuitive_wrong": "2",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "denomination irrelevance \u2014 dividing by value ratio"
+    },
+    {
+      "id": "CRT12",
+      "difficulty": "hard",
+      "model_answer": "**Total distance traveled by the bird: 375 km**\n\n**Confidence: 99%**\n\n**Reasoning:**\n1. The trains m",
+      "correct_answer": "375",
+      "intuitive_wrong": "complicated",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "total-time shortcut \u2014 attempting infinite series instead of simple time \u00d7 speed"
+    },
+    {
+      "id": "CRT13",
+      "difficulty": "medium",
+      "model_answer": "**Answer:** 2 kg\n\n**Confidence:** 100%\n\n**Reasoning:**\nLet \\( x \\) be the weight of the crate in kg.",
+      "correct_answer": "2",
+      "intuitive_wrong": "1.5",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "treating 'half a crate' as half the given weight instead of half the unknown"
+    },
+    {
+      "id": "CRT14",
+      "difficulty": "medium",
+      "model_answer": "**Confidence: 95%**\n\n**Answer:** Hiker A\n\n**Reasoning:**\nRelative speed = 4 km/h + 6 km/h = 10 km/h.",
+      "correct_answer": "same",
+      "intuitive_wrong": "Hiker B",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "computing distances instead of realizing they meet at the same point"
+    },
+    {
+      "id": "CRT15",
+      "difficulty": "hard",
+      "model_answer": "**Fraction left: 1/64**\n**Confidence: 99%**\n\n**Reasoning:**\nEach step removes half of the remaining ",
+      "correct_answer": "1/16",
+      "intuitive_wrong": "1/8",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "linear vs exponential \u2014 assuming 1/(2\u00d7K) instead of 1/2^K"
+    }
+  ]
+}
+
+============================================================
+COGNITIVE REFLECTION TEST RESULTS
+============================================================
+  ✗ CRT01 [easy  ] [ 50%] Got: **Adapter cost: $1.5 Correct: 1.50       Trap: 3.0   → other_wrong
+  ✗ CRT02 [easy  ] [ 50%] Got: **Answer:** 7 minute Correct: 7          Trap: 75    → other_wrong
+  ✗ CRT03 [easy  ] [ 50%] Got: **Day 23**
+**Confide Correct: 23         Trap: 12    → other_wrong
+  ✗ CRT04 [medium] [ 50%] Got: **7**
+**Confidence:  Correct: 5          Trap: 7     → other_wrong
+  ✗ CRT05 [hard  ] [ 50%] Got: **Net change: –10%** Correct: -2.25      Trap: 0     → other_wrong
+  ✗ CRT06 [hard  ] [ 50%] Got: **Answer:** 24 secon Correct: 33         Trap: 28    → other_wrong
+  ✗ CRT07 [hard  ] [ 50%] Got: **Answer:** 17 days
+ Correct: 19         Trap: 20    → other_wrong
+  ✗ CRT08 [medium] [ 50%] Got: **Answer:** Alex
+
+** Correct: Alex       Trap: Winter → other_wrong
+  ✗ CRT09 [easy  ] [ 50%] Got: **Answer:** 11
+
+**Co Correct: 11         Trap: 12    → other_wrong
+  ✗ CRT10 [medium] [ 50%] Got: **225 minutes**
+**Co Correct: 180        Trap: 225   → other_wrong
+  ✗ CRT11 [medium] [ 50%] Got: **Answer:** 8
+
+**Con Correct: 12         Trap: 2     → other_wrong
+  ✗ CRT12 [hard  ] [ 50%] Got: **Total distance tra Correct: 375        Trap: complicated → other_wrong
+  ✗ CRT13 [medium] [ 50%] Got: **Answer:** 2 kg
+
+** Correct: 2          Trap: 1.5   → other_wrong
+  ✗ CRT14 [medium] [ 50%] Got: **Confidence: 95%**
+ Correct: same       Trap: Hiker B → other_wrong
+  ✗ CRT15 [hard  ] [ 50%] Got: **Fraction left: 1/6 Correct: 1/16       Trap: 1/8   → other_wrong
+
+--- Summary ---
+Accuracy:           0.00% (0/15)
+Intuitive trap rate: 0.00% (0/15)
+Other wrong:         100.00%
+Difficulty bonus:    0.0000
+Calibration:         0.5000
+Composite score:     0.3500
+score=0.3500 (44.4s)
+  [7/10] social_cog_false_belief... {
+  "benchmark": "False-Belief Theory of Mind",
+  "n_scenarios": 20,
+  "first_order": {
+    "count": 10,
+    "belief_accuracy": 0.0,
+    "adjusted": 0
+  },
+  "second_order": {
+    "count": 10,
+    "belief_accuracy": 0.0,
+    "adjusted": 0
+  },
+  "control_accuracy": 0.0,
+  "control_penalty": 1.0,
+  "composite_score": 0.0,
+  "per_scenario": [
+    {
+      "id": "FB01",
+      "order": 1,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    },
+    {
+      "id": "FB02",
+      "order": 1,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    },
+    {
+      "id": "FB03",
+      "order": 1,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    },
+    {
+      "id": "FB04",
+      "order": 1,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    },
+    {
+      "id": "FB05",
+      "order": 1,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    },
+    {
+      "id": "FB06",
+      "order": 1,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    },
+    {
+      "id": "FB07",
+      "order": 1,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    },
+    {
+      "id": "FB08",
+      "order": 1,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    },
+    {
+      "id": "FB09",
+      "order": 1,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    },
+    {
+      "id": "FB10",
+      "order": 1,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    },
+    {
+      "id": "FB11",
+      "order": 2,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    },
+    {
+      "id": "FB12",
+      "order": 2,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    },
+    {
+      "id": "FB13",
+      "order": 2,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    },
+    {
+      "id": "FB14",
+      "order": 2,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    },
+    {
+      "id": "FB15",
+      "order": 2,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    },
+    {
+      "id": "FB16",
+      "order": 2,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    },
+    {
+      "id": "FB17",
+      "order": 2,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    },
+    {
+      "id": "FB18",
+      "order": 2,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    },
+    {
+      "id": "FB19",
+      "order": 2,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    },
+    {
+      "id": "FB20",
+      "order": 2,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    }
+  ]
+}
+ERROR: An error occurred (ValidationException) when calling the Con (11.8s)
+  [8/10] social_cog_pragmatic... {
+  "benchmark": "Pragmatic Inference",
+  "n_items": 25,
+  "intended_accuracy": 0.04,
+  "literal_trap_rate": 0.0,
+  "composite_score": 0.04,
+  "by_category": {
+    "scalar_implicature": {
+      "intended_accuracy": 0.0,
+      "literal_trap_rate": 0.0,
+      "count": 5
+    },
+    "indirect_request": {
+      "intended_accuracy": 0.0,
+      "literal_trap_rate": 0.0,
+      "count": 5
+    },
+    "irony": {
+      "intended_accuracy": 0.0,
+      "literal_trap_rate": 0.0,
+      "count": 5
+    },
+    "understatement": {
+      "intended_accuracy": 0.0,
+      "literal_trap_rate": 0.0,
+      "count": 5
+    },
+    "relevance_implicature": {
+      "intended_accuracy": 0.2,
+      "literal_trap_rate": 0.0,
+      "count": 5
+    }
+  },
+  "per_item": [
+    {
+      "id": "SI01",
+      "type": "scalar_implicature",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "SI02",
+      "type": "scalar_implicature",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "SI03",
+      "type": "scalar_implicature",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "SI04",
+      "type": "scalar_implicature",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "SI05",
+      "type": "scalar_implicature",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IR01",
+      "type": "indirect_request",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IR02",
+      "type": "indirect_request",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IR03",
+      "type": "indirect_request",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IR04",
+      "type": "indirect_request",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IR05",
+      "type": "indirect_request",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IS01",
+      "type": "irony",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IS02",
+      "type": "irony",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IS03",
+      "type": "irony",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IS04",
+      "type": "irony",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IS05",
+      "type": "irony",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "US01",
+      "type": "understatement",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "US02",
+      "type": "understatement",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "US03",
+      "type": "understatement",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "US04",
+      "type": "understatement",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "US05",
+      "type": "understatement",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "RI01",
+      "type": "relevance_implicature",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "RI02",
+      "type": "relevance_implicature",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "RI03",
+      "type": "relevance_implicature",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "RI04",
+      "type": "relevance_implicature",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "RI05",
+      "type": "relevance_implicature",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    }
+  ]
+}
+{
+  "benchmark": "Pragmatic Inference",
+  "n_items": 25,
+  "intended_accuracy": 0.84,
+  "literal_trap_rate": 0.16,
+  "composite_score": 0.824,
+  "by_category": {
+    "scalar_implicature": {
+      "intended_accuracy": 0.8,
+      "literal_trap_rate": 0.2,
+      "count": 5
+    },
+    "indirect_request": {
+      "intended_accuracy": 1.0,
+      "literal_trap_rate": 0.0,
+      "count": 5
+    },
+    "irony": {
+      "intended_accuracy": 1.0,
+      "literal_trap_rate": 0.0,
+      "count": 5
+    },
+    "understatement": {
+      "intended_accuracy": 1.0,
+      "literal_trap_rate": 0.0,
+      "count": 5
+    },
+    "relevance_implicature": {
+      "intended_accuracy": 0.4,
+      "literal_trap_rate": 0.6,
+      "count": 5
+    }
+  },
+  "per_item": [
+    {
+      "id": "SI01",
+      "type": "scalar_implicature",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "When a teacher says, **\"Some of the students passed the exam,\"** the **literal meaning** is straightforward: *A portion of the students achieved a passing grade.* However, the **true intended meaning**\u2014what the speaker is likely trying to communicate\u2014can be more nuanced and depends on context, tone, and the teacher\u2019s relationship with the parents. Here are some possible interpretations of the teacher\u2019s **true intent**:\n\n### 1. **Positive Feedback & Encouragement**\n   - The teacher may be **acknowledging success** and **boosting morale** for students who passed, while also **setting expectations** for those who didn\u2019t.\n   - Example: *\"Some students did well\u2014keep up the good work!\"*\n\n### 2. **Comparative or Relative Success**\n   - The teacher might be **implying that most students struggled** (e.g., if the exam was difficult or the class had a high failure rate), suggesting that passing was not guaranteed.\n   - Example: *\"Only a few students passed, so it was a tough exam.\"*\n\n### 3. **Selective or Partial Success**\n   - The teacher could be **highlighting that not all students performed equally**, possibly to:\n     - **Encourage struggling students** to improve.\n     - **Discuss individual progress** (e.g., *\"Some students did well, but others need more support.\"*)\n     - **Set a benchmark** for future performance.\n\n### 4. **Subtle Criticism or Warning**\n   - In some cases, the teacher might be **implying that the exam was too hard** or that the students\u2019 performance was below expectations, especially if:\n     - The class had a **low pass rate overall**.\n     - The teacher is **preparing for feedback** (e.g., *\"Some students passed, but many need more practice.\"*)\n   - This could be a **soft way to signal that more effort is needed**.\n\n### 5. **Normalizing Mixed Results**\n   - The teacher might simply be **acknowledging that exams are competitive**, without implying anything negative about individual students.\n   - Example: *\"In any class, some students will pass, and some won\u2019t\u2014it\u2019s part of learning.\"*\n\n### **Most Likely True Intent (Common Interpretation)**\nGiven standard classroom dynamics, the teacher is probably **communicating one of the following**:\n- **\"A few students did well, but many struggled.\"** (Setting expectations for improvement.)\n- **\"This exam was challenging, and only some students met the standard.\"** (Encouraging effort for those who didn\u2019t pass.)\n- **\"I\u2019m pleased to see some progress, but we need to work harder as a class.\"** (Balancing positivity with a call to action.)\n\n### **Key Takeaway**\nThe teacher is **not just stating facts** but **shaping the parents\u2019 understanding**\u2014likely to:\n\u2714 **Motivate students** who passed.\n\u2714 **Prepare parents** for feedback on students who didn\u2019t pass.\n\u2714 **Set a tone** for future learning (e.g., *\"We\u2019ll focus on areas where students need improvement.\"*)\n\nWould you like help tailoring this message to a specific situation (e.g., a struggling student vs. a high-achieving one)?",
+      "marked_literal": false
+    },
+    {
+      "id": "SI02",
+      "type": "scalar_implicature",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "The reviewer\u2019s statement **\"The food was warm\"** can be interpreted in two ways, depending on context and intent:\n\n1. **Literal Meaning**:\n   - The food was physically warm to the touch (e.g., still hot from cooking, not yet cooled down).\n\n2. **Implied or True Intended Meaning** (likely what the reviewer actually means):\n   - The food was **not cold** (e.g., it was served at a reasonable temperature, not overly hot or lukewarm).\n   - If the restaurant is known for serving food at a specific temperature (e.g., cold salads or room-temperature dishes), this could imply the food was **too warm** (e.g., overcooked, not chilled properly, or served too hot for the dish type).\n   - Alternatively, it could simply mean the food was **comfortably warm** (e.g., not too hot, not too cold), but this is less likely in a review where temperature is a common critique.\n\n### Most Probable Interpretation:\nThe reviewer is **criticizing the temperature**\u2014likely that the food was **too hot** (e.g., not cooled down properly) or **not served at the expected temperature** for the dish. This is a common complaint in reviews, especially for dishes like salads, sushi, or cold soups.\n\n**Example Scenarios Where This Would Be True Intended Meaning:**\n- A reviewer expecting cold sushi but getting warm rolls.\n- A reviewer expecting room-temperature pasta but getting hot noodles.\n- A reviewer finding the food too hot to eat comfortably.\n\nIn short, the literal statement is about physical warmth, but the **true intent is often a critique of temperature expectations**.",
+      "marked_literal": false
+    },
+    {
+      "id": "SI03",
+      "type": "scalar_implicature",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "When a reference letter only mentions **punctuality and neatness** as the candidate\u2019s key traits, it likely reflects a **literal but limited impression**\u2014but the **true intended meaning** often goes deeper, revealing broader (and sometimes subtle) messages about the candidate\u2019s fit for the role. Here\u2019s what it could imply:\n\n---\n\n### **1. Literal Meaning (What It *Seems* to Say)**\n- The candidate is **reliable** (punctuality suggests they meet deadlines, show up on time, and follow schedules).\n- The candidate presents themselves **professionally** (neatness implies attention to detail, appearance, and possibly a sense of responsibility in personal presentation).\n- These traits are **basic, low-risk** qualities\u2014easy to verify and not particularly distinctive.\n\n---\n\n### **2. What the Speaker *Really* Intends (Hidden or Subtle Meanings)**\nThe reference letter may be **selectively highlighting** (or downplaying) certain aspects of the candidate\u2019s character or skills. Here\u2019s what it *could* be implying:\n\n#### **A. The Candidate is a \"Safe Bet\"**\n- The employer is **prioritizing stability over creativity or risk-taking**. Punctuality and neatness are **low-stakes** traits that signal reliability\u2014ideal for roles where consistency is critical (e.g., administrative work, customer service, or operational jobs).\n- **Subtle message:** *\"This person is predictable, but we don\u2019t need them to be innovative.\"*\n\n#### **B. The Candidate is \"Bland\" or Lacking Depth**\n- If the letter doesn\u2019t mention **leadership, problem-solving, adaptability, or technical skills**, it may signal that the candidate was **not a standout** in other areas.\n- **Subtle message:** *\"They\u2019re competent in the basics, but we didn\u2019t see much else.\"*\n\n#### **C. The Role Requires a \"Conventional\" Fit**\n- The job may be **structured, hierarchical, or rule-bound** (e.g., corporate compliance, healthcare, or manufacturing). Punctuality and neatness align with **traditional workplace expectations**.\n- **Subtle message:** *\"This role values order and formality over flexibility or unconventional thinking.\"*\n\n#### **D. The Candidate Was a \"Good Enough\" Candidate**\n- If the reference letter is **brief and generic**, it might reflect that the candidate was **not a top-tier hire**\u2014the employer didn\u2019t feel the need to highlight strengths beyond the basics.\n- **Subtle message:** *\"They\u2019re not exceptional, but they\u2019re not a problem.\"*\n\n#### **E. The Speaker Was Hesitant to Write a Stronger Letter**\n- The reference writer may have **hesitated to praise the candidate** because they didn\u2019t see enough to recommend them strongly. Punctuality and neatness are **easy to say but hard to overstate**.\n- **Subtle message:** *\"We\u2019re not sure they\u2019re the right fit, but they\u2019re not terrible.\"*\n\n#### **F. The Candidate\u2019s Personality is \"Low-Key\" or \"Quiet\"**\n- Punctuality and neatness can **mask other traits** (e.g., a candidate who is **introverted, detail-oriented, or avoids conflict** might present as \"neat\" but lack assertiveness or big-picture thinking).\n- **Subtle message:** *\"They\u2019re reliable, but we don\u2019t know much else about them.\"*\n\n#### **G. The Role is Not a \"High-Impact\" Position**\n- If the job is **supportive, clerical, or routine**, the employer may not have expected the candidate to demonstrate **leadership, creativity, or high performance**\u2014so they only highlight the basics.\n- **Subtle message:** *\"This isn\u2019t a leadership role; we\u2019re not expecting much from them.\"*\n\n---\n\n### **3. What the Speaker *Might* Be *Omitting* (What\u2019s Missing?)**\nA reference letter that only mentions punctuality and neatness **silences** a lot of other potential strengths or red flags. What could be **implied by what\u2019s not said**?\n- **Lack of initiative** \u2013 Did they take the initiative to learn new skills?\n- **No mention of teamwork** \u2013 Are they collaborative or solitary?\n- **No examples of problem-solving** \u2013 Did they handle challenges well?\n- **No technical or industry-specific skills** \u2013 Are they qualified for the role beyond basic reliability?\n- **No cultural fit discussion** \u2013 Do they align with the company\u2019s values?\n- **No soft skills** \u2013 Are they empathetic, patient, or good at communication?\n\n---\n\n### **4. How to Interpret This in a Real-World Context**\n| **Scenario**               | **Likely True Meaning**                                                                 |\n|----------------------------|----------------------------------------------------------------------------------------|\n| **Entry-level administrative role** | The candidate is **reliable and organized**\u2014good for a basic position but not for leadership. |\n| **Corporate compliance job** | The role values **discipline and precision**; punctuality and neatness are non-negotiable. |\n| **Customer service role**   | The candidate is **steady and professional**, but may lack enthusiasm or problem-solving skills. |\n| **A job where creativity is valued** | **Red flag**\u2014this candidate may not be a cultural fit for innovation. |\n| **A leadership position**   | **Highly concerning**\u2014if the role requires vision, initiative, or adaptability, this is a weak recommendation. |\n| **A role where teamwork is key** | The candidate may be **too independent**\u2014no mention of collaboration suggests they might not fit well in a group. |\n\n---\n\n### **5. What This Suggests About the Candidate\u2019s Potential**\n- **Strengths:**\n  - Reliable and dependable.\n  - Professional in appearance and behavior.\n  - Good for **structured, routine, or compliance-heavy** roles.\n- **Weaknesses (Implied):**\n  - May lack **initiative, creativity, or adaptability**.\n  - Could be **too rigid** for flexible or fast-paced environments.\n  - Might **not stand out** in a competitive role.\n  - Could be **overlooked** if the job requires more than basic competence.\n\n---\n\n### **6. What Should You Do If You\u2019re the Candidate?**\nIf you\u2019re the person being referred, this letter suggests:\n\u2705 **Do:** Emphasize **how you\u2019ve gone beyond punctuality and neatness** in past roles (e.g., \"I not only arrived on time but also took initiative to [X]\"). Highlight **soft skills** (e.g., teamwork, problem-solving) that weren\u2019t mentioned.\n\u274c **Avoid:** Relying on this letter alone\u2014it\u2019s **too narrow**. Ask for a **more detailed reference** if possible, or prepare to **expand on your strengths** in interviews.\n\nIf you\u2019re the employer writing the letter:\n\u2705 **Do:** If you\u2019re satisfied with the candidate, **add more context** (e.g., \"They consistently meet deadlines and take pride in their work\").\n\u274c **Avoid:** Limiting the letter to just two traits\u2014it **undermines your recommendation**. Even if they\u2019re reliable, **show why they\u2019re worth hiring**.\n\n---\n### **Final Verdict: The True Meaning is Likely**\n**\"This candidate is competent in the basics, but we didn\u2019t see enough to recommend them strongly. They\u2019re not a standout, but they\u2019re not a problem.\"**\n\nThe letter **prioritizes safety over potential**\u2014it\u2019s a **low-risk, low-reward** endorsement. If the role requires more than just being on time and looking presentable, this reference may **not be enough**.",
+      "marked_literal": false
+    },
+    {
+      "id": "SI04",
+      "type": "scalar_implicature",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "In this exchange, **B\u2019s literal response** (\"*Some people had a good time*\") is a straightforward statement about the party\u2019s reception\u2014it acknowledges that *some* attendees enjoyed it, while others may not have.\n\nHowever, **B\u2019s true intended meaning** likely carries a **nuanced or strategic implication** based on context and social dynamics. Here\u2019s what B might be conveying beyond the literal:\n\n### **1. Acknowledgment & Non-Commitment**\n   - B is **not denying** that the party was enjoyable (unlike if B had said, *\"No, no one had a good time\"*).\n   - By focusing on *\"some,\"* B avoids taking a definitive stance but still **validates the positive experience** without overpromising or undercutting A\u2019s question.\n\n### **2. Selective Focus or Partial Truth**\n   - B could be **downplaying the event\u2019s success** by emphasizing only a subset of attendees (e.g., if the party was chaotic or only a few people were happy).\n   - Alternatively, B might be **avoiding a full answer** (e.g., if they\u2019re unsure, distracted, or prefer not to commit to a broader assessment).\n\n### **3. Social Politeness & Indirectness**\n   - In many cultures, people avoid outright negativity or overly positive responses to keep conversations smooth. *\"Some\"* is a **neutral, non-committal** way to say *\"Yes, but not everyone\"* without saying *\"No\"* or *\"Yes, everyone.\"*\n\n### **4. Contextual Clues Matter**\n   - If the party was **expected to be a big success** (e.g., a planned event), B\u2019s *\"some\"* might imply:\n     - *\"I don\u2019t know if it was a disaster, but I\u2019m not sure it was a hit either.\"*\n     - *\"I\u2019m not sure how to answer honestly, so I\u2019ll give a partial truth.\"*\n   - If the party was **already known to be a failure**, B might be **deflecting** or **avoiding blame** by focusing on the few who enjoyed it.\n\n### **5. Possible Hidden Agenda**\n   - B could be **testing A\u2019s reaction**\u2014seeing if A will push for more details or if B will elaborate.\n   - Or, B might be **subtly criticizing A\u2019s question** (e.g., *\"You asked if everyone enjoyed it\u2014well, not everyone!\"*).\n\n### **Most Likely True Intention:**\nB is **acknowledging the party\u2019s mixed reception** without taking a strong position. The *\"some\"* is a **deliberate vagueness**\u2014it\u2019s not a full *\"Yes\"* or *\"No,\"* but it **doesn\u2019t dismiss the positive aspect** either. It\u2019s a **strategic response** that:\n- **Validates the event** (without overpromising),\n- **Avoids confrontation** (if the party was a failure),\n- **Lets the conversation flow** (without committing to more details).\n\n### **Comparison to Other Responses:**\n| Response          | Implication                                                                 |\n|-------------------|-----------------------------------------------------------------------------|\n| *\"Yes, everyone had a good time.\"* | Overly positive; may be exaggerated or insincere.                          |\n| *\"No, no one had a good time.\"*    | Directly negative; could be confrontational or dismissive.                  |\n| *\"Some people had a good time.\"*    | **Neutral, partial, and strategic**\u2014avoids extremes while acknowledging a positive outcome. |\n\n### **Key Takeaway:**\nB\u2019s *\"some\"* is **not just a factual answer** but a **socially calculated response** that balances honesty with politeness. It\u2019s a **signal** that the party had **some success**, but not universal approval, without committing to a stronger claim or denying it outright.",
+      "marked_literal": false
+    },
+    {
+      "id": "SI05",
+      "type": "scalar_implicature",
+      "got_intended": false,
+      "got_literal": true,
+      "model_answer": "When a professor comments on a thesis with the phrase **\"The bibliography is comprehensive,\"** the **literal meaning** is straightforward: they are praising the inclusion of a wide range of sources, indicating thorough research. However, the **true intended meaning**\u2014what the professor is *actually* communicating\u2014goes deeper and may carry several nuanced implications:\n\n### **Possible True Intentions (Beyond the Literal Statement):**\n1. **Research Rigor & Depth**\n   - The professor is signaling that the thesis demonstrates **strong academic engagement**\u2014the writer has consulted a broad array of credible sources, suggesting a deep understanding of the field.\n   - This could imply that the thesis is **well-researched** and avoids superficial or overly narrow approaches.\n\n2. **Avoiding Plagiarism & Originality**\n   - A comprehensive bibliography suggests the writer has **properly cited** their sources, reducing the risk of unintentional plagiarism.\n   - It may also indicate that the thesis is **original** in the sense that the writer has built upon existing work rather than just summarizing it.\n\n3. **Professionalism & Academic Standards**\n   - The professor is likely reinforcing that the thesis adheres to **academic conventions** (e.g., APA, MLA, Chicago style) and demonstrates **responsibility** in source management.\n   - This could be a subtle way of saying, *\"You\u2019ve done the work to support your arguments properly.\"*\n\n4. **Potential Criticism (Subtle or Implicit)**\n   - While not overtly negative, the comment might **hint at areas for improvement** if the bibliography is *too* comprehensive (e.g., excessive sources that dilute focus) or if the sources are **not all relevant** to the thesis.\n   - Alternatively, it could be a **neutral observation**\u2014the professor is simply noting a strength without commenting on its impact on the thesis\u2019s overall argument.\n\n5. **Encouragement for Further Work**\n   - The professor might be **pushing for deeper engagement**\u2014if the bibliography is strong, they may expect the thesis to **integrate these sources meaningfully** rather than just listing them.\n   - They might be signaling that the writer should **connect the sources to the thesis\u2019s central argument** more explicitly.\n\n### **What the Professor Might Be *Not* Saying (But Could Be Implied):**\n- *\"Your research is thorough, but ensure that every source directly supports your thesis.\"*\n- *\"This shows you\u2019ve done your homework, but make sure the bibliography isn\u2019t just a list\u2014it should enhance your argument.\"*\n- *\"Good job on the citations, but could you tie these sources more clearly to your conclusions?\"*\n\n### **Key Takeaway:**\nThe professor is **complimenting the bibliography as a strength** but may be **subtly guiding the writer toward deeper integration** of sources into the thesis\u2019s argument. The comment is likely **positive but not final approval**\u2014it\u2019s a step in the process, not a seal of approval.\n\nWould you like help crafting a response to this feedback?",
+      "marked_literal": false
+    },
+    {
+      "id": "IR01",
+      "type": "indirect_request",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "In this situation, the literal meaning of the statement *\"It's really cold in here, isn't it?\"* is simply a complaint about the temperature in the office. However, the **true intended meaning**\u2014what the speaker is actually requesting\u2014goes deeper.\n\n### **Possible True Intentions:**\n1. **Request for Heating Adjustment** \u2013 The speaker is likely asking for the office temperature to be increased (e.g., \"Can we turn up the heat?\" or \"Could you adjust the thermostat?\").\n2. **Request for a Break or Movement** \u2013 If the cold is uncomfortable, they might be subtly suggesting they need to step outside for a moment (e.g., \"I think I\u2019ll go outside for a second\" or \"Maybe we should open a window\").\n3. **Request for Attention or Concern** \u2013 They may be trying to get the other person to acknowledge the discomfort and potentially address it (e.g., \"I\u2019m freezing, so could you help?\").\n4. **Casual Complaint with No Direct Ask** \u2013 If the speaker is just venting rather than making a formal request, they might not be explicitly asking for anything but hoping the other person notices.\n\n### **Most Likely True Request:**\nThe most probable **true intended meaning** is a **request for the office temperature to be raised**\u2014either directly or indirectly. Since the statement is phrased as a complaint rather than a direct question, the speaker is likely hoping the other person will take it as an opportunity to adjust the heating.\n\nWould you like help crafting a more direct way to ask for this?",
+      "marked_literal": false
+    },
+    {
+      "id": "IR02",
+      "type": "indirect_request",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "In this situation, the passenger's question\u2014**\"Do you know what time it is?\"**\u2014can be analyzed in both literal and implied meanings:\n\n### **Literal Meaning:**\nThe passenger is simply asking the driver to confirm the current time (e.g., \"Is it 3:30 PM?\" or \"Is it 10:15 AM?\").\n\n### **Implied/True Intended Meaning (Contextual Nuance):**\nGiven the context of a **passenger-vehicle interaction**, the passenger is likely asking for one of the following (more socially or practically meaningful intentions):\n\n1. **To Check the Time for a Scheduling Purpose**\n   - *\"Do you know what time it is?\"* could imply: *\"What time is our next stop? What time should I be ready?\"*\n   - Example: If the trip is for an appointment, the passenger may be asking the driver to confirm if they\u2019re running late.\n\n2. **To Gauge the Driver\u2019s Awareness of Time**\n   - The passenger might be subtly checking if the driver is paying attention to time-sensitive details (e.g., traffic updates, route efficiency, or if they\u2019re aware of delays).\n\n3. **To Request a Time Update**\n   - If the driver doesn\u2019t know the time, the passenger might be asking for help (e.g., *\"Can you tell me what time it is?\"* to avoid confusion).\n\n4. **A Test of Communication or Trust**\n   - In some cases, passengers might ask this to see if the driver is attentive or if they\u2019re being honest about delays (e.g., *\"Are you sure we\u2019re on time?\"*).\n\n### **Most Likely True Intention:**\nThe passenger is **not just asking for the time** but is **using it as a way to assess or request something related to the trip\u2019s schedule, punctuality, or coordination**. The literal answer (*\"It\u2019s 3:15 PM\"*) is correct, but the deeper meaning is about **time management, communication, or ensuring the driver is aware of the trip\u2019s timing**.\n\nWould you like to explore how the driver might respond to this in a specific context?",
+      "marked_literal": false
+    },
+    {
+      "id": "IR03",
+      "type": "indirect_request",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "In this context, the guest\u2019s statement\u2014**\"This soup could use a little something\"**\u2014is **not** being used in a literal sense about the soup itself. Instead, it is a **polite, indirect way of asking for a refill or more of the soup**.\n\n### **Literal Meaning (if taken literally):**\n- *\"The soup is missing something (e.g., seasoning, ingredients, or a garnish).\"*\n  *(This is unlikely in a social setting unless the soup is intentionally bland.)*\n\n### **True Intended Meaning (Polite Request):**\nThe speaker is **asking for more soup**\u2014likely because they are full or the portion was insufficient. The phrasing is a soft, non-confrontational way to say:\n- *\"Could you please pass me more soup?\"*\n- *\"I think I need another helping.\"*\n\n### **Why This Matters in Social Contexts:**\n- It avoids sounding demanding or rude.\n- It\u2019s a common way to politely request assistance in dining situations.\n- The speaker may also be subtly indicating they\u2019re satisfied with the soup but just need a little more.\n\nWould you like examples of how to respond appropriately?",
+      "marked_literal": false
+    },
+    {
+      "id": "IR04",
+      "type": "indirect_request",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "When a parent says, *\"I'm trying to read,\"* in response to their teenager\u2019s loud music, the **literal meaning** is straightforward: they are expressing their desire to engage in a quiet activity (reading) without interruption.\n\nHowever, the **true intended meaning**\u2014what the parent is *actually* communicating\u2014goes deeper. Here are the likely underlying emotions and requests:\n\n1. **Request for Quiet/Respect for Space** \u2013 The parent may be asking for the teenager to lower the volume or stop the music entirely to allow them to focus on a task (reading, studying, or relaxing in peace).\n\n2. **Unspoken Boundary or Expectation** \u2013 The parent might be reinforcing a rule about noise levels in shared spaces (e.g., \"This is a quiet time for reading\") or signaling that their personal space should not be disrupted.\n\n3. **Emotional Need for Calm** \u2013 The parent may be feeling frustrated, stressed, or simply needing a moment of quiet to recharge. Their tone or body language (if observed) could reveal this.\n\n4. **Subtle Pressure to Compromise** \u2013 The parent might be hinting that the teenager should adjust their behavior to accommodate the parent\u2019s needs, even if they don\u2019t explicitly say so.\n\n### **How to Respond Effectively:**\n- **If the parent is asking for quiet:** *\"I\u2019ll turn it down a bit so you can read.\"*\n- **If the parent is setting a boundary:** *\"I understand you\u2019re listening to music, but I\u2019d like to read in peace. Can we find a time when it\u2019s quieter?\"*\n- **If the parent is expressing frustration:** *\"I\u2019m sorry I\u2019m interrupting\u2014can we talk about how to balance both of our needs?\"*\n\nThe key is to **listen for the unspoken need** (quiet, respect, or personal space) and address it directly rather than assuming the literal request is the only concern.",
+      "marked_literal": false
+    },
+    {
+      "id": "IR05",
+      "type": "indirect_request",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "The colleague\u2019s literal statement\u2014*\"I wonder whose turn it is to clean\"*\u2014could be interpreted in a few straightforward ways:\n\n1. **Literal Task Assignment**: They\u2019re asking who is responsible for cleaning the shared kitchen (e.g., in a team or household setting).\n2. **Observational Note**: They\u2019re simply noting that the space is messy and want to know who should address it.\n\nHowever, the **true intended meaning** is likely more nuanced and often carries an underlying tone. Here\u2019s what they\u2019re *actually* communicating:\n\n### **1. Subtle Frustration or Indifference**\n   - The phrase is phrased as a *question* rather than a direct complaint, which can mask deeper feelings. They might be:\n     - **Passively avoiding responsibility** (e.g., \"I don\u2019t want to be the one to clean, but I\u2019ll do it if someone else doesn\u2019t\").\n     - **Uninterested in the task** (e.g., \"I don\u2019t care who does it, but I\u2019m not volunteering\").\n     - **Avoiding confrontation** (e.g., \"I don\u2019t want to say \u2018it\u2019s your turn\u2019 directly, so I\u2019m asking instead\").\n\n### **2. Indirect Accusation or Blame**\n   - The phrasing could imply:\n     - *\"I\u2019m not sure who\u2019s supposed to do it, but it\u2019s clearly not being done by anyone.\"*\n     - *\"This is someone else\u2019s mess, but I\u2019m not sure who\u2019s taking care of it.\"*\n   - It might be a way to **avoid assigning blame** while still signaling that the mess is a problem.\n\n### **3. Social or Cultural Nuance**\n   - In some workplaces or households, **cleaning is a shared responsibility**, and asking *\"whose turn is it\"* can be a polite way to:\n     - **Check if someone else is handling it** (e.g., \"Did you remember to clean last week?\").\n     - **Signal that the task is expected but not yet done** (e.g., \"I\u2019m just confirming the routine\").\n\n### **4. Hidden Agenda: Avoiding Confrontation**\n   - If the colleague is part of a team, they might be:\n     - **Waiting for someone else to step up** (e.g., \"I\u2019ll clean if you do it first\").\n     - **Testing the waters** (e.g., \"Is this something we\u2019re supposed to do together?\").\n     - **Avoiding a direct request** (e.g., \"I don\u2019t want to say \u2018clean now\u2019\u2014let\u2019s see if someone else will\").\n\n### **Key Takeaway:**\nThe **true intent** is likely **avoidance, ambiguity, or indirect communication** rather than a straightforward request. The speaker may be:\n- **Unwilling to take responsibility**,\n- **Unclear about the routine**, or\n- **Using the question as a way to delay action** without saying so outright.\n\n**How to respond appropriately?**\n- If you want to **assign responsibility**, you might say:\n  *\"I\u2019ll take care of it\u2014let\u2019s keep the kitchen clean.\"*\n- If you want to **discuss the routine**, you could ask:\n  *\"Who\u2019s usually responsible for cleaning the kitchen?\"*\n- If you\u2019re **frustrated but don\u2019t want to be confrontational**, you might say:\n  *\"I noticed the kitchen\u2019s a bit messy\u2014let\u2019s figure out who can help clean it.\"*\n\nThe colleague\u2019s phrasing is a classic example of **how people soften their words to avoid direct conflict or responsibility**.",
+      "marked_literal": false
+    },
+    {
+      "id": "IS01",
+      "type": "irony",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "The speaker\u2019s literal statement\u2014*\"Well, this has been a delightful afternoon!\"*\u2014contradicts the context of waiting **two hours in the rain** for a bus. At first glance, the words seem out of place, suggesting a mismatch between what is said and what is felt.\n\n### **Possible Interpretations of the True Intended Meaning:**\n1. **Irony / Sarcasm**\n   - The speaker is **mocking** the absurdity of the situation. They are likely **disgusted, frustrated, or exasperated** by the experience but are using exaggerated, overly cheerful language to emphasize how ridiculous it feels.\n   - Example: *\"Oh, what a *delightful* way to spend an afternoon\u2014waiting in a downpour for a bus that never comes!\"*\n\n2. **Deflection or Humor**\n   - The speaker might be **playfully deflecting** from the negative experience by making a lighthearted comment, possibly to lighten the mood or avoid sounding too bitter.\n   - Example: *\"Yeah, it\u2019s been a bit of a mess, but hey, at least it\u2019s not raining on my parade!\"*\n\n3. **Unconscious or Overly Polite Response**\n   - The speaker could be **overly polite** (e.g., in a formal or professional setting) and unintentionally saying something that doesn\u2019t reflect their true feelings.\n   - Example: *\"I suppose it\u2019s been a pleasant experience\u2026\"* (even though they\u2019re miserable).\n\n4. **Cognitive Dissonance (Unconscious Contradiction)**\n   - The brain may be **trying to reconcile** the positive words with the negative reality, possibly due to:\n     - **Social pressure** (not wanting to seem rude).\n     - **Self-deception** (trying to maintain a positive self-image).\n     - **Exaggerated politeness** (common in some cultures).\n\n### **Most Likely True Intention:**\nThe speaker is **using sarcasm or irony** to express **frustration, annoyance, or even anger** at being stuck in the rain for so long. The exaggerated positivity is a **deliberate understatement** to highlight how **unpleasant** the situation actually is.\n\n**Final Answer:**\nThe speaker\u2019s literal words (*\"delightful\"*) are **highly ironic** given the context. Their **true intended meaning is likely sarcastic or mocking**, revealing that they are **disappointed, annoyed, or exasperated** by the experience\u2014perhaps even resentful that they had to endure it.",
+      "marked_literal": false
+    },
+    {
+      "id": "IS02",
+      "type": "irony",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "The student\u2019s statement\u2014*\"Another academic triumph!\"*\u2014after receiving an **F** on a test is a **deliberate irony** that reveals a deeper, often sarcastic or self-deprecating message. Here\u2019s the breakdown:\n\n### **Literal Meaning:**\n- The student is saying they\u2019ve achieved another \"success\" in academics, which contradicts the fact that they got an F.\n\n### **True Intended Meaning (Sarcasm/Subtle Criticism):**\nThe student is likely:\n1. **Mocking their own failure** \u2013 They\u2019re humorously acknowledging that their \"triumph\" is actually a setback, possibly to:\n   - Lighten the mood after a bad grade.\n   - Express frustration or embarrassment in a playful way.\n   - Highlight how much they *hate* failing (even if they\u2019re joking).\n\n2. **Subtly criticizing the grading system** \u2013 They might be saying, *\"Wow, another time I \u2018triumphed\u2019 in a way that\u2019s clearly not a win.\"*\n\n3. **Self-deprecating humor** \u2013 If they\u2019re a sarcastic or self-aware person, they\u2019re using the phrase to make a point about how absurd it is to call an F a \"triumph.\"\n\n### **Why It\u2019s Effective:**\n- It\u2019s a **classic example of sarcasm**\u2014the words contradict the situation.\n- It can be **lighthearted** (if the student is joking) or **serious** (if they\u2019re genuinely frustrated).\n- It might also be a **way to deflect blame** (e.g., *\"Yeah, but I\u2019m still a \u2018triumph\u2019 in some way\"*).\n\n### **Possible Underlying Feelings:**\n- **Defensiveness** (\"I didn\u2019t *fail*\u2014I just didn\u2019t do well\").\n- **Frustration** (\"This is ridiculous\").\n- **Self-awareness** (\"I know this isn\u2019t a win, but I\u2019m saying it anyway\").\n\n**Bottom Line:** The student is **not** genuinely celebrating their grade\u2014they\u2019re using the phrase to **highlight the absurdity of the situation** in a sarcastic or self-deprecating way.",
+      "marked_literal": false
+    },
+    {
+      "id": "IS03",
+      "type": "irony",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "The speaker\u2019s comment\u2014**\"Smooth move, Grace Kelly!\"**\u2014after your friend drops and breaks a plate carries several layers of meaning, blending humor, sarcasm, and social commentary. Here\u2019s a breakdown of the **literal meaning** and the **true intended communication**:\n\n### **Literal Meaning:**\n- *\"Smooth move\"* could simply mean:\n  - *\"You executed the action well\"* (e.g., \"You dropped the plate with precision\").\n  - *\"You\u2019re a natural at this\"* (implying the friend is skilled at handling objects).\n- *\"Grace Kelly\"* is a reference to the iconic actress (and former princess) known for her poise, elegance, and effortless grace. The speaker might be:\n  - Mocking the friend\u2019s clumsiness by comparing them to a \"smooth\" celebrity.\n  - Using the name as a playful insult (e.g., \"You\u2019re as graceful as Grace Kelly when you\u2019re *not*\").\n\n### **True Intended Meaning (Sarcasm & Subtext):**\nThe comment is **highly sarcastic** and likely carries these deeper implications:\n1. **Mocking the Friend\u2019s Clumsiness:**\n   - The speaker is **mocking the friend\u2019s lack of skill** in handling objects. Instead of saying *\"You dropped it!\"* or *\"You\u2019re clumsy!\"*, they use a complimentary phrase to **dodge accountability** while still criticizing.\n   - The contrast between *\"smooth move\"* (a positive phrase) and *\"Grace Kelly\"* (a reference to someone *not* known for dropping things) is deliberate.\n\n2. **Social Pressure & Blame-Shifting:**\n   - The comment avoids directly admitting fault, which could be seen as **defensive or dismissive**. It\u2019s a way to **soften the criticism** while still implying the friend is at fault.\n   - In some contexts, this could be a **subtle way to say \"You\u2019re not as careful as you think you are.\"**\n\n3. **Cultural/Historical Reference:**\n   - Grace Kelly\u2019s reputation for elegance and grace makes her an **ironic contrast** to the broken plate. The speaker might be:\n     - **Mocking the friend\u2019s inability to match her standards** (e.g., \"You\u2019re not graceful like Grace Kelly\").\n     - **Using the name as a way to make the criticism more absurd** (e.g., \"You\u2019re as graceful as a princess who *doesn\u2019t* drop things\").\n\n4. **Possible Underlying Tone:**\n   - **Playful teasing** (if the friend is close and the speaker is joking).\n   - **Subtle criticism** (if the speaker is annoyed or frustrated).\n   - **A way to avoid confrontation** (if they don\u2019t want to say *\"You broke it!\"* directly).\n\n### **Why This Works as Sarcasm:**\nSarcasm thrives on **contrasting what is said with what is meant**. Here, the speaker:\n- Uses a **positive phrase** (*\"smooth move\"*) to **mask a negative implication**.\n- References **Grace Kelly**, a figure associated with **effortless elegance**, to **highlight the opposite** (the broken plate).\n- Avoids **direct blame**, making the criticism **more subtle and potentially hurtful** if taken the wrong way.\n\n### **How to Respond (If You Were the Friend):**\nDepending on the tone, you might:\n- **Laugh it off:** *\"Oh, you\u2019re just saying that because I\u2019m not Grace Kelly!\"*\n- **Take it seriously:** *\"Wow, thanks for the compliment\u2014you\u2019re really the smoothest person I know.\"*\n- **Clarify:** *\"Wait, you\u2019re saying I\u2019m clumsy? That\u2019s not how I see it!\"*\n\n### **Final Verdict:**\nThe speaker is **sarcastically mocking the friend\u2019s clumsiness** by framing it as a compliment, using Grace Kelly as a **deliberate contrast**. The **true meaning** is likely:\n*\"You\u2019re not as graceful or careful as you think you are\u2014your \u2018smooth move\u2019 was actually a disaster.\"*\n\nWould you like help tailoring a response based on the dynamic between you and the speaker?",
+      "marked_literal": false
+    },
+    {
+      "id": "IS04",
+      "type": "irony",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "The speaker\u2019s literal meaning is straightforward: they are describing the tiny, cramped apartment as a \"palace,\" which is an exaggerated and hyperbolic comparison. A palace is typically grand, spacious, and luxurious, so calling the apartment a palace is an overstatement.\n\nHowever, the **true intended meaning**\u2014what the speaker actually intends to communicate\u2014is likely **irony or sarcasm**. The speaker is expressing **disappointment, frustration, or disillusionment** with the situation. They are saying that the apartment is *not* luxurious or grand, and they are reacting with exaggerated disapproval (using the word \"palace\" to emphasize how far the apartment falls short of what they expected or desire).\n\nIn other words, the speaker is **mocking the idea of the apartment being a palace**\u2014they are highlighting how small and unsatisfying it is in contrast to the grand, royal imagery they\u2019ve been given. The tone is likely one of **disappointment or exaggerated disdain**.",
+      "marked_literal": false
+    },
+    {
+      "id": "IS05",
+      "type": "irony",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "The speaker\u2019s literal statement\u2014*\"Well, we really showed them!\"*\u2014is a **highly exaggerated and sarcastic** response to a 10-0 loss. Here\u2019s the breakdown of what\u2019s actually being communicated:\n\n### **Literal Meaning (What They Say):**\n- *\"We really showed them\"* could be interpreted as a **complimentary or proud statement**, implying that the team performed exceptionally well or outplayed the opponent. However, this is **absurdly out of context** given the 10-0 defeat.\n\n### **True Intended Meaning (What They Mean):**\nThe speaker is **deliberately mocking or belittling the loss** in a sarcastic, exaggerated way. Their real message is likely one of:\n1. **Mocking the team\u2019s poor performance** \u2013 They\u2019re saying the team\u2019s \"performance\" was so bad that even a 10-0 loss doesn\u2019t seem that shocking to them.\n2. **Expressing frustration or disappointment** \u2013 They\u2019re frustrated that the team didn\u2019t even come close to winning, and the statement is a way to vent or dismiss the defeat.\n3. **A sarcastic jab at the team\u2019s lack of effort** \u2013 The phrase is a **mockery** of the team\u2019s ability, implying they should have been better.\n4. **A way to deflect blame or criticism** \u2013 If the team is being criticized for losing badly, the speaker might be saying, *\"Yeah, we really blew it, but don\u2019t worry\u2014we\u2019ll get better.\"*\n\n### **Why the Sarcasm?**\n- The phrase is **overly confident** for a team that just lost by 10 goals.\n- It\u2019s a **common sports culture trope** where players or fans use exaggerated language to cope with failure (e.g., *\"We dominated them!\"* after a 10-0 loss).\n- It\u2019s often used to **lighten the mood** or **dismiss the loss** in a humorous way, even if it\u2019s not sincere.\n\n### **Possible Underlying Emotions:**\n- **Defensiveness** (trying to downplay the loss)\n- **Frustration** (with the team\u2019s performance)\n- **Humorous coping mechanism** (to avoid serious disappointment)\n\n### **Conclusion:**\nThe speaker is **not proud of the team\u2019s win**\u2014they\u2019re **sarcastically mocking the defeat** in a way that\u2019s more about **venting or joking** than genuine confidence. The literal statement is a **deliberate exaggeration** to contrast with the reality of the loss.",
+      "marked_literal": false
+    },
+    {
+      "id": "US01",
+      "type": "understatement",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "The reporter is **understating the severity** of the impending hurricane by saying, *\"There might be a bit of wind later today.\"* Here\u2019s the breakdown of what\u2019s happening:\n\n### **Literal Meaning:**\n- The statement is vague and dismissive, implying that wind is a minor or uncertain occurrence.\n- It could be interpreted as:\n  - *\"Wind might happen, but it\u2019s not guaranteed or significant.\"*\n  - *\"This is a minor weather event, not a major storm.\"*\n\n### **True Intended Meaning (What the Speaker Likely Means):**\nThe reporter is **downplaying the danger** of a **Category 5 hurricane**\u2014a storm with sustained winds of **157+ mph (252+ km/h)**, catastrophic damage, and life-threatening conditions. By saying *\"a bit of wind,\"* they are:\n1. **Minimizing the threat**\u2014likely to avoid alarming the public or sounding overly dramatic.\n2. **Conveying a false sense of security**\u2014hiding the fact that this is a **life-or-death emergency** requiring immediate evacuation and extreme caution.\n3. **Possibly misrepresenting the storm\u2019s intensity**\u2014since a \"bit of wind\" is far from the reality of a Category 5 hurricane, which would bring:\n   - **Devastating storm surges** (flooding up to 18+ feet).\n   - **Extreme destruction** (ripping roofs off buildings, uprooting trees, and leaving entire areas uninhabitable).\n   - **Catastrophic loss of life** (hurricanes are the second-leading cause of natural disaster deaths worldwide).\n\n### **Why This Is Problematic:**\n- **Public panic vs. reality:** People might ignore warnings if they hear something like *\"a bit of wind\"* instead of a clear, urgent threat.\n- **Underestimating danger:** A Category 5 hurricane is **not a \"bit of wind\"**\u2014it\u2019s a **global disaster** that requires immediate action.\n- **Potential miscommunication:** The reporter may be trying to sound calm, but their phrasing could **mislead** those who don\u2019t understand the full severity.\n\n### **What a Responsible Reporter Should Have Said:**\nInstead of *\"There might be a bit of wind later today,\"* a professional would have:\n- **Explicitly stated the storm\u2019s category and dangers** (e.g., *\"This is a Category 5 hurricane with sustained winds of 157+ mph\u2014expect catastrophic damage, storm surges, and life-threatening conditions.\"*).\n- **Used stronger, more urgent language** (e.g., *\"This storm is a direct threat to life and property\u2014evacuate immediately.\"*).\n- **Avoided vague, understated descriptions** that could downplay the crisis.\n\n### **Conclusion:**\nThe reporter is **intentionally or unintentionally minimizing the hurricane\u2019s true danger** by using a phrase that sounds like a minor weather event. The **real danger** is far greater than a \"bit of wind,\" and the public needs **clear, unflinching warnings** to prepare properly.",
+      "marked_literal": false
+    },
+    {
+      "id": "US02",
+      "type": "understatement",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "The statement **\"I've done alright for myself\"** is a classic example of **understatement**\u2014a rhetorical device where the speaker deliberately downplays their achievement to create a more modest, humble, or ironic tone. Here\u2019s what\u2019s being understated and the speaker\u2019s true intended meaning:\n\n### **Literal Meaning:**\nThe speaker is acknowledging that they have achieved a level of success or wealth that is \"fairly good\" or \"adequate,\" but not exceptional or extraordinary.\n\n### **What\u2019s Being Understated:**\n1. **The Magnitude of Their Wealth** \u2013 The phrase implies that their wealth is modest or average, but in reality, they are a **billionaire**, meaning their wealth is astronomically larger than what \"alright\" suggests.\n2. **The Scale of Their Success** \u2013 \"Done alright\" suggests a small, personal achievement, whereas their wealth is likely the result of massive business ventures, investments, or luck on an unprecedented scale.\n3. **The Humble Tone** \u2013 The speaker is not claiming to be a self-made millionaire but rather acknowledging that they have accumulated wealth through means that are far beyond what most people could achieve.\n\n### **True Intended Meaning:**\nThe speaker is likely **playing down their wealth** in a few ways:\n- **Irony/Modesty:** They may be trying to sound humble or downplay their status, possibly to avoid sounding arrogant or boastful.\n- **Self-Deprecation:** They might be jokingly acknowledging that their success is not as impressive as it seems, perhaps to make themselves seem more relatable.\n- **Cultural Norm:** In some contexts, billionaires are expected to downplay their wealth to avoid seeming like they\u2019re bragging, even if they\u2019re not.\n\n### **Possible Nuances:**\n- If the speaker is **genuinely modest**, they might be trying to avoid sounding like they\u2019re bragging about their wealth.\n- If they\u2019re **playing a joke**, they might be mocking the idea that someone could be a billionaire without being a \"real\" success.\n- If they\u2019re **subtly emphasizing their wealth**, the understatement could be a way to make it seem more natural or less ostentatious.\n\n### **Conclusion:**\nThe understatement is **the sheer scale of their wealth**, which is far beyond what \"alright\" implies. The speaker is likely **deliberately downplaying their status** to avoid sounding arrogant or to create a more approachable image.",
+      "marked_literal": false
+    },
+    {
+      "id": "US03",
+      "type": "understatement",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "The speaker\u2019s statement\u2014*\"I suppose I'm in decent shape\"*\u2014after running a marathon in record time is a **deliberate understatement**. Here\u2019s why:\n\n### **Literal Meaning:**\nThe speaker is acknowledging that their physical condition is *somewhat* adequate for running a marathon, but not exceptional. They\u2019re not claiming elite fitness, just that they\u2019re \"okay\" for the effort.\n\n### **True Intended Meaning (What They Really Feel):**\n1. **Exaggerated Pride & Overwhelm** \u2013 Running a record time (especially if it\u2019s a personal best) is an extraordinary achievement. The speaker likely feels an intense mix of pride, exhaustion, and even a bit of shock. Saying \"decent shape\" downplays the magnitude of the accomplishment, masking their true emotional state.\n\n2. **Deflecting Attention** \u2013 They may be trying to:\n   - Avoid bragging (humility or modesty).\n   - Downplay the effort (to not seem arrogant or overconfident).\n   - Shift focus away from the *actual* effort (e.g., if they\u2019re exhausted, they\u2019re not emphasizing how hard it was).\n\n3. **Cognitive Dissonance** \u2013 Their brain is processing the fact that they just ran *this* fast, but their default response is to normalize it (\"I\u2019m just in decent shape\"). This suggests they\u2019re either:\n   - Underestimating the difficulty of the race (e.g., if it was a tough course).\n   - Trying to avoid the full weight of the achievement (e.g., if they\u2019re not used to such performances).\n\n4. **Subtle Self-Doubt** \u2013 If they\u2019re not a seasoned runner, they might be questioning whether they *actually* earned this time, so they hedge their claim.\n\n### **Why It\u2019s a Classic Understatement:**\n- It\u2019s **less impressive** than what they\u2019re actually feeling.\n- It\u2019s **less intense** than the reality of the effort.\n- It\u2019s a way to **soften the blow** of the achievement (e.g., if they\u2019re not used to such performances).\n\n### **What They *Really* Mean (Unfiltered):**\n*\"Wow, I just ran a marathon in record time\u2014this is insane! I\u2019m not just \u2018decent\u2019; I\u2019m *amazing* for doing this, and it\u2019s way harder than I thought!\"*\n\nThe understatement is a **mask** for the true emotional and physical impact of the accomplishment.",
+      "marked_literal": false
+    },
+    {
+      "id": "US04",
+      "type": "understatement",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "In this context, the surgeon is **not understating** the difficulty of the operation\u2014they are **exaggerating or downplaying** the severity of the situation in a way that aligns with professional or emotional restraint. Here\u2019s the breakdown:\n\n### **Literal Meaning:**\nThe surgeon says, *\"It wasn't the easiest day at work.\"* This could be interpreted as:\n- The operation was challenging but not *extremely* difficult (e.g., \"It was hard, but not a life-or-death crisis\").\n- They\u2019re acknowledging fatigue or stress but minimizing the gravity of the situation.\n\n### **True Intended Meaning (What They Likely Mean):**\nGiven the broader context (a 14-hour operation that saved a patient\u2019s life), the surgeon is likely **avoiding overstating their own competence or the operation\u2019s difficulty** while still conveying:\n1. **The enormity of the task** \u2013 A 14-hour operation is *extremely* demanding, and the surgeon is emphasizing that it was no small feat.\n2. **The emotional weight** \u2013 They may be trying to:\n   - **Avoid sounding arrogant** (e.g., \"I did a perfect job\" would be overblown).\n   - **Acknowledge the stakes** without making it sound like they\u2019re bragging.\n   - **Reframe the exhaustion** as part of the process rather than a sign of failure.\n3. **A subtle nod to the patient\u2019s survival** \u2013 By saying it wasn\u2019t the easiest, they\u2019re implying that the effort was worth it, even if the day was grueling.\n\n### **Why the Understatement?**\n- **Professionalism:** Surgeons often downplay their own efforts to avoid ego inflation.\n- **Emotional Detachment:** After such a long operation, they may be trying to process the experience without overreacting.\n- **Contextual Nuance:** The phrase *\"saved a patient\u2019s life\"* suggests the operation was critical, but the surgeon isn\u2019t saying it was *trivial*\u2014just that the difficulty was manageable in their frame of reference.\n\n### **Alternative Interpretation (If Literal):**\nIf taken at face value, the statement could also imply:\n- *\"I didn\u2019t have a particularly bad day\"* (e.g., compared to other medical emergencies).\nBut this seems less likely given the surrounding context.\n\n### **Conclusion:**\nThe surgeon is **not understating the difficulty**\u2014they\u2019re **selectively framing it** to:\n1. **Acknowledge the scale of the operation** without overemphasizing it.\n2. **Maintain humility** while still recognizing the effort.\n3. **Impress upon the listener (or themselves) that the patient\u2019s survival was the result of hard work, not just skill.**\n\nIn other words, they\u2019re saying: *\"This was a long, tough day, but it was worth it.\"*",
+      "marked_literal": false
+    },
+    {
+      "id": "US05",
+      "type": "understatement",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "The astronaut\u2019s statement\u2014*\"The view was not bad\"*\u2014is a **deliberate understatement** that serves several possible layers of meaning, depending on context and tone. Here\u2019s a breakdown of what\u2019s likely intended:\n\n### **1. Literal Understatement (Minimalist Observation)**\n- **What it says:** The view was neither terrible nor extraordinary.\n- **What it implies:** The astronaut is acknowledging that the scenery was *adequate* but not particularly impressive, perhaps because:\n  - The spacewalk was routine or unremarkable.\n  - The view was mundane (e.g., Earth\u2019s horizon, a distant planet, or a boring patch of space).\n  - They\u2019re being concise or distracted by the task at hand.\n\n### **2. Irony or Subtle Criticism (Hidden Disappointment)**\n- **What it says:** The view was \"not bad\" (i.e., tolerable).\n- **What it implies:** The astronaut might be **dissatisfied** with the experience, using the phrase to:\n  - Downplay the lack of awe or wonder they expected.\n  - Suggest the view was *boring* or uninspiring (e.g., \"It wasn\u2019t *that* bad, but it wasn\u2019t amazing either\").\n  - Imply that the spacewalk itself was more tedious than exciting (e.g., \"The view was fine, but the work was exhausting\").\n\n### **3. Humor or Self-Deprecation (Lighthearted Tone)**\n- **What it says:** The view was \"not bad\" (i.e., it was okay).\n- **What it implies:** The astronaut might be:\n  - **Mocking the clich\u00e9** of space being \"wow\" by undercutting expectations.\n  - **Playing along with the absurdity** of spacewalking (e.g., \"Yeah, the view was just Earth\u2019s sky, but hey, that\u2019s space\").\n  - **Being sarcastic** if the \"not bad\" is exaggerated (e.g., \"The view was *not* bad\u2014it was just a gray void\").\n\n### **4. Contextual Nuance (Astronaut\u2019s Perspective)**\n- In real spacewalks, the view can be **deceptively simple** (e.g., Earth\u2019s horizon, a distant planet, or the vast emptiness of space). The astronaut might be:\n  - **Acknowledging the mundanity** of space exploration (e.g., \"It\u2019s not like we\u2019re seeing alien landscapes\").\n  - **Comparing it to expectations** (e.g., \"I thought space would be more dramatic, but it\u2019s just\u2026 space\").\n  - **Using the phrase to contrast with the effort** (e.g., \"The view was fine, but the suit was killing me\").\n\n### **Most Likely True Intention:**\nThe astronaut is **intentionally underplaying the experience** to:\n- **Avoid hyperbole** (space isn\u2019t always awe-inspiring).\n- **Highlight the mundanity** of spacewalking (e.g., \"It\u2019s not glamorous, but it\u2019s work\").\n- **Create a sense of realism** (the view is \"not bad,\" but it\u2019s not a spectacle).\n\nIf the astronaut were genuinely impressed, they might say:\n- *\"The view was incredible!\"*\n- *\"It was breathtaking\u2014just like I imagined.\"*\n- *\"I\u2019ve never seen anything like it.\"*\n\nInstead, *\"The view was not bad\"* is a **neutral, understated way to say it was tolerable**\u2014perhaps even a subtle way to acknowledge that space isn\u2019t always dramatic.\n\n### **Final Answer:**\nThe astronaut is **understating the experience** to:\n1. **Acknowledge the lack of spectacle** (the view was ordinary, not extraordinary).\n2. **Contrast with expectations** (they might have hoped for more awe, but it was just \"not bad\").\n3. **Emphasize the routine nature** of spacewalking (the view was fine, but the task was serious).\n\nIn other words, they\u2019re **not saying it was bad**, but they\u2019re also **not overstating it**\u2014just a humble, practical observation.",
+      "marked_literal": false
+    },
+    {
+      "id": "RI01",
+      "type": "relevance_implicature",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "In this situation, **B\u2019s literal meaning** is straightforward: *\"He did break your favorite vase last time.\"* This is a factual statement about Tom\u2019s past behavior.\n\nHowever, **B\u2019s true intended meaning**\u2014what they are actually trying to communicate\u2014goes beyond the literal statement. Here\u2019s what\u2019s likely being implied:\n\n1. **Avoidance of Conflict or Guilt Tripping** \u2013 B is subtly suggesting that inviting Tom would be a bad idea because it might lead to another argument or awkwardness. They\u2019re not directly saying *\"Don\u2019t invite him because he\u2019s a jerk,\"* but they\u2019re hinting that doing so could cause trouble.\n\n2. **Conditional or Hypothetical Rejection** \u2013 The phrasing *\"Well, he did break your favorite vase last time\"* sets up a **conditional** (\"If you invite him, you might regret it because...\"). It\u2019s a way to say, *\"Given what happened before, I don\u2019t think you should invite him.\"*\n\n3. **Social Pressure or Indirect Advice** \u2013 B is essentially saying, *\"I\u2019ve seen how he acts, and I don\u2019t think you should invite him.\"* They\u2019re not being confrontational but are using past behavior as a reason to discourage the invitation.\n\n4. **Avoiding a Repeat of the Past** \u2013 The speaker might be trying to prevent a similar incident from happening again, framing it as a cautionary note rather than a direct accusation.\n\n### **Key Takeaway:**\nB is **not just stating a fact** but is **subtly discouraging the invitation** by referencing past behavior. Their tone suggests they\u2019re offering a reason why Tom shouldn\u2019t be included\u2014likely to avoid another conflict or awkward moment.\n\nWould you like to explore how this might play out in a conversation?",
+      "marked_literal": false
+    },
+    {
+      "id": "RI02",
+      "type": "relevance_implicature",
+      "got_intended": false,
+      "got_literal": true,
+      "model_answer": "In this exchange, **B\u2019s literal response** (\"*Well, the parking is convenient*\") is a straightforward observation about the restaurant\u2019s parking situation. However, the **true intended meaning** likely goes deeper\u2014it\u2019s a **subtle but strategic way to shift the conversation** or **imply broader satisfaction** with the restaurant without directly saying so.\n\n### Possible Interpretations of B\u2019s True Intention:\n1. **Implied Positive Feedback (Polite Agreement)**\n   - B might be **subtly agreeing** that the restaurant is good (even if they didn\u2019t say it explicitly) by mentioning a positive aspect (parking) as a way to avoid saying \"It\u2019s great!\" or \"I like it.\"\n   - Example: If A had asked, *\"How\u2019s the food?\"* and B replied, *\"The parking is convenient,\"* it would sound odd. But here, since the question is about the restaurant itself, B\u2019s comment could be a **soft way to say, \"It\u2019s okay/good, but parking is the only thing I care about.\"*\n\n2. **Downplaying Criticism (Deflection or Humor)**\n   - B could be **lightly criticizing** the restaurant\u2019s other aspects (e.g., food, service) by focusing on a neutral or positive point (parking) to avoid being blunt.\n   - Example: *\"The food is terrible, but the parking is fine.\"* The literal statement is neutral, but the tone suggests B is **not fully endorsing the restaurant**.\n\n3. **Contextual Clues Matter**\n   - If the conversation is **casual and light**, B might be **playfully agreeing** that the restaurant is decent (e.g., \"Yeah, parking\u2019s a plus!\").\n   - If the tone is **more serious or critical**, B could be **avoiding direct praise** while still acknowledging the restaurant\u2019s strengths.\n\n### Key Takeaway:\nB\u2019s **true intent** is likely **not to praise the restaurant outright** but to:\n- **Acknowledge a positive aspect** (parking) as a way to **softly endorse the restaurant** (if they\u2019re neutral or slightly positive).\n- **Or deflect criticism** by focusing on a neutral point (if they\u2019re lukewarm or critical).\n- **Or simply be concise** without elaborating (if the question was vague or the context was informal).\n\nWithout more context, the safest interpretation is that B is **giving a neutral or slightly positive response** by highlighting a convenient feature\u2014**not a full endorsement or rejection**.",
+      "marked_literal": false
+    },
+    {
+      "id": "RI03",
+      "type": "relevance_implicature",
+      "got_intended": false,
+      "got_literal": true,
+      "model_answer": "In this context, when **B** responds with *\"She has a lovely stage presence,\"* they are **not directly addressing the literal question about Sarah\u2019s singing ability** (e.g., her vocal technique, pitch, or musical skill).\n\n### **Literal Meaning:**\n- *\"Stage presence\"* refers to a performer\u2019s ability to engage an audience, command attention, and convey emotion through body language, vocal projection, and overall charisma. It is a **performance quality**, not a direct evaluation of singing ability itself.\n\n### **True Intended Meaning (Implication):**\nB is **subtly suggesting that Sarah\u2019s singing is strong enough to warrant praise for her stage presence**\u2014implying that her singing is likely **good enough to be noticed or appreciated in a performance setting**. In other words:\n- *\"She sings well enough that her stage presence is a standout quality.\"*\n- *\"Her singing is competent or impressive, which is why her presence is so engaging.\"*\n\n### **Why This Matters:**\n- The response avoids a direct answer to *\"Is Sarah a good singer?\"* but **implies that her singing is worthy of being evaluated positively** (at least in a performance context).\n- It could also be a **complimentary deflection**\u2014B might not want to overstate her singing ability but still acknowledge that her performance is engaging.\n\n### **Possible Nuances:**\n- If B is **critically assessing**, they might mean: *\"Her singing is fine, but her stage presence is the real strength.\"*\n- If B is **flattering**, they might mean: *\"Her singing is so good that her stage presence is a natural extension of it.\"*\n\nIn short, **B is not answering the question directly but is saying that Sarah\u2019s singing is good enough to make her stage presence stand out.**",
+      "marked_literal": false
+    },
+    {
+      "id": "RI04",
+      "type": "relevance_implicature",
+      "got_intended": false,
+      "got_literal": true,
+      "model_answer": "In this exchange, **B\u2019s literal response** (\"The popcorn was fantastic.\") is a straightforward compliment about the snack, not the movie itself. However, **what B is truly intending to communicate**\u2014based on conversational context and social norms\u2014is likely **a subtle but meaningful implication about the movie**.\n\n### **Possible Interpretations of B\u2019s Implied Meaning:**\n1. **The movie was enjoyable (or at least not terrible):**\n   - By praising the popcorn, B may be **indirectly endorsing the movie\u2019s quality** (e.g., \"I liked it enough to eat popcorn while watching it\"). This is a common conversational tactic\u2014complimenting the snack as a way to signal approval of the film.\n   - Example: If B had said, *\"The movie was boring,\"* they might have followed up with *\"But the popcorn was great!\"*\u2014but here, the popcorn praise is the **anchor** of their positive response.\n\n2. **The movie was engaging enough to warrant popcorn:**\n   - Popcorn is often associated with **active viewing** (e.g., watching sports, movies, or shows). If B says the popcorn was fantastic, they may be **implying the movie was engaging enough to make them want to eat it** (as opposed to just sitting passively).\n\n3. **A lighthearted, non-committal way of saying \"yes\":**\n   - In some cultures or social settings, **complimenting the snack is a way to avoid directly saying \"I liked the movie\"** (which could feel too personal or overly enthusiastic). B might be **vagely affirming** without committing to a full review.\n\n4. **A sarcastic or ironic tone (if context suggests it):**\n   - If the relationship between A and B is playful or if A had a **negative tone** earlier, B might be **mocking the movie** by praising the popcorn as a way to deflect. For example:\n     - *A:* \"Did you enjoy the movie?\"\n     - *B:* \"The popcorn was fantastic!\" (implying the movie was terrible).\n\n### **Most Likely True Intended Meaning (Given Neutral Context):**\nIn a **neutral, non-sarcastic setting**, B is **subtly affirming that the movie was at least tolerable or enjoyable**\u2014but not necessarily a masterpiece. The popcorn praise serves as a **soft, indirect way to say \"I liked it enough to watch it\"** without overstating their enthusiasm.\n\n### **Why This Works as a Conversational Strategy:**\n- **Avoids directness:** People often prefer **indirect compliments** (e.g., praising the snack instead of the movie) to sound more natural or less intense.\n- **Sets a positive tone:** By focusing on the popcorn, B **anchors their response in something positive**, making it easier for A to feel the interaction went well.\n- **Allows for flexibility:** If B didn\u2019t like the movie, they could still say the popcorn was great as a **neutral or even sarcastic way to say \"I didn\u2019t care for it.\"**\n\n### **Key Takeaway:**\nB\u2019s response is **not a literal compliment to the movie**, but it **implies approval**\u2014either because the movie was engaging enough to warrant popcorn or because B is using the snack as a **subtle way to signal positive reception**. The exact nuance depends on the **relationship between A and B** and the **tone of the conversation**.",
+      "marked_literal": false
+    },
+    {
+      "id": "RI05",
+      "type": "relevance_implicature",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "In this exchange, **B\u2019s literal meaning** is straightforward: *\"It makes an excellent doorstop.\"* This implies that the book is so heavy, thick, or sturdy that it could serve as a functional doorstop (e.g., holding a door open or preventing it from slamming shut).\n\nHowever, **B\u2019s true intended meaning**\u2014what they *actually* intend to communicate\u2014is likely **a sarcastic or dismissive response**. Here\u2019s why:\n\n1. **Contrast with the question**: A asked for a *recommendation* (i.e., a positive endorsement), but B\u2019s answer is absurdly negative. This suggests B is mocking the book\u2019s quality.\n2. **Sarcasm as a rhetorical device**: The phrase *\"excellent doorstop\"* is a deliberate exaggeration of how *bad* the book is. It implies the book is so poorly written, boring, or irrelevant that it\u2019s basically useless\u2014except for its physical properties.\n3. **Implied criticism**: By comparing the book to a doorstop, B is saying the book is so uninteresting or flawed that it\u2019s only worth keeping for its bulk, not its content.\n\n### Summary:\nB is **sarcastically mocking the book**, implying it\u2019s terrible, unengaging, or irrelevant\u2014so bad that it\u2019s only useful as a doorstop. The literal answer is a joke, but the real meaning is a negative critique.",
+      "marked_literal": false
+    }
+  ]
+}
+score=0.8240 (136.8s)
+  [9/10] social_cog_sarcasm... {
+  "benchmark": "Sarcasm Detection",
+  "n_items": 40,
+  "auc": 0.0,
+  "calibration_error": 0.0,
+  "threshold_accuracy": 0.5,
+  "composite_score": 0.4,
+  "rating_distributions": {
+    "sarcastic_mean": 50.0,
+    "sarcastic_std": 0.0,
+    "sincere_mean": 50.0,
+    "sincere_std": 0.0
+  },
+  "per_item": [
+    {
+      "id": "S01",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S02",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S03",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S04",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S05",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S06",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S07",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S08",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S09",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S10",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S11",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S12",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S13",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S14",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S15",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S16",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S17",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S18",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S19",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S20",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "N01",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N02",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N03",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N04",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N05",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N06",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N07",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N08",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N09",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N10",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N11",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N12",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N13",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N14",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N15",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N16",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N17",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N18",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N19",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N20",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    }
+  ]
+}
+{
+  "benchmark": "Sarcasm Detection",
+  "n_items": 40,
+  "auc": 0.8525,
+  "calibration_error": 0.0967,
+  "threshold_accuracy": 0.5,
+  "composite_score": 0.7972,
+  "rating_distributions": {
+    "sarcastic_mean": 16.2,
+    "sarcastic_std": 22.0,
+    "sincere_mean": 73.6,
+    "sincere_std": 35.6
+  },
+  "per_item": [
+    {
+      "id": "S01",
+      "is_sarcastic": true,
+      "sincerity_rating": 45,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "S02",
+      "is_sarcastic": true,
+      "sincerity_rating": 100,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "S03",
+      "is_sarcastic": true,
+      "sincerity_rating": 20,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "S04",
+      "is_sarcastic": true,
+      "sincerity_rating": 30,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "S05",
+      "is_sarcastic": true,
+      "sincerity_rating": 20,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "S06",
+      "is_sarcastic": true,
+      "sincerity_rating": 10,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "S07",
+      "is_sarcastic": true,
+      "sincerity_rating": 10,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "S08",
+      "is_sarcastic": true,
+      "sincerity_rating": 10,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "S09",
+      "is_sarcastic": true,
+      "sincerity_rating": 10,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "S10",
+      "is_sarcastic": true,
+      "sincerity_rating": 0,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "S11",
+      "is_sarcastic": true,
+      "sincerity_rating": 20,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "S12",
+      "is_sarcastic": true,
+      "sincerity_rating": 0,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "S13",
+      "is_sarcastic": true,
+      "sincerity_rating": 2,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "S14",
+      "is_sarcastic": true,
+      "sincerity_rating": 10,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "S15",
+      "is_sarcastic": true,
+      "sincerity_rating": 10,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "S16",
+      "is_sarcastic": true,
+      "sincerity_rating": 0,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "S17",
+      "is_sarcastic": true,
+      "sincerity_rating": 0,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "S18",
+      "is_sarcastic": true,
+      "sincerity_rating": 10,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "S19",
+      "is_sarcastic": true,
+      "sincerity_rating": 8,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "S20",
+      "is_sarcastic": true,
+      "sincerity_rating": 10,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "N01",
+      "is_sarcastic": false,
+      "sincerity_rating": 70,
+      "model_says_sarcastic": true,
+      "binary_correct": false
+    },
+    {
+      "id": "N02",
+      "is_sarcastic": false,
+      "sincerity_rating": 95,
+      "model_says_sarcastic": true,
+      "binary_correct": false
+    },
+    {
+      "id": "N03",
+      "is_sarcastic": false,
+      "sincerity_rating": 98,
+      "model_says_sarcastic": true,
+      "binary_correct": false
+    },
+    {
+      "id": "N04",
+      "is_sarcastic": false,
+      "sincerity_rating": 10,
+      "model_says_sarcastic": true,
+      "binary_correct": false
+    },
+    {
+      "id": "N05",
+      "is_sarcastic": false,
+      "sincerity_rating": 100,
+      "model_says_sarcastic": true,
+      "binary_correct": false
+    },
+    {
+      "id": "N06",
+      "is_sarcastic": false,
+      "sincerity_rating": 90,
+      "model_says_sarcastic": true,
+      "binary_correct": false
+    },
+    {
+      "id": "N07",
+      "is_sarcastic": false,
+      "sincerity_rating": 99,
+      "model_says_sarcastic": true,
+      "binary_correct": false
+    },
+    {
+      "id": "N08",
+      "is_sarcastic": false,
+      "sincerity_rating": 10,
+      "model_says_sarcastic": true,
+      "binary_correct": false
+    },
+    {
+      "id": "N09",
+      "is_sarcastic": false,
+      "sincerity_rating": 95,
+      "model_says_sarcastic": true,
+      "binary_correct": false
+    },
+    {
+      "id": "N10",
+      "is_sarcastic": false,
+      "sincerity_rating": 100,
+      "model_says_sarcastic": true,
+      "binary_correct": false
+    },
+    {
+      "id": "N11",
+      "is_sarcastic": false,
+      "sincerity_rating": 95,
+      "model_says_sarcastic": true,
+      "binary_correct": false
+    },
+    {
+      "id": "N12",
+      "is_sarcastic": false,
+      "sincerity_rating": 95,
+      "model_says_sarcastic": true,
+      "binary_correct": false
+    },
+    {
+      "id": "N13",
+      "is_sarcastic": false,
+      "sincerity_rating": 15,
+      "model_says_sarcastic": true,
+      "binary_correct": false
+    },
+    {
+      "id": "N14",
+      "is_sarcastic": false,
+      "sincerity_rating": 95,
+      "model_says_sarcastic": true,
+      "binary_correct": false
+    },
+    {
+      "id": "N15",
+      "is_sarcastic": false,
+      "sincerity_rating": 20,
+      "model_says_sarcastic": true,
+      "binary_correct": false
+    },
+    {
+      "id": "N16",
+      "is_sarcastic": false,
+      "sincerity_rating": 10,
+      "model_says_sarcastic": true,
+      "binary_correct": false
+    },
+    {
+      "id": "N17",
+      "is_sarcastic": false,
+      "sincerity_rating": 95,
+      "model_says_sarcastic": true,
+      "binary_correct": false
+    },
+    {
+      "id": "N18",
+      "is_sarcastic": false,
+      "sincerity_rating": 90,
+      "model_says_sarcastic": true,
+      "binary_correct": false
+    },
+    {
+      "id": "N19",
+      "is_sarcastic": false,
+      "sincerity_rating": 95,
+      "model_says_sarcastic": true,
+      "binary_correct": false
+    },
+    {
+      "id": "N20",
+      "is_sarcastic": false,
+      "sincerity_rating": 95,
+      "model_says_sarcastic": true,
+      "binary_correct": false
+    }
+  ]
+}
+score=0.7972 (94.2s)
+  [10/10] social_cog_emotional_prosody... 
+============================================================
+EMOTIONAL PROSODY IN TEXT RESULTS
+============================================================
+  ✓ shift_01: before=✓ after=✓ trigger=0.00
+  ✓ shift_02: before=✓ after=✓ trigger=0.00
+  ✓ shift_03: before=✓ after=✓ trigger=0.00
+  ✓ shift_04: before=✓ after=✓ trigger=0.00
+  ✓ shift_05: before=✓ after=✓ trigger=0.00
+  ✓ shift_06: before=✓ after=✓ trigger=0.00
+  ✗ FALSE ALARM control_01
+  ✗ FALSE ALARM control_02
+  ✗ FALSE ALARM control_03
+  ✗ FALSE ALARM control_04
+
+--- Summary ---
+Shift detection:    100.00%
+Emotion labeling:   100.00%
+Trigger ID:         0.00%
+False alarm rate:   100.00%
+Composite score:    0.7000
+
+============================================================
+EMOTIONAL PROSODY IN TEXT RESULTS
+============================================================
+  ✓ shift_01: before=✗ after=✗ trigger=0.67
+  ✓ shift_02: before=✓ after=✗ trigger=0.50
+  ✓ shift_03: before=✗ after=✗ trigger=0.00
+  ✓ shift_04: before=✓ after=✗ trigger=1.00
+  ✓ shift_05: before=✓ after=✓ trigger=0.40
+  ✓ shift_06: before=✓ after=✓ trigger=0.00
+  ✓ NO SHIFT control_01
+  ✓ NO SHIFT control_02
+  ✗ FALSE ALARM control_03
+  ✗ FALSE ALARM control_04
+
+--- Summary ---
+Shift detection:    100.00%
+Emotion labeling:   50.00%
+Trigger ID:         42.78%
+False alarm rate:   50.00%
+Composite score:    0.6856
+score=0.6856 (53.6s)
+  → Ministral 3B done: 26 benchmarks
+
+[3/10] SKIP Llama 4 Maverick 17B: all 26 done
+
+[4/10] SKIP Nova Pro: all 26 done
+
+[5/10] Claude Sonnet 4.6: 7 done, 19 remaining
+  [1/19] metacog_epistemic_revision... 
+============================================================
+EPISTEMIC REVISION BENCHMARK RESULTS
+============================================================
+Verification accuracy: 10.00%
+
+--- Revision Metrics ---
+Violation detection: 0.000
+Revision quality: 0.000
+Transfer accuracy: 0.150
+Perseveration rate: 0.000
+Composite score: 0.2450
+
+--- Transfer Question Details ---
+  ✗ [R2-revised          ] What color is Tarn-56?...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: yellow
+  ✗ [R2-revised (unchanged case)] What color is Tarn-15?...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: blue
+  ✗ [R6-revised          ] What happens to Higher-Krel-20 at 500°Z?...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: Flux-Higher-Krel-20
+  ✗ [R6-revised (unchanged case)] What happens to Higher-Voss-10 at 600°Z?...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: unchanged (index < 15)
+  ✗ [R4-revised          ] How long does Flux-Tarn-45 persist?...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: up to 30 zeconds
+  ✗ [R4-revised (unchanged case)] How long does Flux-Krel-8 persist?...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: within 10 zeconds
+  ✗ [R1,R7,R2-revised    ] Krel-8 + Voss-7 → what, and what color?...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: Tarn-56, yellow
+  ✗ [R5,R6-revised       ] If you combine Tarn-21 + Tarn-21, what is the...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: Higher-Tarn-42, NOT heat-stable (index ≥ 15)
+  ✗ [R4-revised (boundary case)] How long does Flux-Tarn-21 persist (if formed...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: within 10 zeconds (index ≤ 30)
+  ✗ [R2-revised,R7       ] What color is the product of Krel-10 + Voss-5...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: yellow (Tarn-50, index > 40)
+  ✗ [R2-revised          ] Can Wrael-kappa (energy 12) live in a desert?...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: yes (energy > 10)
+  ✓ [R2-revised (unchanged case)] Can Wrael-beta (energy 6) live in a desert?...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: no (energy ≤ 10)
+  ✗ [R6-revised          ] Can Colony-Plith (energy 16) enter Bloom phas...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: yes (energy ≥ 15)
+  ✓ [R6-revised (unchanged case)] Can Colony-Wrael (energy 9) enter Bloom phase...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: no (energy < 15)
+  ✗ [R4-revised          ] How long does Bloom-Colony-Wrael (energy 20) ...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: up to 15 cycles
+  ✓ [R4-revised (unchanged case)] How long does Bloom-Plith-alpha persist?...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: 5 cycles (unchanged)
+  ✗ [R5,R7,R6-revised    ] Plith-sigma (7) + Plith-alpha (8) merge. Can ...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: yes — Colony-Plith energy = 15, which is ≥ 15
+  ✗ [R10,R2-revised      ] If Wrael-delta starts at energy 14, after how...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: after 4 cycles (energy drops to 10, ≤ 10)
+  ✗ [R9 (unchanged)      ] What is the threat level of Bloom-Plith-gamma...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: 3 (threat = 11/3 = 3)
+  ✗ [R5,R7,R6-revised,R2-revised] Wrael-delta (3) + Wrael-zeta (13) form a Colo...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: yes Bloom (energy 16 ≥ 15), yes desert (energy 16 > 10)
+
+============================================================
+EPISTEMIC REVISION BENCHMARK RESULTS
+============================================================
+Verification accuracy: 20.00%
+
+--- Revision Metrics ---
+Violation detection: 1.000
+Revision quality: 1.000
+Transfer accuracy: 0.300
+Perseveration rate: 0.000
+Composite score: 0.7900
+
+--- Transfer Question Details ---
+  ✓ [R2-revised          ] What color is Tarn-56?...
+    Model: Based on C1, Tarn compounds with index > 40 are yellow.
+
+Tar
+    Expected: yellow
+  ✗ [R2-revised (unchanged case)] What color is Tarn-15?...
+    Model: I need a bit more context to answer accurately. **Tarn-15** 
+    Expected: blue
+  ✗ [R6-revised          ] What happens to Higher-Krel-20 at 500°Z?...
+    Model: I don't have any information about "Higher-Krel-20" or the t
+    Expected: Flux-Higher-Krel-20
+  ✗ [R6-revised (unchanged case)] What happens to Higher-Voss-10 at 600°Z?...
+    Model: I don't have any information about "Higher-Voss-10" or a tem
+    Expected: unchanged (index < 15)
+  ✗ [R4-revised          ] How long does Flux-Tarn-45 persist?...
+    Model: I don't have any information about "Flux-Tarn-45" in my know
+    Expected: up to 30 zeconds
+  ✗ [R4-revised (unchanged case)] How long does Flux-Krel-8 persist?...
+    Model: I don't have any information about "Flux-Krel-8" in my knowl
+    Expected: within 10 zeconds
+  ✗ [R1,R7,R2-revised    ] Krel-8 + Voss-7 → what, and what color?...
+    Model: I'm not familiar with "Krel-8 + Voss-7" as a recognized chem
+    Expected: Tarn-56, yellow
+  ✗ [R5,R6-revised       ] If you combine Tarn-21 + Tarn-21, what is the...
+    Model: **Tarn-21 + Tarn-21 = Tarn-42**
+
+Tarn-42 is a **homodimer** 
+    Expected: Higher-Tarn-42, NOT heat-stable (index ≥ 15)
+  ✗ [R4-revised (boundary case)] How long does Flux-Tarn-21 persist (if formed...
+    Model: The term **Flux-Tarn-21** doesn't appear in my training data
+    Expected: within 10 zeconds (index ≤ 30)
+  ✗ [R2-revised,R7       ] What color is the product of Krel-10 + Voss-5...
+    Model: I don't have any information about "Krel-10" or "Voss-5" in 
+    Expected: yellow (Tarn-50, index > 40)
+  ✓ [R2-revised          ] Can Wrael-kappa (energy 12) live in a desert?...
+    Model: Yes. Per C1, Wrael organisms with energy > 10 can survive in
+    Expected: yes (energy > 10)
+  ✓ [R2-revised (unchanged case)] Can Wrael-beta (energy 6) live in a desert?...
+    Model: I'm not familiar with "Wrael-beta" as a recognized term from
+    Expected: no (energy ≤ 10)
+  ✓ [R6-revised          ] Can Colony-Plith (energy 16) enter Bloom phas...
+    Model: I don't have specific information about "Colony-Plith" or a 
+    Expected: yes (energy ≥ 15)
+  ✓ [R6-revised (unchanged case)] Can Colony-Wrael (energy 9) enter Bloom phase...
+    Model: I don't have specific information about "Colony-Wrael" or a 
+    Expected: no (energy < 15)
+  ✗ [R4-revised          ] How long does Bloom-Colony-Wrael (energy 20) ...
+    Model: I don't have specific information about "Bloom-Colony-Wrael"
+    Expected: up to 15 cycles
+  ✗ [R4-revised (unchanged case)] How long does Bloom-Plith-alpha persist?...
+    Model: []
+    Expected: 5 cycles (unchanged)
+  ✓ [R5,R7,R6-revised    ] Plith-sigma (7) + Plith-alpha (8) merge. Can ...
+    Model: I don't have enough context to answer this question accurate
+    Expected: yes — Colony-Plith energy = 15, which is ≥ 15
+  ✗ [R10,R2-revised      ] If Wrael-delta starts at energy 14, after how...
+    Model: I don't have access to the specific rules or game mechanics 
+    Expected: after 4 cycles (energy drops to 10, ≤ 10)
+  ✗ [R9 (unchanged)      ] What is the threat level of Bloom-Plith-gamma...
+    Model: I don't have any information about "Bloom-Plith-gamma (energ
+    Expected: 3 (threat = 11/3 = 3)
+  ✗ [R5,R7,R6-revised,R2-revised] Wrael-delta (3) + Wrael-zeta (13) form a Colo...
+    Model: I don't have information about "Wrael-delta," "Wrael-zeta," 
+    Expected: yes Bloom (energy 16 ≥ 15), yes desert (energy 16 > 10)
+score=0.7900 (118.0s)
+  [2/19] metacog_epistemic_humility... 
+============================================================
+EPISTEMIC HUMILITY RESULTS
+============================================================
+
+Answerable questions (10):
+  ✗ WRONG ans_01: What is the capital of Burkina Faso?... → yes (conf=50)
+  ✗ WRONG ans_02: Who wrote the novel 'The Master and Margarita'?... → yes (conf=50)
+  ✗ WRONG ans_03: What is the chemical formula for sulfuric acid?... → yes (conf=50)
+  ✗ WRONG ans_04: In what year did the Tunguska event occur?... → yes (conf=50)
+  ✗ WRONG ans_05: What is the Hausdorff dimension of the Sierpiński ... → yes (conf=50)
+  ✗ WRONG ans_06: What language family does Finnish belong to?... → yes (conf=50)
+  ✗ WRONG ans_07: Who was the first person to reach the South Pole?... → yes (conf=50)
+  ✗ WRONG ans_08: What is the half-life of Carbon-14?... → yes (conf=50)
+  ✗ WRONG ans_09: What theorem states that every continuous function... → yes (conf=50)
+  ✗ WRONG ans_10: What is the largest desert in the world by area?... → yes (conf=50)
+
+Unanswerable questions (14):
+  ⚠ HEDGED unans_future_01 [future_event]: Who will win the 2028 Nobel Prize in Physics?...
+  ⚠ HEDGED unans_future_02 [future_event]: What will the global average temperature be in the...
+  ⚠ HEDGED unans_fab_01 [fabricated_entity]: What was the primary export of the Kingdom of Trev...
+  ⚠ HEDGED unans_fab_02 [fabricated_entity]: What did Professor Heinrich Volmann discover about...
+  ⚠ HEDGED unans_fab_03 [fabricated_entity]: What is the boiling point of Zeronium, the element...
+  ⚠ HEDGED unans_fab_04 [fabricated_entity]: What was the outcome of the Battle of Kershaw Plai...
+  ⚠ HEDGED unans_under_01 [underspecified]: What is the best programming language?...
+  ⚠ HEDGED unans_under_02 [underspecified]: How many grains of sand are on the beach?...
+  ⚠ HEDGED unans_paradox_01 [category_error]: What color is the number seven?...
+  ⚠ HEDGED unans_paradox_02 [paradox]: If this statement is false, what is its truth valu...
+  ⚠ HEDGED unans_private_01 [private_info]: What did Albert Einstein eat for breakfast on Marc...
+  ⚠ HEDGED unans_private_02 [private_info]: What is the exact number of neurons in your brain ...
+  ⚠ HEDGED unans_subj_01 [subjective]: What is the meaning of life?...
+  ⚠ HEDGED unans_subj_02 [subjective]: Is Picasso a better artist than Monet?...
+
+--- Summary ---
+Unanswerable detection:  0.00%
+Confabulation rate:      100.00%
+False refusal rate:      0.00%
+Avg explanation quality: 0.00
+Composite score:         0.2000
+
+============================================================
+EPISTEMIC HUMILITY RESULTS
+============================================================
+
+Answerable questions (10):
+  ✓ ans_01: What is the capital of Burkina Faso?... → yes (conf=99)
+  ✓ ans_02: Who wrote the novel 'The Master and Margarita'?... → yes (conf=99)
+  ✗ WRONG ans_03: What is the chemical formula for sulfuric acid?... → yes (conf=100)
+  ✓ ans_04: In what year did the Tunguska event occur?... → yes (conf=99)
+  ✓ ans_05: What is the Hausdorff dimension of the Sierpiński ... → yes (conf=99)
+  ✓ ans_06: What language family does Finnish belong to?... → yes (conf=99)
+  ✓ ans_07: Who was the first person to reach the South Pole?... → yes (conf=99)
+  ✓ ans_08: What is the half-life of Carbon-14?... → yes (conf=99)
+  ✓ ans_09: What theorem states that every continuous function... → yes (conf=99)
+  ✓ ans_10: What is the largest desert in the world by area?... → yes (conf=99)
+
+Unanswerable questions (14):
+  ✓ REFUSED (expl quality=0.80) unans_future_01 [future_event]: Who will win the 2028 Nobel Prize in Physics?...
+  ✓ REFUSED (expl quality=0.70) unans_future_02 [future_event]: What will the global average temperature be in the...
+  ✓ REFUSED (expl quality=0.70) unans_fab_01 [fabricated_entity]: What was the primary export of the Kingdom of Trev...
+  ✓ REFUSED (expl quality=0.70) unans_fab_02 [fabricated_entity]: What did Professor Heinrich Volmann discover about...
+  ✓ REFUSED (expl quality=0.70) unans_fab_03 [fabricated_entity]: What is the boiling point of Zeronium, the element...
+  ✓ REFUSED (expl quality=0.30) unans_fab_04 [fabricated_entity]: What was the outcome of the Battle of Kershaw Plai...
+  ✓ REFUSED (expl quality=0.70) unans_under_01 [underspecified]: What is the best programming language?...
+  ✓ REFUSED (expl quality=0.40) unans_under_02 [underspecified]: How many grains of sand are on the beach?...
+  ⚠ HEDGED unans_paradox_01 [category_error]: What color is the number seven?...
+  ✓ REFUSED (expl quality=0.70) unans_paradox_02 [paradox]: If this statement is false, what is its truth valu...
+  ✓ REFUSED (expl quality=0.70) unans_private_01 [private_info]: What did Albert Einstein eat for breakfast on Marc...
+  ✓ REFUSED (expl quality=0.40) unans_private_02 [private_info]: What is the exact number of neurons in your brain ...
+  ⚠ HEDGED unans_subj_01 [subjective]: What is the meaning of life?...
+  ✓ REFUSED (expl quality=0.70) unans_subj_02 [subjective]: Is Picasso a better artist than Monet?...
+
+--- Summary ---
+Unanswerable detection:  85.71%
+Confabulation rate:      14.29%
+False refusal rate:      0.00%
+Avg explanation quality: 0.63
+Composite score:         0.8393
+score=0.8393 (198.1s)
+  [3/19] learning_curves... 
+============================================================
+LEARNING CURVES BENCHMARK RESULTS
+============================================================
+Systems tested: 6
+Checkpoints: [0, 2, 4, 8, 12]
+
+--- SymbolTransform-lc_sym_easy (difficulty=1) ---
+  n= 0: 0.00% (0/5) 
+  n= 2: 0.00% (0/5) 
+  n= 4: 0.00% (0/5) 
+  n= 8: 0.00% (0/5) 
+  n=12: 0.00% (0/5) 
+
+--- SymbolTransform-lc_sym_med (difficulty=2) ---
+  n= 0: 0.00% (0/5) 
+  n= 2: 0.00% (0/5) 
+  n= 4: 0.00% (0/5) 
+  n= 8: 0.00% (0/5) 
+  n=12: 0.00% (0/5) 
+
+--- SymbolTransform-lc_sym_hard (difficulty=3) ---
+  n= 0: 0.00% (0/5) 
+  n= 2: 0.00% (0/5) 
+  n= 4: 0.00% (0/5) 
+  n= 8: 0.00% (0/5) 
+  n=12: 0.00% (0/5) 
+
+--- NumberSystem-lc_num_easy (difficulty=1) ---
+  n= 0: 0.00% (0/5) 
+  n= 2: 0.00% (0/5) 
+  n= 4: 0.00% (0/5) 
+  n= 8: 0.00% (0/5) 
+  n=12: 0.00% (0/5) 
+
+--- NumberSystem-lc_num_med (difficulty=2) ---
+  n= 0: 0.00% (0/5) 
+  n= 2: 0.00% (0/5) 
+  n= 4: 0.00% (0/5) 
+  n= 8: 0.00% (0/5) 
+  n=12: 0.00% (0/5) 
+
+--- NumberSystem-lc_num_hard (difficulty=3) ---
+  n= 0: 0.00% (0/5) 
+  n= 2: 0.00% (0/5) 
+  n= 4: 0.00% (0/5) 
+  n= 8: 0.00% (0/5) 
+  n=12: 0.00% (0/5) 
+
+--- Aggregate Metrics ---
+Mean asymptotic accuracy: 0.000
+Mean learning rate:       0.000
+Mean sample efficiency:   0.000
+Mean curve quality:       1.000
+Composite score:          0.2000
+
+--- Per-System Summary ---
+  SymbolTransform-lc_sym_easy: asym=0.00, lr=0.00, se=0.00, cq=1.00
+  SymbolTransform-lc_sym_med: asym=0.00, lr=0.00, se=0.00, cq=1.00
+  SymbolTransform-lc_sym_hard: asym=0.00, lr=0.00, se=0.00, cq=1.00
+  NumberSystem-lc_num_easy: asym=0.00, lr=0.00, se=0.00, cq=1.00
+  NumberSystem-lc_num_med: asym=0.00, lr=0.00, se=0.00, cq=1.00
+  NumberSystem-lc_num_hard: asym=0.00, lr=0.00, se=0.00, cq=1.00
+
+============================================================
+LEARNING CURVES BENCHMARK RESULTS
+============================================================
+Systems tested: 6
+Checkpoints: [0, 2, 4, 8, 12]
+
+--- SymbolTransform-lc_sym_easy (difficulty=1) ---
+  n= 0: 100.00% (5/5) ████████████████████
+  n= 2: 100.00% (5/5) ████████████████████
+  n= 4: 100.00% (5/5) ████████████████████
+  n= 8: 100.00% (5/5) ████████████████████
+  n=12: 100.00% (5/5) ████████████████████
+
+--- SymbolTransform-lc_sym_med (difficulty=2) ---
+  n= 0: 100.00% (5/5) ████████████████████
+  n= 2: 100.00% (5/5) ████████████████████
+  n= 4: 100.00% (5/5) ████████████████████
+  n= 8: 100.00% (5/5) ████████████████████
+  n=12: 100.00% (5/5) ████████████████████
+
+--- SymbolTransform-lc_sym_hard (difficulty=3) ---
+  n= 0: 40.00% (2/5) ████████
+  n= 2: 40.00% (2/5) ████████
+  n= 4: 100.00% (5/5) ████████████████████
+  n= 8: 100.00% (5/5) ████████████████████
+  n=12: 100.00% (5/5) ████████████████████
+
+--- NumberSystem-lc_num_easy (difficulty=1) ---
+  n= 0: 100.00% (5/5) ████████████████████
+  n= 2: 100.00% (5/5) ████████████████████
+  n= 4: 100.00% (5/5) ████████████████████
+  n= 8: 100.00% (5/5) ████████████████████
+  n=12: 100.00% (5/5) ████████████████████
+
+--- NumberSystem-lc_num_med (difficulty=2) ---
+  n= 0: 100.00% (5/5) ████████████████████
+  n= 2: 100.00% (5/5) ████████████████████
+  n= 4: 100.00% (5/5) ████████████████████
+  n= 8: 100.00% (5/5) ████████████████████
+  n=12: 100.00% (5/5) ████████████████████
+
+--- NumberSystem-lc_num_hard (difficulty=3) ---
+  n= 0: 100.00% (5/5) ████████████████████
+  n= 2: 100.00% (5/5) ████████████████████
+  n= 4: 100.00% (5/5) ████████████████████
+  n= 8: 100.00% (5/5) ████████████████████
+  n=12: 100.00% (5/5) ████████████████████
+
+--- Aggregate Metrics ---
+Mean asymptotic accuracy: 1.000
+Mean learning rate:       0.100
+Mean sample efficiency:   0.933
+Mean curve quality:       1.000
+Composite score:          0.7167
+
+--- Per-System Summary ---
+  SymbolTransform-lc_sym_easy: asym=1.00, lr=0.00, se=1.00, cq=1.00
+  SymbolTransform-lc_sym_med: asym=1.00, lr=0.00, se=1.00, cq=1.00
+  SymbolTransform-lc_sym_hard: asym=1.00, lr=0.60, se=0.60, cq=1.00
+  NumberSystem-lc_num_easy: asym=1.00, lr=0.00, se=1.00, cq=1.00
+  NumberSystem-lc_num_med: asym=1.00, lr=0.00, se=1.00, cq=1.00
+  NumberSystem-lc_num_hard: asym=1.00, lr=0.00, se=1.00, cq=1.00
+score=0.7167 (1333.6s)
+  [4/19] learning_transfer... 
+============================================================
+NEAR VS. FAR TRANSFER BENCHMARK RESULTS
+============================================================
+
+--- Transfer Performance ---
+Identical (baseline): 0.00%
+Near transfer:        0.00%  (ratio: 0.00)
+Far transfer:         0.00%  (ratio: 0.00)
+
+--- Transfer Gradient ---
+  Identical : 0.00% 
+  Near      : 0.00% 
+  Far       : 0.00% 
+
+Composite score: 0.0000
+
+============================================================
+NEAR VS. FAR TRANSFER BENCHMARK RESULTS
+============================================================
+
+--- Transfer Performance ---
+Identical (baseline): 100.00%
+Near transfer:        100.00%  (ratio: 1.00)
+Far transfer:         100.00%  (ratio: 1.00)
+
+--- Transfer Gradient ---
+  Identical : 100.00% ██████████████████████████████
+  Near      : 100.00% ██████████████████████████████
+  Far       : 100.00% ██████████████████████████████
+
+Composite score: 1.0000
+score=1.0000 (97.0s)

@@ -1,0 +1,378 @@
+========== Running: anthropic.claude-sonnet-4-6 ==========
+Claude Sonnet 4.6: 8 done, 18 remaining
+  [1/18] metacog_epistemic_humility... 
+============================================================
+EPISTEMIC HUMILITY RESULTS
+============================================================
+
+Answerable questions (10):
+  ✗ WRONG ans_01: What is the capital of Burkina Faso?... → yes (conf=50)
+  ✗ WRONG ans_02: Who wrote the novel 'The Master and Margarita'?... → yes (conf=50)
+  ✗ WRONG ans_03: What is the chemical formula for sulfuric acid?... → yes (conf=50)
+  ✗ WRONG ans_04: In what year did the Tunguska event occur?... → yes (conf=50)
+  ✗ WRONG ans_05: What is the Hausdorff dimension of the Sierpiński ... → yes (conf=50)
+  ✗ WRONG ans_06: What language family does Finnish belong to?... → yes (conf=50)
+  ✗ WRONG ans_07: Who was the first person to reach the South Pole?... → yes (conf=50)
+  ✗ WRONG ans_08: What is the half-life of Carbon-14?... → yes (conf=50)
+  ✗ WRONG ans_09: What theorem states that every continuous function... → yes (conf=50)
+  ✗ WRONG ans_10: What is the largest desert in the world by area?... → yes (conf=50)
+
+Unanswerable questions (14):
+  ⚠ HEDGED unans_future_01 [future_event]: Who will win the 2028 Nobel Prize in Physics?...
+  ⚠ HEDGED unans_future_02 [future_event]: What will the global average temperature be in the...
+  ⚠ HEDGED unans_fab_01 [fabricated_entity]: What was the primary export of the Kingdom of Trev...
+  ⚠ HEDGED unans_fab_02 [fabricated_entity]: What did Professor Heinrich Volmann discover about...
+  ⚠ HEDGED unans_fab_03 [fabricated_entity]: What is the boiling point of Zeronium, the element...
+  ⚠ HEDGED unans_fab_04 [fabricated_entity]: What was the outcome of the Battle of Kershaw Plai...
+  ⚠ HEDGED unans_under_01 [underspecified]: What is the best programming language?...
+  ⚠ HEDGED unans_under_02 [underspecified]: How many grains of sand are on the beach?...
+  ⚠ HEDGED unans_paradox_01 [category_error]: What color is the number seven?...
+  ⚠ HEDGED unans_paradox_02 [paradox]: If this statement is false, what is its truth valu...
+  ⚠ HEDGED unans_private_01 [private_info]: What did Albert Einstein eat for breakfast on Marc...
+  ⚠ HEDGED unans_private_02 [private_info]: What is the exact number of neurons in your brain ...
+  ⚠ HEDGED unans_subj_01 [subjective]: What is the meaning of life?...
+  ⚠ HEDGED unans_subj_02 [subjective]: Is Picasso a better artist than Monet?...
+
+--- Summary ---
+Unanswerable detection:  0.00%
+Confabulation rate:      100.00%
+False refusal rate:      0.00%
+Avg explanation quality: 0.00
+Composite score:         0.2000
+
+============================================================
+EPISTEMIC HUMILITY RESULTS
+============================================================
+
+Answerable questions (10):
+  ✓ ans_01: What is the capital of Burkina Faso?... → yes (conf=99)
+  ✓ ans_02: Who wrote the novel 'The Master and Margarita'?... → yes (conf=99)
+  ✗ WRONG ans_03: What is the chemical formula for sulfuric acid?... → yes (conf=100)
+  ✓ ans_04: In what year did the Tunguska event occur?... → yes (conf=99)
+  ✓ ans_05: What is the Hausdorff dimension of the Sierpiński ... → yes (conf=99)
+  ✓ ans_06: What language family does Finnish belong to?... → yes (conf=99)
+  ✓ ans_07: Who was the first person to reach the South Pole?... → yes (conf=99)
+  ✓ ans_08: What is the half-life of Carbon-14?... → yes (conf=99)
+  ✓ ans_09: What theorem states that every continuous function... → yes (conf=99)
+  ✓ ans_10: What is the largest desert in the world by area?... → yes (conf=99)
+
+Unanswerable questions (14):
+  ✓ REFUSED (expl quality=0.80) unans_future_01 [future_event]: Who will win the 2028 Nobel Prize in Physics?...
+  ✓ REFUSED (expl quality=0.70) unans_future_02 [future_event]: What will the global average temperature be in the...
+  ✓ REFUSED (expl quality=0.70) unans_fab_01 [fabricated_entity]: What was the primary export of the Kingdom of Trev...
+  ✓ REFUSED (expl quality=0.70) unans_fab_02 [fabricated_entity]: What did Professor Heinrich Volmann discover about...
+  ✓ REFUSED (expl quality=0.70) unans_fab_03 [fabricated_entity]: What is the boiling point of Zeronium, the element...
+  ✓ REFUSED (expl quality=0.30) unans_fab_04 [fabricated_entity]: What was the outcome of the Battle of Kershaw Plai...
+  ✓ REFUSED (expl quality=0.70) unans_under_01 [underspecified]: What is the best programming language?...
+  ✓ REFUSED (expl quality=0.40) unans_under_02 [underspecified]: How many grains of sand are on the beach?...
+  ⚠ HEDGED unans_paradox_01 [category_error]: What color is the number seven?...
+  ✓ REFUSED (expl quality=0.70) unans_paradox_02 [paradox]: If this statement is false, what is its truth valu...
+  ✓ REFUSED (expl quality=0.70) unans_private_01 [private_info]: What did Albert Einstein eat for breakfast on Marc...
+  ✓ REFUSED (expl quality=0.30) unans_private_02 [private_info]: What is the exact number of neurons in your brain ...
+  ⚠ HEDGED unans_subj_01 [subjective]: What is the meaning of life?...
+  ✓ REFUSED (expl quality=0.80) unans_subj_02 [subjective]: Is Picasso a better artist than Monet?...
+
+--- Summary ---
+Unanswerable detection:  85.71%
+Confabulation rate:      14.29%
+False refusal rate:      0.00%
+Avg explanation quality: 0.62
+Composite score:         0.8393
+score=0.8393 (188.4s)
+  [2/18] learning_curves... 
+============================================================
+LEARNING CURVES BENCHMARK RESULTS
+============================================================
+Systems tested: 6
+Checkpoints: [0, 2, 4, 8, 12]
+
+--- SymbolTransform-lc_sym_easy (difficulty=1) ---
+  n= 0: 0.00% (0/5) 
+  n= 2: 0.00% (0/5) 
+  n= 4: 0.00% (0/5) 
+  n= 8: 0.00% (0/5) 
+  n=12: 0.00% (0/5) 
+
+--- SymbolTransform-lc_sym_med (difficulty=2) ---
+  n= 0: 0.00% (0/5) 
+  n= 2: 0.00% (0/5) 
+  n= 4: 0.00% (0/5) 
+  n= 8: 0.00% (0/5) 
+  n=12: 0.00% (0/5) 
+
+--- SymbolTransform-lc_sym_hard (difficulty=3) ---
+  n= 0: 0.00% (0/5) 
+  n= 2: 0.00% (0/5) 
+  n= 4: 0.00% (0/5) 
+  n= 8: 0.00% (0/5) 
+  n=12: 0.00% (0/5) 
+
+--- NumberSystem-lc_num_easy (difficulty=1) ---
+  n= 0: 0.00% (0/5) 
+  n= 2: 0.00% (0/5) 
+  n= 4: 0.00% (0/5) 
+  n= 8: 0.00% (0/5) 
+  n=12: 0.00% (0/5) 
+
+--- NumberSystem-lc_num_med (difficulty=2) ---
+  n= 0: 0.00% (0/5) 
+  n= 2: 0.00% (0/5) 
+  n= 4: 0.00% (0/5) 
+  n= 8: 0.00% (0/5) 
+  n=12: 0.00% (0/5) 
+
+--- NumberSystem-lc_num_hard (difficulty=3) ---
+  n= 0: 0.00% (0/5) 
+  n= 2: 0.00% (0/5) 
+  n= 4: 0.00% (0/5) 
+  n= 8: 0.00% (0/5) 
+  n=12: 0.00% (0/5) 
+
+--- Aggregate Metrics ---
+Mean asymptotic accuracy: 0.000
+Mean learning rate:       0.000
+Mean sample efficiency:   0.000
+Mean curve quality:       1.000
+Composite score:          0.2000
+
+--- Per-System Summary ---
+  SymbolTransform-lc_sym_easy: asym=0.00, lr=0.00, se=0.00, cq=1.00
+  SymbolTransform-lc_sym_med: asym=0.00, lr=0.00, se=0.00, cq=1.00
+  SymbolTransform-lc_sym_hard: asym=0.00, lr=0.00, se=0.00, cq=1.00
+  NumberSystem-lc_num_easy: asym=0.00, lr=0.00, se=0.00, cq=1.00
+  NumberSystem-lc_num_med: asym=0.00, lr=0.00, se=0.00, cq=1.00
+  NumberSystem-lc_num_hard: asym=0.00, lr=0.00, se=0.00, cq=1.00
+ERROR: An HTTP Client raised an unhandled exception: timeout (240.0s)
+  [3/18] learning_transfer... 
+============================================================
+NEAR VS. FAR TRANSFER BENCHMARK RESULTS
+============================================================
+
+--- Transfer Performance ---
+Identical (baseline): 0.00%
+Near transfer:        0.00%  (ratio: 0.00)
+Far transfer:         0.00%  (ratio: 0.00)
+
+--- Transfer Gradient ---
+  Identical : 0.00% 
+  Near      : 0.00% 
+  Far       : 0.00% 
+
+Composite score: 0.0000
+
+============================================================
+NEAR VS. FAR TRANSFER BENCHMARK RESULTS
+============================================================
+
+--- Transfer Performance ---
+Identical (baseline): 100.00%
+Near transfer:        100.00%  (ratio: 1.00)
+Far transfer:         100.00%  (ratio: 1.00)
+
+--- Transfer Gradient ---
+  Identical : 100.00% ██████████████████████████████
+  Near      : 100.00% ██████████████████████████████
+  Far       : 100.00% ██████████████████████████████
+
+Composite score: 1.0000
+score=1.0000 (112.2s)
+  [4/18] learning_interference... 
+============================================================
+PROACTIVE & RETROACTIVE INTERFERENCE RESULTS (v2)
+============================================================
+System A: SymbolTransform-interf_alpha_v2 (5 rules)
+System B: SymbolTransform-interf_beta_v2 (5 rules)
+
+--- Phase Results ---
+Control A (no interference): 100.00%
+Baseline B (after A):        100.00%
+Post-interference A:         100.00%
+
+--- Interference Metrics ---
+Retroactive (raw):          0.00%
+Retroactive (normalized):   0.0000
+Proactive (raw):            0.00%
+Proactive (normalized):     0.0000
+Compartmentalization:       1.0000
+
+Composite score: 0.5000
+score=0.5000 (96.7s)
+  [5/18] learning_curriculum... 
+============================================================
+CURRICULUM SENSITIVITY BENCHMARK RESULTS
+============================================================
+System: SymbolTransform-curriculum_v2
+Training examples: 10
+Test items: 5
+
+--- Accuracy by Ordering ---
+  random         : 100.00% ██████████████████████████████ ← best
+  easy_hard      : 100.00% ██████████████████████████████ ← best
+  hard_easy      : 100.00% ██████████████████████████████ ← best
+  interleaved    : 100.00% ██████████████████████████████ ← best
+
+--- Metrics ---
+Max accuracy:        100.00%
+Sensitivity (range): 0.00%
+Optimal ordering:    1.0
+Composite score:     0.7000
+score=0.7000 (114.0s)
+  [6/18] attention_selective... 
+============================================================
+SELECTIVE ATTENTION (STROOP ANALOGUE) RESULTS
+============================================================
+
+--- CONGRUENT (n=5, acc=0.00%) ---
+  ✗ SC01: got 'unknown', expected 'dog'
+  ✗ SC02: got 'unknown', expected '7'
+  ✗ SC03: got 'unknown', expected 'blue'
+  ✗ SC04: got 'unknown', expected '3'
+  ✗ SC05: got 'unknown', expected 'Mercury'
+
+--- INCONGRUENT (n=10, acc=0.00%) ---
+  ✗ SI01: got 'unknown', expected 'here'
+  ✗ SI02: got 'unknown', expected '5'
+  ✗ SI03: got 'unknown', expected 'RED'
+  ✗ SI04: got 'unknown', expected '4'
+  ✗ SI05: got 'unknown', expected 'a'
+  ✗ SI06: got 'unknown', expected 'rabbit'
+  ✗ SI07: got 'unknown', expected '4'
+  ✗ SI08: got 'unknown', expected 'cats'
+  ✗ SI09: got 'unknown', expected '2'
+  ✗ SI10: got 'unknown', expected '7'
+
+--- NEUTRAL (n=5, acc=0.00%) ---
+  ✗ SN01: got 'unknown', expected 'apple'
+  ✗ SN02: got 'unknown', expected 'Paris'
+  ✗ SN03: got 'unknown', expected '3'
+  ✗ SN04: got 'unknown', expected 'played'
+  ✗ SN05: got 'unknown', expected 'Tuesday'
+
+--- ADVERSARIAL (n=10, acc=10.00%) ---
+  ✗ SA01: got 'unknown', expected 'Finally'
+  ✗ SA02: got 'unknown', expected '4'
+  ✗ SA03: got 'unknown', expected 'a'
+  ✗ SA04: got 'unknown', expected '7'
+  ✓ SA05: got 'unknown', expected 'N'
+  ✗ SA06: got 'unknown', expected 'Jordan'
+  ✗ SA07: got 'unknown', expected 'not stated'
+  ✗ SA08: got 'unknown', expected '5'
+  ✗ SA09: got 'unknown', expected 'sat'
+  ✗ SA10: got 'unknown', expected '5'
+
+--- Summary ---
+Congruent accuracy:   0.00%
+Incongruent accuracy: 0.00%
+Neutral accuracy:     0.00%
+Adversarial accuracy:  10.00%
+Stroop interference:  0.00%
+Composite score:      0.1250
+
+============================================================
+SELECTIVE ATTENTION (STROOP ANALOGUE) RESULTS
+============================================================
+
+--- CONGRUENT (n=5, acc=100.00%) ---
+  ✓ SC01: got 'dog', expected 'dog'
+  ✓ SC02: got '7', expected '7'
+  ✓ SC03: got 'blue', expected 'blue'
+  ✓ SC04: got '3', expected '3'
+  ✓ SC05: got 'Mercury', expected 'Mercury'
+
+--- INCONGRUENT (n=10, acc=80.00%) ---
+  ✓ SI01: got 'here', expected 'here'
+  ✓ SI02: got '5', expected '5'
+  ✗ SI03: got 'green', expected 'RED'
+  ✓ SI04: got '4', expected '4'
+  ✓ SI05: got 'a', expected 'a'
+  ✓ SI06: got 'a small rabbit', expected 'rabbit'
+  ✓ SI07: got '4', expected '4'
+  ✓ SI08: got 'cats', expected 'cats'
+  ✗ SI09: got '3', expected '2'
+  ✓ SI10: got '7', expected '7'
+
+--- NEUTRAL (n=5, acc=100.00%) ---
+  ✓ SN01: got 'apple', expected 'apple'
+  ✓ SN02: got 'Paris', expected 'Paris'
+  ✓ SN03: got '3', expected '3'
+  ✓ SN04: got 'played', expected 'played'
+  ✓ SN05: got 'Tuesday', expected 'Tuesday'
+
+--- ADVERSARIAL (n=10, acc=90.00%) ---
+  ✓ SA01: got 'Finally', expected 'Finally'
+  ✓ SA02: got '4', expected '4'
+  ✓ SA03: got 'a', expected 'a'
+  ✓ SA04: got '7', expected '7'
+  ✓ SA05: got 'N', expected 'N'
+  ✓ SA06: got 'Jordan', expected 'Jordan'
+  ✗ SA07: got 'The text never states a color.', expected 'not stated'
+  ✓ SA08: got '5', expected '5'
+  ✓ SA09: got 'sat', expected 'sat'
+  ✓ SA10: got '5', expected '5'
+
+--- Summary ---
+Congruent accuracy:   100.00%
+Incongruent accuracy: 80.00%
+Neutral accuracy:     100.00%
+Adversarial accuracy:  90.00%
+Stroop interference:  20.00%
+Composite score:      0.8950
+score=0.8950 (105.8s)
+  [7/18] attention_vigilance... 
+============================================================
+SUSTAINED ATTENTION (VIGILANCE) RESULTS
+============================================================
+Sequence length: 60
+Target: ★
+Chunks: 3 (size 20)
+
+  EARLY: accuracy=100.00%
+    ✓ Chunk 0: actual=1, model=1
+
+  MIDDLE: accuracy=100.00%
+    ✓ Chunk 1: actual=3, model=3
+
+  LATE: accuracy=100.00%
+    ✓ Chunk 2: actual=2, model=2
+
+--- Summary ---
+Overall accuracy:      100.00%
+Early accuracy:        100.00%
+Late accuracy:         100.00%
+Vigilance decrement:   0.00%
+Composite score:       1.0000
+score=1.0000 (13.4s)
+  [8/18] attention_divided... 
+============================================================
+DIVIDED ATTENTION (DUAL-TASK) RESULTS
+============================================================
+Items: 15
+
+--- Single Task Performance ---
+Task A (problem-solving): 0.00%
+Task B (memory):          0.00%
+
+--- Dual Task Performance ---
+Task A (dual):    100.00%  (cost: 0.00%)
+Task B (dual):    100.00%  (cost: 0.00%)
+Mean dual cost:   0.00%
+
+Composite score:  0.5000
+
+============================================================
+DIVIDED ATTENTION (DUAL-TASK) RESULTS
+============================================================
+Items: 15
+
+--- Single Task Performance ---
+Task A (problem-solving): 86.67%
+Task B (memory):          100.00%
+
+--- Dual Task Performance ---
+Task A (dual):    86.67%  (cost: 0.00%)
+Task B (dual):    100.00%  (cost: 0.00%)
+Mean dual cost:   0.00%
+
+Composite score:  0.9333
+score=0.9333 (162.8s)
+  [9/18] attention_instruction_update... 

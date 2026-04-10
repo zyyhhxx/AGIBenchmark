@@ -21,14 +21,14 @@ sys.path.insert(0, REPO)
 # Some models require cross-region inference profile IDs (us. prefix),
 # others work with the foundation model ID directly.
 MODEL_CATALOG = {
-    "anthropic.claude-opus-4-6-v1":                   ("Claude Opus 4.6",        "anthropic.claude-opus-4-6-v1"),
+    "anthropic.claude-opus-4-6-v1":                   ("Claude Opus 4.6",        "us.anthropic.claude-opus-4-6-v1"),
     "deepseek.r1-v1:0":                               ("DeepSeek-R1",            "us.deepseek.r1-v1:0"),
     "openai.gpt-oss-120b-1:0":                        ("GPT-OSS-120B",           "openai.gpt-oss-120b-1:0"),
-    "deepseek.v3.2":                                   ("DeepSeek V3.2",          "deepseek.v3.2"),
+    "meta.llama3-3-70b-instruct-v1:0":                ("Llama 3.3 70B",          "us.meta.llama3-3-70b-instruct-v1:0"),
     "qwen.qwen3-next-80b-a3b":                        ("Qwen3 Next 80B",         "qwen.qwen3-next-80b-a3b"),
     "amazon.nova-pro-v1:0":                            ("Nova Pro",               "us.amazon.nova-pro-v1:0"),
     "meta.llama4-maverick-17b-instruct-v1:0":         ("Llama 4 Maverick 17B",   "us.meta.llama4-maverick-17b-instruct-v1:0"),
-    "anthropic.claude-haiku-4-5-20251001-v1:0":       ("Claude Haiku 4.5",        "us.anthropic.claude-3-5-haiku-20241022-v1:0"),
+    "anthropic.claude-sonnet-4-6":                     ("Claude Sonnet 4.6",      "us.anthropic.claude-sonnet-4-6"),
     "zai.glm-4.7":                                     ("GLM 4.7",                "zai.glm-4.7"),
     "mistral.ministral-3-3b-instruct":                ("Ministral 3B",           "mistral.ministral-3-3b-instruct"),
 }
@@ -181,7 +181,19 @@ def create_bedrock_llm(model_id: str):
                     usage = resp.get('usage', {})
                     self._total_input_tokens += usage.get('inputTokens', 0)
                     self._total_output_tokens += usage.get('outputTokens', 0)
-                    return resp['output']['message']['content'][0]['text']
+                    # Handle models that return reasoningContent before text
+                    content = resp['output']['message']['content']
+                    for block in content:
+                        if 'text' in block:
+                            return block['text']
+                    # Fallback: if only reasoningContent, extract that
+                    for block in content:
+                        if 'reasoningContent' in block:
+                            rt = block['reasoningContent']
+                            if isinstance(rt, dict) and 'reasoningText' in rt:
+                                return rt['reasoningText'].get('text', str(rt))
+                            return str(rt)
+                    return str(content)
                 except Exception as e:
                     last_err = e
                     err = str(e)

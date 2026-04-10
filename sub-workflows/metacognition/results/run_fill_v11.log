@@ -1,0 +1,266 @@
+[1/10] ✅ Llama 3.3 70B: 26/26 ok, 0 gaps
+[2/10] ✅ Llama 4 Maverick 17B: 26/26 ok, 0 gaps
+[3/10] ✅ Ministral 3B: 16/26 ok, 0 gaps
+
+[4/10] Nova Pro: 2 gaps
+  [1/2] attention_instruction_update... ERROR: An HTTP Client raised an unhandled exception: benchmark timeout
+  [2/2] social_cog_pragmatic... {
+  "benchmark": "Pragmatic Inference",
+  "n_items": 25,
+  "intended_accuracy": 0.04,
+  "literal_trap_rate": 0.0,
+  "composite_score": 0.04,
+  "by_category": {
+    "scalar_implicature": {
+      "intended_accuracy": 0.0,
+      "literal_trap_rate": 0.0,
+      "count": 5
+    },
+    "indirect_request": {
+      "intended_accuracy": 0.0,
+      "literal_trap_rate": 0.0,
+      "count": 5
+    },
+    "irony": {
+      "intended_accuracy": 0.0,
+      "literal_trap_rate": 0.0,
+      "count": 5
+    },
+    "understatement": {
+      "intended_accuracy": 0.0,
+      "literal_trap_rate": 0.0,
+      "count": 5
+    },
+    "relevance_implicature": {
+      "intended_accuracy": 0.2,
+      "literal_trap_rate": 0.0,
+      "count": 5
+    }
+  },
+  "per_item": [
+    {
+      "id": "SI01",
+      "type": "scalar_implicature",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "SI02",
+      "type": "scalar_implicature",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "SI03",
+      "type": "scalar_implicature",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "SI04",
+      "type": "scalar_implicature",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "SI05",
+      "type": "scalar_implicature",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IR01",
+      "type": "indirect_request",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IR02",
+      "type": "indirect_request",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IR03",
+      "type": "indirect_request",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IR04",
+      "type": "indirect_request",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IR05",
+      "type": "indirect_request",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IS01",
+      "type": "irony",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IS02",
+      "type": "irony",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IS03",
+      "type": "irony",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IS04",
+      "type": "irony",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IS05",
+      "type": "irony",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "US01",
+      "type": "understatement",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "US02",
+      "type": "understatement",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "US03",
+      "type": "understatement",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "US04",
+      "type": "understatement",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "US05",
+      "type": "understatement",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "RI01",
+      "type": "relevance_implicature",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "RI02",
+      "type": "relevance_implicature",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "RI03",
+      "type": "relevance_implicature",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "RI04",
+      "type": "relevance_implicature",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "RI05",
+      "type": "relevance_implicature",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    }
+  ]
+}
+ERROR: An HTTP Client raised an unhandled exception: benchmark timeout
+
+[5/10] Claude Sonnet 4.6: 12 gaps
+  [1/12] metacog_fok... Traceback (most recent call last):
+  File "/home/ubuntu/.openclaw/workspace-agi-bench/repo/sub-workflows/metacognition/run_fill_v11.py", line 173, in <module>
+    main()
+  File "/home/ubuntu/.openclaw/workspace-agi-bench/repo/sub-workflows/metacognition/run_fill_v11.py", line 134, in main
+    res = run_benchmark_direct(llm, mp, fn)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/.openclaw/workspace-agi-bench/repo/sub-workflows/metacognition/run_fill_v11.py", line 65, in run_benchmark_direct
+    mod = importlib.import_module(mod_path)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/ubuntu/.openclaw/workspace-agi-bench/repo/benchmarks/metacognition/task_fok.py", line 38, in <module>
+    from data.fok_questions import FOK_QUESTIONS
+ModuleNotFoundError: No module named 'data.fok_questions'

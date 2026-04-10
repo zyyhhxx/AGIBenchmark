@@ -278,3 +278,12 @@ Mapping of 9 metacognition benchmark scores to Fleming's (2024) taxonomy:
 - That inventory was merged into Section 6 (Technical Implementation) of `SUBMISSION_NARRATIVE.md` as the subsection "Individual Benchmark Notebooks (30 total)".
 - After merge, the notebook was deleted. References in 15 files (UPLOAD_INSTRUCTIONS.md, NOTEBOOK_AUDIT.md, GOALS.md, 9 Python scripts) were updated to remove or comment out the submission_overview entry.
 - **Pattern:** When a notebook exists solely as a summary/overview of other content, merge unique elements into the canonical markdown document and delete the notebook. Prefer `SUBMISSION_NARRATIVE.md` as the single source of truth for narrative content.
+
+## Bedrock Score Matrix — Full 10-Model Run (2026-04-10)
+- **All 10 models** successfully produced 26-entry result files; score_matrix.csv generated (26×10).
+- **Error-heavy models:** GPT-OSS-120B (15/26 errors), Qwen3 Next 80B (16/26 errors), GLM 4.7 (12/26 errors), Claude Opus 4.6 (13/26), DeepSeek-R1 (11/26) — mostly timeouts on complex benchmarks.
+- **Clean models:** Llama 3.3 70B (26/26 scored), Llama 4 Maverick 17B (26/26 scored).
+- **Chronic timeouts (>300s):** exec_func_wcst, exec_func_tol, exec_func_nback, exec_func_crt, exec_func_task_switch, attention_divided, attention_instruction_update — these benchmarks are slow for all models and produce frequent nulls.
+- **attention_vigilance** scored 1.0 for every model — likely a ceiling effect; benchmark may be too easy.
+- **Execution strategy:** Sequential runs take ~8 hrs total; parallel runner per model (separate processes) is necessary to complete within session windows.
+- **OOM risk:** Running 5–6 models concurrently (each as a subprocess) triggered SIGKILL on one run — keep parallelism to ≤4 models at once to avoid OOM.

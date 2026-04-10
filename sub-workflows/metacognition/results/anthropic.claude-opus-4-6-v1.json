@@ -1,0 +1,137 @@
+{
+  "model": "anthropic.claude-opus-4-6-v1",
+  "model_label": "Claude Opus 4.6",
+  "timestamp": "2026-04-10T20:47:59.435313+00:00",
+  "scores": {
+    "metacog_canary": {
+      "score": 0.0,
+      "error": null,
+      "duration_s": 295.1
+    },
+    "metacog_fok": {
+      "score": null,
+      "error": "timeout (600s)",
+      "duration_s": 600
+    },
+    "metacog_jol": {
+      "score": 0.4643,
+      "error": null,
+      "duration_s": 535.9
+    },
+    "metacog_calibration": {
+      "score": null,
+      "error": "An HTTP Client raised an unhandled exception: benchmark timeout",
+      "duration_s": 180.0
+    },
+    "metacog_error_detection": {
+      "score": null,
+      "error": "An HTTP Client raised an unhandled exception: benchmark timeout",
+      "duration_s": 180.0
+    },
+    "metacog_learning_monitoring": {
+      "score": null,
+      "error": "An HTTP Client raised an unhandled exception: benchmark timeout",
+      "duration_s": 180.0
+    },
+    "metacog_control": {
+      "score": 0.69,
+      "error": null,
+      "duration_s": 156.3
+    },
+    "metacog_epistemic_revision": {
+      "score": null,
+      "error": "An HTTP Client raised an unhandled exception: benchmark timeout",
+      "duration_s": 180.0
+    },
+    "metacog_epistemic_humility": {
+      "score": 0.7969,
+      "error": null,
+      "duration_s": 228.4
+    },
+    "attention_vigilance": {
+      "score": 1.0,
+      "error": null,
+      "duration_s": 21.2
+    },
+    "attention_selective": {
+      "score": null,
+      "error": "timeout (90s)",
+      "duration_s": 90
+    },
+    "learning_curves": {
+      "score": null,
+      "error": "TIMEOUT after 900s",
+      "duration_s": 900
+    },
+    "learning_transfer": {
+      "score": 1.0,
+      "error": null,
+      "duration_s": 156.6
+    },
+    "learning_interference": {
+      "score": 0.5,
+      "error": null,
+      "duration_s": 158.8
+    },
+    "learning_curriculum": {
+      "score": 0.7,
+      "error": null,
+      "duration_s": 208.0
+    },
+    "attention_divided": {
+      "score": 0.9333,
+      "error": null,
+      "duration_s": 280.1
+    },
+    "attention_instruction_update": {
+      "score": null,
+      "error": "TIMEOUT after 600s",
+      "duration_s": 600
+    },
+    "exec_func_wcst": {
+      "score": 0.6175,
+      "error": null,
+      "duration_s": 305.5
+    },
+    "exec_func_tol": {
+      "score": null,
+      "error": "TIMEOUT after 300s",
+      "duration_s": 300
+    },
+    "exec_func_task_switch": {
+      "score": 1.0,
+      "error": null,
+      "duration_s": 209.1
+    },
+    "exec_func_nback": {
+      "score": null,
+      "error": "TIMEOUT after 300s",
+      "duration_s": 300
+    },
+    "exec_func_crt": {
+      "score": 0.35,
+      "error": null,
+      "duration_s": 175.6
+    },
+    "social_cog_false_belief": {
+      "score": null,
+      "error": "TIMEOUT after 300s",
+      "duration_s": 300
+    },
+    "social_cog_pragmatic": {
+      "score": null,
+      "error": "TIMEOUT after 300s",
+      "duration_s": 300
+    },
+    "social_cog_sarcasm": {
+      "score": null,
+      "error": "TIMEOUT after 300s",
+      "duration_s": 300
+    },
+    "social_cog_emotional_prosody": {
+      "score": 0.8022,
+      "error": null,
+      "duration_s": 167.6
+    }
+  }
+}

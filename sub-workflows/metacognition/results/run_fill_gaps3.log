@@ -1,0 +1,18 @@
+
+============================================================
+Nova Pro: 8 gaps
+============================================================
+  [1/8] attention_instruction_update... ERR (180s): timeout (180s)
+  [2/8] exec_func_task_switch... 0.5795 (102s)
+  [3/8] exec_func_nback... ERR (180s): timeout (180s)
+  [4/8] exec_func_crt... 0.3500 (49s)
+  [5/8] social_cog_false_belief... 0.9300 (105s)
+  [6/8] social_cog_pragmatic... ERR (180s): timeout (180s)
+  [7/8] social_cog_sarcasm... ERR (180s): timeout (180s)
+  [8/8] social_cog_emotional_prosody... 0.8300 (55s)
+
+============================================================
+Ministral 3B: 19 gaps
+============================================================
+  [1/19] metacog_fok... ERR (180s): timeout (180s)
+  [2/19] metacog_jol... 

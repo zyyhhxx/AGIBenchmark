@@ -1,0 +1,164 @@
+✅ Llama 3.3 70B: complete (26 benchmarks)
+✅ Llama 4 Maverick 17B: complete (26 benchmarks)
+
+============================================================
+Nova Pro: 9 gaps to fill
+============================================================
+  [1/9] attention_vigilance... 
+============================================================
+Running attention_vigilance with Nova Pro (amazon.nova-pro-v1:0)
+============================================================
+
+============================================================
+SUSTAINED ATTENTION (VIGILANCE) RESULTS
+============================================================
+Sequence length: 60
+Target: ★
+Chunks: 3 (size 20)
+
+  EARLY: accuracy=100.00%
+    ✓ Chunk 0: actual=1, model=1
+
+  MIDDLE: accuracy=100.00%
+    ✓ Chunk 1: actual=3, model=3
+
+  LATE: accuracy=100.00%
+    ✓ Chunk 2: actual=2, model=2
+
+--- Summary ---
+Overall accuracy:      100.00%
+Early accuracy:        100.00%
+Late accuracy:         100.00%
+Vigilance decrement:   0.00%
+Composite score:       1.0000
+  Score: 1.0
+  Time: 3.5s
+  Tokens: in=610, out=100
+1.0000 (4s)
+  [2/9] attention_instruction_update... 
+============================================================
+Running attention_instruction_update with Nova Pro (amazon.nova-pro-v1:0)
+============================================================
+
+============================================================
+ATTENTION TO INSTRUCTION UPDATES BENCHMARK RESULTS
+============================================================
+Trials: 5 (1 catch)
+
+--- Metrics ---
+Pre-switch accuracy:  0.459 (n=37)
+Post-switch accuracy: 0.385 (n=26)
+Adaptation speed:     0.808
+Perseveration rate:   0.192
+False switch rate:    0.500 (n=10)
+Composite score:      0.5264
+
+--- Per-Item Results ---
+  ✓ [T1        ] [pre-switch ] tiger           → LIVING     (expected: LIVING)
+  ✗ [T1        ] [pre-switch ] mountain        → Certainly! The term "mountain" (expected: NON-LIVING)
+  ✗ [T1        ] [pre-switch ] dolphin         → Certainly! Dolphins are fascin (expected: LIVING)
+  ✗ [T1        ] [pre-switch ] crystal         → Certainly! The term "crystal"  (expected: NON-LIVING)
+  ✗ [T1        ] [pre-switch ] mushroom        → Certainly! Mushrooms can be cl (expected: LIVING)
+  ✗ [T1        ] [pre-switch ] hammer          → Certainly! Let's classify the  (expected: NON-LIVING)
+  ✗ [T1        ] [pre-switch ] fern            → Certainly! The term "fern" ref (expected: LIVING)
+  ✗ [T1        ] [pre-switch ] bridge          → Certainly! The term "bridge" c (expected: NON-LIVING)
+  ✓ [T1        ] [post-switch] cat             → Sure, based on the new rule:
+
+ (expected: SHORT)
+  ✗ [T1        ] [post-switch] elephant        → Certainly! The term "elephant" (expected: LONG)
+  ✗ [T1        ] [post-switch] desk            → Certainly! Let's delve into th (expected: SHORT)
+  ✗ [T1        ] [post-switch] refrigerator    → Certainly! Let's break down th (expected: LONG)
+  ✗ [T1        ] [post-switch] owl             → Certainly! Let's classify the  (expected: SHORT)
+  ✗ [T1        ] [post-switch] microphone      → Certainly! Let's classify a mi (expected: LONG)
+  ✗ [T1        ] [post-switch] bee             → Certainly! Let's classify the  (expected: SHORT)
+  ✗ [T1        ] [post-switch] lamp            → Certainly! Let's delve into th (expected: SHORT)
+  ✓ [T2        ] [pre-switch ] 23              → ODD        (expected: ODD)
+  ✓ [T2        ] [pre-switch ] 48              → Certainly! To classify the ite (expected: EVEN)
+  ✗ [T2        ] [pre-switch ] 77              → Certainly! To classify "Item:  (expected: ODD)
+  ✗ [T2        ] [pre-switch ] 16              → It seems like you've provided  (expected: EVEN)
+  ✗ [T2        ] [pre-switch ] 91              → Certainly! To classify the ite (expected: ODD)
+  ✓ [T2        ] [pre-switch ] 34              → Certainly! To classify the ite (expected: EVEN)
+  ✓ [T2        ] [post-switch] 65              → Your classification: HIGH
+
+Sin (expected: HIGH)
+  ✗ [T2        ] [post-switch] 12              → It seems like you're referring (expected: LOW)
+  ✓ [T2        ] [post-switch] 88              → It seems like you're asking fo (expected: HIGH)
+  ✗ [T2        ] [post-switch] 7               → Certainly! To classify "Item:  (expected: LOW)
+  ✗ [T2        ] [post-switch] 52              → Certainly! The classification  (expected: HIGH)
+  ✗ [T2        ] [post-switch] 39              → Certainly! To classify the ite (expected: LOW)
+  ✓ [T3        ] [pre-switch ] A 15cm circle   → ROUND      (expected: ROUND)
+  ✗ [T3        ] [pre-switch ] A 5cm triangle  → Certainly! Let's break down th (expected: ANGULAR)
+  ✓ [T3        ] [pre-switch ] A 20cm oval     → Certainly! The item described  (expected: ROUND)
+  ✗ [T3        ] [pre-switch ] A 8cm square    → Certainly! Let's break down th (expected: ANGULAR)
+  ✗ [T3        ] [pre-switch ] A 3cm sphere    → Certainly! Let's classify the  (expected: ROUND)
+  ✗ [T3        ] [pre-switch ] A 12cm pentagon → Certainly! Let's break down th (expected: ANGULAR)
+  ✗ [T3        ] [pre-switch ] A 7cm disc      → Certainly! A 7 cm disc can be  (expected: ROUND)
+  ✓ [T3        ] [post-switch] A 25cm hexagon  → Based on the new rule you've p (expected: LARGE)
+  ✗ [T3        ] [post-switch] A 4cm ellipse   → Certainly! Let's break down th (expected: SMALL)
+  ✓ [T3        ] [post-switch] A 18cm diamond  → Certainly! Let's break down th (expected: LARGE)
+  ✓ [T3        ] [post-switch] A 2cm ring      → Certainly! A 2 cm ring can be  (expected: SMALL)
+  ✗ [T3        ] [post-switch] A 30cm rectangle → Certainly! Let's break down th (expected: LARGE)
+  ✓ [T3        ] [post-switch] A 9cm globe     → Certainly! A 9 cm globe falls  (expected: SMALL)
+  ✓ [T4_CATCH  ] [catch      ] whale           → MAMMAL     (expected: MAMMAL)
+  ✗ [T4_CATCH  ] [catch      ] salmon          → Certainly! Salmon can be class (expected: NON-MAMMAL)
+  ✓ [T4_CATCH  ] [catch      ] bat             → Certainly! The term "bat" can  (expected: MAMMAL)
+  ✗ [T4_CATCH  ] [catch      ] cobra           → Certainly! Let's classify the  (expected: NON-MAMMAL)
+  ✓ [T4_CATCH  ] [catch      ] otter           → Certainly! The term "otter" ca (expected: MAMMAL)
+  ✗ [T4_CATCH  ] [catch      ] parrot          → Certainly! The term "parrot" c (expected: NON-MAMMAL)
+  ✓ [T4_CATCH  ] [catch      ] fox             → Certainly! The term "fox" can  (expected: MAMMAL)
+  ✗ [T4_CATCH  ] [catch      ] turtle          → Certainly! Let's break down th (expected: NON-MAMMAL)
+  ✓ [T4_CATCH  ] [catch      ] rabbit          → Certainly! The term "rabbit" c (expected: MAMMAL)
+  ✗ [T4_CATCH  ] [catch      ] eagle           → Certainly! The term "eagle" ca (expected: NON-MAMMAL)
+  ✓ [T5        ] [pre-switch ] banana          → B          (expected: B)
+  ✓ [T5        ] [pre-switch ] grape           → Certainly! Grapes can be class (expected: G)
+  ✓ [T5        ] [pre-switch ] strawberry      → Certainly! Here's a detailed c (expected: S)
+  ✓ [T5        ] [pre-switch ] kiwi            → Certainly! The term "kiwi" can (expected: K)
+  ✓ [T5        ] [pre-switch ] mango           → Certainly! The term "mango" ca (expected: M)
+  ✓ [T5        ] [pre-switch ] plum            → Certainly! The item "plum" can (expected: P)
+  ✓ [T5        ] [post-switch] orange          → The word "orange" has 3 vowels (expected: 3)
+  ✓ [T5        ] [post-switch] apple           → Certainly! The term "apple" ca (expected: 2)
+  ✗ [T5        ] [post-switch] peach           → Certainly! The item "peach" ca (expected: 2)
+  ✗ [T5        ] [post-switch] fig             → Certainly! The term "fig" can  (expected: 1)
+  ✗ [T5        ] [post-switch] avocado         → Certainly! Let's classify the  (expected: 4)
+  ✓ [T5        ] [post-switch] lime            → Certainly! Limes can be classi (expected: 2)
+  Score: 0.5264
+  Time: 800.6s
+  Tokens: in=2192, out=53381
+0.5264 (801s)
+  [3/9] exec_func_task_switch... {
+  "benchmark": "Task Switching",
+  "n_trials": 40,
+  "overall_accuracy": 0.0,
+  "switch_trial_accuracy": 0.0,
+  "repeat_trial_accuracy": 0.0,
+  "switch_cost": 0.0,
+  "consistency": 1.0,
+  "composite_score": 0.3,
+  "per_rule": {
+    "odd_even": 0.0,
+    "greater_less": 0.0
+  }
+}
+
+============================================================
+Running exec_func_task_switch with Nova Pro (amazon.nova-pro-v1:0)
+============================================================
+{
+  "benchmark": "Task Switching",
+  "n_trials": 40,
+  "overall_accuracy": 0.575,
+  "switch_trial_accuracy": 0.4444,
+  "repeat_trial_accuracy": 0.6129,
+  "switch_cost": 0.1685,
+  "consistency": 0.55,
+  "composite_score": 0.5283,
+  "per_rule": {
+    "odd_even": 0.65,
+    "greater_less": 0.5
+  }
+}
+  Score: 0.5283
+  Time: 94.6s
+  Tokens: in=5512, out=59249
+0.5283 (95s)
+  [4/9] exec_func_nback... 

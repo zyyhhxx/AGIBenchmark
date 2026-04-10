@@ -1,0 +1,9 @@
+run_fill_v12 started at 2026-04-10T17:44:26.667248+00:00
+Benchmarks: 26, Models: 10
+
+[1/1] Qwen3 Next 80B: 24 gaps to fill
+  [1/24] metacog_fok... ERROR: An error occurred (InternalServerException) when calling the Converse operation 
+  [2/24] metacog_jol... ERROR: An error occurred (InternalServerException) when calling the Converse operation 
+  [3/24] metacog_calibration... ERROR: An error occurred (InternalServerException) when calling the Converse operation 
+  [4/24] metacog_error_detection... score=0.7843 (454.7s)
+  [5/24] metacog_learning_monitoring... 

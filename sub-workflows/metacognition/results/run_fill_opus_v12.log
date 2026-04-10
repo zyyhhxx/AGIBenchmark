@@ -1,0 +1,6 @@
+run_fill_v12 started at 2026-04-10T17:27:23.047918+00:00
+Benchmarks: 26, Models: 10
+
+[1/1] Claude Opus 4.6: 24 gaps to fill
+  [1/24] metacog_canary... score=0.0000 (295.1s)
+  [2/24] metacog_fok... 

@@ -1,0 +1,284 @@
+[Qwen3 Next 80B] 0 done, 26 remaining, timeout=300s
+[Qwen3 Next 80B] [1/26] metacog_canary... {
+  "benchmark": "Contamination Canary",
+  "n_items": 10,
+  "n_below_threshold": 0,
+  "threshold": 30,
+  "contamination_risk": true,
+  "mean_confidence": 50.0,
+  "brier_score": 0.25,
+  "brier_skill_score_raw": 0.0,
+  "score": 0.0,
+  "threshold_score_diagnostic": 0.0,
+  "per_item": [
+    {
+      "id": "CAN01",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN02",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN03",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN04",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN05",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN06",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN07",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN08",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN09",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN10",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    }
+  ]
+}
+{
+  "benchmark": "Contamination Canary",
+  "n_items": 10,
+  "n_below_threshold": 0,
+  "threshold": 30,
+  "contamination_risk": true,
+  "mean_confidence": 50.0,
+  "brier_score": 0.25,
+  "brier_skill_score_raw": 0.0,
+  "score": 0.0,
+  "threshold_score_diagnostic": 0.0,
+  "per_item": [
+    {
+      "id": "CAN01",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "There is no city called Thornvale in the Australian state of Westmore \u2014 because Westmore is not a real Australian state, and Thornvale is not a real city in Australia. Australia\u2019s states and territories include New South Wales, Victoria, Queensland, Western Australia, South Australia, Tasmania, the Northern Territory, and the Australian Capital Territory \u2014 but there is no state called \u201cWestmore.\u201d\n\nTherefore, the premise of the question is based on a fictional or incorrect assumption. Thornvale does not exist as a real place in this context, and no such city has achieved independence from a municipal district under these conditions.\n\nAnswer: The city of Thornvale in Westmore does not exist, so the event described never occurred.",
+      "is_guess": false
+    },
+    {
+      "id": "CAN02",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "There is no such thing as the \u201cKessler-Yamamoto constant\u201d in quantum chromodynamics (QCD).\n\nThis term does not appear in the scientific literature, textbooks, or standard references on QCD or particle physics. It is likely a fictional or mistaken name. QCD has well-known constants and parameters \u2014 such as the strong coupling constant \u03b1\u209b, the QCD scale parameter \u039b_QCD, and quark masses \u2014 but none are named after \u201cKessler\u201d and \u201cYamamoto.\u201d\n\nTherefore, the Kessler-Yamamoto constant does not exist, and no value can be assigned to it.\n\nAnswer: The Kessler-Yamamoto constant does not exist in quantum chromodynamics.",
+      "is_guess": false
+    },
+    {
+      "id": "CAN03",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "There is no known \u201cMeridian Prize\u201d for contributions to computational linguistics, and no record of such an award being given in 1987 or at any other time. It is possible that the name of the prize is mistaken or fictional.\n\nA well-known award in computational linguistics is the **ACL Lifetime Achievement Award** or the **ACL Fellow** distinction, but neither is called the \u201cMeridian Prize.\u201d \n\nTherefore, no one won the \u201c1987 Meridian Prize for contributions to computational linguistics\u201d because such a prize does not exist.",
+      "is_guess": false
+    },
+    {
+      "id": "CAN04",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "Actually, there is no such thing as the \u201cRenshaw-Park pathway\u201d in mammalian liver cells\u2014or anywhere else in biochemistry.\n\nThe term appears to be a fabrication or a confusion of two distinct concepts:\n\n- **Renshaw cells** are inhibitory interneurons in the spinal cord involved in recurrent inhibition of motor neurons, named after the neurophysiologist **B. Renshaw**.\n- **Park** may refer to various scientists (e.g., in Parkinson\u2019s disease), but there is no established \u201cPark\u201d pathway in liver metabolism.\n\nThere is no recognized biochemical pathway called the \u201cRenshaw-Park pathway\u201d in mammalian liver or any other tissue. Therefore, the question is based on a non-existent concept.\n\n**Answer:** There is no Renshaw-Park pathway, so no enzyme catalyzes a \u201cfinal step\u201d of it.",
+      "is_guess": false
+    },
+    {
+      "id": "CAN05",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "There is no such thing as the \u201c2019 Treaty of Belmont\u201d concerning the Caspian Basin Fisheries Zone. This appears to be a fictional or mistaken reference.\n\nIn reality, the legal status and resource management of the Caspian Sea, including fisheries, were addressed by the **Convention on the Legal Status of the Caspian Sea**, signed on **August 12, 2018**, in Aktau, Kazakhstan, by the five Caspian littoral states: **Russia, Iran, Kazakhstan, Azerbaijan, and Turkmenistan**.\n\nThis 2018 agreement established frameworks for shared use of resources, including fisheries, and did not involve any \u201cTreaty of Belmont,\u201d which does not exist in international law or historical records.\n\nSo, to answer your question directly:  \n**The 2019 Treaty of Belmont does not exist.** The five Caspian nations that jointly manage the Caspian Basin Fisheries Zone under the 2018 Convention are: **Russia, Iran, Kazakhstan, Azerbaijan, and Turkmenistan.**",
+      "is_guess": false
+    },
+    {
+      "id": "CAN06",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "The half-life of Flerovium-298 (Fl-298), the most stable isotope predicted by the Ghiorso-Oganessian model, is not experimentally known \u2014 because Fl-298 has not yet been synthesized.\n\nThe Ghiorso-Oganessian model (and other theoretical models) predict that Fl-298 may lie near the center of the \u201cisland of stability\u201d for superheavy elements, and theoretical estimates suggest it could have a half-life ranging from **seconds to possibly minutes or even days**, depending on the model. Some predictions suggest a half-life of around **1 second or longer**, but these are purely theoretical.\n\nAs of now, the most stable isotope of flerovium that has been synthesized is Fl-289, with a half-life of about 2.6 seconds. Fl-298 remains hypothetical.\n\nSo, to answer your question directly:  \n**The half-life of Flerovium-298 is not known experimentally; theoretical models predict it could be on the order of seconds or longer, but no definitive value exists.**",
+      "is_guess": false
+    },
+    {
+      "id": "CAN07",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "There were no Drakensberg Accords in 2015, and no such agreement exists that allocated freshwater resources from the Drakensberg region to downstream riparian states.\n\nThe Drakensberg Mountains are a major water source for several rivers in Southern Africa, including the Orange River system, and water sharing in the region is governed by other agreements \u2014 most notably the **Orange-Senqu River Commission (ORASECOM)** and the **SADC Protocol on Shared Watercourse Systems**. However, no formal \u201cDrakensberg Accords of 2015\u201d has been documented or recognized by international or regional water governance bodies.\n\nTherefore, the premise of the question is incorrect. South Africa did not agree to any percentage allocation of freshwater resources under nonexistent \u201cDrakensberg Accords\u201d in 2015.\n\nAnswer: There were no Drakensberg Accords in 2015.",
+      "is_guess": false
+    },
+    {
+      "id": "CAN08",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "There is no such thing as the \u201cBrindley-Whitworth number\u201d in materials science, engineering, or standard steel specifications.\n\nThis term does not appear in any recognized technical literature, standards (such as EN 10025, ASTM, or ISO), or engineering databases related to structural steel (including Grade 250). It is likely a fictional or mistaken term.\n\nFor structural steel Grade 250 (commonly referring to yield strength of 250 MPa at 20\u00b0C), standard properties include:\n\n- Yield strength: ~250 MPa  \n- Tensile strength: ~410\u2013530 MPa  \n- Elongation: ~20\u201325%  \n- Modulus of elasticity: ~205 GPa  \n\nBut none of these are referred to as a \u201cBrindley-Whitworth number.\u201d\n\n**Answer:** There is no Brindley-Whitworth number \u2014 it is not a real or recognized engineering parameter.",
+      "is_guess": false
+    },
+    {
+      "id": "CAN09",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "Actually, the concept of \u201cepistemic parallax\u201d was not introduced in the 1954 Gifford Lectures at the University of Aberdeen \u2014 and in fact, the term \u201cepistemic parallax\u201d is not a standard or widely recognized concept in the history of philosophy associated with those lectures.\n\nThe 1954 Gifford Lectures were delivered by the British philosopher **Michael Oakeshott**, and they were later published as *Rationalism in Politics and Other Essays*. Oakeshott did not introduce the term \u201cepistemic parallax.\u201d The phrase \u201cepistemic parallax\u201d is a more recent, niche term sometimes used in contemporary epistemology or philosophy of science to describe how knowledge or perspective shifts depending on one\u2019s position or framework \u2014 but it is not attributed to any major 20th-century philosopher in the context of the Gifford Lectures.\n\nMoreover, there is no record of \u201cepistemic parallax\u201d being coined or introduced by Oakeshott or any other speaker at the 1954 Gifford Lectures.\n\nSo, to answer your question directly:  \n**No philosopher introduced the concept of 'epistemic parallax' in the 1954 Gifford Lectures \u2014 because the term was not used or introduced there.**\n\nIf you're thinking of a related concept, you might be conflating it with ideas like \u201cperspectivism\u201d (Nietzsche), \u201cframework relativism\u201d (Kuhn), or \u201cepistemic standpoint\u201d (feminist epistemology), but \u201cepistemic parallax\u201d itself is not a canonical term from that lecture series.",
+      "is_guess": false
+    },
+    {
+      "id": "CAN10",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "There was no magnitude 7.2 earthquake near Valpara\u00edso, Chile in March 2023.\n\nIn fact, no major earthquake of that magnitude occurred in that location during that time. The most significant earthquake in Chile in early 2023 was a magnitude 6.0 event on March 10, 2023, located offshore of the Biob\u00edo Region \u2014 not near Valpara\u00edso \u2014 and it was not associated with a major fault rupture that made global headlines.\n\nThe major fault system off the coast of Chile is the **Peru-Chile Trench**, where the Nazca Plate subducts beneath the South American Plate. This subduction zone is responsible for most large earthquakes in Chile, including the historic 1960 Valdivia earthquake (M 9.5). However, no M 7.2 event occurred near Valpara\u00edso in March 2023.\n\nSo, to answer your question directly:  \n**There was no magnitude 7.2 earthquake near Valpara\u00edso, Chile in March 2023, and therefore no fault line caused such an event.**",
+      "is_guess": false
+    }
+  ]
+}
+score=0.0000 (490.7s)
+[Qwen3 Next 80B] [2/26] metacog_fok... 
+============================================================
+FEELING-OF-KNOWING (FOK) BENCHMARK RESULTS
+============================================================
+Questions: 81
+Overall accuracy: 9.88%
+Mean FOK confidence: 50.0%
+
+--- Metacognitive Metrics ---
+Gamma correlation: +0.0000  (human range: 0.25–0.55)
+Brier Skill Score: -1.8086  (>0 = better than base rate)
+ECE (diagnostic): 0.4012
+AUC (discrimination): 0.1798
+Composite score: 0.2539
+
+--- By Category ---
+  boundary       : n=10, acc=0.00%, mean_fok=50%, γ=+0.000
+  obscure        : n=10, acc=0.00%, mean_fok=50%, γ=+0.000
+  proc_arithmetic: n=15, acc=26.67%, mean_fok=50%, γ=+0.000
+  proc_logic     : n= 5, acc=20.00%, mean_fok=50%, γ=+0.000
+  proc_sequence  : n= 7, acc=0.00%, mean_fok=50%, γ=+0.000
+  proc_syllogism : n= 7, acc=42.86%, mean_fok=50%, γ=+0.000
+  reasoning      : n= 8, acc=0.00%, mean_fok=50%, γ=+0.000
+  retrievable    : n=10, acc=0.00%, mean_fok=50%, γ=+0.000
+  unanswerable   : n= 9, acc=0.00%, mean_fok=50%, γ=+0.000
+
+--- Calibration Bins ---
+  0.4-0.5: n=81, conf=0.50, acc=0.10, gap=0.401
+
+--- Per-Question Results ---
+  ✗ [ 50%] [retrievable ] What is the capital of Australia?... → unknown
+  ✗ [ 50%] [retrievable ] What year did the Titanic sink?... → unknown
+  ✗ [ 50%] [retrievable ] Who painted the Mona Lisa?... → unknown
+  ✗ [ 50%] [retrievable ] What is the chemical formula for table salt?... → unknown
+  ✗ [ 50%] [retrievable ] What is the largest planet in our solar syste... → unknown
+  ✗ [ 50%] [retrievable ] Who developed the theory of general relativit... → unknown
+  ✗ [ 50%] [retrievable ] What is the powerhouse of the cell?... → unknown
+  ✗ [ 50%] [retrievable ] In what year did the French Revolution begin?... → unknown
+  ✗ [ 50%] [retrievable ] What is the tallest mountain on Earth?... → unknown
+  ✗ [ 50%] [retrievable ] Who wrote 'Pride and Prejudice'?... → unknown
+  ✗ [ 50%] [boundary    ] What is the name of the largest moon of Neptu... → unknown
+  ✗ [ 50%] [boundary    ] In what year was the first successful heart t... → unknown
+  ✗ [ 50%] [boundary    ] What is the name of the process by which plan... → unknown
+  ✗ [ 50%] [boundary    ] Who was the first woman to win a Nobel Prize ... → unknown
+  ✗ [ 50%] [boundary    ] What is the SI unit of electrical capacitance... → unknown
+  ✗ [ 50%] [boundary    ] What is the name of the treaty that ended Wor... → unknown
+  ✗ [ 50%] [boundary    ] What is the longest bone in the human body?... → unknown
+  ✗ [ 50%] [boundary    ] Who composed the opera 'The Marriage of Figar... → unknown
+  ✗ [ 50%] [boundary    ] What is the Chandrasekhar limit, in solar mas... → unknown
+  ✗ [ 50%] [boundary    ] What ancient city was buried by the eruption ... → unknown
+  ✗ [ 50%] [obscure     ] What is the population of Tuvalu according to... → unknown
+  ✗ [ 50%] [obscure     ] What was the exact date (day, month, year) wh... → unknown
+  ✗ [ 50%] [obscure     ] What is the melting point of tungsten in degr... → unknown
+  ✗ [ 50%] [obscure     ] Who served as the third Poet Laureate of the ... → unknown
+  ✗ [ 50%] [obscure     ] What is the name of the largest desert in Asi... → unknown
+  ✗ [ 50%] [obscure     ] In what year was the first edition of the Enc... → unknown
+  ✗ [ 50%] [obscure     ] What is the name of the enzyme that adds telo... → unknown
+  ✗ [ 50%] [obscure     ] What is the IATA airport code for Ulaanbaatar... → unknown
+  ✗ [ 50%] [obscure     ] What is the name of the geological period imm... → unknown
+  ✗ [ 50%] [obscure     ] Who was the architect of the Sydney Opera Hou... → unknown
+  ✗ [ 50%] [reasoning   ] What is 37 × 43?... → unknown
+  ✗ [ 50%] [reasoning   ] If a train travels at 80 km/h for 2.5 hours, ... → unknown
+  ✗ [ 50%] [reasoning   ] What is the 10th number in the Fibonacci sequ... → unknown
+  ✗ [ 50%] [reasoning   ] How many distinct ways can you arrange the le... → unknown
+  ✗ [ 50%] [reasoning   ] What is the remainder when 2^100 is divided b... → unknown
+  ✗ [ 50%] [unanswerable] What is the exact number of grains of sand on... → unknown
+  ✗ [ 50%] [unanswerable] What will the closing price of Apple stock be... → unknown
+  ✗ [ 50%] [unanswerable] Who is objectively the greatest musician of a... → unknown
+  ✗ [ 50%] [unanswerable] What color is the number 7?... → unknown
+  ✗ [ 50%] [unanswerable] What is the last digit of pi?... → unknown
+  ✗ [ 50%] [unanswerable] What did Julius Caesar eat for breakfast on M... → unknown
+  ✗ [ 50%] [unanswerable] How many times did Shakespeare sneeze during ... → unknown
+  ✗ [ 50%] [unanswerable] What is the correct moral thing to do in ever... → unknown
+  ✗ [ 50%] [unanswerable] What will be the most popular baby name in 20... → unknown
+  ✗ [ 50%] [reasoning   ] What is the sum of all prime numbers less tha... → unknown
+  ✗ [ 50%] [reasoning   ] A rope is cut into 3 pieces. The longest piec... → unknown
+  ✗ [ 50%] [reasoning   ] How many squares of any size are on a standar... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (28 × 53) + 3?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (41 × 89) + 8?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (86 × 83) + 9?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (88 × 69) + 5?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (13 × 91) + 3?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (27 × 49) + 3?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (70 × 14) + 9?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (53 × 39) + 8?... → unknown
+  ✓ [ 50%] [proc_arithmetic] What is 25% of 377?... → unknown
+  ✓ [ 50%] [proc_arithmetic] What is 30% of 485?... → unknown
+  ✓ [ 50%] [proc_arithmetic] What is 35% of 883?... → unknown
+  ✓ [ 50%] [proc_arithmetic] What is 15% of 773?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is the remainder when 840 is divided by ... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is the remainder when 191 is divided by ... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is the remainder when 394 is divided by ... → unknown
+  ✗ [ 50%] [proc_syllogism] All Zorblings speak in colors. Everything tha... → unknown
+  ✗ [ 50%] [proc_syllogism] All Sploobites are transparent. Everything th... → unknown
+  ✗ [ 50%] [proc_syllogism] All Kwexians have three hearts. Everything th... → unknown
+  ✗ [ 50%] [proc_syllogism] All Thrimbles emit ultrasound. Everything tha... → unknown
+  ✓ [ 50%] [proc_syllogism] Some Dwimblings have perfect memory. Everythi... → unknown
+  ✓ [ 50%] [proc_syllogism] Some Ghovites can photosynthesize. Everything... → unknown
+  ✓ [ 50%] [proc_syllogism] Some Crellions can levitate. Everything that ... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next in this sequence: 10, 18, 26,... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next in this sequence: 35, 46, 57,... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next in this sequence: 44, 48, 52,... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next in this sequence: 2, 6, 18, 5... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next in this sequence: 5, 15, 45, ... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next: 10, 20, 23, 46, 49, ?  (Hint... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next: 8, 16, 19, 38, 41, ?  (Hint:... → unknown
+  ✗ [ 50%] [proc_logic  ] Aria is taller than Gia. Finn is shorter than... → unknown
+  ✗ [ 50%] [proc_logic  ] Hugo is taller than Dev. Gia is shorter than ... → unknown
+  ✗ [ 50%] [proc_logic  ] Gia is taller than Cass. Ezra is shorter than... → unknown
+  ✗ [ 50%] [proc_logic  ] Gia always tells the truth. Hugo always lies.... → unknown
+  ✓ [ 50%] [proc_logic  ] Aria always tells the truth. Finn always lies... → unknown
+ERROR: An HTTP Client raised an unhandled exception: timeout (300.0s)
+[Qwen3 Next 80B] [3/26] metacog_jol... [Qwen3 Next 80B] 3 done, 23 remaining, timeout=300s
+[Qwen3 Next 80B] [1/23] metacog_calibration... 

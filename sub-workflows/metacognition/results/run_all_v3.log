@@ -1,0 +1,115 @@
+Starting run_all_v3 at 2026-04-10T10:54:58.166652+00:00
+Models: 10, Benchmarks: 26
+
+[1/10] Ministral 3B: 1 done, 25 remaining
+  [1/25] metacog_fok... 
+============================================================
+FEELING-OF-KNOWING (FOK) BENCHMARK RESULTS
+============================================================
+Questions: 81
+Overall accuracy: 9.88%
+Mean FOK confidence: 50.0%
+
+--- Metacognitive Metrics ---
+Gamma correlation: +0.0000  (human range: 0.25–0.55)
+Brier Skill Score: -1.8086  (>0 = better than base rate)
+ECE (diagnostic): 0.4012
+AUC (discrimination): 0.1798
+Composite score: 0.2539
+
+--- By Category ---
+  boundary       : n=10, acc=0.00%, mean_fok=50%, γ=+0.000
+  obscure        : n=10, acc=0.00%, mean_fok=50%, γ=+0.000
+  proc_arithmetic: n=15, acc=26.67%, mean_fok=50%, γ=+0.000
+  proc_logic     : n= 5, acc=20.00%, mean_fok=50%, γ=+0.000
+  proc_sequence  : n= 7, acc=0.00%, mean_fok=50%, γ=+0.000
+  proc_syllogism : n= 7, acc=42.86%, mean_fok=50%, γ=+0.000
+  reasoning      : n= 8, acc=0.00%, mean_fok=50%, γ=+0.000
+  retrievable    : n=10, acc=0.00%, mean_fok=50%, γ=+0.000
+  unanswerable   : n= 9, acc=0.00%, mean_fok=50%, γ=+0.000
+
+--- Calibration Bins ---
+  0.4-0.5: n=81, conf=0.50, acc=0.10, gap=0.401
+
+--- Per-Question Results ---
+  ✗ [ 50%] [retrievable ] What is the capital of Australia?... → unknown
+  ✗ [ 50%] [retrievable ] What year did the Titanic sink?... → unknown
+  ✗ [ 50%] [retrievable ] Who painted the Mona Lisa?... → unknown
+  ✗ [ 50%] [retrievable ] What is the chemical formula for table salt?... → unknown
+  ✗ [ 50%] [retrievable ] What is the largest planet in our solar syste... → unknown
+  ✗ [ 50%] [retrievable ] Who developed the theory of general relativit... → unknown
+  ✗ [ 50%] [retrievable ] What is the powerhouse of the cell?... → unknown
+  ✗ [ 50%] [retrievable ] In what year did the French Revolution begin?... → unknown
+  ✗ [ 50%] [retrievable ] What is the tallest mountain on Earth?... → unknown
+  ✗ [ 50%] [retrievable ] Who wrote 'Pride and Prejudice'?... → unknown
+  ✗ [ 50%] [boundary    ] What is the name of the largest moon of Neptu... → unknown
+  ✗ [ 50%] [boundary    ] In what year was the first successful heart t... → unknown
+  ✗ [ 50%] [boundary    ] What is the name of the process by which plan... → unknown
+  ✗ [ 50%] [boundary    ] Who was the first woman to win a Nobel Prize ... → unknown
+  ✗ [ 50%] [boundary    ] What is the SI unit of electrical capacitance... → unknown
+  ✗ [ 50%] [boundary    ] What is the name of the treaty that ended Wor... → unknown
+  ✗ [ 50%] [boundary    ] What is the longest bone in the human body?... → unknown
+  ✗ [ 50%] [boundary    ] Who composed the opera 'The Marriage of Figar... → unknown
+  ✗ [ 50%] [boundary    ] What is the Chandrasekhar limit, in solar mas... → unknown
+  ✗ [ 50%] [boundary    ] What ancient city was buried by the eruption ... → unknown
+  ✗ [ 50%] [obscure     ] What is the population of Tuvalu according to... → unknown
+  ✗ [ 50%] [obscure     ] What was the exact date (day, month, year) wh... → unknown
+  ✗ [ 50%] [obscure     ] What is the melting point of tungsten in degr... → unknown
+  ✗ [ 50%] [obscure     ] Who served as the third Poet Laureate of the ... → unknown
+  ✗ [ 50%] [obscure     ] What is the name of the largest desert in Asi... → unknown
+  ✗ [ 50%] [obscure     ] In what year was the first edition of the Enc... → unknown
+  ✗ [ 50%] [obscure     ] What is the name of the enzyme that adds telo... → unknown
+  ✗ [ 50%] [obscure     ] What is the IATA airport code for Ulaanbaatar... → unknown
+  ✗ [ 50%] [obscure     ] What is the name of the geological period imm... → unknown
+  ✗ [ 50%] [obscure     ] Who was the architect of the Sydney Opera Hou... → unknown
+  ✗ [ 50%] [reasoning   ] What is 37 × 43?... → unknown
+  ✗ [ 50%] [reasoning   ] If a train travels at 80 km/h for 2.5 hours, ... → unknown
+  ✗ [ 50%] [reasoning   ] What is the 10th number in the Fibonacci sequ... → unknown
+  ✗ [ 50%] [reasoning   ] How many distinct ways can you arrange the le... → unknown
+  ✗ [ 50%] [reasoning   ] What is the remainder when 2^100 is divided b... → unknown
+  ✗ [ 50%] [unanswerable] What is the exact number of grains of sand on... → unknown
+  ✗ [ 50%] [unanswerable] What will the closing price of Apple stock be... → unknown
+  ✗ [ 50%] [unanswerable] Who is objectively the greatest musician of a... → unknown
+  ✗ [ 50%] [unanswerable] What color is the number 7?... → unknown
+  ✗ [ 50%] [unanswerable] What is the last digit of pi?... → unknown
+  ✗ [ 50%] [unanswerable] What did Julius Caesar eat for breakfast on M... → unknown
+  ✗ [ 50%] [unanswerable] How many times did Shakespeare sneeze during ... → unknown
+  ✗ [ 50%] [unanswerable] What is the correct moral thing to do in ever... → unknown
+  ✗ [ 50%] [unanswerable] What will be the most popular baby name in 20... → unknown
+  ✗ [ 50%] [reasoning   ] What is the sum of all prime numbers less tha... → unknown
+  ✗ [ 50%] [reasoning   ] A rope is cut into 3 pieces. The longest piec... → unknown
+  ✗ [ 50%] [reasoning   ] How many squares of any size are on a standar... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (28 × 53) + 3?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (41 × 89) + 8?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (86 × 83) + 9?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (88 × 69) + 5?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (13 × 91) + 3?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (27 × 49) + 3?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (70 × 14) + 9?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (53 × 39) + 8?... → unknown
+  ✓ [ 50%] [proc_arithmetic] What is 25% of 377?... → unknown
+  ✓ [ 50%] [proc_arithmetic] What is 30% of 485?... → unknown
+  ✓ [ 50%] [proc_arithmetic] What is 35% of 883?... → unknown
+  ✓ [ 50%] [proc_arithmetic] What is 15% of 773?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is the remainder when 840 is divided by ... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is the remainder when 191 is divided by ... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is the remainder when 394 is divided by ... → unknown
+  ✗ [ 50%] [proc_syllogism] All Zorblings speak in colors. Everything tha... → unknown
+  ✗ [ 50%] [proc_syllogism] All Sploobites are transparent. Everything th... → unknown
+  ✗ [ 50%] [proc_syllogism] All Kwexians have three hearts. Everything th... → unknown
+  ✗ [ 50%] [proc_syllogism] All Thrimbles emit ultrasound. Everything tha... → unknown
+  ✓ [ 50%] [proc_syllogism] Some Dwimblings have perfect memory. Everythi... → unknown
+  ✓ [ 50%] [proc_syllogism] Some Ghovites can photosynthesize. Everything... → unknown
+  ✓ [ 50%] [proc_syllogism] Some Crellions can levitate. Everything that ... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next in this sequence: 10, 18, 26,... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next in this sequence: 35, 46, 57,... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next in this sequence: 44, 48, 52,... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next in this sequence: 2, 6, 18, 5... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next in this sequence: 5, 15, 45, ... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next: 10, 20, 23, 46, 49, ?  (Hint... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next: 8, 16, 19, 38, 41, ?  (Hint:... → unknown
+  ✗ [ 50%] [proc_logic  ] Aria is taller than Gia. Finn is shorter than... → unknown
+  ✗ [ 50%] [proc_logic  ] Hugo is taller than Dev. Gia is shorter than ... → unknown
+  ✗ [ 50%] [proc_logic  ] Gia is taller than Cass. Ezra is shorter than... → unknown
+  ✗ [ 50%] [proc_logic  ] Gia always tells the truth. Hugo always lies.... → unknown
+  ✓ [ 50%] [proc_logic  ] Aria always tells the truth. Finn always lies... → unknown

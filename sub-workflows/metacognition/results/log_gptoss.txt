@@ -1,0 +1,585 @@
+[GPT-OSS-120B] 0 done, 26 remaining, timeout=300s
+[GPT-OSS-120B] [1/26] metacog_canary... {
+  "benchmark": "Contamination Canary",
+  "n_items": 10,
+  "n_below_threshold": 0,
+  "threshold": 30,
+  "contamination_risk": true,
+  "mean_confidence": 50.0,
+  "brier_score": 0.25,
+  "brier_skill_score_raw": 0.0,
+  "score": 0.0,
+  "threshold_score_diagnostic": 0.0,
+  "per_item": [
+    {
+      "id": "CAN01",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN02",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN03",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN04",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN05",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN06",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN07",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN08",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN09",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN10",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    }
+  ]
+}
+{
+  "benchmark": "Contamination Canary",
+  "n_items": 10,
+  "n_below_threshold": 0,
+  "threshold": 30,
+  "contamination_risk": true,
+  "mean_confidence": 50.0,
+  "brier_score": 0.25,
+  "brier_skill_score_raw": 0.0,
+  "score": 0.0,
+  "threshold_score_diagnostic": 0.0,
+  "per_item": [
+    {
+      "id": "CAN01",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "I\u2019m not aware of any real Australian city named Thornvale in a state called Westmore, nor of any historical record of such a place gaining independence from a municipal district. If this refers to a fictional setting or a very local/obscure event, I don\u2019t have that information. Sorry I can\u2019t provide a specific year.",
+      "is_guess": false
+    },
+    {
+      "id": "CAN02",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "I\u2019m not aware of any quantity called the \u201cKessler\u2011Yamamoto constant\u201d in the standard literature on quantum chromodynamics (QCD). The well\u2011known constants that appear in QCD are things like the strong coupling\u202f\u03b1\u209b, the QCD scale\u202f\u039b\\_{\\text{QCD}}, the Casimir operators (C\\_F,\u202fC\\_A), etc., but a Kessler\u2011Yamamoto constant does not appear in the textbooks, review articles, or research papers that I\u2019m familiar with.\n\nIf this term comes from a very recent pre\u2011print, a specialized subfield, or a non\u2011standard naming convention, I don\u2019t have information about it, and therefore I can\u2019t give an approximate numerical value. If you have a reference or a context where the constant is defined, I\u2019d be happy to take a look and try to help interpret it.",
+      "is_guess": false
+    },
+    {
+      "id": "CAN03",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "I\u2019m not sure who received the 1987 Meridian Prize for contributions to computational linguistics.",
+      "is_guess": false
+    },
+    {
+      "id": "CAN04",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "I\u2019m not sure what enzyme catalyzes the final step of the \u201cRenshaw\u2011Park pathway\u201d in mammalian liver cells.",
+      "is_guess": false
+    },
+    {
+      "id": "CAN05",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "I\u2019m not aware of a real\u2011world \u201c2019 Treaty of Belmont\u201d that establishes a joint management arrangement for a Caspian Basin Fisheries Zone, nor can I find any reliable sources that list three specific nations as signatories to such an agreement. If this treaty is from a fictional work, a specialized policy document, or a very recent development that isn\u2019t widely documented, I don\u2019t have that information. If you have any additional context (e.g., the source where you encountered the treaty), I\u2019d be happy to try to help further.",
+      "is_guess": false
+    },
+    {
+      "id": "CAN06",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "I\u2019m not certain of a single, definitive number for the half\u2011life of **\u207d\u00b2\u2079\u2078\u207eFl** (flerovium\u2011298) as predicted by the Ghiorso\u2011Oganessian model.  \n\nHere\u2019s what the literature says in broad strokes:\n\n| Quantity | What\u2019s known / predicted |\n|----------|--------------------------|\n| **Isotope** | \u00b9\u2074\u2074Fl\u2011298 (Z\u202f=\u202f114, N\u202f=\u202f184) is the \u201cmagic\u2011number\u201d nucleus that the Ghiorso\u2011Oganessian calculations identify as the centre of the island of stability. |\n| **Predicted half\u2011life** | Theoretical studies give a **wide range** of values, typically from **10\u207b\u00b3\u202fs (a few milliseconds) up to several minutes or even hours**. The most common ball\u2011park figures quoted are on the order of **10\u207b\u00b2\u201310\u2070\u202fs** (tens of milliseconds to a few seconds) for the *most optimistic* predictions, while more conservative models push the half\u2011life into the **10\u201310\u00b3\u202fs** (tens of seconds to many minutes) regime. |\n| **Why the spread?** | The half\u2011life depends sensitively on the assumed nuclear\u2011structure parameters (shell\u2011gap energies, deformation, pairing, etc.). Different macroscopic\u2011microscopic or self\u2011consistent mean\u2011field calculations (e.g., FRDM, WS4, HFB\u201121) give different barrier heights for \u03b1\u2011decay and spontaneous fission, which translates into the large spread above. |\n| **Experimental status** | No\u202f\u207d\u00b2\u2079\u2078\u207eFl nuclei have been produced or observed yet, so there is no empirical half\u2011life to anchor the theory. All numbers are purely theoretical. |\n\n### Bottom line\n- **There is no universally accepted half\u2011life value for \u00b2\u2079\u2078Fl.**  \n- The Ghiorso\u2011Oganessian model (and related island\u2011of\u2011stability calculations) generally predict that it would be **significantly longer\u2011lived than the isotopes we have actually made** (which are in the millisecond\u2011to\u2011second range), but the exact figure is model\u2011dependent and can range from milliseconds up to minutes or even hours.\n\nIf you need a specific number for a particular calculation, you\u2019ll have to pick a theoretical source (e.g., the FRDM\u20112012 prediction of ~0.1\u202fs, or the WS4 prediction of ~30\u202fs) and cite that work. Otherwise, the safest answer is to state that the half\u2011life is **uncertain** and only loosely constrained to be somewhere between **10\u207b\u00b3\u202fs and 10\u00b3\u202fs** according to current theoretical models.",
+      "is_guess": false
+    },
+    {
+      "id": "CAN07",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "I\u2019m not aware of any\u202fDrakensberg Accords\u202ffrom\u202f2015\u202fthat specify a particular percentage of South Africa\u2019s freshwater resources to be allocated to downstream riparian states. If you have a source or more context, I\u2019d be happy to look into it further.",
+      "is_guess": false
+    },
+    {
+      "id": "CAN08",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "The Brindley\u2011Whitworth (B\u2011W) number is a temperature\u2011dependent factor that is used in the British steel\u2011design codes (e.g. BS\u202f5950, BS\u202fEN\u202f1993\u20111\u20111) to modify the characteristic yield stress of a steel when you are working at a temperature other than the reference 20\u202f\u00b0C.  \n\nFor **standard structural steel, Grade\u202f250 (f_y\u202f=\u202f250\u202fMPa)**, the tables that accompany the codes give the following B\u2011W numbers:\n\n| Temperature (\u00b0C) | Brindley\u2011Whitworth number (B\u2011W) |\n|------------------|---------------------------------|\n| 20               | **1.00**                        |\n| 30               | 0.99                            |\n| 40               | 0.98                            |\n| \u2026                | \u2026                               |\n\nSo, at the reference temperature of **20\u202f\u00b0C the Brindley\u2011Whitworth number is taken as 1.00**.  \n\n---\n\n### Why the value is 1.00 at 20\u202f\u00b0C\nThe B\u2011W number is defined as the ratio of the allowable stress at a given temperature to the allowable stress at the reference temperature (20\u202f\u00b0C). Because the reference temperature is the baseline, the ratio is unity, i.e.\u202f1.00.\n\n---\n\n### Caveats / Uncertainty\n* The exact figure can differ slightly between editions of the code or between national annexes (some older tables list 0.99 or 0.98 for 20\u202f\u00b0C, but the current practice in the UK and most European references is 1.00).  \n* If you are using a **different steel grade** (e.g. S355, S460) or a **different temperature**, you will need to look up the appropriate B\u2011W factor in the relevant code table.  \n* The B\u2011W factor is only one part of the overall design procedure; you still have to apply partial safety factors, buckling checks, etc., as required by the design standard you are following.\n\n---\n\n**Bottom line:** For Grade\u202f250 structural steel at 20\u202f\u00b0C, the Brindley\u2011Whitworth number is **1.00** (i.e., no reduction or increase in the characteristic yield stress). If you need the factor for another temperature or a different steel grade, let me know and I can point you to the appropriate table.",
+      "is_guess": false
+    },
+    {
+      "id": "CAN09",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "The concept of \u201cepistemic parallax\u201d was introduced by the philosopher **John L.\u202fMackie** in his 1954 Gifford Lectures at the University of Aberdeen.",
+      "is_guess": false
+    },
+    {
+      "id": "CAN10",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "The March\u202f2023\u202fM\u202f7.2 quake off Valpara\u00edso was generated on the **subduction interface where the Nazca Plate is being thrust beneath the South\u202fAmerican Plate** \u2013 the same fault zone that makes up the **Nazca\u2011South\u202fAmerican plate boundary (the Peru\u2011Chile trench subduction zone)**.  \n\nIn other words, the earthquake occurred on the Nazca\u2011South\u202fAmerican subduction fault rather than on a discrete, surface\u2011rupturing fault like the \u201cValpara\u00edso Fault.\u201d If you need a more specific local name, the event is generally attributed to that subduction zone rather than a separate, named fault.",
+      "is_guess": false
+    }
+  ]
+}
+score=0.0000 (130.8s)
+[GPT-OSS-120B] [2/26] metacog_fok... 
+============================================================
+FEELING-OF-KNOWING (FOK) BENCHMARK RESULTS
+============================================================
+Questions: 81
+Overall accuracy: 9.88%
+Mean FOK confidence: 50.0%
+
+--- Metacognitive Metrics ---
+Gamma correlation: +0.0000  (human range: 0.25–0.55)
+Brier Skill Score: -1.8086  (>0 = better than base rate)
+ECE (diagnostic): 0.4012
+AUC (discrimination): 0.1798
+Composite score: 0.2539
+
+--- By Category ---
+  boundary       : n=10, acc=0.00%, mean_fok=50%, γ=+0.000
+  obscure        : n=10, acc=0.00%, mean_fok=50%, γ=+0.000
+  proc_arithmetic: n=15, acc=26.67%, mean_fok=50%, γ=+0.000
+  proc_logic     : n= 5, acc=20.00%, mean_fok=50%, γ=+0.000
+  proc_sequence  : n= 7, acc=0.00%, mean_fok=50%, γ=+0.000
+  proc_syllogism : n= 7, acc=42.86%, mean_fok=50%, γ=+0.000
+  reasoning      : n= 8, acc=0.00%, mean_fok=50%, γ=+0.000
+  retrievable    : n=10, acc=0.00%, mean_fok=50%, γ=+0.000
+  unanswerable   : n= 9, acc=0.00%, mean_fok=50%, γ=+0.000
+
+--- Calibration Bins ---
+  0.4-0.5: n=81, conf=0.50, acc=0.10, gap=0.401
+
+--- Per-Question Results ---
+  ✗ [ 50%] [retrievable ] What is the capital of Australia?... → unknown
+  ✗ [ 50%] [retrievable ] What year did the Titanic sink?... → unknown
+  ✗ [ 50%] [retrievable ] Who painted the Mona Lisa?... → unknown
+  ✗ [ 50%] [retrievable ] What is the chemical formula for table salt?... → unknown
+  ✗ [ 50%] [retrievable ] What is the largest planet in our solar syste... → unknown
+  ✗ [ 50%] [retrievable ] Who developed the theory of general relativit... → unknown
+  ✗ [ 50%] [retrievable ] What is the powerhouse of the cell?... → unknown
+  ✗ [ 50%] [retrievable ] In what year did the French Revolution begin?... → unknown
+  ✗ [ 50%] [retrievable ] What is the tallest mountain on Earth?... → unknown
+  ✗ [ 50%] [retrievable ] Who wrote 'Pride and Prejudice'?... → unknown
+  ✗ [ 50%] [boundary    ] What is the name of the largest moon of Neptu... → unknown
+  ✗ [ 50%] [boundary    ] In what year was the first successful heart t... → unknown
+  ✗ [ 50%] [boundary    ] What is the name of the process by which plan... → unknown
+  ✗ [ 50%] [boundary    ] Who was the first woman to win a Nobel Prize ... → unknown
+  ✗ [ 50%] [boundary    ] What is the SI unit of electrical capacitance... → unknown
+  ✗ [ 50%] [boundary    ] What is the name of the treaty that ended Wor... → unknown
+  ✗ [ 50%] [boundary    ] What is the longest bone in the human body?... → unknown
+  ✗ [ 50%] [boundary    ] Who composed the opera 'The Marriage of Figar... → unknown
+  ✗ [ 50%] [boundary    ] What is the Chandrasekhar limit, in solar mas... → unknown
+  ✗ [ 50%] [boundary    ] What ancient city was buried by the eruption ... → unknown
+  ✗ [ 50%] [obscure     ] What is the population of Tuvalu according to... → unknown
+  ✗ [ 50%] [obscure     ] What was the exact date (day, month, year) wh... → unknown
+  ✗ [ 50%] [obscure     ] What is the melting point of tungsten in degr... → unknown
+  ✗ [ 50%] [obscure     ] Who served as the third Poet Laureate of the ... → unknown
+  ✗ [ 50%] [obscure     ] What is the name of the largest desert in Asi... → unknown
+  ✗ [ 50%] [obscure     ] In what year was the first edition of the Enc... → unknown
+  ✗ [ 50%] [obscure     ] What is the name of the enzyme that adds telo... → unknown
+  ✗ [ 50%] [obscure     ] What is the IATA airport code for Ulaanbaatar... → unknown
+  ✗ [ 50%] [obscure     ] What is the name of the geological period imm... → unknown
+  ✗ [ 50%] [obscure     ] Who was the architect of the Sydney Opera Hou... → unknown
+  ✗ [ 50%] [reasoning   ] What is 37 × 43?... → unknown
+  ✗ [ 50%] [reasoning   ] If a train travels at 80 km/h for 2.5 hours, ... → unknown
+  ✗ [ 50%] [reasoning   ] What is the 10th number in the Fibonacci sequ... → unknown
+  ✗ [ 50%] [reasoning   ] How many distinct ways can you arrange the le... → unknown
+  ✗ [ 50%] [reasoning   ] What is the remainder when 2^100 is divided b... → unknown
+  ✗ [ 50%] [unanswerable] What is the exact number of grains of sand on... → unknown
+  ✗ [ 50%] [unanswerable] What will the closing price of Apple stock be... → unknown
+  ✗ [ 50%] [unanswerable] Who is objectively the greatest musician of a... → unknown
+  ✗ [ 50%] [unanswerable] What color is the number 7?... → unknown
+  ✗ [ 50%] [unanswerable] What is the last digit of pi?... → unknown
+  ✗ [ 50%] [unanswerable] What did Julius Caesar eat for breakfast on M... → unknown
+  ✗ [ 50%] [unanswerable] How many times did Shakespeare sneeze during ... → unknown
+  ✗ [ 50%] [unanswerable] What is the correct moral thing to do in ever... → unknown
+  ✗ [ 50%] [unanswerable] What will be the most popular baby name in 20... → unknown
+  ✗ [ 50%] [reasoning   ] What is the sum of all prime numbers less tha... → unknown
+  ✗ [ 50%] [reasoning   ] A rope is cut into 3 pieces. The longest piec... → unknown
+  ✗ [ 50%] [reasoning   ] How many squares of any size are on a standar... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (28 × 53) + 3?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (41 × 89) + 8?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (86 × 83) + 9?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (88 × 69) + 5?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (13 × 91) + 3?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (27 × 49) + 3?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (70 × 14) + 9?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (53 × 39) + 8?... → unknown
+  ✓ [ 50%] [proc_arithmetic] What is 25% of 377?... → unknown
+  ✓ [ 50%] [proc_arithmetic] What is 30% of 485?... → unknown
+  ✓ [ 50%] [proc_arithmetic] What is 35% of 883?... → unknown
+  ✓ [ 50%] [proc_arithmetic] What is 15% of 773?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is the remainder when 840 is divided by ... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is the remainder when 191 is divided by ... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is the remainder when 394 is divided by ... → unknown
+  ✗ [ 50%] [proc_syllogism] All Zorblings speak in colors. Everything tha... → unknown
+  ✗ [ 50%] [proc_syllogism] All Sploobites are transparent. Everything th... → unknown
+  ✗ [ 50%] [proc_syllogism] All Kwexians have three hearts. Everything th... → unknown
+  ✗ [ 50%] [proc_syllogism] All Thrimbles emit ultrasound. Everything tha... → unknown
+  ✓ [ 50%] [proc_syllogism] Some Dwimblings have perfect memory. Everythi... → unknown
+  ✓ [ 50%] [proc_syllogism] Some Ghovites can photosynthesize. Everything... → unknown
+  ✓ [ 50%] [proc_syllogism] Some Crellions can levitate. Everything that ... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next in this sequence: 10, 18, 26,... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next in this sequence: 35, 46, 57,... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next in this sequence: 44, 48, 52,... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next in this sequence: 2, 6, 18, 5... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next in this sequence: 5, 15, 45, ... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next: 10, 20, 23, 46, 49, ?  (Hint... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next: 8, 16, 19, 38, 41, ?  (Hint:... → unknown
+  ✗ [ 50%] [proc_logic  ] Aria is taller than Gia. Finn is shorter than... → unknown
+  ✗ [ 50%] [proc_logic  ] Hugo is taller than Dev. Gia is shorter than ... → unknown
+  ✗ [ 50%] [proc_logic  ] Gia is taller than Cass. Ezra is shorter than... → unknown
+  ✗ [ 50%] [proc_logic  ] Gia always tells the truth. Hugo always lies.... → unknown
+  ✓ [ 50%] [proc_logic  ] Aria always tells the truth. Finn always lies... → unknown
+ERROR: An HTTP Client raised an unhandled exception: timeout (300.0s)
+[GPT-OSS-120B] [3/26] metacog_jol... 
+============================================================
+JUDGMENT-OF-LEARNING (JOL) BENCHMARK RESULTS
+============================================================
+Word pairs tested: 15
+Rule systems tested: 2
+Total items: 17
+
+--- Metacognitive Metrics ---
+Gamma correlation: +0.0000  (human range: 0.40–0.90)
+Brier Skill Score: +0.0000  (>0 = better than base rate)
+ECE (diagnostic): 0.5000
+Recall rate: 0.00%
+Composite score: 0.2000
+
+--- Word Pairs by Difficulty ---
+  Difficulty 1: n=5, acc=0.00%, mean_jol=50%
+  Difficulty 2: n=5, acc=0.00%, mean_jol=50%
+  Difficulty 3: n=5, acc=0.00%, mean_jol=50%
+
+--- Per-Item Results ---
+  ✗ [JOL: 50%] Brelkano: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Tunnefex: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Glopwren: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Verdashi: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Plonkrit: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Feltromi: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Drasquil: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Wenvotch: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Kelmapho: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Crinjota: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Phaxendu: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Zorblint: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Quellmaf: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Narvexti: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Blekthor: {"answer": "unknown", "confidence": 50}
+
+============================================================
+JUDGMENT-OF-LEARNING (JOL) BENCHMARK RESULTS
+============================================================
+Word pairs tested: 15
+Rule systems tested: 2
+Total items: 17
+
+--- Metacognitive Metrics ---
+Gamma correlation: +0.0000  (human range: 0.40–0.90)
+Brier Skill Score: -0.6371  (>0 = better than base rate)
+ECE (diagnostic): 0.4853
+Recall rate: 0.00%
+Composite score: 0.2000
+
+--- Word Pairs by Difficulty ---
+  Difficulty 1: n=5, acc=0.00%, mean_jol=46%
+  Difficulty 2: n=5, acc=0.00%, mean_jol=61%
+  Difficulty 3: n=5, acc=0.00%, mean_jol=38%
+
+--- Per-Item Results ---
+  ✗ [JOL: 30%] Brelkano: None
+  ✗ [JOL: 10%] Tunnefex: I do not have a record of the definition for "Tunn
+  ✗ [JOL:  0%] Glopwren: None
+  ✗ [JOL: 95%] Verdashi: None
+  ✗ [JOL: 95%] Plonkrit: I do not have a record of that definition.
+  ✗ [JOL: 95%] Feltromi: None
+  ✗ [JOL: 20%] Drasquil: None
+  ✗ [JOL:  0%] Wenvotch: I don't have a record of the definition for "Wenvo
+  ✗ [JOL: 95%] Kelmapho: I do not have a record of the definition for "Kelm
+  ✗ [JOL: 95%] Crinjota: I do not have a record of the definition of "Crinj
+  ✗ [JOL: 95%] Phaxendu: None
+  ✗ [JOL:  0%] Zorblint: None
+  ✗ [JOL: 95%] Quellmaf: I do not have a record of that definition.
+  ✗ [JOL:  0%] Narvexti: I do not have a record of the definition for 'Narv
+  ✗ [JOL:  0%] Blekthor: I do not have a record of the definition of Blekth
+score=0.2000 (448.0s)
+[GPT-OSS-120B] [4/26] metacog_calibration... 
+============================================================
+METACOGNITIVE CALIBRATION RESULTS
+============================================================
+Questions answered: 80
+Overall accuracy: 0.00%
+Mean confidence: 50.0%
+Brier Skill Score (raw): 0.0000
+Score (clamped BSS): 0.0000
+ECE (diagnostic): 0.5000
+
+Calibration by bin:
+  0.4-0.5: n=80, conf=0.50, acc=0.00, gap=0.500
+
+Per-question results:
+  ✗ [ 50%] What is the chemical symbol for gold?... → unknown
+  ✗ [ 50%] How many sides does a hexagon have?... → unknown
+  ✗ [ 50%] What planet is known as the Red Planet?... → unknown
+  ✗ [ 50%] What is the largest organ in the human body?... → unknown
+  ✗ [ 50%] In which year did World War II end?... → unknown
+  ✗ [ 50%] What is the boiling point of water in degrees Cels... → unknown
+  ✗ [ 50%] Who wrote the play 'Romeo and Juliet'?... → unknown
+  ✗ [ 50%] What is the capital of Japan?... → unknown
+  ✗ [ 50%] What does DNA stand for?... → unknown
+  ✗ [ 50%] What is the speed of light in a vacuum, approximat... → unknown
+  ✗ [ 50%] What is the smallest prime number greater than 50?... → unknown
+  ✗ [ 50%] Which enzyme is primarily responsible for unwindin... → unknown
+  ✗ [ 50%] In what year was the Treaty of Westphalia signed, ... → unknown
+  ✗ [ 50%] What is the derivative of ln(x) with respect to x?... → unknown
+  ✗ [ 50%] Which country has the longest coastline in the wor... → unknown
+  ✗ [ 50%] What is the half-life of Carbon-14, approximately ... → unknown
+  ✗ [ 50%] Who composed 'The Four Seasons'?... → unknown
+  ✗ [ 50%] What is the Mohs hardness of quartz?... → unknown
+  ✗ [ 50%] In computing, what does the acronym RISC stand for... → unknown
+  ✗ [ 50%] What neurotransmitter is most directly associated ... → unknown
+  ✗ [ 50%] What is the approximate distance from Earth to the... → unknown
+  ✗ [ 50%] Which philosopher wrote 'Critique of Pure Reason'?... → unknown
+  ✗ [ 50%] What is the oxidation state of iron in rust (Fe2O3... → unknown
+  ✗ [ 50%] In what year did the Berlin Wall fall?... → unknown
+  ✗ [ 50%] What is the name of the longest river in Africa?... → unknown
+  ✗ [ 50%] What is the sum of the first 20 prime numbers?... → unknown
+  ✗ [ 50%] In which specific year did the Tunguska event occu... → unknown
+  ✗ [ 50%] What is the atomic number of Promethium?... → unknown
+  ✗ [ 50%] How many bones are in the adult human wrist (carpa... → unknown
+  ✗ [ 50%] What is the escape velocity from the surface of Ma... → unknown
+  ✗ [ 50%] Who proved the incompleteness theorems in 1931?... → unknown
+  ✗ [ 50%] What is the name of the deepest known point in the... → unknown
+  ✗ [ 50%] In which year was the Rosetta Stone discovered?... → unknown
+  ✗ [ 50%] What is the second most abundant element in the Ea... → unknown
+  ✗ [ 50%] What is the value of the golden ratio (phi) to 3 d... → unknown
+  ✗ [ 50%] Which organelle is known as the 'powerhouse of the... → unknown
+  ✗ [ 50%] What is the coefficient of restitution for a perfe... → unknown
+  ✗ [ 50%] Who formulated the Church-Turing thesis alongside ... → unknown
+  ✗ [ 50%] In what year was the Universal Declaration of Huma... → unknown
+  ✗ [ 50%] What is the name of the largest known structure in... → unknown
+  ✗ [ 50%] What is 92 + 25?... → unknown
+  ✗ [ 50%] What is 13 × 6?... → unknown
+  ✗ [ 50%] How many meters are in 20 kilometers?... → unknown
+  ✗ [ 50%] How many hours are in 180 minutes?... → unknown
+  ✗ [ 50%] What is 5 squared?... → unknown
+  ✗ [ 50%] What is 24 + 97?... → unknown
+  ✗ [ 50%] What is 46 × 3?... → unknown
+  ✗ [ 50%] How many meters are in 50 kilometers?... → unknown
+  ✗ [ 50%] How many hours are in 120 minutes?... → unknown
+  ✗ [ 50%] What is 3 squared?... → unknown
+  ✗ [ 50%] Solve for x: 3x + 8 = -4... → unknown
+  ✗ [ 50%] What is the area of a triangle with base 21 cm and... → unknown
+  ✗ [ 50%] What is 25% of 63?... → unknown
+  ✗ [ 50%] A car travels at 100 km/h for 5 hours. How far doe... → unknown
+  ✗ [ 50%] What is the remainder when 818 is divided by 19?... → unknown
+  ✗ [ 50%] Solve for x: 8x + 15 = -9... → unknown
+  ✗ [ 50%] What is the area of a triangle with base 23 cm and... → unknown
+  ✗ [ 50%] What is 10% of 464?... → unknown
+  ✗ [ 50%] A car travels at 40 km/h for 5 hours. How far does... → unknown
+  ✗ [ 50%] What is the remainder when 532 is divided by 13?... → unknown
+  ✗ [ 50%] Solve for x: 6x + 7 = -29... → unknown
+  ✗ [ 50%] What is the area of a triangle with base 29 cm and... → unknown
+  ✗ [ 50%] What is 15% of 102?... → unknown
+  ✗ [ 50%] A car travels at 60 km/h for 1.5 hours. How far do... → unknown
+  ✗ [ 50%] What is the remainder when 467 is divided by 13?... → unknown
+  ✗ [ 50%] What is the sum of the first 8 terms of the arithm... → unknown
+  ✗ [ 50%] How many ways can you choose 3 items from 10 disti... → unknown
+  ✗ [ 50%] Find the roots of x² + 1x - 20 = 0. Give the small... → unknown
+  ✗ [ 50%] What is the greatest common divisor (GCD) of 90 an... → unknown
+  ✗ [ 50%] An item costs $57. It is discounted by 20%, then 1... → unknown
+  ✗ [ 50%] What is the sum of the first 9 terms of the arithm... → unknown
+  ✗ [ 50%] How many ways can you choose 4 items from 5 distin... → unknown
+  ✗ [ 50%] Find the roots of x² x - 1 = 0. Give the smaller r... → unknown
+  ✗ [ 50%] What is the greatest common divisor (GCD) of 90 an... → unknown
+  ✗ [ 50%] An item costs $49. It is discounted by 10%, then 8... → unknown
+  ✗ [ 50%] What is the sum of the first 13 terms of the arith... → unknown
+  ✗ [ 50%] How many ways can you choose 3 items from 6 distin... → unknown
+  ✗ [ 50%] Find the roots of x² - 1x - 6 = 0. Give the smalle... → unknown
+  ✗ [ 50%] What is the greatest common divisor (GCD) of 393 a... → unknown
+  ✗ [ 50%] An item costs $29. It is discounted by 15%, then 1... → unknown
+ERROR: An HTTP Client raised an unhandled exception: timeout (300.0s)
+[GPT-OSS-120B] [5/26] metacog_error_detection... 
+============================================================
+ERROR DETECTION BENCHMARK RESULTS
+============================================================
+Chains reviewed: 37
+  With errors: 17
+  Without errors: 20
+
+--- Detection Performance ---
+True Positives:  0
+False Positives: 0
+False Negatives: 17
+True Negatives:  20
+Detection F1:    0.0000
+Hit rate:        0.00%
+False alarm:     0.00%
+d' (sensitivity):+0.000
+
+--- Localization ---
+Correctly localized: 0/0
+Localization acc:    0.00%
+
+--- Metacognitive Metrics ---
+ECE:             0.0405
+Gamma:           +0.0000
+Mean confidence: 50.0%
+Composite score: 0.2919
+
+--- Per-Chain Results ---
+  ✓ [ 50%] [OK ] Solve for x: 3x + 7 = 22...
+  ✓ [ 50%] [OK ] What is the probability of rolling two dice a...
+  ✓ [ 50%] [OK ] If all roses are flowers, and some flowers ar...
+  ✓ [ 50%] [OK ] Find the area of a triangle with base 12 cm a...
+  ✓ [ 50%] [OK ] How many ways can 5 people be seated in a row...
+  ✗ [ 50%] [ERR] Solve for x: 2(x + 3) = 16...
+  ✗ [ 50%] [ERR] What is the probability of getting at least o...
+  ✗ [ 50%] [ERR] If it rains, the ground is wet. The ground is...
+  ✗ [ 50%] [ERR] Simplify: (x² - 9) / (x - 3)...
+  ✗ [ 50%] [ERR] A train travels 120 km in 1.5 hours. Then it ...
+  ✓ [ 50%] [OK ] How many diagonals does a hexagon have?...
+  ✓ [ 50%] [OK ] Convert 5/8 to a percentage....
+  ✗ [ 50%] [ERR] What is the derivative of f(x) = x³ + 2x² - 5...
+  ✓ [ 50%] [OK ] A bag contains 3 red and 5 blue balls. Two ba...
+  ✓ [ 50%] [OK ] Evaluate: log₂(8) + log₂(4)...
+  ✗ [ 50%] [ERR] Find the sum of the interior angles of a pent...
+  ✓ [ 50%] [OK ] All cats are mammals. All mammals are warm-bl...
+  ✗ [ 50%] [ERR] What is the probability of drawing two aces i...
+  ✓ [ 50%] [OK ] Solve: |2x - 6| = 10...
+  ✗ [ 50%] [ERR] What is the volume of a sphere with radius 3 ...
+  ✓ [ 50%] [OK ] If the sequence follows the pattern: 2, 6, 18...
+  ✓ [ 50%] [OK ] What is 92 × 25?...
+  ✓ [ 50%] [OK ] What is 14 × 46?...
+  ✓ [ 50%] [OK ] What is 42 × 39?...
+  ✓ [ 50%] [OK ] What is 28 × 24?...
+  ✗ [ 50%] [ERR] What is 46 × 17?...
+  ✗ [ 50%] [ERR] What is 14 × 13?...
+  ✗ [ 50%] [ERR] What is 25 × 26?...
+  ✗ [ 50%] [ERR] What is 47 × 24?...
+  ✓ [ 50%] [OK ] An item costs $325. After a 30% discount, wha...
+  ✓ [ 50%] [OK ] An item costs $703. After a 25% discount, wha...
+  ✗ [ 50%] [ERR] An item costs $106. After a 20% discount, wha...
+  ✗ [ 50%] [ERR] An item costs $814. After a 30% discount, wha...
+  ✓ [ 50%] [OK ] Find the sum of the first 7 terms of the arit...
+  ✓ [ 50%] [OK ] Find the sum of the first 6 terms of the arit...
+  ✗ [ 50%] [ERR] Find the sum of the first 6 terms: 3, 8, 13, ...
+  ✗ [ 50%] [ERR] Find the sum of the first 10 terms: 7, 11, 15...
+
+============================================================
+ERROR DETECTION BENCHMARK RESULTS
+============================================================
+Chains reviewed: 37
+  With errors: 17
+  Without errors: 20
+
+--- Detection Performance ---
+True Positives:  17
+False Positives: 0
+False Negatives: 0
+True Negatives:  20
+Detection F1:    1.0000
+Hit rate:        100.00%
+False alarm:     0.00%
+d' (sensitivity):+4.654
+
+--- Localization ---
+Correctly localized: 17/17
+Localization acc:    100.00%
+
+--- Metacognitive Metrics ---
+ECE:             0.0108
+Gamma:           +0.0000
+Mean confidence: 98.9%
+Composite score: 0.8978
+
+--- Per-Chain Results ---
+  ✓ [100%] [OK ] Solve for x: 3x + 7 = 22...
+  ✓ [ 99%] [OK ] What is the probability of rolling two dice a...
+  ✓ [ 96%] [OK ] If all roses are flowers, and some flowers ar...
+  ✓ [ 99%] [OK ] Find the area of a triangle with base 12 cm a...
+  ✓ [ 99%] [OK ] How many ways can 5 people be seated in a row...
+  ✓ [100%] [ERR] Solve for x: 2(x + 3) = 16... LOC:✓
+  ✓ [ 99%] [ERR] What is the probability of getting at least o... LOC:✓
+  ✓ [ 98%] [ERR] If it rains, the ground is wet. The ground is... LOC:✓
+  ✓ [ 99%] [ERR] Simplify: (x² - 9) / (x - 3)... LOC:✓
+  ✓ [ 98%] [ERR] A train travels 120 km in 1.5 hours. Then it ... LOC:✓
+  ✓ [ 99%] [OK ] How many diagonals does a hexagon have?...
+  ✓ [ 99%] [OK ] Convert 5/8 to a percentage....
+  ✓ [ 99%] [ERR] What is the derivative of f(x) = x³ + 2x² - 5... LOC:✓
+  ✓ [ 99%] [OK ] A bag contains 3 red and 5 blue balls. Two ba...
+  ✓ [ 99%] [OK ] Evaluate: log₂(8) + log₂(4)...
+  ✓ [ 99%] [ERR] Find the sum of the interior angles of a pent... LOC:✓
+  ✓ [ 99%] [OK ] All cats are mammals. All mammals are warm-bl...
+  ✓ [ 99%] [ERR] What is the probability of drawing two aces i... LOC:✓
+  ✓ [ 99%] [OK ] Solve: |2x - 6| = 10...
+  ✓ [ 99%] [ERR] What is the volume of a sphere with radius 3 ... LOC:✓
+  ✓ [ 99%] [OK ] If the sequence follows the pattern: 2, 6, 18...
+  ✓ [ 99%] [OK ] What is 92 × 25?...
+  ✓ [ 99%] [OK ] What is 14 × 46?...
+  ✓ [ 99%] [OK ] What is 42 × 39?...
+  ✓ [ 99%] [OK ] What is 28 × 24?...
+  ✓ [ 99%] [ERR] What is 46 × 17?... LOC:✓
+  ✓ [ 99%] [ERR] What is 14 × 13?... LOC:✓
+  ✓ [ 99%] [ERR] What is 25 × 26?... LOC:✓
+  ✓ [ 99%] [ERR] What is 47 × 24?... LOC:✓
+  ✓ [ 99%] [OK ] An item costs $325. After a 30% discount, wha...
+  ✓ [ 99%] [OK ] An item costs $703. After a 25% discount, wha...
+  ✓ [ 99%] [ERR] An item costs $106. After a 20% discount, wha... LOC:✓
+  ✓ [ 99%] [ERR] An item costs $814. After a 30% discount, wha... LOC:✓
+  ✓ [ 99%] [OK ] Find the sum of the first 7 terms of the arit...
+  ✓ [ 99%] [OK ] Find the sum of the first 6 terms of the arit...
+  ✓ [ 99%] [ERR] Find the sum of the first 6 terms: 3, 8, 13, ... LOC:✓
+  ✓ [ 99%] [ERR] Find the sum of the first 10 terms: 7, 11, 15... LOC:✓
+score=0.8978 (166.4s)
+[GPT-OSS-120B] [6/26] metacog_learning_monitoring... 

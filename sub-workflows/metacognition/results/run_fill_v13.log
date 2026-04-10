@@ -1,0 +1,9 @@
+run_fill_v13 started at 2026-04-10T17:35:47.628507+00:00
+Benchmarks: 26, Models: 10
+[Qwen3 Next 80B] Starting 25 benchmarks
+  [Qwen3 Next 80B] [1/25] metacog_fok... [Claude Opus 4.6] Starting 23 benchmarks
+  [Claude Opus 4.6] [1/23] metacog_fok... [DeepSeek-R1] Starting 25 benchmarks
+[GPT-OSS-120B] Starting 23 benchmarks
+  [DeepSeek-R1] [1/25] metacog_canary...   [GPT-OSS-120B] [1/23] metacog_fok... [Llama 3.3 70B] Complete: 26/26
+[Nova Pro] Starting 1 benchmarks
+  [Nova Pro] [1/1] attention_instruction_update... 

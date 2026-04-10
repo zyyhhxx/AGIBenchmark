@@ -1,0 +1,8 @@
+run_fill_v12 started at 2026-04-10T17:44:26.661419+00:00
+Benchmarks: 26, Models: 10
+
+[1/1] GPT-OSS-120B: 22 gaps to fill
+  [1/22] metacog_fok... ERROR: An error occurred (InternalServerException) when calling the Converse operation 
+  [2/22] metacog_calibration... ERROR: An error occurred (InternalServerException) when calling the Converse operation 
+  [3/22] metacog_learning_monitoring... ERROR: timeout (600s)
+  [4/22] metacog_control... 

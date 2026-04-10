@@ -1,0 +1,137 @@
+{
+  "model": "amazon.nova-pro-v1:0",
+  "model_label": "Nova Pro",
+  "timestamp": "2026-04-10T17:54:26.727735+00:00",
+  "scores": {
+    "metacog_canary": {
+      "score": 0.0,
+      "error": null,
+      "duration_s": 121.5
+    },
+    "metacog_fok": {
+      "score": 0.4469,
+      "error": null,
+      "duration_s": 291.1
+    },
+    "metacog_jol": {
+      "score": 0.4005,
+      "error": null,
+      "duration_s": 90.6
+    },
+    "metacog_calibration": {
+      "score": 0.0,
+      "error": null,
+      "duration_s": 109.9
+    },
+    "metacog_error_detection": {
+      "score": 0.7349,
+      "error": null,
+      "duration_s": 102.1
+    },
+    "metacog_learning_monitoring": {
+      "score": 0.9156,
+      "error": null,
+      "duration_s": 76.8
+    },
+    "metacog_control": {
+      "score": 0.7479,
+      "error": null,
+      "duration_s": 54.7
+    },
+    "metacog_epistemic_revision": {
+      "score": 0.7992,
+      "error": null,
+      "duration_s": 40.4
+    },
+    "metacog_epistemic_humility": {
+      "score": 0.92,
+      "error": null,
+      "duration_s": 85.6
+    },
+    "learning_curves": {
+      "score": 0.695,
+      "error": null,
+      "duration_s": 500.5
+    },
+    "learning_transfer": {
+      "score": 0.61,
+      "error": null,
+      "duration_s": 64.1
+    },
+    "learning_interference": {
+      "score": 0.45,
+      "error": null,
+      "duration_s": 19.4
+    },
+    "learning_curriculum": {
+      "score": 0.52,
+      "error": null,
+      "duration_s": 30.8
+    },
+    "attention_selective": {
+      "score": 0.885,
+      "error": null,
+      "duration_s": 30.9
+    },
+    "attention_vigilance": {
+      "score": 1.0,
+      "error": null,
+      "duration_s": 3.5
+    },
+    "attention_divided": {
+      "score": 0.9167,
+      "error": null,
+      "duration_s": 50.1
+    },
+    "exec_func_wcst": {
+      "score": 0.4641,
+      "error": null,
+      "duration_s": 87.7
+    },
+    "exec_func_tol": {
+      "score": 0.0,
+      "error": null,
+      "duration_s": 237.8
+    },
+    "exec_func_task_switch": {
+      "score": 0.5795,
+      "error": null,
+      "duration_s": 101.8
+    },
+    "exec_func_nback": {
+      "score": 0.7238,
+      "error": null,
+      "duration_s": 628.9
+    },
+    "exec_func_crt": {
+      "score": 0.35,
+      "error": null,
+      "duration_s": 49.2
+    },
+    "social_cog_false_belief": {
+      "score": 0.93,
+      "error": null,
+      "duration_s": 104.6
+    },
+    "social_cog_emotional_prosody": {
+      "score": 0.83,
+      "error": null,
+      "duration_s": 54.6
+    },
+    "attention_instruction_update": {
+      "score": null,
+      "error": "timeout (600s)",
+      "duration_s": 600
+    },
+    "social_cog_pragmatic": {
+      "score": 0.78,
+      "error": null,
+      "duration_s": 254.4
+    },
+    "social_cog_sarcasm": {
+      "score": 0.8878,
+      "error": null,
+      "duration_s": 173.9
+    }
+  }
+}

@@ -1,0 +1,556 @@
+[Ministral 3B] 5 done, 21 remaining, timeout=300s
+[Ministral 3B] [1/21] metacog_learning_monitoring... 
+============================================================
+METACOGNITIVE MONITORING DURING LEARNING
+============================================================
+Systems tested: 3
+
+--- SymbolTransform-crossdomain_sym_1 (difficulty=2) ---
+  Stage 1/5: acc=0.00%, self-assess=50%
+  Stage 2/5: acc=0.00%, self-assess=50%
+  Stage 3/5: acc=0.00%, self-assess=50%
+  Stage 4/5: acc=0.00%, self-assess=50%
+  Stage 5/5: acc=0.00%, self-assess=50%
+
+--- NumberSystem-crossdomain_num_1 (difficulty=2) ---
+  Stage 1/3: acc=0.00%, self-assess=50%
+  Stage 2/3: acc=0.00%, self-assess=50%
+  Stage 3/3: acc=0.00%, self-assess=50%
+
+--- SymbolTransform-crossdomain_sym_2 (difficulty=3) ---
+  Stage 1/5: acc=0.00%, self-assess=50%
+  Stage 2/5: acc=0.00%, self-assess=50%
+  Stage 3/5: acc=0.00%, self-assess=50%
+  Stage 4/5: acc=0.00%, self-assess=50%
+  Stage 5/5: acc=0.00%, self-assess=50%
+
+--- Aggregate Metrics ---
+Monitoring gamma:     +0.0000
+Monitoring bias:      0.500 (|conf - acc|)
+Mean confidence:      50.00%
+Mean accuracy:        0.00%
+Learning accuracy:    0.00%
+Mean learning rate:   0.000
+Composite score:      0.2500
+ERROR: An HTTP Client raised an unhandled exception: timeout (300.0s)
+[Ministral 3B] [2/21] metacog_control... 
+============================================================
+METACOGNITIVE CONTROL BENCHMARK RESULTS
+============================================================
+Passages: 2
+Total questions: 10
+
+--- Metrics ---
+Selection relevance: 0.000
+  (proportion of chosen sections that were relevant)
+Overall accuracy: 0.000
+Accuracy on re-read questions: 0.000 (n=0)
+Accuracy on non-re-read questions: 0.000 (n=10)
+Strategic gain (normalized): 0.500
+Composite score: 0.1750
+
+--- Per-Passage Details ---
+
+  Passage: The Thermocline Ecology of Lak
+  Selected: ['S1', 'S2', 'S3']
+  Relevant: ['S5', 'S10', 'S7', 'S4', 'S8']
+  Relevance: 0.00
+  Reasoning: 
+
+  Passage: The Polyphonic Architecture of
+  Selected: ['S1', 'S2', 'S3']
+  Relevant: ['S10', 'S9', 'S7', 'S4', 'S6', 'S8']
+  Relevance: 0.00
+  Reasoning: 
+
+--- Per-Question Results ---
+  ✗ [no-read] Q1: At what depth range does the Vordak Char typically... → unknown
+  ✗ [no-read] Q2: What is the primary period of internal seiches in ... → unknown
+  ✗ [no-read] Q3: How has the Molar Whitefish population changed sin... → unknown
+  ✗ [no-read] Q4: What caused the 30-year period of reduced primary ... → unknown
+  ✗ [no-read] Q5: Describe the diel vertical migration pattern of Da... → unknown
+  ✗ [no-read] Q1: How many tones does the Kethrani microtonal system... → unknown
+  ✗ [no-read] Q2: Describe the nested rhythmic cycle structure, incl... → unknown
+  ✗ [no-read] Q3: What was the convergence accuracy documented in 19... → unknown
+  ✗ [no-read] Q4: What is the training progression for Kethrani musi... → unknown
+  ✗ [no-read] Q5: What is the information-theoretic entropy of the M... → unknown
+
+============================================================
+METACOGNITIVE CONTROL BENCHMARK RESULTS
+============================================================
+Passages: 2
+Total questions: 10
+
+--- Metrics ---
+Selection relevance: 0.000
+  (proportion of chosen sections that were relevant)
+Overall accuracy: 0.300
+Accuracy on re-read questions: 0.000 (n=0)
+Accuracy on non-re-read questions: 0.300 (n=10)
+Strategic gain (normalized): 0.350
+Composite score: 0.2125
+
+--- Per-Passage Details ---
+
+  Passage: The Thermocline Ecology of Lak
+  Selected: ['S1', 'S2', 'S3']
+  Relevant: ['S5', 'S10', 'S7', 'S4', 'S8']
+  Relevance: 0.00
+  Reasoning: ```json
+{
+  "selected_sections": "S4, S5, S10",
+  "reasoning": "
+  - **S4** provides details on the Vordak Char’s summer and autumn migration depths.
+
+
+  Passage: The Polyphonic Architecture of
+  Selected: ['S1', 'S2', 'S3']
+  Relevant: ['S10', 'S9', 'S7', 'S4', 'S6', 'S8']
+  Relevance: 0.00
+  Reasoning: ```json
+{
+  "selected_sections": "S4, S6, S8",
+  "reasoning": "These sections directly address the specific questions:
+  - **S4** provides the microto
+
+--- Per-Question Results ---
+  ✗ [no-read] Q1: At what depth range does the Vordak Char typically... → {'summer_residence': {'depth_range': 'Th
+  ✓ [no-read] Q2: What is the primary period of internal seiches in ... → ```json
+{
+  "answer": {
+    "primary_per
+  ✗ [no-read] Q3: How has the Molar Whitefish population changed sin... → {'population_trends_since_2008': {'initi
+  ✗ [no-read] Q4: What caused the 30-year period of reduced primary ... → {'causes_of_reduced_primary_production':
+  ✓ [no-read] Q5: Describe the diel vertical migration pattern of Da... → ```json
+{
+  "answer": {
+    "diel_vertic
+  ✓ [no-read] Q1: How many tones does the Kethrani microtonal system... → {'microtonal division': 'The Kethrani mi
+  ✗ [no-read] Q2: Describe the nested rhythmic cycle structure, incl... → {'nested_rhythmic_cycle_structure': {'ov
+  ✗ [no-read] Q3: What was the convergence accuracy documented in 19... → {'convergence_accuracy_1958': {'context'
+  ✗ [no-read] Q4: What is the training progression for Kethrani musi... → {'training_progression_overview': {'age_
+  ✗ [no-read] Q5: What is the information-theoretic entropy of the M... → ```json
+{
+  "answer": {
+    "information
+score=0.2125 (108.6s)
+[Ministral 3B] [3/21] metacog_epistemic_revision... 
+============================================================
+EPISTEMIC REVISION BENCHMARK RESULTS
+============================================================
+Verification accuracy: 10.00%
+
+--- Revision Metrics ---
+Violation detection: 0.000
+Revision quality: 0.000
+Transfer accuracy: 0.150
+Perseveration rate: 0.000
+Composite score: 0.2450
+
+--- Transfer Question Details ---
+  ✗ [R2-revised          ] What color is Tarn-56?...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: yellow
+  ✗ [R2-revised (unchanged case)] What color is Tarn-15?...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: blue
+  ✗ [R6-revised          ] What happens to Higher-Krel-20 at 500°Z?...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: Flux-Higher-Krel-20
+  ✗ [R6-revised (unchanged case)] What happens to Higher-Voss-10 at 600°Z?...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: unchanged (index < 15)
+  ✗ [R4-revised          ] How long does Flux-Tarn-45 persist?...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: up to 30 zeconds
+  ✗ [R4-revised (unchanged case)] How long does Flux-Krel-8 persist?...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: within 10 zeconds
+  ✗ [R1,R7,R2-revised    ] Krel-8 + Voss-7 → what, and what color?...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: Tarn-56, yellow
+  ✗ [R5,R6-revised       ] If you combine Tarn-21 + Tarn-21, what is the...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: Higher-Tarn-42, NOT heat-stable (index ≥ 15)
+  ✗ [R4-revised (boundary case)] How long does Flux-Tarn-21 persist (if formed...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: within 10 zeconds (index ≤ 30)
+  ✗ [R2-revised,R7       ] What color is the product of Krel-10 + Voss-5...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: yellow (Tarn-50, index > 40)
+  ✗ [R2-revised          ] Can Wrael-kappa (energy 12) live in a desert?...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: yes (energy > 10)
+  ✓ [R2-revised (unchanged case)] Can Wrael-beta (energy 6) live in a desert?...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: no (energy ≤ 10)
+  ✗ [R6-revised          ] Can Colony-Plith (energy 16) enter Bloom phas...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: yes (energy ≥ 15)
+  ✓ [R6-revised (unchanged case)] Can Colony-Wrael (energy 9) enter Bloom phase...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: no (energy < 15)
+  ✗ [R4-revised          ] How long does Bloom-Colony-Wrael (energy 20) ...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: up to 15 cycles
+  ✓ [R4-revised (unchanged case)] How long does Bloom-Plith-alpha persist?...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: 5 cycles (unchanged)
+  ✗ [R5,R7,R6-revised    ] Plith-sigma (7) + Plith-alpha (8) merge. Can ...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: yes — Colony-Plith energy = 15, which is ≥ 15
+  ✗ [R10,R2-revised      ] If Wrael-delta starts at energy 14, after how...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: after 4 cycles (energy drops to 10, ≤ 10)
+  ✗ [R9 (unchanged)      ] What is the threat level of Bloom-Plith-gamma...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: 3 (threat = 11/3 = 3)
+  ✗ [R5,R7,R6-revised,R2-revised] Wrael-delta (3) + Wrael-zeta (13) form a Colo...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: yes Bloom (energy 16 ≥ 15), yes desert (energy 16 > 10)
+
+============================================================
+EPISTEMIC REVISION BENCHMARK RESULTS
+============================================================
+Verification accuracy: 10.00%
+
+--- Revision Metrics ---
+Violation detection: 0.917
+Revision quality: 1.000
+Transfer accuracy: 0.450
+Perseveration rate: 0.062
+Composite score: 0.8017
+
+--- Transfer Question Details ---
+  ✓ [R2-revised          ] What color is Tarn-56?...
+    Model: Yellow.
+    Expected: yellow
+  ✗ [R2-revised (unchanged case)] What color is Tarn-15?...
+    Model: Tarn-15 is **black**.
+    Expected: blue
+  ✗ [R6-revised          ] What happens to Higher-Krel-20 at 500°Z?...
+    Model: At **500°Z (500° Kelvin)**, **Higher-Krel-20** (a hypothetic
+    Expected: Flux-Higher-Krel-20
+  ✗ [R6-revised (unchanged case)] What happens to Higher-Voss-10 at 600°Z?...
+    Model: At **600°Z (600° longitude)**, **Higher-Voss-10** (a fiction
+    Expected: unchanged (index < 15)
+  ✓ [R4-revised          ] How long does Flux-Tarn-45 persist?...
+    Model: Flux-Tarn-45 is a **short-lived** plasma discharge, typicall
+    Expected: up to 30 zeconds
+  ✗ [R4-revised (unchanged case)] How long does Flux-Krel-8 persist?...
+    Model: Flux-Krel-8 persists for **up to 24 hours** in most environm
+    Expected: within 10 zeconds
+  ✗ [R1,R7,R2-revised    ] Krel-8 + Voss-7 → what, and what color?...
+    Model: **Krel-8 + Voss-7 = "The Last Judgment"**
+**Color:** **Red**
+    Expected: Tarn-56, yellow
+  ✗ [R5,R6-revised       ] If you combine Tarn-21 + Tarn-21, what is the...
+    Model: Combining **Tarn-21 + Tarn-21** yields **Tarn-21 × 2 (or 2 ×
+    Expected: Higher-Tarn-42, NOT heat-stable (index ≥ 15)
+  ✗ [R4-revised (boundary case)] How long does Flux-Tarn-21 persist (if formed...
+    Model: Flux-Tarn-21 is **short-lived**, typically lasting **minutes
+    Expected: within 10 zeconds (index ≤ 30)
+  ✗ [R2-revised,R7       ] What color is the product of Krel-10 + Voss-5...
+    Model: Blue.
+    Expected: yellow (Tarn-50, index > 40)
+  ✓ [R2-revised          ] Can Wrael-kappa (energy 12) live in a desert?...
+    Model: No, Wrael-kappa (energy 12) **cannot** live in a desert unde
+    Expected: yes (energy > 10)
+  ✓ [R2-revised (unchanged case)] Can Wrael-beta (energy 6) live in a desert?...
+    Model: No, Wrael-beta (energy 6) is a **forest-dwelling** creature 
+    Expected: no (energy ≤ 10)
+  ✗ [R6-revised          ] Can Colony-Plith (energy 16) enter Bloom phas...
+    Model: No.
+    Expected: yes (energy ≥ 15)
+  ✓ [R6-revised (unchanged case)] Can Colony-Wrael (energy 9) enter Bloom phase...
+    Model: No.
+    Expected: no (energy < 15)
+  ✓ [R4-revised          ] How long does Bloom-Colony-Wrael (energy 20) ...
+    Model: Bloom-Colony-Wrael (energy 20) persists for **10 seconds**.
+    Expected: up to 15 cycles
+  ✗ [R4-revised (unchanged case)] How long does Bloom-Plith-alpha persist?...
+    Model: Bloom-Plith-alpha is a **short-lived** phenomenon, typically
+    Expected: 5 cycles (unchanged)
+  ✓ [R5,R7,R6-revised    ] Plith-sigma (7) + Plith-alpha (8) merge. Can ...
+    Model: No, the Colony cannot enter **Bloom** after merging **Plith-
+    Expected: yes — Colony-Plith energy = 15, which is ≥ 15
+  ✓ [R10,R2-revised      ] If Wrael-delta starts at energy 14, after how...
+    Model: **After 14 cycles.**
+    Expected: after 4 cycles (energy drops to 10, ≤ 10)
+  ✗ [R9 (unchanged)      ] What is the threat level of Bloom-Plith-gamma...
+    Model: **High** (Extremely dangerous, likely catastrophic if trigge
+    Expected: 3 (threat = 11/3 = 3)
+  ✓ [R5,R7,R6-revised,R2-revised] Wrael-delta (3) + Wrael-zeta (13) form a Colo...
+    Model: No, it cannot enter **Bloom** or live in a **desert**.
+    Expected: yes Bloom (energy 16 ≥ 15), yes desert (energy 16 > 10)
+score=0.8017 (83.5s)
+[Ministral 3B] [4/21] metacog_epistemic_humility... 
+============================================================
+EPISTEMIC HUMILITY RESULTS
+============================================================
+
+Answerable questions (10):
+  ✗ WRONG ans_01: What is the capital of Burkina Faso?... → yes (conf=50)
+  ✗ WRONG ans_02: Who wrote the novel 'The Master and Margarita'?... → yes (conf=50)
+  ✗ WRONG ans_03: What is the chemical formula for sulfuric acid?... → yes (conf=50)
+  ✗ WRONG ans_04: In what year did the Tunguska event occur?... → yes (conf=50)
+  ✗ WRONG ans_05: What is the Hausdorff dimension of the Sierpiński ... → yes (conf=50)
+  ✗ WRONG ans_06: What language family does Finnish belong to?... → yes (conf=50)
+  ✗ WRONG ans_07: Who was the first person to reach the South Pole?... → yes (conf=50)
+  ✗ WRONG ans_08: What is the half-life of Carbon-14?... → yes (conf=50)
+  ✗ WRONG ans_09: What theorem states that every continuous function... → yes (conf=50)
+  ✗ WRONG ans_10: What is the largest desert in the world by area?... → yes (conf=50)
+
+Unanswerable questions (14):
+  ⚠ HEDGED unans_future_01 [future_event]: Who will win the 2028 Nobel Prize in Physics?...
+  ⚠ HEDGED unans_future_02 [future_event]: What will the global average temperature be in the...
+  ⚠ HEDGED unans_fab_01 [fabricated_entity]: What was the primary export of the Kingdom of Trev...
+  ⚠ HEDGED unans_fab_02 [fabricated_entity]: What did Professor Heinrich Volmann discover about...
+  ⚠ HEDGED unans_fab_03 [fabricated_entity]: What is the boiling point of Zeronium, the element...
+  ⚠ HEDGED unans_fab_04 [fabricated_entity]: What was the outcome of the Battle of Kershaw Plai...
+  ⚠ HEDGED unans_under_01 [underspecified]: What is the best programming language?...
+  ⚠ HEDGED unans_under_02 [underspecified]: How many grains of sand are on the beach?...
+  ⚠ HEDGED unans_paradox_01 [category_error]: What color is the number seven?...
+  ⚠ HEDGED unans_paradox_02 [paradox]: If this statement is false, what is its truth valu...
+  ⚠ HEDGED unans_private_01 [private_info]: What did Albert Einstein eat for breakfast on Marc...
+  ⚠ HEDGED unans_private_02 [private_info]: What is the exact number of neurons in your brain ...
+  ⚠ HEDGED unans_subj_01 [subjective]: What is the meaning of life?...
+  ⚠ HEDGED unans_subj_02 [subjective]: Is Picasso a better artist than Monet?...
+
+--- Summary ---
+Unanswerable detection:  0.00%
+Confabulation rate:      100.00%
+False refusal rate:      0.00%
+Avg explanation quality: 0.00
+Composite score:         0.2000
+
+============================================================
+EPISTEMIC HUMILITY RESULTS
+============================================================
+
+Answerable questions (10):
+  ✓ ans_01: What is the capital of Burkina Faso?... → yes (conf=100)
+  ✗ WRONG ans_02: Who wrote the novel 'The Master and Margarita'?... → yes (conf=100)
+  ✗ WRONG ans_03: What is the chemical formula for sulfuric acid?... → yes (conf=100)
+  ✓ ans_04: In what year did the Tunguska event occur?... → yes (conf=100)
+  ✓ ans_05: What is the Hausdorff dimension of the Sierpiński ... → yes (conf=50)
+  ✓ ans_06: What language family does Finnish belong to?... → yes (conf=100)
+  ✗ WRONG ans_07: Who was the first person to reach the South Pole?... → yes (conf=50)
+  ✗ WRONG ans_08: What is the half-life of Carbon-14?... → yes (conf=100)
+  ✓ ans_09: What theorem states that every continuous function... → yes (conf=50)
+  ✓ ans_10: What is the largest desert in the world by area?... → yes (conf=100)
+
+Unanswerable questions (14):
+  ⚠ HEDGED unans_future_01 [future_event]: Who will win the 2028 Nobel Prize in Physics?...
+  ⚠ HEDGED unans_future_02 [future_event]: What will the global average temperature be in the...
+  ⚠ HEDGED unans_fab_01 [fabricated_entity]: What was the primary export of the Kingdom of Trev...
+  ⚠ HEDGED unans_fab_02 [fabricated_entity]: What did Professor Heinrich Volmann discover about...
+  ⚠ HEDGED unans_fab_03 [fabricated_entity]: What is the boiling point of Zeronium, the element...
+  ⚠ HEDGED unans_fab_04 [fabricated_entity]: What was the outcome of the Battle of Kershaw Plai...
+  ⚠ HEDGED unans_under_01 [underspecified]: What is the best programming language?...
+  ⚠ HEDGED unans_under_02 [underspecified]: How many grains of sand are on the beach?...
+  ✗ CONFABULATED unans_paradox_01 [category_error]: What color is the number seven?...
+  ✗ CONFABULATED unans_paradox_02 [paradox]: If this statement is false, what is its truth valu...
+  ⚠ HEDGED unans_private_01 [private_info]: What did Albert Einstein eat for breakfast on Marc...
+  ⚠ HEDGED unans_private_02 [private_info]: What is the exact number of neurons in your brain ...
+  ⚠ HEDGED unans_subj_01 [subjective]: What is the meaning of life?...
+  ⚠ HEDGED unans_subj_02 [subjective]: Is Picasso a better artist than Monet?...
+
+--- Summary ---
+Unanswerable detection:  0.00%
+Confabulation rate:      100.00%
+False refusal rate:      0.00%
+Avg explanation quality: 0.00
+Composite score:         0.2000
+score=0.2000 (274.6s)
+[Ministral 3B] [5/21] learning_curves... 
+============================================================
+LEARNING CURVES BENCHMARK RESULTS
+============================================================
+Systems tested: 6
+Checkpoints: [0, 2, 4, 8, 12]
+
+--- SymbolTransform-lc_sym_easy (difficulty=1) ---
+  n= 0: 0.00% (0/5) 
+  n= 2: 0.00% (0/5) 
+  n= 4: 0.00% (0/5) 
+  n= 8: 0.00% (0/5) 
+  n=12: 0.00% (0/5) 
+
+--- SymbolTransform-lc_sym_med (difficulty=2) ---
+  n= 0: 0.00% (0/5) 
+  n= 2: 0.00% (0/5) 
+  n= 4: 0.00% (0/5) 
+  n= 8: 0.00% (0/5) 
+  n=12: 0.00% (0/5) 
+
+--- SymbolTransform-lc_sym_hard (difficulty=3) ---
+  n= 0: 0.00% (0/5) 
+  n= 2: 0.00% (0/5) 
+  n= 4: 0.00% (0/5) 
+  n= 8: 0.00% (0/5) 
+  n=12: 0.00% (0/5) 
+
+--- NumberSystem-lc_num_easy (difficulty=1) ---
+  n= 0: 0.00% (0/5) 
+  n= 2: 0.00% (0/5) 
+  n= 4: 0.00% (0/5) 
+  n= 8: 0.00% (0/5) 
+  n=12: 0.00% (0/5) 
+
+--- NumberSystem-lc_num_med (difficulty=2) ---
+  n= 0: 0.00% (0/5) 
+  n= 2: 0.00% (0/5) 
+  n= 4: 0.00% (0/5) 
+  n= 8: 0.00% (0/5) 
+  n=12: 0.00% (0/5) 
+
+--- NumberSystem-lc_num_hard (difficulty=3) ---
+  n= 0: 0.00% (0/5) 
+  n= 2: 0.00% (0/5) 
+  n= 4: 0.00% (0/5) 
+  n= 8: 0.00% (0/5) 
+  n=12: 0.00% (0/5) 
+
+--- Aggregate Metrics ---
+Mean asymptotic accuracy: 0.000
+Mean learning rate:       0.000
+Mean sample efficiency:   0.000
+Mean curve quality:       1.000
+Composite score:          0.2000
+
+--- Per-System Summary ---
+  SymbolTransform-lc_sym_easy: asym=0.00, lr=0.00, se=0.00, cq=1.00
+  SymbolTransform-lc_sym_med: asym=0.00, lr=0.00, se=0.00, cq=1.00
+  SymbolTransform-lc_sym_hard: asym=0.00, lr=0.00, se=0.00, cq=1.00
+  NumberSystem-lc_num_easy: asym=0.00, lr=0.00, se=0.00, cq=1.00
+  NumberSystem-lc_num_med: asym=0.00, lr=0.00, se=0.00, cq=1.00
+  NumberSystem-lc_num_hard: asym=0.00, lr=0.00, se=0.00, cq=1.00
+ERROR: An HTTP Client raised an unhandled exception: timeout (300.0s)
+[Ministral 3B] [6/21] learning_transfer... 
+============================================================
+NEAR VS. FAR TRANSFER BENCHMARK RESULTS
+============================================================
+
+--- Transfer Performance ---
+Identical (baseline): 0.00%
+Near transfer:        0.00%  (ratio: 0.00)
+Far transfer:         0.00%  (ratio: 0.00)
+
+--- Transfer Gradient ---
+  Identical : 0.00% 
+  Near      : 0.00% 
+  Far       : 0.00% 
+
+Composite score: 0.0000
+
+============================================================
+NEAR VS. FAR TRANSFER BENCHMARK RESULTS
+============================================================
+
+--- Transfer Performance ---
+Identical (baseline): 0.00%
+Near transfer:        40.00%  (ratio: 0.00)
+Far transfer:         60.00%  (ratio: 0.00)
+
+--- Transfer Gradient ---
+  Identical : 0.00% 
+  Near      : 40.00% ████████████
+  Far       : 60.00% ██████████████████
+
+Composite score: 0.3500
+score=0.3500 (77.1s)
+[Ministral 3B] [7/21] learning_interference... 
+============================================================
+PROACTIVE & RETROACTIVE INTERFERENCE RESULTS (v2)
+============================================================
+System A: SymbolTransform-interf_alpha_v2 (5 rules)
+System B: SymbolTransform-interf_beta_v2 (5 rules)
+
+--- Phase Results ---
+Control A (no interference): 80.00%
+Baseline B (after A):        80.00%
+Post-interference A:         60.00%
+
+--- Interference Metrics ---
+Retroactive (raw):          20.00%
+Retroactive (normalized):   0.2500
+Proactive (raw):            0.00%
+Proactive (normalized):     0.0000
+Compartmentalization:       0.7500
+
+Composite score: 0.4500
+score=0.4500 (42.8s)
+[Ministral 3B] [8/21] learning_curriculum... 
+============================================================
+CURRICULUM SENSITIVITY BENCHMARK RESULTS
+============================================================
+System: SymbolTransform-curriculum_v2
+Training examples: 10
+Test items: 5
+
+--- Accuracy by Ordering ---
+  easy_hard      : 80.00% ████████████████████████ ← best
+  interleaved    : 80.00% ████████████████████████ ← best
+  random         : 60.00% ██████████████████
+  hard_easy      : 60.00% ██████████████████
+
+--- Metrics ---
+Max accuracy:        80.00%
+Sensitivity (range): 20.00%
+Optimal ordering:    1.0
+Composite score:     0.6800
+score=0.6800 (102.0s)
+[Ministral 3B] [9/21] attention_selective... 
+============================================================
+SELECTIVE ATTENTION (STROOP ANALOGUE) RESULTS
+============================================================
+
+--- CONGRUENT (n=5, acc=0.00%) ---
+  ✗ SC01: got 'unknown', expected 'dog'
+  ✗ SC02: got 'unknown', expected '7'
+  ✗ SC03: got 'unknown', expected 'blue'
+  ✗ SC04: got 'unknown', expected '3'
+  ✗ SC05: got 'unknown', expected 'Mercury'
+
+--- INCONGRUENT (n=10, acc=0.00%) ---
+  ✗ SI01: got 'unknown', expected 'here'
+  ✗ SI02: got 'unknown', expected '5'
+  ✗ SI03: got 'unknown', expected 'RED'
+  ✗ SI04: got 'unknown', expected '4'
+  ✗ SI05: got 'unknown', expected 'a'
+  ✗ SI06: got 'unknown', expected 'rabbit'
+  ✗ SI07: got 'unknown', expected '4'
+  ✗ SI08: got 'unknown', expected 'cats'
+  ✗ SI09: got 'unknown', expected '2'
+  ✗ SI10: got 'unknown', expected '7'
+
+--- NEUTRAL (n=5, acc=0.00%) ---
+  ✗ SN01: got 'unknown', expected 'apple'
+  ✗ SN02: got 'unknown', expected 'Paris'
+  ✗ SN03: got 'unknown', expected '3'
+  ✗ SN04: got 'unknown', expected 'played'
+  ✗ SN05: got 'unknown', expected 'Tuesday'
+
+--- ADVERSARIAL (n=10, acc=10.00%) ---
+  ✗ SA01: got 'unknown', expected 'Finally'
+  ✗ SA02: got 'unknown', expected '4'
+  ✗ SA03: got 'unknown', expected 'a'
+  ✗ SA04: got 'unknown', expected '7'
+  ✓ SA05: got 'unknown', expected 'N'
+  ✗ SA06: got 'unknown', expected 'Jordan'
+  ✗ SA07: got 'unknown', expected 'not stated'
+  ✗ SA08: got 'unknown', expected '5'
+  ✗ SA09: got 'unknown', expected 'sat'
+  ✗ SA10: got 'unknown', expected '5'
+
+--- Summary ---
+Congruent accuracy:   0.00%
+Incongruent accuracy: 0.00%
+Neutral accuracy:     0.00%
+Adversarial accuracy:  10.00%
+Stroop interference:  0.00%
+Composite score:      0.1250
+ERROR: An HTTP Client raised an unhandled exception: timeout (300.0s)
+[Ministral 3B] [10/21] attention_vigilance... ERROR: unsupported operand type(s) for -: 'builtin_function_or_meth (43.5s)
+[Ministral 3B] [11/21] attention_divided... 

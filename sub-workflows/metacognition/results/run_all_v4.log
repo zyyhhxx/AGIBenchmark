@@ -1,0 +1,10 @@
+Starting run_all_v4 at 2026-04-10T11:00:29.050615+00:00
+Models: 10, Benchmarks: 26
+Per-benchmark timeout: 300s
+
+[1/10] Ministral 3B: 1 done, 25 remaining
+  [1/25] metacog_fok... ERROR: exit code -15 (119s)
+  [2/25] metacog_jol... ERROR: exit code -15 (38s)
+  [3/25] metacog_calibration... ERROR: exit code -9 (4s)
+  [4/25] metacog_error_detection... ERROR: exit code -9 (5s)
+  [5/25] metacog_learning_monitoring... 

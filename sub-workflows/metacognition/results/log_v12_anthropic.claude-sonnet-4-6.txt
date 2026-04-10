@@ -1,0 +1,7 @@
+run_fill_v12 started at 2026-04-10T17:44:26.669119+00:00
+Benchmarks: 26, Models: 10
+
+[1/1] Claude Sonnet 4.6: 11 gaps to fill
+  [1/11] metacog_fok... ERROR: timeout (600s)
+  [2/11] attention_instruction_update... score=0.4764 (458.8s)
+  [3/11] exec_func_wcst... 

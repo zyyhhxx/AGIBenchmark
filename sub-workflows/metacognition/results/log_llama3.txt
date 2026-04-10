@@ -1,0 +1,4244 @@
+[Llama 3.3 70B] 0 done, 26 remaining, timeout=300s
+[Llama 3.3 70B] [1/26] metacog_canary... {
+  "benchmark": "Contamination Canary",
+  "n_items": 10,
+  "n_below_threshold": 0,
+  "threshold": 30,
+  "contamination_risk": true,
+  "mean_confidence": 50.0,
+  "brier_score": 0.25,
+  "brier_skill_score_raw": 0.0,
+  "score": 0.0,
+  "threshold_score_diagnostic": 0.0,
+  "per_item": [
+    {
+      "id": "CAN01",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN02",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN03",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN04",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN05",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN06",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN07",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN08",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN09",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    },
+    {
+      "id": "CAN10",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false
+    }
+  ]
+}
+{
+  "benchmark": "Contamination Canary",
+  "n_items": 10,
+  "n_below_threshold": 0,
+  "threshold": 30,
+  "contamination_risk": true,
+  "mean_confidence": 50.0,
+  "brier_score": 0.25,
+  "brier_skill_score_raw": 0.0,
+  "score": 0.0,
+  "threshold_score_diagnostic": 0.0,
+  "per_item": [
+    {
+      "id": "CAN01",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "I'm not sure. In fact, I couldn't find any information on a city called Thornvale in the Australian state of Westmore. It's possible that Thornvale and Westmore are not real places in Australia. If you have more context or details, I'd be happy to try and help you further.",
+      "is_guess": false
+    },
+    {
+      "id": "CAN02",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "I'm not sure about the Kessler-Yamamoto constant in quantum chromodynamics. I couldn't find any information on this specific constant, and I don't want to provide an incorrect answer. If you have more context or details, I'd be happy to try and help you further.",
+      "is_guess": false
+    },
+    {
+      "id": "CAN03",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "I'm not sure who won the 1987 Meridian Prize for contributions to computational linguistics. I don't have information on this specific award or its winners. If you have more context or details, I'd be happy to try and help you find the answer.",
+      "is_guess": false
+    },
+    {
+      "id": "CAN04",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "I'm not sure what enzyme catalyzes the final step of the Renshaw-Park pathway in mammalian liver cells. The Renshaw-Park pathway is not a widely recognized term, and I couldn't find any information on it. It's possible that it's a lesser-known or outdated term, or it could be a mistake. If you have more context or information about the Renshaw-Park pathway, I'd be happy to try and help you further.",
+      "is_guess": false
+    },
+    {
+      "id": "CAN05",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "I'm not sure. I couldn't find any information about the 2019 Treaty of Belmont or an agreement regarding the Caspian Basin Fisheries Zone. It's possible that the treaty doesn't exist or that I don't have the most up-to-date information. If you have more context or details, I'd be happy to try and help you further.",
+      "is_guess": false
+    },
+    {
+      "id": "CAN06",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "I'm not sure about the specific half-life of Flerovium-298. The half-lives of superheavy elements like Flerovium can be difficult to determine and may require advanced nuclear physics models or experimental data. If you're looking for accurate information, I recommend consulting a reliable source or a scientific database that specializes in nuclear physics.",
+      "is_guess": false
+    },
+    {
+      "id": "CAN07",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "I'm not sure about the specific details of the Drakensberg Accords of 2015, including the percentage of freshwater resources South Africa agreed to allocate to downstream riparian states. If you're looking for accurate information on this topic, I recommend consulting a reliable source or a document that outlines the terms of the agreement.",
+      "is_guess": false
+    },
+    {
+      "id": "CAN08",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "The Brinell hardness number for standard structural steel (Grade 250) at 20\u00b0C is not something I have information on. I'm not sure what the Brindley-Whitworth number is, as it seems to be a non-standard term. However, I can tell you that the Brinell hardness number (BHN) for structural steel can vary depending on the specific grade and composition. If you're looking for information on the hardness of Grade 250 steel, I'd be happy to try and help you find it, but I'm not aware of a \"Brindley-Whitworth number\".",
+      "is_guess": false
+    },
+    {
+      "id": "CAN09",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "The philosopher who introduced the concept of 'epistemic parallax' is Ian Barbour, but I couldn't confirm if it was in the 1954 Gifford Lectures at the University of Aberdeen. However, I found that the philosopher who delivered the 1954-1955 Gifford Lectures was Ian Barbour's predecessor in this regard, but it was actually Owen Barfield and then later,  philosopher and physicist, Ian Barbour, who used the term, and before them, the term 'epistemic parallax' was not used.",
+      "is_guess": false
+    },
+    {
+      "id": "CAN10",
+      "confidence": 50,
+      "below_threshold": false,
+      "answer": "I'm not sure about the specific fault line that caused the magnitude 7.2 earthquake near Valpara\u00edso, Chile in March 2023. My knowledge may not be up to date, and I don't have information on that specific event. If you need accurate information, I recommend checking with a reliable news source or a geological organization for the most current and accurate information.",
+      "is_guess": false
+    }
+  ]
+}
+score=0.0000 (33.6s)
+[Llama 3.3 70B] [2/26] metacog_fok... 
+============================================================
+FEELING-OF-KNOWING (FOK) BENCHMARK RESULTS
+============================================================
+Questions: 81
+Overall accuracy: 9.88%
+Mean FOK confidence: 50.0%
+
+--- Metacognitive Metrics ---
+Gamma correlation: +0.0000  (human range: 0.25–0.55)
+Brier Skill Score: -1.8086  (>0 = better than base rate)
+ECE (diagnostic): 0.4012
+AUC (discrimination): 0.1798
+Composite score: 0.2539
+
+--- By Category ---
+  boundary       : n=10, acc=0.00%, mean_fok=50%, γ=+0.000
+  obscure        : n=10, acc=0.00%, mean_fok=50%, γ=+0.000
+  proc_arithmetic: n=15, acc=26.67%, mean_fok=50%, γ=+0.000
+  proc_logic     : n= 5, acc=20.00%, mean_fok=50%, γ=+0.000
+  proc_sequence  : n= 7, acc=0.00%, mean_fok=50%, γ=+0.000
+  proc_syllogism : n= 7, acc=42.86%, mean_fok=50%, γ=+0.000
+  reasoning      : n= 8, acc=0.00%, mean_fok=50%, γ=+0.000
+  retrievable    : n=10, acc=0.00%, mean_fok=50%, γ=+0.000
+  unanswerable   : n= 9, acc=0.00%, mean_fok=50%, γ=+0.000
+
+--- Calibration Bins ---
+  0.4-0.5: n=81, conf=0.50, acc=0.10, gap=0.401
+
+--- Per-Question Results ---
+  ✗ [ 50%] [retrievable ] What is the capital of Australia?... → unknown
+  ✗ [ 50%] [retrievable ] What year did the Titanic sink?... → unknown
+  ✗ [ 50%] [retrievable ] Who painted the Mona Lisa?... → unknown
+  ✗ [ 50%] [retrievable ] What is the chemical formula for table salt?... → unknown
+  ✗ [ 50%] [retrievable ] What is the largest planet in our solar syste... → unknown
+  ✗ [ 50%] [retrievable ] Who developed the theory of general relativit... → unknown
+  ✗ [ 50%] [retrievable ] What is the powerhouse of the cell?... → unknown
+  ✗ [ 50%] [retrievable ] In what year did the French Revolution begin?... → unknown
+  ✗ [ 50%] [retrievable ] What is the tallest mountain on Earth?... → unknown
+  ✗ [ 50%] [retrievable ] Who wrote 'Pride and Prejudice'?... → unknown
+  ✗ [ 50%] [boundary    ] What is the name of the largest moon of Neptu... → unknown
+  ✗ [ 50%] [boundary    ] In what year was the first successful heart t... → unknown
+  ✗ [ 50%] [boundary    ] What is the name of the process by which plan... → unknown
+  ✗ [ 50%] [boundary    ] Who was the first woman to win a Nobel Prize ... → unknown
+  ✗ [ 50%] [boundary    ] What is the SI unit of electrical capacitance... → unknown
+  ✗ [ 50%] [boundary    ] What is the name of the treaty that ended Wor... → unknown
+  ✗ [ 50%] [boundary    ] What is the longest bone in the human body?... → unknown
+  ✗ [ 50%] [boundary    ] Who composed the opera 'The Marriage of Figar... → unknown
+  ✗ [ 50%] [boundary    ] What is the Chandrasekhar limit, in solar mas... → unknown
+  ✗ [ 50%] [boundary    ] What ancient city was buried by the eruption ... → unknown
+  ✗ [ 50%] [obscure     ] What is the population of Tuvalu according to... → unknown
+  ✗ [ 50%] [obscure     ] What was the exact date (day, month, year) wh... → unknown
+  ✗ [ 50%] [obscure     ] What is the melting point of tungsten in degr... → unknown
+  ✗ [ 50%] [obscure     ] Who served as the third Poet Laureate of the ... → unknown
+  ✗ [ 50%] [obscure     ] What is the name of the largest desert in Asi... → unknown
+  ✗ [ 50%] [obscure     ] In what year was the first edition of the Enc... → unknown
+  ✗ [ 50%] [obscure     ] What is the name of the enzyme that adds telo... → unknown
+  ✗ [ 50%] [obscure     ] What is the IATA airport code for Ulaanbaatar... → unknown
+  ✗ [ 50%] [obscure     ] What is the name of the geological period imm... → unknown
+  ✗ [ 50%] [obscure     ] Who was the architect of the Sydney Opera Hou... → unknown
+  ✗ [ 50%] [reasoning   ] What is 37 × 43?... → unknown
+  ✗ [ 50%] [reasoning   ] If a train travels at 80 km/h for 2.5 hours, ... → unknown
+  ✗ [ 50%] [reasoning   ] What is the 10th number in the Fibonacci sequ... → unknown
+  ✗ [ 50%] [reasoning   ] How many distinct ways can you arrange the le... → unknown
+  ✗ [ 50%] [reasoning   ] What is the remainder when 2^100 is divided b... → unknown
+  ✗ [ 50%] [unanswerable] What is the exact number of grains of sand on... → unknown
+  ✗ [ 50%] [unanswerable] What will the closing price of Apple stock be... → unknown
+  ✗ [ 50%] [unanswerable] Who is objectively the greatest musician of a... → unknown
+  ✗ [ 50%] [unanswerable] What color is the number 7?... → unknown
+  ✗ [ 50%] [unanswerable] What is the last digit of pi?... → unknown
+  ✗ [ 50%] [unanswerable] What did Julius Caesar eat for breakfast on M... → unknown
+  ✗ [ 50%] [unanswerable] How many times did Shakespeare sneeze during ... → unknown
+  ✗ [ 50%] [unanswerable] What is the correct moral thing to do in ever... → unknown
+  ✗ [ 50%] [unanswerable] What will be the most popular baby name in 20... → unknown
+  ✗ [ 50%] [reasoning   ] What is the sum of all prime numbers less tha... → unknown
+  ✗ [ 50%] [reasoning   ] A rope is cut into 3 pieces. The longest piec... → unknown
+  ✗ [ 50%] [reasoning   ] How many squares of any size are on a standar... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (28 × 53) + 3?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (41 × 89) + 8?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (86 × 83) + 9?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (88 × 69) + 5?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (13 × 91) + 3?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (27 × 49) + 3?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (70 × 14) + 9?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (53 × 39) + 8?... → unknown
+  ✓ [ 50%] [proc_arithmetic] What is 25% of 377?... → unknown
+  ✓ [ 50%] [proc_arithmetic] What is 30% of 485?... → unknown
+  ✓ [ 50%] [proc_arithmetic] What is 35% of 883?... → unknown
+  ✓ [ 50%] [proc_arithmetic] What is 15% of 773?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is the remainder when 840 is divided by ... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is the remainder when 191 is divided by ... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is the remainder when 394 is divided by ... → unknown
+  ✗ [ 50%] [proc_syllogism] All Zorblings speak in colors. Everything tha... → unknown
+  ✗ [ 50%] [proc_syllogism] All Sploobites are transparent. Everything th... → unknown
+  ✗ [ 50%] [proc_syllogism] All Kwexians have three hearts. Everything th... → unknown
+  ✗ [ 50%] [proc_syllogism] All Thrimbles emit ultrasound. Everything tha... → unknown
+  ✓ [ 50%] [proc_syllogism] Some Dwimblings have perfect memory. Everythi... → unknown
+  ✓ [ 50%] [proc_syllogism] Some Ghovites can photosynthesize. Everything... → unknown
+  ✓ [ 50%] [proc_syllogism] Some Crellions can levitate. Everything that ... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next in this sequence: 10, 18, 26,... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next in this sequence: 35, 46, 57,... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next in this sequence: 44, 48, 52,... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next in this sequence: 2, 6, 18, 5... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next in this sequence: 5, 15, 45, ... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next: 10, 20, 23, 46, 49, ?  (Hint... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next: 8, 16, 19, 38, 41, ?  (Hint:... → unknown
+  ✗ [ 50%] [proc_logic  ] Aria is taller than Gia. Finn is shorter than... → unknown
+  ✗ [ 50%] [proc_logic  ] Hugo is taller than Dev. Gia is shorter than ... → unknown
+  ✗ [ 50%] [proc_logic  ] Gia is taller than Cass. Ezra is shorter than... → unknown
+  ✗ [ 50%] [proc_logic  ] Gia always tells the truth. Hugo always lies.... → unknown
+  ✓ [ 50%] [proc_logic  ] Aria always tells the truth. Finn always lies... → unknown
+
+============================================================
+FEELING-OF-KNOWING (FOK) BENCHMARK RESULTS
+============================================================
+Questions: 81
+Overall accuracy: 90.12%
+Mean FOK confidence: 83.8%
+
+--- Metacognitive Metrics ---
+Gamma correlation: +0.6703  (human range: 0.25–0.55)
+Brier Skill Score: -0.4810  (>0 = better than base rate)
+ECE (diagnostic): 0.1093
+AUC (discrimination): 0.7774
+Composite score: 0.5673
+
+--- By Category ---
+  boundary       : n=10, acc=100.00%, mean_fok=97%, γ=+0.000
+  obscure        : n=10, acc=80.00%, mean_fok=80%, γ=+0.429
+  proc_arithmetic: n=15, acc=86.67%, mean_fok=100%, γ=+0.000
+  proc_logic     : n= 5, acc=100.00%, mean_fok=100%, γ=+0.000
+  proc_sequence  : n= 7, acc=100.00%, mean_fok=91%, γ=+0.000
+  proc_syllogism : n= 7, acc=100.00%, mean_fok=86%, γ=+0.000
+  reasoning      : n= 8, acc=100.00%, mean_fok=97%, γ=+0.000
+  retrievable    : n=10, acc=100.00%, mean_fok=100%, γ=+0.000
+  unanswerable   : n= 9, acc=55.56%, mean_fok=0%, γ=+0.000
+
+--- Calibration Bins ---
+  0.0-0.1: n=11, conf=0.00, acc=0.64, gap=0.636
+  0.7-0.8: n=5, conf=0.80, acc=0.80, gap=0.000
+  0.8-0.9: n=4, conf=0.90, acc=0.75, gap=0.150
+  0.9-1.0: n=61, conf=0.99, acc=0.97, gap=0.020
+
+--- Per-Question Results ---
+  ✓ [100%] [retrievable ] What is the capital of Australia?... → Canberra
+  ✓ [100%] [retrievable ] What year did the Titanic sink?... → 1912
+  ✓ [100%] [retrievable ] Who painted the Mona Lisa?... → Leonardo da Vinci
+  ✓ [100%] [retrievable ] What is the chemical formula for table salt?... → NaCl
+  ✓ [100%] [retrievable ] What is the largest planet in our solar syste... → Jupiter
+  ✓ [100%] [retrievable ] Who developed the theory of general relativit... → Albert Einstein
+  ✓ [100%] [retrievable ] What is the powerhouse of the cell?... → mitochondria
+  ✓ [100%] [retrievable ] In what year did the French Revolution begin?... → 1789
+  ✓ [100%] [retrievable ] What is the tallest mountain on Earth?... → Mount Everest
+  ✓ [100%] [retrievable ] Who wrote 'Pride and Prejudice'?... → Jane Austen
+  ✓ [ 95%] [boundary    ] What is the name of the largest moon of Neptu... → Triton
+  ✓ [ 95%] [boundary    ] In what year was the first successful heart t... → 1967
+  ✓ [ 95%] [boundary    ] What is the name of the process by which plan... → transpiration
+  ✓ [ 90%] [boundary    ] Who was the first woman to win a Nobel Prize ... → Marie Curie
+  ✓ [100%] [boundary    ] What is the SI unit of electrical capacitance... → farad
+  ✓ [100%] [boundary    ] What is the name of the treaty that ended Wor... → Treaty of Versailles
+  ✓ [100%] [boundary    ] What is the longest bone in the human body?... → femur
+  ✓ [100%] [boundary    ] Who composed the opera 'The Marriage of Figar... → Wolfgang Amadeus Mozart
+  ✓ [ 95%] [boundary    ] What is the Chandrasekhar limit, in solar mas... → 1.44
+  ✓ [100%] [boundary    ] What ancient city was buried by the eruption ... → Pompeii
+  ✓ [ 80%] [obscure     ] What is the population of Tuvalu according to... → 11792
+  ✓ [  0%] [obscure     ] What was the exact date (day, month, year) wh... → August 12, 1898
+  ✓ [ 95%] [obscure     ] What is the melting point of tungsten in degr... → 3422
+  ✓ [ 80%] [obscure     ] Who served as the third Poet Laureate of the ... → Robert Penn Warren
+  ✓ [ 95%] [obscure     ] What is the name of the largest desert in Asi... → Gobi Desert
+  ✓ [ 95%] [obscure     ] In what year was the first edition of the Enc... → 1768
+  ✓ [ 95%] [obscure     ] What is the name of the enzyme that adds telo... → Telomerase
+  ✗ [ 90%] [obscure     ] What is the IATA airport code for Ulaanbaatar... → ULN
+  ✗ [ 80%] [obscure     ] What is the name of the geological period imm... → Neoproterozoic
+  ✓ [ 95%] [obscure     ] Who was the architect of the Sydney Opera Hou... → Jorn Utzon
+  ✓ [100%] [reasoning   ] What is 37 × 43?... → 1591
+  ✓ [100%] [reasoning   ] If a train travels at 80 km/h for 2.5 hours, ... → 200
+  ✓ [100%] [reasoning   ] What is the 10th number in the Fibonacci sequ... → 55
+  ✓ [ 90%] [reasoning   ] How many distinct ways can you arrange the le... → 60
+  ✓ [ 90%] [reasoning   ] What is the remainder when 2^100 is divided b... → 2
+  ✓ [  0%] [unanswerable] What is the exact number of grains of sand on... → unanswerable
+  ✗ [  0%] [unanswerable] What will the closing price of Apple stock be... → Unknown
+  ✓ [  0%] [unanswerable] Who is objectively the greatest musician of a... → There is no single correct ans
+  ✓ [  0%] [unanswerable] What color is the number 7?... → The question is unanswerable
+  ✗ [  0%] [unanswerable] What is the last digit of pi?... → pi is an irrational number and
+  ✗ [  0%] [unanswerable] What did Julius Caesar eat for breakfast on M... → There is no historical record 
+  ✗ [  0%] [unanswerable] How many times did Shakespeare sneeze during ... → unknown
+  ✓ [  0%] [unanswerable] What is the correct moral thing to do in ever... → There is no single correct mor
+  ✓ [  0%] [unanswerable] What will be the most popular baby name in 20... → Unanswerable
+  ✓ [ 95%] [reasoning   ] What is the sum of all prime numbers less tha... → 129
+  ✓ [100%] [reasoning   ] A rope is cut into 3 pieces. The longest piec... → 3.75
+  ✓ [100%] [reasoning   ] How many squares of any size are on a standar... → 204
+  ✓ [100%] [proc_arithmetic] What is (28 × 53) + 3?... → 1489
+  ✓ [100%] [proc_arithmetic] What is (41 × 89) + 8?... → 3657
+  ✓ [100%] [proc_arithmetic] What is (86 × 83) + 9?... → 7257
+  ✓ [100%] [proc_arithmetic] What is (88 × 69) + 5?... → 6085
+  ✓ [100%] [proc_arithmetic] What is (13 × 91) + 3?... → 1190
+  ✓ [100%] [proc_arithmetic] What is (27 × 49) + 3?... → 1326
+  ✓ [100%] [proc_arithmetic] What is (70 × 14) + 9?... → 989
+  ✓ [100%] [proc_arithmetic] What is (53 × 39) + 8?... → 2067
+  ✓ [100%] [proc_arithmetic] What is 25% of 377?... → 94.25
+  ✓ [100%] [proc_arithmetic] What is 30% of 485?... → 145.5
+  ✓ [100%] [proc_arithmetic] What is 35% of 883?... → 308.55
+  ✓ [100%] [proc_arithmetic] What is 15% of 773?... → 115.95
+  ✗ [100%] [proc_arithmetic] What is the remainder when 840 is divided by ... → 4
+  ✗ [100%] [proc_arithmetic] What is the remainder when 191 is divided by ... → 0
+  ✓ [100%] [proc_arithmetic] What is the remainder when 394 is divided by ... → 3
+  ✓ [100%] [proc_syllogism] All Zorblings speak in colors. Everything tha... → yes
+  ✓ [100%] [proc_syllogism] All Sploobites are transparent. Everything th... → Yes
+  ✓ [100%] [proc_syllogism] All Kwexians have three hearts. Everything th... → Yes
+  ✓ [100%] [proc_syllogism] All Thrimbles emit ultrasound. Everything tha... → Yes
+  ✓ [  0%] [proc_syllogism] Some Dwimblings have perfect memory. Everythi... → No
+  ✓ [100%] [proc_syllogism] Some Ghovites can photosynthesize. Everything... → No
+  ✓ [100%] [proc_syllogism] Some Crellions can levitate. Everything that ... → No
+  ✓ [ 95%] [proc_sequence] What comes next in this sequence: 10, 18, 26,... → 50
+  ✓ [ 95%] [proc_sequence] What comes next in this sequence: 35, 46, 57,... → 90
+  ✓ [ 95%] [proc_sequence] What comes next in this sequence: 44, 48, 52,... → 64
+  ✓ [ 95%] [proc_sequence] What comes next in this sequence: 2, 6, 18, 5... → 486
+  ✓ [ 95%] [proc_sequence] What comes next in this sequence: 5, 15, 45, ... → 1215
+  ✓ [ 80%] [proc_sequence] What comes next: 10, 20, 23, 46, 49, ?  (Hint... → 98
+  ✓ [ 80%] [proc_sequence] What comes next: 8, 16, 19, 38, 41, ?  (Hint:... → 82
+  ✓ [100%] [proc_logic  ] Aria is taller than Gia. Finn is shorter than... → Finn
+  ✓ [100%] [proc_logic  ] Hugo is taller than Dev. Gia is shorter than ... → Gia
+  ✓ [100%] [proc_logic  ] Gia is taller than Cass. Ezra is shorter than... → Ezra
+  ✓ [100%] [proc_logic  ] Gia always tells the truth. Hugo always lies.... → yes
+  ✓ [100%] [proc_logic  ] Aria always tells the truth. Finn always lies... → No
+score=0.5673 (146.6s)
+[Llama 3.3 70B] [3/26] metacog_jol... 
+============================================================
+JUDGMENT-OF-LEARNING (JOL) BENCHMARK RESULTS
+============================================================
+Word pairs tested: 15
+Rule systems tested: 2
+Total items: 17
+
+--- Metacognitive Metrics ---
+Gamma correlation: +0.0000  (human range: 0.40–0.90)
+Brier Skill Score: +0.0000  (>0 = better than base rate)
+ECE (diagnostic): 0.5000
+Recall rate: 0.00%
+Composite score: 0.2000
+
+--- Word Pairs by Difficulty ---
+  Difficulty 1: n=5, acc=0.00%, mean_jol=50%
+  Difficulty 2: n=5, acc=0.00%, mean_jol=50%
+  Difficulty 3: n=5, acc=0.00%, mean_jol=50%
+
+--- Per-Item Results ---
+  ✗ [JOL: 50%] Brelkano: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Tunnefex: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Glopwren: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Verdashi: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Plonkrit: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Feltromi: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Drasquil: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Wenvotch: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Kelmapho: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Crinjota: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Phaxendu: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Zorblint: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Quellmaf: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Narvexti: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Blekthor: {"answer": "unknown", "confidence": 50}
+
+============================================================
+JUDGMENT-OF-LEARNING (JOL) BENCHMARK RESULTS
+============================================================
+Word pairs tested: 15
+Rule systems tested: 2
+Total items: 17
+
+--- Metacognitive Metrics ---
+Gamma correlation: +0.0000  (human range: 0.40–0.90)
+Brier Skill Score: +0.8824  (>0 = better than base rate)
+ECE (diagnostic): 0.0588
+Recall rate: 0.00%
+Composite score: 0.4647
+
+--- Word Pairs by Difficulty ---
+  Difficulty 1: n=5, acc=0.00%, mean_jol=0%
+  Difficulty 2: n=5, acc=0.00%, mean_jol=0%
+  Difficulty 3: n=5, acc=0.00%, mean_jol=0%
+
+--- Per-Item Results ---
+  ✗ [JOL:  0%] Brelkano: unknown
+  ✗ [JOL:  0%] Tunnefex: unknown
+  ✗ [JOL:  0%] Glopwren: unknown
+  ✗ [JOL:  0%] Verdashi: unknown or not previously taught
+  ✗ [JOL:  0%] Plonkrit: unknown or not previously taught
+  ✗ [JOL:  0%] Feltromi: I don't recall any definition for the word Feltrom
+  ✗ [JOL:  0%] Drasquil: unknown or not previously defined
+  ✗ [JOL:  0%] Wenvotch: unknown
+  ✗ [JOL:  0%] Kelmapho: unknown
+  ✗ [JOL:  0%] Crinjota: unknown or not previously taught
+  ✗ [JOL:  0%] Phaxendu: unknown or not previously taught
+  ✗ [JOL:  0%] Zorblint: unknown
+  ✗ [JOL:  0%] Quellmaf: I don't recall learning the word Quellmaf or its d
+  ✗ [JOL:  0%] Narvexti: unknown
+  ✗ [JOL:  0%] Blekthor: unknown
+score=0.4647 (48.9s)
+[Llama 3.3 70B] [4/26] metacog_calibration... 
+============================================================
+METACOGNITIVE CALIBRATION RESULTS
+============================================================
+Questions answered: 80
+Overall accuracy: 0.00%
+Mean confidence: 50.0%
+Brier Skill Score (raw): 0.0000
+Score (clamped BSS): 0.0000
+ECE (diagnostic): 0.5000
+
+Calibration by bin:
+  0.4-0.5: n=80, conf=0.50, acc=0.00, gap=0.500
+
+Per-question results:
+  ✗ [ 50%] What is the chemical symbol for gold?... → unknown
+  ✗ [ 50%] How many sides does a hexagon have?... → unknown
+  ✗ [ 50%] What planet is known as the Red Planet?... → unknown
+  ✗ [ 50%] What is the largest organ in the human body?... → unknown
+  ✗ [ 50%] In which year did World War II end?... → unknown
+  ✗ [ 50%] What is the boiling point of water in degrees Cels... → unknown
+  ✗ [ 50%] Who wrote the play 'Romeo and Juliet'?... → unknown
+  ✗ [ 50%] What is the capital of Japan?... → unknown
+  ✗ [ 50%] What does DNA stand for?... → unknown
+  ✗ [ 50%] What is the speed of light in a vacuum, approximat... → unknown
+  ✗ [ 50%] What is the smallest prime number greater than 50?... → unknown
+  ✗ [ 50%] Which enzyme is primarily responsible for unwindin... → unknown
+  ✗ [ 50%] In what year was the Treaty of Westphalia signed, ... → unknown
+  ✗ [ 50%] What is the derivative of ln(x) with respect to x?... → unknown
+  ✗ [ 50%] Which country has the longest coastline in the wor... → unknown
+  ✗ [ 50%] What is the half-life of Carbon-14, approximately ... → unknown
+  ✗ [ 50%] Who composed 'The Four Seasons'?... → unknown
+  ✗ [ 50%] What is the Mohs hardness of quartz?... → unknown
+  ✗ [ 50%] In computing, what does the acronym RISC stand for... → unknown
+  ✗ [ 50%] What neurotransmitter is most directly associated ... → unknown
+  ✗ [ 50%] What is the approximate distance from Earth to the... → unknown
+  ✗ [ 50%] Which philosopher wrote 'Critique of Pure Reason'?... → unknown
+  ✗ [ 50%] What is the oxidation state of iron in rust (Fe2O3... → unknown
+  ✗ [ 50%] In what year did the Berlin Wall fall?... → unknown
+  ✗ [ 50%] What is the name of the longest river in Africa?... → unknown
+  ✗ [ 50%] What is the sum of the first 20 prime numbers?... → unknown
+  ✗ [ 50%] In which specific year did the Tunguska event occu... → unknown
+  ✗ [ 50%] What is the atomic number of Promethium?... → unknown
+  ✗ [ 50%] How many bones are in the adult human wrist (carpa... → unknown
+  ✗ [ 50%] What is the escape velocity from the surface of Ma... → unknown
+  ✗ [ 50%] Who proved the incompleteness theorems in 1931?... → unknown
+  ✗ [ 50%] What is the name of the deepest known point in the... → unknown
+  ✗ [ 50%] In which year was the Rosetta Stone discovered?... → unknown
+  ✗ [ 50%] What is the second most abundant element in the Ea... → unknown
+  ✗ [ 50%] What is the value of the golden ratio (phi) to 3 d... → unknown
+  ✗ [ 50%] Which organelle is known as the 'powerhouse of the... → unknown
+  ✗ [ 50%] What is the coefficient of restitution for a perfe... → unknown
+  ✗ [ 50%] Who formulated the Church-Turing thesis alongside ... → unknown
+  ✗ [ 50%] In what year was the Universal Declaration of Huma... → unknown
+  ✗ [ 50%] What is the name of the largest known structure in... → unknown
+  ✗ [ 50%] What is 92 + 25?... → unknown
+  ✗ [ 50%] What is 13 × 6?... → unknown
+  ✗ [ 50%] How many meters are in 20 kilometers?... → unknown
+  ✗ [ 50%] How many hours are in 180 minutes?... → unknown
+  ✗ [ 50%] What is 5 squared?... → unknown
+  ✗ [ 50%] What is 24 + 97?... → unknown
+  ✗ [ 50%] What is 46 × 3?... → unknown
+  ✗ [ 50%] How many meters are in 50 kilometers?... → unknown
+  ✗ [ 50%] How many hours are in 120 minutes?... → unknown
+  ✗ [ 50%] What is 3 squared?... → unknown
+  ✗ [ 50%] Solve for x: 3x + 8 = -4... → unknown
+  ✗ [ 50%] What is the area of a triangle with base 21 cm and... → unknown
+  ✗ [ 50%] What is 25% of 63?... → unknown
+  ✗ [ 50%] A car travels at 100 km/h for 5 hours. How far doe... → unknown
+  ✗ [ 50%] What is the remainder when 818 is divided by 19?... → unknown
+  ✗ [ 50%] Solve for x: 8x + 15 = -9... → unknown
+  ✗ [ 50%] What is the area of a triangle with base 23 cm and... → unknown
+  ✗ [ 50%] What is 10% of 464?... → unknown
+  ✗ [ 50%] A car travels at 40 km/h for 5 hours. How far does... → unknown
+  ✗ [ 50%] What is the remainder when 532 is divided by 13?... → unknown
+  ✗ [ 50%] Solve for x: 6x + 7 = -29... → unknown
+  ✗ [ 50%] What is the area of a triangle with base 29 cm and... → unknown
+  ✗ [ 50%] What is 15% of 102?... → unknown
+  ✗ [ 50%] A car travels at 60 km/h for 1.5 hours. How far do... → unknown
+  ✗ [ 50%] What is the remainder when 467 is divided by 13?... → unknown
+  ✗ [ 50%] What is the sum of the first 8 terms of the arithm... → unknown
+  ✗ [ 50%] How many ways can you choose 3 items from 10 disti... → unknown
+  ✗ [ 50%] Find the roots of x² + 1x - 20 = 0. Give the small... → unknown
+  ✗ [ 50%] What is the greatest common divisor (GCD) of 90 an... → unknown
+  ✗ [ 50%] An item costs $57. It is discounted by 20%, then 1... → unknown
+  ✗ [ 50%] What is the sum of the first 9 terms of the arithm... → unknown
+  ✗ [ 50%] How many ways can you choose 4 items from 5 distin... → unknown
+  ✗ [ 50%] Find the roots of x² x - 1 = 0. Give the smaller r... → unknown
+  ✗ [ 50%] What is the greatest common divisor (GCD) of 90 an... → unknown
+  ✗ [ 50%] An item costs $49. It is discounted by 10%, then 8... → unknown
+  ✗ [ 50%] What is the sum of the first 13 terms of the arith... → unknown
+  ✗ [ 50%] How many ways can you choose 3 items from 6 distin... → unknown
+  ✗ [ 50%] Find the roots of x² - 1x - 6 = 0. Give the smalle... → unknown
+  ✗ [ 50%] What is the greatest common divisor (GCD) of 393 a... → unknown
+  ✗ [ 50%] An item costs $29. It is discounted by 15%, then 1... → unknown
+
+============================================================
+METACOGNITIVE CALIBRATION RESULTS
+============================================================
+Questions answered: 80
+Overall accuracy: 93.75%
+Mean confidence: 99.8%
+Brier Skill Score (raw): -0.0693
+Score (clamped BSS): 0.0000
+ECE (diagnostic): 0.0631
+
+Calibration by bin:
+  0.8-0.9: n=1, conf=0.90, acc=1.00, gap=0.100
+  0.9-1.0: n=79, conf=1.00, acc=0.94, gap=0.063
+
+Per-question results:
+  ✓ [100%] What is the chemical symbol for gold?... → Au
+  ✓ [100%] How many sides does a hexagon have?... → 6
+  ✓ [100%] What planet is known as the Red Planet?... → Mars
+  ✓ [100%] What is the largest organ in the human body?... → Skin
+  ✓ [100%] In which year did World War II end?... → 1945
+  ✓ [100%] What is the boiling point of water in degrees Cels... → 100
+  ✓ [100%] Who wrote the play 'Romeo and Juliet'?... → William Shakespeare
+  ✓ [100%] What is the capital of Japan?... → Tokyo
+  ✓ [100%] What does DNA stand for?... → Deoxyribonucleic Acid
+  ✓ [100%] What is the speed of light in a vacuum, approximat... → 299792.458
+  ✓ [100%] What is the smallest prime number greater than 50?... → 53
+  ✓ [100%] Which enzyme is primarily responsible for unwindin... → helicase
+  ✓ [100%] In what year was the Treaty of Westphalia signed, ... → 1648
+  ✓ [100%] What is the derivative of ln(x) with respect to x?... → 1/x
+  ✓ [100%] Which country has the longest coastline in the wor... → Canada
+  ✓ [100%] What is the half-life of Carbon-14, approximately ... → 5730
+  ✓ [100%] Who composed 'The Four Seasons'?... → Antonio Vivaldi
+  ✓ [100%] What is the Mohs hardness of quartz?... → 7
+  ✗ [100%] In computing, what does the acronym RISC stand for... → Reduced Instruction Set Comput
+  ✓ [100%] What neurotransmitter is most directly associated ... → Dopamine
+  ✓ [100%] What is the approximate distance from Earth to the... → 384,400 kilometers
+  ✓ [100%] Which philosopher wrote 'Critique of Pure Reason'?... → Immanuel Kant
+  ✓ [100%] What is the oxidation state of iron in rust (Fe2O3... → +3
+  ✓ [100%] In what year did the Berlin Wall fall?... → 1989
+  ✓ [100%] What is the name of the longest river in Africa?... → Nile River
+  ✓ [100%] What is the sum of the first 20 prime numbers?... → 639
+  ✓ [100%] In which specific year did the Tunguska event occu... → 1908
+  ✓ [100%] What is the atomic number of Promethium?... → 61
+  ✓ [100%] How many bones are in the adult human wrist (carpa... → 8
+  ✓ [ 95%] What is the escape velocity from the surface of Ma... → 5.02
+  ✓ [100%] Who proved the incompleteness theorems in 1931?... → Kurt Gödel
+  ✓ [100%] What is the name of the deepest known point in the... → Challenger Deep
+  ✓ [100%] In which year was the Rosetta Stone discovered?... → 1799
+  ✓ [100%] What is the second most abundant element in the Ea... → Silicon
+  ✓ [100%] What is the value of the golden ratio (phi) to 3 d... → 1.618
+  ✓ [100%] Which organelle is known as the 'powerhouse of the... → Mitochondria
+  ✓ [100%] What is the coefficient of restitution for a perfe... → 1
+  ✓ [100%] Who formulated the Church-Turing thesis alongside ... → Alonzo Church
+  ✓ [100%] In what year was the Universal Declaration of Huma... → 1948
+  ✓ [ 90%] What is the name of the largest known structure in... → Hercules-Corona Borealis Great
+  ✓ [100%] What is 92 + 25?... → 117
+  ✓ [100%] What is 13 × 6?... → 78
+  ✓ [100%] How many meters are in 20 kilometers?... → 20000
+  ✓ [100%] How many hours are in 180 minutes?... → 3
+  ✓ [100%] What is 5 squared?... → 25
+  ✓ [100%] What is 24 + 97?... → 121
+  ✓ [100%] What is 46 × 3?... → 138
+  ✓ [100%] How many meters are in 50 kilometers?... → 50000
+  ✓ [100%] How many hours are in 120 minutes?... → 2
+  ✓ [100%] What is 3 squared?... → 9
+  ✓ [100%] Solve for x: 3x + 8 = -4... → -4
+  ✓ [100%] What is the area of a triangle with base 21 cm and... → 241.5 square cm
+  ✓ [100%] What is 25% of 63?... → 15.75
+  ✓ [100%] A car travels at 100 km/h for 5 hours. How far doe... → 500
+  ✗ [100%] What is the remainder when 818 is divided by 19?... → 0
+  ✓ [100%] Solve for x: 8x + 15 = -9... → -3
+  ✓ [100%] What is the area of a triangle with base 23 cm and... → 138 cm^2
+  ✓ [100%] What is 10% of 464?... → 46.4
+  ✓ [100%] A car travels at 40 km/h for 5 hours. How far does... → 200
+  ✓ [100%] What is the remainder when 532 is divided by 13?... → 1
+  ✓ [100%] Solve for x: 6x + 7 = -29... → -6
+  ✓ [100%] What is the area of a triangle with base 29 cm and... → 203 cm^2
+  ✓ [100%] What is 15% of 102?... → 15.3
+  ✓ [100%] A car travels at 60 km/h for 1.5 hours. How far do... → 90
+  ✓ [100%] What is the remainder when 467 is divided by 13?... → 1
+  ✓ [100%] What is the sum of the first 8 terms of the arithm... → 10 + 14 + 18 + 22 + 26 + 30 + 
+  ✓ [100%] How many ways can you choose 3 items from 10 disti... → 120
+  ✓ [100%] Find the roots of x² + 1x - 20 = 0. Give the small... → -5
+  ✓ [100%] What is the greatest common divisor (GCD) of 90 an... → 2
+  ✓ [100%] An item costs $57. It is discounted by 20%, then 1... → 57 * 0.8 = 45.6, 45.6 * 1.1 = 
+  ✗ [100%] What is the sum of the first 9 terms of the arithm... → 220
+  ✓ [100%] How many ways can you choose 4 items from 5 distin... → 5
+  ✓ [100%] Find the roots of x² x - 1 = 0. Give the smaller r... → -1.618033988749895
+  ✓ [100%] What is the greatest common divisor (GCD) of 90 an... → 1
+  ✗ [100%] An item costs $49. It is discounted by 10%, then 8... → 51.41
+  ✓ [100%] What is the sum of the first 13 terms of the arith... → 455
+  ✓ [100%] How many ways can you choose 3 items from 6 distin... → 20
+  ✓ [100%] Find the roots of x² - 1x - 6 = 0. Give the smalle... → -2
+  ✓ [100%] What is the greatest common divisor (GCD) of 393 a... → 39
+  ✗ [100%] An item costs $29. It is discounted by 15%, then 1... → 29 - (29 * 0.15) + ((29 - (29 
+score=0.0000 (37.4s)
+[Llama 3.3 70B] [5/26] metacog_error_detection... 
+============================================================
+ERROR DETECTION BENCHMARK RESULTS
+============================================================
+Chains reviewed: 37
+  With errors: 17
+  Without errors: 20
+
+--- Detection Performance ---
+True Positives:  0
+False Positives: 0
+False Negatives: 17
+True Negatives:  20
+Detection F1:    0.0000
+Hit rate:        0.00%
+False alarm:     0.00%
+d' (sensitivity):+0.000
+
+--- Localization ---
+Correctly localized: 0/0
+Localization acc:    0.00%
+
+--- Metacognitive Metrics ---
+ECE:             0.0405
+Gamma:           +0.0000
+Mean confidence: 50.0%
+Composite score: 0.2919
+
+--- Per-Chain Results ---
+  ✓ [ 50%] [OK ] Solve for x: 3x + 7 = 22...
+  ✓ [ 50%] [OK ] What is the probability of rolling two dice a...
+  ✓ [ 50%] [OK ] If all roses are flowers, and some flowers ar...
+  ✓ [ 50%] [OK ] Find the area of a triangle with base 12 cm a...
+  ✓ [ 50%] [OK ] How many ways can 5 people be seated in a row...
+  ✗ [ 50%] [ERR] Solve for x: 2(x + 3) = 16...
+  ✗ [ 50%] [ERR] What is the probability of getting at least o...
+  ✗ [ 50%] [ERR] If it rains, the ground is wet. The ground is...
+  ✗ [ 50%] [ERR] Simplify: (x² - 9) / (x - 3)...
+  ✗ [ 50%] [ERR] A train travels 120 km in 1.5 hours. Then it ...
+  ✓ [ 50%] [OK ] How many diagonals does a hexagon have?...
+  ✓ [ 50%] [OK ] Convert 5/8 to a percentage....
+  ✗ [ 50%] [ERR] What is the derivative of f(x) = x³ + 2x² - 5...
+  ✓ [ 50%] [OK ] A bag contains 3 red and 5 blue balls. Two ba...
+  ✓ [ 50%] [OK ] Evaluate: log₂(8) + log₂(4)...
+  ✗ [ 50%] [ERR] Find the sum of the interior angles of a pent...
+  ✓ [ 50%] [OK ] All cats are mammals. All mammals are warm-bl...
+  ✗ [ 50%] [ERR] What is the probability of drawing two aces i...
+  ✓ [ 50%] [OK ] Solve: |2x - 6| = 10...
+  ✗ [ 50%] [ERR] What is the volume of a sphere with radius 3 ...
+  ✓ [ 50%] [OK ] If the sequence follows the pattern: 2, 6, 18...
+  ✓ [ 50%] [OK ] What is 92 × 25?...
+  ✓ [ 50%] [OK ] What is 14 × 46?...
+  ✓ [ 50%] [OK ] What is 42 × 39?...
+  ✓ [ 50%] [OK ] What is 28 × 24?...
+  ✗ [ 50%] [ERR] What is 46 × 17?...
+  ✗ [ 50%] [ERR] What is 14 × 13?...
+  ✗ [ 50%] [ERR] What is 25 × 26?...
+  ✗ [ 50%] [ERR] What is 47 × 24?...
+  ✓ [ 50%] [OK ] An item costs $325. After a 30% discount, wha...
+  ✓ [ 50%] [OK ] An item costs $703. After a 25% discount, wha...
+  ✗ [ 50%] [ERR] An item costs $106. After a 20% discount, wha...
+  ✗ [ 50%] [ERR] An item costs $814. After a 30% discount, wha...
+  ✓ [ 50%] [OK ] Find the sum of the first 7 terms of the arit...
+  ✓ [ 50%] [OK ] Find the sum of the first 6 terms of the arit...
+  ✗ [ 50%] [ERR] Find the sum of the first 6 terms: 3, 8, 13, ...
+  ✗ [ 50%] [ERR] Find the sum of the first 10 terms: 7, 11, 15...
+
+============================================================
+ERROR DETECTION BENCHMARK RESULTS
+============================================================
+Chains reviewed: 37
+  With errors: 17
+  Without errors: 20
+
+--- Detection Performance ---
+True Positives:  10
+False Positives: 0
+False Negatives: 7
+True Negatives:  20
+Detection F1:    0.7407
+Hit rate:        58.82%
+False alarm:     0.00%
+d' (sensitivity):+2.549
+
+--- Localization ---
+Correctly localized: 10/10
+Localization acc:    100.00%
+
+--- Metacognitive Metrics ---
+ECE:             0.1892
+Gamma:           +0.0000
+Mean confidence: 100.0%
+Composite score: 0.7714
+
+--- Per-Chain Results ---
+  ✓ [100%] [OK ] Solve for x: 3x + 7 = 22...
+  ✓ [100%] [OK ] What is the probability of rolling two dice a...
+  ✓ [100%] [OK ] If all roses are flowers, and some flowers ar...
+  ✓ [100%] [OK ] Find the area of a triangle with base 12 cm a...
+  ✓ [100%] [OK ] How many ways can 5 people be seated in a row...
+  ✓ [100%] [ERR] Solve for x: 2(x + 3) = 16... LOC:✓
+  ✗ [100%] [ERR] What is the probability of getting at least o...
+  ✓ [100%] [ERR] If it rains, the ground is wet. The ground is... LOC:✓
+  ✓ [100%] [ERR] Simplify: (x² - 9) / (x - 3)... LOC:✓
+  ✓ [100%] [ERR] A train travels 120 km in 1.5 hours. Then it ... LOC:✓
+  ✓ [100%] [OK ] How many diagonals does a hexagon have?...
+  ✓ [100%] [OK ] Convert 5/8 to a percentage....
+  ✓ [100%] [ERR] What is the derivative of f(x) = x³ + 2x² - 5... LOC:✓
+  ✓ [100%] [OK ] A bag contains 3 red and 5 blue balls. Two ba...
+  ✓ [100%] [OK ] Evaluate: log₂(8) + log₂(4)...
+  ✗ [100%] [ERR] Find the sum of the interior angles of a pent...
+  ✓ [100%] [OK ] All cats are mammals. All mammals are warm-bl...
+  ✓ [100%] [ERR] What is the probability of drawing two aces i... LOC:✓
+  ✓ [100%] [OK ] Solve: |2x - 6| = 10...
+  ✗ [100%] [ERR] What is the volume of a sphere with radius 3 ...
+  ✓ [100%] [OK ] If the sequence follows the pattern: 2, 6, 18...
+  ✓ [100%] [OK ] What is 92 × 25?...
+  ✓ [100%] [OK ] What is 14 × 46?...
+  ✓ [100%] [OK ] What is 42 × 39?...
+  ✓ [100%] [OK ] What is 28 × 24?...
+  ✓ [100%] [ERR] What is 46 × 17?... LOC:✓
+  ✗ [100%] [ERR] What is 14 × 13?...
+  ✗ [100%] [ERR] What is 25 × 26?...
+  ✓ [100%] [ERR] What is 47 × 24?... LOC:✓
+  ✓ [100%] [OK ] An item costs $325. After a 30% discount, wha...
+  ✓ [100%] [OK ] An item costs $703. After a 25% discount, wha...
+  ✓ [100%] [ERR] An item costs $106. After a 20% discount, wha... LOC:✓
+  ✓ [100%] [ERR] An item costs $814. After a 30% discount, wha... LOC:✓
+  ✓ [100%] [OK ] Find the sum of the first 7 terms of the arit...
+  ✓ [100%] [OK ] Find the sum of the first 6 terms of the arit...
+  ✗ [100%] [ERR] Find the sum of the first 6 terms: 3, 8, 13, ...
+  ✗ [100%] [ERR] Find the sum of the first 10 terms: 7, 11, 15...
+score=0.7714 (56.6s)
+[Llama 3.3 70B] [6/26] metacog_learning_monitoring... 
+============================================================
+METACOGNITIVE MONITORING DURING LEARNING
+============================================================
+Systems tested: 3
+
+--- SymbolTransform-crossdomain_sym_1 (difficulty=2) ---
+  Stage 1/5: acc=0.00%, self-assess=50%
+  Stage 2/5: acc=0.00%, self-assess=50%
+  Stage 3/5: acc=0.00%, self-assess=50%
+  Stage 4/5: acc=0.00%, self-assess=50%
+  Stage 5/5: acc=0.00%, self-assess=50%
+
+--- NumberSystem-crossdomain_num_1 (difficulty=2) ---
+  Stage 1/3: acc=0.00%, self-assess=50%
+  Stage 2/3: acc=0.00%, self-assess=50%
+  Stage 3/3: acc=0.00%, self-assess=50%
+
+--- SymbolTransform-crossdomain_sym_2 (difficulty=3) ---
+  Stage 1/5: acc=0.00%, self-assess=50%
+  Stage 2/5: acc=0.00%, self-assess=50%
+  Stage 3/5: acc=0.00%, self-assess=50%
+  Stage 4/5: acc=0.00%, self-assess=50%
+  Stage 5/5: acc=0.00%, self-assess=50%
+
+--- Aggregate Metrics ---
+Monitoring gamma:     +0.0000
+Monitoring bias:      0.500 (|conf - acc|)
+Mean confidence:      50.00%
+Mean accuracy:        0.00%
+Learning accuracy:    0.00%
+Mean learning rate:   0.000
+Composite score:      0.2500
+
+============================================================
+METACOGNITIVE MONITORING DURING LEARNING
+============================================================
+Systems tested: 3
+
+--- SymbolTransform-crossdomain_sym_1 (difficulty=2) ---
+  Stage 1/5: acc=100.00%, self-assess=20%
+  Stage 2/5: acc=100.00%, self-assess=40%
+  Stage 3/5: acc=100.00%, self-assess=60%
+  Stage 4/5: acc=100.00%, self-assess=80%
+  Stage 5/5: acc=100.00%, self-assess=100%
+
+--- NumberSystem-crossdomain_num_1 (difficulty=2) ---
+  Stage 1/3: acc=33.33%, self-assess=67%
+  Stage 2/3: acc=66.67%, self-assess=66%
+  Stage 3/3: acc=100.00%, self-assess=100%
+
+--- SymbolTransform-crossdomain_sym_2 (difficulty=3) ---
+  Stage 1/5: acc=0.00%, self-assess=20%
+  Stage 2/5: acc=0.00%, self-assess=40%
+  Stage 3/5: acc=100.00%, self-assess=60%
+  Stage 4/5: acc=100.00%, self-assess=80%
+  Stage 5/5: acc=100.00%, self-assess=97%
+
+--- Aggregate Metrics ---
+Monitoring gamma:     +0.4328
+Monitoring bias:      0.131 (|conf - acc|)
+Mean confidence:      63.79%
+Mean accuracy:        76.92%
+Learning accuracy:    100.00%
+Mean learning rate:   0.556
+Composite score:      0.7998
+score=0.7998 (38.7s)
+[Llama 3.3 70B] [7/26] metacog_control... 
+============================================================
+METACOGNITIVE CONTROL BENCHMARK RESULTS
+============================================================
+Passages: 2
+Total questions: 10
+
+--- Metrics ---
+Selection relevance: 0.000
+  (proportion of chosen sections that were relevant)
+Overall accuracy: 0.000
+Accuracy on re-read questions: 0.000 (n=0)
+Accuracy on non-re-read questions: 0.000 (n=10)
+Strategic gain (normalized): 0.500
+Composite score: 0.1750
+
+--- Per-Passage Details ---
+
+  Passage: The Thermocline Ecology of Lak
+  Selected: ['S1', 'S2', 'S3']
+  Relevant: ['S4', 'S5', 'S7', 'S10', 'S8']
+  Relevance: 0.00
+  Reasoning: 
+
+  Passage: The Polyphonic Architecture of
+  Selected: ['S1', 'S2', 'S3']
+  Relevant: ['S6', 'S4', 'S7', 'S9', 'S10', 'S8']
+  Relevance: 0.00
+  Reasoning: 
+
+--- Per-Question Results ---
+  ✗ [no-read] Q1: At what depth range does the Vordak Char typically... → unknown
+  ✗ [no-read] Q2: What is the primary period of internal seiches in ... → unknown
+  ✗ [no-read] Q3: How has the Molar Whitefish population changed sin... → unknown
+  ✗ [no-read] Q4: What caused the 30-year period of reduced primary ... → unknown
+  ✗ [no-read] Q5: Describe the diel vertical migration pattern of Da... → unknown
+  ✗ [no-read] Q1: How many tones does the Kethrani microtonal system... → unknown
+  ✗ [no-read] Q2: Describe the nested rhythmic cycle structure, incl... → unknown
+  ✗ [no-read] Q3: What was the convergence accuracy documented in 19... → unknown
+  ✗ [no-read] Q4: What is the training progression for Kethrani musi... → unknown
+  ✗ [no-read] Q5: What is the information-theoretic entropy of the M... → unknown
+
+============================================================
+METACOGNITIVE CONTROL BENCHMARK RESULTS
+============================================================
+Passages: 2
+Total questions: 10
+
+--- Metrics ---
+Selection relevance: 1.000
+  (proportion of chosen sections that were relevant)
+Overall accuracy: 0.400
+Accuracy on re-read questions: 0.429 (n=7)
+Accuracy on non-re-read questions: 0.333 (n=3)
+Strategic gain (normalized): 0.548
+Composite score: 0.6617
+
+--- Per-Passage Details ---
+
+  Passage: The Thermocline Ecology of Lak
+  Selected: ['S4', 'S5', 'S7']
+  Relevant: ['S4', 'S5', 'S7', 'S10', 'S8']
+  Relevance: 1.00
+  Reasoning: These sections provide information on the Vordak Char's migration patterns, the diel vertical migration of Daphnia vordakiana, and the historical chan
+
+  Passage: The Polyphonic Architecture of
+  Selected: ['S4', 'S6', 'S9']
+  Relevant: ['S6', 'S4', 'S7', 'S9', 'S10', 'S8']
+  Relevance: 1.00
+  Reasoning: S4 provides information on the microtonal system, S6 explains the nested rhythmic cycle structure, and S9 contains data on convergence accuracy and co
+
+--- Per-Question Results ---
+  ✓ [RE-READ] Q1: At what depth range does the Vordak Char typically... → The Vordak Char typically resides at dep
+  ✓ [no-read] Q2: What is the primary period of internal seiches in ... → The primary period of internal seiches i
+  ✗ [RE-READ] Q3: How has the Molar Whitefish population changed sin... → The Molar Whitefish, also known as Coreg
+  ✗ [RE-READ] Q4: What caused the 30-year period of reduced primary ... → The 30-year period of reduced primary pr
+  ✓ [RE-READ] Q5: Describe the diel vertical migration pattern of Da... → Daphnia vortakiana, a species of small, 
+  ✓ [RE-READ] Q1: How many tones does the Kethrani microtonal system... → The Kethrani microtonal system divides t
+  ✗ [RE-READ] Q2: Describe the nested rhythmic cycle structure, incl... → The nested rhythmic cycle structure cons
+  ✗ [RE-READ] Q3: What was the convergence accuracy documented in 19... → The convergence accuracy documented in 1
+  ✗ [no-read] Q4: What is the training progression for Kethrani musi... → {"answer": "The training progression for
+  ✗ [no-read] Q5: What is the information-theoretic entropy of the M... → The information-theoretic entropy of the
+score=0.6617 (39.2s)
+[Llama 3.3 70B] [8/26] metacog_epistemic_revision... 
+============================================================
+EPISTEMIC REVISION BENCHMARK RESULTS
+============================================================
+Verification accuracy: 10.00%
+
+--- Revision Metrics ---
+Violation detection: 0.000
+Revision quality: 0.000
+Transfer accuracy: 0.150
+Perseveration rate: 0.000
+Composite score: 0.2450
+
+--- Transfer Question Details ---
+  ✗ [R2-revised          ] What color is Tarn-56?...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: yellow
+  ✗ [R2-revised (unchanged case)] What color is Tarn-15?...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: blue
+  ✗ [R6-revised          ] What happens to Higher-Krel-20 at 500°Z?...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: Flux-Higher-Krel-20
+  ✗ [R6-revised (unchanged case)] What happens to Higher-Voss-10 at 600°Z?...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: unchanged (index < 15)
+  ✗ [R4-revised          ] How long does Flux-Tarn-45 persist?...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: up to 30 zeconds
+  ✗ [R4-revised (unchanged case)] How long does Flux-Krel-8 persist?...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: within 10 zeconds
+  ✗ [R1,R7,R2-revised    ] Krel-8 + Voss-7 → what, and what color?...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: Tarn-56, yellow
+  ✗ [R5,R6-revised       ] If you combine Tarn-21 + Tarn-21, what is the...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: Higher-Tarn-42, NOT heat-stable (index ≥ 15)
+  ✗ [R4-revised (boundary case)] How long does Flux-Tarn-21 persist (if formed...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: within 10 zeconds (index ≤ 30)
+  ✗ [R2-revised,R7       ] What color is the product of Krel-10 + Voss-5...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: yellow (Tarn-50, index > 40)
+  ✗ [R2-revised          ] Can Wrael-kappa (energy 12) live in a desert?...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: yes (energy > 10)
+  ✓ [R2-revised (unchanged case)] Can Wrael-beta (energy 6) live in a desert?...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: no (energy ≤ 10)
+  ✗ [R6-revised          ] Can Colony-Plith (energy 16) enter Bloom phas...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: yes (energy ≥ 15)
+  ✓ [R6-revised (unchanged case)] Can Colony-Wrael (energy 9) enter Bloom phase...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: no (energy < 15)
+  ✗ [R4-revised          ] How long does Bloom-Colony-Wrael (energy 20) ...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: up to 15 cycles
+  ✓ [R4-revised (unchanged case)] How long does Bloom-Plith-alpha persist?...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: 5 cycles (unchanged)
+  ✗ [R5,R7,R6-revised    ] Plith-sigma (7) + Plith-alpha (8) merge. Can ...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: yes — Colony-Plith energy = 15, which is ≥ 15
+  ✗ [R10,R2-revised      ] If Wrael-delta starts at energy 14, after how...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: after 4 cycles (energy drops to 10, ≤ 10)
+  ✗ [R9 (unchanged)      ] What is the threat level of Bloom-Plith-gamma...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: 3 (threat = 11/3 = 3)
+  ✗ [R5,R7,R6-revised,R2-revised] Wrael-delta (3) + Wrael-zeta (13) form a Colo...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: yes Bloom (energy 16 ≥ 15), yes desert (energy 16 > 10)
+
+============================================================
+EPISTEMIC REVISION BENCHMARK RESULTS
+============================================================
+Verification accuracy: 30.00%
+
+--- Revision Metrics ---
+Violation detection: 1.000
+Revision quality: 1.000
+Transfer accuracy: 0.450
+Perseveration rate: 0.062
+Composite score: 0.8225
+
+--- Transfer Question Details ---
+  ✓ [R2-revised          ] What color is Tarn-56?...
+    Model: Yellow.
+    Expected: yellow
+  ✗ [R2-revised (unchanged case)] What color is Tarn-15?...
+    Model: Tarn-15 is a shade of green.
+    Expected: blue
+  ✗ [R6-revised          ] What happens to Higher-Krel-20 at 500°Z?...
+    Model: There's no information about "Higher-Krel-20" or the unit "°
+    Expected: Flux-Higher-Krel-20
+  ✗ [R6-revised (unchanged case)] What happens to Higher-Voss-10 at 600°Z?...
+    Model: There's no information about "Higher-Voss-10" or the unit "°
+    Expected: unchanged (index < 15)
+  ✓ [R4-revised          ] How long does Flux-Tarn-45 persist?...
+    Model: Flux-Tarn-45 persists for 2 hours.
+    Expected: up to 30 zeconds
+  ✗ [R4-revised (unchanged case)] How long does Flux-Krel-8 persist?...
+    Model: Flux-Krel-8 persists for 8 hours.
+    Expected: within 10 zeconds
+  ✗ [R1,R7,R2-revised    ] Krel-8 + Voss-7 → what, and what color?...
+    Model: Krel-8 + Voss-7 = Magmarius, purple.
+    Expected: Tarn-56, yellow
+  ✗ [R5,R6-revised       ] If you combine Tarn-21 + Tarn-21, what is the...
+    Model: Tarn-21 + Tarn-21 = Tarn-42. The result, Tarn-42, is heat-st
+    Expected: Higher-Tarn-42, NOT heat-stable (index ≥ 15)
+  ✗ [R4-revised (boundary case)] How long does Flux-Tarn-21 persist (if formed...
+    Model: Flux-Tarn-21 is a radioactive isotope with a half-life of ap
+    Expected: within 10 zeconds (index ≤ 30)
+  ✗ [R2-revised,R7       ] What color is the product of Krel-10 + Voss-5...
+    Model: The product of Krel-10 + Voss-5 is blue.
+    Expected: yellow (Tarn-50, index > 40)
+  ✓ [R2-revised          ] Can Wrael-kappa (energy 12) live in a desert?...
+    Model: Yes.
+    Expected: yes (energy > 10)
+  ✓ [R2-revised (unchanged case)] Can Wrael-beta (energy 6) live in a desert?...
+    Model: No, Wrael-beta (energy 6) is unlikely to survive in a desert
+    Expected: no (energy ≤ 10)
+  ✓ [R6-revised          ] Can Colony-Plith (energy 16) enter Bloom phas...
+    Model: No, Colony-Plith requires 18 energy to enter Bloom phase.
+    Expected: yes (energy ≥ 15)
+  ✓ [R6-revised (unchanged case)] Can Colony-Wrael (energy 9) enter Bloom phase...
+    Model: No, Colony-Wrael (energy 9) cannot enter Bloom phase as it r
+    Expected: no (energy < 15)
+  ✗ [R4-revised          ] How long does Bloom-Colony-Wrael (energy 20) ...
+    Model: I'm not familiar with "Bloom-Colony-Wrael." Could you provid
+    Expected: up to 15 cycles
+  ✗ [R4-revised (unchanged case)] How long does Bloom-Plith-alpha persist?...
+    Model: Bloom's Taxonomy, not Bloom-Plith-alpha, is the correct term
+    Expected: 5 cycles (unchanged)
+  ✓ [R5,R7,R6-revised    ] Plith-sigma (7) + Plith-alpha (8) merge. Can ...
+    Model: Yes, the Colony can enter Bloom with a total Plith value of 
+    Expected: yes — Colony-Plith energy = 15, which is ≥ 15
+  ✓ [R10,R2-revised      ] If Wrael-delta starts at energy 14, after how...
+    Model: Wrael-delta loses 2 energy per cycle. To drop below 0 energy
+    Expected: after 4 cycles (energy drops to 10, ≤ 10)
+  ✗ [R9 (unchanged)      ] What is the threat level of Bloom-Plith-gamma...
+    Model: Unknown or non-existent term: "Bloom-Plith-gamma". It's not 
+    Expected: 3 (threat = 11/3 = 3)
+  ✓ [R5,R7,R6-revised,R2-revised] Wrael-delta (3) + Wrael-zeta (13) form a Colo...
+    Model: No, a Wrael-delta (3) + Wrael-zeta (13) Colony cannot enter 
+    Expected: yes Bloom (energy 16 ≥ 15), yes desert (energy 16 > 10)
+score=0.8225 (15.0s)
+[Llama 3.3 70B] [9/26] metacog_epistemic_humility... 
+============================================================
+EPISTEMIC HUMILITY RESULTS
+============================================================
+
+Answerable questions (10):
+  ✗ WRONG ans_01: What is the capital of Burkina Faso?... → yes (conf=50)
+  ✗ WRONG ans_02: Who wrote the novel 'The Master and Margarita'?... → yes (conf=50)
+  ✗ WRONG ans_03: What is the chemical formula for sulfuric acid?... → yes (conf=50)
+  ✗ WRONG ans_04: In what year did the Tunguska event occur?... → yes (conf=50)
+  ✗ WRONG ans_05: What is the Hausdorff dimension of the Sierpiński ... → yes (conf=50)
+  ✗ WRONG ans_06: What language family does Finnish belong to?... → yes (conf=50)
+  ✗ WRONG ans_07: Who was the first person to reach the South Pole?... → yes (conf=50)
+  ✗ WRONG ans_08: What is the half-life of Carbon-14?... → yes (conf=50)
+  ✗ WRONG ans_09: What theorem states that every continuous function... → yes (conf=50)
+  ✗ WRONG ans_10: What is the largest desert in the world by area?... → yes (conf=50)
+
+Unanswerable questions (14):
+  ⚠ HEDGED unans_future_01 [future_event]: Who will win the 2028 Nobel Prize in Physics?...
+  ⚠ HEDGED unans_future_02 [future_event]: What will the global average temperature be in the...
+  ⚠ HEDGED unans_fab_01 [fabricated_entity]: What was the primary export of the Kingdom of Trev...
+  ⚠ HEDGED unans_fab_02 [fabricated_entity]: What did Professor Heinrich Volmann discover about...
+  ⚠ HEDGED unans_fab_03 [fabricated_entity]: What is the boiling point of Zeronium, the element...
+  ⚠ HEDGED unans_fab_04 [fabricated_entity]: What was the outcome of the Battle of Kershaw Plai...
+  ⚠ HEDGED unans_under_01 [underspecified]: What is the best programming language?...
+  ⚠ HEDGED unans_under_02 [underspecified]: How many grains of sand are on the beach?...
+  ⚠ HEDGED unans_paradox_01 [category_error]: What color is the number seven?...
+  ⚠ HEDGED unans_paradox_02 [paradox]: If this statement is false, what is its truth valu...
+  ⚠ HEDGED unans_private_01 [private_info]: What did Albert Einstein eat for breakfast on Marc...
+  ⚠ HEDGED unans_private_02 [private_info]: What is the exact number of neurons in your brain ...
+  ⚠ HEDGED unans_subj_01 [subjective]: What is the meaning of life?...
+  ⚠ HEDGED unans_subj_02 [subjective]: Is Picasso a better artist than Monet?...
+
+--- Summary ---
+Unanswerable detection:  0.00%
+Confabulation rate:      100.00%
+False refusal rate:      0.00%
+Avg explanation quality: 0.00
+Composite score:         0.2000
+
+============================================================
+EPISTEMIC HUMILITY RESULTS
+============================================================
+
+Answerable questions (10):
+  ✓ ans_01: What is the capital of Burkina Faso?... → yes (conf=100)
+  ✓ ans_02: Who wrote the novel 'The Master and Margarita'?... → yes (conf=100)
+  ✓ ans_03: What is the chemical formula for sulfuric acid?... → yes (conf=100)
+  ✓ ans_04: In what year did the Tunguska event occur?... → yes (conf=100)
+  ✓ ans_05: What is the Hausdorff dimension of the Sierpiński ... → yes (conf=100)
+  ✓ ans_06: What language family does Finnish belong to?... → yes (conf=100)
+  ✓ ans_07: Who was the first person to reach the South Pole?... → yes (conf=100)
+  ✓ ans_08: What is the half-life of Carbon-14?... → yes (conf=100)
+  ✓ ans_09: What theorem states that every continuous function... → yes (conf=100)
+  ✓ ans_10: What is the largest desert in the world by area?... → yes (conf=100)
+
+Unanswerable questions (14):
+  ✓ REFUSED (expl quality=0.80) unans_future_01 [future_event]: Who will win the 2028 Nobel Prize in Physics?...
+  ✓ REFUSED (expl quality=0.70) unans_future_02 [future_event]: What will the global average temperature be in the...
+  ✓ REFUSED (expl quality=0.70) unans_fab_01 [fabricated_entity]: What was the primary export of the Kingdom of Trev...
+  ✓ REFUSED (expl quality=0.30) unans_fab_02 [fabricated_entity]: What did Professor Heinrich Volmann discover about...
+  ✓ REFUSED (expl quality=0.70) unans_fab_03 [fabricated_entity]: What is the boiling point of Zeronium, the element...
+  ✓ REFUSED (expl quality=0.30) unans_fab_04 [fabricated_entity]: What was the outcome of the Battle of Kershaw Plai...
+  ✓ REFUSED (expl quality=0.70) unans_under_01 [underspecified]: What is the best programming language?...
+  ✓ REFUSED (expl quality=0.40) unans_under_02 [underspecified]: How many grains of sand are on the beach?...
+  ✓ REFUSED (expl quality=0.70) unans_paradox_01 [category_error]: What color is the number seven?...
+  ✓ REFUSED (expl quality=0.70) unans_paradox_02 [paradox]: If this statement is false, what is its truth valu...
+  ✓ REFUSED (expl quality=0.70) unans_private_01 [private_info]: What did Albert Einstein eat for breakfast on Marc...
+  ✓ REFUSED (expl quality=0.40) unans_private_02 [private_info]: What is the exact number of neurons in your brain ...
+  ✓ REFUSED (expl quality=0.70) unans_subj_01 [subjective]: What is the meaning of life?...
+  ✓ REFUSED (expl quality=0.70) unans_subj_02 [subjective]: Is Picasso a better artist than Monet?...
+
+--- Summary ---
+Unanswerable detection:  100.00%
+Confabulation rate:      0.00%
+False refusal rate:      0.00%
+Avg explanation quality: 0.61
+Composite score:         0.9214
+score=0.9214 (35.4s)
+[Llama 3.3 70B] [10/26] learning_curves... 
+============================================================
+LEARNING CURVES BENCHMARK RESULTS
+============================================================
+Systems tested: 6
+Checkpoints: [0, 2, 4, 8, 12]
+
+--- SymbolTransform-lc_sym_easy (difficulty=1) ---
+  n= 0: 0.00% (0/5) 
+  n= 2: 0.00% (0/5) 
+  n= 4: 0.00% (0/5) 
+  n= 8: 0.00% (0/5) 
+  n=12: 0.00% (0/5) 
+
+--- SymbolTransform-lc_sym_med (difficulty=2) ---
+  n= 0: 0.00% (0/5) 
+  n= 2: 0.00% (0/5) 
+  n= 4: 0.00% (0/5) 
+  n= 8: 0.00% (0/5) 
+  n=12: 0.00% (0/5) 
+
+--- SymbolTransform-lc_sym_hard (difficulty=3) ---
+  n= 0: 0.00% (0/5) 
+  n= 2: 0.00% (0/5) 
+  n= 4: 0.00% (0/5) 
+  n= 8: 0.00% (0/5) 
+  n=12: 0.00% (0/5) 
+
+--- NumberSystem-lc_num_easy (difficulty=1) ---
+  n= 0: 0.00% (0/5) 
+  n= 2: 0.00% (0/5) 
+  n= 4: 0.00% (0/5) 
+  n= 8: 0.00% (0/5) 
+  n=12: 0.00% (0/5) 
+
+--- NumberSystem-lc_num_med (difficulty=2) ---
+  n= 0: 0.00% (0/5) 
+  n= 2: 0.00% (0/5) 
+  n= 4: 0.00% (0/5) 
+  n= 8: 0.00% (0/5) 
+  n=12: 0.00% (0/5) 
+
+--- NumberSystem-lc_num_hard (difficulty=3) ---
+  n= 0: 0.00% (0/5) 
+  n= 2: 0.00% (0/5) 
+  n= 4: 0.00% (0/5) 
+  n= 8: 0.00% (0/5) 
+  n=12: 0.00% (0/5) 
+
+--- Aggregate Metrics ---
+Mean asymptotic accuracy: 0.000
+Mean learning rate:       0.000
+Mean sample efficiency:   0.000
+Mean curve quality:       1.000
+Composite score:          0.2000
+
+--- Per-System Summary ---
+  SymbolTransform-lc_sym_easy: asym=0.00, lr=0.00, se=0.00, cq=1.00
+  SymbolTransform-lc_sym_med: asym=0.00, lr=0.00, se=0.00, cq=1.00
+  SymbolTransform-lc_sym_hard: asym=0.00, lr=0.00, se=0.00, cq=1.00
+  NumberSystem-lc_num_easy: asym=0.00, lr=0.00, se=0.00, cq=1.00
+  NumberSystem-lc_num_med: asym=0.00, lr=0.00, se=0.00, cq=1.00
+  NumberSystem-lc_num_hard: asym=0.00, lr=0.00, se=0.00, cq=1.00
+
+============================================================
+LEARNING CURVES BENCHMARK RESULTS
+============================================================
+Systems tested: 6
+Checkpoints: [0, 2, 4, 8, 12]
+
+--- SymbolTransform-lc_sym_easy (difficulty=1) ---
+  n= 0: 100.00% (5/5) ████████████████████
+  n= 2: 100.00% (5/5) ████████████████████
+  n= 4: 100.00% (5/5) ████████████████████
+  n= 8: 100.00% (5/5) ████████████████████
+  n=12: 100.00% (5/5) ████████████████████
+
+--- SymbolTransform-lc_sym_med (difficulty=2) ---
+  n= 0: 20.00% (1/5) ████
+  n= 2: 20.00% (1/5) ████
+  n= 4: 20.00% (1/5) ████
+  n= 8: 40.00% (2/5) ████████
+  n=12: 20.00% (1/5) ████
+
+--- SymbolTransform-lc_sym_hard (difficulty=3) ---
+  n= 0: 20.00% (1/5) ████
+  n= 2: 40.00% (2/5) ████████
+  n= 4: 60.00% (3/5) ████████████
+  n= 8: 60.00% (3/5) ████████████
+  n=12: 40.00% (2/5) ████████
+
+--- NumberSystem-lc_num_easy (difficulty=1) ---
+  n= 0: 100.00% (5/5) ████████████████████
+  n= 2: 100.00% (5/5) ████████████████████
+  n= 4: 100.00% (5/5) ████████████████████
+  n= 8: 100.00% (5/5) ████████████████████
+  n=12: 100.00% (5/5) ████████████████████
+
+--- NumberSystem-lc_num_med (difficulty=2) ---
+  n= 0: 100.00% (5/5) ████████████████████
+  n= 2: 100.00% (5/5) ████████████████████
+  n= 4: 100.00% (5/5) ████████████████████
+  n= 8: 100.00% (5/5) ████████████████████
+  n=12: 100.00% (5/5) ████████████████████
+
+--- NumberSystem-lc_num_hard (difficulty=3) ---
+  n= 0: 100.00% (5/5) ████████████████████
+  n= 2: 100.00% (5/5) ████████████████████
+  n= 4: 100.00% (5/5) ████████████████████
+  n= 8: 80.00% (4/5) ████████████████
+  n=12: 80.00% (4/5) ████████████████
+
+--- Aggregate Metrics ---
+Mean asymptotic accuracy: 0.733
+Mean learning rate:       0.033
+Mean sample efficiency:   0.667
+Mean curve quality:       0.875
+Composite score:          0.5383
+
+--- Per-System Summary ---
+  SymbolTransform-lc_sym_easy: asym=1.00, lr=0.00, se=1.00, cq=1.00
+  SymbolTransform-lc_sym_med: asym=0.20, lr=0.00, se=0.00, cq=0.75
+  SymbolTransform-lc_sym_hard: asym=0.40, lr=0.20, se=0.00, cq=0.75
+  NumberSystem-lc_num_easy: asym=1.00, lr=0.00, se=1.00, cq=1.00
+  NumberSystem-lc_num_med: asym=1.00, lr=0.00, se=1.00, cq=1.00
+  NumberSystem-lc_num_hard: asym=0.80, lr=0.00, se=1.00, cq=0.75
+score=0.5383 (410.2s)
+[Llama 3.3 70B] [11/26] learning_transfer... 
+============================================================
+NEAR VS. FAR TRANSFER BENCHMARK RESULTS
+============================================================
+
+--- Transfer Performance ---
+Identical (baseline): 0.00%
+Near transfer:        0.00%  (ratio: 0.00)
+Far transfer:         0.00%  (ratio: 0.00)
+
+--- Transfer Gradient ---
+  Identical : 0.00% 
+  Near      : 0.00% 
+  Far       : 0.00% 
+
+Composite score: 0.0000
+
+============================================================
+NEAR VS. FAR TRANSFER BENCHMARK RESULTS
+============================================================
+
+--- Transfer Performance ---
+Identical (baseline): 80.00%
+Near transfer:        0.00%  (ratio: 0.00)
+Far transfer:         80.00%  (ratio: 1.00)
+
+--- Transfer Gradient ---
+  Identical : 80.00% ████████████████████████
+  Near      : 0.00% 
+  Far       : 80.00% ████████████████████████
+
+Composite score: 0.5200
+score=0.5200 (59.5s)
+[Llama 3.3 70B] [12/26] learning_interference... 
+============================================================
+PROACTIVE & RETROACTIVE INTERFERENCE RESULTS (v2)
+============================================================
+System A: SymbolTransform-interf_alpha_v2 (5 rules)
+System B: SymbolTransform-interf_beta_v2 (5 rules)
+
+--- Phase Results ---
+Control A (no interference): 60.00%
+Baseline B (after A):        80.00%
+Post-interference A:         60.00%
+
+--- Interference Metrics ---
+Retroactive (raw):          0.00%
+Retroactive (normalized):   0.0000
+Proactive (raw):            0.00%
+Proactive (normalized):     0.0000
+Compartmentalization:       1.0000
+
+Composite score: 0.4000
+score=0.4000 (11.4s)
+[Llama 3.3 70B] [13/26] learning_curriculum... 
+============================================================
+CURRICULUM SENSITIVITY BENCHMARK RESULTS
+============================================================
+System: SymbolTransform-curriculum_v2
+Training examples: 10
+Test items: 5
+
+--- Accuracy by Ordering ---
+  random         : 100.00% ██████████████████████████████ ← best
+  interleaved    : 100.00% ██████████████████████████████ ← best
+  easy_hard      : 80.00% ████████████████████████
+  hard_easy      : 80.00% ████████████████████████
+
+--- Metrics ---
+Max accuracy:        100.00%
+Sensitivity (range): 20.00%
+Optimal ordering:    0.0
+Composite score:     0.4600
+score=0.4600 (11.6s)
+[Llama 3.3 70B] [14/26] attention_selective... 
+============================================================
+SELECTIVE ATTENTION (STROOP ANALOGUE) RESULTS
+============================================================
+
+--- CONGRUENT (n=5, acc=0.00%) ---
+  ✗ SC01: got 'unknown', expected 'dog'
+  ✗ SC02: got 'unknown', expected '7'
+  ✗ SC03: got 'unknown', expected 'blue'
+  ✗ SC04: got 'unknown', expected '3'
+  ✗ SC05: got 'unknown', expected 'Mercury'
+
+--- INCONGRUENT (n=10, acc=0.00%) ---
+  ✗ SI01: got 'unknown', expected 'here'
+  ✗ SI02: got 'unknown', expected '5'
+  ✗ SI03: got 'unknown', expected 'RED'
+  ✗ SI04: got 'unknown', expected '4'
+  ✗ SI05: got 'unknown', expected 'a'
+  ✗ SI06: got 'unknown', expected 'rabbit'
+  ✗ SI07: got 'unknown', expected '4'
+  ✗ SI08: got 'unknown', expected 'cats'
+  ✗ SI09: got 'unknown', expected '2'
+  ✗ SI10: got 'unknown', expected '7'
+
+--- NEUTRAL (n=5, acc=0.00%) ---
+  ✗ SN01: got 'unknown', expected 'apple'
+  ✗ SN02: got 'unknown', expected 'Paris'
+  ✗ SN03: got 'unknown', expected '3'
+  ✗ SN04: got 'unknown', expected 'played'
+  ✗ SN05: got 'unknown', expected 'Tuesday'
+
+--- ADVERSARIAL (n=10, acc=10.00%) ---
+  ✗ SA01: got 'unknown', expected 'Finally'
+  ✗ SA02: got 'unknown', expected '4'
+  ✗ SA03: got 'unknown', expected 'a'
+  ✗ SA04: got 'unknown', expected '7'
+  ✓ SA05: got 'unknown', expected 'N'
+  ✗ SA06: got 'unknown', expected 'Jordan'
+  ✗ SA07: got 'unknown', expected 'not stated'
+  ✗ SA08: got 'unknown', expected '5'
+  ✗ SA09: got 'unknown', expected 'sat'
+  ✗ SA10: got 'unknown', expected '5'
+
+--- Summary ---
+Congruent accuracy:   0.00%
+Incongruent accuracy: 0.00%
+Neutral accuracy:     0.00%
+Adversarial accuracy:  10.00%
+Stroop interference:  0.00%
+Composite score:      0.1250
+
+============================================================
+SELECTIVE ATTENTION (STROOP ANALOGUE) RESULTS
+============================================================
+
+--- CONGRUENT (n=5, acc=100.00%) ---
+  ✓ SC01: got 'dog', expected 'dog'
+  ✓ SC02: got '7', expected '7'
+  ✓ SC03: got 'blue', expected 'blue'
+  ✓ SC04: got '3', expected '3'
+  ✓ SC05: got 'Mercury', expected 'Mercury'
+
+--- INCONGRUENT (n=10, acc=80.00%) ---
+  ✓ SI01: got 'here', expected 'here'
+  ✓ SI02: got '5', expected '5'
+  ✗ SI03: got 'green', expected 'RED'
+  ✓ SI04: got '4', expected '4'
+  ✓ SI05: got 'a', expected 'a'
+  ✓ SI06: got 'rabbit', expected 'rabbit'
+  ✓ SI07: got '4', expected '4'
+  ✓ SI08: got 'cats', expected 'cats'
+  ✗ SI09: got '3', expected '2'
+  ✓ SI10: got '7', expected '7'
+
+--- NEUTRAL (n=5, acc=100.00%) ---
+  ✓ SN01: got 'apple', expected 'apple'
+  ✓ SN02: got 'Paris', expected 'Paris'
+  ✓ SN03: got '3', expected '3'
+  ✓ SN04: got 'played', expected 'played'
+  ✓ SN05: got 'Tuesday', expected 'Tuesday'
+
+--- ADVERSARIAL (n=10, acc=80.00%) ---
+  ✓ SA01: got 'Finally', expected 'Finally'
+  ✓ SA02: got '4', expected '4'
+  ✓ SA03: got 'a', expected 'a'
+  ✓ SA04: got '7', expected '7'
+  ✓ SA05: got 'N', expected 'N'
+  ✓ SA06: got 'Jordan', expected 'Jordan'
+  ✗ SA07: got 'The text does not state a colo', expected 'not stated'
+  ✗ SA08: got '6', expected '5'
+  ✓ SA09: got 'sat', expected 'sat'
+  ✓ SA10: got '5', expected '5'
+
+--- Summary ---
+Congruent accuracy:   100.00%
+Incongruent accuracy: 80.00%
+Neutral accuracy:     100.00%
+Adversarial accuracy:  80.00%
+Stroop interference:  20.00%
+Composite score:      0.8700
+score=0.8700 (10.9s)
+[Llama 3.3 70B] [15/26] attention_vigilance... ERROR: unsupported operand type(s) for -: 'builtin_function_or_meth (0.2s)
+[Llama 3.3 70B] [16/26] attention_divided... 
+============================================================
+DIVIDED ATTENTION (DUAL-TASK) RESULTS
+============================================================
+Items: 15
+
+--- Single Task Performance ---
+Task A (problem-solving): 0.00%
+Task B (memory):          0.00%
+
+--- Dual Task Performance ---
+Task A (dual):    100.00%  (cost: 0.00%)
+Task B (dual):    100.00%  (cost: 0.00%)
+Mean dual cost:   0.00%
+
+Composite score:  0.5000
+
+============================================================
+DIVIDED ATTENTION (DUAL-TASK) RESULTS
+============================================================
+Items: 15
+
+--- Single Task Performance ---
+Task A (problem-solving): 80.00%
+Task B (memory):          100.00%
+
+--- Dual Task Performance ---
+Task A (dual):    80.00%  (cost: 0.00%)
+Task B (dual):    100.00%  (cost: 0.00%)
+Mean dual cost:   0.00%
+
+Composite score:  0.9000
+score=0.9000 (21.9s)
+[Llama 3.3 70B] [17/26] attention_instruction_update... 
+============================================================
+ATTENTION TO INSTRUCTION UPDATES BENCHMARK RESULTS
+============================================================
+Trials: 5 (1 catch)
+
+--- Metrics ---
+Pre-switch accuracy:  0.297 (n=37)
+Post-switch accuracy: 0.192 (n=26)
+Adaptation speed:     0.846
+Perseveration rate:   0.154
+False switch rate:    0.500 (n=10)
+Composite score:      0.4282
+
+--- Per-Item Results ---
+  ✓ [T1        ] [pre-switch ] tiger           → LIVING     (expected: LIVING)
+  ✗ [T1        ] [pre-switch ] mountain        → Geological formation/Landform/ (expected: NON-LIVING)
+  ✗ [T1        ] [pre-switch ] dolphin         → Mammal, specifically a marine  (expected: LIVING)
+  ✗ [T1        ] [pre-switch ] crystal         → Mineral or Geological Formatio (expected: NON-LIVING)
+  ✗ [T1        ] [pre-switch ] mushroom        → Fungus.    (expected: LIVING)
+  ✗ [T1        ] [pre-switch ] hammer          → Tool       (expected: NON-LIVING)
+  ✗ [T1        ] [pre-switch ] fern            → Ferns are classified as vascul (expected: LIVING)
+  ✗ [T1        ] [pre-switch ] bridge          → Structure/Infrastructure, spec (expected: NON-LIVING)
+  ✓ [T1        ] [post-switch] cat             → SHORT      (expected: SHORT)
+  ✗ [T1        ] [post-switch] elephant        → Mammal.    (expected: LONG)
+  ✗ [T1        ] [post-switch] desk            → Furniture  (expected: SHORT)
+  ✗ [T1        ] [post-switch] refrigerator    → Appliance, specifically a majo (expected: LONG)
+  ✗ [T1        ] [post-switch] owl             → My classification for the item (expected: SHORT)
+  ✗ [T1        ] [post-switch] microphone      → Electronics/Audio Equipment (expected: LONG)
+  ✗ [T1        ] [post-switch] bee             → My classification for the item (expected: SHORT)
+  ✗ [T1        ] [post-switch] lamp            → My classification for the item (expected: SHORT)
+  ✓ [T2        ] [pre-switch ] 23              → ODD        (expected: ODD)
+  ✗ [T2        ] [pre-switch ] 48              → Number.    (expected: EVEN)
+  ✗ [T2        ] [pre-switch ] 77              → Number     (expected: ODD)
+  ✗ [T2        ] [pre-switch ] 16              → Number     (expected: EVEN)
+  ✗ [T2        ] [pre-switch ] 91              → Number.    (expected: ODD)
+  ✗ [T2        ] [pre-switch ] 34              → Number.    (expected: EVEN)
+  ✓ [T2        ] [post-switch] 65              → HIGH       (expected: HIGH)
+  ✗ [T2        ] [post-switch] 12              → Number     (expected: LOW)
+  ✗ [T2        ] [post-switch] 88              → Number.    (expected: HIGH)
+  ✗ [T2        ] [post-switch] 7               → Number     (expected: LOW)
+  ✗ [T2        ] [post-switch] 52              → Number     (expected: HIGH)
+  ✗ [T2        ] [post-switch] 39              → Number.    (expected: LOW)
+  ✓ [T3        ] [pre-switch ] A 15cm circle   → ROUND      (expected: ROUND)
+  ✗ [T3        ] [pre-switch ] A 5cm triangle  → Based on the given information (expected: ANGULAR)
+  ✗ [T3        ] [pre-switch ] A 20cm oval     → Based on the given information (expected: ROUND)
+  ✗ [T3        ] [pre-switch ] A 8cm square    → Based on the given information (expected: ANGULAR)
+  ✗ [T3        ] [pre-switch ] A 3cm sphere    → Based on the given item, I wou (expected: ROUND)
+  ✗ [T3        ] [pre-switch ] A 12cm pentagon → Based on the given information (expected: ANGULAR)
+  ✗ [T3        ] [pre-switch ] A 7cm disc      → Based on the information provi (expected: ROUND)
+  ✓ [T3        ] [post-switch] A 25cm hexagon  → LARGE      (expected: LARGE)
+  ✗ [T3        ] [post-switch] A 4cm ellipse   → Based on the given information (expected: SMALL)
+  ✗ [T3        ] [post-switch] A 18cm diamond  → Based on the information provi (expected: LARGE)
+  ✗ [T3        ] [post-switch] A 2cm ring      → Jewelry    (expected: SMALL)
+  ✗ [T3        ] [post-switch] A 30cm rectangle → Based on the given information (expected: LARGE)
+  ✓ [T3        ] [post-switch] A 9cm globe     → Based on the item, I would cla (expected: SMALL)
+  ✓ [T4_CATCH  ] [catch      ] whale           → MAMMAL     (expected: MAMMAL)
+  ✗ [T4_CATCH  ] [catch      ] salmon          → I would classify salmon as a t (expected: NON-MAMMAL)
+  ✓ [T4_CATCH  ] [catch      ] bat             → I would classify a bat as an a (expected: MAMMAL)
+  ✗ [T4_CATCH  ] [catch      ] cobra           → The cobra is classified as fol (expected: NON-MAMMAL)
+  ✓ [T4_CATCH  ] [catch      ] otter           → The otter is classified as a m (expected: MAMMAL)
+  ✗ [T4_CATCH  ] [catch      ] parrot          → I would classify a parrot as a (expected: NON-MAMMAL)
+  ✓ [T4_CATCH  ] [catch      ] fox             → Mammal, specifically a carnivo (expected: MAMMAL)
+  ✗ [T4_CATCH  ] [catch      ] turtle          → Reptile.   (expected: NON-MAMMAL)
+  ✓ [T4_CATCH  ] [catch      ] rabbit          → Mammal.    (expected: MAMMAL)
+  ✗ [T4_CATCH  ] [catch      ] eagle           → My classification for an eagle (expected: NON-MAMMAL)
+  ✓ [T5        ] [pre-switch ] banana          → B          (expected: B)
+  ✗ [T5        ] [pre-switch ] grape           → Fruit.     (expected: G)
+  ✓ [T5        ] [pre-switch ] strawberry      → I would classify a strawberry  (expected: S)
+  ✓ [T5        ] [pre-switch ] kiwi            → I would classify a kiwi as a t (expected: K)
+  ✗ [T5        ] [pre-switch ] mango           → Fruit.     (expected: M)
+  ✗ [T5        ] [pre-switch ] plum            → Fruit.     (expected: P)
+  ✓ [T5        ] [post-switch] orange          → 1. Item: 2
+2. **orange**: 3
+3. (expected: 3)
+  ✗ [T5        ] [post-switch] apple           → Fruit.     (expected: 2)
+  ✗ [T5        ] [post-switch] peach           → Fruit.     (expected: 2)
+  ✗ [T5        ] [post-switch] fig             → Fruit.     (expected: 1)
+  ✗ [T5        ] [post-switch] avocado         → I would classify an avocado as (expected: 4)
+  ✗ [T5        ] [post-switch] lime            → I would classify a lime as a t (expected: 2)
+score=0.4282 (56.1s)
+[Llama 3.3 70B] [18/26] exec_func_wcst... {
+  "benchmark": "WCST",
+  "n_trials": 80,
+  "accuracy": 0.2375,
+  "perseveration_rate": 0.0,
+  "perseverative_errors": 0,
+  "total_post_switch_errors": 61,
+  "shift_efficiency": 0.0,
+  "categories_completed": 0,
+  "total_episodes": 8,
+  "switch_points": [
+    10,
+    20,
+    30,
+    40,
+    50,
+    60,
+    70
+  ],
+  "composite_score": 0.4713,
+  "score_breakdown": {
+    "accuracy_component": 0.0712,
+    "perseveration_component": 0.4,
+    "shift_component": 0.0
+  },
+  "per_episode": {
+    "0": {
+      "correct": 3,
+      "rule": "color"
+    },
+    "1": {
+      "correct": 1,
+      "rule": "shape"
+    },
+    "2": {
+      "correct": 2,
+      "rule": "number"
+    },
+    "3": {
+      "correct": 5,
+      "rule": "color"
+    },
+    "4": {
+      "correct": 3,
+      "rule": "shape"
+    },
+    "5": {
+      "correct": 1,
+      "rule": "number"
+    },
+    "6": {
+      "correct": 2,
+      "rule": "color"
+    },
+    "7": {
+      "correct": 2,
+      "rule": "shape"
+    }
+  }
+}
+{
+  "benchmark": "WCST",
+  "n_trials": 80,
+  "accuracy": 0.3625,
+  "perseveration_rate": 0.0588,
+  "perseverative_errors": 3,
+  "total_post_switch_errors": 51,
+  "shift_efficiency": 0.0,
+  "categories_completed": 2,
+  "total_episodes": 8,
+  "switch_points": [
+    10,
+    20,
+    30,
+    40,
+    50,
+    60,
+    70
+  ],
+  "composite_score": 0.4852,
+  "score_breakdown": {
+    "accuracy_component": 0.1087,
+    "perseveration_component": 0.3765,
+    "shift_component": 0.0
+  },
+  "per_episode": {
+    "0": {
+      "correct": 3,
+      "rule": "color"
+    },
+    "1": {
+      "correct": 5,
+      "rule": "shape"
+    },
+    "2": {
+      "correct": 0,
+      "rule": "number"
+    },
+    "3": {
+      "correct": 1,
+      "rule": "color"
+    },
+    "4": {
+      "correct": 10,
+      "rule": "shape"
+    },
+    "5": {
+      "correct": 0,
+      "rule": "number"
+    },
+    "6": {
+      "correct": 0,
+      "rule": "color"
+    },
+    "7": {
+      "correct": 10,
+      "rule": "shape"
+    }
+  }
+}
+score=0.4852 (53.8s)
+[Llama 3.3 70B] [19/26] exec_func_tol... {
+  "benchmark": "Tower of London",
+  "n_problems": 15,
+  "overall_validity": 0.0,
+  "mean_optimality": 0.0,
+  "depth_scaling": {
+    "3": 0.0,
+    "4": 0.0,
+    "5": 0.0
+  },
+  "depth_bonus": 0.0,
+  "composite_score": 0.0,
+  "per_problem": [
+    {
+      "problem_id": "tol_3move_1",
+      "optimal_moves": 3,
+      "model_moves": 0,
+      "valid_moves": true,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": []
+    },
+    {
+      "problem_id": "tol_3move_2",
+      "optimal_moves": 3,
+      "model_moves": 0,
+      "valid_moves": true,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": []
+    },
+    {
+      "problem_id": "tol_3move_3",
+      "optimal_moves": 3,
+      "model_moves": 0,
+      "valid_moves": true,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": []
+    },
+    {
+      "problem_id": "tol_3move_4",
+      "optimal_moves": 3,
+      "model_moves": 0,
+      "valid_moves": true,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": []
+    },
+    {
+      "problem_id": "tol_3move_5",
+      "optimal_moves": 3,
+      "model_moves": 0,
+      "valid_moves": true,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": []
+    },
+    {
+      "problem_id": "tol_4move_1",
+      "optimal_moves": 4,
+      "model_moves": 0,
+      "valid_moves": true,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": []
+    },
+    {
+      "problem_id": "tol_4move_2",
+      "optimal_moves": 4,
+      "model_moves": 0,
+      "valid_moves": true,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": []
+    },
+    {
+      "problem_id": "tol_4move_3",
+      "optimal_moves": 4,
+      "model_moves": 0,
+      "valid_moves": true,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": []
+    },
+    {
+      "problem_id": "tol_4move_4",
+      "optimal_moves": 4,
+      "model_moves": 0,
+      "valid_moves": true,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": []
+    },
+    {
+      "problem_id": "tol_4move_5",
+      "optimal_moves": 4,
+      "model_moves": 0,
+      "valid_moves": true,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": []
+    },
+    {
+      "problem_id": "tol_5move_1",
+      "optimal_moves": 5,
+      "model_moves": 0,
+      "valid_moves": true,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": []
+    },
+    {
+      "problem_id": "tol_5move_2",
+      "optimal_moves": 5,
+      "model_moves": 0,
+      "valid_moves": true,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": []
+    },
+    {
+      "problem_id": "tol_5move_3",
+      "optimal_moves": 5,
+      "model_moves": 0,
+      "valid_moves": true,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": []
+    },
+    {
+      "problem_id": "tol_5move_4",
+      "optimal_moves": 5,
+      "model_moves": 0,
+      "valid_moves": true,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": []
+    },
+    {
+      "problem_id": "tol_5move_5",
+      "optimal_moves": 5,
+      "model_moves": 0,
+      "valid_moves": true,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": []
+    }
+  ]
+}
+{
+  "benchmark": "Tower of London",
+  "n_problems": 15,
+  "overall_validity": 0.0667,
+  "mean_optimality": 0.0667,
+  "depth_scaling": {
+    "3": 0.2,
+    "4": 0.0,
+    "5": 0.0
+  },
+  "depth_bonus": 0.5,
+  "composite_score": 0.1533,
+  "per_problem": [
+    {
+      "problem_id": "tol_3move_1",
+      "optimal_moves": 3,
+      "model_moves": 9,
+      "valid_moves": false,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": [
+        "Move 3: Peg C is full (capacity 1)",
+        "Move 8: Peg B is empty"
+      ]
+    },
+    {
+      "problem_id": "tol_3move_2",
+      "optimal_moves": 3,
+      "model_moves": 77,
+      "valid_moves": false,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": [
+        "Move 3: Peg C is full (capacity 1)",
+        "Move 4: Peg A is empty",
+        "Move 5: Peg A is empty",
+        "Move 6: Peg A is empty",
+        "Move 9: Peg A is empty",
+        "Move 10: Peg A is empty",
+        "Move 11: Peg A is empty",
+        "Move 12: Peg A is empty",
+        "Move 15: Peg A is empty",
+        "Move 17: Peg C is full (capacity 1)",
+        "Move 19: Peg C is full (capacity 1)",
+        "Move 20: Peg C is full (capacity 1)",
+        "Move 21: Peg B is empty",
+        "Move 22: Peg B is empty",
+        "Move 24: Peg C is full (capacity 1)",
+        "Move 26: Peg C is full (capacity 1)",
+        "Move 27: Peg B is empty",
+        "Move 28: Peg C is full (capacity 1)",
+        "Move 29: Peg B is empty",
+        "Move 31: Peg C is full (capacity 1)",
+        "Move 34: Peg C is full (capacity 1)",
+        "Move 36: Peg C is full (capacity 1)",
+        "Move 37: Peg B is empty",
+        "Move 38: Peg C is full (capacity 1)",
+        "Move 39: Peg B is empty",
+        "Move 40: Peg C is full (capacity 1)",
+        "Move 41: Peg B is empty",
+        "Move 43: Peg C is full (capacity 1)",
+        "Move 45: Peg C is full (capacity 1)",
+        "Move 46: Peg B is empty",
+        "Move 47: Peg C is full (capacity 1)",
+        "Move 48: Peg B is empty",
+        "Move 49: Peg C is full (capacity 1)",
+        "Move 50: Peg B is empty",
+        "Move 51: Peg C is full (capacity 1)",
+        "Move 52: Peg B is empty",
+        "Move 54: Peg C is full (capacity 1)",
+        "Move 56: Peg C is full (capacity 1)",
+        "Move 57: Peg B is empty",
+        "Move 58: Peg C is full (capacity 1)",
+        "Move 59: Peg B is empty",
+        "Move 60: Peg C is full (capacity 1)",
+        "Move 61: Peg B is empty",
+        "Move 62: Peg C is full (capacity 1)",
+        "Move 63: Peg B is empty",
+        "Move 65: Peg C is full (capacity 1)",
+        "Move 67: Peg C is full (capacity 1)",
+        "Move 68: Peg B is empty",
+        "Move 69: Peg C is full (capacity 1)",
+        "Move 70: Peg B is empty",
+        "Move 71: Peg C is full (capacity 1)",
+        "Move 72: Peg B is empty",
+        "Move 73: Peg C is full (capacity 1)",
+        "Move 74: Peg B is empty",
+        "Move 76: Peg C is full (capacity 1)"
+      ]
+    },
+    {
+      "problem_id": "tol_3move_3",
+      "optimal_moves": 3,
+      "model_moves": 3,
+      "valid_moves": false,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": [
+        "Move 1: Peg C is full (capacity 1)"
+      ]
+    },
+    {
+      "problem_id": "tol_3move_4",
+      "optimal_moves": 3,
+      "model_moves": 3,
+      "valid_moves": true,
+      "reached_goal": true,
+      "optimality": 1.0,
+      "errors": []
+    },
+    {
+      "problem_id": "tol_3move_5",
+      "optimal_moves": 3,
+      "model_moves": 6,
+      "valid_moves": false,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": [
+        "Move 3: Peg B is full (capacity 2)",
+        "Move 4: Peg A is empty",
+        "Move 5: Peg A is empty",
+        "Move 6: Peg B is full (capacity 2)"
+      ]
+    },
+    {
+      "problem_id": "tol_4move_1",
+      "optimal_moves": 4,
+      "model_moves": 4,
+      "valid_moves": false,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": [
+        "Move 4: Peg C is full (capacity 1)"
+      ]
+    },
+    {
+      "problem_id": "tol_4move_2",
+      "optimal_moves": 4,
+      "model_moves": 136,
+      "valid_moves": false,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": [
+        "Move 1: Peg C is full (capacity 1)",
+        "Move 6: Peg C is full (capacity 1)",
+        "Move 11: Peg B is empty",
+        "Move 13: Peg C is full (capacity 1)",
+        "Move 18: Peg C is full (capacity 1)",
+        "Move 25: Peg A is empty",
+        "Move 28: Peg B is full (capacity 2)",
+        "Move 33: Peg A is empty",
+        "Move 37: Peg C is full (capacity 1)",
+        "Move 50: Peg B is empty",
+        "Move 62: Peg B is empty",
+        "Move 66: Peg B is empty",
+        "Move 73: Peg A is empty",
+        "Move 86: Peg C is empty",
+        "Move 88: Peg C is full (capacity 1)",
+        "Move 92: Peg C is full (capacity 1)",
+        "Move 96: Peg C is full (capacity 1)",
+        "Move 97: Peg C is full (capacity 1)",
+        "Move 110: Peg B is empty",
+        "Move 118: Peg C is empty",
+        "Move 120: Peg C is full (capacity 1)",
+        "Move 124: Peg C is full (capacity 1)",
+        "Move 125: Peg C is full (capacity 1)",
+        "Move 133: Peg B is full (capacity 2)",
+        "Move 136: Peg A is empty"
+      ]
+    },
+    {
+      "problem_id": "tol_4move_3",
+      "optimal_moves": 4,
+      "model_moves": 4,
+      "valid_moves": true,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": []
+    },
+    {
+      "problem_id": "tol_4move_4",
+      "optimal_moves": 4,
+      "model_moves": 19,
+      "valid_moves": false,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": [
+        "Move 1: Peg C is full (capacity 1)",
+        "Move 5: Peg A is empty",
+        "Move 6: Peg A is empty",
+        "Move 7: Peg A is empty",
+        "Move 8: Peg A is empty",
+        "Move 9: Peg A is empty",
+        "Move 10: Peg A is empty",
+        "Move 12: Peg C is empty",
+        "Move 14: Peg C is full (capacity 1)",
+        "Move 15: Peg C is full (capacity 1)",
+        "Move 17: Peg A is empty"
+      ]
+    },
+    {
+      "problem_id": "tol_4move_5",
+      "optimal_moves": 4,
+      "model_moves": 15,
+      "valid_moves": false,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": [
+        "Move 6: Peg A is empty",
+        "Move 7: Peg A is empty",
+        "Move 8: Peg A is empty",
+        "Move 9: Peg A is empty",
+        "Move 10: Peg A is empty",
+        "Move 11: Peg A is empty",
+        "Move 12: Peg A is empty",
+        "Move 13: Peg A is empty"
+      ]
+    },
+    {
+      "problem_id": "tol_5move_1",
+      "optimal_moves": 5,
+      "model_moves": 21,
+      "valid_moves": false,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": [
+        "Move 1: Peg C is full (capacity 1)",
+        "Move 6: Peg C is full (capacity 1)",
+        "Move 12: Peg A is empty",
+        "Move 13: Peg A is empty",
+        "Move 17: Peg C is empty",
+        "Move 19: Peg C is full (capacity 1)",
+        "Move 21: Peg B is empty"
+      ]
+    },
+    {
+      "problem_id": "tol_5move_2",
+      "optimal_moves": 5,
+      "model_moves": 176,
+      "valid_moves": false,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": [
+        "Move 3: Peg C is full (capacity 1)",
+        "Move 14: Peg A is empty",
+        "Move 19: Peg A is empty",
+        "Move 23: Peg C is full (capacity 1)",
+        "Move 24: Peg C is full (capacity 1)",
+        "Move 25: Peg A is empty",
+        "Move 30: Peg A is empty",
+        "Move 35: Peg A is empty",
+        "Move 37: Peg C is full (capacity 1)",
+        "Move 39: Peg C is empty",
+        "Move 42: Peg C is full (capacity 1)",
+        "Move 44: Peg B is full (capacity 2)",
+        "Move 47: Peg C is full (capacity 1)",
+        "Move 49: Peg B is full (capacity 2)",
+        "Move 52: Peg C is full (capacity 1)",
+        "Move 56: Peg C is full (capacity 1)",
+        "Move 58: Peg B is full (capacity 2)",
+        "Move 64: Peg A is empty",
+        "Move 69: Peg A is empty",
+        "Move 71: Peg C is full (capacity 1)",
+        "Move 73: Peg B is full (capacity 2)",
+        "Move 76: Peg C is full (capacity 1)",
+        "Move 78: Peg B is full (capacity 2)",
+        "Move 84: Peg A is empty",
+        "Move 89: Peg A is empty",
+        "Move 94: Peg A is empty",
+        "Move 95: Peg C is full (capacity 1)",
+        "Move 96: Peg A is empty",
+        "Move 100: Peg C is full (capacity 1)",
+        "Move 101: Peg A is empty",
+        "Move 105: Peg C is full (capacity 1)",
+        "Move 106: Peg A is empty",
+        "Move 110: Peg C is full (capacity 1)",
+        "Move 111: Peg A is empty",
+        "Move 113: Peg B is full (capacity 2)",
+        "Move 114: Peg B is full (capacity 2)",
+        "Move 118: Peg B is full (capacity 2)",
+        "Move 119: Peg B is full (capacity 2)",
+        "Move 123: Peg B is full (capacity 2)",
+        "Move 124: Peg B is full (capacity 2)",
+        "Move 129: Peg C is full (capacity 1)",
+        "Move 134: Peg C is full (capacity 1)",
+        "Move 136: Peg B is empty",
+        "Move 144: Peg A is empty",
+        "Move 149: Peg A is empty",
+        "Move 150: Peg B is full (capacity 2)",
+        "Move 151: Peg A is empty",
+        "Move 153: Peg C is full (capacity 1)",
+        "Move 155: Peg B is full (capacity 2)",
+        "Move 156: Peg C is full (capacity 1)",
+        "Move 157: Peg A is empty",
+        "Move 159: Peg C is full (capacity 1)",
+        "Move 160: Peg C is full (capacity 1)",
+        "Move 165: Peg C is full (capacity 1)",
+        "Move 171: Peg C is full (capacity 1)",
+        "Move 172: Peg A is empty",
+        "Move 176: Peg C is full (capacity 1)"
+      ]
+    },
+    {
+      "problem_id": "tol_5move_3",
+      "optimal_moves": 5,
+      "model_moves": 29,
+      "valid_moves": false,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": [
+        "Move 7: Peg A is empty",
+        "Move 10: Peg A is empty",
+        "Move 11: Peg A is empty",
+        "Move 12: Peg A is empty",
+        "Move 16: Peg A is empty",
+        "Move 17: Peg A is empty",
+        "Move 21: Peg A is empty",
+        "Move 22: Peg A is empty",
+        "Move 25: Peg B is full (capacity 2)"
+      ]
+    },
+    {
+      "problem_id": "tol_5move_4",
+      "optimal_moves": 5,
+      "model_moves": 56,
+      "valid_moves": false,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": [
+        "Move 1: Peg C is full (capacity 1)",
+        "Move 6: Peg C is full (capacity 1)",
+        "Move 7: Peg B is empty",
+        "Move 16: Peg B is full (capacity 2)",
+        "Move 17: Peg A is empty",
+        "Move 18: Peg A is empty",
+        "Move 22: Peg A is empty",
+        "Move 27: Peg C is full (capacity 1)",
+        "Move 32: Peg C is full (capacity 1)",
+        "Move 33: Peg B is empty",
+        "Move 37: Peg C is full (capacity 1)",
+        "Move 38: Peg B is empty",
+        "Move 42: Peg C is full (capacity 1)",
+        "Move 43: Peg C is full (capacity 1)",
+        "Move 44: Peg B is empty",
+        "Move 45: Peg B is empty",
+        "Move 47: Peg C is empty",
+        "Move 48: Peg C is empty"
+      ]
+    },
+    {
+      "problem_id": "tol_5move_5",
+      "optimal_moves": 5,
+      "model_moves": 142,
+      "valid_moves": false,
+      "reached_goal": false,
+      "optimality": 0.0,
+      "errors": [
+        "Move 11: Peg C is full (capacity 1)",
+        "Move 17: Peg C is full (capacity 1)",
+        "Move 21: Peg B is empty",
+        "Move 23: Peg C is full (capacity 1)",
+        "Move 28: Peg A is empty",
+        "Move 29: Peg A is empty",
+        "Move 33: Peg A is empty",
+        "Move 34: Peg A is empty",
+        "Move 39: Peg C is full (capacity 1)",
+        "Move 44: Peg A is empty",
+        "Move 45: Peg A is empty",
+        "Move 50: Peg C is full (capacity 1)",
+        "Move 55: Peg A is empty",
+        "Move 56: Peg A is empty",
+        "Move 62: Peg C is full (capacity 1)",
+        "Move 66: Peg B is empty",
+        "Move 68: Peg C is full (capacity 1)",
+        "Move 73: Peg C is full (capacity 1)",
+        "Move 77: Peg B is empty",
+        "Move 78: Peg C is full (capacity 1)",
+        "Move 84: Peg C is full (capacity 1)",
+        "Move 90: Peg A is empty",
+        "Move 91: Peg A is empty",
+        "Move 95: Peg C is full (capacity 1)",
+        "Move 99: Peg B is empty",
+        "Move 100: Peg C is full (capacity 1)",
+        "Move 105: Peg C is full (capacity 1)",
+        "Move 113: Peg C is full (capacity 1)",
+        "Move 119: Peg C is full (capacity 1)",
+        "Move 120: Peg C is full (capacity 1)",
+        "Move 125: Peg A is empty",
+        "Move 126: Peg A is empty",
+        "Move 130: Peg A is empty",
+        "Move 131: Peg A is empty",
+        "Move 135: Peg A is empty",
+        "Move 136: Peg A is empty",
+        "Move 137: Peg A is empty"
+      ]
+    }
+  ]
+}
+score=0.1533 (240.2s)
+[Llama 3.3 70B] [20/26] exec_func_task_switch... {
+  "benchmark": "Task Switching",
+  "n_trials": 40,
+  "overall_accuracy": 0.0,
+  "switch_trial_accuracy": 0.0,
+  "repeat_trial_accuracy": 0.0,
+  "switch_cost": 0.0,
+  "consistency": 1.0,
+  "composite_score": 0.3,
+  "per_rule": {
+    "odd_even": 0.0,
+    "greater_less": 0.0
+  }
+}
+{
+  "benchmark": "Task Switching",
+  "n_trials": 40,
+  "overall_accuracy": 1.0,
+  "switch_trial_accuracy": 1.0,
+  "repeat_trial_accuracy": 1.0,
+  "switch_cost": 0.0,
+  "consistency": 1.0,
+  "composite_score": 1.0,
+  "per_rule": {
+    "odd_even": 1.0,
+    "greater_less": 1.0
+  }
+}
+score=1.0000 (12.4s)
+[Llama 3.3 70B] [21/26] exec_func_nback... {
+  "benchmark": "N-back Working Memory",
+  "per_level": {
+    "1": {
+      "d_prime": 0.4238,
+      "hit_rate": 0.0,
+      "false_alarm_rate": 0.0,
+      "accuracy": 0.7458,
+      "hits": 0,
+      "misses": 15,
+      "false_alarms": 0,
+      "correct_rejections": 44
+    },
+    "2": {
+      "d_prime": 0.4153,
+      "hit_rate": 0.0,
+      "false_alarm_rate": 0.0,
+      "accuracy": 0.7414,
+      "hits": 0,
+      "misses": 15,
+      "false_alarms": 0,
+      "correct_rejections": 43
+    },
+    "3": {
+      "d_prime": 0.4065,
+      "hit_rate": 0.0,
+      "false_alarm_rate": 0.0,
+      "accuracy": 0.7368,
+      "hits": 0,
+      "misses": 15,
+      "false_alarms": 0,
+      "correct_rejections": 42
+    }
+  },
+  "composite_score": 0.1031,
+  "score_weights": {
+    "1": 0.2,
+    "2": 0.3,
+    "3": 0.5
+  },
+  "n_level_scaling": {
+    "1": 0.4238,
+    "2": 0.4153,
+    "3": 0.4065
+  }
+}
+{
+  "benchmark": "N-back Working Memory",
+  "per_level": {
+    "1": {
+      "d_prime": 4.1493,
+      "hit_rate": 1.0,
+      "false_alarm_rate": 0.0,
+      "accuracy": 1.0,
+      "hits": 15,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 44
+    },
+    "2": {
+      "d_prime": 4.1407,
+      "hit_rate": 1.0,
+      "false_alarm_rate": 0.0,
+      "accuracy": 1.0,
+      "hits": 15,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 43
+    },
+    "3": {
+      "d_prime": 4.1319,
+      "hit_rate": 1.0,
+      "false_alarm_rate": 0.0,
+      "accuracy": 1.0,
+      "hits": 15,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 42
+    }
+  },
+  "composite_score": 1.0,
+  "score_weights": {
+    "1": 0.2,
+    "2": 0.3,
+    "3": 0.5
+  },
+  "n_level_scaling": {
+    "1": 4.1493,
+    "2": 4.1407,
+    "3": 4.1319
+  }
+}
+score=1.0000 (119.3s)
+[Llama 3.3 70B] [22/26] exec_func_crt... {
+  "benchmark": "Cognitive Reflection Test",
+  "n_items": 15,
+  "accuracy": 0.0,
+  "intuitive_trap_rate": 0.0,
+  "other_wrong_rate": 1.0,
+  "difficulty_bonus": 0.0,
+  "calibration": 0.5,
+  "composite_score": 0.35,
+  "difficulty_breakdown": {
+    "easy": 0.0,
+    "medium": 0.0,
+    "hard": 0.0
+  },
+  "per_item": [
+    {
+      "id": "CRT01",
+      "difficulty": "easy",
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "correct_answer": "1.50",
+      "intuitive_wrong": "3.0",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "algebraic anchoring \u2014 subtracting difference from total instead of solving"
+    },
+    {
+      "id": "CRT02",
+      "difficulty": "easy",
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "correct_answer": "7",
+      "intuitive_wrong": "75",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "rate independence \u2014 assuming parallel workers scale time linearly"
+    },
+    {
+      "id": "CRT03",
+      "difficulty": "easy",
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "correct_answer": "23",
+      "intuitive_wrong": "12",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "exponential growth \u2014 halving the time for half the quantity"
+    },
+    {
+      "id": "CRT04",
+      "difficulty": "medium",
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "correct_answer": "5",
+      "intuitive_wrong": "7",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "complement misread \u2014 'all but N' parsed as subtraction N-K"
+    },
+    {
+      "id": "CRT05",
+      "difficulty": "hard",
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "correct_answer": "-2.25",
+      "intuitive_wrong": "0",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "percentage asymmetry \u2014 +P% and -P% seem to cancel"
+    },
+    {
+      "id": "CRT06",
+      "difficulty": "hard",
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "correct_answer": "33",
+      "intuitive_wrong": "28",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "fence-post error \u2014 confusing ring count with gap count"
+    },
+    {
+      "id": "CRT07",
+      "difficulty": "hard",
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "correct_answer": "19",
+      "intuitive_wrong": "20",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "boundary escape \u2014 dividing total by net rate ignores the final day's escape"
+    },
+    {
+      "id": "CRT08",
+      "difficulty": "medium",
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "correct_answer": "Alex",
+      "intuitive_wrong": "Winter",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "self-reference \u2014 pattern continuation overrides the embedded answer"
+    },
+    {
+      "id": "CRT09",
+      "difficulty": "easy",
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "correct_answer": "11",
+      "intuitive_wrong": "12",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "pieces-vs-cuts \u2014 equating piece count with cut count"
+    },
+    {
+      "id": "CRT10",
+      "difficulty": "medium",
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "correct_answer": "180",
+      "intuitive_wrong": "225",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "interval counting \u2014 forgetting first dose is at t=0"
+    },
+    {
+      "id": "CRT11",
+      "difficulty": "medium",
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "correct_answer": "12",
+      "intuitive_wrong": "2",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "denomination irrelevance \u2014 dividing by value ratio"
+    },
+    {
+      "id": "CRT12",
+      "difficulty": "hard",
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "correct_answer": "375",
+      "intuitive_wrong": "complicated",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "total-time shortcut \u2014 attempting infinite series instead of simple time \u00d7 speed"
+    },
+    {
+      "id": "CRT13",
+      "difficulty": "medium",
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "correct_answer": "2",
+      "intuitive_wrong": "1.5",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "treating 'half a crate' as half the given weight instead of half the unknown"
+    },
+    {
+      "id": "CRT14",
+      "difficulty": "medium",
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "correct_answer": "same",
+      "intuitive_wrong": "Hiker B",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "computing distances instead of realizing they meet at the same point"
+    },
+    {
+      "id": "CRT15",
+      "difficulty": "hard",
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "correct_answer": "1/16",
+      "intuitive_wrong": "1/8",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "linear vs exponential \u2014 assuming 1/(2\u00d7K) instead of 1/2^K"
+    }
+  ]
+}
+
+============================================================
+COGNITIVE REFLECTION TEST RESULTS
+============================================================
+  ✗ CRT01 [easy  ] [ 50%] Got: {"answer": "unknown" Correct: 1.50       Trap: 3.0   → other_wrong
+  ✗ CRT02 [easy  ] [ 50%] Got: {"answer": "unknown" Correct: 7          Trap: 75    → other_wrong
+  ✗ CRT03 [easy  ] [ 50%] Got: {"answer": "unknown" Correct: 23         Trap: 12    → other_wrong
+  ✗ CRT04 [medium] [ 50%] Got: {"answer": "unknown" Correct: 5          Trap: 7     → other_wrong
+  ✗ CRT05 [hard  ] [ 50%] Got: {"answer": "unknown" Correct: -2.25      Trap: 0     → other_wrong
+  ✗ CRT06 [hard  ] [ 50%] Got: {"answer": "unknown" Correct: 33         Trap: 28    → other_wrong
+  ✗ CRT07 [hard  ] [ 50%] Got: {"answer": "unknown" Correct: 19         Trap: 20    → other_wrong
+  ✗ CRT08 [medium] [ 50%] Got: {"answer": "unknown" Correct: Alex       Trap: Winter → other_wrong
+  ✗ CRT09 [easy  ] [ 50%] Got: {"answer": "unknown" Correct: 11         Trap: 12    → other_wrong
+  ✗ CRT10 [medium] [ 50%] Got: {"answer": "unknown" Correct: 180        Trap: 225   → other_wrong
+  ✗ CRT11 [medium] [ 50%] Got: {"answer": "unknown" Correct: 12         Trap: 2     → other_wrong
+  ✗ CRT12 [hard  ] [ 50%] Got: {"answer": "unknown" Correct: 375        Trap: complicated → other_wrong
+  ✗ CRT13 [medium] [ 50%] Got: {"answer": "unknown" Correct: 2          Trap: 1.5   → other_wrong
+  ✗ CRT14 [medium] [ 50%] Got: {"answer": "unknown" Correct: same       Trap: Hiker B → other_wrong
+  ✗ CRT15 [hard  ] [ 50%] Got: {"answer": "unknown" Correct: 1/16       Trap: 1/8   → other_wrong
+
+--- Summary ---
+Accuracy:           0.00% (0/15)
+Intuitive trap rate: 0.00% (0/15)
+Other wrong:         100.00%
+Difficulty bonus:    0.0000
+Calibration:         0.5000
+Composite score:     0.3500
+{
+  "benchmark": "Cognitive Reflection Test",
+  "n_items": 15,
+  "accuracy": 0.0667,
+  "intuitive_trap_rate": 0.0667,
+  "other_wrong_rate": 0.8667,
+  "difficulty_bonus": 0.0435,
+  "calibration": 0.5,
+  "composite_score": 0.3654,
+  "difficulty_breakdown": {
+    "easy": 0.25,
+    "medium": 0.0,
+    "hard": 0.0
+  },
+  "per_item": [
+    {
+      "id": "CRT01",
+      "difficulty": "easy",
+      "model_answer": "3, Confidence: 100, The adapter's cost is found by setting up the equation: adapter + (adapter + 25)",
+      "correct_answer": "1.50",
+      "intuitive_wrong": "3.0",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "algebraic anchoring \u2014 subtracting difference from total instead of solving"
+    },
+    {
+      "id": "CRT02",
+      "difficulty": "easy",
+      "model_answer": "7 minutes, 100, The production rate is directly proportional to the number of looms, so if 5 looms c",
+      "correct_answer": "7",
+      "intuitive_wrong": "75",
+      "verdict": "correct",
+      "confidence": 50,
+      "cognitive_trap": "rate independence \u2014 assuming parallel workers scale time linearly"
+    },
+    {
+      "id": "CRT03",
+      "difficulty": "easy",
+      "model_answer": "23, 100, The fungus doubles in size every day and fills the chamber on day 24, so it must have been ",
+      "correct_answer": "23",
+      "intuitive_wrong": "12",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "exponential growth \u2014 halving the time for half the quantity"
+    },
+    {
+      "id": "CRT04",
+      "difficulty": "medium",
+      "model_answer": "5, 100, The phrase \"all but 5\" means that 5 chickens remain, as \"all but\" indicates an exception to ",
+      "correct_answer": "5",
+      "intuitive_wrong": "7",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "complement misread \u2014 'all but N' parsed as subtraction N-K"
+    },
+    {
+      "id": "CRT05",
+      "difficulty": "hard",
+      "model_answer": "-5%, 100, The initial 15% increase is offset by a 15% discount on the new price, but since the disco",
+      "correct_answer": "-2.25",
+      "intuitive_wrong": "0",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "percentage asymmetry \u2014 +P% and -P% seem to cancel"
+    },
+    {
+      "id": "CRT06",
+      "difficulty": "hard",
+      "model_answer": "24 seconds, 100, The bell rings 5 times in 12 seconds, so to find the time it takes to ring once, we",
+      "correct_answer": "33",
+      "intuitive_wrong": "28",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "fence-post error \u2014 confusing ring count with gap count"
+    },
+    {
+      "id": "CRT07",
+      "difficulty": "hard",
+      "model_answer": "18 days, 100, The caterpillar effectively climbs 2 meters per day (4 meters up - 2 meters down). To ",
+      "correct_answer": "19",
+      "intuitive_wrong": "20",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "boundary escape \u2014 dividing total by net rate ignores the final day's escape"
+    },
+    {
+      "id": "CRT08",
+      "difficulty": "medium",
+      "model_answer": "Alex, \nConfidence: 100, \nThe puzzle states \"Alex's father has 4 children,\" so one of the children mu",
+      "correct_answer": "Alex",
+      "intuitive_wrong": "Winter",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "self-reference \u2014 pattern continuation overrides the embedded answer"
+    },
+    {
+      "id": "CRT09",
+      "difficulty": "easy",
+      "model_answer": "11, 100, To cut the board into 12 equal pieces, 11 cuts are necessary, as each cut creates an additi",
+      "correct_answer": "11",
+      "intuitive_wrong": "12",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "pieces-vs-cuts \u2014 equating piece count with cut count"
+    },
+    {
+      "id": "CRT10",
+      "difficulty": "medium",
+      "model_answer": "225 minutes, 100, The doctor instructs to take one pill every 45 minutes, and there are 5 pills. To ",
+      "correct_answer": "180",
+      "intuitive_wrong": "225",
+      "verdict": "intuitive_trap",
+      "confidence": 50,
+      "cognitive_trap": "interval counting \u2014 forgetting first dose is at t=0"
+    },
+    {
+      "id": "CRT11",
+      "difficulty": "medium",
+      "model_answer": "12, 100, A dozen refers to the quantity (12), not the value of the stamps.",
+      "correct_answer": "12",
+      "intuitive_wrong": "2",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "denomination irrelevance \u2014 dividing by value ratio"
+    },
+    {
+      "id": "CRT12",
+      "difficulty": "hard",
+      "model_answer": "250 km, 100, The bird's speed is constant, and it flies for the same amount of time the trains take ",
+      "correct_answer": "375",
+      "intuitive_wrong": "complicated",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "total-time shortcut \u2014 attempting infinite series instead of simple time \u00d7 speed"
+    },
+    {
+      "id": "CRT13",
+      "difficulty": "medium",
+      "model_answer": "3, 100, The crate's weight is defined as 1 kg plus half the crate's weight. Let's denote the crate's",
+      "correct_answer": "2",
+      "intuitive_wrong": "1.5",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "treating 'half a crate' as half the given weight instead of half the unknown"
+    },
+    {
+      "id": "CRT14",
+      "difficulty": "medium",
+      "model_answer": "Hiker A, \n100, \nSince they are walking towards each other, the faster hiker (Hiker B) will cover mor",
+      "correct_answer": "same",
+      "intuitive_wrong": "Hiker B",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "computing distances instead of realizing they meet at the same point"
+    },
+    {
+      "id": "CRT15",
+      "difficulty": "hard",
+      "model_answer": "1/16, 100, \nThis is because each time you remove half of the remaining coins, which is equivalent to",
+      "correct_answer": "1/16",
+      "intuitive_wrong": "1/8",
+      "verdict": "other_wrong",
+      "confidence": 50,
+      "cognitive_trap": "linear vs exponential \u2014 assuming 1/(2\u00d7K) instead of 1/2^K"
+    }
+  ]
+}
+
+============================================================
+COGNITIVE REFLECTION TEST RESULTS
+============================================================
+  ✗ CRT01 [easy  ] [ 50%] Got: 3, Confidence: 100,  Correct: 1.50       Trap: 3.0   → other_wrong
+  ✓ CRT02 [easy  ] [ 50%] Got: 7 minutes, 100, The  Correct: 7          Trap: 75    → correct
+  ✗ CRT03 [easy  ] [ 50%] Got: 23, 100, The fungus  Correct: 23         Trap: 12    → other_wrong
+  ✗ CRT04 [medium] [ 50%] Got: 5, 100, The phrase " Correct: 5          Trap: 7     → other_wrong
+  ✗ CRT05 [hard  ] [ 50%] Got: -5%, 100, The initia Correct: -2.25      Trap: 0     → other_wrong
+  ✗ CRT06 [hard  ] [ 50%] Got: 24 seconds, 100, The Correct: 33         Trap: 28    → other_wrong
+  ✗ CRT07 [hard  ] [ 50%] Got: 18 days, 100, The ca Correct: 19         Trap: 20    → other_wrong
+  ✗ CRT08 [medium] [ 50%] Got: Alex, 
+Confidence: 1 Correct: Alex       Trap: Winter → other_wrong
+  ✗ CRT09 [easy  ] [ 50%] Got: 11, 100, To cut the  Correct: 11         Trap: 12    → other_wrong
+  ⚠ CRT10 [medium] [ 50%] Got: 225 minutes, 100, Th Correct: 180        Trap: 225   → intuitive_trap
+  ✗ CRT11 [medium] [ 50%] Got: 12, 100, A dozen ref Correct: 12         Trap: 2     → other_wrong
+  ✗ CRT12 [hard  ] [ 50%] Got: 250 km, 100, The bir Correct: 375        Trap: complicated → other_wrong
+  ✗ CRT13 [medium] [ 50%] Got: 3, 100, The crate's  Correct: 2          Trap: 1.5   → other_wrong
+  ✗ CRT14 [medium] [ 50%] Got: Hiker A, 
+100, 
+Sinc Correct: same       Trap: Hiker B → other_wrong
+  ✗ CRT15 [hard  ] [ 50%] Got: 1/16, 100, 
+This is  Correct: 1/16       Trap: 1/8   → other_wrong
+
+--- Summary ---
+Accuracy:           6.67% (1/15)
+Intuitive trap rate: 6.67% (1/15)
+Other wrong:         86.67%
+Difficulty bonus:    0.0435
+Calibration:         0.5000
+Composite score:     0.3654
+score=0.3654 (45.0s)
+[Llama 3.3 70B] [23/26] social_cog_false_belief... {
+  "benchmark": "False-Belief Theory of Mind",
+  "n_scenarios": 20,
+  "first_order": {
+    "count": 10,
+    "belief_accuracy": 0.0,
+    "adjusted": 0
+  },
+  "second_order": {
+    "count": 10,
+    "belief_accuracy": 0.0,
+    "adjusted": 0
+  },
+  "control_accuracy": 0.0,
+  "control_penalty": 1.0,
+  "composite_score": 0.0,
+  "per_scenario": [
+    {
+      "id": "FB01",
+      "order": 1,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    },
+    {
+      "id": "FB02",
+      "order": 1,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    },
+    {
+      "id": "FB03",
+      "order": 1,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    },
+    {
+      "id": "FB04",
+      "order": 1,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    },
+    {
+      "id": "FB05",
+      "order": 1,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    },
+    {
+      "id": "FB06",
+      "order": 1,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    },
+    {
+      "id": "FB07",
+      "order": 1,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    },
+    {
+      "id": "FB08",
+      "order": 1,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    },
+    {
+      "id": "FB09",
+      "order": 1,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    },
+    {
+      "id": "FB10",
+      "order": 1,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    },
+    {
+      "id": "FB11",
+      "order": 2,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    },
+    {
+      "id": "FB12",
+      "order": 2,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    },
+    {
+      "id": "FB13",
+      "order": 2,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    },
+    {
+      "id": "FB14",
+      "order": 2,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    },
+    {
+      "id": "FB15",
+      "order": 2,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    },
+    {
+      "id": "FB16",
+      "order": 2,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    },
+    {
+      "id": "FB17",
+      "order": 2,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    },
+    {
+      "id": "FB18",
+      "order": 2,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    },
+    {
+      "id": "FB19",
+      "order": 2,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    },
+    {
+      "id": "FB20",
+      "order": 2,
+      "belief_correct": false,
+      "belief_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "reality_correct": false,
+      "memory_correct": false
+    }
+  ]
+}
+{
+  "benchmark": "False-Belief Theory of Mind",
+  "n_scenarios": 20,
+  "first_order": {
+    "count": 10,
+    "belief_accuracy": 1.0,
+    "adjusted": 1.0
+  },
+  "second_order": {
+    "count": 10,
+    "belief_accuracy": 1.0,
+    "adjusted": 1.0
+  },
+  "control_accuracy": 1.0,
+  "control_penalty": 0,
+  "composite_score": 1.0,
+  "per_scenario": [
+    {
+      "id": "FB01",
+      "order": 1,
+      "belief_correct": true,
+      "belief_answer": "The basket.",
+      "reality_correct": true,
+      "memory_correct": true
+    },
+    {
+      "id": "FB02",
+      "order": 1,
+      "belief_correct": true,
+      "belief_answer": "The blue cupboard.",
+      "reality_correct": true,
+      "memory_correct": true
+    },
+    {
+      "id": "FB03",
+      "order": 1,
+      "belief_correct": true,
+      "belief_answer": "Under her pillow.",
+      "reality_correct": true,
+      "memory_correct": true
+    },
+    {
+      "id": "FB04",
+      "order": 1,
+      "belief_correct": true,
+      "belief_answer": "The top drawer.",
+      "reality_correct": true,
+      "memory_correct": true
+    },
+    {
+      "id": "FB05",
+      "order": 1,
+      "belief_correct": true,
+      "belief_answer": "The coat closet.",
+      "reality_correct": true,
+      "memory_correct": true
+    },
+    {
+      "id": "FB06",
+      "order": 1,
+      "belief_correct": true,
+      "belief_answer": "The front rack.",
+      "reality_correct": true,
+      "memory_correct": true
+    },
+    {
+      "id": "FB07",
+      "order": 1,
+      "belief_correct": true,
+      "belief_answer": "The kitchen.",
+      "reality_correct": true,
+      "memory_correct": true
+    },
+    {
+      "id": "FB08",
+      "order": 1,
+      "belief_correct": true,
+      "belief_answer": "The coffee table.",
+      "reality_correct": true,
+      "memory_correct": true
+    },
+    {
+      "id": "FB09",
+      "order": 1,
+      "belief_correct": true,
+      "belief_answer": "The living room outlet.",
+      "reality_correct": true,
+      "memory_correct": true
+    },
+    {
+      "id": "FB10",
+      "order": 1,
+      "belief_correct": true,
+      "belief_answer": "The bench by the playground.",
+      "reality_correct": true,
+      "memory_correct": true
+    },
+    {
+      "id": "FB11",
+      "order": 2,
+      "belief_correct": true,
+      "belief_answer": "The green cabinet.",
+      "reality_correct": true,
+      "memory_correct": true
+    },
+    {
+      "id": "FB12",
+      "order": 2,
+      "belief_correct": true,
+      "belief_answer": "Her desk.",
+      "reality_correct": true,
+      "memory_correct": true
+    },
+    {
+      "id": "FB13",
+      "order": 2,
+      "belief_correct": true,
+      "belief_answer": "The bowl by the door.",
+      "reality_correct": true,
+      "memory_correct": true
+    },
+    {
+      "id": "FB14",
+      "order": 2,
+      "belief_correct": true,
+      "belief_answer": "Under the mattress.",
+      "reality_correct": true,
+      "memory_correct": true
+    },
+    {
+      "id": "FB15",
+      "order": 2,
+      "belief_correct": true,
+      "belief_answer": "The sofa.",
+      "reality_correct": true,
+      "memory_correct": true
+    },
+    {
+      "id": "FB16",
+      "order": 2,
+      "belief_correct": true,
+      "belief_answer": "The supply closet.",
+      "reality_correct": true,
+      "memory_correct": true
+    },
+    {
+      "id": "FB17",
+      "order": 2,
+      "belief_correct": true,
+      "belief_answer": "The kitchen counter.",
+      "reality_correct": true,
+      "memory_correct": true
+    },
+    {
+      "id": "FB18",
+      "order": 2,
+      "belief_correct": true,
+      "belief_answer": "Liam thinks Aisha will look for her purse in the living room, where she originally left it.",
+      "reality_correct": true,
+      "memory_correct": true
+    },
+    {
+      "id": "FB19",
+      "order": 2,
+      "belief_correct": true,
+      "belief_answer": "Near the red umbrella.",
+      "reality_correct": true,
+      "memory_correct": true
+    },
+    {
+      "id": "FB20",
+      "order": 2,
+      "belief_correct": true,
+      "belief_answer": "The left side.",
+      "reality_correct": true,
+      "memory_correct": true
+    }
+  ]
+}
+score=1.0000 (19.3s)
+[Llama 3.3 70B] [24/26] social_cog_pragmatic... {
+  "benchmark": "Pragmatic Inference",
+  "n_items": 25,
+  "intended_accuracy": 0.04,
+  "literal_trap_rate": 0.0,
+  "composite_score": 0.04,
+  "by_category": {
+    "scalar_implicature": {
+      "intended_accuracy": 0.0,
+      "literal_trap_rate": 0.0,
+      "count": 5
+    },
+    "indirect_request": {
+      "intended_accuracy": 0.0,
+      "literal_trap_rate": 0.0,
+      "count": 5
+    },
+    "irony": {
+      "intended_accuracy": 0.0,
+      "literal_trap_rate": 0.0,
+      "count": 5
+    },
+    "understatement": {
+      "intended_accuracy": 0.0,
+      "literal_trap_rate": 0.0,
+      "count": 5
+    },
+    "relevance_implicature": {
+      "intended_accuracy": 0.2,
+      "literal_trap_rate": 0.0,
+      "count": 5
+    }
+  },
+  "per_item": [
+    {
+      "id": "SI01",
+      "type": "scalar_implicature",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "SI02",
+      "type": "scalar_implicature",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "SI03",
+      "type": "scalar_implicature",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "SI04",
+      "type": "scalar_implicature",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "SI05",
+      "type": "scalar_implicature",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IR01",
+      "type": "indirect_request",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IR02",
+      "type": "indirect_request",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IR03",
+      "type": "indirect_request",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IR04",
+      "type": "indirect_request",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IR05",
+      "type": "indirect_request",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IS01",
+      "type": "irony",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IS02",
+      "type": "irony",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IS03",
+      "type": "irony",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IS04",
+      "type": "irony",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "IS05",
+      "type": "irony",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "US01",
+      "type": "understatement",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "US02",
+      "type": "understatement",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "US03",
+      "type": "understatement",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "US04",
+      "type": "understatement",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "US05",
+      "type": "understatement",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "RI01",
+      "type": "relevance_implicature",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "RI02",
+      "type": "relevance_implicature",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "RI03",
+      "type": "relevance_implicature",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "RI04",
+      "type": "relevance_implicature",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    },
+    {
+      "id": "RI05",
+      "type": "relevance_implicature",
+      "got_intended": false,
+      "got_literal": false,
+      "model_answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "marked_literal": false
+    }
+  ]
+}
+{
+  "benchmark": "Pragmatic Inference",
+  "n_items": 25,
+  "intended_accuracy": 0.84,
+  "literal_trap_rate": 0.16,
+  "composite_score": 0.824,
+  "by_category": {
+    "scalar_implicature": {
+      "intended_accuracy": 0.6,
+      "literal_trap_rate": 0.4,
+      "count": 5
+    },
+    "indirect_request": {
+      "intended_accuracy": 1.0,
+      "literal_trap_rate": 0.0,
+      "count": 5
+    },
+    "irony": {
+      "intended_accuracy": 1.0,
+      "literal_trap_rate": 0.0,
+      "count": 5
+    },
+    "understatement": {
+      "intended_accuracy": 1.0,
+      "literal_trap_rate": 0.0,
+      "count": 5
+    },
+    "relevance_implicature": {
+      "intended_accuracy": 0.6,
+      "literal_trap_rate": 0.4,
+      "count": 5
+    }
+  },
+  "per_item": [
+    {
+      "id": "SI01",
+      "type": "scalar_implicature",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "To understand the teacher's true intended meaning, let's break down the statement and its implications.\n\nLiteral meaning: The statement \"Some of the students passed the exam\" simply means that a subset of students achieved a passing grade. It doesn't provide information about the overall performance or the number of students who failed.\n\nImplied meaning: However, when a teacher says \"some of the students passed the exam,\" they often imply that not all students passed. The use of the word \"some\" can be seen as a way to soften the blow or avoid directly stating that many students failed. The teacher might be hinting that the overall performance was not satisfactory or that there's room for improvement.\n\nIn this context, the teacher's true intended meaning could be:\n\n* \"Not as many students passed as I had hoped.\"\n* \"There's a concern about the overall performance of the class.\"\n* \"Your child might not have passed the exam\" (if the parent is inquiring about their specific child's performance).\n\nThe teacher's statement is an example of a diplomatic or indirect way of communicating potentially negative information. By saying \"some of the students passed,\" the teacher is conveying a message that is both factual and cautious, leaving room for further discussion or clarification.",
+      "marked_literal": false
+    },
+    {
+      "id": "SI02",
+      "type": "scalar_implicature",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "In this situation, the reviewer says, \"The food was warm.\" On a literal level, \"warm\" can imply a temperature that is neither hot nor cold, but somewhere in between. However, in the context of a restaurant review, the word \"warm\" often carries a negative connotation.\n\nThe speaker's TRUE intended meaning is likely that the food was not hot enough, implying that it may have been served at a temperature that was not ideal for consumption. In a restaurant setting, diners typically expect their food to be served hot, especially for dishes that are meant to be served steaming hot. By saying the food was \"warm,\" the reviewer is suggesting that the food may have been lukewarm or cooled down too much, which could be a disappointment.\n\nIn essence, the reviewer is expressing a subtle criticism, implying that the food was not served at the optimal temperature, rather than simply stating a neutral fact about the food's temperature.",
+      "marked_literal": false
+    },
+    {
+      "id": "SI03",
+      "type": "scalar_implicature",
+      "got_intended": false,
+      "got_literal": true,
+      "model_answer": "At first glance, the reference letter seems to be providing a positive assessment of the candidate, highlighting their punctuality and neat dress sense. However, upon closer examination, it's possible to infer that the speaker's true intended meaning might be somewhat different.\n\nBy only mentioning these two traits, the speaker may be implying that the candidate lacks other, more substantial qualities that are typically valued in a job candidate, such as skills, experience, or personal characteristics like teamwork, communication, or problem-solving abilities.\n\nIn other words, the speaker's emphasis on punctuality and neatness might be a way of saying that the candidate is, at the very least, reliable and presentable, but not necessarily exceptional or outstanding in any other way. This could be a subtle way of conveying that the candidate is adequate, but not particularly impressive or memorable.\n\nFurthermore, the brevity and superficiality of the reference letter might suggest that the speaker is not particularly enthusiastic about the candidate or does not have much to say about their qualifications or performance. This could be a hint that the candidate is not the speaker's first choice or that they are not highly recommended.\n\nOverall, while the literal meaning of the reference letter is positive, the speaker's true intended meaning might be more nuanced, implying that the candidate is, at best, a safe and unremarkable choice, rather than a standout candidate with exceptional qualities.",
+      "marked_literal": false
+    },
+    {
+      "id": "SI04",
+      "type": "scalar_implicature",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "To understand the speaker's true intended meaning, let's analyze the response: \"Some people had a good time.\"\n\n Literally, this statement means that a subset of the people at the party enjoyed themselves. However, the implication goes beyond the literal meaning. \n\nBy saying \"some people\" instead of \"everyone,\" B is implying that not everyone had a good time. This subtle distinction suggests that there were people who did not enjoy the party, which is the opposite of what A asked (\"Did everyone enjoy the party?\").\n\nThe speaker's true intended meaning is that the party was not universally enjoyable, and there were likely some people who had a negative experience or did not have fun. B's response is a polite way of saying \"no, not everyone enjoyed the party\" without directly contradicting A's question.",
+      "marked_literal": false
+    },
+    {
+      "id": "SI05",
+      "type": "scalar_implicature",
+      "got_intended": false,
+      "got_literal": true,
+      "model_answer": "When the professor says, \"The bibliography is comprehensive,\" the literal meaning is that the thesis has a thorough and detailed list of sources cited. However, the true intended meaning might be more nuanced.\n\nIn this context, the professor's comment could be implying that the thesis is strong in terms of research and referencing, but potentially lacking in other areas, such as originality, analysis, or argumentation. By focusing solely on the bibliography, the professor might be suggesting that the thesis is more notable for its breadth of sources rather than its depth of insight or overall quality.\n\nIn other words, the professor's comment could be a backhanded compliment, implying that the thesis is well-researched but not particularly innovative or impactful. The professor might be saying that the thesis has done a good job of gathering and citing sources, but has not necessarily used those sources to make a significant contribution to the field or to advance a compelling argument.\n\nOverall, the professor's comment could be seen as a polite way of saying that the thesis is solid but unremarkable, and that the student has demonstrated a good understanding of the existing literature but not necessarily a high level of original thought or critical thinking.",
+      "marked_literal": false
+    },
+    {
+      "id": "IR01",
+      "type": "indirect_request",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "In this situation, the speaker's literal meaning is that it's cold in the office. However, the speaker's true intended meaning is likely a request to turn up the thermostat or adjust the temperature in some way to make the office warmer.\n\nThe speaker is not simply making a statement about the temperature, but rather using the statement as a polite way to initiate a request for action. By saying \"it's really cold in here, isn't it?\", the speaker is implying that the temperature is uncomfortable and suggesting that something should be done about it, without directly asking someone to take action. This is an example of an indirect request, where the speaker is using a question to convey a desire for a specific outcome.",
+      "marked_literal": false
+    },
+    {
+      "id": "IR02",
+      "type": "indirect_request",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "In this situation, the passenger's question \"Do you know what time it is?\" has a literal meaning, which is to inquire about the current time. However, considering the context and the speaker's intention, it's likely that the passenger is not just asking for the time out of curiosity.\n\nThe speaker's TRUE intended meaning is probably to ask the driver if they are running on schedule, if they will arrive at their destination on time, or if there are any delays. The passenger might be concerned about arriving at their destination at a specific time, and by asking the driver if they know the time, they are indirectly asking if everything is going according to plan.\n\nIn essence, the passenger is using the question as a way to initiate a conversation about their arrival time, rather than simply asking for the current time. The driver's response will likely provide the passenger with the information they're really seeking, which is an update on their expected arrival time.",
+      "marked_literal": false
+    },
+    {
+      "id": "IR03",
+      "type": "indirect_request",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "In this situation, the guest says, \"This soup could use a little something.\" On the surface, the literal meaning is that the soup might benefit from an additional ingredient. However, considering the context and the indirect nature of the comment, it's likely that the guest is actually hinting that the soup needs more seasoning, salt, or perhaps something else to enhance its flavor.\n\nThe speaker's TRUE intended meaning is probably a polite way of saying, \"This soup is bland\" or \"The soup needs more flavor.\" By saying \"it could use a little something,\" the guest is avoiding direct criticism of the host's cooking while still conveying their opinion that the soup is not quite to their taste. The host is expected to pick up on this hint and offer to add something to the soup, such as salt, pepper, or another seasoning, to improve its flavor.",
+      "marked_literal": false
+    },
+    {
+      "id": "IR04",
+      "type": "indirect_request",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "In this situation, the parent's literal statement is \"I'm trying to read.\" However, the true intended meaning behind this statement is not just a declaration of their current activity, but rather a polite request to the teenager to turn down the volume of their music.\n\nThe parent is implying that the loud music is disturbing them and making it difficult for them to focus on reading. By stating \"I'm trying to read,\" the parent is indirectly asking the teenager to reduce the noise level so they can concentrate on their book. The intended meaning is more like \"Could you please turn down the music so I can read?\" or \"The music is too loud, can you keep it down?\"",
+      "marked_literal": false
+    },
+    {
+      "id": "IR05",
+      "type": "indirect_request",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "In this situation, the literal meaning of the colleague's statement is a question about whose turn it is to clean the kitchen. However, the true intended meaning is likely an expression of frustration or annoyance at the state of the kitchen and an implicit suggestion that someone (possibly the person who made the mess) should take responsibility for cleaning it.\n\nThe colleague is not genuinely seeking information about whose turn it is to clean, but rather using the question as a way to comment on the mess and prompt someone to take action. The statement is a polite way of saying, \"This kitchen is a mess, and someone should clean it,\" without directly accusing or confronting anyone. The speaker's tone and context suggest that they are implying it's time for someone to clean up, rather than genuinely inquiring about whose turn it is.",
+      "marked_literal": false
+    },
+    {
+      "id": "IS01",
+      "type": "irony",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "The speaker's statement, 'Well, this has been a delightful afternoon!' is an example of sarcasm. \n\nThe literal meaning of the sentence suggests that the speaker has had a pleasant and enjoyable experience. However, given the context of waiting 2 hours in the rain for a bus, it's highly unlikely that the speaker genuinely means this.\n\nThe speaker's TRUE intended meaning is the opposite: they are expressing frustration, annoyance, and possibly even irony or disappointment. The use of the word 'delightful' in this context is meant to convey the speaker's dissatisfaction and displeasure with the situation, rather than actual delight. The speaker is being sarcastic, implying that waiting in the rain for a long time is anything but delightful.",
+      "marked_literal": false
+    },
+    {
+      "id": "IS02",
+      "type": "irony",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "In this situation, the student says \"Another academic triumph!\" after receiving an F on a test. \n\nThe literal meaning of the phrase \"academic triumph\" is a great achievement or success in academic pursuits. However, given the context of receiving a failing grade, it's clear that the student is being sarcastic.\n\nThe speaker's TRUE intended meaning is the opposite of what they're literally saying. They're actually expressing disappointment, frustration, and possibly even irony or humor about their poor performance on the test. The student is using sarcasm to convey that receiving an F is not a triumph at all, but rather a failure. The tone is likely one of self-deprecation, annoyance, or resignation, rather than genuine pride or celebration.",
+      "marked_literal": false
+    },
+    {
+      "id": "IS03",
+      "type": "irony",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "The speaker's statement, 'Smooth move, Grace Kelly!' is an example of sarcasm. \n\nOn the surface, the phrase 'Smooth move' appears to be a compliment, implying that the person has made a skillful or elegant action. However, in this context, where a friend has just dropped and broken a plate, it's clear that the action was clumsy and not smooth at all.\n\nThe reference to 'Grace Kelly' is also significant. Grace Kelly was a famous actress known for her elegance and poise. By invoking her name, the speaker is highlighting the contrast between the friend's clumsy action and the elegance associated with Grace Kelly.\n\nThe speaker's TRUE intended meaning is to tease or mock the friend for their carelessness, implying that their action was anything but smooth or elegant. The tone is likely lighthearted and playful, rather than genuinely critical or angry. The speaker is using sarcasm to poke fun at the friend's mistake, rather than offering a sincere compliment.",
+      "marked_literal": false
+    },
+    {
+      "id": "IS04",
+      "type": "irony",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "In this situation, the speaker's literal words are \"What a palace! The king would be jealous.\" However, given the context that they are looking at a tiny, cramped apartment, it's clear that the speaker's words are not meant to be taken literally.\n\nThe speaker is actually expressing the opposite of what their words suggest. They are being sarcastic, using irony to convey that the apartment is far from a palace. The speaker is implying that the apartment is small, cramped, and possibly even uncomfortable, which is the opposite of what one would expect from a palace.\n\nSo, the speaker's TRUE intended meaning is that the apartment is tiny and unimpressive, and they are using sarcasm to highlight the contrast between the apartment's actual state and the idea of a luxurious palace.",
+      "marked_literal": false
+    },
+    {
+      "id": "IS05",
+      "type": "irony",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "In this situation, the speaker says, \"Well, we really showed them.\" The literal meaning of this phrase would be that the team performed exceptionally well and demonstrated their skills to the opposing team.\n\nHowever, given the context that the team lost 10-0, it's clear that the speaker's intended meaning is the opposite of the literal interpretation. The speaker is being sarcastic, implying that the team's poor performance was actually a demonstration of their lack of skills or ineptitude.\n\nThe speaker's true intended meaning is that the team got thoroughly defeated and failed to put up a good fight, which is the opposite of \"showing them\" in a positive sense. The tone is likely one of irony, disappointment, or even humor, acknowledging the team's poor performance in a lighthearted way.",
+      "marked_literal": false
+    },
+    {
+      "id": "US01",
+      "type": "understatement",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "The reporter is understating the severity of the hurricane. A category 5 hurricane is an extremely powerful and destructive storm with winds of up to 157 miles per hour or higher. By saying \"there might be a bit of wind later today,\" the reporter is downplaying the actual intensity of the storm, which is likely to cause catastrophic damage and pose a significant threat to life and property.\n\nThe literal meaning of the statement is that there may be some wind, but the speaker's true intended meaning is likely to be sarcastic or ironic, implying that the situation is much more severe than they are letting on. However, in the context of a news report, it's more likely that the reporter is attempting to convey a sense of calm or minimize panic, rather than being sarcastic.\n\nIn reality, the reporter should be warning people about the extreme danger posed by the hurricane, rather than understating its severity. A more accurate and responsible statement might be: \"A category 5 hurricane is approaching, and we expect extremely strong winds, heavy rainfall, and potentially catastrophic damage. Please take all necessary precautions and follow evacuation orders immediately.\"",
+      "marked_literal": false
+    },
+    {
+      "id": "US02",
+      "type": "understatement",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "In this situation, the phrase \"I've done alright for myself\" is a significant understatement. Literally, it means that the person has managed to get by or has achieved a moderate level of success. However, given that the speaker is a billionaire, it's clear that they have achieved far more than just \"alright.\"\n\nThe speaker's true intended meaning is that they have been extremely successful and have accumulated a vast amount of wealth. By saying \"I've done alright for myself,\" the billionaire is being humble and downplaying their enormous wealth. They are intentionally using an understatement to convey a sense of modesty and avoid appearing arrogant or boastful.\n\nIn essence, the speaker is saying, \"I've done incredibly well, but I don't want to brag about it, so I'll just say I've done alright.\" This understatement is a way of acknowledging their success without drawing attention to the enormity of their wealth.",
+      "marked_literal": false
+    },
+    {
+      "id": "US03",
+      "type": "understatement",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "In this situation, the speaker is understating their physical condition. The literal meaning of \"I'm in decent shape\" is that they are in reasonably good physical health. However, given the context that they have just run a marathon in record time, it's clear that the speaker is being modest and humble.\n\nThe speaker's true intended meaning is that they are in exceptional physical shape, likely one of the best in their field. By saying \"decent shape,\" they are downplaying their impressive achievement and avoiding boastfulness. The speaker is using understatement as a rhetorical device to convey a sense of humility and to avoid coming across as arrogant or full of themselves.\n\nIn essence, the speaker is saying, \"I'm not just in decent shape, I'm actually in outstanding shape, but I don't want to brag about it.\" This understatement allows the speaker to acknowledge their achievement without appearing too proud or full of themselves.",
+      "marked_literal": false
+    },
+    {
+      "id": "US04",
+      "type": "understatement",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "In this situation, the surgeon is understating the difficulty and challenges they faced during the 14-hour operation. The literal meaning of the statement \"It wasn't the easiest day at work\" is that the day was not completely easy, but it implies that it was just a bit more difficult than usual.\n\nHowever, the speaker's true intended meaning is that the day was extremely challenging, exhausting, and possibly one of the most difficult days they've had at work. The operation was 14 hours long, which suggests that it was complex, high-stakes, and required a tremendous amount of skill, focus, and endurance.\n\nBy saying \"It wasn't the easiest day at work,\" the surgeon is using understatement to convey a sense of humility, professionalism, and perhaps even a bit of relief that the operation was successful. They are downplaying the enormity of their achievement and the challenges they overcame, rather than boasting or seeking to draw attention to themselves.\n\nIn essence, the surgeon is saying that the day was incredibly tough, but they're not going to make a big deal about it. They're implying that saving a patient's life is just part of their job, and they're not looking for praise or recognition. The understatement is a way of conveying their dedication, expertise, and commitment to their work, while also showing a sense of humility and restraint.",
+      "marked_literal": false
+    },
+    {
+      "id": "US05",
+      "type": "understatement",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "In this situation, the astronaut is understating the breathtaking and awe-inspiring view they experienced during their first spacewalk. The phrase \"The view was not bad\" is a classic example of understatement, where the speaker intentionally downplays the magnitude of their experience.\n\nLiterally, the phrase means that the view was acceptable or passable. However, given the context of being in space and witnessing the Earth or the vastness of the cosmos, it's highly unlikely that the view was merely \"not bad.\" The speaker's true intended meaning is likely the opposite: the view was incredible, stunning, and possibly even life-changing.\n\nBy using understatement, the astronaut is conveying their excitement and amazement in a humble and subtle way, rather than explicitly stating how breathtaking the view was. This rhetorical device allows the speaker to express their emotions and impressions without sounding overly dramatic or exaggerated. The true intended meaning is that the view was truly spectacular and unforgettable, but the astronaut is choosing to convey that sentiment in a more subdued and ironic manner.",
+      "marked_literal": false
+    },
+    {
+      "id": "RI01",
+      "type": "relevance_implicature",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "In this situation, B's literal meaning is that Tom broke A's favorite vase at a previous gathering. However, the speaker's true intended meaning goes beyond the literal interpretation.\n\nBy mentioning the incident, B is implying that Tom might not be the most responsible or considerate guest, and therefore, it might not be a good idea to invite him to the party. B is suggesting that Tom's past behavior could be a predictor of his future actions, and inviting him might lead to similar problems or damages.\n\nIn essence, B is cautioning A against inviting Tom, not just stating a fact about the past. The implication is that Tom's behavior is a reason to exclude him from the party, rather than just a neutral piece of information. B's true intended meaning is: \"Maybe we shouldn't invite Tom because he can be careless and might cause problems.\"",
+      "marked_literal": false
+    },
+    {
+      "id": "RI02",
+      "type": "relevance_implicature",
+      "got_intended": false,
+      "got_literal": true,
+      "model_answer": "In this situation, B's response, \"Well, the parking is convenient,\" can be analyzed on two levels: literal meaning and implied meaning.\n\nLiteral meaning: On the surface, B is simply stating a fact about the restaurant's parking situation, which is that it is convenient.\n\nImplied meaning: However, given the context of the conversation, where A is asking about the overall experience or quality of the new restaurant, B's response can be seen as somewhat evasive or even negative. By only commenting on the parking and not mentioning the food, service, or ambiance, B may be implying that the restaurant itself is not particularly impressive or noteworthy. The fact that B highlights a relatively minor aspect of the dining experience, such as parking, suggests that they may not have been overly enthusiastic about their visit.\n\nIn essence, B's true intended meaning could be: \"The restaurant is not particularly great, but at least the parking is convenient.\" This interpretation implies that B is being diplomatic or polite, avoiding a direct negative comment about the restaurant while still conveying their lukewarm impression.",
+      "marked_literal": false
+    },
+    {
+      "id": "RI03",
+      "type": "relevance_implicature",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "In this situation, B's response, \"She has a lovely stage presence,\" is an example of an indirect or implicit answer. On the surface, the literal meaning of B's statement is that Sarah is charming and confident on stage, which is a positive trait for a performer.\n\nHowever, considering the context of the question, \"Is Sarah a good singer?\" B's response implies that they are avoiding a direct answer about Sarah's singing abilities. By focusing on her stage presence instead of her singing, B is suggesting that Sarah may not be a particularly skilled singer, but she has other qualities that make her enjoyable to watch.\n\nIn other words, B's true intended meaning is likely that Sarah's singing is not exceptional, but she has a charming personality that makes up for it. This implication is often referred to as a \"polite dodge\" or a way of sidestepping a potentially negative comment about someone's abilities.",
+      "marked_literal": false
+    },
+    {
+      "id": "RI04",
+      "type": "relevance_implicature",
+      "got_intended": false,
+      "got_literal": true,
+      "model_answer": "In this situation, B's response, \"The popcorn was fantastic,\" is a clever example of an indirect answer. Literally, B is stating their opinion about the popcorn, which is a positive one. However, the context of the question, \"Did you enjoy the movie?\" implies that A is asking about B's opinion of the movie, not the snacks.\n\nBy responding with a comment about the popcorn, B is implying that the movie itself was not particularly enjoyable or noteworthy. If B had truly enjoyed the movie, they would have likely responded with a comment about the film, such as \"Yes, I loved it\" or \"The plot was engaging.\" Instead, B's focus on the popcorn suggests that it was the highlight of their experience, and the movie may have been lacking.\n\nIn essence, B's true intended meaning is that the movie was not impressive, and they are politely avoiding a direct negative comment about it. This response is a tactful way of conveying a lukewarm or negative opinion without explicitly stating it.",
+      "marked_literal": false
+    },
+    {
+      "id": "RI05",
+      "type": "relevance_implicature",
+      "got_intended": true,
+      "got_literal": false,
+      "model_answer": "To understand B's true intended meaning, we need to consider both the literal and figurative interpretations of their statement.\n\nLiteral meaning: A doorstop is an object used to hold a door open or keep it from closing. If a book is being used as a doorstop, it means the book is being used to physically block or support a door.\n\nHowever, in this context, it's unlikely that B is genuinely suggesting the book is useful for holding doors open. \n\nFigurative meaning and true intended meaning: B's statement is an idiomatic expression used to convey that the book is not worth reading or has little value as a literary work. By saying it \"makes an excellent doorstop,\" B is implying that the book is only useful for a mundane, practical purpose (holding a door open), rather than being a engaging or thought-provoking read. In essence, B is expressing their dislike or disapproval of the book in a humorous, sarcastic way. \n\nSo, B's true intended meaning is that they do not recommend the book and think it lacks literary merit.",
+      "marked_literal": false
+    }
+  ]
+}
+score=0.8240 (87.4s)
+[Llama 3.3 70B] [25/26] social_cog_sarcasm... {
+  "benchmark": "Sarcasm Detection",
+  "n_items": 40,
+  "auc": 0.0,
+  "calibration_error": 0.0,
+  "threshold_accuracy": 0.5,
+  "composite_score": 0.4,
+  "rating_distributions": {
+    "sarcastic_mean": 50.0,
+    "sarcastic_std": 0.0,
+    "sincere_mean": 50.0,
+    "sincere_std": 0.0
+  },
+  "per_item": [
+    {
+      "id": "S01",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S02",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S03",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S04",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S05",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S06",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S07",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S08",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S09",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S10",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S11",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S12",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S13",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S14",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S15",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S16",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S17",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S18",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S19",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "S20",
+      "is_sarcastic": true,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": false
+    },
+    {
+      "id": "N01",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N02",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N03",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N04",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N05",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N06",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N07",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N08",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N09",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N10",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N11",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N12",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N13",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N14",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N15",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N16",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N17",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N18",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N19",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N20",
+      "is_sarcastic": false,
+      "sincerity_rating": 50,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    }
+  ]
+}
+{
+  "benchmark": "Sarcasm Detection",
+  "n_items": 40,
+  "auc": 1.0,
+  "calibration_error": 0.0038,
+  "threshold_accuracy": 0.6,
+  "composite_score": 0.9189,
+  "rating_distributions": {
+    "sarcastic_mean": 0.0,
+    "sarcastic_std": 0.0,
+    "sincere_mean": 99.2,
+    "sincere_std": 2.4
+  },
+  "per_item": [
+    {
+      "id": "S01",
+      "is_sarcastic": true,
+      "sincerity_rating": 0,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "S02",
+      "is_sarcastic": true,
+      "sincerity_rating": 0,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "S03",
+      "is_sarcastic": true,
+      "sincerity_rating": 0,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "S04",
+      "is_sarcastic": true,
+      "sincerity_rating": 0,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "S05",
+      "is_sarcastic": true,
+      "sincerity_rating": 0,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "S06",
+      "is_sarcastic": true,
+      "sincerity_rating": 0,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "S07",
+      "is_sarcastic": true,
+      "sincerity_rating": 0,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "S08",
+      "is_sarcastic": true,
+      "sincerity_rating": 0,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "S09",
+      "is_sarcastic": true,
+      "sincerity_rating": 0,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "S10",
+      "is_sarcastic": true,
+      "sincerity_rating": 0,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "S11",
+      "is_sarcastic": true,
+      "sincerity_rating": 0,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "S12",
+      "is_sarcastic": true,
+      "sincerity_rating": 0,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "S13",
+      "is_sarcastic": true,
+      "sincerity_rating": 0,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "S14",
+      "is_sarcastic": true,
+      "sincerity_rating": 0,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "S15",
+      "is_sarcastic": true,
+      "sincerity_rating": 0,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "S16",
+      "is_sarcastic": true,
+      "sincerity_rating": 0,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "S17",
+      "is_sarcastic": true,
+      "sincerity_rating": 0,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "S18",
+      "is_sarcastic": true,
+      "sincerity_rating": 0,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "S19",
+      "is_sarcastic": true,
+      "sincerity_rating": 0,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "S20",
+      "is_sarcastic": true,
+      "sincerity_rating": 0,
+      "model_says_sarcastic": true,
+      "binary_correct": true
+    },
+    {
+      "id": "N01",
+      "is_sarcastic": false,
+      "sincerity_rating": 100,
+      "model_says_sarcastic": true,
+      "binary_correct": false
+    },
+    {
+      "id": "N02",
+      "is_sarcastic": false,
+      "sincerity_rating": 100,
+      "model_says_sarcastic": true,
+      "binary_correct": false
+    },
+    {
+      "id": "N03",
+      "is_sarcastic": false,
+      "sincerity_rating": 100,
+      "model_says_sarcastic": true,
+      "binary_correct": false
+    },
+    {
+      "id": "N04",
+      "is_sarcastic": false,
+      "sincerity_rating": 100,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N05",
+      "is_sarcastic": false,
+      "sincerity_rating": 100,
+      "model_says_sarcastic": true,
+      "binary_correct": false
+    },
+    {
+      "id": "N06",
+      "is_sarcastic": false,
+      "sincerity_rating": 100,
+      "model_says_sarcastic": true,
+      "binary_correct": false
+    },
+    {
+      "id": "N07",
+      "is_sarcastic": false,
+      "sincerity_rating": 100,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N08",
+      "is_sarcastic": false,
+      "sincerity_rating": 100,
+      "model_says_sarcastic": true,
+      "binary_correct": false
+    },
+    {
+      "id": "N09",
+      "is_sarcastic": false,
+      "sincerity_rating": 90,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    },
+    {
+      "id": "N10",
+      "is_sarcastic": false,
+      "sincerity_rating": 100,
+      "model_says_sarcastic": true,
+      "binary_correct": false
+    },
+    {
+      "id": "N11",
+      "is_sarcastic": false,
+      "sincerity_rating": 100,
+      "model_says_sarcastic": true,
+      "binary_correct": false
+    },
+    {
+      "id": "N12",
+      "is_sarcastic": false,
+      "sincerity_rating": 100,
+      "model_says_sarcastic": true,
+      "binary_correct": false
+    },
+    {
+      "id": "N13",
+      "is_sarcastic": false,
+      "sincerity_rating": 100,
+      "model_says_sarcastic": true,
+      "binary_correct": false
+    },
+    {
+      "id": "N14",
+      "is_sarcastic": false,
+      "sincerity_rating": 100,
+      "model_says_sarcastic": true,
+      "binary_correct": false
+    },
+    {
+      "id": "N15",
+      "is_sarcastic": false,
+      "sincerity_rating": 100,
+      "model_says_sarcastic": true,
+      "binary_correct": false
+    },
+    {
+      "id": "N16",
+      "is_sarcastic": false,
+      "sincerity_rating": 100,
+      "model_says_sarcastic": true,
+      "binary_correct": false
+    },
+    {
+      "id": "N17",
+      "is_sarcastic": false,
+      "sincerity_rating": 100,
+      "model_says_sarcastic": true,
+      "binary_correct": false
+    },
+    {
+      "id": "N18",
+      "is_sarcastic": false,
+      "sincerity_rating": 100,
+      "model_says_sarcastic": true,
+      "binary_correct": false
+    },
+    {
+      "id": "N19",
+      "is_sarcastic": false,
+      "sincerity_rating": 100,
+      "model_says_sarcastic": true,
+      "binary_correct": false
+    },
+    {
+      "id": "N20",
+      "is_sarcastic": false,
+      "sincerity_rating": 95,
+      "model_says_sarcastic": false,
+      "binary_correct": true
+    }
+  ]
+}
+score=0.9189 (73.4s)
+[Llama 3.3 70B] [26/26] social_cog_emotional_prosody... 
+============================================================
+EMOTIONAL PROSODY IN TEXT RESULTS
+============================================================
+  ✓ shift_01: before=✓ after=✓ trigger=0.00
+  ✓ shift_02: before=✓ after=✓ trigger=0.00
+  ✓ shift_03: before=✓ after=✓ trigger=0.00
+  ✓ shift_04: before=✓ after=✓ trigger=0.00
+  ✓ shift_05: before=✓ after=✓ trigger=0.00
+  ✓ shift_06: before=✓ after=✓ trigger=0.00
+  ✗ FALSE ALARM control_01
+  ✗ FALSE ALARM control_02
+  ✗ FALSE ALARM control_03
+  ✗ FALSE ALARM control_04
+
+--- Summary ---
+Shift detection:    100.00%
+Emotion labeling:   100.00%
+Trigger ID:         0.00%
+False alarm rate:   100.00%
+Composite score:    0.7000
+
+============================================================
+EMOTIONAL PROSODY IN TEXT RESULTS
+============================================================
+  ✓ shift_01: before=✓ after=✓ trigger=0.67
+  ✓ shift_02: before=✓ after=✓ trigger=1.00
+  ✓ shift_03: before=✓ after=✓ trigger=1.00
+  ✓ shift_04: before=✓ after=✗ trigger=0.67
+  ✓ shift_05: before=✓ after=✓ trigger=0.40
+  ✓ shift_06: before=✗ after=✓ trigger=0.67
+  ✓ NO SHIFT control_01
+  ✓ NO SHIFT control_02
+  ✗ FALSE ALARM control_03
+  ✓ NO SHIFT control_04
+
+--- Summary ---
+Shift detection:    100.00%
+Emotion labeling:   83.33%
+Trigger ID:         73.33%
+False alarm rate:   25.00%
+Composite score:    0.8717
+score=0.8717 (19.3s)
+[Llama 3.3 70B] COMPLETE: 26 benchmarks
+[Llama 3.3 70B] avg=0.6298 ok=25/26 errors=1

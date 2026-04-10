@@ -77,7 +77,7 @@ def attention_vigilance(llm) -> float:
 
             try:
                 result = llm.prompt(prompt, schema=VigilanceCount)
-                model_count = result.count
+                model_count = result.count if isinstance(result.count, int) else int(result.count)
             except Exception:
                 raw = llm.prompt(prompt)
                 try:

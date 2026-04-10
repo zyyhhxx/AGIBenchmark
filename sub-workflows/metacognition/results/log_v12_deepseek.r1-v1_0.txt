@@ -1,0 +1,7 @@
+run_fill_v12 started at 2026-04-10T17:44:26.660467+00:00
+Benchmarks: 26, Models: 10
+
+[1/1] DeepSeek-R1: 24 gaps to fill
+  [1/24] metacog_canary... score=0.0000 (337.5s)
+  [2/24] metacog_fok... ERROR: timeout (600s)
+  [3/24] metacog_jol... 

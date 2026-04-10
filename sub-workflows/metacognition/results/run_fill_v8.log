@@ -1,0 +1,15 @@
+Starting run_fill_v8 at 2026-04-10T14:48:53.578683+00:00
+Models: 10, Benchmarks: 26
+[1/10] ✅ Llama 3.3 70B: all done (26/26)
+[2/10] ✅ Llama 4 Maverick 17B: all done (26/26)
+
+[3/10] Nova Pro: 4 gaps
+  [1/4] attention_instruction_update... ERROR: timeout (120s) (120.1s)
+  [2/4] exec_func_nback... ERROR: timeout (120s) (120.1s)
+  [3/4] social_cog_pragmatic... ERROR: timeout (120s) (120.0s)
+  → Skipping Nova Pro: 3 consecutive timeouts
+
+[4/10] Ministral 3B: 13 gaps
+  [1/13] metacog_fok... ERROR: timeout (120s) (120.1s)
+  [2/13] metacog_jol... ERROR: An error occurred (ValidationException) when calling the Converse operation: The (91.2s)
+  [3/13] metacog_calibration... 
