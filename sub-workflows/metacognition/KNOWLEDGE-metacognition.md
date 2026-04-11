@@ -456,3 +456,35 @@ Mapping of 9 metacognition benchmark scores to Fleming's (2024) taxonomy:
 - **Common failure mode:** FB52/FB56 "perspective confusion" trap — models answer what X actually thinks instead of what Y thinks X thinks. Good diagnostic of genuine ToM failure vs. reading comprehension.
 - **Cache pitfall:** Results cached in both `.run.json` files AND `repo/results/*.json` — both must be cleared when re-running with updated scenarios.
 - **Artifact:** `repo/benchmarks/social_cognition/task_false_belief.py`, `repo/benchmarks/social_cognition/data/false_belief_scenarios.py`, `repo/notebooks/social_cog_false_belief.ipynb`
+
+## Full 10-Model Bedrock Benchmark Run — All 5 Tracks (2026-04-11)
+
+### Score Matrix (258/260 cells, 2 OOM-killed)
+Final scores across 26 benchmarks × 10 Bedrock models compiled in `repo/results/score_matrix_all_tracks.csv` and `repo/results/per_track_analysis.md`.
+
+### OOM failures (documented, not errors)
+- Qwen3 Next 80B × learning_curves: OOM-killed consistently (large context benchmark, model context window issue)
+- Qwen3 Next 80B × exec_func_nback: OOM-killed consistently
+
+### Discriminatory power by track (avg range across benchmarks)
+| Track | Avg Range | Most Discriminatory |
+|-------|-----------|---------------------|
+| Executive Functions | 0.5546 | exec_func_tol (0.8000) |
+| Learning | 0.5200 | learning_interference (0.8800) |
+| Metacognition | 0.4998 | metacog_canary (1.0000) |
+| Social Cognition | 0.4821 | social_cog_pragmatic (0.6519) |
+| Attention | 0.4537 | attention_instruction_update (0.6841) |
+
+### Key model insights
+- **Ministral 3B** is the clear weakest model: attention_instruction_update=0.299, learning_interference=0.120, exec_func_tol=0.000
+- **DeepSeek-R1** scores highest on attention_vigilance (1.000) and learning_transfer (1.000) — reasoning model benefits structured tasks
+- **exec_func_tol** (Tower of London) is the hardest benchmark: mean=0.252, range=0.800 — strong discriminatory power
+- **learning_curves** is least discriminatory in Learning track (range=0.180) and reliably times out >600s for large models; 900s timeout recommended
+- **attention_selective** is least discriminatory in Attention track (range=0.175) — consider replacement in future iterations
+- **metacog_calibration** shows extreme bimodal distribution (mean=0.165, range=0.998) — one model (Claude Opus) scores near-perfect, most score near-zero
+
+### Execution lessons
+- Parallel benchmark execution (>2 concurrent processes) causes OOM kills on this instance — always use sequential execution
+- DeepSeek-R1 requires 900s timeout per benchmark (reasoning model inference is slow)
+- learning_curves requires 900s timeout for large models
+- kbench run results are cached in `.run.json` files AND `repo/results/*.json` — clear both when re-running
