@@ -1,137 +1,137 @@
 {
   "model": "meta.llama4-maverick-17b-instruct-v1:0",
   "model_label": "Llama 4 Maverick 17B",
-  "timestamp": "2026-04-10T13:08:26.450729+00:00",
+  "timestamp": "2026-04-11T21:01:13.105512+00:00",
   "scores": {
     "metacog_canary": {
-      "score": 0.0,
+      "score": 0.928,
       "error": null,
-      "duration_s": 28.6
+      "duration_s": 13.0
     },
     "metacog_fok": {
       "score": 0.5674,
       "error": null,
-      "duration_s": 87.4
+      "duration_s": 85.3
     },
     "metacog_jol": {
       "score": 0.4647,
       "error": null,
-      "duration_s": 35.7
+      "duration_s": 30.9
     },
     "metacog_calibration": {
       "score": 0.0,
       "error": null,
-      "duration_s": 30.9
+      "duration_s": 32.0
     },
     "metacog_error_detection": {
-      "score": 0.9527,
+      "score": 0.7479,
       "error": null,
-      "duration_s": 40.8
+      "duration_s": 32.3
     },
     "metacog_learning_monitoring": {
-      "score": 0.8184,
+      "score": 0.8262,
       "error": null,
-      "duration_s": 96.6
+      "duration_s": 90.9
     },
     "metacog_control": {
-      "score": 0.5267,
+      "score": 0.615,
       "error": null,
-      "duration_s": 21.8
+      "duration_s": 20.2
     },
     "metacog_epistemic_revision": {
-      "score": 0.8225,
+      "score": 0.83,
       "error": null,
-      "duration_s": 25.3
+      "duration_s": 54.2
     },
     "metacog_epistemic_humility": {
-      "score": 0.9071,
+      "score": 0.9029,
       "error": null,
-      "duration_s": 32.8
+      "duration_s": 28.1
     },
     "learning_curves": {
-      "score": 0.645,
+      "score": 0.6517,
       "error": null,
-      "duration_s": 274.3
+      "duration_s": 211.8
     },
     "learning_transfer": {
-      "score": 0.81,
+      "score": 0.88,
       "error": null,
-      "duration_s": 44.0
+      "duration_s": 45.5
     },
     "learning_interference": {
       "score": 0.4,
       "error": null,
-      "duration_s": 25.9
+      "duration_s": 26.0
     },
     "learning_curriculum": {
       "score": 0.7,
       "error": null,
-      "duration_s": 44.6
+      "duration_s": 41.7
     },
     "attention_selective": {
       "score": 0.95,
       "error": null,
-      "duration_s": 11.7
+      "duration_s": 10.1
     },
     "attention_vigilance": {
-      "score": 1.0,
+      "score": 0.8559,
       "error": null,
-      "duration_s": 5.7
+      "duration_s": 19.4
     },
     "attention_divided": {
-      "score": 0.9167,
+      "score": 0.9275,
       "error": null,
-      "duration_s": 17.0
+      "duration_s": 14.8
     },
     "attention_instruction_update": {
-      "score": 0.4036,
+      "score": 0.975,
       "error": null,
-      "duration_s": 85.7
+      "duration_s": 17.2
     },
     "exec_func_wcst": {
-      "score": 0.4385,
+      "score": 0.4614,
       "error": null,
-      "duration_s": 43.4
+      "duration_s": 36.8
     },
     "exec_func_tol": {
       "score": 0.0,
       "error": null,
-      "duration_s": 104.4
+      "duration_s": 138.2
     },
     "exec_func_task_switch": {
-      "score": 1.0,
+      "score": 0.9587,
       "error": null,
-      "duration_s": 13.8
+      "duration_s": 6.7
     },
     "exec_func_nback": {
-      "score": 0.6465,
+      "score": 0.6835,
       "error": null,
-      "duration_s": 147.4
+      "duration_s": 126.3
     },
     "exec_func_crt": {
-      "score": 0.35,
+      "score": 0.5732,
       "error": null,
-      "duration_s": 18.3
-    },
-    "social_cog_false_belief": {
-      "score": 0.97,
-      "error": null,
-      "duration_s": 42.7
+      "duration_s": 39.2
     },
     "social_cog_pragmatic": {
-      "score": 0.824,
+      "score": 0.912,
       "error": null,
-      "duration_s": 83.6
+      "duration_s": 80.5
     },
     "social_cog_sarcasm": {
-      "score": 0.5258,
+      "score": 0.4636,
       "error": null,
-      "duration_s": 152.4
+      "duration_s": 143.8
     },
     "social_cog_emotional_prosody": {
-      "score": 0.7994,
+      "score": 0.8217,
       "error": null,
-      "duration_s": 14.9
+      "duration_s": 15.1
+    },
+    "social_cog_false_belief": {
+      "score": 1.0,
+      "error": null,
+      "duration_s": 109.8
     }
   }
 }

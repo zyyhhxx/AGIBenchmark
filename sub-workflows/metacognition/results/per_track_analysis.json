@@ -1,0 +1,220 @@
+{
+  "attention": {
+    "attention_divided": {
+      "mean": 0.8356,
+      "std": 0.1666,
+      "min": 0.4139,
+      "max": 0.9375,
+      "range": 0.5236,
+      "n_models": 10
+    },
+    "attention_instruction_update": {
+      "mean": 0.856,
+      "std": 0.2264,
+      "min": 0.2992,
+      "max": 0.9833,
+      "range": 0.6841,
+      "n_models": 10
+    },
+    "attention_selective": {
+      "mean": 0.888,
+      "std": 0.0544,
+      "min": 0.775,
+      "max": 0.95,
+      "range": 0.175,
+      "n_models": 10
+    },
+    "attention_vigilance": {
+      "mean": 0.7581,
+      "std": 0.1762,
+      "min": 0.5677,
+      "max": 1.0,
+      "range": 0.4323,
+      "n_models": 10
+    }
+  },
+  "learning": {
+    "learning_curriculum": {
+      "mean": 0.638,
+      "std": 0.1121,
+      "min": 0.46,
+      "max": 0.76,
+      "range": 0.3,
+      "n_models": 10
+    },
+    "learning_curves": {
+      "mean": 0.6541,
+      "std": 0.0682,
+      "min": 0.5467,
+      "max": 0.7267,
+      "range": 0.18,
+      "n_models": 9
+    },
+    "learning_interference": {
+      "mean": 0.5474,
+      "std": 0.2719,
+      "min": 0.12,
+      "max": 1.0,
+      "range": 0.88,
+      "n_models": 10
+    },
+    "learning_transfer": {
+      "mean": 0.785,
+      "std": 0.2545,
+      "min": 0.28,
+      "max": 1.0,
+      "range": 0.72,
+      "n_models": 10
+    }
+  },
+  "executive_functions": {
+    "exec_func_crt": {
+      "mean": 0.6814,
+      "std": 0.1503,
+      "min": 0.4542,
+      "max": 0.9142,
+      "range": 0.46,
+      "n_models": 10
+    },
+    "exec_func_nback": {
+      "mean": 0.8892,
+      "std": 0.1816,
+      "min": 0.5136,
+      "max": 1.0,
+      "range": 0.4864,
+      "n_models": 9
+    },
+    "exec_func_task_switch": {
+      "mean": 0.8811,
+      "std": 0.1161,
+      "min": 0.7125,
+      "max": 1.0,
+      "range": 0.2875,
+      "n_models": 10
+    },
+    "exec_func_tol": {
+      "mean": 0.2517,
+      "std": 0.2797,
+      "min": 0.0,
+      "max": 0.8,
+      "range": 0.8,
+      "n_models": 10
+    },
+    "exec_func_wcst": {
+      "mean": 0.6068,
+      "std": 0.2372,
+      "min": 0.2607,
+      "max": 1.0,
+      "range": 0.7393,
+      "n_models": 10
+    }
+  },
+  "social_cognition": {
+    "social_cog_emotional_prosody": {
+      "mean": 0.8082,
+      "std": 0.0491,
+      "min": 0.6856,
+      "max": 0.8578,
+      "range": 0.1722,
+      "n_models": 10
+    },
+    "social_cog_false_belief": {
+      "mean": 0.7101,
+      "std": 0.1776,
+      "min": 0.3771,
+      "max": 1.0,
+      "range": 0.6229,
+      "n_models": 10
+    },
+    "social_cog_pragmatic": {
+      "mean": 0.7328,
+      "std": 0.2199,
+      "min": 0.3041,
+      "max": 0.956,
+      "range": 0.6519,
+      "n_models": 10
+    },
+    "social_cog_sarcasm": {
+      "mean": 0.839,
+      "std": 0.1407,
+      "min": 0.4636,
+      "max": 0.945,
+      "range": 0.4814,
+      "n_models": 10
+    }
+  },
+  "metacognition": {
+    "metacog_calibration": {
+      "mean": 0.1651,
+      "std": 0.3323,
+      "min": 0.0,
+      "max": 0.9984,
+      "range": 0.9984,
+      "n_models": 10
+    },
+    "metacog_canary": {
+      "mean": 0.7951,
+      "std": 0.3052,
+      "min": 0.0,
+      "max": 1.0,
+      "range": 1.0,
+      "n_models": 10
+    },
+    "metacog_control": {
+      "mean": 0.5493,
+      "std": 0.181,
+      "min": 0.2,
+      "max": 0.7479,
+      "range": 0.5479,
+      "n_models": 10
+    },
+    "metacog_epistemic_humility": {
+      "mean": 0.7881,
+      "std": 0.2204,
+      "min": 0.2,
+      "max": 0.92,
+      "range": 0.72,
+      "n_models": 10
+    },
+    "metacog_epistemic_revision": {
+      "mean": 0.8007,
+      "std": 0.1018,
+      "min": 0.67,
+      "max": 0.96,
+      "range": 0.29,
+      "n_models": 10
+    },
+    "metacog_error_detection": {
+      "mean": 0.862,
+      "std": 0.0769,
+      "min": 0.7479,
+      "max": 0.9735,
+      "range": 0.2256,
+      "n_models": 10
+    },
+    "metacog_fok": {
+      "mean": 0.5606,
+      "std": 0.0827,
+      "min": 0.4132,
+      "max": 0.6452,
+      "range": 0.232,
+      "n_models": 10
+    },
+    "metacog_jol": {
+      "mean": 0.393,
+      "std": 0.0905,
+      "min": 0.2,
+      "max": 0.4647,
+      "range": 0.2647,
+      "n_models": 10
+    },
+    "metacog_learning_monitoring": {
+      "mean": 0.8344,
+      "std": 0.0813,
+      "min": 0.6906,
+      "max": 0.9101,
+      "range": 0.2195,
+      "n_models": 10
+    }
+  }
+}

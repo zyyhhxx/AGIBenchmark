@@ -1,137 +1,137 @@
 {
   "model": "deepseek.r1-v1:0",
   "model_label": "DeepSeek-R1",
-  "timestamp": "2026-04-10T20:58:14.129863+00:00",
+  "timestamp": "2026-04-11T21:31:09.758001+00:00",
   "scores": {
     "metacog_canary": {
-      "score": 0.0,
+      "score": 0.867,
       "error": null,
-      "duration_s": 337.5
+      "duration_s": 118.8
     },
     "metacog_fok": {
-      "score": null,
-      "error": "timeout (600s)",
-      "duration_s": 600
+      "score": 0.5956,
+      "error": null,
+      "duration_s": 812.5
     },
     "metacog_jol": {
-      "score": null,
-      "error": "An HTTP Client raised an unhandled exception: timeout",
-      "duration_s": 300.0
+      "score": 0.2759,
+      "error": null,
+      "duration_s": 357.7
     },
     "metacog_calibration": {
       "score": 0.0,
       "error": null,
-      "duration_s": 461.2
-    },
-    "attention_vigilance": {
-      "score": 1.0,
-      "error": null,
-      "duration_s": 14.8
-    },
-    "attention_selective": {
-      "score": null,
-      "error": "timeout (90s)",
-      "duration_s": 90
-    },
-    "exec_func_task_switch": {
-      "score": null,
-      "error": "timeout (90s)",
-      "duration_s": 90
+      "duration_s": 396.3
     },
     "metacog_error_detection": {
-      "score": 0.8989,
+      "score": 0.8978,
       "error": null,
-      "duration_s": 216.4
+      "duration_s": 231.0
     },
     "metacog_learning_monitoring": {
-      "score": null,
-      "error": "TIMEOUT after 600s",
-      "duration_s": 600
+      "score": 0.8942,
+      "error": null,
+      "duration_s": 589.9
     },
     "metacog_control": {
-      "score": 0.4483,
+      "score": 0.4533,
       "error": null,
-      "duration_s": 235.7
+      "duration_s": 222.7
     },
     "metacog_epistemic_revision": {
-      "score": 0.82,
+      "score": 0.7375,
       "error": null,
-      "duration_s": 242.8
+      "duration_s": 353.7
     },
     "metacog_epistemic_humility": {
-      "score": 0.8741,
+      "score": 0.8802,
       "error": null,
-      "duration_s": 150.5
+      "duration_s": 173.9
     },
     "learning_curves": {
-      "score": null,
-      "error": "TIMEOUT after 600s",
-      "duration_s": 600
+      "score": 0.6133,
+      "error": null,
+      "duration_s": 1768.0
     },
     "learning_transfer": {
       "score": 1.0,
       "error": null,
-      "duration_s": 117.0
+      "duration_s": 120.6
     },
     "learning_interference": {
-      "score": 0.5,
+      "score": 0.45,
       "error": null,
-      "duration_s": 131.1
+      "duration_s": 123.3
     },
     "learning_curriculum": {
-      "score": 0.76,
+      "score": 0.52,
       "error": null,
-      "duration_s": 161.7
+      "duration_s": 157.8
     },
-    "attention_divided": {
-      "score": 0.9333,
+    "attention_selective": {
+      "score": 0.895,
       "error": null,
-      "duration_s": 205.3
+      "duration_s": 122.5
     },
-    "attention_instruction_update": {
-      "score": null,
-      "error": "TIMEOUT after 300s",
-      "duration_s": 300
-    },
-    "exec_func_wcst": {
-      "score": null,
-      "error": "TIMEOUT after 300s",
-      "duration_s": 300
-    },
-    "exec_func_tol": {
-      "score": null,
-      "error": "TIMEOUT after 300s",
-      "duration_s": 300
-    },
-    "exec_func_nback": {
-      "score": null,
-      "error": "TIMEOUT after 300s",
-      "duration_s": 300
-    },
-    "exec_func_crt": {
-      "score": 0.3854,
-      "error": null,
-      "duration_s": 133.7
-    },
-    "social_cog_false_belief": {
+    "attention_vigilance": {
       "score": 1.0,
       "error": null,
-      "duration_s": 214.2
+      "duration_s": 52.8
     },
-    "social_cog_pragmatic": {
-      "score": 0.956,
+    "attention_divided": {
+      "score": 0.9375,
       "error": null,
-      "duration_s": 219.6
+      "duration_s": 41.3
+    },
+    "attention_instruction_update": {
+      "score": 0.9833,
+      "error": null,
+      "duration_s": 45.8
+    },
+    "exec_func_wcst": {
+      "score": 0.6392,
+      "error": null,
+      "duration_s": 754.7
+    },
+    "exec_func_tol": {
+      "score": 0.1533,
+      "error": null,
+      "duration_s": 454.7
+    },
+    "exec_func_task_switch": {
+      "score": 1.0,
+      "error": null,
+      "duration_s": 12.9
+    },
+    "exec_func_nback": {
+      "score": 1.0,
+      "error": null,
+      "duration_s": 1028.8
+    },
+    "exec_func_crt": {
+      "score": 0.7005,
+      "error": null,
+      "duration_s": 169.0
     },
     "social_cog_sarcasm": {
-      "score": null,
-      "error": "TIMEOUT after 300s",
-      "duration_s": 300
+      "score": 0.8936,
+      "error": null,
+      "duration_s": 280.5
+    },
+    "social_cog_false_belief": {
+      "score": 0.7083,
+      "error": null,
+      "duration_s": 906.6
+    },
+    "social_cog_pragmatic": {
+      "score": 0.6782,
+      "error": null,
+      "duration_s": 243.9
     },
     "social_cog_emotional_prosody": {
-      "score": 0.7772,
+      "score": 0.8272,
       "error": null,
-      "duration_s": 160.1
+      "duration_s": 139.5
     }
   }
 }

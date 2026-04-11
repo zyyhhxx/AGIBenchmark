@@ -1,7 +1,7 @@
 {
   "model": "qwen.qwen3-next-80b-a3b",
   "model_label": "Qwen3 Next 80B",
-  "timestamp": "2026-04-11T21:40:47.044963+00:00",
+  "timestamp": "2026-04-11T22:17:09.502197+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.992,
@@ -102,6 +102,26 @@
       "score": 0.81,
       "error": null,
       "duration_s": 6.4
+    },
+    "social_cog_emotional_prosody": {
+      "score": 0.8578,
+      "error": null,
+      "duration_s": 60.0
+    },
+    "social_cog_false_belief": {
+      "score": 0.8625,
+      "error": null,
+      "duration_s": 184.8
+    },
+    "exec_func_tol": {
+      "score": 0.29,
+      "error": null,
+      "duration_s": 493.2
+    },
+    "social_cog_pragmatic": {
+      "score": 0.5691,
+      "error": null,
+      "duration_s": 135.9
     }
   }
 }

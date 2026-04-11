@@ -1,67 +1,137 @@
 {
   "model": "anthropic.claude-opus-4-6-v1",
   "model_label": "Claude Opus 4.6",
-  "timestamp": "2026-04-11T21:47:01.152668+00:00",
+  "timestamp": "2026-04-11T22:42:12.619491+00:00",
   "scores": {
     "metacog_canary": {
-      "score": 0.0,
+      "score": 0.9947,
       "error": null,
-      "duration_s": 585.8
+      "duration_s": 110.3
     },
-    "attention_selective": {
-      "score": 0.895,
+    "metacog_fok": {
+      "score": 0.5983,
       "error": null,
-      "duration_s": 154.3
+      "duration_s": 1265.7
     },
-    "attention_vigilance": {
-      "score": 0.8559,
+    "metacog_jol": {
+      "score": 0.4643,
       "error": null,
-      "duration_s": 51.8
+      "duration_s": 422.9
     },
-    "attention_divided": {
-      "score": 0.9375,
+    "metacog_calibration": {
+      "score": 0.9984,
       "error": null,
-      "duration_s": 33.0
+      "duration_s": 488.2
     },
-    "attention_instruction_update": {
-      "score": 0.9833,
+    "metacog_error_detection": {
+      "score": 0.9622,
       "error": null,
-      "duration_s": 44.0
+      "duration_s": 331.0
+    },
+    "metacog_learning_monitoring": {
+      "score": 0.8093,
+      "error": null,
+      "duration_s": 529.4
+    },
+    "metacog_control": {
+      "score": 0.69,
+      "error": null,
+      "duration_s": 133.4
+    },
+    "metacog_epistemic_revision": {
+      "score": 0.96,
+      "error": null,
+      "duration_s": 329.3
+    },
+    "metacog_epistemic_humility": {
+      "score": 0.7987,
+      "error": null,
+      "duration_s": 233.1
     },
     "learning_curves": {
       "score": null,
-      "error": "no RESULT_JSON: =1.00\n  NumberSystem-lc_num_easy: asym=0.00, lr=0.00, se=0.00, cq=1.00\n  NumberSystem-lc_num_med: asym=0.00, lr=0.00, se=0.00, cq=1.00\n  NumberSystem-lc_num_hard: asym=0.00, lr=0.00, se=0.00, cq=1.00\n",
-      "duration_s": 0
+      "error": "TIMEOUT after 600s",
+      "duration_s": 600
     },
     "learning_transfer": {
       "score": 1.0,
       "error": null,
-      "duration_s": 136.5
-    },
-    "learning_interference": {
-      "score": 1.0,
-      "error": null,
-      "duration_s": 269.6
+      "duration_s": 158.9
     },
     "learning_curriculum": {
       "score": 0.7,
       "error": null,
-      "duration_s": 210.7
+      "duration_s": 189.0
     },
-    "exec_func_wcst": {
-      "score": 1.0,
+    "attention_selective": {
+      "score": 0.895,
       "error": null,
-      "duration_s": 48.0
+      "duration_s": 144.0
     },
-    "exec_func_tol": {
-      "score": 0.8,
+    "attention_vigilance": {
+      "score": 0.8559,
       "error": null,
-      "duration_s": 158.0
+      "duration_s": 65.8
+    },
+    "attention_divided": {
+      "score": 0.9306,
+      "error": null,
+      "duration_s": 30.1
+    },
+    "attention_instruction_update": {
+      "score": 0.9833,
+      "error": null,
+      "duration_s": 40.6
     },
     "exec_func_task_switch": {
       "score": 1.0,
       "error": null,
-      "duration_s": 10.4
+      "duration_s": 11.8
+    },
+    "exec_func_nback": {
+      "score": 1.0,
+      "error": null,
+      "duration_s": 1089.0
+    },
+    "exec_func_crt": {
+      "score": 0.9142,
+      "error": null,
+      "duration_s": 248.8
+    },
+    "learning_interference": {
+      "score": 0.12,
+      "error": null,
+      "duration_s": 680.5
+    },
+    "exec_func_wcst": {
+      "score": 1.0,
+      "error": null,
+      "duration_s": 60.3
+    },
+    "social_cog_false_belief": {
+      "score": 0.5833,
+      "error": null,
+      "duration_s": 811.1
+    },
+    "exec_func_tol": {
+      "score": 0.8,
+      "error": null,
+      "duration_s": 176.8
+    },
+    "social_cog_pragmatic": {
+      "score": 0.8674,
+      "error": null,
+      "duration_s": 392.5
+    },
+    "social_cog_sarcasm": {
+      "score": 0.9261,
+      "error": null,
+      "duration_s": 345.1
+    },
+    "social_cog_emotional_prosody": {
+      "score": 0.8022,
+      "error": null,
+      "duration_s": 123.6
     }
   }
 }
