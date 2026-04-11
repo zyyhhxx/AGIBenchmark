@@ -419,3 +419,12 @@ Mapping of 9 metacognition benchmark scores to Fleming's (2024) taxonomy:
 - **Calibration floor effect:** 6/10 models score 0.000 on calibration (BSS=0); only Claude Sonnet 4.6 (0.504), Claude Opus 4.6 (0.998), DeepSeek-R1 (0.000), GPT-OSS-120B (0.124), GLM 4.7 (0.025) achieve non-zero — Claude flagship models uniquely able to express calibrated uncertainty.
 - **Weak discriminators:** error_detection (std=0.077), jol (std=0.091), learning_monitoring (std=0.081), fok (std=0.083) — consider hardening for v2.
 - **Haiku inaccessible:** Known AWS Bedrock access issue, not benchmark bug.
+
+## WCST Benchmark Fix — exec_func_wcst v2 (2026-04-11)
+- **Problem:** v1 scored std=0.007 due to three compounding bugs: (1) 80 individual LLM calls causing timeouts, (2) post-shift trials had no shift signal in history, (3) response parser grabbed numbers from reasoning preamble instead of final answers.
+- **Fix:** Redesigned to 6-block batch-prompt architecture (1 LLM call per block). History explicitly shows Correct/Incorrect feedback chain, giving models a clear shift signal. Parser now takes LAST N numbers from response.
+- **Final scores (v2):** Claude Opus 4.6=1.000, Nova Pro=0.526, Ministral 3B=0.261 → std=0.306, range=0.739 — well above 0.10 target.
+- **Score formula:** 0.25×accuracy + 0.45×(1−perseveration_rate) + 0.30×categories_norm
+- **Key insight:** Parser bugs in LLM benchmark evaluation are insidious — models may be producing correct reasoning but "wrong" answers due to how numbers are extracted. Always validate parser against known-correct model responses before attributing failures to model capability.
+- **Inverted ranking signal:** Ministral 3B outperforming Claude Opus on a reasoning task is a strong diagnostic signal of a broken parser/prompt, not a genuine capability finding.
+- **Artifact:** `repo/benchmarks/executive_functions/task_wcst.py`, `repo/notebooks/exec_func_wcst.ipynb`

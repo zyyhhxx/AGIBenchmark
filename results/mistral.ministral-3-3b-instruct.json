@@ -1,7 +1,7 @@
 {
   "model": "mistral.ministral-3-3b-instruct",
   "model_label": "Ministral 3B",
-  "timestamp": "2026-04-11T16:44:36.275732+00:00",
+  "timestamp": "2026-04-11T17:02:16.455735+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.0,
@@ -57,11 +57,6 @@
       "score": 0.2992,
       "error": null,
       "duration_s": 13.4
-    },
-    "exec_func_wcst": {
-      "score": 0.4646,
-      "error": null,
-      "duration_s": 146.1
     },
     "exec_func_tol": {
       "score": 0.0,
@@ -127,6 +122,11 @@
       "score": 0.441,
       "error": null,
       "duration_s": 14.7
+    },
+    "exec_func_wcst": {
+      "score": 0.2607,
+      "error": null,
+      "duration_s": 38.3
     }
   }
 }
