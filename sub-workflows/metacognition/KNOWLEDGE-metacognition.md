@@ -1,5 +1,13 @@
 # KNOWLEDGE.md — AGI Benchmark
 
+## Notebook–.py Sync Audit — Metacognition Suite (2026-04-11)
+- Audited all 9 metacog notebooks against their corresponding `task_*.py` files; found 12 mismatches across 7 notebooks; 2 were already in sync.
+- Key divergences: (1) `brier_skill_score` in notebooks had an extra `ref` parameter with if/else logic not in .py; (2) `compute_ece` parameter was `confidences` in notebooks vs `confidences_0_100` in .py; (3) `compute_dprime` in notebooks used `scipy.stats.norm.ppf`; .py uses manual Abramowitz & Stegun approximation.
+- Fix: patched notebook cells to match .py source of truth; inserted `norminv` helper into `metacog_error_detection.ipynb`.
+- Extra notebook-only helpers intentionally left: `_seeded_word` in metacog_jol; `_make_rng`, `apply_rules`, `generate_number_system`, `generate_symbol_system` in metacog_learning_monitoring — used by notebook logic, not in conflict with .py.
+- All 9 notebooks pass `jupyter nbconvert` syntax validation post-fix.
+- **Pattern:** `scipy` imports in notebooks can silently diverge from .py files that avoid scipy for portability. Always check dependency assumptions when comparing implementations.
+
 ## Cover Image for Metacognition Writeup (2026-04-11)
 - Output: `repo/assets/metacognition_cover.png` — 1777×1180px, 150 DPI, 106KB
 - Chart: grouped bar chart, 9 benchmarks × 3 tiers (External Monitoring / Self-Monitoring / Prospective Self-Assessment)
