@@ -1,7 +1,7 @@
 {
   "model": "anthropic.claude-sonnet-4-6",
   "model_label": "Claude Sonnet 4.6",
-  "timestamp": "2026-04-11T02:43:22.615410+00:00",
+  "timestamp": "2026-04-11T02:45:22.491529+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.9886,
@@ -67,6 +67,16 @@
       "score": 0.7,
       "error": null,
       "duration_s": 87.6
+    },
+    "attention_selective": {
+      "score": 0.895,
+      "error": null,
+      "duration_s": 71.1
+    },
+    "attention_vigilance": {
+      "score": 0.8647,
+      "error": null,
+      "duration_s": 44.7
     }
   }
 }
