@@ -193,11 +193,13 @@ def learning_curves(llm) -> float:
             quality = 0.5
         curve_qualities.append(float(quality))
 
-    # Overall score
-    mean_asymptotic = np.mean(asymptotic_accs)
-    mean_lr = np.mean(learning_rates)
-    mean_se = np.mean(sample_efficiencies)
-    mean_cq = np.mean(curve_qualities)
+    # Overall score — weighted by difficulty^1.5 to amplify hard-system gaps
+    diff_weights = [c["difficulty"] ** 1.5 for c in all_curves]
+    total_w = sum(diff_weights)
+    mean_asymptotic = sum(a * w for a, w in zip(asymptotic_accs, diff_weights)) / total_w
+    mean_lr = sum(a * w for a, w in zip(learning_rates, diff_weights)) / total_w
+    mean_se = sum(a * w for a, w in zip(sample_efficiencies, diff_weights)) / total_w
+    mean_cq = sum(a * w for a, w in zip(curve_qualities, diff_weights)) / total_w
 
     score = round(
         0.30 * mean_asymptotic + 0.30 * mean_lr + 0.20 * mean_se + 0.20 * mean_cq,

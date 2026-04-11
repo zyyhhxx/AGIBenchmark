@@ -202,18 +202,30 @@ def metacog_error_detection(llm) -> float:
             "difficulty": chain["difficulty"],
         })
 
-    # ── Compute Metrics ──
-    # Detection F1
+    # ── Compute Metrics (difficulty-weighted) ──
+    # Difficulty weights: d=1 → 1.0, d=2 → 2.0, d=3 → 3.0
+    diff_map = {1: 1.0, 2: 2.0, 3: 3.0}
+
+    # Detection F1 (unweighted for standard metric)
     tp = sum(1 for r in results if r["actual_has_error"] and r["pred_has_error"])
     fp = sum(1 for r in results if not r["actual_has_error"] and r["pred_has_error"])
     fn = sum(1 for r in results if r["actual_has_error"] and not r["pred_has_error"])
     tn = sum(1 for r in results if not r["actual_has_error"] and not r["pred_has_error"])
+
+    # Difficulty-weighted detection accuracy
+    weighted_correct = sum(diff_map.get(r["difficulty"], 1.0) for r in results if r["detection_correct"])
+    weighted_total = sum(diff_map.get(r["difficulty"], 1.0) for r in results)
+    weighted_detection = weighted_correct / weighted_total if weighted_total > 0 else 0
+
     f1 = compute_f1(tp, fp, fn)
 
     # Localization accuracy (among correctly detected errors)
     error_chains = [r for r in results if r["actual_has_error"] and r["pred_has_error"]]
+    # Difficulty-weighted localization accuracy
     if error_chains:
-        localization_acc = sum(1 for r in error_chains if r["localization_correct"]) / len(error_chains)
+        loc_weighted = sum(diff_map.get(r["difficulty"], 1.0) for r in error_chains if r["localization_correct"])
+        loc_total = sum(diff_map.get(r["difficulty"], 1.0) for r in error_chains)
+        localization_acc = loc_weighted / loc_total if loc_total > 0 else 0
     else:
         localization_acc = 0.0
 
@@ -237,9 +249,9 @@ def metacog_error_detection(llm) -> float:
     except Exception:
         dprime = 0.0
 
-    # Composite score
+    # Composite score — uses weighted detection instead of raw F1 for better discrimination
     score = round(
-        0.35 * f1 + 0.25 * localization_acc + 0.20 * (1 - ece) + 0.20 * gamma_norm,
+        0.30 * weighted_detection + 0.10 * f1 + 0.25 * localization_acc + 0.20 * (1 - ece) + 0.15 * gamma_norm,
         4
     )
 

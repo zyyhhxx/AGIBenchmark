@@ -55,7 +55,7 @@ def attention_selective(llm) -> float:
     Stroop interference = congruent_acc - incongruent_acc
     Human Stroop interference: ~10-20% accuracy difference
     """
-    results = {"congruent": [], "incongruent": [], "neutral": [], "adversarial": []}
+    results = {"congruent": [], "incongruent": [], "neutral": [], "adversarial": [], "extreme": []}
 
     for item in STROOP_ITEMS:
         with kbench.chats.new(f"stroop_{item['id']}"):
@@ -87,7 +87,7 @@ def attention_selective(llm) -> float:
 
     # Compute condition accuracies
     accs = {}
-    for cond in ["congruent", "incongruent", "neutral", "adversarial"]:
+    for cond in ["congruent", "incongruent", "neutral", "adversarial", "extreme"]:
         items = results[cond]
         accs[cond] = sum(1 for r in items if r["correct"]) / len(items) if items else 0
 
@@ -97,13 +97,17 @@ def attention_selective(llm) -> float:
     # Adversarial resistance (how well it handles shortcut-exploiting items)
     adv_resistance = accs.get("adversarial", 0)
 
-    # Composite score — now includes adversarial resistance
+    # Extreme items — multi-step reasoning under heavy interference
+    extreme_resistance = accs.get("extreme", 0)
+
+    # Composite score — extreme items weighted heavily to spread scores
     score = round(
-        0.25 * accs["congruent"]
-        + 0.30 * accs["incongruent"]
-        + 0.10 * accs["neutral"]
-        + 0.10 * (1 - interference)
-        + 0.25 * adv_resistance,
+        0.10 * accs["congruent"]
+        + 0.15 * accs["incongruent"]
+        + 0.05 * accs["neutral"]
+        + 0.05 * (1 - interference)
+        + 0.25 * adv_resistance
+        + 0.40 * extreme_resistance,
         4
     )
 
@@ -112,7 +116,7 @@ def attention_selective(llm) -> float:
     print(f"SELECTIVE ATTENTION (STROOP ANALOGUE) RESULTS")
     print(f"{'='*60}")
 
-    for cond in ["congruent", "incongruent", "neutral", "adversarial"]:
+    for cond in ["congruent", "incongruent", "neutral", "adversarial", "extreme"]:
         items = results[cond]
         acc = accs[cond]
         print(f"\n--- {cond.upper()} (n={len(items)}, acc={acc:.2%}) ---")
@@ -125,6 +129,7 @@ def attention_selective(llm) -> float:
     print(f"Incongruent accuracy: {accs['incongruent']:.2%}")
     print(f"Neutral accuracy:     {accs['neutral']:.2%}")
     print(f"Adversarial accuracy:  {accs.get('adversarial', 0):.2%}")
+    print(f"Extreme accuracy:      {accs.get('extreme', 0):.2%}")
     print(f"Stroop interference:  {interference:.2%}")
     print(f"Composite score:      {score:.4f}")
 

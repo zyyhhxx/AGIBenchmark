@@ -175,6 +175,115 @@ PROSODY_ITEMS = [
             {"speaker": "B", "text": "Best spill of my life."},
         ],
     },
+
+    # === SUBTLE SHIFT DIALOGUES ===
+    {
+        "id": "subtle_01",
+        "has_shift": True,
+        "shift_turn": 4,
+        "emotion_before": "supportive",
+        "emotion_after": "resentful",
+        "trigger": "passive-aggressive comparison to own sacrifices",
+        "difficulty": "subtle",
+        "dialogue": [
+            {"speaker": "A", "text": "I'm so happy for your promotion! You really earned it."},
+            {"speaker": "B", "text": "Thanks! It's been a long road. Couldn't have done it without your support."},
+            {"speaker": "A", "text": "Of course! That's what friends are for."},
+            {"speaker": "B", "text": "You should apply for the senior role too. You'd be great."},
+            {"speaker": "A", "text": "Oh, I would, but someone has to hold down the fort while everyone else moves up, right? Ha. No, I'm thrilled for you. Really."},
+            {"speaker": "B", "text": "...Are you sure you're OK?"},
+            {"speaker": "A", "text": "Totally fine! Why wouldn't I be? I love my current role. It's fine."},
+        ],
+    },
+    {
+        "id": "subtle_02",
+        "has_shift": True,
+        "shift_turn": 3,
+        "emotion_before": "enthusiastic",
+        "emotion_after": "disappointed",
+        "trigger": "realization of being excluded from plans",
+        "difficulty": "subtle",
+        "dialogue": [
+            {"speaker": "A", "text": "That weekend trip sounds amazing! When are you all going?"},
+            {"speaker": "B", "text": "Next Saturday. It was kind of a last-minute thing."},
+            {"speaker": "A", "text": "Oh nice! So who all's going?"},
+            {"speaker": "B", "text": "Just the usual group — Mike, Sarah, Dev, and Lisa."},
+            {"speaker": "A", "text": "Oh. That sounds really fun. You guys always have a great time. Yeah."},
+            {"speaker": "B", "text": "We should plan something together too sometime."},
+            {"speaker": "A", "text": "Sure! Whenever works. I'm pretty flexible these days."},
+        ],
+    },
+    {
+        "id": "subtle_03",
+        "has_shift": True,
+        "shift_turn": 5,
+        "emotion_before": "polite",
+        "emotion_after": "contemptuous",
+        "trigger": "thinly veiled insult disguised as compliment",
+        "difficulty": "subtle",
+        "dialogue": [
+            {"speaker": "A", "text": "Your presentation was really... thorough."},
+            {"speaker": "B", "text": "Thanks! I put a lot of work into the data analysis."},
+            {"speaker": "A", "text": "You could tell. Lots of slides."},
+            {"speaker": "B", "text": "Yeah, I wanted to be comprehensive."},
+            {"speaker": "A", "text": "It's brave to present that much raw data. Not everyone has the confidence to go up there without a clear narrative."},
+            {"speaker": "B", "text": "I... thought the narrative was clear?"},
+            {"speaker": "A", "text": "Oh, definitely! For people who were following closely. Which I'm sure most people were."},
+        ],
+    },
+    {
+        "id": "subtle_04",
+        "has_shift": True,
+        "shift_turn": 4,
+        "emotion_before": "casual",
+        "emotion_after": "guarded",
+        "trigger": "probing question that feels like surveillance",
+        "difficulty": "subtle",
+        "dialogue": [
+            {"speaker": "A", "text": "How was your day off yesterday?"},
+            {"speaker": "B", "text": "Really nice, just relaxed at home."},
+            {"speaker": "A", "text": "That's good. You deserve it."},
+            {"speaker": "B", "text": "Yeah, it was quiet."},
+            {"speaker": "A", "text": "Funny, I thought I saw your car at the mall around noon. Must've been someone else."},
+            {"speaker": "B", "text": "Oh. I might have stepped out briefly for groceries."},
+            {"speaker": "A", "text": "Right, right. The grocery store in the mall. Makes sense."},
+        ],
+    },
+    {
+        "id": "subtle_05",
+        "has_shift": True,
+        "shift_turn": 3,
+        "emotion_before": "cheerful",
+        "emotion_after": "wistful",
+        "trigger": "mention of time passing triggers awareness of unfulfilled goals",
+        "difficulty": "subtle",
+        "dialogue": [
+            {"speaker": "A", "text": "Can you believe it's been ten years since graduation?"},
+            {"speaker": "B", "text": "I know! Time really flies. Feels like yesterday."},
+            {"speaker": "A", "text": "Remember how we said we'd travel the world before 30?"},
+            {"speaker": "B", "text": "Ha. Yeah. We had a whole list of countries."},
+            {"speaker": "A", "text": "Well, there's still time, right?"},
+            {"speaker": "B", "text": "Sure. Always next year."},
+        ],
+    },
+    {
+        "id": "subtle_06",
+        "has_shift": True,
+        "shift_turn": 4,
+        "emotion_before": "warm",
+        "emotion_after": "hurt",
+        "trigger": "offhand comment reveals lack of attention to something important",
+        "difficulty": "subtle",
+        "dialogue": [
+            {"speaker": "A", "text": "Thanks for coming to the exhibition! It means a lot."},
+            {"speaker": "B", "text": "Of course! Your paintings are always so interesting."},
+            {"speaker": "A", "text": "I've been working on the centerpiece for six months. It's the one by the entrance."},
+            {"speaker": "B", "text": "Oh, is that the landscape? I think I saw it. It was nice."},
+            {"speaker": "A", "text": "It's... it's a portrait, actually. Of my grandmother."},
+            {"speaker": "B", "text": "Right! Right, of course. I must have been looking at it from the wrong angle."},
+            {"speaker": "A", "text": "Sure. Anyway, thanks for stopping by."},
+        ],
+    },
 ]
 
 
@@ -205,6 +314,17 @@ EMOTION_SYNONYMS = {
     "melancholic": ["sad", "wistful", "somber", "grieving", "mournful", "bittersweet"],
     "confident": ["assured", "self-assured", "certain", "bold", "assertive"],
     "defensive": ["guarded", "combative", "protective", "prickly", "evasive"],
+    "supportive": ["encouraging", "warm", "caring", "helpful", "friendly"],
+    "resentful": ["bitter", "envious", "jealous", "passive-aggressive", "grudging"],
+    "enthusiastic": ["excited", "eager", "animated", "passionate", "energetic"],
+    "disappointed": ["let down", "deflated", "crestfallen", "disheartened", "sad"],
+    "polite": ["courteous", "formal", "civil", "mannered", "proper"],
+    "contemptuous": ["condescending", "disdainful", "snobbish", "mocking", "dismissive", "sarcastic"],
+    "casual": ["relaxed", "informal", "easygoing", "laid-back", "nonchalant"],
+    "guarded": ["defensive", "cautious", "wary", "suspicious", "evasive", "uncomfortable"],
+    "wistful": ["nostalgic", "melancholic", "reflective", "longing", "pensive", "bittersweet"],
+    "warm": ["affectionate", "loving", "tender", "caring", "fond"],
+    "hurt": ["wounded", "pained", "stung", "offended", "disappointed", "sad"],
 }
 
 def emotion_match(model_emotion: str, target_emotion: str) -> bool:
@@ -293,9 +413,14 @@ def social_cog_emotional_prosody(llm) -> float:
                 # Check shift detection
                 result["shift_detected"] = model_has_shift
                 
-                # Check turn identification (within ±1)
+                # Check turn identification
                 actual_turn = item["shift_turn"]
-                result["turn_correct"] = abs(model_shift_turn - actual_turn) <= 1
+                is_subtle = item.get("difficulty") == "subtle"
+                # Subtle items: exact match required; standard: ±1 tolerance
+                if is_subtle:
+                    result["turn_correct"] = model_shift_turn == actual_turn
+                else:
+                    result["turn_correct"] = abs(model_shift_turn - actual_turn) <= 1
                 
                 # Check emotion labels
                 result["before_correct"] = emotion_match(model_before, item["emotion_before"])
@@ -316,33 +441,38 @@ def social_cog_emotional_prosody(llm) -> float:
     shift_items = [r for r in results if r["has_shift_actual"]]
     control_items = [r for r in results if not r["has_shift_actual"]]
     
-    # Shift detection accuracy
-    shift_detection = sum(1 for r in shift_items if r.get("shift_detected", False)) / len(shift_items) if shift_items else 0
+    # Split shift items into standard and subtle
+    # Check if item has 'difficulty' field set to 'subtle'
+    item_lookup = {item["id"]: item for item in PROSODY_ITEMS}
+    standard_shift = [r for r in shift_items if item_lookup.get(r["id"], {}).get("difficulty") != "subtle"]
+    subtle_shift = [r for r in shift_items if item_lookup.get(r["id"], {}).get("difficulty") == "subtle"]
     
-    # Emotion labeling (average of before + after correctness)
-    emotion_scores = []
-    for r in shift_items:
-        if r.get("shift_detected", False):
-            score = (int(r.get("before_correct", False)) + int(r.get("after_correct", False))) / 2
-            emotion_scores.append(score)
-    emotion_labeling = np.mean(emotion_scores) if emotion_scores else 0
+    def compute_shift_metrics(items):
+        if not items:
+            return 0, 0, 0
+        detection = sum(1 for r in items if r.get("shift_detected", False)) / len(items)
+        e_scores = []
+        t_scores = []
+        for r in items:
+            if r.get("shift_detected", False):
+                e_scores.append((int(r.get("before_correct", False)) + int(r.get("after_correct", False))) / 2)
+                t_scores.append(r.get("trigger_score", 0))
+        emotion = np.mean(e_scores) if e_scores else 0
+        trigger = np.mean(t_scores) if t_scores else 0
+        return detection, emotion, trigger
     
-    # Trigger identification
-    trigger_scores = [r.get("trigger_score", 0) for r in shift_items if r.get("shift_detected", False)]
-    trigger_id = np.mean(trigger_scores) if trigger_scores else 0
+    std_det, std_emo, std_trig = compute_shift_metrics(standard_shift)
+    sub_det, sub_emo, sub_trig = compute_shift_metrics(subtle_shift)
     
     # False alarm rate (detecting shift in controls)
     false_alarms = sum(1 for r in control_items if not r.get("correct_no_shift", True))
     false_alarm_rate = false_alarms / len(control_items) if control_items else 0
     
-    # Composite score
-    score = round(
-        0.40 * shift_detection
-        + 0.30 * float(emotion_labeling)
-        + 0.20 * float(trigger_id)
-        + 0.10 * (1 - false_alarm_rate),
-        4
-    )
+    # Composite: 40% standard, 50% subtle, 10% false alarm resistance
+    standard_score = 0.40 * std_det + 0.30 * float(std_emo) + 0.20 * float(std_trig) + 0.10 * (1 - false_alarm_rate)
+    subtle_score = 0.40 * sub_det + 0.30 * float(sub_emo) + 0.20 * float(sub_trig) + 0.10 * (1 - false_alarm_rate)
+    
+    score = round(0.40 * standard_score + 0.50 * subtle_score + 0.10 * (1 - false_alarm_rate), 4)
     
     # ─── Logging ─────
     print(f"\n{'='*60}")
@@ -360,10 +490,15 @@ def social_cog_emotional_prosody(llm) -> float:
             print(f"  {correct} {r['id']}")
     
     print(f"\n--- Summary ---")
-    print(f"Shift detection:    {shift_detection:.2%}")
-    print(f"Emotion labeling:   {emotion_labeling:.2%}")
-    print(f"Trigger ID:         {trigger_id:.2%}")
+    print(f"Standard detection:  {std_det:.2%}")
+    print(f"Standard emotion:   {std_emo:.2%}")
+    print(f"Standard trigger:   {std_trig:.2%}")
+    print(f"Subtle detection:   {sub_det:.2%}")
+    print(f"Subtle emotion:     {sub_emo:.2%}")
+    print(f"Subtle trigger:     {sub_trig:.2%}")
     print(f"False alarm rate:   {false_alarm_rate:.2%}")
+    print(f"Standard score:     {standard_score:.4f}")
+    print(f"Subtle score:       {subtle_score:.4f}")
     print(f"Composite score:    {score:.4f}")
     
     return score

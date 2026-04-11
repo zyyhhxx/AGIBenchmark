@@ -247,6 +247,8 @@ LEARNING_CURVE_SYSTEMS = [
     generate_number_system("lc_num_easy", difficulty=1),
     generate_number_system("lc_num_med", difficulty=2),
     generate_number_system("lc_num_hard", difficulty=3),
+    generate_symbol_system("lc_sym_extreme1", difficulty=3),
+    generate_number_system("lc_num_extreme2", difficulty=3),
 ]
 
 # Systems for transfer testing

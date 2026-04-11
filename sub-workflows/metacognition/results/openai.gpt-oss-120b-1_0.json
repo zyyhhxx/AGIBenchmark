@@ -1,7 +1,7 @@
 {
   "model": "openai.gpt-oss-120b-1:0",
   "model_label": "GPT-OSS-120B",
-  "timestamp": "2026-04-11T20:45:42.532824+00:00",
+  "timestamp": "2026-04-11T23:26:06.058746+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.803,
@@ -44,9 +44,9 @@
       "duration_s": 208.5
     },
     "learning_curves": {
-      "score": 0.69,
-      "error": null,
-      "duration_s": 1954.9
+      "score": null,
+      "error": "TIMEOUT after 600s",
+      "duration_s": 600
     },
     "learning_transfer": {
       "score": 1.0,
@@ -54,19 +54,19 @@
       "duration_s": 195.4
     },
     "learning_interference": {
-      "score": 0.5,
+      "score": 1.0,
       "error": null,
-      "duration_s": 168.5
+      "duration_s": 78.0
     },
     "learning_curriculum": {
       "score": 0.7,
       "error": null,
-      "duration_s": 122.3
+      "duration_s": 70.8
     },
     "attention_selective": {
-      "score": 0.935,
+      "score": 0.835,
       "error": null,
-      "duration_s": 407.1
+      "duration_s": 47.5
     },
     "attention_vigilance": {
       "score": 1.0,
@@ -76,27 +76,27 @@
     "attention_divided": {
       "score": 0.9375,
       "error": null,
-      "duration_s": 18.6
+      "duration_s": 15.0
     },
     "attention_instruction_update": {
       "score": 0.9833,
       "error": null,
-      "duration_s": 22.2
+      "duration_s": 12.4
     },
     "exec_func_wcst": {
-      "score": 0.5309,
+      "score": 1.0,
       "error": null,
-      "duration_s": 391.8
+      "duration_s": 28.6
     },
     "exec_func_tol": {
-      "score": 0.68,
+      "score": 0.62,
       "error": null,
-      "duration_s": 184.8
+      "duration_s": 87.7
     },
     "exec_func_task_switch": {
       "score": 1.0,
       "error": null,
-      "duration_s": 5.7
+      "duration_s": 6.8
     },
     "exec_func_nback": {
       "score": 1.0,
