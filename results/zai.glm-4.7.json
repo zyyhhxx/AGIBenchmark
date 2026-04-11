@@ -1,7 +1,7 @@
 {
   "model": "zai.glm-4.7",
   "model_label": "GLM 4.7",
-  "timestamp": "2026-04-11T02:08:38.602592+00:00",
+  "timestamp": "2026-04-11T02:35:48.477651+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.652,
@@ -17,6 +17,36 @@
       "score": 0.401,
       "error": null,
       "duration_s": 251.5
+    },
+    "metacog_calibration": {
+      "score": 0.0251,
+      "error": null,
+      "duration_s": 437.4
+    },
+    "metacog_error_detection": {
+      "score": 0.884,
+      "error": null,
+      "duration_s": 266.6
+    },
+    "metacog_learning_monitoring": {
+      "score": 0.9098,
+      "error": null,
+      "duration_s": 334.0
+    },
+    "metacog_control": {
+      "score": 0.6617,
+      "error": null,
+      "duration_s": 168.8
+    },
+    "metacog_epistemic_revision": {
+      "score": null,
+      "error": "Read timeout on endpoint URL: \"https://bedrock-runtime.us-east-1.amazonaws.com/model/zai.glm-4.7/converse\"",
+      "duration_s": 261.3
+    },
+    "metacog_epistemic_humility": {
+      "score": 0.8833,
+      "error": null,
+      "duration_s": 149.7
     }
   }
 }

@@ -1,7 +1,7 @@
 {
   "model": "openai.gpt-oss-120b-1:0",
   "model_label": "GPT-OSS-120B",
-  "timestamp": "2026-04-11T02:10:15.749190+00:00",
+  "timestamp": "2026-04-11T02:34:46.353630+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.803,
@@ -22,6 +22,31 @@
       "score": null,
       "error": "Read timeout on endpoint URL: \"https://bedrock-runtime.us-east-1.amazonaws.com/model/openai.gpt-oss-120b-1%3A0/converse\"",
       "duration_s": 272.4
+    },
+    "metacog_error_detection": {
+      "score": 0.8978,
+      "error": null,
+      "duration_s": 366.9
+    },
+    "metacog_learning_monitoring": {
+      "score": 0.8912,
+      "error": null,
+      "duration_s": 420.2
+    },
+    "metacog_control": {
+      "score": 0.6887,
+      "error": null,
+      "duration_s": 194.3
+    },
+    "metacog_epistemic_revision": {
+      "score": 0.72,
+      "error": null,
+      "duration_s": 270.6
+    },
+    "metacog_epistemic_humility": {
+      "score": 0.6629,
+      "error": null,
+      "duration_s": 208.5
     }
   }
 }

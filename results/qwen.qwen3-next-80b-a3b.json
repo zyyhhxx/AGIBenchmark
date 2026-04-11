@@ -1,12 +1,22 @@
 {
   "model": "qwen.qwen3-next-80b-a3b",
   "model_label": "Qwen3 Next 80B",
-  "timestamp": "2026-04-11T02:03:53.654965+00:00",
+  "timestamp": "2026-04-11T02:39:36.010962+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.992,
       "error": null,
       "duration_s": 232.0
+    },
+    "metacog_fok": {
+      "score": 0.6354,
+      "error": null,
+      "duration_s": 1484.1
+    },
+    "metacog_jol": {
+      "score": 0.3627,
+      "error": null,
+      "duration_s": 654.2
     }
   }
 }

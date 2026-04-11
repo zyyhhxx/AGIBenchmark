@@ -1,7 +1,7 @@
 {
   "model": "anthropic.claude-opus-4-6-v1",
   "model_label": "Claude Opus 4.6",
-  "timestamp": "2026-04-11T02:11:35.209636+00:00",
+  "timestamp": "2026-04-11T02:37:41.512410+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.9947,
@@ -22,6 +22,31 @@
       "score": 0.9984,
       "error": null,
       "duration_s": 488.2
+    },
+    "metacog_error_detection": {
+      "score": 0.9622,
+      "error": null,
+      "duration_s": 331.0
+    },
+    "metacog_learning_monitoring": {
+      "score": 0.8093,
+      "error": null,
+      "duration_s": 529.4
+    },
+    "metacog_control": {
+      "score": 0.69,
+      "error": null,
+      "duration_s": 133.4
+    },
+    "metacog_epistemic_revision": {
+      "score": 0.96,
+      "error": null,
+      "duration_s": 329.3
+    },
+    "metacog_epistemic_humility": {
+      "score": 0.7987,
+      "error": null,
+      "duration_s": 233.1
     }
   }
 }
