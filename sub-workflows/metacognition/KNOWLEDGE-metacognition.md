@@ -8,6 +8,15 @@
 - All 9 notebooks pass `jupyter nbconvert` syntax validation post-fix.
 - **Pattern:** `scipy` imports in notebooks can silently diverge from .py files that avoid scipy for portability. Always check dependency assumptions when comparing implementations.
 
+## Metacognition Benchmark Discriminatory Power Rankings (2026-04-11)
+- Analyzed 9 metacog benchmarks across up to 10 models; ranked by std (score spread).
+- Top-3 most discriminating: **epistemic_humility** (std=0.2452, range=0.7214), **control** (std=0.1829), **calibration** (std=0.1644)
+- Bottom-3 least discriminating: **fok** (std=0.0695, only 3 valid scores), **epistemic_revision** (std=0.0132, clustered ~0.80), **canary** (std=0.0000, all zeros — working as intended)
+- epistemic_humility spreads widest: Ministral 3B=0.20, Llama 3.3 70B=0.92 — best single benchmark for differentiating model metacognitive capability.
+- calibration CV=2.24 indicates extreme relative variance despite low mean (0.07) — useful for distinguishing top models but many score near zero.
+- epistemic_revision ceiling effect: 8 models score 0.79–0.82 with almost no spread; likely too easy for current frontier models.
+- Full table saved to `repo/sub-workflows/metacognition/results/metacog_discriminatory_summary.md`.
+
 ## Cover Image for Metacognition Writeup (2026-04-11)
 - Output: `repo/assets/metacognition_cover.png` — 1777×1180px, 150 DPI, 106KB
 - Chart: grouped bar chart, 9 benchmarks × 3 tiers (External Monitoring / Self-Monitoring / Prospective Self-Assessment)
