@@ -10,15 +10,13 @@ reach the goal in the minimum number of moves.
 Cognitive Science Basis:
 - Tower of London (Shallice, 1982)
 - Planning is a "look-ahead" executive process (Owen et al., 1990)
-- Difficulty scales with optimal move depth (3 < 4 < 5 moves)
+- Difficulty scales with optimal move depth (2 < 3 < 4 < 5 moves)
 - Frontal patients show deficits at higher move depths (Shallice, 1982)
 
 Metrics:
-- Optimality ratio: mean(optimal_moves / actual_moves) per problem
-- Validity rate: proportion of solutions with all legal moves reaching goal
-- Depth scaling: does performance degrade at higher depths (as in humans)?
-
-Score = 0.50 * optimality + 0.30 * validity + 0.20 * depth_scaling_bonus
+- Per-tier mean optimality (optimal_moves / actual_moves if goal reached, else 0)
+- Three tiers: Easy (2-move, 0.20), Medium (3-move, 0.30), Hard (4-5 move, 0.50)
+- Score = weighted sum of per-tier mean optimality
 
 Shortcut Resistance:
 - Problems are procedurally generated, not from standard test batteries
@@ -29,42 +27,73 @@ Shortcut Resistance:
 import kaggle_benchmarks as kbench
 import json as _json
 def _safe_log(data): print(_json.dumps(data, indent=2, default=str))
-from dataclasses import dataclass, field
 import numpy as np
 import re
 from copy import deepcopy
 from data.tol_problems import TOL_PROBLEMS, state_str, PEG_CAPACITY, apply_move, get_valid_moves, state_to_tuple
 
 
-# ─── Structured Output Schema ──────────────────────────────────────
+# ─── Move Parsing ───────────────────────────────────────────────────
 
-@dataclass
-class ToLResponse:
-    """Model's planned move sequence."""
-    moves: list       # List of moves, each as "X→Y" (e.g., "A→B")
-    reasoning: str    # Explanation of planning strategy
+def parse_moves(text) -> list:
+    """Parse move list from model response into (src, dst) tuples.
+    
+    Strategy (ordered by reliability):
+    1. Find a MOVES: summary line and parse only that line
+    2. Find numbered move lines (Move 1: A→B) and extract one move per line
+    3. Find the last compact move list on a single line (A→B, B→C)
+    Never fall back to full-text search — that picks up reasoning traces.
+    """
+    if not isinstance(text, str):
+        text = str(text)
+    
+    _arrow = r'(?:→|->|—>|=>)'
+    _move_pat = rf'\b([ABC])\s*{_arrow}\s*([ABC])\b'
+    
+    # === Strategy 1: MOVES: summary line ===
+    moves_match = re.search(r'MOVES:\s*(.+)', text, re.IGNORECASE)
+    if moves_match:
+        line = moves_match.group(1)
+        direct = re.findall(_move_pat, line, re.IGNORECASE)
+        if direct:
+            return [(s.upper(), d.upper()) for s, d in direct]
+    
+    # === Strategy 2: Numbered move lines ===
+    # Match patterns like "Move 1: A→B", "**Move 1:** A→B", "1. A→B", "Step 1: A→B"
+    numbered = re.findall(
+        rf'(?:(?:Move|Step)\s*\d+[:\.]?\s*\**\s*|\d+\.\s*){_move_pat}',
+        text, re.IGNORECASE
+    )
+    if numbered:
+        return [(s.upper(), d.upper()) for s, d in numbered]
+    
+    # === Strategy 3: Last compact move list on a single line ===
+    # Look for lines containing 2+ comma/space-separated arrow moves
+    for line in reversed(text.split('\n')):
+        line = line.strip()
+        found = re.findall(_move_pat, line, re.IGNORECASE)
+        if len(found) >= 2:
+            return [(s.upper(), d.upper()) for s, d in found]
+    
+    # === Strategy 4: Numbered "from X to Y" lines ===
+    from_to = re.findall(
+        r'(?:Move|Step)\s*\d+[:\.]?.*?from\s+(?:peg\s+)?([ABC])\s+to\s+(?:peg\s+)?([ABC])',
+        text, re.IGNORECASE
+    )
+    if from_to:
+        return [(s.upper(), d.upper()) for s, d in from_to]
+    
+    # === Strategy 5: Last MOVES: line with "from X to Y" ===
+    if moves_match:
+        line = moves_match.group(1)
+        ft = re.findall(r'from\s+(?:peg\s+)?([ABC])\s+to\s+(?:peg\s+)?([ABC])', line, re.IGNORECASE)
+        if ft:
+            return [(s.upper(), d.upper()) for s, d in ft]
+    
+    return []
 
 
 # ─── Move Validation ────────────────────────────────────────────────
-
-def parse_moves(moves_raw) -> list:
-    """Parse move list from model response into (src, dst) tuples."""
-    parsed = []
-    if isinstance(moves_raw, str):
-        # Try to parse "A→B, B→C" or "A->B\nB->C" etc.
-        moves_raw = re.findall(r'([ABC])\s*(?:→|->|to)\s*([ABC])', moves_raw, re.IGNORECASE)
-        for src, dst in moves_raw:
-            parsed.append((src.upper(), dst.upper()))
-    elif isinstance(moves_raw, list):
-        for m in moves_raw:
-            if isinstance(m, str):
-                match = re.search(r'([ABC])\s*(?:→|->|to)\s*([ABC])', m, re.IGNORECASE)
-                if match:
-                    parsed.append((match.group(1).upper(), match.group(2).upper()))
-            elif isinstance(m, (list, tuple)) and len(m) >= 2:
-                parsed.append((str(m[0]).upper(), str(m[1]).upper()))
-    return parsed
-
 
 def validate_solution(start_state, goal_state, moves) -> dict:
     """
@@ -75,17 +104,12 @@ def validate_solution(start_state, goal_state, moves) -> dict:
     errors = []
 
     for i, (src, dst) in enumerate(moves):
-        # Check source peg has balls
         if not state.get(src) or len(state[src]) == 0:
             errors.append(f"Move {i+1}: Peg {src} is empty")
             continue
-
-        # Check destination has capacity
         if len(state.get(dst, [])) >= PEG_CAPACITY.get(dst, 0):
             errors.append(f"Move {i+1}: Peg {dst} is full (capacity {PEG_CAPACITY[dst]})")
             continue
-
-        # Apply move
         ball = state[src].pop()
         state[dst].append(ball)
 
@@ -100,6 +124,15 @@ def validate_solution(start_state, goal_state, moves) -> dict:
     }
 
 
+# ─── Tier Configuration ────────────────────────────────────────────
+
+TIERS = {
+    "easy":   {"depths": [2],    "weight": 0.20},
+    "medium": {"depths": [3],    "weight": 0.30},
+    "hard":   {"depths": [4, 5], "weight": 0.50},
+}
+
+
 # ─── The Benchmark Task ────────────────────────────────────────────
 
 @kbench.task(name="exec_func_tol")
@@ -110,13 +143,14 @@ def exec_func_tol(llm) -> float:
     Tests multi-step planning by requiring the model to find move sequences
     to rearrange balls on pegs to match a goal state.
 
-    Score = 0.50 * optimality + 0.30 * validity + 0.20 * depth_scaling_bonus
+    Score = weighted sum of per-tier mean optimality:
+      0.20 * easy(2-move) + 0.30 * medium(3-move) + 0.50 * hard(4-5 move)
 
     Cognitive Science Basis: Shallice (1982), Owen et al. (1990).
-    Human optimality: ~85% at 3 moves, ~65% at 5 moves.
+    Human optimality: ~90% at 2 moves, ~85% at 3 moves, ~65% at 5 moves.
     """
     results = []
-    depth_scores = {3: [], 4: [], 5: []}
+    tier_scores = {"easy": [], "medium": [], "hard": []}
 
     for problem in TOL_PROBLEMS:
         start = problem["start"]
@@ -132,78 +166,60 @@ def exec_func_tol(llm) -> float:
             f"- Optimal solution needs {optimal} moves\n\n"
             f"CURRENT STATE:\n{state_str(start)}\n\n"
             f"GOAL STATE:\n{state_str(goal)}\n\n"
-            f"Plan your moves carefully. List each move as 'X→Y' (e.g., 'A→B' means "
-            f"move top ball from peg A to peg B).\n\n"
-            f"Provide your moves as a list and explain your reasoning."
+            f"Think step by step. Plan your moves carefully.\n\n"
+            f"CRITICAL: After your reasoning, you MUST end your response with exactly this format on its own line:\n"
+            f"MOVES: A→B, C→A, B→C\n\n"
+            f"Each move is SRC→DST (peg letter → peg letter). List all moves in order, separated by commas.\n"
+            f"The MOVES: line must be the LAST line of your response."
         )
 
         with kbench.chats.new(f"tol_{problem['problem_id']}"):
-            try:
-                response = llm.prompt(prompt, schema=ToLResponse)
-                moves_raw = response.moves
-                reasoning = response.reasoning
-            except Exception:
-                raw = llm.prompt(prompt)
-                moves_raw = raw
-                reasoning = raw
+            raw = llm.prompt(prompt)
 
         # Parse and validate
-        moves = parse_moves(moves_raw)
+        moves = parse_moves(raw)
         validation = validate_solution(start, goal, moves)
 
-        # Compute optimality ratio (capped at 1.0)
+        # Compute optimality ratio
         if validation["reached_goal"]:
             optimality = min(1.0, optimal / max(validation["n_moves"], 1))
         else:
             optimality = 0.0
 
+        # Assign to tier
+        if optimal in TIERS["easy"]["depths"]:
+            tier_scores["easy"].append(optimality)
+        elif optimal in TIERS["medium"]["depths"]:
+            tier_scores["medium"].append(optimality)
+        else:
+            tier_scores["hard"].append(optimality)
+
         result = {
             "problem_id": problem["problem_id"],
             "optimal_moves": optimal,
             "model_moves": validation["n_moves"],
-            "valid_moves": validation["valid"],
+            "parsed_moves": len(moves),
             "reached_goal": validation["reached_goal"],
             "optimality": round(optimality, 4),
             "errors": validation["errors"],
         }
         results.append(result)
-        depth_scores[optimal].append(optimality)
 
-    # ── Compute Metrics ──
+    # ── Compute Weighted Score ──
+    tier_means = {}
+    for tier_name, cfg in TIERS.items():
+        scores = tier_scores[tier_name]
+        tier_means[tier_name] = float(np.mean(scores)) if scores else 0.0
 
-    # Overall validity rate
-    validity = sum(1 for r in results if r["reached_goal"]) / len(results)
-
-    # Overall optimality (only counting valid solutions, but 0 for invalid)
-    optimality_scores = [r["optimality"] for r in results]
-    mean_optimality = np.mean(optimality_scores)
-
-    # Depth scaling bonus: do scores decrease with depth? (as expected in humans)
-    depth_means = {d: np.mean(s) if s else 0 for d, s in depth_scores.items()}
-    # Bonus if 3-move > 4-move > 5-move (expected pattern)
-    if depth_means[3] > depth_means[4] > depth_means[5]:
-        depth_bonus = 1.0  # Shows human-like scaling
-    elif depth_means[3] > depth_means[5]:
-        depth_bonus = 0.5  # Partial scaling
-    else:
-        depth_bonus = 0.0  # No scaling or inverse
-
-    # ── Composite Score ──
-    score = (
-        0.50 * float(mean_optimality) +
-        0.30 * float(validity) +
-        0.20 * float(depth_bonus)
-    )
+    score = sum(TIERS[t]["weight"] * tier_means[t] for t in TIERS)
     score = round(float(np.clip(score, 0, 1)), 4)
 
     # ── Log ──
     _safe_log({
         "benchmark": "Tower of London",
         "n_problems": len(results),
-        "overall_validity": round(float(validity), 4),
-        "mean_optimality": round(float(mean_optimality), 4),
-        "depth_scaling": {str(d): round(float(m), 4) for d, m in depth_means.items()},
-        "depth_bonus": depth_bonus,
+        "tier_means": {t: round(m, 4) for t, m in tier_means.items()},
+        "tier_weights": {t: TIERS[t]["weight"] for t in TIERS},
         "composite_score": score,
         "per_problem": results,
     })

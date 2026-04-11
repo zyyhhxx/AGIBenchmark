@@ -83,11 +83,6 @@
       "error": null,
       "duration_s": 10.0
     },
-    "exec_func_tol": {
-      "score": 0.0,
-      "error": null,
-      "duration_s": 133.0
-    },
     "exec_func_task_switch": {
       "score": 0.7125,
       "error": null,

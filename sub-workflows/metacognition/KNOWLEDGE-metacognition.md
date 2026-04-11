@@ -420,6 +420,15 @@ Mapping of 9 metacognition benchmark scores to Fleming's (2024) taxonomy:
 - **Weak discriminators:** error_detection (std=0.077), jol (std=0.091), learning_monitoring (std=0.081), fok (std=0.083) — consider hardening for v2.
 - **Haiku inaccessible:** Known AWS Bedrock access issue, not benchmark bug.
 
+## Tower of London Parser Fix — exec_func_tol v2 (2026-04-11)
+- **Root cause of floor effect (mean=0.038):** `parse_moves()` had a full-text regex fallback that matched every `A→B` token in chain-of-thought reasoning traces — 5-move problems produced 24–36 spurious parsed moves, causing validation failures.
+- **Fix:** Replaced full-text fallback with a 5-strategy cascade: (S1) MOVES: summary line, (S2) numbered move lines (`Move 1: A→B`), (S3) last compact move list on a single line with ≥2 moves, (S4) numbered `from X to Y` lines, (S5) MOVES line with `from X to Y`. No full-text fallback.
+- **Prompt hardening:** Added explicit instruction to end response with `MOVES: A→B, C→A, B→C` as the LAST line, reducing S1 failures.
+- **After fix scores (20 problems, 3 models):** Claude Opus 4.6=0.71, Nova Pro=0.26, Ministral 3B=0.00 → mean=0.323 (≥0.20 ✅), std=0.293 (≥0.10 ✅).
+- **Residual issue:** 5-move problems still produce 24–27 parsed moves for Opus when no MOVES: line is elicited — S2/S3 still pick up reasoning. Not score-breaking given Opus scores well overall.
+- **General lesson:** Full-text regex fallbacks in response parsers are dangerous for chain-of-thought models. Always require a structured output line and parse ONLY that line first.
+- **Artifact:** `repo/benchmarks/executive_functions/task_tol.py`, `repo/notebooks/exec_func_tol.ipynb`
+
 ## WCST Benchmark Fix — exec_func_wcst v2 (2026-04-11)
 - **Problem:** v1 scored std=0.007 due to three compounding bugs: (1) 80 individual LLM calls causing timeouts, (2) post-shift trials had no shift signal in history, (3) response parser grabbed numbers from reasoning preamble instead of final answers.
 - **Fix:** Redesigned to 6-block batch-prompt architecture (1 LLM call per block). History explicitly shows Correct/Incorrect feedback chain, giving models a clear shift signal. Parser now takes LAST N numbers from response.

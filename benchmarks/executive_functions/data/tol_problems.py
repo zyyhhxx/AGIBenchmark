@@ -1,7 +1,7 @@
 """
 Stimuli generator for Tower of London (ToL) planning benchmark.
 
-Generates goal states at varying optimal move depths (3, 4, 5 moves).
+Generates goal states at varying optimal move depths (2, 3, 4, 5 moves).
 Uses 3 pegs and 3 colored balls. Each peg has a capacity constraint:
 - Peg A: holds 3 balls
 - Peg B: holds 2 balls
@@ -12,7 +12,6 @@ This matches the classic Shallice (1982) setup.
 
 import random
 from collections import deque
-from itertools import permutations
 from copy import deepcopy
 
 # Pegs with capacity constraints
@@ -35,9 +34,9 @@ def get_valid_moves(state):
     moves = []
     pegs = ["A", "B", "C"]
     for src in pegs:
-        if not state[src]:  # empty peg
+        if not state[src]:
             continue
-        ball = state[src][-1]  # top ball
+        ball = state[src][-1]
         for dst in pegs:
             if dst == src:
                 continue
@@ -82,7 +81,7 @@ def bfs_optimal(start, goal):
                 visited.add(new_t)
                 queue.append((new_t, new_path))
 
-    return None  # unreachable
+    return None
 
 
 def generate_all_states():
@@ -90,13 +89,10 @@ def generate_all_states():
     states = []
     pegs = ["A", "B", "C"]
 
-    # Each ball can be on any peg (if capacity allows)
-    # We place balls one at a time
     def place_balls(balls_remaining, current_state):
         if not balls_remaining:
             states.append(deepcopy(current_state))
             return
-
         ball = balls_remaining[0]
         for peg in pegs:
             if len(current_state[peg]) < PEG_CAPACITY[peg]:
@@ -110,14 +106,13 @@ def generate_all_states():
 
 def generate_tol_problems(n_per_depth=5, seed=42):
     """
-    Generate Tower of London problems at depths 3, 4, and 5.
+    Generate Tower of London problems at depths 2, 3, 4, and 5.
     Returns problems grouped by optimal move count.
     """
     random.seed(seed)
     all_states = generate_all_states()
 
-    # Find all pairs with known optimal depths
-    problems_by_depth = {3: [], 4: [], 5: []}
+    problems_by_depth = {2: [], 3: [], 4: [], 5: []}
 
     for start in all_states:
         for goal in all_states:
@@ -132,9 +127,8 @@ def generate_tol_problems(n_per_depth=5, seed=42):
                     "optimal_solution": [(s, d, b) for s, d, b in optimal],
                 })
 
-    # Sample n_per_depth problems from each depth
     problems = []
-    for depth in [3, 4, 5]:
+    for depth in [2, 3, 4, 5]:
         candidates = problems_by_depth[depth]
         random.shuffle(candidates)
         selected = candidates[:n_per_depth]
