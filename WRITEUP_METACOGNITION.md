@@ -56,25 +56,25 @@ All tasks are implemented using the `kaggle-benchmarks` SDK with the `@kbench.ta
 
 We evaluated 10 models via Amazon Bedrock. Key metacognition results (scores 0–1, higher = better):
 
-| Task | Claude Opus | DeepSeek-R1 | Llama 4 | Ministral 3B | Nova Pro |
-|------|------------|-------------|---------|--------------|----------|
-| Calibration | 0.998 | 0.000 | 0.000 | 0.000 | 0.000 |
-| FOK | 0.598 | 0.596 | 0.567 | — | 0.416 |
-| JOL | 0.464 | 0.276 | 0.465 | — | 0.402 |
-| Error Detection | 0.962 | 0.898 | 0.748 | 0.810 | 0.786 |
-| Epistemic Humility | 0.799 | 0.880 | 0.903 | 0.200 | 0.876 |
-| Control | 0.690 | 0.453 | 0.615 | 0.200 | 0.748 |
-| Canary | 0.995 | 0.867 | 0.928 | 0.000 | 0.726 |
-| Epistemic Revision | 0.960 | 0.738 | 0.830 | — | 0.750 |
-| Learning Monitoring | 0.809 | 0.894 | 0.826 | 0.691 | 0.910 |
+| Task | Mean | Std | Range | Top Model (Score) | Bottom Model (Score) |
+|------|------|-----|-------|-------------------|---------------------|
+| Calibration | 0.183 | 0.327 | 0.998 | Claude Opus (1.00) | 6 models (0.00) |
+| FOK | 0.561 | 0.078 | 0.232 | Claude Sonnet (0.65) | Ministral 3B (0.41) |
+| JOL | 0.393 | 0.086 | 0.265 | Llama 3.3 70B (0.47) | GPT-OSS-120B (0.20) |
+| Error Detection | 0.862 | 0.073 | 0.226 | Claude Sonnet (0.97) | Llama 4 (0.75) |
+| Epistemic Humility | 0.788 | 0.209 | 0.720 | Llama 3.3 70B (0.92) | Ministral 3B (0.20) |
+| Control | 0.549 | 0.172 | 0.548 | Nova Pro (0.75) | Ministral 3B (0.20) |
+| Canary | 0.795 | 0.290 | 1.000 | Llama 3.3 70B (1.00) | Ministral 3B (0.00) |
+| Epistemic Revision | 0.801 | 0.097 | 0.290 | Claude Opus (0.96) | Ministral 3B (0.67) |
+| Learning Monitoring | 0.834 | 0.077 | 0.220 | Nova Pro (0.91) | Ministral 3B (0.69) |
 
-**Insight 1 — Bimodal metacognition.** All models show a striking dissociation: strong *external* monitoring (error detection: mean 0.87, epistemic humility: mean 0.77) but weak *internal* self-monitoring (calibration: mean 0.22, JOL: mean 0.39). Models can judge others' reasoning but cannot accurately judge their own knowledge states.
+**Insight 1 — Three-tier metacognition pattern.** Across all 10 models, scores cluster into three tiers: *external monitoring* (canary, epistemic humility, error detection; mean 0.82), *temporal self-tracking* (epistemic revision, control, learning monitoring; mean 0.73), and *prospective self-assessment* (FOK, JOL, calibration; mean 0.39). This 2:1 dissociation between external and internal metacognition replicates across model families and scales.
 
-**Insight 2 — Near-universal calibration failure.** Only Claude Opus achieves non-zero calibration (BSS = 0.998). All other models' confidence ratings carry zero information beyond the base rate. This confirms Chhikara et al. (2025) on systematic LLM overconfidence and reveals it persists even in frontier models.
+**Insight 2 — Near-universal calibration failure.** Only Claude Opus achieves meaningful calibration (BSS = 1.00); Claude Sonnet scores 0.50; the remaining 7 models score ≤0.12. Most LLMs' expressed confidence carries zero information beyond the base rate, confirming Chhikara et al. (2025) on systematic overconfidence.
 
-**Insight 3 — Strong discriminatory power.** Average standard deviation across models = 0.17 (range 0.06–0.36). No benchmark is flagged as ceiling or floor. The suite produces a meaningful gradient from Ministral 3B (weakest) through mid-tier models to Claude Opus (strongest), with each benchmark revealing a distinct capability profile.
+**Insight 3 — Strong discriminatory power.** Average cross-model standard deviation = 0.16 across 9 benchmarks (range 0.07–0.33). The suite produces a meaningful gradient from Ministral 3B (3B parameters, weakest overall) through mid-tier models (Nova Pro, Llama 4) to frontier models (Claude Opus, Qwen3), with each benchmark revealing a distinct capability profile.
 
-**Insight 4 — Epistemic humility does not track model size.** DeepSeek-R1 (0.88) and Llama 4 Maverick (0.90) outperform Claude Opus (0.80) on epistemic humility, suggesting that acknowledging uncertainty is not purely a function of capability tier.
+**Insight 4 — Epistemic humility does not track model size.** Llama 3.3 70B (0.92), Qwen3 80B (0.92), and Llama 4 Maverick 17B (0.90) outperform Claude Opus (0.80) on epistemic humility, while Ministral 3B collapses to 0.20. This suggests that acknowledging uncertainty is shaped by training methodology (e.g., RLHF calibration) rather than raw scale.
 
 ### Organizational Affiliations
 
