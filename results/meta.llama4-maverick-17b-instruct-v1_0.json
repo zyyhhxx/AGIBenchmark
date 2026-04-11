@@ -1,0 +1,127 @@
+{
+  "model": "meta.llama4-maverick-17b-instruct-v1:0",
+  "model_label": "Llama 4 Maverick 17B",
+  "timestamp": "2026-04-11T02:10:20.617157+00:00",
+  "scores": {
+    "metacog_canary": {
+      "score": 0.928,
+      "error": null,
+      "duration_s": 13.0
+    },
+    "metacog_fok": {
+      "score": 0.5674,
+      "error": null,
+      "duration_s": 85.3
+    },
+    "metacog_jol": {
+      "score": 0.4647,
+      "error": null,
+      "duration_s": 30.9
+    },
+    "metacog_calibration": {
+      "score": 0.0,
+      "error": null,
+      "duration_s": 32.0
+    },
+    "metacog_error_detection": {
+      "score": 0.7479,
+      "error": null,
+      "duration_s": 32.3
+    },
+    "metacog_learning_monitoring": {
+      "score": 0.8262,
+      "error": null,
+      "duration_s": 90.9
+    },
+    "metacog_control": {
+      "score": 0.615,
+      "error": null,
+      "duration_s": 20.2
+    },
+    "metacog_epistemic_revision": {
+      "score": 0.83,
+      "error": null,
+      "duration_s": 54.2
+    },
+    "metacog_epistemic_humility": {
+      "score": 0.9029,
+      "error": null,
+      "duration_s": 28.1
+    },
+    "learning_curves": {
+      "score": 0.6517,
+      "error": null,
+      "duration_s": 211.8
+    },
+    "learning_transfer": {
+      "score": 0.88,
+      "error": null,
+      "duration_s": 45.5
+    },
+    "learning_interference": {
+      "score": 0.4,
+      "error": null,
+      "duration_s": 26.0
+    },
+    "learning_curriculum": {
+      "score": 0.7,
+      "error": null,
+      "duration_s": 41.7
+    },
+    "attention_selective": {
+      "score": 0.95,
+      "error": null,
+      "duration_s": 10.1
+    },
+    "attention_vigilance": {
+      "score": 0.8559,
+      "error": null,
+      "duration_s": 19.4
+    },
+    "attention_divided": {
+      "score": 0.9275,
+      "error": null,
+      "duration_s": 14.8
+    },
+    "attention_instruction_update": {
+      "score": 0.975,
+      "error": null,
+      "duration_s": 17.2
+    },
+    "exec_func_wcst": {
+      "score": 0.4614,
+      "error": null,
+      "duration_s": 36.8
+    },
+    "exec_func_tol": {
+      "score": 0.0,
+      "error": null,
+      "duration_s": 138.2
+    },
+    "exec_func_task_switch": {
+      "score": 0.9587,
+      "error": null,
+      "duration_s": 6.7
+    },
+    "exec_func_nback": {
+      "score": 0.6835,
+      "error": null,
+      "duration_s": 126.3
+    },
+    "exec_func_crt": {
+      "score": 0.5732,
+      "error": null,
+      "duration_s": 39.2
+    },
+    "social_cog_false_belief": {
+      "score": 0.97,
+      "error": null,
+      "duration_s": 142.6
+    },
+    "social_cog_pragmatic": {
+      "score": 0.912,
+      "error": null,
+      "duration_s": 80.5
+    }
+  }
+}

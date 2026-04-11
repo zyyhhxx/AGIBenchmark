@@ -1,12 +1,52 @@
 {
   "model": "mistral.ministral-3-3b-instruct",
   "model_label": "Ministral 3B",
-  "timestamp": "2026-04-11T01:05:26.588817+00:00",
+  "timestamp": "2026-04-11T02:02:33.236372+00:00",
   "scores": {
-    "exec_func_task_switch": {
-      "score": 0.775,
+    "metacog_canary": {
+      "score": 0.0,
       "error": null,
-      "duration_s": 3.0
+      "duration_s": 58.9
+    },
+    "metacog_fok": {
+      "score": null,
+      "error": "An error occurred (ValidationException) when calling the Converse operation: The model returned the following errors: {\"error\":{\"code\":\"validation_error\",\"message\":\"Internal server error\",\"param\":null",
+      "duration_s": 384.8
+    },
+    "metacog_jol": {
+      "score": null,
+      "error": "An error occurred (ValidationException) when calling the Converse operation: The model returned the following errors: {\"error\":{\"code\":\"validation_error\",\"message\":\"Internal server error\",\"param\":null",
+      "duration_s": 87.9
+    },
+    "metacog_calibration": {
+      "score": null,
+      "error": "An error occurred (ValidationException) when calling the Converse operation: The model returned the following errors: {\"error\":{\"code\":\"validation_error\",\"message\":\"Internal server error\",\"param\":null",
+      "duration_s": 16.2
+    },
+    "metacog_error_detection": {
+      "score": 0.81,
+      "error": null,
+      "duration_s": 81.0
+    },
+    "metacog_learning_monitoring": {
+      "score": 0.6906,
+      "error": null,
+      "duration_s": 85.1
+    },
+    "metacog_control": {
+      "score": 0.2,
+      "error": null,
+      "duration_s": 80.8
+    },
+    "metacog_epistemic_revision": {
+      "score": null,
+      "error": "An error occurred (ValidationException) when calling the Converse operation: The model returned the following errors: {\"error\":{\"code\":\"validation_error\",\"message\":\"Internal server error\",\"param\":null",
+      "duration_s": 35.2
+    },
+    "metacog_epistemic_humility": {
+      "score": 0.2,
+      "error": null,
+      "duration_s": 73.7
     }
   }
 }

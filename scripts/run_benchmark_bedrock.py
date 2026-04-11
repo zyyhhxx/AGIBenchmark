@@ -82,6 +82,8 @@ BENCHMARKS = {
 DELAY_BETWEEN_BENCHMARKS = 2   # seconds
 DELAY_BETWEEN_MODELS = 5       # seconds
 CALL_TIMEOUT = 120              # seconds per Bedrock call
+SLOW_BENCHMARKS = {'exec_func_wcst', 'exec_func_tol', 'exec_func_nback', 'exec_func_crt', 'exec_func_task_switch', 'attention_divided', 'attention_instruction_update'}
+SLOW_TIMEOUT = 300              # seconds for known slow benchmarks
 
 
 def resolve_model_id(model_arg: str) -> str:
@@ -147,14 +149,14 @@ def setup_kbench_mocks():
         kbench.chats = DummyChatCtx()
 
 
-def create_bedrock_llm(model_id: str):
+def create_bedrock_llm(model_id: str, timeout: int = CALL_TIMEOUT):
     """Create a callable LLM that uses AWS Bedrock Converse API with retry + timeout."""
     import boto3
     from botocore.config import Config
 
     os.environ.pop('AWS_PROFILE', None)
     config = Config(
-        read_timeout=CALL_TIMEOUT,
+        read_timeout=timeout,
         connect_timeout=30,
         retries={'max_attempts': 0}  # we handle retries ourselves
     )
@@ -267,7 +269,7 @@ def create_bedrock_llm(model_id: str):
     return BedrockLLM()
 
 
-def run_one(mod_path, fn_name, llm, model_id, model_label):
+def run_one(mod_path, fn_name, llm, model_id, model_label, invoke_id=None):
     """Run a single benchmark task, return result dict."""
     # Clean data module cache
     for key in list(sys.modules.keys()):
@@ -332,29 +334,34 @@ def run_model(model_id: str, benchmarks: list, output_dir: str):
     scores = {}
 
     for i, (mod_path, fn_name) in enumerate(benchmarks):
-        r = run_one(mod_path, fn_name, llm, model_id, label)
+        # Use longer timeout for slow benchmarks
+        if fn_name in SLOW_BENCHMARKS:
+            bench_llm = create_bedrock_llm(invoke_id, timeout=SLOW_TIMEOUT)
+        else:
+            bench_llm = llm
+        r = run_one(mod_path, fn_name, bench_llm, model_id, label, invoke_id)
         scores[fn_name] = {
             "score": r["score"],
             "error": r["error"],
             "duration_s": r["duration_s"],
         }
+        # Incremental save after each benchmark
+        os.makedirs(output_dir, exist_ok=True)
+        safe_name = model_id.replace(':', '_').replace('/', '_')
+        out_path = os.path.join(output_dir, f"{safe_name}.json")
+        output = {
+            "model": model_id,
+            "model_label": label,
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "scores": scores,
+        }
+        with open(out_path, 'w') as f:
+            json.dump(output, f, indent=2)
+        sys.stdout.flush()
         # Rate limit between benchmarks
         if i < len(benchmarks) - 1:
             time.sleep(DELAY_BETWEEN_BENCHMARKS)
 
-    # Save results
-    os.makedirs(output_dir, exist_ok=True)
-    # Sanitize model_id for filename (replace colons, slashes)
-    safe_name = model_id.replace(':', '_').replace('/', '_')
-    out_path = os.path.join(output_dir, f"{safe_name}.json")
-    output = {
-        "model": model_id,
-        "model_label": label,
-        "timestamp": datetime.now(timezone.utc).isoformat(),
-        "scores": scores,
-    }
-    with open(out_path, 'w') as f:
-        json.dump(output, f, indent=2)
     print(f"\nResults saved to {out_path}")
 
     # Print summary for this model

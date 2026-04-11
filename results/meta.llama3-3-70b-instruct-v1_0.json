@@ -1,0 +1,137 @@
+{
+  "model": "meta.llama3-3-70b-instruct-v1:0",
+  "model_label": "Llama 3.3 70B",
+  "timestamp": "2026-04-11T01:59:59.234134+00:00",
+  "scores": {
+    "metacog_canary": {
+      "score": 1.0,
+      "error": null,
+      "duration_s": 11.5
+    },
+    "metacog_fok": {
+      "score": 0.6059,
+      "error": null,
+      "duration_s": 89.6
+    },
+    "metacog_jol": {
+      "score": 0.4647,
+      "error": null,
+      "duration_s": 48.0
+    },
+    "metacog_calibration": {
+      "score": 0.0,
+      "error": null,
+      "duration_s": 31.6
+    },
+    "metacog_error_detection": {
+      "score": 0.8768,
+      "error": null,
+      "duration_s": 42.1
+    },
+    "metacog_learning_monitoring": {
+      "score": 0.8144,
+      "error": null,
+      "duration_s": 33.4
+    },
+    "metacog_control": {
+      "score": 0.6617,
+      "error": null,
+      "duration_s": 31.5
+    },
+    "metacog_epistemic_revision": {
+      "score": 0.75,
+      "error": null,
+      "duration_s": 42.4
+    },
+    "metacog_epistemic_humility": {
+      "score": 0.92,
+      "error": null,
+      "duration_s": 32.6
+    },
+    "learning_curves": {
+      "score": 0.5467,
+      "error": null,
+      "duration_s": 354.5
+    },
+    "learning_transfer": {
+      "score": 0.52,
+      "error": null,
+      "duration_s": 44.3
+    },
+    "learning_interference": {
+      "score": 0.4,
+      "error": null,
+      "duration_s": 6.1
+    },
+    "learning_curriculum": {
+      "score": 0.76,
+      "error": null,
+      "duration_s": 10.9
+    },
+    "attention_selective": {
+      "score": 0.87,
+      "error": null,
+      "duration_s": 14.4
+    },
+    "attention_vigilance": {
+      "score": 0.5803,
+      "error": null,
+      "duration_s": 18.8
+    },
+    "attention_divided": {
+      "score": 0.8264,
+      "error": null,
+      "duration_s": 6.8
+    },
+    "attention_instruction_update": {
+      "score": 0.9525,
+      "error": null,
+      "duration_s": 8.9
+    },
+    "exec_func_wcst": {
+      "score": 0.4792,
+      "error": null,
+      "duration_s": 39.9
+    },
+    "exec_func_tol": {
+      "score": 0.1533,
+      "error": null,
+      "duration_s": 201.1
+    },
+    "exec_func_task_switch": {
+      "score": 0.7225,
+      "error": null,
+      "duration_s": 2.1
+    },
+    "exec_func_nback": {
+      "score": 1.0,
+      "error": null,
+      "duration_s": 93.8
+    },
+    "exec_func_crt": {
+      "score": 0.6116,
+      "error": null,
+      "duration_s": 38.3
+    },
+    "social_cog_false_belief": {
+      "score": 1.0,
+      "error": null,
+      "duration_s": 192.7
+    },
+    "social_cog_pragmatic": {
+      "score": 0.868,
+      "error": null,
+      "duration_s": 63.0
+    },
+    "social_cog_sarcasm": {
+      "score": 0.9239,
+      "error": null,
+      "duration_s": 73.9
+    },
+    "social_cog_emotional_prosody": {
+      "score": 0.8383,
+      "error": null,
+      "duration_s": 14.4
+    }
+  }
+}

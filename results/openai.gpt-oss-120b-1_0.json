@@ -1,0 +1,27 @@
+{
+  "model": "openai.gpt-oss-120b-1:0",
+  "model_label": "GPT-OSS-120B",
+  "timestamp": "2026-04-11T02:10:15.749190+00:00",
+  "scores": {
+    "metacog_canary": {
+      "score": 0.803,
+      "error": null,
+      "duration_s": 237.8
+    },
+    "metacog_fok": {
+      "score": 0.59,
+      "error": null,
+      "duration_s": 1320.9
+    },
+    "metacog_jol": {
+      "score": 0.2,
+      "error": null,
+      "duration_s": 376.6
+    },
+    "metacog_calibration": {
+      "score": null,
+      "error": "Read timeout on endpoint URL: \"https://bedrock-runtime.us-east-1.amazonaws.com/model/openai.gpt-oss-120b-1%3A0/converse\"",
+      "duration_s": 272.4
+    }
+  }
+}
