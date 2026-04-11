@@ -10,9 +10,6 @@
     "scribe": "amazon-bedrock/us.anthropic.claude-sonnet-4-6"
   },
   "thinking": {
-    "planning": "high",
-    "executing": false,
-    "validating": false,
-    "scribe": false
+    "planning": "high"
   }
 }

@@ -1,7 +1,7 @@
 {
   "model": "anthropic.claude-sonnet-4-6",
   "model_label": "Claude Sonnet 4.6",
-  "timestamp": "2026-04-11T02:45:22.491529+00:00",
+  "timestamp": "2026-04-11T03:39:34.669965+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.9886,
@@ -77,6 +77,61 @@
       "score": 0.8647,
       "error": null,
       "duration_s": 44.7
+    },
+    "attention_divided": {
+      "score": 0.9167,
+      "error": null,
+      "duration_s": 24.4
+    },
+    "attention_instruction_update": {
+      "score": 0.9833,
+      "error": null,
+      "duration_s": 34.0
+    },
+    "exec_func_wcst": {
+      "score": 0.6985,
+      "error": null,
+      "duration_s": 363.2
+    },
+    "exec_func_tol": {
+      "score": 0.0,
+      "error": null,
+      "duration_s": 876.6
+    },
+    "exec_func_task_switch": {
+      "score": 0.9005,
+      "error": null,
+      "duration_s": 9.9
+    },
+    "exec_func_nback": {
+      "score": 1.0,
+      "error": null,
+      "duration_s": 547.2
+    },
+    "exec_func_crt": {
+      "score": 0.8,
+      "error": null,
+      "duration_s": 118.1
+    },
+    "social_cog_false_belief": {
+      "score": 1.0,
+      "error": null,
+      "duration_s": 274.0
+    },
+    "social_cog_pragmatic": {
+      "score": 1.0,
+      "error": null,
+      "duration_s": 386.5
+    },
+    "social_cog_sarcasm": {
+      "score": 0.8147,
+      "error": null,
+      "duration_s": 515.8
+    },
+    "social_cog_emotional_prosody": {
+      "score": 0.8356,
+      "error": null,
+      "duration_s": 80.1
     }
   }
 }
