@@ -1,7 +1,7 @@
 {
   "model": "openai.gpt-oss-120b-1:0",
   "model_label": "GPT-OSS-120B",
-  "timestamp": "2026-04-11T23:26:06.058746+00:00",
+  "timestamp": "2026-04-11T23:28:45.303895+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.803,
@@ -101,7 +101,7 @@
     "exec_func_nback": {
       "score": 1.0,
       "error": null,
-      "duration_s": 262.2
+      "duration_s": 155.2
     },
     "exec_func_crt": {
       "score": 0.6447,
