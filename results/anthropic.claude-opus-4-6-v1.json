@@ -1,12 +1,12 @@
 {
   "model": "anthropic.claude-opus-4-6-v1",
   "model_label": "Claude Opus 4.6",
-  "timestamp": "2026-04-11T00:05:51.929052+00:00",
+  "timestamp": "2026-04-11T01:05:13.512169+00:00",
   "scores": {
-    "attention_instruction_update": {
-      "score": 0.2576,
+    "exec_func_task_switch": {
+      "score": 1.0,
       "error": null,
-      "duration_s": 754.0
+      "duration_s": 8.4
     }
   }
 }

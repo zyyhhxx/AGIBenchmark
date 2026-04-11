@@ -53,7 +53,31 @@ class CRTResponse:
     reasoning: str     # Explanation of thought process
 
 
-# ─── Answer Checking ────────────────────────────────────────────────
+# ─── Answer Extraction & Checking ───────────────────────────────────
+
+def extract_answer_from_text(text: str) -> str:
+    """Extract the core answer from a potentially verbose LLM response."""
+    text = text.strip()
+    # Try to find explicit answer markers
+    patterns = [
+        r'(?:answer|result)\s*(?:is|:)\s*[\*\#]*\s*([^\n\*#]{1,50})',
+        r'(?:^|\n)\s*[\*\#]*\s*(\d+(?:\.\d+)?(?:/\d+)?)\s*(?:$|\n|[\*\#])',
+        r'(?:=\s*)(\d+(?:\.\d+)?(?:/\d+)?)',
+        r'\*\*(\d+(?:\.\d+)?(?:/\d+)?)\*\*',
+    ]
+    for pat in patterns:
+        m = re.search(pat, text, re.IGNORECASE)
+        if m:
+            return m.group(1).strip().strip('*#')
+    # If short enough, use as-is
+    if len(text) < 50:
+        return text
+    # Last resort: find the first number in the text
+    m = re.search(r'(\d+(?:\.\d+)?(?:/\d+)?)', text)
+    if m:
+        return m.group(1)
+    return text[:50]
+
 
 def normalize_answer(answer: str) -> str:
     """Normalize an answer for comparison."""
@@ -85,9 +109,18 @@ def check_answer(model_answer: str, correct: str, intuitive_wrong: str):
             return 'correct'
     except (ValueError, TypeError):
         pass
-    # Check for special cases
-    if norm_correct == 'emily' and 'emily' in norm_model:
+    # Check for special cases — name/word answers
+    if norm_correct in norm_model and len(norm_correct) >= 3:
         return 'correct'
+    # Check for fraction answers
+    if '/' in norm_correct and '/' in norm_model:
+        try:
+            c_parts = norm_correct.split('/')
+            m_parts = norm_model.split('/')
+            if abs(float(c_parts[0])/float(c_parts[1]) - float(m_parts[0])/float(m_parts[1])) < 0.01:
+                return 'correct'
+        except (ValueError, ZeroDivisionError):
+            pass
 
     # Check for intuitive trap
     if norm_model == norm_intuitive:
@@ -117,7 +150,7 @@ def exec_func_crt(llm) -> float:
     Human accuracy: ~30% (general public), ~50% (MIT students).
     """
     results = []
-    difficulty_correct = {"easy": [], "medium": [], "hard": []}
+    difficulty_correct = {"easy": [], "medium": [], "hard": [], "extreme": []}
 
     for item in CRT_ITEMS:
         prompt = (
@@ -136,7 +169,7 @@ def exec_func_crt(llm) -> float:
                 reasoning = response.reasoning
             except Exception:
                 raw = llm.prompt(prompt)
-                answer = raw.strip()
+                answer = extract_answer_from_text(raw)
                 confidence = 50
                 reasoning = ""
 
@@ -167,7 +200,7 @@ def exec_func_crt(llm) -> float:
     trap_rate = n_trap / len(results)
 
     # Difficulty bonus: harder items worth more
-    diff_weights = {"easy": 1.0, "medium": 1.5, "hard": 2.0}
+    diff_weights = {"easy": 1.0, "medium": 1.5, "hard": 2.0, "extreme": 3.0}
     weighted_correct = 0
     weighted_total = 0
     for diff, scores in difficulty_correct.items():

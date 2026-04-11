@@ -1,5 +1,15 @@
 # KNOWLEDGE.md — AGI Benchmark
 
+## exec_func_crt + exec_func_task_switch Discrimination Fixes (2026-04-11)
+- **Root cause — CRT (std=0.028):** Two compounding failures: (1) answer parser truncated at 20 chars causing parse failures on all verbose responses; (2) all 15 items at similar difficulty, so no spread even with correct parsing.
+- **Fix — CRT:** Added 5 extreme items requiring 3+ cognitive shifts (compound rate+spoilage, recursive discounts, Bayesian base-rate neglect, multi-step age chains, nested container arithmetic). Rewrote parser with regex extraction for patterns like `**Answer:**`, `=`, bolded numbers. Difficulty weights: extreme=3.0, hard=2.0, easy=1.0.
+- **CRT v2 scores (Opus 4.6 / Nova Pro / Ministral 3B):** 0.878 / 0.574 / 0.454 → std=0.178 ✅
+- **Root cause — task_switch (std=0.000):** Each trial was an independent prompt with rule explicitly stated — no switching cost possible. Trivially solvable.
+- **Fix — task_switch:** Rewrote to batch presentation (all items in one prompt). Replaced trivial rules (odd/even, greater/less than 5) with computationally harder rules: digit-sum parity (requires arithmetic) and letter-position comparison (requires ordinal reasoning). Added 4 blocks: baseline, slow-switch (every 5), rapid-switch (every 1–2), random-cue. 14 switch trials in rapid block vs 3 in slow.
+- **task_switch v2 scores (Opus 4.6 / Nova Pro / Ministral 3B):** 1.000 / 0.7125 / 0.775 → std=0.124 ✅
+- **Pattern:** Parser truncation bugs silently map all models to near-identical floor scores — always verify raw answer extraction before diagnosing discrimination failures.
+- **Pattern:** Per-trial prompts with explicit rule restatement collapse switch cost to zero. Batch presentation is necessary to expose cognitive reconfiguration cost.
+
 ## Sub-metrics Cleanup (2026-04-10)
 - Deleted 3 sub-metrics notebooks (metacog_error_detection_submetrics, metacog_fok_submetrics, metacog_jol_submetrics) and their corresponding benchmark modules.
 - These were experimental breakdowns of parent tasks; their removal reduces metacognition notebook count from 11→8.

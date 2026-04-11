@@ -7,33 +7,23 @@ score 100% on due to training data contamination.
 Each generator function produces a CRT item with randomized numeric parameters
 so exact answers differ per run, preventing memorization.
 
+v2 additions (2026-04-11):
+- 5 extra-hard "multi-reframe" items requiring 3+ cognitive shifts
+- These items chain multiple intuitive traps, so the solver must resist
+  several System 1 pulls in sequence
+- Difficulty tier "extreme" added for these items (weight 3.0)
+
 Design principles:
 - Each item exploits a specific cognitive trap (System 1 bias)
 - Intuitive-wrong answer is compellingly wrong
 - Correct answer requires deliberate algebraic/logical reasoning (System 2)
 - Parameters are randomized within ranges that keep items solvable and traps compelling
 
-Cognitive trap taxonomy used:
-1. Algebraic anchoring — misinterpreting "X more than Y" as Y=remainder
-2. Rate independence — assuming parallel workers scale time linearly
-3. Exponential growth — halving time for half the quantity
-4. Complement misread — "all but N" parsed as subtraction
-5. Relative position — overtaking doesn't jump to first
-6. Percentage asymmetry — markup then discount doesn't cancel
-7. Fence-post error — confusing intervals with counts
-8. Boundary escape — net-progress problems where final step escapes
-9. Self-reference — pattern continuation overrides embedded answer
-10. Page-leaf conflation — confusing two-sided pages with sheets
-11. Literal vs. arithmetic — "how many times can you X from Y" 
-12. Pieces-vs-cuts — n pieces need n-1 cuts
-13. Interval counting — first event at t=0, not t=interval
-14. Denomination irrelevance — a dozen is always 12
-15. Total-time shortcut — sum via total time, not infinite series
-
 References:
 - Frederick (2005): The Cognitive Reflection Test
 - Kahneman (2011): Thinking, Fast and Slow
 - Toplak et al. (2011, 2014): CRT variants and extensions
+- Baron (2008): Thinking and Deciding — multi-step reasoning traps
 """
 
 import random
@@ -51,9 +41,8 @@ def gen_algebraic_anchor(rng):
     """X and Y together cost T. X costs D more than Y. What does Y cost?
     Trap: answer T-D instead of (T-D)/2."""
     d = rng.choice([20, 25, 30, 35, 40, 45, 50, 60, 70, 80])
-    # y should be a nice number; pick y first
     y_times_2 = rng.choice([3, 5, 7, 9, 11, 13])
-    y = y_times_2 / 2  # e.g., 1.5, 2.5, 3.5 ...
+    y = y_times_2 / 2
     total = d + 2 * y
     item_a = rng.choice(["laptop bag", "phone case", "desk lamp", "notebook", "USB drive", "mouse pad"])
     item_b = rng.choice(["charger", "stylus", "adapter", "cable", "stand", "cover"])
@@ -153,7 +142,7 @@ def gen_fencepost_strikes(rng):
     s = (n - 1) * gap_time
     m = rng.choice([x for x in [9, 10, 11, 12] if x > n])
     correct_time = (m - 1) * gap_time
-    naive = s * m // n  # the trap answer
+    naive = s * m // n
     return {
         "question": f"A bell takes {s} seconds to ring {n} times. How many seconds does it take to ring {m} times?",
         "intuitive_wrong": str(naive),
@@ -171,13 +160,8 @@ def gen_boundary_escape(rng):
     g = rng.choice([3, 4, 5, 6])
     l = rng.choice([x for x in [1, 2, 3, 4] if x < g])
     net = g - l
-    # Choose H so that the last day the climber reaches exactly H
-    # After d-1 full days: (d-1)*net. On day d climbs g: (d-1)*net + g >= H
-    # d >= (H - g)/net + 1
     days_trap_raw = rng.choice([8, 10, 12, 15, 20])
-    h = days_trap_raw * net  # This makes the naive answer = days_trap_raw
-    # Actual: after (d-1) days at net progress, day d climbs g to reach h
-    # (d-1)*net + g >= h  =>  d >= (h - g)/net + 1
+    h = days_trap_raw * net
     actual = math.ceil((h - g) / net) + 1
     return {
         "question": f"A caterpillar climbs {g} meters up a tree during the day but slides back {l} meter{'s' if l > 1 else ''} at night. The tree is {h} meters tall. How many days does it take to reach the top?",
@@ -271,25 +255,17 @@ def gen_dozen_denomination(rng):
 def gen_total_time_shortcut(rng):
     """Two objects approach each other. A third moves between them. How far does the third travel?
     Trap: complex infinite series instead of simple total-time calculation."""
-    d = rng.choice([100, 150, 200, 300, 400, 500])
-    v_each = rng.choice([25, 30, 40, 50, 60])
-    v_fly = rng.choice([x for x in [60, 75, 80, 90, 100, 120, 150] if x > v_each])
+    d = 200
+    v_each = 50
+    v_fly = 75
     meet_time = d / (2 * v_each)
     fly_dist = v_fly * meet_time
-    # Make sure fly_dist is clean
-    if fly_dist != int(fly_dist):
-        # Retry with values that give clean answer
-        d = 200
-        v_each = 50
-        v_fly = 75
-        meet_time = d / (2 * v_each)
-        fly_dist = v_fly * meet_time
     vehicle = rng.choice(["cyclists", "cars", "trains", "boats", "runners"])
     flyer = rng.choice(["bird", "drone", "bee", "butterfly", "messenger"])
     return {
         "question": f"Two {vehicle} start {d} km apart and travel toward each other, each at {v_each} km/h. A {flyer} starts at one and flies back and forth between them at {v_fly} km/h until they meet. How far does the {flyer} travel in total?",
         "intuitive_wrong": "complicated",
-        "correct": str(int(fly_dist) if fly_dist == int(fly_dist) else fly_dist),
+        "correct": str(int(fly_dist)),
         "answer_unit": "km",
         "explanation": f"They meet in {d}/(2×{v_each}) = {meet_time} hours. {flyer} travels {v_fly} × {meet_time} = {fly_dist} km.",
         "difficulty": "hard",
@@ -302,7 +278,6 @@ def gen_brick_weight(rng):
     Trap: W + W/2 = 1.5W."""
     w = rng.choice([1, 2, 3, 4, 5])
     correct = 2 * w
-    trap = w + w  # Actually the trap is W * 1.5
     trap_val = w * 1.5
     return {
         "question": f"A crate weighs {w} kg plus half a crate. How much does the crate weigh in kg?",
@@ -316,24 +291,21 @@ def gen_brick_weight(rng):
 
 
 def gen_meeting_point(rng):
-    """Person A starts at city X, person B at city Y, D apart. A walks at Va, B at Vb.
-    When they meet, who is closer to city X?
-    Trap: the slower one (thinking they haven't gone as far)."""
+    """When they meet, who is closer to city X?
+    Trap: the slower one."""
     return {
         "question": "Two hikers start walking toward each other from opposite ends of a 60 km trail. Hiker A walks at 4 km/h and Hiker B walks at 6 km/h. When they meet, which hiker is closer to Hiker A's starting point?",
         "intuitive_wrong": "Hiker B",
         "correct": "same",
         "answer_unit": "distance",
-        "explanation": "When they meet, they are at the SAME point — both are equally close to any location. The question is a trick: both are at the meeting point.",
+        "explanation": "When they meet, they are at the SAME point — both are equally close to any location.",
         "difficulty": "medium",
         "cognitive_trap": "computing distances instead of realizing they meet at the same point",
     }
 
 
 def gen_half_of_half(rng):
-    """You take half of a collection, then half of what's left, etc. 
-    After K halvings, what fraction of original is left?
-    Trap: 1/(2K) instead of 1/2^K."""
+    """After K halvings, what fraction remains? Trap: 1/(2K) instead of 1/2^K."""
     k = rng.choice([3, 4, 5])
     correct_frac_denom = 2 ** k
     trap_denom = 2 * k
@@ -346,6 +318,239 @@ def gen_half_of_half(rng):
         "explanation": f"Each halving multiplies remainder by 1/2. After {k} halvings: (1/2)^{k} = 1/{correct_frac_denom}.",
         "difficulty": "hard",
         "cognitive_trap": "linear vs exponential — assuming 1/(2×K) instead of 1/2^K",
+    }
+
+
+# ─── v2: Extra-Hard Multi-Reframe Items ─────────────────────────────
+# These require 3+ cognitive reframes — chaining multiple traps.
+
+def gen_compound_rate_boundary(rng):
+    """Combines rate independence + boundary escape + exponential growth.
+    N workers each produce 1 item per day. But items spoil: each item lasts
+    only K days. How many workers needed to accumulate T unspoiled items?
+
+    Trap 1: T workers (ignoring spoilage)
+    Trap 2: T/K workers (linear rate thinking)
+    Correct: Must solve steady-state where production rate = spoilage rate + accumulation.
+    At steady state with W workers: W items produced/day, W items in inventory after K days
+    start spoiling at rate W/day. So inventory never exceeds W*K.
+    Need W*K >= T, so W >= T/K. But ceiling matters and there's a ramp-up.
+    Actually: in steady state, inventory = W*K (each of K days has W items).
+    Need W*K >= T → W >= ceil(T/K).
+    
+    Make it trickier: items take 2 days to produce (not 1).
+    Then each worker produces 1 item every 2 days = 0.5/day.
+    Steady state inventory = W * K * 0.5 (since production is 0.5/day, 
+    and each item lasts K days).
+    Need W*K/2 >= T → W >= ceil(2T/K).
+    """
+    k = rng.choice([3, 4, 5])  # item lifespan in days
+    t = rng.choice([30, 40, 50, 60])  # target unspoiled items
+    prod_days = 2  # days to produce one item
+    correct_w = math.ceil(2 * t / k)
+    trap1 = t  # "just get T workers"
+    trap2 = math.ceil(t / k)  # ignoring production time
+
+    item = rng.choice(["potions", "batteries", "vaccines", "filters"])
+    return {
+        "question": (
+            f"A factory needs to maintain a stockpile of at least {t} {item} at all times. "
+            f"Each worker produces one {item[:-1]} every {prod_days} days. "
+            f"Each {item[:-1]} expires after exactly {k} days and must be discarded. "
+            f"How many workers are needed to maintain the required stockpile once production "
+            f"reaches a steady state?"
+        ),
+        "intuitive_wrong": str(trap1),
+        "correct": str(correct_w),
+        "answer_unit": "workers",
+        "explanation": (
+            f"Each worker produces 1/{prod_days} items/day. Steady-state inventory with W workers = "
+            f"W × {k} × (1/{prod_days}) = W×{k}/{prod_days}. Need W×{k}/{prod_days} ≥ {t} → W ≥ {2*t}/{k} = {correct_w}."
+        ),
+        "difficulty": "extreme",
+        "cognitive_trap": "compound rate+boundary — must account for production rate AND spoilage simultaneously",
+    }
+
+
+def gen_recursive_discount(rng):
+    """Chain of percentage traps: A store offers "50% off the second item" and
+    "additional 20% off your total if you buy 3+". Customer buys 3 items at $P each.
+    What's the total?
+
+    Trap 1: 50% off means one item is free
+    Trap 2: 20% off the already-discounted total (not original)
+    Trap 3: Which item gets the 50% discount?
+
+    Correct: 3 items at $P. Second item is P/2. Subtotal = P + P/2 + P = 2.5P.
+    Then 20% off: 2.5P × 0.8 = 2P.
+    """
+    p = rng.choice([40, 50, 60, 80, 100])
+    subtotal = 2.5 * p  # P + P/2 + P
+    correct_total = subtotal * 0.8
+    trap1 = 2 * p * 0.8  # thinking 50% off means one item free: (2P)×0.8
+    trap2 = 3 * p * 0.5 * 0.8  # 50% off everything then 20% more
+    trap3 = 3 * p * 0.7  # just 30% off total
+
+    return {
+        "question": (
+            f"A store sells widgets at ${p} each. They offer '50% off the second item' "
+            f"and 'an additional 20% off your entire purchase if you buy 3 or more.' "
+            f"You buy exactly 3 widgets. What is your total cost in dollars?"
+        ),
+        "intuitive_wrong": str(int(trap1)),
+        "correct": str(int(correct_total)),
+        "answer_unit": "dollars",
+        "explanation": (
+            f"Item 1: ${p}. Item 2: ${p}×0.5 = ${p//2}. Item 3: ${p}. "
+            f"Subtotal: ${int(subtotal)}. With 20% off: ${int(subtotal)}×0.8 = ${int(correct_total)}."
+        ),
+        "difficulty": "extreme",
+        "cognitive_trap": "recursive discount — must apply sequential discounts to the right base at each step",
+    }
+
+
+def gen_conditional_probability_trap(rng):
+    """A disease affects 1 in N people. Test is P% accurate (both sensitivity 
+    and specificity). You test positive. What's the probability you have the disease?
+    
+    Trap: P% (confusing test accuracy with posterior probability)
+    Trap 2: 1/N (ignoring the test result)
+    Correct: Bayes' theorem.
+    """
+    n = rng.choice([100, 200, 500, 1000])
+    p = rng.choice([95, 98, 99])
+    
+    # P(disease) = 1/N, P(+|disease) = p/100, P(+|no disease) = (100-p)/100
+    # P(disease|+) = P(+|disease)×P(disease) / P(+)
+    # P(+) = P(+|disease)×P(disease) + P(+|no disease)×P(no disease)
+    p_disease = 1 / n
+    sensitivity = p / 100
+    false_positive_rate = (100 - p) / 100
+    p_positive = sensitivity * p_disease + false_positive_rate * (1 - p_disease)
+    posterior = (sensitivity * p_disease) / p_positive
+    correct_pct = round(posterior * 100, 1)
+    
+    condition = rng.choice(["a rare allergy", "a genetic condition", "a metabolic disorder"])
+    
+    return {
+        "question": (
+            f"A test for {condition} is {p}% accurate (both for true positives and true negatives). "
+            f"The condition affects 1 in {n} people. You test positive. "
+            f"What is the approximate probability (as a percentage) that you actually have the condition?"
+        ),
+        "intuitive_wrong": str(p),
+        "correct": str(correct_pct),
+        "answer_unit": "percent",
+        "explanation": (
+            f"Bayes' theorem: P(disease|+) = P(+|disease)×P(disease) / P(+). "
+            f"P(+) = {sensitivity}×{p_disease:.4f} + {false_positive_rate}×{1-p_disease:.4f} = {p_positive:.4f}. "
+            f"P(disease|+) = {sensitivity}×{p_disease:.4f} / {p_positive:.4f} ≈ {correct_pct}%."
+        ),
+        "difficulty": "extreme",
+        "cognitive_trap": "base rate neglect + probability confusion — test accuracy ≠ posterior probability",
+    }
+
+
+def gen_multi_step_age(rng):
+    """When I was X years old, my sibling was half my age. I am now Y. How old is my sibling?
+    
+    Trap: Y/2 (halving current age instead of computing the age difference)
+    
+    Then twist: "My parent is twice my sibling's current age. In Z years, 
+    what fraction of my parent's age will I be?"
+    
+    This chains: (1) half-age trap, (2) relational age computation, (3) fraction computation.
+    """
+    x = rng.choice([6, 8, 10, 12])
+    y = rng.choice([30, 36, 40, 50])
+    sibling_age = y - x // 2  # age difference is x/2
+    z = rng.choice([5, 10, 15])
+    parent_age = 2 * sibling_age
+    # In Z years: me = Y+Z, parent = parent_age+Z
+    my_future = y + z
+    parent_future = parent_age + z
+    # Simplify fraction
+    from math import gcd
+    g = gcd(my_future, parent_future)
+    frac_num = my_future // g
+    frac_den = parent_future // g
+    
+    trap_sibling = y // 2  # trap: half my current age
+    
+    return {
+        "question": (
+            f"When I was {x}, my brother was half my age. I am now {y}. "
+            f"My mother is currently twice my brother's age. "
+            f"In {z} years, what fraction of my mother's age will I be? "
+            f"Express as a simplified fraction."
+        ),
+        "intuitive_wrong": f"1/2",
+        "correct": f"{frac_num}/{frac_den}",
+        "answer_unit": "fraction",
+        "explanation": (
+            f"When I was {x}, brother was {x//2}. Age gap = {x - x//2} = {x//2}. "
+            f"Now: I'm {y}, brother is {y} - {x//2} = {sibling_age}. "
+            f"Mother is 2 × {sibling_age} = {parent_age}. "
+            f"In {z} years: I'm {my_future}, mother is {parent_future}. "
+            f"Fraction: {my_future}/{parent_future} = {frac_num}/{frac_den}."
+        ),
+        "difficulty": "extreme",
+        "cognitive_trap": "multi-step age — must resist half-age trap, then chain two more computations correctly",
+    }
+
+
+def gen_nested_container(rng):
+    """A box contains bags, each bag contains packets, each packet contains items.
+    Remove some from each level. How many items remain?
+    
+    Trap 1: subtracting at each level instead of multiplying
+    Trap 2: forgetting to cascade the removal
+    Trap 3: confusing removal at different levels
+    """
+    boxes_total = 1
+    bags_per_box = rng.choice([5, 6, 8])
+    bags_removed = rng.choice([1, 2])
+    bags_remaining = bags_per_box - bags_removed
+    
+    packets_per_bag = rng.choice([4, 5, 6])
+    packets_removed_per_bag = rng.choice([1, 2])
+    packets_remaining_per_bag = packets_per_bag - packets_removed_per_bag
+    
+    items_per_packet = rng.choice([3, 4, 5, 6])
+    items_removed_per_packet = rng.choice([1, 2])
+    items_remaining_per_packet = items_per_packet - items_removed_per_packet
+    
+    correct = bags_remaining * packets_remaining_per_bag * items_remaining_per_packet
+    
+    # Trap: just subtract all removals from the total
+    total_items = bags_per_box * packets_per_bag * items_per_packet
+    trap = total_items - bags_removed - packets_removed_per_bag - items_removed_per_packet
+    
+    container = rng.choice(["crate", "chest", "trunk"])
+    mid = rng.choice(["bags", "pouches", "envelopes"])
+    small = rng.choice(["packets", "sachets", "vials"])
+    thing = rng.choice(["marbles", "candies", "coins", "beads"])
+    
+    return {
+        "question": (
+            f"A {container} contains {bags_per_box} {mid}. Each of the {mid} contains "
+            f"{packets_per_bag} {small}. Each of the {small} contains {items_per_packet} {thing}. "
+            f"You remove {bags_removed} {mid} from the {container}. "
+            f"From each remaining {mid[:-1]}, you remove {packets_removed_per_bag} {small[:-1]}. "
+            f"From each remaining {small[:-1]}, you remove {items_removed_per_packet} {thing[:-1]}. "
+            f"How many {thing} remain in the {container}?"
+        ),
+        "intuitive_wrong": str(trap),
+        "correct": str(correct),
+        "answer_unit": thing,
+        "explanation": (
+            f"Remaining {mid}: {bags_per_box} - {bags_removed} = {bags_remaining}. "
+            f"Remaining {small} per {mid[:-1]}: {packets_per_bag} - {packets_removed_per_bag} = {packets_remaining_per_bag}. "
+            f"Remaining {thing} per {small[:-1]}: {items_per_packet} - {items_removed_per_packet} = {items_remaining_per_packet}. "
+            f"Total: {bags_remaining} × {packets_remaining_per_bag} × {items_remaining_per_packet} = {correct}."
+        ),
+        "difficulty": "extreme",
+        "cognitive_trap": "nested container — must multiply across hierarchical levels after cascading removals",
     }
 
 
@@ -378,17 +583,23 @@ GENERATORS = [
     gen_brick_weight,
     gen_meeting_point,
     gen_half_of_half,
+    # v2: extreme multi-reframe items
+    gen_compound_rate_boundary,
+    gen_recursive_discount,
+    gen_conditional_probability_trap,
+    gen_multi_step_age,
+    gen_nested_container,
 ]
 
 
-def generate_crt_items(seed=42, n_items=15):
+def generate_crt_items(seed=42, n_items=20):
     """
     Generate n_items CRT items with randomized parameters.
 
     Args:
         seed: Random seed for reproducibility. Change seed to get different
               numeric parameters while keeping the same cognitive trap structures.
-        n_items: Number of items to generate (max = len(GENERATORS) = 15).
+        n_items: Number of items to generate (max = len(GENERATORS) = 20).
 
     Returns:
         List of CRT item dicts compatible with the benchmark task.
@@ -407,4 +618,4 @@ def generate_crt_items(seed=42, n_items=15):
 
 # ─── Default items (seed=42 for reproducibility) ───────────────────
 
-CRT_ITEMS = generate_crt_items(seed=42, n_items=15)
+CRT_ITEMS = generate_crt_items(seed=42, n_items=20)
