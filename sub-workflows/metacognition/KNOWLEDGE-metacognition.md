@@ -1,5 +1,14 @@
 # KNOWLEDGE.md — AGI Benchmark
 
+## social_cog_pragmatic Benchmark — Tiered Redesign (2026-04-11)
+- **Problem:** Original flat benchmark scored 0.824–1.0 across models (std≈0.061) — too easy, ceiling effect.
+- **Fix:** 3-tier difficulty design: direct implicature (0.15 weight), indirect/contextual (0.35), complex multi-layer (0.50). Per-tier score = `intended_accuracy - 0.1 × literal_trap_rate`.
+- **v2 scores:** Claude Sonnet 4.6=0.6974, Nova Pro=0.3601, Ministral 3B=0.306 → std=0.1732 ✅, range=0.391.
+- **kbench artifact quirk:** Top-level `score` field in run.json is `None` even on successful runs; actual scores are in `results[0].numericResult.value`. Don't treat `score: None` as a failure — check `results[]` array.
+- **Iteration failures (1 & 2):** Executor updated `task_pragmatic.py` but never regenerated `task.json` (stayed versionNumber=1 with old flat definition). Fix required explicitly setting `version=2` in `@kbench.task()` decorator AND setting `kbench.client.directory` to `repo/benchmarks/social_cognition/` to store artifacts in the correct location.
+- **Per-model run artifacts:** Use `_id=label` parameter in `.run()` to produce separate `social_cog_pragmatic-run_param_id_<label>.run.json` per model instead of overwriting a single file.
+- **Pattern:** After modifying a kbench task definition, always regenerate `task.json` by re-running the task decorator — the JSON is derived from the decorator, not auto-synced.
+
 ## Learning Interference Benchmark v3 — Design & Results (2026-04-11)
 - **Root cause of v2 failure (std=0.029):** Rules were re-provided in each prompt independently — no actual competing information in context, so interference was impossible.
 - **v3 fix:** Present multiple competing rule systems together in the same prompt (proactive + retroactive interference within context). Ask model to apply only the target system.

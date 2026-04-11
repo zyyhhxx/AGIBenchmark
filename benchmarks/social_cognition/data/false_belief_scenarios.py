@@ -1,5 +1,5 @@
 """
-False-belief Theory of Mind (ToM) scenarios — v5b.
+False-belief Theory of Mind (ToM) scenarios — v6.
 
 Difficulty tiers:
 - 1st-order (4 scenarios): standard Sally-Anne false belief  

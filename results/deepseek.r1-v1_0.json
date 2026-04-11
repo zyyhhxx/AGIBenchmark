@@ -1,7 +1,7 @@
 {
-  "model": "deepseek.r1-v1_0",
-  "model_label": "deepseek.r1-v1_0",
-  "timestamp": "2026-04-11T08:55:52.714389+00:00",
+  "model": "deepseek.r1-v1:0",
+  "model_label": "DeepSeek-R1",
+  "timestamp": "2026-04-11T19:50:52.808393+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.867,
@@ -112,21 +112,6 @@
       "score": 0.7005,
       "error": null,
       "duration_s": 169.0
-    },
-    "social_cog_pragmatic": {
-      "score": null,
-      "error": "An error occurred (ValidationException) when calling the Converse operation: The provided model identifier is invalid.",
-      "duration_s": 0.1
-    },
-    "social_cog_sarcasm": {
-      "score": null,
-      "error": "An error occurred (ValidationException) when calling the Converse operation: The provided model identifier is invalid.",
-      "duration_s": 0.1
-    },
-    "social_cog_emotional_prosody": {
-      "score": null,
-      "error": "An error occurred (ValidationException) when calling the Converse operation: The provided model identifier is invalid.",
-      "duration_s": 0.1
     }
   }
 }

@@ -1,7 +1,7 @@
 {
   "model": "anthropic.claude-sonnet-4-6",
   "model_label": "Claude Sonnet 4.6",
-  "timestamp": "2026-04-11T19:45:53.296877+00:00",
+  "timestamp": "2026-04-11T20:15:46.751335+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.9886,
@@ -108,11 +108,6 @@
       "error": null,
       "duration_s": 118.1
     },
-    "social_cog_pragmatic": {
-      "score": 1.0,
-      "error": null,
-      "duration_s": 386.5
-    },
     "social_cog_sarcasm": {
       "score": 0.8147,
       "error": null,
@@ -129,9 +124,14 @@
       "duration_s": 154.0
     },
     "social_cog_false_belief": {
-      "score": 0.925,
+      "score": 0.7937,
       "error": null,
-      "duration_s": 354.3
+      "duration_s": 341.0
+    },
+    "social_cog_pragmatic": {
+      "score": 0.7774,
+      "error": null,
+      "duration_s": 281.5
     }
   }
 }

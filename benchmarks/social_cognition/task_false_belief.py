@@ -1,5 +1,5 @@
 """
-Social Cognition Benchmark 1: False-Belief Theory of Mind (v5)
+Social Cognition Benchmark 1: False-Belief Theory of Mind (v6)
 
 Tests Theory of Mind through Sally-Anne style false-belief attribution
 across multiple difficulty levels, heavily weighted toward higher-order
@@ -17,7 +17,7 @@ This version:
 - Adds 8 "5th-order" scenarios (5-character narratives with cascading lies)
 - Heavily weights higher-order: 70% of score from 4th+5th order
 
-Score = 0.05 * tier1 + 0.10 * tier2 + 0.15 * tier3 + 0.35 * tier4 + 0.35 * tier5
+Score = 0.00 * tier1 + 0.00 * tier2 + 0.05 * tier3 + 0.70 * tier4 + 0.25 * tier5
 
 Cognitive Science Basis:
 - Wimmer & Perner (1983): original false-belief paradigm
@@ -65,12 +65,12 @@ def check_misleading(model_answer: str, misleading_patterns: list) -> bool:
 @kbench.task(name="social_cog_false_belief")
 def social_cog_false_belief(llm) -> float:
     """
-    False-Belief Theory of Mind Benchmark (v5).
+    False-Belief Theory of Mind Benchmark (v6).
 
     Individual scenarios only (no batch section).
     Heavy weighting toward 4th and 5th order nested beliefs.
     
-    Scoring: 0.05 * tier1 + 0.05 * tier2 + 0.10 * tier3 + 0.60 * tier4 + 0.20 * tier5
+    Scoring: 0.00 * tier1 + 0.00 * tier2 + 0.05 * tier3 + 0.70 * tier4 + 0.25 * tier5
 
     Cognitive Science: Wimmer & Perner (1983), Kinderman et al. (1998), Miller (2009).
     Human 1st-order: ~95% adults. 2nd-order: ~80%. 3rd-order: ~60%. 4th-order: ~40%.
@@ -161,7 +161,7 @@ def social_cog_false_belief(llm) -> float:
     
     # Composite: heavily weighted toward 4th-order (most discriminating tier)
     # 0.05 * 1st + 0.05 * 2nd + 0.10 * 3rd + 0.60 * 4th + 0.20 * 5th
-    score = 0.05 * t1_adj + 0.05 * t2_adj + 0.10 * t3_adj + 0.60 * t4_adj + 0.20 * t5_adj
+    score = 0.00 * t1_adj + 0.00 * t2_adj + 0.05 * t3_adj + 0.70 * t4_adj + 0.25 * t5_adj
     score = round(float(np.clip(score, 0, 1)), 4)
     
     # Misleading error rate (diagnostic)
@@ -169,9 +169,9 @@ def social_cog_false_belief(llm) -> float:
     misleading_error_rate = misleading_errors / max(len(misleading), 1)
     
     _safe_log({
-        "benchmark": "False-Belief Theory of Mind v5",
+        "benchmark": "False-Belief Theory of Mind v6",
         "n_scenarios": len(results),
-        "scoring": "0.05*T1 + 0.05*T2 + 0.10*T3 + 0.60*T4 + 0.20*T5",
+        "scoring": "0.00*T1 + 0.00*T2 + 0.05*T3 + 0.70*T4 + 0.25*T5",
         "tiers": {
             "1st_order": {"count": len(tier1), "adjusted": round(t1_adj, 4), "belief": round(t1_belief, 4), "control": round(t1_ctrl, 4)},
             "2nd_order": {"count": len(tier2), "adjusted": round(t2_adj, 4), "belief": round(t2_belief, 4), "control": round(t2_ctrl, 4)},
