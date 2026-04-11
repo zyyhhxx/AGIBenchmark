@@ -1,7 +1,7 @@
 {
-  "model": "openai.gpt-oss-120b-1:0",
-  "model_label": "GPT-OSS-120B",
-  "timestamp": "2026-04-11T03:39:04.820462+00:00",
+  "model": "openai.gpt-oss-120b-1_0",
+  "model_label": "openai.gpt-oss-120b-1_0",
+  "timestamp": "2026-04-11T08:13:12.082450+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.803,
@@ -17,11 +17,6 @@
       "score": 0.2,
       "error": null,
       "duration_s": 376.6
-    },
-    "metacog_calibration": {
-      "score": null,
-      "error": "Read timeout on endpoint URL: \"https://bedrock-runtime.us-east-1.amazonaws.com/model/openai.gpt-oss-120b-1%3A0/converse\"",
-      "duration_s": 272.4
     },
     "metacog_error_detection": {
       "score": 0.8978,
@@ -112,6 +107,31 @@
       "score": 0.6447,
       "error": null,
       "duration_s": 56.2
+    },
+    "metacog_calibration": {
+      "score": null,
+      "error": "An error occurred (ValidationException) when calling the Converse operation: The provided model identifier is invalid.",
+      "duration_s": 0.1
+    },
+    "social_cog_false_belief": {
+      "score": null,
+      "error": "An error occurred (ValidationException) when calling the Converse operation: The provided model identifier is invalid.",
+      "duration_s": 0.1
+    },
+    "social_cog_pragmatic": {
+      "score": null,
+      "error": "An error occurred (ValidationException) when calling the Converse operation: The provided model identifier is invalid.",
+      "duration_s": 0.1
+    },
+    "social_cog_sarcasm": {
+      "score": null,
+      "error": "An error occurred (ValidationException) when calling the Converse operation: The provided model identifier is invalid.",
+      "duration_s": 0.1
+    },
+    "social_cog_emotional_prosody": {
+      "score": null,
+      "error": "An error occurred (ValidationException) when calling the Converse operation: The provided model identifier is invalid.",
+      "duration_s": 0.2
     }
   }
 }

@@ -333,7 +333,24 @@ def run_model(model_id: str, benchmarks: list, output_dir: str):
     llm = create_bedrock_llm(invoke_id)
     scores = {}
 
+    # Resume: load existing results and skip completed benchmarks
+    safe_name = model_id.replace(':', '_').replace('/', '_')
+    out_path = os.path.join(output_dir, f"{safe_name}.json")
+    if os.path.exists(out_path):
+        try:
+            with open(out_path) as f:
+                existing = json.load(f)
+            for bname, bdata in existing.get('scores', {}).items():
+                if bdata.get('score') is not None:  # skip completed (not errored)
+                    scores[bname] = bdata
+            print(f"  Resumed: {len(scores)} benchmarks already scored, skipping them")
+        except Exception as e:
+            print(f"  Warning: could not load existing results: {e}")
+
     for i, (mod_path, fn_name) in enumerate(benchmarks):
+        if fn_name in scores and scores[fn_name].get('score') is not None:
+            print(f"\n[{i+1}/{len(benchmarks)}] {fn_name} — already scored ({scores[fn_name]['score']:.4f}), skipping")
+            continue
         # Use longer timeout for slow benchmarks
         if fn_name in SLOW_BENCHMARKS:
             bench_llm = create_bedrock_llm(invoke_id, timeout=SLOW_TIMEOUT)
