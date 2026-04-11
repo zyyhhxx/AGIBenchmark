@@ -1,304 +1,358 @@
 """
-Attention Benchmark 4: Attention to Instruction Updates
+Attention Benchmark 4: Attention to Instruction Updates (v2)
 
 Tests whether a model can adapt when task instructions change mid-sequence,
-measuring adaptation speed and perseveration (failure to switch).
+with multi-step rule modifications, contradictory updates, and difficulty tiers.
 
 Cognitive Science Basis:
-- Task-switching paradigm (Monsell, 2003): switch costs when rules change
-- Set-shifting (Meiran, 1996): ability to flexibly shift attention
-- Cognitive flexibility as component of executive attention
-- Perseveration: continued application of now-invalid rules
+- Monsell (2003): Task-switching paradigm — switch costs when rules change
+- Meiran (1996): Set-shifting — ability to flexibly shift attention
+- Allport, Styles & Hsieh (1994): Task-set inertia — perseveration after switch
+- Kiesel et al. (2010): Task switching review — preparation effects
 
 Protocol:
-1. Present initial instructions (e.g., "classify words by category")
-2. Model processes items under those instructions
-3. Mid-sequence, instructions update subtly (e.g., "now classify by length")
-4. Measure: pre-switch accuracy, post-switch accuracy, adaptation speed,
-   perseveration rate
+  EASY:   Single rule switch, explicit "NEW RULE" marker
+  MEDIUM: Two sequential switches, embedded in item stream
+  HARD:   Contradictory updates, reversals, chained modifications
 
-Score: Composite of pre-switch accuracy, post-switch accuracy,
-       adaptation speed, and low perseveration.
+Each trial presents a continuous item stream with embedded rule changes.
+The model must track which rule is active and apply it correctly.
+
+Score = 0.20 * easy + 0.30 * medium + 0.50 * hard
 
 Shortcut Resistance:
-- Instructions are embedded in a continuous stream (not a separate prompt)
-- Updates are subtle — not "STOP! New rules!" but woven into the sequence
-- Some trials have NO switch (catch trials) to test false alarm rate
+- Hard trials reverse rules or chain modifications
+- Some hard trials use embedded (not labeled) instruction changes
+- Catch trials with no switch test false-alarm rate
 """
 
 import kaggle_benchmarks as kbench
-from dataclasses import dataclass
 import json
 import re
 
 
-# ─── Stimulus Data ──────────────────────────────────────────────────
+# ─── Trial Definitions ──────────────────────────────────────────────
 
-TRIALS = [
+EASY_TRIALS = [
     {
-        "id": "T1",
-        "initial_instruction": "Classify each word as LIVING or NON-LIVING.",
-        "switch_instruction": "NEW RULE: Now classify each word as SHORT (≤5 letters) or LONG (>5 letters).",
-        "switch_after_item": 8,  # Switch happens after item 8
-        "items": [
-            # Pre-switch items (classify as LIVING/NON-LIVING)
-            {"word": "tiger", "pre_answer": "LIVING", "post_answer": "SHORT"},
-            {"word": "mountain", "pre_answer": "NON-LIVING", "post_answer": "LONG"},
-            {"word": "dolphin", "pre_answer": "LIVING", "post_answer": "LONG"},
-            {"word": "crystal", "pre_answer": "NON-LIVING", "post_answer": "LONG"},
-            {"word": "mushroom", "pre_answer": "LIVING", "post_answer": "LONG"},
-            {"word": "hammer", "pre_answer": "NON-LIVING", "post_answer": "LONG"},
-            {"word": "fern", "pre_answer": "LIVING", "post_answer": "SHORT"},
-            {"word": "bridge", "pre_answer": "NON-LIVING", "post_answer": "LONG"},
-            # Post-switch items (classify as SHORT/LONG)
-            {"word": "cat", "pre_answer": "LIVING", "post_answer": "SHORT"},
-            {"word": "elephant", "pre_answer": "LIVING", "post_answer": "LONG"},
-            {"word": "desk", "pre_answer": "NON-LIVING", "post_answer": "SHORT"},
-            {"word": "refrigerator", "pre_answer": "NON-LIVING", "post_answer": "LONG"},
-            {"word": "owl", "pre_answer": "LIVING", "post_answer": "SHORT"},
-            {"word": "microphone", "pre_answer": "NON-LIVING", "post_answer": "LONG"},
-            {"word": "bee", "pre_answer": "LIVING", "post_answer": "SHORT"},
-            {"word": "lamp", "pre_answer": "NON-LIVING", "post_answer": "SHORT"},
-        ],
+        "id": "E1",
+        "prompt": (
+            "Process the following items according to the rules. "
+            "Rules change mid-stream — pay attention!\n\n"
+            "RULE: Classify each word as LIVING or NON-LIVING.\n\n"
+            "1. tiger\n"
+            "2. mountain\n"
+            "3. dolphin\n"
+            "4. crystal\n\n"
+            "**NEW RULE: Now classify each word as SHORT (≤5 letters) or LONG (>5 letters).**\n\n"
+            "5. cat\n"
+            "6. elephant\n"
+            "7. desk\n"
+            "8. refrigerator\n\n"
+            'Respond as JSON: {"answers": ["ans1", "ans2", ..., "ans8"]}\n'
+            "Apply the rule that is ACTIVE for each item."
+        ),
+        "answers": ["LIVING", "NON-LIVING", "LIVING", "NON-LIVING",
+                     "SHORT", "LONG", "SHORT", "LONG"],
     },
     {
-        "id": "T2",
-        "initial_instruction": "For each number, respond ODD or EVEN.",
-        "switch_instruction": "NEW RULE: Now respond HIGH (>50) or LOW (≤50) instead.",
-        "switch_after_item": 6,
-        "items": [
-            {"word": "23", "pre_answer": "ODD", "post_answer": "LOW"},
-            {"word": "48", "pre_answer": "EVEN", "post_answer": "LOW"},
-            {"word": "77", "pre_answer": "ODD", "post_answer": "HIGH"},
-            {"word": "16", "pre_answer": "EVEN", "post_answer": "LOW"},
-            {"word": "91", "pre_answer": "ODD", "post_answer": "HIGH"},
-            {"word": "34", "pre_answer": "EVEN", "post_answer": "LOW"},
-            # Post-switch
-            {"word": "65", "pre_answer": "ODD", "post_answer": "HIGH"},
-            {"word": "12", "pre_answer": "EVEN", "post_answer": "LOW"},
-            {"word": "88", "pre_answer": "EVEN", "post_answer": "HIGH"},
-            {"word": "7", "pre_answer": "ODD", "post_answer": "LOW"},
-            {"word": "52", "pre_answer": "EVEN", "post_answer": "HIGH"},
-            {"word": "39", "pre_answer": "ODD", "post_answer": "LOW"},
-        ],
+        "id": "E2",
+        "prompt": (
+            "Process items with changing rules.\n\n"
+            "RULE: For each number, respond ODD or EVEN.\n\n"
+            "1. 23\n"
+            "2. 48\n"
+            "3. 77\n"
+            "4. 16\n\n"
+            "**NEW RULE: Now respond HIGH (>50) or LOW (≤50).**\n\n"
+            "5. 65\n"
+            "6. 12\n"
+            "7. 88\n"
+            "8. 7\n\n"
+            'Respond as JSON: {"answers": ["ans1", ..., "ans8"]}'
+        ),
+        "answers": ["ODD", "EVEN", "ODD", "EVEN",
+                     "HIGH", "LOW", "HIGH", "LOW"],
     },
     {
-        "id": "T3",
-        "initial_instruction": "Classify each shape description as ROUND or ANGULAR.",
-        "switch_instruction": "NEW RULE: Now classify as LARGE (mentioned size > 10cm) or SMALL (≤10cm).",
-        "switch_after_item": 7,
-        "items": [
-            {"word": "A 15cm circle", "pre_answer": "ROUND", "post_answer": "LARGE"},
-            {"word": "A 5cm triangle", "pre_answer": "ANGULAR", "post_answer": "SMALL"},
-            {"word": "A 20cm oval", "pre_answer": "ROUND", "post_answer": "LARGE"},
-            {"word": "A 8cm square", "pre_answer": "ANGULAR", "post_answer": "SMALL"},
-            {"word": "A 3cm sphere", "pre_answer": "ROUND", "post_answer": "SMALL"},
-            {"word": "A 12cm pentagon", "pre_answer": "ANGULAR", "post_answer": "LARGE"},
-            {"word": "A 7cm disc", "pre_answer": "ROUND", "post_answer": "SMALL"},
-            # Post-switch
-            {"word": "A 25cm hexagon", "pre_answer": "ANGULAR", "post_answer": "LARGE"},
-            {"word": "A 4cm ellipse", "pre_answer": "ROUND", "post_answer": "SMALL"},
-            {"word": "A 18cm diamond", "pre_answer": "ANGULAR", "post_answer": "LARGE"},
-            {"word": "A 2cm ring", "pre_answer": "ROUND", "post_answer": "SMALL"},
-            {"word": "A 30cm rectangle", "pre_answer": "ANGULAR", "post_answer": "LARGE"},
-            {"word": "A 9cm globe", "pre_answer": "ROUND", "post_answer": "SMALL"},
-        ],
+        "id": "E3_CATCH",
+        "prompt": (
+            "Process items with the given rule. The rule may or may not change.\n\n"
+            "RULE: Classify each animal as MAMMAL or NON-MAMMAL.\n\n"
+            "1. whale\n2. salmon\n3. bat\n4. cobra\n"
+            "5. otter\n6. parrot\n7. fox\n8. turtle\n\n"
+            'Respond as JSON: {"answers": ["ans1", ..., "ans8"]}'
+        ),
+        "answers": ["MAMMAL", "NON-MAMMAL", "MAMMAL", "NON-MAMMAL",
+                     "MAMMAL", "NON-MAMMAL", "MAMMAL", "NON-MAMMAL"],
+    },
+]
+
+MEDIUM_TRIALS = [
+    {
+        "id": "M1",
+        "prompt": (
+            "Process items. Rules change TWICE during the sequence.\n\n"
+            "RULE: Respond with the FIRST LETTER of each word (capitalized).\n\n"
+            "1. banana\n2. grape\n3. strawberry\n\n"
+            "**UPDATE: Now respond with the NUMBER OF VOWELS (a,e,i,o,u) in each word.**\n\n"
+            "4. orange\n5. apple\n6. fig\n\n"
+            "**ANOTHER UPDATE: Now respond with the LAST LETTER (capitalized).**\n\n"
+            "7. peach\n8. mango\n9. lime\n10. plum\n\n"
+            'Respond as JSON: {"answers": ["ans1", ..., "ans10"]}'
+        ),
+        "answers": ["B", "G", "S", "3", "2", "1", "H", "O", "E", "M"],
     },
     {
-        # Catch trial — NO switch happens
-        "id": "T4_CATCH",
-        "initial_instruction": "Classify each animal as MAMMAL or NON-MAMMAL.",
-        "switch_instruction": None,  # No switch!
-        "switch_after_item": 99,  # Never switches
-        "items": [
-            {"word": "whale", "pre_answer": "MAMMAL", "post_answer": "MAMMAL"},
-            {"word": "salmon", "pre_answer": "NON-MAMMAL", "post_answer": "NON-MAMMAL"},
-            {"word": "bat", "pre_answer": "MAMMAL", "post_answer": "MAMMAL"},
-            {"word": "cobra", "pre_answer": "NON-MAMMAL", "post_answer": "NON-MAMMAL"},
-            {"word": "otter", "pre_answer": "MAMMAL", "post_answer": "MAMMAL"},
-            {"word": "parrot", "pre_answer": "NON-MAMMAL", "post_answer": "NON-MAMMAL"},
-            {"word": "fox", "pre_answer": "MAMMAL", "post_answer": "MAMMAL"},
-            {"word": "turtle", "pre_answer": "NON-MAMMAL", "post_answer": "NON-MAMMAL"},
-            {"word": "rabbit", "pre_answer": "MAMMAL", "post_answer": "MAMMAL"},
-            {"word": "eagle", "pre_answer": "NON-MAMMAL", "post_answer": "NON-MAMMAL"},
-        ],
+        "id": "M2",
+        "prompt": (
+            "Process items with changing rules.\n\n"
+            "RULE: Classify shapes as ROUND or ANGULAR.\n\n"
+            "1. circle\n2. triangle\n3. oval\n\n"
+            "**RULE CHANGE: Words ≤6 letters → SMALL, >6 letters → BIG.**\n\n"
+            "4. square\n5. pentagon\n6. cube\n\n"
+            "**RULE CHANGE: Respond with just the NUMBER of letters.**\n\n"
+            "7. hexagon\n8. sphere\n9. pyramid\n10. cone\n\n"
+            'Respond as JSON: {"answers": ["ans1", ..., "ans10"]}'
+        ),
+        "answers": ["ROUND", "ANGULAR", "ROUND", "SMALL", "BIG", "SMALL", "7", "6", "7", "4"],
     },
     {
-        "id": "T5",
-        "initial_instruction": "For each word, respond with its FIRST LETTER (capitalized).",
-        "switch_instruction": "NEW RULE: Now respond with the NUMBER OF VOWELS in each word.",
-        "switch_after_item": 6,
-        "items": [
-            {"word": "banana", "pre_answer": "B", "post_answer": "3"},
-            {"word": "grape", "pre_answer": "G", "post_answer": "2"},
-            {"word": "strawberry", "pre_answer": "S", "post_answer": "2"},
-            {"word": "kiwi", "pre_answer": "K", "post_answer": "2"},
-            {"word": "mango", "pre_answer": "M", "post_answer": "2"},
-            {"word": "plum", "pre_answer": "P", "post_answer": "1"},
-            # Post-switch
-            {"word": "orange", "pre_answer": "O", "post_answer": "3"},
-            {"word": "apple", "pre_answer": "A", "post_answer": "2"},
-            {"word": "peach", "pre_answer": "P", "post_answer": "2"},
-            {"word": "fig", "pre_answer": "F", "post_answer": "1"},
-            {"word": "avocado", "pre_answer": "A", "post_answer": "4"},
-            {"word": "lime", "pre_answer": "L", "post_answer": "2"},
-        ],
+        "id": "M3_CATCH",
+        "prompt": (
+            "Process items. Rules may or may not change.\n\n"
+            "RULE: Respond YES if the word contains the letter 'a', otherwise NO.\n\n"
+            "1. table\n2. tree\n3. banana\n4. rhythm\n"
+            "5. garden\n6. cylinder\n7. mountain\n8. system\n\n"
+            'Respond as JSON: {"answers": ["ans1", ..., "ans8"]}'
+        ),
+        "answers": ["YES", "NO", "YES", "NO", "YES", "NO", "YES", "NO"],
+    },
+]
+
+HARD_TRIALS = [
+    {
+        "id": "H1_REVERSAL",
+        "prompt": (
+            "Process items. Rules change AND REVERT with modification.\n\n"
+            "RULE: Classify as POSITIVE (≥0) or NEGATIVE (<0).\n\n"
+            "1. 7\n2. -3\n3. 15\n\n"
+            "**UPDATE: Now classify as EVEN or ODD.**\n\n"
+            "4. 8\n5. 13\n6. 22\n\n"
+            "**REVERT WITH MODIFICATION: Back to POSITIVE/NEGATIVE, but now: "
+            "numbers ≤10 → NEGATIVE (regardless of sign), >10 → POSITIVE.**\n\n"
+            "7. 5\n8. 25\n9. -8\n10. 11\n11. 3\n12. 100\n\n"
+            'Respond as JSON: {"answers": ["ans1", ..., "ans12"]}'
+        ),
+        "answers": ["POSITIVE", "NEGATIVE", "POSITIVE",
+                     "EVEN", "ODD", "EVEN",
+                     "NEGATIVE", "POSITIVE", "NEGATIVE", "POSITIVE", "NEGATIVE", "POSITIVE"],
+    },
+    {
+        "id": "H2_EMBEDDED",
+        "prompt": (
+            "Process the following items. Pay careful attention — "
+            "the rules may change WITHOUT explicit markers.\n\n"
+            "RULE: Count the CONSONANTS in each word.\n\n"
+            "1. hello\n2. world\n3. python\n4. jazz\n\n"
+            "Note: going forward, count the VOWELS (a,e,i,o,u) instead.\n\n"
+            "5. education\n6. rhythm\n7. queue\n8. strength\n\n"
+            "Correction: actually count ALL LETTERS (total length) from now on.\n\n"
+            "9. cat\n10. elephant\n11. a\n12. programming\n\n"
+            'Respond as JSON: {"answers": ["ans1", ..., "ans12"]}'
+        ),
+        "answers": ["3", "4", "4", "3",    # consonants
+                     "5", "0", "3", "1",    # vowels
+                     "3", "8", "1", "11"],  # total length
+    },
+    {
+        "id": "H3_CONTRADICT",
+        "prompt": (
+            "Process items. Rules CONTRADICT each other across phases.\n\n"
+            "RULE: Words with 5+ letters → LONG, fewer → SHORT.\n\n"
+            "1. cat\n2. elephant\n3. dog\n\n"
+            "**IMPORTANT: Rule is now REVERSED. 5+ letters → SHORT, fewer → LONG.**\n\n"
+            "4. fox\n5. crocodile\n6. ant\n\n"
+            "**OVERRIDE: Ignore letter count entirely. "
+            "Starts with vowel (A,E,I,O,U) → LONG. Otherwise → SHORT.**\n\n"
+            "7. ice\n8. tree\n9. umbrella\n10. bridge\n11. eagle\n12. mountain\n\n"
+            'Respond as JSON: {"answers": ["ans1", ..., "ans12"]}'
+        ),
+        "answers": ["SHORT", "LONG", "SHORT",        # original rule
+                     "LONG", "SHORT", "LONG",         # reversed
+                     "LONG", "SHORT", "LONG", "SHORT", "LONG", "SHORT"],  # vowel-start
+    },
+    {
+        "id": "H4_CHAINED",
+        "prompt": (
+            "Process items. Each rule BUILDS on the previous one.\n\n"
+            "RULE: Compute each number mod 3 (remainder when divided by 3).\n\n"
+            "1. 7\n2. 9\n3. 14\n4. 22\n\n"
+            "**MODIFICATION: Compute mod 3, then ADD 1 to the result.**\n\n"
+            "5. 10\n6. 15\n7. 8\n8. 11\n\n"
+            "**FURTHER MODIFICATION: Keep mod 3 + 1, but if the original "
+            "number is EVEN, multiply the final result by 2.**\n\n"
+            "9. 6\n10. 7\n11. 12\n12. 5\n13. 16\n14. 9\n\n"
+            'Respond as JSON: {"answers": ["ans1", ..., "ans14"]}'
+        ),
+        # Phase 1: mod 3
+        # 7%3=1, 9%3=0, 14%3=2, 22%3=1
+        # Phase 2: mod 3 + 1
+        # 10%3=1+1=2, 15%3=0+1=1, 8%3=2+1=3, 11%3=2+1=3
+        # Phase 3: mod 3 + 1, ×2 if even
+        # 6%3=0+1=1, even→×2=2; 7%3=1+1=2, odd→2; 12%3=0+1=1, even→×2=2;
+        # 5%3=2+1=3, odd→3; 16%3=1+1=2, even→×2=4; 9%3=0+1=1, odd→1
+        "answers": ["1", "0", "2", "1",
+                     "2", "1", "3", "3",
+                     "2", "2", "2", "3", "4", "1"],
+    },
+    {
+        "id": "H5_CATCH",
+        "prompt": (
+            "Process items. Rules may or may not change — stay alert.\n\n"
+            "RULE: Count the number of UNIQUE letters in each word (case-insensitive).\n\n"
+            "1. hello\n2. banana\n3. mississippi\n4. cat\n"
+            "5. bookkeeper\n6. aardvark\n7. racecar\n8. committee\n\n"
+            'Respond as JSON: {"answers": ["ans1", ..., "ans8"]}'
+        ),
+        # hello: h,e,l,o = 4; banana: b,a,n = 3; mississippi: m,i,s,p = 4;
+        # cat: c,a,t = 3; bookkeeper: b,o,k,e,p,r = 6; aardvark: a,r,d,v,k = 5;
+        # racecar: r,a,c,e = 4; committee: c,o,m,i,t,e = 6
+        "answers": ["4", "3", "4", "3", "6", "5", "4", "6"],
     },
 ]
 
 
-@dataclass
-class Classification:
-    answer: str
+def normalize_answer(text: str) -> str:
+    t = str(text).strip().upper().replace(".", "").replace(",", "").replace('"', '').replace("'", "")
+    for kw in ("NON-LIVING", "LIVING", "NON-MAMMAL", "MAMMAL",
+               "SHORT", "LONG", "ODD", "EVEN", "HIGH", "LOW",
+               "POSITIVE", "NEGATIVE", "ROUND", "ANGULAR",
+               "SMALL", "BIG", "YES", "NO"):
+        if kw in t:
+            return kw
+    nums = re.findall(r'-?\d+', t)
+    if nums:
+        return nums[-1]
+    letters = re.findall(r'\b([A-Z])\b', t)
+    if letters:
+        return letters[-1]
+    return t.split()[-1] if t.split() else t
 
 
-def normalize_answer(text):
-    return text.strip().upper().replace(".", "").replace(",", "")
+def check_answer(model_answer: str, expected: str) -> bool:
+    m = normalize_answer(str(model_answer))
+    e = expected.strip().upper()
+    return m == e
 
 
-def check_answer(model_answer, expected):
-    model_norm = normalize_answer(model_answer)
-    expected_norm = normalize_answer(expected)
-    return expected_norm in model_norm or model_norm == expected_norm
+def extract_json(raw: str) -> dict:
+    """Extract JSON from model response."""
+    try:
+        return json.loads(raw)
+    except Exception:
+        pass
+    m = re.search(r'```(?:json)?\s*(\{.*?\})\s*```', raw, re.DOTALL)
+    if m:
+        try:
+            return json.loads(m.group(1))
+        except Exception:
+            pass
+    # Find largest JSON object
+    best = {}
+    for m in re.finditer(r'\{[^{}]*(?:\[[^\]]*\][^{}]*)*\}', raw, re.DOTALL):
+        try:
+            parsed = json.loads(m.group())
+            if len(str(parsed)) > len(str(best)):
+                best = parsed
+        except Exception:
+            continue
+    return best
+
+
+def score_trial(llm, trial) -> float:
+    """Score a single trial."""
+    with kbench.chats.new(f"instupd_{trial['id']}"):
+        raw = llm.prompt(trial["prompt"])
+
+    parsed = extract_json(raw)
+    model_answers = parsed.get("answers", [])
+    expected = trial["answers"]
+
+    if not model_answers:
+        lines = [l.strip() for l in raw.split("\n") if l.strip()]
+        for line in lines:
+            m_line = re.match(r'\d+[\.\):\s]+(.+)', line)
+            if m_line:
+                model_answers.append(m_line.group(1).strip())
+
+    correct = 0
+    total = len(expected)
+    for i, exp in enumerate(expected):
+        if i < len(model_answers) and check_answer(str(model_answers[i]), exp):
+            correct += 1
+
+    return correct / total if total > 0 else 0
 
 
 @kbench.task(name="attention_instruction_update")
 def attention_instruction_update(llm) -> float:
     """
-    Attention to Instruction Updates Benchmark.
+    Attention to Instruction Updates Benchmark (v2).
 
-    Tests whether a model can adapt when task instructions change mid-sequence.
+    Tests adaptation to mid-sequence rule changes with increasing complexity.
 
-    Score = 0.25 * pre_switch_accuracy + 0.35 * post_switch_accuracy
-            + 0.25 * adaptation_speed + 0.15 * (1 - false_switch_rate)
+    Tiers:
+      EASY:   Single switch, explicit markers (3 trials, 24 items)
+      MEDIUM: Two switches, less obvious markers (3 trials, 28 items)
+      HARD:   Contradictory/chained/reversal (5 trials, 58 items)
 
-    Cognitive Science Basis: Monsell (2003) task-switching, Meiran (1996) set-shifting.
+    Total: 11 trials, 110 items.
+    Score = 0.20 * easy + 0.30 * medium + 0.50 * hard
+
+    Cognitive Science: Monsell (2003), Meiran (1996), Allport et al. (1994).
     """
-    pre_correct = 0
-    pre_total = 0
-    post_correct = 0
-    post_total = 0
-    # Track adaptation: how quickly does model switch after instruction change?
-    # Items immediately after switch that are still answered with OLD rule
-    post_switch_perseveration = []
-    catch_trial_switches = 0  # False switches on catch trials
-    catch_trial_items = 0
+    tier_scores = {"easy": [], "medium": [], "hard": []}
+    all_results = []
 
-    results_log = []
+    for trial in EASY_TRIALS:
+        acc = score_trial(llm, trial)
+        tier_scores["easy"].append(acc)
+        all_results.append((trial["id"], "easy", acc))
+        print(f"  [easy  ] {trial['id']:16s}: {acc:.3f}")
 
-    for trial in TRIALS:
-        is_catch = trial["switch_instruction"] is None
-        switch_idx = trial["switch_after_item"]
+    for trial in MEDIUM_TRIALS:
+        acc = score_trial(llm, trial)
+        tier_scores["medium"].append(acc)
+        all_results.append((trial["id"], "medium", acc))
+        print(f"  [medium] {trial['id']:16s}: {acc:.3f}")
 
-        with kbench.chats.new(f"instupd_{trial['id']}"):
-            # Present instructions and process items as a stream
-            instruction_text = trial["initial_instruction"]
+    for trial in HARD_TRIALS:
+        acc = score_trial(llm, trial)
+        tier_scores["hard"].append(acc)
+        all_results.append((trial["id"], "hard", acc))
+        print(f"  [hard  ] {trial['id']:16s}: {acc:.3f}")
 
-            for i, item in enumerate(trial["items"]):
-                is_post_switch = i >= switch_idx and not is_catch
+    easy_mean = sum(tier_scores["easy"]) / len(tier_scores["easy"])
+    medium_mean = sum(tier_scores["medium"]) / len(tier_scores["medium"])
+    hard_mean = sum(tier_scores["hard"]) / len(tier_scores["hard"])
 
-                # Build prompt — include switch instruction when it's time
-                if i == switch_idx and not is_catch:
-                    # Insert the instruction update
-                    prompt = (
-                        f"{trial['switch_instruction']}\n\n"
-                        f"Item: {item['word']}\n"
-                        f"Your classification:"
-                    )
-                elif i == 0:
-                    prompt = (
-                        f"Task: {instruction_text}\n\n"
-                        f"For each item I give you, respond with ONLY your classification "
-                        f"(one or two words, no explanation).\n\n"
-                        f"Item: {item['word']}\n"
-                        f"Your classification:"
-                    )
-                else:
-                    prompt = f"Item: {item['word']}\nYour classification:"
+    score = round(0.20 * easy_mean + 0.30 * medium_mean + 0.50 * hard_mean, 4)
 
-                try:
-                    ans = llm.prompt(prompt, schema=Classification)
-                    answer = ans.answer
-                except Exception:
-                    answer = llm.prompt(prompt)
+    total_items = sum(len(t["answers"]) for t in EASY_TRIALS + MEDIUM_TRIALS + HARD_TRIALS)
 
-                expected = item["post_answer"] if is_post_switch else item["pre_answer"]
-                correct = check_answer(answer, expected)
-
-                if is_post_switch:
-                    post_correct += int(correct)
-                    post_total += 1
-                    # Check if perseverating (using old rule answer)
-                    using_old_rule = check_answer(answer, item["pre_answer"]) and not correct
-                    post_switch_perseveration.append(using_old_rule)
-                elif is_catch:
-                    # On catch trials, check if model falsely switches
-                    correct_catch = check_answer(answer, item["pre_answer"])
-                    pre_correct += int(correct_catch)
-                    pre_total += 1
-                    # Detect false switch: model gives an answer that doesn't match the rule
-                    if not correct_catch:
-                        catch_trial_switches += 1
-                    catch_trial_items += 1
-                else:
-                    pre_correct += int(correct)
-                    pre_total += 1
-
-                results_log.append({
-                    "trial": trial["id"],
-                    "item": item["word"],
-                    "phase": "post-switch" if is_post_switch else ("catch" if is_catch else "pre-switch"),
-                    "expected": expected,
-                    "answer": answer[:30],
-                    "correct": correct if not is_catch else correct_catch if is_catch else correct,
-                })
-
-    # ── Compute Metrics ──
-    pre_acc = pre_correct / pre_total if pre_total else 0
-    post_acc = post_correct / post_total if post_total else 0
-
-    # Adaptation speed: proportion of post-switch items where model
-    # adapted (not perseverating). Higher = faster adaptation.
-    if post_switch_perseveration:
-        perseveration_rate = sum(post_switch_perseveration) / len(post_switch_perseveration)
-        adaptation_speed = 1 - perseveration_rate
-    else:
-        adaptation_speed = 1.0
-        perseveration_rate = 0.0
-
-    # False switch rate on catch trials
-    false_switch_rate = catch_trial_switches / catch_trial_items if catch_trial_items else 0
-
-    score = round(
-        0.25 * pre_acc +
-        0.35 * post_acc +
-        0.25 * adaptation_speed +
-        0.15 * (1 - false_switch_rate),
-        4,
-    )
-
-    # ── Logging ──
     print(f"\n{'='*60}")
-    print(f"ATTENTION TO INSTRUCTION UPDATES BENCHMARK RESULTS")
+    print(f"ATTENTION TO INSTRUCTION UPDATES (v2) RESULTS")
     print(f"{'='*60}")
-    print(f"Trials: {len(TRIALS)} ({sum(1 for t in TRIALS if t['switch_instruction'] is None)} catch)")
-    print(f"\n--- Metrics ---")
-    print(f"Pre-switch accuracy:  {pre_acc:.3f} (n={pre_total})")
-    print(f"Post-switch accuracy: {post_acc:.3f} (n={post_total})")
-    print(f"Adaptation speed:     {adaptation_speed:.3f}")
-    print(f"Perseveration rate:   {perseveration_rate:.3f}")
-    print(f"False switch rate:    {false_switch_rate:.3f} (n={catch_trial_items})")
-    print(f"Composite score:      {score:.4f}")
-
-    print(f"\n--- Per-Item Results ---")
-    for r in results_log:
-        status = "✓" if r["correct"] else "✗"
-        print(f"  {status} [{r['trial']:10s}] [{r['phase']:11s}] "
-              f"{r['item']:15s} → {r['answer']:10s} (expected: {r['expected']})")
+    print(f"Total items: {total_items}")
+    print(f"\n--- Tier Scores ---")
+    print(f"EASY   (single switch):         {easy_mean:.3f}  ({len(EASY_TRIALS)} trials)")
+    print(f"MEDIUM (two switches):          {medium_mean:.3f}  ({len(MEDIUM_TRIALS)} trials)")
+    print(f"HARD   (contradict/chain/revert):{hard_mean:.3f}  ({len(HARD_TRIALS)} trials)")
+    print(f"\nComposite (0.20E+0.30M+0.50H):  {score:.4f}")
 
     return score
 
 
-# ─── Run ────────────────────────────────────────────────────────────
 if __name__ == "__main__":
     attention_instruction_update.run(llm=kbench.llm)

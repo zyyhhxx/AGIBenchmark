@@ -1,0 +1,22 @@
+{
+  "benchmark": "attention_divided",
+  "scores": {
+    "Claude Opus 4.6": 0.9375,
+    "Nova Pro": 0.7089,
+    "Ministral 3B": 0.4139
+  },
+  "std": 0.2625,
+  "range": 0.5236,
+  "pass": true
+}
+{
+  "benchmark": "attention_instruction_update",
+  "scores": {
+    "Claude Opus 4.6": 0.9833,
+    "Nova Pro": 0.776,
+    "Ministral 3B": 0.1992
+  },
+  "std": 0.4063,
+  "range": 0.7841,
+  "pass": true
+}

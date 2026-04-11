@@ -1,12 +1,12 @@
 {
   "model": "mistral.ministral-3-3b-instruct",
   "model_label": "Ministral 3B",
-  "timestamp": "2026-04-11T00:05:04.804091+00:00",
+  "timestamp": "2026-04-11T00:42:41.362258+00:00",
   "scores": {
     "attention_instruction_update": {
-      "score": 0.2992,
+      "score": 0.1992,
       "error": null,
-      "duration_s": 15.2
+      "duration_s": 13.6
     }
   }
 }

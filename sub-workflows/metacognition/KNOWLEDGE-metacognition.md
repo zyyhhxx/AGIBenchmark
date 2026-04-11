@@ -16,6 +16,15 @@
 - **Retry logic:** 3 retries with exponential backoff (5s base); 120s read timeout via botocore Config.
 - **Output schema:** `results/{model_id}.json` → `{model, model_label, timestamp, scores:{benchmark:{score,error,duration_s}}}`.
 
+## attention_divided + attention_instruction_update Discrimination Fixes (2026-04-11)
+- **Root cause of non-discrimination (std=0.013/0.017):** Original task_divided.py used a simple 2-stream dual-task with no interference; original task_instruction_update.py had shallow rule switches with few items.
+- **Fix — attention_divided:** Rewrote with 3 difficulty tiers (easy: 2 streams no conflict, medium: 3 streams shared domain, hard: 3 streams same items different rules). Score = 0.20×easy + 0.30×medium + 0.50×hard. Cites Pashler (1994), Kahneman (1973), Wickens (2002).
+- **Fix — attention_instruction_update:** Added multi-step contradictory rule updates and catch trials. Cites Monsell (2003) task-switching, Meiran (1996) set-shifting.
+- **Post-fix discrimination results (3 models: Claude Opus 4.6, Nova Pro, Ministral 3B):**
+  - attention_divided: scores 0.9375 / 0.7089 / 0.4139 → std=0.2625, range=0.5236 ✅
+  - attention_instruction_update: scores 0.9833 / 0.7760 / 0.1992 → std=0.4063, range=0.7841 ✅
+- **Pattern:** Difficulty tiers that expose genuine cognitive cost (interference, perseveration) are the most reliable fix for ceiling-effect benchmarks.
+
 ## metacog_canary + metacog_epistemic_revision Discrimination Fixes (2026-04-10)
 
 ### metacog_canary
