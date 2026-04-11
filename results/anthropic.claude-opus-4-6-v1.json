@@ -1,7 +1,7 @@
 {
   "model": "anthropic.claude-opus-4-6-v1",
   "model_label": "Claude Opus 4.6",
-  "timestamp": "2026-04-11T17:02:20.845314+00:00",
+  "timestamp": "2026-04-11T18:54:15.219091+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.9947,

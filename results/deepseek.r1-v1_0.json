@@ -113,11 +113,6 @@
       "error": null,
       "duration_s": 169.0
     },
-    "social_cog_false_belief": {
-      "score": null,
-      "error": "An error occurred (ValidationException) when calling the Converse operation: The provided model identifier is invalid.",
-      "duration_s": 0.1
-    },
     "social_cog_pragmatic": {
       "score": null,
       "error": "An error occurred (ValidationException) when calling the Converse operation: The provided model identifier is invalid.",

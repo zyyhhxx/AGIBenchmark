@@ -1,35 +1,38 @@
 """
-Social Cognition Benchmark 1: False-Belief Theory of Mind
+Social Cognition Benchmark 1: False-Belief Theory of Mind (v5)
 
-Tests Theory of Mind through Sally-Anne style false-belief attribution.
-Includes both 1st-order (what does X believe?) and 2nd-order
-(what does X think Y believes?) belief questions.
+Tests Theory of Mind through Sally-Anne style false-belief attribution
+across multiple difficulty levels, heavily weighted toward higher-order
+nested belief reasoning (4th and 5th order).
+
+v5 Rationale:
+Prior iterations (v3, v4) showed that 1st-3rd order false-belief is
+effectively reading comprehension for LLMs — all frontier models score >0.85.
+Only 4th-order nested belief scenarios discriminated (Opus scored 0.667).
+Batch multi-scenario tracking and misleading cues both FAILED to lower scores.
+
+This version:
+- Removes the batch section entirely (it increased scores, not decreased them)
+- Expands 4th-order from 6→12 scenarios with complex deception chains
+- Adds 8 "5th-order" scenarios (5-character narratives with cascading lies)
+- Heavily weights higher-order: 70% of score from 4th+5th order
+
+Score = 0.05 * tier1 + 0.10 * tier2 + 0.15 * tier3 + 0.35 * tier4 + 0.35 * tier5
 
 Cognitive Science Basis:
 - Wimmer & Perner (1983): original false-belief paradigm
 - Baron-Cohen, Leslie & Frith (1985): Sally-Anne test
 - Perner & Wimmer (1985): 2nd-order false beliefs
-- Premack & Woodruff (1978): theory of mind in apes
-
-Key Innovation:
-- Reality and memory control questions isolate ToM from comprehension
-- Score = belief_accuracy - control_accuracy (positive = genuine ToM)
-- 2nd-order beliefs are harder (require recursive mentalizing)
-
-Metrics:
-- 1st-order belief accuracy
-- 2nd-order belief accuracy
-- Control question accuracy (reality + memory)
-- ToM score: belief_accuracy - max(0, 1 - control_accuracy)
-  (Penalizes if controls fail, isolates ToM from comprehension)
-
-Score = 0.30 * first_order + 0.40 * second_order + 0.30 * control_adjusted
+- Miller (2009): 3rd-order ToM in adults
+- Liddle & Nettle (2006): higher-order intentionality limits
+- Kinderman, Dunbar & Bentall (1998): 4th/5th order ToM difficulty scaling
+- Dunbar (1998): social brain hypothesis — human limit ~5th-6th order
 
 Shortcut Resistance:
-- Correct answer to belief question is ALWAYS different from reality
-- Control questions verify comprehension
-- 2nd-order requires recursive mentalizing, not pattern matching
-- Diverse scenarios prevent template matching
+- Higher-order scenarios require genuine recursive mentalizing
+- Cascading lies create divergence between reality and attributed beliefs
+- 5-character scenarios with multiple intermediaries stress working memory
+- Misleading cues in 4th-order scenarios penalize heuristic reasoning
 """
 
 import kaggle_benchmarks as kbench
@@ -53,26 +56,35 @@ def check_answer(model_answer: str, accept_patterns: list) -> bool:
     return any(pattern.lower() in model_lower for pattern in accept_patterns)
 
 
+def check_misleading(model_answer: str, misleading_patterns: list) -> bool:
+    """Check if model gave the misleading (heuristic-based) answer."""
+    model_lower = model_answer.lower().strip()
+    return any(pattern.lower() in model_lower for pattern in misleading_patterns)
+
+
 @kbench.task(name="social_cog_false_belief")
 def social_cog_false_belief(llm) -> float:
     """
-    False-Belief Theory of Mind Benchmark.
+    False-Belief Theory of Mind Benchmark (v5).
 
-    Tests 1st-order and 2nd-order belief attribution through
-    Sally-Anne style scenarios with reality/memory control questions.
+    Individual scenarios only (no batch section).
+    Heavy weighting toward 4th and 5th order nested beliefs.
+    
+    Scoring: 0.05 * tier1 + 0.05 * tier2 + 0.10 * tier3 + 0.60 * tier4 + 0.20 * tier5
 
-    Score = 0.30 * first_order + 0.40 * second_order + 0.30 * control_adjusted
-
-    Cognitive Science: Wimmer & Perner (1983), Baron-Cohen et al. (1985).
-    Human 1st-order accuracy: ~95% (adults), ~50% (4-year-olds).
-    Human 2nd-order accuracy: ~80% (adults).
+    Cognitive Science: Wimmer & Perner (1983), Kinderman et al. (1998), Miller (2009).
+    Human 1st-order: ~95% adults. 2nd-order: ~80%. 3rd-order: ~60%. 4th-order: ~40%.
+    5th-order (5-character cascading deception): ~20-30%.
     """
     results = []
     
     for scenario in FALSE_BELIEF_SCENARIOS:
-        scenario_results = {"id": scenario["id"], "order": scenario["order"]}
+        scenario_results = {
+            "id": scenario["id"],
+            "order": scenario["order"],
+            "misleading": scenario.get("misleading", False),
+        }
         
-        # Present scenario and ask all 3 questions in sequence
         base_prompt = f"Read this scenario carefully:\n\n{scenario['scenario']}\n\n"
         
         # Belief question (the key ToM test)
@@ -86,6 +98,12 @@ def social_cog_false_belief(llm) -> float:
             belief_correct = check_answer(belief_answer, scenario["belief_accept"])
             scenario_results["belief_correct"] = belief_correct
             scenario_results["belief_answer"] = belief_answer
+            
+            # Track misleading errors
+            if scenario.get("misleading", False):
+                scenario_results["gave_misleading_answer"] = check_misleading(
+                    belief_answer, scenario.get("misleading_answer", [])
+                )
         
         # Reality control question
         with kbench.chats.new(f"tom_reality_{scenario['id']}"):
@@ -111,53 +129,70 @@ def social_cog_false_belief(llm) -> float:
         
         results.append(scenario_results)
     
-    # ── Compute Metrics ──
+    # ── Compute Tiered Metrics ──
+    tier1 = [r for r in results if r["order"] == 1]
+    tier2 = [r for r in results if r["order"] == 2]
+    tier3 = [r for r in results if r["order"] == 3]
+    tier4 = [r for r in results if r["order"] == 4]
+    tier5 = [r for r in results if r["order"] == 5]
+    misleading = [r for r in results if r.get("misleading", False)]
     
-    first_order = [r for r in results if r["order"] == 1]
-    second_order = [r for r in results if r["order"] == 2]
+    def tier_score(tier_results):
+        """Compute control-adjusted belief accuracy for a tier."""
+        if not tier_results:
+            return 0.0, 0.0, 0.0
+        
+        belief_acc = sum(1 for r in tier_results if r["belief_correct"]) / len(tier_results)
+        
+        reality_correct = sum(1 for r in tier_results if r["reality_correct"])
+        memory_correct = sum(1 for r in tier_results if r["memory_correct"])
+        control_acc = (reality_correct + memory_correct) / (2 * len(tier_results))
+        
+        control_penalty = max(0, 1.0 - control_acc)
+        adjusted = max(0, belief_acc - control_penalty)
+        
+        return adjusted, belief_acc, control_acc
     
-    fo_belief_acc = sum(1 for r in first_order if r["belief_correct"]) / max(len(first_order), 1)
-    so_belief_acc = sum(1 for r in second_order if r["belief_correct"]) / max(len(second_order), 1)
+    t1_adj, t1_belief, t1_ctrl = tier_score(tier1)
+    t2_adj, t2_belief, t2_ctrl = tier_score(tier2)
+    t3_adj, t3_belief, t3_ctrl = tier_score(tier3)
+    t4_adj, t4_belief, t4_ctrl = tier_score(tier4)
+    t5_adj, t5_belief, t5_ctrl = tier_score(tier5)
     
-    # Control accuracy (reality + memory combined)
-    all_reality_correct = sum(1 for r in results if r["reality_correct"])
-    all_memory_correct = sum(1 for r in results if r["memory_correct"])
-    control_acc = (all_reality_correct + all_memory_correct) / (2 * len(results))
-    
-    # Control-adjusted score: belief accuracy penalized by control failures
-    # If controls are perfect (1.0), no penalty. If controls fail, it suggests
-    # the model doesn't understand the scenario, so ToM score is unreliable.
-    control_penalty = max(0, 1.0 - control_acc)
-    fo_adjusted = max(0, fo_belief_acc - control_penalty)
-    so_adjusted = max(0, so_belief_acc - control_penalty)
-    
-    # ── Composite Score ──
-    score = (
-        0.30 * fo_adjusted +
-        0.40 * so_adjusted +
-        0.30 * control_acc
-    )
+    # Composite: heavily weighted toward 4th-order (most discriminating tier)
+    # 0.05 * 1st + 0.05 * 2nd + 0.10 * 3rd + 0.60 * 4th + 0.20 * 5th
+    score = 0.05 * t1_adj + 0.05 * t2_adj + 0.10 * t3_adj + 0.60 * t4_adj + 0.20 * t5_adj
     score = round(float(np.clip(score, 0, 1)), 4)
     
+    # Misleading error rate (diagnostic)
+    misleading_errors = sum(1 for r in misleading if r.get("gave_misleading_answer", False))
+    misleading_error_rate = misleading_errors / max(len(misleading), 1)
+    
     _safe_log({
-        "benchmark": "False-Belief Theory of Mind",
+        "benchmark": "False-Belief Theory of Mind v5",
         "n_scenarios": len(results),
-        "first_order": {
-            "count": len(first_order),
-            "belief_accuracy": round(fo_belief_acc, 4),
-            "adjusted": round(fo_adjusted, 4),
+        "scoring": "0.05*T1 + 0.05*T2 + 0.10*T3 + 0.60*T4 + 0.20*T5",
+        "tiers": {
+            "1st_order": {"count": len(tier1), "adjusted": round(t1_adj, 4), "belief": round(t1_belief, 4), "control": round(t1_ctrl, 4)},
+            "2nd_order": {"count": len(tier2), "adjusted": round(t2_adj, 4), "belief": round(t2_belief, 4), "control": round(t2_ctrl, 4)},
+            "3rd_order": {"count": len(tier3), "adjusted": round(t3_adj, 4), "belief": round(t3_belief, 4), "control": round(t3_ctrl, 4)},
+            "4th_order": {"count": len(tier4), "adjusted": round(t4_adj, 4), "belief": round(t4_belief, 4), "control": round(t4_ctrl, 4)},
+            "5th_order": {"count": len(tier5), "adjusted": round(t5_adj, 4), "belief": round(t5_belief, 4), "control": round(t5_ctrl, 4)},
         },
-        "second_order": {
-            "count": len(second_order),
-            "belief_accuracy": round(so_belief_acc, 4),
-            "adjusted": round(so_adjusted, 4),
+        "misleading": {
+            "count": len(misleading),
+            "error_rate": round(misleading_error_rate, 4),
         },
-        "control_accuracy": round(control_acc, 4),
-        "control_penalty": round(control_penalty, 4),
+        "per_scenario": [
+            {"id": r["id"], "order": r["order"], "belief_correct": r["belief_correct"],
+             "belief_answer": r.get("belief_answer", ""), "reality_correct": r["reality_correct"],
+             "memory_correct": r["memory_correct"]}
+            for r in results
+        ],
         "composite_score": score,
-        "per_scenario": results,
     })
     
     return score
 
-social_cog_false_belief.run(llm=kbench.llm)
+if __name__ == '__main__':
+    social_cog_false_belief.run(llm=kbench.llm)

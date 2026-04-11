@@ -113,11 +113,6 @@
       "error": null,
       "duration_s": 93.9
     },
-    "social_cog_false_belief": {
-      "score": 0.88,
-      "error": null,
-      "duration_s": 93.1
-    },
     "social_cog_pragmatic": {
       "score": 0.956,
       "error": null,

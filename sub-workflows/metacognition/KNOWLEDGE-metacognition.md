@@ -437,3 +437,13 @@ Mapping of 9 metacognition benchmark scores to Fleming's (2024) taxonomy:
 - **Key insight:** Parser bugs in LLM benchmark evaluation are insidious — models may be producing correct reasoning but "wrong" answers due to how numbers are extracted. Always validate parser against known-correct model responses before attributing failures to model capability.
 - **Inverted ranking signal:** Ministral 3B outperforming Claude Opus on a reasoning task is a strong diagnostic signal of a broken parser/prompt, not a genuine capability finding.
 - **Artifact:** `repo/benchmarks/executive_functions/task_wcst.py`, `repo/notebooks/exec_func_wcst.ipynb`
+
+## False-Belief Theory of Mind (social_cog_false_belief) — v5 Final (2026-04-11)
+- **Root cause of original ceiling (0.967):** kbench SDK caches run results via `_handle_cached_run`; module-level `.run(kbench.llm)` fired during import with DummyLLM, writing a cache file, and real runs returned cached dummy results. Fix: guard with `if __name__ == '__main__'`.
+- **v3/v4 attempt:** Adding misleading surface cues and batch multi-character tracking failed — all frontier models scored ~0.90, std≈0.033. Text-based false-belief is effectively reading comprehension for LLMs; explicit belief-relevant info in prompts is trivially extracted.
+- **v5 design:** 34 scenarios across 5 tiers (4×T1, 4×T2, 6×T3, 12×T4, 8×T5). Tier weights: 0.05×T1 + 0.05×T2 + 0.10×T3 + 0.60×T4 + 0.20×T5.
+- **Key discriminating tier:** 4th-order (60% weight). 5th-order with convergent belief chains scored 1.0 across all models — replaced with divergent belief chains (two independent lies at different chain positions).
+- **Final v5 scores (5 models):** GLM 4.7=0.6667, Nova Pro=0.700, Llama 3.3 70B=0.8667, Claude Sonnet 4.6=0.925, Llama 4 Maverick=0.950 → mean=0.822, std=0.117 ✅
+- **Common failure mode:** FB52/FB56 "perspective confusion" trap — models answer what X actually thinks instead of what Y thinks X thinks. Good diagnostic of genuine ToM failure vs. reading comprehension.
+- **Cache pitfall:** Results cached in both `.run.json` files AND `repo/results/*.json` — both must be cleared when re-running with updated scenarios.
+- **Artifact:** `repo/benchmarks/social_cognition/task_false_belief.py`, `repo/benchmarks/social_cognition/data/false_belief_scenarios.py`, `repo/notebooks/social_cog_false_belief.ipynb`
