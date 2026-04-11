@@ -1,12 +1,67 @@
 {
   "model": "anthropic.claude-opus-4-6-v1",
   "model_label": "Claude Opus 4.6",
-  "timestamp": "2026-04-10T22:06:39.266656+00:00",
+  "timestamp": "2026-04-11T21:47:01.152668+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.0,
       "error": null,
       "duration_s": 585.8
+    },
+    "attention_selective": {
+      "score": 0.895,
+      "error": null,
+      "duration_s": 154.3
+    },
+    "attention_vigilance": {
+      "score": 0.8559,
+      "error": null,
+      "duration_s": 51.8
+    },
+    "attention_divided": {
+      "score": 0.9375,
+      "error": null,
+      "duration_s": 33.0
+    },
+    "attention_instruction_update": {
+      "score": 0.9833,
+      "error": null,
+      "duration_s": 44.0
+    },
+    "learning_curves": {
+      "score": null,
+      "error": "no RESULT_JSON: =1.00\n  NumberSystem-lc_num_easy: asym=0.00, lr=0.00, se=0.00, cq=1.00\n  NumberSystem-lc_num_med: asym=0.00, lr=0.00, se=0.00, cq=1.00\n  NumberSystem-lc_num_hard: asym=0.00, lr=0.00, se=0.00, cq=1.00\n",
+      "duration_s": 0
+    },
+    "learning_transfer": {
+      "score": 1.0,
+      "error": null,
+      "duration_s": 136.5
+    },
+    "learning_interference": {
+      "score": 1.0,
+      "error": null,
+      "duration_s": 269.6
+    },
+    "learning_curriculum": {
+      "score": 0.7,
+      "error": null,
+      "duration_s": 210.7
+    },
+    "exec_func_wcst": {
+      "score": 1.0,
+      "error": null,
+      "duration_s": 48.0
+    },
+    "exec_func_tol": {
+      "score": 0.8,
+      "error": null,
+      "duration_s": 158.0
+    },
+    "exec_func_task_switch": {
+      "score": 1.0,
+      "error": null,
+      "duration_s": 10.4
     }
   }
 }

@@ -1,7 +1,7 @@
 {
   "model": "deepseek.r1-v1:0",
   "model_label": "DeepSeek-R1",
-  "timestamp": "2026-04-11T19:50:52.808393+00:00",
+  "timestamp": "2026-04-11T21:31:09.758001+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.867,
@@ -112,6 +112,26 @@
       "score": 0.7005,
       "error": null,
       "duration_s": 169.0
+    },
+    "social_cog_sarcasm": {
+      "score": 0.8936,
+      "error": null,
+      "duration_s": 280.5
+    },
+    "social_cog_false_belief": {
+      "score": 0.7083,
+      "error": null,
+      "duration_s": 906.6
+    },
+    "social_cog_pragmatic": {
+      "score": 0.6782,
+      "error": null,
+      "duration_s": 243.9
+    },
+    "social_cog_emotional_prosody": {
+      "score": 0.8272,
+      "error": null,
+      "duration_s": 139.5
     }
   }
 }

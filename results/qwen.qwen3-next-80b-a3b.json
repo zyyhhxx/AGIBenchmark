@@ -1,7 +1,7 @@
 {
   "model": "qwen.qwen3-next-80b-a3b",
   "model_label": "Qwen3 Next 80B",
-  "timestamp": "2026-04-11T03:24:44.532179+00:00",
+  "timestamp": "2026-04-11T21:40:47.044963+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.992,
@@ -47,6 +47,61 @@
       "score": 0.92,
       "error": null,
       "duration_s": 137.5
+    },
+    "learning_interference": {
+      "score": 0.93,
+      "error": null,
+      "duration_s": 411.7
+    },
+    "exec_func_crt": {
+      "score": 0.8637,
+      "error": null,
+      "duration_s": 230.4
+    },
+    "social_cog_sarcasm": {
+      "score": 0.8627,
+      "error": null,
+      "duration_s": 301.4
+    },
+    "learning_transfer": {
+      "score": 0.75,
+      "error": null,
+      "duration_s": 267.9
+    },
+    "learning_curriculum": {
+      "score": 0.46,
+      "error": null,
+      "duration_s": 48.1
+    },
+    "attention_selective": {
+      "score": 0.91,
+      "error": null,
+      "duration_s": 28.6
+    },
+    "attention_vigilance": {
+      "score": 0.6811,
+      "error": null,
+      "duration_s": 12.6
+    },
+    "attention_divided": {
+      "score": 0.8803,
+      "error": null,
+      "duration_s": 25.8
+    },
+    "attention_instruction_update": {
+      "score": 0.88,
+      "error": null,
+      "duration_s": 26.0
+    },
+    "exec_func_wcst": {
+      "score": 1.0,
+      "error": null,
+      "duration_s": 139.4
+    },
+    "exec_func_task_switch": {
+      "score": 0.81,
+      "error": null,
+      "duration_s": 6.4
     }
   }
 }
