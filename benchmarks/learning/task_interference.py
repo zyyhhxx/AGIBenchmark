@@ -1,39 +1,32 @@
 """
-Learning Benchmark 3: Proactive & Retroactive Interference
+Learning Benchmark 3: Proactive & Retroactive Interference (v3)
 
-Tests whether learning new material interferes with previously
-learned material (retroactive) and whether old knowledge impedes
-new learning (proactive).
+Tests whether the presence of competing learned systems interferes
+with the correct application of a target system.
 
 Cognitive Science Basis:
 - Underwood (1957): Proactive inhibition in retention
 - Postman (1961): Retroactive inhibition
 - Anderson (2003): Retrieval-induced forgetting
+- Wickens (1972): Release from proactive interference
 
-Protocol:
-1. Learn A alone → Test A (control_A: no-interference baseline)
-2. Learn A then B → Test B (baseline_B)
-3. After learning both: Re-test A (post_interference_A)
-4. Compute interference magnitudes relative to control
+Key Design Insight (v3):
+Previous versions provided rules in every prompt independently,
+making interference impossible (same bug as task_switch v1).
+v3 creates interference WITHIN the prompt by presenting multiple
+competing rule systems together and testing whether the model
+can apply the correct one without confusion.
 
-Scoring redesign (v2):
-- Retroactive interference = control_A - post_interference_A (how much A drops after B)
-- Proactive interference = control_A - baseline_B (how much worse B is vs A-alone)
-- Compartmentalization = post_interference_A / control_A (retention ratio)
-- Sub-scores are independent and weighted to discriminate different interference patterns.
+Protocol per tier:
+- Control: Present System A rules alone → test A items
+- Interference: Present Systems A + B together → test A items
+- Score = control accuracy + interference resistance
 
-Score = 0.25 * retro_magnitude_norm
-      + 0.25 * proactive_magnitude_norm
-      + 0.25 * compartmentalization
-      + 0.25 * control_accuracy
-
-Where magnitudes are normalized to [0,1] and compartmentalization rewards
-maintaining A accuracy despite B learning.
+Three difficulty tiers with weighted composite.
 """
 
 import kaggle_benchmarks as kbench
 from dataclasses import dataclass
-import numpy as np
 import re
 import json
 from data.rule_systems import generate_symbol_system
@@ -56,22 +49,27 @@ def check_output(model_output: str, expected: str) -> bool:
     return e in m or m in e
 
 
-def test_system(llm, system, context_prefix: str = "", chat_prefix: str = "test") -> float:
-    """Test model on a system's test items. Returns accuracy."""
-    correct = 0
-    rules_text = f"**{system.name}**\n"
+def _format_system(system, max_examples: int = 6) -> str:
+    """Format a rule system for prompt inclusion."""
+    text = f"**{system.name}**\nRules:\n"
     for r in system.rules:
-        rules_text += f"- {r}\n"
-    examples_text = "\n**Examples:**\n"
-    for ex in system.examples[:8]:
-        examples_text += f"  {ex['input']} → {ex['output']}\n"
+        text += f"  - {r}\n"
+    text += "Examples:\n"
+    for ex in system.examples[:max_examples]:
+        text += f"  {ex['input']} → {ex['output']}\n"
+    return text
 
-    for ti, test_item in enumerate(system.test_items):
-        with kbench.chats.new(f"{chat_prefix}_{ti}"):
+
+def _test_items(llm, system, context: str, prefix: str) -> float:
+    """Test model on system's test items with given context. Returns accuracy."""
+    correct = 0
+    items = system.test_items  # 5 items from rule_systems.py
+    
+    for ti, test_item in enumerate(items):
+        with kbench.chats.new(f"{prefix}_{ti}"):
             prompt = (
-                context_prefix +
-                f"\nApply these rules:\n{rules_text}{examples_text}\n"
-                f"Input: {test_item['input']}\n\n"
+                context +
+                f"\nInput: {test_item['input']}\n\n"
                 f"Respond with ONLY: {{\"answer\": \"<output>\"}}"
             )
             try:
@@ -84,129 +82,132 @@ def test_system(llm, system, context_prefix: str = "", chat_prefix: str = "test"
                     answer = str(parsed.get("answer", raw))
                 except Exception:
                     answer = raw
-
+            
             if check_output(answer, test_item["output"]):
                 correct += 1
-
-    return correct / len(system.test_items) if system.test_items else 0
-
-
-# Generate two similar systems that should interfere
-SYSTEM_A = generate_symbol_system("interf_alpha_v2", difficulty=2)
-SYSTEM_B = generate_symbol_system("interf_beta_v2", difficulty=2)
+    
+    return correct / len(items) if items else 0
 
 
-def compute_interference_score(control_A: float, baseline_B: float,
-                                post_interf_A: float) -> dict:
-    """
-    Compute interference metrics and composite score.
+# ── System Definitions (3 tiers) ──
 
-    Args:
-        control_A: Accuracy on system A with no interference (A alone)
-        baseline_B: Accuracy on system B after learning A
-        post_interf_A: Accuracy on A after also learning B
+# EASY: Simple substitution rules (difficulty=1), distractor from different seed
+EASY_TARGET = generate_symbol_system("v3_easy_target", difficulty=1)
+EASY_DISTRACT = generate_symbol_system("v3_easy_distract", difficulty=1)
 
-    Returns dict with all sub-metrics and composite score.
-    """
-    # Retroactive interference: how much A drops after learning B
-    # Normalized: magnitude / control (fraction of knowledge lost)
-    retro_raw = max(0.0, control_A - post_interf_A)
-    retro_norm = retro_raw / control_A if control_A > 0 else 0.0
+# MEDIUM: Context-dependent rules (difficulty=2), similar distractor
+MED_TARGET = generate_symbol_system("v3_med_target", difficulty=2)
+MED_DISTRACT = generate_symbol_system("v3_med_distract", difficulty=2)
 
-    # Proactive interference: how much worse B is vs A-alone baseline
-    # Normalized: magnitude / control
-    proactive_raw = max(0.0, control_A - baseline_B)
-    proactive_norm = proactive_raw / control_A if control_A > 0 else 0.0
+# HARD: Multi-pass chained rules (difficulty=3), two distractors
+HARD_TARGET = generate_symbol_system("v3_hard_target", difficulty=3)
+HARD_DISTRACT1 = generate_symbol_system("v3_hard_dist1", difficulty=3)
+HARD_DISTRACT2 = generate_symbol_system("v3_hard_dist2", difficulty=3)
 
-    # Compartmentalization: how well model retains A after B
-    # 1.0 = perfect retention, 0.0 = total forgetting
-    compartment = post_interf_A / control_A if control_A > 0 else 0.0
-    compartment = min(1.0, compartment)  # Cap at 1 (improvement is possible)
 
-    # Composite: balanced across 4 independent dimensions
-    # Higher retro/proactive magnitude = more interference detected (interesting)
-    # Higher compartmentalization = better resistance
-    # Higher control = model can actually do the task
-    score = round(
-        0.25 * retro_norm
-        + 0.25 * proactive_norm
-        + 0.25 * compartment
-        + 0.25 * control_A,
-        4
+def run_tier(llm, target, distractors: list, prefix: str) -> dict:
+    """Run control + interference for one tier."""
+    
+    target_text = _format_system(target)
+    
+    # Control: target rules only
+    ctrl_context = (
+        f"You have learned the following rule system:\n\n{target_text}\n"
+        f"Apply the **{target.name}** rules to this input."
     )
-
+    control = _test_items(llm, target, ctrl_context, f"{prefix}_ctrl")
+    
+    # Interference: target + all distractors, ask for target
+    # Use fewer examples when multiple distractors to keep context manageable
+    n_ex = 4 if len(distractors) >= 2 else 6
+    target_text_short = _format_system(target, max_examples=n_ex)
+    all_text = target_text_short
+    for d in distractors:
+        all_text += "\n" + _format_system(d, max_examples=n_ex)
+    
+    # Add distractor examples as "previously processed" to create proactive interference
+    interleave = ""
+    if len(distractors) >= 2:
+        interleave = "\nYou recently processed these items from other systems:\n"
+        for d in distractors:
+            for di in d.test_items[:2]:
+                interleave += f"  [{d.name}] {di['input']} → {di['output']}\n"
+    
+    interf_context = (
+        f"You have learned ALL of these rule systems:\n\n{all_text}\n"
+        f"{interleave}\n"
+        f"Now apply ONLY the **{target.name}** rules "
+        f"(ignore all other systems) to this input."
+    )
+    interference = _test_items(llm, target, interf_context, f"{prefix}_interf")
+    
+    # Tier score: 0.30 * control + 0.70 * interference_accuracy
+    tier_score = 0.30 * control + 0.70 * interference
+    
     return {
-        "control_A": control_A,
-        "baseline_B": baseline_B,
-        "post_interf_A": post_interf_A,
-        "retro_raw": retro_raw,
-        "retro_norm": retro_norm,
-        "proactive_raw": proactive_raw,
-        "proactive_norm": proactive_norm,
-        "compartmentalization": compartment,
-        "composite_score": max(0.0, min(1.0, score)),
+        "control": control,
+        "interference": interference,
+        "tier_score": round(tier_score, 4),
     }
 
 
 @kbench.task(name="learning_interference")
 def learning_interference(llm) -> float:
     """
-    Proactive & Retroactive Interference Benchmark (v2).
+    Proactive & Retroactive Interference Benchmark (v3).
 
-    Measures how learning similar systems affects retention and acquisition.
-    Uses a no-interference control baseline for proper normalization.
+    Measures interference resistance: can the model apply rules from a target
+    system while competing systems' rules are also present in context?
 
-    Protocol:
-    1. Learn A alone → Test A (control_A: no-interference baseline)
-    2. Learn A, then B → Test B (baseline_B)
-    3. After both: Re-test A (post_interference_A)
-    4. Compute interference magnitudes relative to control
+    Three tiers:
+    - Easy (0.15): Simple target + 1 dissimilar distractor (difficulty=1)
+    - Medium (0.35): Moderate target + 1 similar distractor (difficulty=2)
+    - Hard (0.50): Complex target + 2 similar distractors + interleaved items (difficulty=3)
 
-    Score = 0.25 * retro_magnitude_norm + 0.25 * proactive_magnitude_norm
-          + 0.25 * compartmentalization + 0.25 * control_accuracy
+    Per tier: score = 0.30 * control + 0.70 * interference_accuracy
+    Composite = 0.15 * easy + 0.35 * medium + 0.50 * hard
     """
 
-    # ── Phase 1: Control — Learn System A alone, test A (no interference) ──
-    control_A = test_system(llm, SYSTEM_A, chat_prefix="control_A")
+    print("\n" + "=" * 60)
+    print("LEARNING INTERFERENCE BENCHMARK v3")
+    print("=" * 60)
 
-    # ── Phase 2: Learn System B after A context ──
-    a_context = (
-        f"You previously learned system {SYSTEM_A.name}. "
-        f"Now learn a NEW but similar system.\n"
+    # ── Easy Tier ──
+    print("\n--- EASY TIER (simple rules, 1 distractor, difficulty=1) ---")
+    easy = run_tier(llm, EASY_TARGET, [EASY_DISTRACT], "easy")
+    print(f"  Control: {easy['control']:.1%}")
+    print(f"  With distractor: {easy['interference']:.1%}")
+    print(f"  Tier score: {easy['tier_score']:.4f}")
+
+    # ── Medium Tier ──
+    print("\n--- MEDIUM TIER (context-dependent rules, 1 distractor, difficulty=2) ---")
+    medium = run_tier(llm, MED_TARGET, [MED_DISTRACT], "med")
+    print(f"  Control: {medium['control']:.1%}")
+    print(f"  With distractor: {medium['interference']:.1%}")
+    print(f"  Tier score: {medium['tier_score']:.4f}")
+
+    # ── Hard Tier ──
+    print("\n--- HARD TIER (multi-pass rules, 2 distractors, difficulty=3) ---")
+    hard = run_tier(llm, HARD_TARGET, [HARD_DISTRACT1, HARD_DISTRACT2], "hard")
+    print(f"  Control: {hard['control']:.1%}")
+    print(f"  With 2 distractors: {hard['interference']:.1%}")
+    print(f"  Tier score: {hard['tier_score']:.4f}")
+
+    # ── Composite ──
+    score = round(
+        0.15 * easy["tier_score"]
+        + 0.35 * medium["tier_score"]
+        + 0.50 * hard["tier_score"],
+        4
     )
-    baseline_B = test_system(llm, SYSTEM_B, context_prefix=a_context, chat_prefix="phase2_B")
+    score = max(0.0, min(1.0, score))
 
-    # ── Phase 3: Re-test A after learning B (retroactive interference) ──
-    b_context = (
-        f"You recently learned two similar systems: "
-        f"{SYSTEM_A.name} and {SYSTEM_B.name}. "
-        f"Now I want you to recall the FIRST system ({SYSTEM_A.name}) specifically. "
-        f"Ignore the second system you learned.\n"
-    )
-    post_interf_A = test_system(llm, SYSTEM_A, context_prefix=b_context,
-                                 chat_prefix="phase3_retest_A")
-
-    # ── Compute Metrics ──
-    metrics = compute_interference_score(control_A, baseline_B, post_interf_A)
-    score = metrics["composite_score"]
-
-    # ── Logging ──
-    print(f"\n{'='*60}")
-    print(f"PROACTIVE & RETROACTIVE INTERFERENCE RESULTS (v2)")
-    print(f"{'='*60}")
-    print(f"System A: {SYSTEM_A.name} ({len(SYSTEM_A.rules)} rules)")
-    print(f"System B: {SYSTEM_B.name} ({len(SYSTEM_B.rules)} rules)")
-    print(f"\n--- Phase Results ---")
-    print(f"Control A (no interference): {control_A:.2%}")
-    print(f"Baseline B (after A):        {baseline_B:.2%}")
-    print(f"Post-interference A:         {post_interf_A:.2%}")
-    print(f"\n--- Interference Metrics ---")
-    print(f"Retroactive (raw):          {metrics['retro_raw']:.2%}")
-    print(f"Retroactive (normalized):   {metrics['retro_norm']:.4f}")
-    print(f"Proactive (raw):            {metrics['proactive_raw']:.2%}")
-    print(f"Proactive (normalized):     {metrics['proactive_norm']:.4f}")
-    print(f"Compartmentalization:       {metrics['compartmentalization']:.4f}")
-    print(f"\nComposite score: {score:.4f}")
+    print(f"\n{'=' * 60}")
+    print(f"COMPOSITE SCORE: {score:.4f}")
+    print(f"  Easy:   {easy['tier_score']:.4f} × 0.15 = {0.15 * easy['tier_score']:.4f}")
+    print(f"  Medium: {medium['tier_score']:.4f} × 0.35 = {0.35 * medium['tier_score']:.4f}")
+    print(f"  Hard:   {hard['tier_score']:.4f} × 0.50 = {0.50 * hard['tier_score']:.4f}")
+    print(f"{'=' * 60}")
 
     return score
 

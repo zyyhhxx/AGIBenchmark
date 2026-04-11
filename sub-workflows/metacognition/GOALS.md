@@ -5,9 +5,27 @@ Submit **5 writeups** (one per track) to maximize prize chances. Deadline: **Apr
 
 Priority order: Metacognition → Attention → Learning → Executive Functions → Social Cognition.
 
+**SCOPE: ALL 5 TRACKS, NOT JUST METACOGNITION.**
+The metacognition track is the quality bar — all other tracks must be brought up to the same standard:
+- Fix all flagged benchmarks (low variance, ceiling effects) so every benchmark has std ≥ 0.10
+- Run all benchmarks in every track against all 10 Bedrock models
+- Draft a ≤1,500-word writeup per track following the required template
+- Generate a cover image per track
+- Produce a discriminatory analysis summary per track
+
+Do NOT declare the workflow complete until all 5 tracks have: (1) all benchmarks passing std ≥ 0.08, (2) full 10-model results, (3) a polished writeup, and (4) a cover image.
+
 ## ⛔ Hard Rules
 - **DO NOT upload notebooks to Kaggle using the CLI or API.** Let the human handle all Kaggle uploads manually via the web UI.
 - **Each writeup must not exceed 1,500 words.** Follow the required template exactly.
+- **All notebooks MUST be self-contained.** No `from data.*` imports — data must be inlined in the notebook. Kaggle has no access to local modules. Known broken: `metacog_canary.ipynb` has `from data.canary_items import ...` which must be replaced with inlined data.
+- **No duplicate execution.** Each notebook must have exactly ONE `@kbench.task` definition and ONE `.run()` call. `if __name__ == "__main__"` guards do NOT work in Jupyter — `__name__` is always `"__main__"`. Known bugs (fix all):
+  - `attention_divided.ipynb` — Cell 0 and Cell 2 are 100% identical duplicates. Delete Cell 2.
+  - `attention_instruction_update.ipynb` — Same issue. Delete Cell 2.
+  - `attention_vigilance.ipynb` — Double `.run()` (cell 2 + cell 3). Remove one.
+  - `metacog_canary.ipynb` — Broken import + duplicate task + double `.run()`. Fix import to use inlined data, remove duplicate cells.
+  - `metacog_epistemic_revision.ipynb` — Double `.run()` (cell 1 + cell 2). Delete cell 2.
+  - `exec_func_crt.nbconvert.ipynb` — Exact duplicate of `exec_func_crt.ipynb`. Delete it.
 - Note: Rules say "one (1) Submission per Team" for Hackathons — unclear if per-track or total. Ian will verify on Kaggle whether multiple writeups are allowed. Plan for 5, fall back to 1 (metacognition) if restricted.
 
 ## Submission Requirements (from competition rules, verified 2026-04-11)

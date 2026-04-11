@@ -1,16 +1,5 @@
 # KNOWLEDGE.md — AGI Benchmark
 
-## Learning Interference Benchmark v3 — Design & Results (2026-04-11)
-- **Root cause of v2 failure (std=0.029):** Rules were re-provided in each prompt independently — no actual competing information in context, so interference was impossible.
-- **v3 fix:** Present multiple competing rule systems together in the same prompt (proactive + retroactive interference within context). Ask model to apply only the target system.
-- **Three difficulty tiers:** Easy (1 dissimilar distractor, difficulty=1), Medium (1 similar distractor, difficulty=2), Hard (2 similar distractors + interleaved example items, difficulty=3).
-- **Per-tier scoring:** 0.30 × control + 0.70 × interference_accuracy. Composite = 0.15×easy + 0.35×medium + 0.50×hard.
-- **v3 scores:** Claude Sonnet 4.6=1.000, Nova Pro=0.783, Ministral 3B=0.441 → std=0.280 ✅, range=0.559 ✅
-- **Context length issue:** Hard tier with full examples caused Ministral 3B context-length errors; fixed by reducing max_examples from 6→4 when ≥2 distractors.
-- **Bug to avoid:** When generating test items for variant systems, ensure expected outputs are from the variant's own rules, not the base system's. Using only `system.test_items` (pre-generated per system) avoids this cross-contamination.
-- **Pattern:** Interference benchmarks require distractors to be co-present in the *same prompt*, not across separate turns or prompts.
-
-
 ## Notebook–.py Sync Audit — Metacognition Suite (2026-04-11)
 - Audited all 9 metacog notebooks against their corresponding `task_*.py` files; found 12 mismatches across 7 notebooks; 2 were already in sync.
 - Key divergences: (1) `brier_skill_score` in notebooks had an extra `ref` parameter with if/else logic not in .py; (2) `compute_ece` parameter was `confidences` in notebooks vs `confidences_0_100` in .py; (3) `compute_dprime` in notebooks used `scipy.stats.norm.ppf`; .py uses manual Abramowitz & Stegun approximation.

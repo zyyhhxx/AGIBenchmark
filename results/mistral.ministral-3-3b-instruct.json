@@ -1,7 +1,7 @@
 {
   "model": "mistral.ministral-3-3b-instruct",
   "model_label": "Ministral 3B",
-  "timestamp": "2026-04-11T09:03:17.925609+00:00",
+  "timestamp": "2026-04-11T16:44:36.275732+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.0,
@@ -37,11 +37,6 @@
       "score": 0.28,
       "error": null,
       "duration_s": 87.8
-    },
-    "learning_interference": {
-      "score": 0.45,
-      "error": null,
-      "duration_s": 29.4
     },
     "learning_curriculum": {
       "score": 0.68,
@@ -128,10 +123,10 @@
       "error": null,
       "duration_s": 26.7
     },
-    "metacog_calibration": {
-      "score": null,
-      "error": "An error occurred (ValidationException) when calling the Converse operation: The model returned the following errors: {\"error\":{\"code\":\"validation_error\",\"message\":\"Internal server error\",\"param\":null",
-      "duration_s": 40.7
+    "learning_interference": {
+      "score": 0.441,
+      "error": null,
+      "duration_s": 14.7
     }
   }
 }

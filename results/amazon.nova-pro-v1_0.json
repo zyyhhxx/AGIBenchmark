@@ -1,7 +1,7 @@
 {
   "model": "amazon.nova-pro-v1:0",
   "model_label": "Nova Pro",
-  "timestamp": "2026-04-11T02:30:04.281636+00:00",
+  "timestamp": "2026-04-11T16:43:38.893979+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.726,
@@ -57,11 +57,6 @@
       "score": 0.55,
       "error": null,
       "duration_s": 42.0
-    },
-    "learning_interference": {
-      "score": 0.45,
-      "error": null,
-      "duration_s": 13.8
     },
     "learning_curriculum": {
       "score": 0.46,
@@ -132,6 +127,11 @@
       "score": 0.83,
       "error": null,
       "duration_s": 32.2
+    },
+    "learning_interference": {
+      "score": 0.783,
+      "error": null,
+      "duration_s": 36.8
     }
   }
 }
