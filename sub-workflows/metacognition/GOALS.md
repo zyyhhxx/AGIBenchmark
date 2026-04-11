@@ -3,6 +3,9 @@
 ## Active Goal
 Test all benchmarks against 10 models via Bedrock, fix non-discriminatory benchmarks, and polish the final submission. Deadline: **April 16, 2026**.
 
+## ⛔ Hard Rule
+**DO NOT upload notebooks to Kaggle using the CLI or API.** Let the human handle all Kaggle uploads manually via the web UI.
+
 ## Context
 - All 29 benchmarks are implemented across 5 tracks
 - Notebooks uploaded to Kaggle, benchmarks run against 17 models on Kaggle CB
