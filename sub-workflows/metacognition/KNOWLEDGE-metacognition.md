@@ -488,3 +488,13 @@ Final scores across 26 benchmarks × 10 Bedrock models compiled in `repo/results
 - DeepSeek-R1 requires 900s timeout per benchmark (reasoning model inference is slow)
 - learning_curves requires 900s timeout for large models
 - kbench run results are cached in `.run.json` files AND `repo/results/*.json` — clear both when re-running
+
+## Track Writeups — Completed (2026-04-11)
+- All 5 track writeups exist at `repo/WRITEUP_<TRACK>.md`; all are under 1,500 words.
+- Cover images at `repo/assets/<track>_cover.png` — grouped bar charts with background category shading, human baseline band, 5 representative models; generated programmatically via matplotlib.
+- Required sections confirmed in all writeups: Project Name, Team, Problem Statement, Task & Benchmark Construction, Dataset, Technical Details, Results/Insights/Conclusions, Organizational Affiliations, References.
+- All writeups declare "Independent submission — no organizational affiliation."
+- **Attention writeup:** Cites Posner (1980), Treisman & Gelade (1980), Wickens (2002). Key finding: divided attention degrades with interference type (competing domains), not stream count — mirrors Wickens' multiple resource theory.
+- **Learning writeup:** Cites Thorndike (1932), Ausubel (1968). Key finding: transfer scales cleanly with model size; interference resistance does not (suggests distinct mechanism). Curriculum sensitivity is low for LLMs vs. humans.
+- **Executive functions writeup:** Cites Miyake et al. (2000), Diamond (2013). Key finding: exec_func_tol (Tower of London) most discriminatory (range=0.80); inhibition is most size-sensitive.
+- **Social cognition writeup:** Cites Baron-Cohen et al. (1985), Grice (1975). Key finding: pragmatic inference shows family-level inversions (GPT-OSS-120B > Claude Opus); ToM degrades non-linearly at 3rd order for most models.

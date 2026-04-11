@@ -1,7 +1,7 @@
 {
   "model": "anthropic.claude-opus-4-6-v1",
   "model_label": "Claude Opus 4.6",
-  "timestamp": "2026-04-11T22:42:12.619491+00:00",
+  "timestamp": "2026-04-11T22:52:14.735852+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.9947,
@@ -89,9 +89,9 @@
       "duration_s": 11.8
     },
     "exec_func_nback": {
-      "score": 1.0,
-      "error": null,
-      "duration_s": 1089.0
+      "score": null,
+      "error": "TIMEOUT after 600s",
+      "duration_s": 600
     },
     "exec_func_crt": {
       "score": 0.9142,
