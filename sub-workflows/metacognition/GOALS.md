@@ -1,28 +1,94 @@
-# GOALS.md — AGI Benchmark Hackathon (Model Testing & Discriminatory Power)
+# GOALS.md — AGI Benchmark Hackathon (Final Submission)
 
 ## Active Goal
-Test all benchmarks against 10 models via Bedrock, fix non-discriminatory benchmarks, and polish the final submission. Deadline: **April 16, 2026**.
+Submit a winning entry to the **Metacognition track**. Deadline: **April 16, 2026** (11:59 PM UTC).
 
-## ⛔ Hard Rule
-**DO NOT upload notebooks to Kaggle using the CLI or API.** Let the human handle all Kaggle uploads manually via the web UI.
+## ⛔ Hard Rules
+- **DO NOT upload notebooks to Kaggle using the CLI or API.** Let the human handle all Kaggle uploads manually via the web UI.
+- **Writeup must not exceed 1,500 words.** Follow the required template exactly.
+
+## Submission Requirements (from competition rules)
+
+A valid submission = **Kaggle Writeup** + **attached Kaggle Benchmark**
+
+### Kaggle Writeup
+- Created via "New Writeup" button on the competition page
+- Must select **Metacognition** as the track
+- ≤1,500 words, must include cover image
+- Must click **"Submit"** button — drafts don't count
+- Required template:
+  ```
+  ### Project Name
+  ### Your Team
+  ### Problem Statement
+  ### Task & benchmark construction
+  ### Dataset
+  ### Technical details
+  ### Results, insights, and conclusions
+  ### Organizational affiliations
+  ### References & citations
+  ```
+
+### Kaggle Benchmark (attached to writeup)
+- Benchmark + all tasks should be set to **private** (auto-publish after deadline)
+- Attached via "Add a link" under "Attachments" → select benchmark
+- URL format: `https://www.kaggle.com/benchmarks/<username>/<benchmark-name>`
+
+### Evaluation Criteria
+| Criteria | Weight | Description |
+|----------|--------|-------------|
+| Dataset quality & task construction | 50% | Verifiably correct answers, sufficient sample size, clean code, robust I/O verification |
+| Writeup quality | 20% | Covers all 7 required sections clearly |
+| Novelty, insights, discriminatory power | 30% | Meaningful signal, gradient of performance across models |
+
+## Track: Metacognition
+**Why this track:** 9 benchmarks (most of any track), 7–10 models tested per benchmark, zero flagged benchmarks, best discriminatory power (avg std=0.172), strongest novel insights.
+
+### Our 9 Metacognition Benchmarks
+| Benchmark | Mean | Std | Range | Models |
+|-----------|------|-----|-------|--------|
+| metacog_calibration | 0.218 | 0.362 | 0.998 | 7 |
+| metacog_canary | 0.795 | 0.290 | 1.000 | 10 |
+| metacog_control | 0.563 | 0.176 | 0.548 | 9 |
+| metacog_epistemic_humility | 0.773 | 0.215 | 0.720 | 9 |
+| metacog_epistemic_revision | 0.815 | 0.097 | 0.240 | 7 |
+| metacog_error_detection | 0.871 | 0.072 | 0.226 | 9 |
+| metacog_fok | 0.577 | 0.064 | 0.230 | 9 |
+| metacog_jol | 0.389 | 0.090 | 0.265 | 9 |
+| metacog_learning_monitoring | 0.828 | 0.079 | 0.220 | 9 |
+
+### Key Insights for Writeup
+- **Calibration failure is universal:** Most models score near 0 on confidence calibration — they can't accurately judge their own certainty
+- **Three-tier pattern:** Opus-class > mid-tier > small models, but the gap varies dramatically by metacognitive faculty
+- **Epistemic humility surprise:** Some smaller models outperform larger ones at admitting uncertainty
+- **Canary benchmark:** Binary detection — clean discriminator between models that can vs can't self-monitor
+
+## Remaining Tasks
+
+### 1. Draft Writeup (≤1,500 words)
+- Follow the required template exactly
+- Save to `repo/WRITEUP_METACOGNITION.md`
+- Ian will copy-paste into Kaggle's writeup editor
+
+### 2. Ian's Manual Actions
+- [ ] Create Writeup via "New Writeup" on competition page
+- [ ] Select "Metacognition" track
+- [ ] Paste writeup content
+- [ ] Add cover image
+- [ ] Attach benchmark via "Add a link" → select metacognition benchmark
+- [ ] Click "Submit"
+
+### 3. Optional: Submit additional tracks
+- Can submit separate writeups for other tracks if time permits
+- Priority order: Metacognition > Attention > Learning > Executive Functions > Social Cognition
 
 ## Context
-- All 29 benchmarks are implemented across 5 tracks
-- Notebooks uploaded to Kaggle, benchmarks run against 17 models on Kaggle CB
-- Discussion thread posted
-- The benchmarks use `kaggle_benchmarks` SDK (`kbench.llm`, `kbench.chats.new()`)
-- For local testing, we need to adapt `scripts/run_benchmark_local.py` (currently Gemini-only) to support Amazon Bedrock models via `boto3`
-- All test models are on Amazon Bedrock (us-east-1 region)
-- Final benchmark results shown in the writeup can be placeholder — Ian will run on Kaggle for final numbers
+- All 29 benchmarks implemented across 5 tracks
+- 9 metacognition benchmarks tested against 7–10 models via Bedrock
+- Benchmark collection and CB tasks created on Kaggle
+- Results in `results/score_matrix.csv` and `results/discriminatory_analysis.md`
 
-## Task 1: Build a Bedrock-Compatible Local Test Runner
-Extend or rewrite `scripts/run_benchmark_local.py` to support Amazon Bedrock models.
-- The kbench SDK expects an LLM interface — study how `kbench.llm` works and create a compatible Bedrock adapter
-- If kbench doesn't support custom LLM backends, build a standalone test harness that imports the benchmark logic directly and calls Bedrock via boto3's `converse` API
-- Must support all 10 models listed below
-- Output results as JSON: `results/{model_id}.json` with per-benchmark scores
-
-### Target Models (Amazon Bedrock)
+## Target Models (Amazon Bedrock)
 | # | Model | Model ID |
 |---|-------|----------|
 | 1 | Claude Opus 4.6 | anthropic.claude-opus-4-6-v1 |
@@ -35,47 +101,3 @@ Extend or rewrite `scripts/run_benchmark_local.py` to support Amazon Bedrock mod
 | 8 | Claude Haiku 4.5 | anthropic.claude-haiku-4-5-20251001-v1:0 |
 | 9 | GLM 4.7 | zai.glm-4.7 |
 | 10 | Ministral 3B | mistral.ministral-3-3b-instruct |
-
-## Task 2: Run All Benchmarks Against All 10 Models
-- Run each of the 29 benchmarks against each model
-- Save results to `results/{model_id}.json`
-- Create a summary matrix: `results/score_matrix.csv` (rows=benchmarks, columns=models)
-- Note: some models may not support certain features (e.g., system prompts, tool use) — handle gracefully with error codes, don't crash
-- **Model availability:** If a target model is unavailable on Bedrock (e.g., legacy, deprecated, or region-restricted), autonomously select a suitable substitute that preserves the test roster's diversity of providers and capability tiers. Document the substitution and rationale in `results/model_substitutions.md`.
-
-## Task 3: Discriminatory Power Analysis
-**Key competition requirement:** benchmarks must discriminate between models of different capability levels.
-- For each benchmark, compute the score range across all 10 models
-- Flag benchmarks where all models score > 0.9 (too easy) or all models score < 0.1 (too hard)
-- Flag benchmarks where the standard deviation of scores across models is < 0.05 (non-discriminatory)
-- For each flagged benchmark:
-  - Analyze why it's non-discriminatory
-  - Propose and implement fixes (harder items, different scoring, additional sub-tasks)
-  - Re-test the fixed benchmark against at least 3 models (strongest, weakest, mid-tier) to confirm improved discrimination
-- Produce `results/discriminatory_analysis.md` with findings
-
-## Task 4: Competition Requirements Review & Writeup Polish
-- Fetch and review: https://www.kaggle.com/competitions/kaggle-measuring-agi/overview
-- Cross-reference all requirements against our submission
-- Improve `SUBMISSION_NARRATIVE.md` and `KAGGLE_DISCUSSION_DRAFT.md`:
-  - Add discriminatory power analysis results
-  - Add cross-model comparison (use placeholder scores if final Kaggle results aren't available yet)
-  - Ensure all required sections are present and strong
-  - Add any missing sections identified in the requirements review
-- Update `IAN_TODO.md` with final action items
-
-## Task 5: Remove Sub-Metrics Notebooks
-Kaggle Community Benchmarks outputs only one single score per benchmark, so sub-metrics notebooks are not useful.
-- Delete these 3 notebooks from `repo/notebooks/`:
-  - `metacog_error_detection_submetrics.ipynb`
-  - `metacog_fok_submetrics.ipynb`
-  - `metacog_jol_submetrics.ipynb`
-- Remove any corresponding benchmark modules if they exist
-- Update any references to these notebooks in other files (README, SUBMISSION_NARRATIVE, etc.)
-- Do NOT delete them from Kaggle — Ian will handle that manually
-
-## Quality Standards
-- Benchmarks must show meaningful score variation across the 10 models
-- The writeup must address discriminatory power explicitly (judges care about this)
-- Test runner must be robust — retry on transient errors, timeout handling, rate limiting
-- All results reproducible
