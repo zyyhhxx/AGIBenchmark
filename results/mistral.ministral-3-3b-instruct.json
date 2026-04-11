@@ -1,27 +1,12 @@
 {
   "model": "mistral.ministral-3-3b-instruct",
   "model_label": "Ministral 3B",
-  "timestamp": "2026-04-11T02:40:58.311380+00:00",
+  "timestamp": "2026-04-11T09:03:17.925609+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.0,
       "error": null,
       "duration_s": 58.9
-    },
-    "metacog_fok": {
-      "score": null,
-      "error": "An error occurred (ValidationException) when calling the Converse operation: The model returned the following errors: {\"error\":{\"code\":\"validation_error\",\"message\":\"Internal server error\",\"param\":null",
-      "duration_s": 384.8
-    },
-    "metacog_jol": {
-      "score": null,
-      "error": "An error occurred (ValidationException) when calling the Converse operation: The model returned the following errors: {\"error\":{\"code\":\"validation_error\",\"message\":\"Internal server error\",\"param\":null",
-      "duration_s": 87.9
-    },
-    "metacog_calibration": {
-      "score": null,
-      "error": "An error occurred (ValidationException) when calling the Converse operation: The model returned the following errors: {\"error\":{\"code\":\"validation_error\",\"message\":\"Internal server error\",\"param\":null",
-      "duration_s": 16.2
     },
     "metacog_error_detection": {
       "score": 0.81,
@@ -37,11 +22,6 @@
       "score": 0.2,
       "error": null,
       "duration_s": 80.8
-    },
-    "metacog_epistemic_revision": {
-      "score": null,
-      "error": "An error occurred (ValidationException) when calling the Converse operation: The model returned the following errors: {\"error\":{\"code\":\"validation_error\",\"message\":\"Internal server error\",\"param\":null",
-      "duration_s": 35.2
     },
     "metacog_epistemic_humility": {
       "score": 0.2,
@@ -67,11 +47,6 @@
       "score": 0.68,
       "error": null,
       "duration_s": 47.3
-    },
-    "attention_selective": {
-      "score": null,
-      "error": "An error occurred (ValidationException) when calling the Converse operation: The model returned the following errors: {\"error\":{\"code\":\"validation_error\",\"message\":\"Internal server error\",\"param\":null",
-      "duration_s": 43.9
     },
     "attention_vigilance": {
       "score": 0.5677,
@@ -113,11 +88,6 @@
       "error": null,
       "duration_s": 73.7
     },
-    "social_cog_false_belief": {
-      "score": null,
-      "error": "An error occurred (ValidationException) when calling the Converse operation: The model returned the following errors: {\"error\":{\"code\":\"validation_error\",\"message\":\"Internal server error\",\"param\":null",
-      "duration_s": 120.5
-    },
     "social_cog_pragmatic": {
       "score": 0.824,
       "error": null,
@@ -132,6 +102,36 @@
       "score": 0.6856,
       "error": null,
       "duration_s": 60.6
+    },
+    "metacog_fok": {
+      "score": 0.4132,
+      "error": null,
+      "duration_s": 148.4
+    },
+    "metacog_jol": {
+      "score": 0.4315,
+      "error": null,
+      "duration_s": 62.3
+    },
+    "metacog_epistemic_revision": {
+      "score": 0.67,
+      "error": null,
+      "duration_s": 25.4
+    },
+    "attention_selective": {
+      "score": 0.775,
+      "error": null,
+      "duration_s": 17.7
+    },
+    "social_cog_false_belief": {
+      "score": 0.705,
+      "error": null,
+      "duration_s": 26.7
+    },
+    "metacog_calibration": {
+      "score": null,
+      "error": "An error occurred (ValidationException) when calling the Converse operation: The model returned the following errors: {\"error\":{\"code\":\"validation_error\",\"message\":\"Internal server error\",\"param\":null",
+      "duration_s": 40.7
     }
   }
 }

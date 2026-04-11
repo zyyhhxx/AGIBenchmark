@@ -1,7 +1,7 @@
 {
-  "model": "openai.gpt-oss-120b-1_0",
-  "model_label": "openai.gpt-oss-120b-1_0",
-  "timestamp": "2026-04-11T08:13:12.082450+00:00",
+  "model": "openai.gpt-oss-120b-1:0",
+  "model_label": "GPT-OSS-120B",
+  "timestamp": "2026-04-11T08:25:53.040659+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.803,
@@ -109,29 +109,29 @@
       "duration_s": 56.2
     },
     "metacog_calibration": {
-      "score": null,
-      "error": "An error occurred (ValidationException) when calling the Converse operation: The provided model identifier is invalid.",
-      "duration_s": 0.1
+      "score": 0.1241,
+      "error": null,
+      "duration_s": 93.9
     },
     "social_cog_false_belief": {
-      "score": null,
-      "error": "An error occurred (ValidationException) when calling the Converse operation: The provided model identifier is invalid.",
-      "duration_s": 0.1
+      "score": 0.88,
+      "error": null,
+      "duration_s": 93.1
     },
     "social_cog_pragmatic": {
-      "score": null,
-      "error": "An error occurred (ValidationException) when calling the Converse operation: The provided model identifier is invalid.",
-      "duration_s": 0.1
+      "score": 0.956,
+      "error": null,
+      "duration_s": 139.1
     },
     "social_cog_sarcasm": {
-      "score": null,
-      "error": "An error occurred (ValidationException) when calling the Converse operation: The provided model identifier is invalid.",
-      "duration_s": 0.1
+      "score": 0.91,
+      "error": null,
+      "duration_s": 62.7
     },
     "social_cog_emotional_prosody": {
-      "score": null,
-      "error": "An error occurred (ValidationException) when calling the Converse operation: The provided model identifier is invalid.",
-      "duration_s": 0.2
+      "score": 0.8139,
+      "error": null,
+      "duration_s": 49.1
     }
   }
 }

@@ -1,7 +1,7 @@
 {
   "model": "zai.glm-4.7",
   "model_label": "GLM 4.7",
-  "timestamp": "2026-04-11T03:40:01.442596+00:00",
+  "timestamp": "2026-04-11T08:27:00.826808+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.652,
@@ -38,11 +38,6 @@
       "error": null,
       "duration_s": 168.8
     },
-    "metacog_epistemic_revision": {
-      "score": null,
-      "error": "Read timeout on endpoint URL: \"https://bedrock-runtime.us-east-1.amazonaws.com/model/zai.glm-4.7/converse\"",
-      "duration_s": 261.3
-    },
     "metacog_epistemic_humility": {
       "score": 0.8833,
       "error": null,
@@ -57,11 +52,6 @@
       "score": 0.87,
       "error": null,
       "duration_s": 232.0
-    },
-    "learning_interference": {
-      "score": null,
-      "error": "An error occurred (InternalServerException) when calling the Converse operation (reached max retries: 0): The system encountered an unexpected error during processing. Try your request again.",
-      "duration_s": 84.8
     },
     "learning_curriculum": {
       "score": 0.7,
@@ -117,6 +107,31 @@
       "score": 1.0,
       "error": null,
       "duration_s": 288.9
+    },
+    "metacog_epistemic_revision": {
+      "score": 0.75,
+      "error": null,
+      "duration_s": 126.8
+    },
+    "learning_interference": {
+      "score": 0.45,
+      "error": null,
+      "duration_s": 22.1
+    },
+    "social_cog_pragmatic": {
+      "score": 0.92,
+      "error": null,
+      "duration_s": 170.0
+    },
+    "social_cog_sarcasm": {
+      "score": 0.945,
+      "error": null,
+      "duration_s": 103.5
+    },
+    "social_cog_emotional_prosody": {
+      "score": 0.7694,
+      "error": null,
+      "duration_s": 83.3
     }
   }
 }
