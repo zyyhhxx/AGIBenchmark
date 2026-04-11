@@ -7,15 +7,17 @@ Submit a winning entry to the **Metacognition track**. Deadline: **April 16, 202
 - **DO NOT upload notebooks to Kaggle using the CLI or API.** Let the human handle all Kaggle uploads manually via the web UI.
 - **Writeup must not exceed 1,500 words.** Follow the required template exactly.
 
-## Submission Requirements (from competition rules)
+## Submission Requirements (from competition rules, verified 2026-04-11)
 
 A valid submission = **Kaggle Writeup** + **attached Kaggle Benchmark**
 
 ### Kaggle Writeup
-- Created via "New Writeup" button on the competition page
+- Created via **"New Writeup"** button on the competition page (NOT a Discussion post)
 - Must select **Metacognition** as the track
-- ≤1,500 words, must include cover image
-- Must click **"Submit"** button — drafts don't count
+- ≤1,500 words — submissions over this limit may be penalized
+- Must include a **cover image** (required to submit)
+- Must click **"Submit"** button — un-submitted or draft writeups will NOT be considered
+- Optional attachments: Media Gallery, Public Notebook
 - Required template:
   ```
   ### Project Name
@@ -31,15 +33,52 @@ A valid submission = **Kaggle Writeup** + **attached Kaggle Benchmark**
 
 ### Kaggle Benchmark (attached to writeup)
 - Benchmark + all tasks should be set to **private** (auto-publish after deadline)
-- Attached via "Add a link" under "Attachments" → select benchmark
+- Attached via **"Attachments" → "Add a link"** → select benchmark from panel
 - URL format: `https://www.kaggle.com/benchmarks/<username>/<benchmark-name>`
+- All tasks must be authored by you
+- Note: If you attach a private resource to a public writeup, it auto-publishes after deadline
 
 ### Evaluation Criteria
 | Criteria | Weight | Description |
 |----------|--------|-------------|
-| Dataset quality & task construction | 50% | Verifiably correct answers, sufficient sample size, clean code, robust I/O verification |
-| Writeup quality | 20% | Covers all 7 required sections clearly |
-| Novelty, insights, discriminatory power | 30% | Meaningful signal, gradient of performance across models |
+| Dataset quality & task construction | **50%** | Verifiably correct answers (no ambiguity), sufficient sample size, clean readable code, robust input prompt and output verification |
+| Writeup quality | **20%** | Covers all 7 required sections clearly |
+| Novelty, insights, discriminatory power | **30%** | Meaningful signal, gradient of performance across models. Benchmark where everyone scores 0% is as useless as one where everyone scores 100% |
+
+### Minimum Requirements
+- Target one primary domain (to keep the signal sharp)
+- Clearly state which capability is being isolated
+- Explain what new insight the benchmark reveals about model behavior within that domain
+
+### Prizes
+- 4 × $25,000 grand prizes (best across all tracks)
+- 2 × $10,000 track prizes per track (10 track prizes total, 14 unique winners)
+- No repeat winners between grand and track prizes
+
+## Current Status (as of 2026-04-11)
+
+### ✅ Completed
+- All 29 benchmarks implemented across 5 tracks
+- All notebooks uploaded to Kaggle and made **public**
+- Ghost/duplicate notebooks deleted
+- CB tasks registered on Kaggle Benchmarks platform
+- Benchmark collection created
+- 17 models run on CB platform
+- 10-model Bedrock cross-validation complete (results in `results/score_matrix.csv`)
+- Discriminatory analysis complete (results in `results/discriminatory_analysis.md`)
+- Writeup drafted: `repo/WRITEUP_METACOGNITION.md` (1,154 words, under limit)
+
+### ❌ Not Yet Done
+- [ ] **Ian:** Create Writeup via "New Writeup" on competition page
+- [ ] **Ian:** Select "Metacognition" track
+- [ ] **Ian:** Paste writeup content from `repo/WRITEUP_METACOGNITION.md`
+- [ ] **Ian:** Add cover image
+- [ ] **Ian:** Attach benchmark via "Add a link" → select metacognition benchmark
+- [ ] **Ian:** Click **"Submit"**
+
+### Optional
+- [ ] Re-run full 10-model Bedrock suite post-discrimination-fixes (Task 011)
+- [ ] Submit additional tracks (priority: Attention > Learning > Executive Functions > Social Cognition)
 
 ## Track: Metacognition
 **Why this track:** 9 benchmarks (most of any track), 7–10 models tested per benchmark, zero flagged benchmarks, best discriminatory power (avg std=0.172), strongest novel insights.
@@ -57,36 +96,11 @@ A valid submission = **Kaggle Writeup** + **attached Kaggle Benchmark**
 | metacog_jol | 0.389 | 0.090 | 0.265 | 9 |
 | metacog_learning_monitoring | 0.828 | 0.079 | 0.220 | 9 |
 
-### Key Insights for Writeup
-- **Calibration failure is universal:** Most models score near 0 on confidence calibration — they can't accurately judge their own certainty
-- **Three-tier pattern:** Opus-class > mid-tier > small models, but the gap varies dramatically by metacognitive faculty
-- **Epistemic humility surprise:** Some smaller models outperform larger ones at admitting uncertainty
-- **Canary benchmark:** Binary detection — clean discriminator between models that can vs can't self-monitor
-
-## Remaining Tasks
-
-### 1. Draft Writeup (≤1,500 words)
-- Follow the required template exactly
-- Save to `repo/WRITEUP_METACOGNITION.md`
-- Ian will copy-paste into Kaggle's writeup editor
-
-### 2. Ian's Manual Actions
-- [ ] Create Writeup via "New Writeup" on competition page
-- [ ] Select "Metacognition" track
-- [ ] Paste writeup content
-- [ ] Add cover image
-- [ ] Attach benchmark via "Add a link" → select metacognition benchmark
-- [ ] Click "Submit"
-
-### 3. Optional: Submit additional tracks
-- Can submit separate writeups for other tracks if time permits
-- Priority order: Metacognition > Attention > Learning > Executive Functions > Social Cognition
-
-## Context
-- All 29 benchmarks implemented across 5 tracks
-- 9 metacognition benchmarks tested against 7–10 models via Bedrock
-- Benchmark collection and CB tasks created on Kaggle
-- Results in `results/score_matrix.csv` and `results/discriminatory_analysis.md`
+### Key Insights (highlighted in writeup)
+- **Bimodal metacognition:** Strong external monitoring (error detection, epistemic humility) but weak internal self-monitoring (calibration, JOL, FOK)
+- **Near-universal calibration failure:** Only Claude Opus scores non-zero on BSS calibration
+- **Epistemic humility ≠ model size:** Smaller models sometimes outperform larger ones at admitting uncertainty
+- **Strong discriminatory power:** Clear gradient from Ministral 3B (weakest) through mid-tier to Opus (strongest)
 
 ## Target Models (Amazon Bedrock)
 | # | Model | Model ID |
@@ -101,3 +115,9 @@ A valid submission = **Kaggle Writeup** + **attached Kaggle Benchmark**
 | 8 | Claude Haiku 4.5 | anthropic.claude-haiku-4-5-20251001-v1:0 |
 | 9 | GLM 4.7 | zai.glm-4.7 |
 | 10 | Ministral 3B | mistral.ministral-3-3b-instruct |
+
+## Competition Timeline
+- March 17, 2026 — Start
+- **April 16, 2026** — Final Submission Deadline (11:59 PM UTC)
+- April 17 – May 31, 2026 — Judging Period
+- June 1, 2026 — Anticipated Results
