@@ -1,5 +1,13 @@
 # KNOWLEDGE.md — AGI Benchmark
 
+## Cover Image for Metacognition Writeup (2026-04-11)
+- Output: `repo/assets/metacognition_cover.png` — 1777×1180px, 150 DPI, 106KB
+- Chart: grouped bar chart, 9 benchmarks × 3 tiers (External Monitoring / Self-Monitoring / Prospective Self-Assessment)
+- Models shown: Claude Opus 4.6, Claude Sonnet 4.6, Nova Pro, Llama 3.3 70B, Ministral 3B
+- Human baseline band (0.60–0.85) rendered as green shaded region
+- Three-tier pattern visible: External Monitoring highest → Self-Monitoring mid → Prospective Self-Assessment lowest across all models
+
+
 ## exec_func_crt + exec_func_task_switch Discrimination Fixes (2026-04-11)
 - **Root cause — CRT (std=0.028):** Two compounding failures: (1) answer parser truncated at 20 chars causing parse failures on all verbose responses; (2) all 15 items at similar difficulty, so no spread even with correct parsing.
 - **Fix — CRT:** Added 5 extreme items requiring 3+ cognitive shifts (compound rate+spoilage, recursive discounts, Bayesian base-rate neglect, multi-step age chains, nested container arithmetic). Rewrote parser with regex extraction for patterns like `**Answer:**`, `=`, bolded numbers. Difficulty weights: extreme=3.0, hard=2.0, easy=1.0.
