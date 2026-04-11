@@ -23,11 +23,6 @@
       "error": null,
       "duration_s": 488.2
     },
-    "metacog_error_detection": {
-      "score": 0.9622,
-      "error": null,
-      "duration_s": 331.0
-    },
     "metacog_learning_monitoring": {
       "score": 0.8093,
       "error": null,
@@ -48,11 +43,6 @@
       "error": null,
       "duration_s": 233.1
     },
-    "learning_curves": {
-      "score": 0.7267,
-      "error": null,
-      "duration_s": 1557.8
-    },
     "learning_transfer": {
       "score": 1.0,
       "error": null,
@@ -62,11 +52,6 @@
       "score": 0.7,
       "error": null,
       "duration_s": 189.0
-    },
-    "attention_selective": {
-      "score": 0.895,
-      "error": null,
-      "duration_s": 144.0
     },
     "attention_vigilance": {
       "score": 0.8559,
@@ -127,11 +112,6 @@
       "score": 0.9261,
       "error": null,
       "duration_s": 345.1
-    },
-    "social_cog_emotional_prosody": {
-      "score": 0.8022,
-      "error": null,
-      "duration_s": 123.6
     }
   }
 }

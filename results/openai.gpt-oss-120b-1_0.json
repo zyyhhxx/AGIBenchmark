@@ -1,7 +1,7 @@
 {
   "model": "openai.gpt-oss-120b-1:0",
   "model_label": "GPT-OSS-120B",
-  "timestamp": "2026-04-11T20:45:42.532824+00:00",
+  "timestamp": "2026-04-11T23:41:52.912816+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.803,
@@ -17,11 +17,6 @@
       "score": 0.2,
       "error": null,
       "duration_s": 376.6
-    },
-    "metacog_error_detection": {
-      "score": 0.8978,
-      "error": null,
-      "duration_s": 366.9
     },
     "metacog_learning_monitoring": {
       "score": 0.8912,
@@ -43,11 +38,6 @@
       "error": null,
       "duration_s": 208.5
     },
-    "learning_curves": {
-      "score": 0.69,
-      "error": null,
-      "duration_s": 1954.9
-    },
     "learning_transfer": {
       "score": 1.0,
       "error": null,
@@ -62,11 +52,6 @@
       "score": 0.7,
       "error": null,
       "duration_s": 122.3
-    },
-    "attention_selective": {
-      "score": 0.935,
-      "error": null,
-      "duration_s": 407.1
     },
     "attention_vigilance": {
       "score": 1.0,
@@ -123,15 +108,15 @@
       "error": null,
       "duration_s": 62.7
     },
-    "social_cog_emotional_prosody": {
-      "score": 0.8139,
-      "error": null,
-      "duration_s": 49.1
-    },
     "social_cog_false_belief": {
       "score": 0.3771,
       "error": null,
       "duration_s": 224.3
+    },
+    "attention_selective": {
+      "score": 0.835,
+      "error": null,
+      "duration_s": 61.8
     }
   }
 }

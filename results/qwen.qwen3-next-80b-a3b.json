@@ -1,7 +1,7 @@
 {
   "model": "qwen.qwen3-next-80b-a3b",
   "model_label": "Qwen3 Next 80B",
-  "timestamp": "2026-04-11T22:17:09.502197+00:00",
+  "timestamp": "2026-04-11T23:44:03.472235+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.992,
@@ -22,11 +22,6 @@
       "score": 0.0,
       "error": null,
       "duration_s": 394.2
-    },
-    "metacog_error_detection": {
-      "score": 0.7843,
-      "error": null,
-      "duration_s": 411.5
     },
     "metacog_learning_monitoring": {
       "score": 0.891,
@@ -73,11 +68,6 @@
       "error": null,
       "duration_s": 48.1
     },
-    "attention_selective": {
-      "score": 0.91,
-      "error": null,
-      "duration_s": 28.6
-    },
     "attention_vigilance": {
       "score": 0.6811,
       "error": null,
@@ -103,11 +93,6 @@
       "error": null,
       "duration_s": 6.4
     },
-    "social_cog_emotional_prosody": {
-      "score": 0.8578,
-      "error": null,
-      "duration_s": 60.0
-    },
     "social_cog_false_belief": {
       "score": 0.8625,
       "error": null,
@@ -122,6 +107,11 @@
       "score": 0.5691,
       "error": null,
       "duration_s": 135.9
+    },
+    "attention_selective": {
+      "score": 0.65,
+      "error": null,
+      "duration_s": 27.0
     }
   }
 }

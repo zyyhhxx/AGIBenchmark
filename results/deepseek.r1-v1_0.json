@@ -1,7 +1,7 @@
 {
   "model": "deepseek.r1-v1:0",
   "model_label": "DeepSeek-R1",
-  "timestamp": "2026-04-11T21:31:09.758001+00:00",
+  "timestamp": "2026-04-11T23:49:34.332588+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.867,
@@ -23,11 +23,6 @@
       "error": null,
       "duration_s": 396.3
     },
-    "metacog_error_detection": {
-      "score": 0.8978,
-      "error": null,
-      "duration_s": 231.0
-    },
     "metacog_learning_monitoring": {
       "score": 0.8942,
       "error": null,
@@ -48,11 +43,6 @@
       "error": null,
       "duration_s": 173.9
     },
-    "learning_curves": {
-      "score": 0.6133,
-      "error": null,
-      "duration_s": 1768.0
-    },
     "learning_transfer": {
       "score": 1.0,
       "error": null,
@@ -67,11 +57,6 @@
       "score": 0.52,
       "error": null,
       "duration_s": 157.8
-    },
-    "attention_selective": {
-      "score": 0.895,
-      "error": null,
-      "duration_s": 122.5
     },
     "attention_vigilance": {
       "score": 1.0,
@@ -128,10 +113,15 @@
       "error": null,
       "duration_s": 243.9
     },
-    "social_cog_emotional_prosody": {
-      "score": 0.8272,
+    "attention_selective": {
+      "score": 0.815,
       "error": null,
-      "duration_s": 139.5
+      "duration_s": 207.9
+    },
+    "social_cog_emotional_prosody": {
+      "score": 0.6314,
+      "error": null,
+      "duration_s": 213.6
     }
   }
 }

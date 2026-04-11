@@ -1,7 +1,7 @@
 {
   "model": "anthropic.claude-sonnet-4-6",
   "model_label": "Claude Sonnet 4.6",
-  "timestamp": "2026-04-11T20:15:46.751335+00:00",
+  "timestamp": "2026-04-11T23:36:39.155613+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.9886,
@@ -23,11 +23,6 @@
       "error": null,
       "duration_s": 215.3
     },
-    "metacog_error_detection": {
-      "score": 0.9735,
-      "error": null,
-      "duration_s": 174.5
-    },
     "metacog_learning_monitoring": {
       "score": 0.7068,
       "error": null,
@@ -48,11 +43,6 @@
       "error": null,
       "duration_s": 181.5
     },
-    "learning_curves": {
-      "score": 0.7167,
-      "error": null,
-      "duration_s": 1169.3
-    },
     "learning_transfer": {
       "score": 1.0,
       "error": null,
@@ -62,11 +52,6 @@
       "score": 0.7,
       "error": null,
       "duration_s": 87.6
-    },
-    "attention_selective": {
-      "score": 0.895,
-      "error": null,
-      "duration_s": 71.1
     },
     "attention_vigilance": {
       "score": 0.8647,
@@ -113,11 +98,6 @@
       "error": null,
       "duration_s": 515.8
     },
-    "social_cog_emotional_prosody": {
-      "score": 0.8356,
-      "error": null,
-      "duration_s": 80.1
-    },
     "learning_interference": {
       "score": 1.0,
       "error": null,
@@ -132,6 +112,11 @@
       "score": 0.7774,
       "error": null,
       "duration_s": 281.5
+    },
+    "attention_selective": {
+      "score": 0.815,
+      "error": null,
+      "duration_s": 109.0
     }
   }
 }

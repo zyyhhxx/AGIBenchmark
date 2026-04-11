@@ -1,7 +1,7 @@
 {
   "model": "amazon.nova-pro-v1:0",
   "model_label": "Nova Pro",
-  "timestamp": "2026-04-11T20:59:56.893127+00:00",
+  "timestamp": "2026-04-11T23:43:32.407494+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.726,
@@ -23,11 +23,6 @@
       "error": null,
       "duration_s": 82.0
     },
-    "metacog_error_detection": {
-      "score": 0.786,
-      "error": null,
-      "duration_s": 80.9
-    },
     "metacog_learning_monitoring": {
       "score": 0.9101,
       "error": null,
@@ -48,11 +43,6 @@
       "error": null,
       "duration_s": 72.7
     },
-    "learning_curves": {
-      "score": 0.655,
-      "error": null,
-      "duration_s": 358.3
-    },
     "learning_transfer": {
       "score": 0.55,
       "error": null,
@@ -62,11 +52,6 @@
       "score": 0.46,
       "error": null,
       "duration_s": 21.2
-    },
-    "attention_selective": {
-      "score": 0.82,
-      "error": null,
-      "duration_s": 29.2
     },
     "attention_vigilance": {
       "score": 0.5857,
@@ -103,11 +88,6 @@
       "error": null,
       "duration_s": 122.2
     },
-    "social_cog_emotional_prosody": {
-      "score": 0.83,
-      "error": null,
-      "duration_s": 32.2
-    },
     "learning_interference": {
       "score": 0.783,
       "error": null,
@@ -132,6 +112,11 @@
       "score": 0.28,
       "error": null,
       "duration_s": 52.3
+    },
+    "attention_selective": {
+      "score": 0.585,
+      "error": null,
+      "duration_s": 35.9
     }
   }
 }

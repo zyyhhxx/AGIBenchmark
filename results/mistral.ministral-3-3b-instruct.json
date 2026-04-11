@@ -1,17 +1,12 @@
 {
   "model": "mistral.ministral-3-3b-instruct",
   "model_label": "Ministral 3B",
-  "timestamp": "2026-04-11T21:54:46.700566+00:00",
+  "timestamp": "2026-04-11T23:34:32.788436+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.0,
       "error": null,
       "duration_s": 58.9
-    },
-    "metacog_error_detection": {
-      "score": 0.81,
-      "error": null,
-      "duration_s": 81.0
     },
     "metacog_learning_monitoring": {
       "score": 0.6906,
@@ -27,11 +22,6 @@
       "score": 0.2,
       "error": null,
       "duration_s": 73.7
-    },
-    "learning_curves": {
-      "score": 0.5617,
-      "error": null,
-      "duration_s": 600.6
     },
     "learning_transfer": {
       "score": 0.28,
@@ -78,11 +68,6 @@
       "error": null,
       "duration_s": 131.3
     },
-    "social_cog_emotional_prosody": {
-      "score": 0.6856,
-      "error": null,
-      "duration_s": 60.6
-    },
     "metacog_fok": {
       "score": 0.4132,
       "error": null,
@@ -97,11 +82,6 @@
       "score": 0.67,
       "error": null,
       "duration_s": 25.4
-    },
-    "attention_selective": {
-      "score": 0.775,
-      "error": null,
-      "duration_s": 17.7
     },
     "learning_interference": {
       "score": 0.441,
@@ -132,6 +112,11 @@
       "score": 0.0,
       "error": null,
       "duration_s": 66.0
+    },
+    "attention_selective": {
+      "score": 0.575,
+      "error": null,
+      "duration_s": 34.3
     }
   }
 }
