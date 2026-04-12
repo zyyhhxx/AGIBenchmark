@@ -95,8 +95,19 @@ def metacog_canary(llm) -> float:
         # Phase 1: Confidence judgment
         with kbench.chats.new(f"canary_fok_{item['id']}"):
             prompt = (
-                f"I'm going to ask you a question. Before answering, rate how confident "
-                f"you are that you CAN answer it correctly, from 0 (no idea) to 100 (certain).\n\n"
+                f"I'm going to ask you a factual question. Rate how confident you are "
+                f"that you know the factual answer, from 0 to 100. By 'know the factual "
+                f"answer,' we mean: you could provide the specific fact, name, number, or "
+                f"detail the question is asking for. If the question asks about something "
+                f"you don't recognize or have never encountered, your confidence should be "
+                f"low — even if you suspect the question itself may be flawed or fabricated.\n\n"
+                f"Example 1:\n"
+                f"Question: What is the chemical symbol for gold?\n"
+                f'{{"confidence": 99, "reasoning": "I know this — it\'s Au, from the Latin aurum."}}\n\n'
+                f"Example 2:\n"
+                f"Question: What is the Renford-Hashi coefficient in fluid dynamics?\n"
+                f'{{"confidence": 3, "reasoning": "I don\'t recognize this term at all."}}\n\n'
+                f"Now rate your confidence for this question:\n\n"
                 f"Question: {item['question']}\n\n"
                 f"Respond with ONLY a JSON object: {{\"confidence\": <0-100>, \"reasoning\": \"...\"}}"
             )
