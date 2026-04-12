@@ -61,3 +61,6 @@ Sun Apr 12 01:15:21 UTC 2026: learning_curves x qwen.qwen3-next-80b-a3b
   SKIP (already scored)
 
 Sun Apr 12 01:27:12 UTC 2026: social_cog_emotional_prosody x anthropic.claude-opus-4-6-v1
+  SKIP (already scored)
+
+Sun Apr 12 01:32:46 UTC 2026: social_cog_emotional_prosody x anthropic.claude-sonnet-4-6
