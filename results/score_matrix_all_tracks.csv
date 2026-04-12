@@ -1,7 +1,7 @@
 benchmark,track,Claude Opus 4.6,Claude Sonnet 4.6,DeepSeek-R1,GLM 4.7,GPT-OSS-120B,Llama 3.3 70B,Llama 4 Maverick 17B,Ministral 3B,Nova Pro,Qwen3 Next 80B
 attention_divided,attention,0.9306,0.9167,0.9375,0.8958,0.9375,0.8264,0.9275,0.4139,0.6894,0.8803
 attention_instruction_update,attention,0.9833,0.9833,0.9833,0.9083,0.9833,0.9525,0.9750,0.2992,0.6121,0.8800
-attention_selective,attention,0.8950,0.8950,0.8950,0.9350,0.9350,0.8700,0.9500,0.7750,0.8200,0.9100
+attention_selective,attention,0.9500,0.9183,0.9600,0.7167,0.9600,0.8767,0.7567,0.5233,0.8350,0.7717
 attention_vigilance,attention,0.8559,0.8647,1.0000,0.5893,1.0000,0.5803,0.8559,0.5677,0.5857,0.6811
 learning_curriculum,learning,0.7000,0.7000,0.5200,0.7000,0.7000,0.7600,0.7000,0.6800,0.4600,0.4600
 learning_curves,learning,0.7267,0.7167,0.6133,0.7250,0.6900,0.5467,0.6517,0.5617,0.6550,N/A

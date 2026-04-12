@@ -52,3 +52,5 @@ Sun Apr 12 01:23:14 UTC 2026: learning_curves x meta.llama4-maverick-17b-instruc
 Sun Apr 12 01:23:15 UTC 2026: learning_curves x zai.glm-4.7
   SKIP
 Sun Apr 12 01:23:16 UTC 2026: learning_curves x openai.gpt-oss-120b-1:0
+  ⏰ TIMEOUT
+Sun Apr 12 01:38:17 UTC 2026: learning_curves x deepseek.r1-v1:0

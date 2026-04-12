@@ -1,7 +1,7 @@
 {
   "model": "qwen.qwen3-next-80b-a3b",
   "model_label": "Qwen3 Next 80B",
-  "timestamp": "2026-04-12T01:27:11.070017+00:00",
+  "timestamp": "2026-04-12T01:46:47.278621+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.992,
@@ -108,20 +108,20 @@
       "error": null,
       "duration_s": 135.9
     },
-    "attention_selective": {
-      "score": 0.65,
-      "error": null,
-      "duration_s": 27.0
-    },
     "metacog_error_detection": {
       "score": 0.8382,
       "error": null,
       "duration_s": 266.7
     },
-    "learning_curves": {
-      "score": null,
-      "error": "An error occurred (InternalServerException) when calling the Converse operation (reached max retries: 0): The system encountered an unexpected error during processing. Try your request again.",
-      "duration_s": 707.9
+    "social_cog_emotional_prosody": {
+      "score": 0.4864,
+      "error": null,
+      "duration_s": 193.7
+    },
+    "attention_selective": {
+      "score": 0.73,
+      "error": null,
+      "duration_s": 7.7
     }
   }
 }

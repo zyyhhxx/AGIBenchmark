@@ -64,3 +64,60 @@ Sun Apr 12 01:27:12 UTC 2026: social_cog_emotional_prosody x anthropic.claude-op
   SKIP (already scored)
 
 Sun Apr 12 01:32:46 UTC 2026: social_cog_emotional_prosody x anthropic.claude-sonnet-4-6
+  SKIP (already scored)
+
+Sun Apr 12 01:36:58 UTC 2026: social_cog_emotional_prosody x deepseek.r1-v1:0
+  SKIP (already scored)
+
+Sun Apr 12 01:42:10 UTC 2026: social_cog_emotional_prosody x zai.glm-4.7
+  SKIP (already scored)
+
+Sun Apr 12 01:42:11 UTC 2026: social_cog_emotional_prosody x openai.gpt-oss-120b-1:0
+  SKIP (already scored)
+
+Sun Apr 12 01:42:12 UTC 2026: social_cog_emotional_prosody x meta.llama3-3-70b-instruct-v1:0
+  SKIP (already scored)
+
+Sun Apr 12 01:42:13 UTC 2026: social_cog_emotional_prosody x meta.llama4-maverick-17b-instruct-v1:0
+  SKIP (already scored)
+
+Sun Apr 12 01:42:14 UTC 2026: social_cog_emotional_prosody x mistral.ministral-3-3b-instruct
+  SKIP (already scored)
+
+Sun Apr 12 01:42:15 UTC 2026: social_cog_emotional_prosody x amazon.nova-pro-v1:0
+  SKIP (already scored)
+
+Sun Apr 12 01:42:16 UTC 2026: social_cog_emotional_prosody x qwen.qwen3-next-80b-a3b
+  SKIP (already scored)
+
+Sun Apr 12 01:42:18 UTC 2026: metacog_error_detection x anthropic.claude-opus-4-6-v1
+  SKIP (already scored)
+
+Sun Apr 12 01:42:19 UTC 2026: metacog_error_detection x anthropic.claude-sonnet-4-6
+  SKIP (already scored)
+
+Sun Apr 12 01:42:20 UTC 2026: metacog_error_detection x deepseek.r1-v1:0
+  SKIP (already scored)
+
+Sun Apr 12 01:42:21 UTC 2026: metacog_error_detection x zai.glm-4.7
+  SKIP (already scored)
+
+Sun Apr 12 01:42:22 UTC 2026: metacog_error_detection x openai.gpt-oss-120b-1:0
+  SKIP (already scored)
+
+Sun Apr 12 01:42:23 UTC 2026: metacog_error_detection x meta.llama3-3-70b-instruct-v1:0
+  SKIP (already scored)
+
+Sun Apr 12 01:42:24 UTC 2026: metacog_error_detection x meta.llama4-maverick-17b-instruct-v1:0
+  SKIP (already scored)
+
+Sun Apr 12 01:42:26 UTC 2026: metacog_error_detection x mistral.ministral-3-3b-instruct
+  SKIP (already scored)
+
+Sun Apr 12 01:42:27 UTC 2026: metacog_error_detection x amazon.nova-pro-v1:0
+  SKIP (already scored)
+
+Sun Apr 12 01:42:28 UTC 2026: metacog_error_detection x qwen.qwen3-next-80b-a3b
+  SKIP (already scored)
+
+Sun Apr 12 01:42:29 UTC 2026: DONE completed=0 failed=4

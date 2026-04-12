@@ -1,7 +1,7 @@
 {
   "model": "meta.llama3-3-70b-instruct-v1:0",
   "model_label": "Llama 3.3 70B",
-  "timestamp": "2026-04-12T01:17:56.147496+00:00",
+  "timestamp": "2026-04-12T01:44:04.614234+00:00",
   "scores": {
     "metacog_canary": {
       "score": 1.0,
@@ -113,11 +113,6 @@
       "error": null,
       "duration_s": 37.0
     },
-    "attention_selective": {
-      "score": 0.67,
-      "error": null,
-      "duration_s": 27.1
-    },
     "metacog_error_detection": {
       "score": 0.9073,
       "error": null,
@@ -127,6 +122,16 @@
       "score": 0.5238,
       "error": null,
       "duration_s": 411.0
+    },
+    "social_cog_emotional_prosody": {
+      "score": 0.5331,
+      "error": null,
+      "duration_s": 44.4
+    },
+    "attention_selective": {
+      "score": 0.8767,
+      "error": null,
+      "duration_s": 4.3
     }
   }
 }
