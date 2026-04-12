@@ -439,6 +439,179 @@ PROSODY_ITEMS = [
             {"speaker": "A", "text": "Not really. You've got it covered."},
         ],
     },
+    # === EASY BASELINE ITEMS (trivially detectable shifts) ===
+    {
+        "id": "easy_01",
+        "has_shift": True,
+        "shift_turn": 3,
+        "emotion_before": "cheerful",
+        "emotion_after": "devastated",
+        "trigger": "receiving terrible medical diagnosis",
+        "difficulty": "easy",
+        "dialogue": [
+            {"speaker": "A", "text": "Beautiful day, isn't it? I just got back from the park."},
+            {"speaker": "B", "text": "It really is! Perfect weather."},
+            {"speaker": "A", "text": "So... I got the test results back. It's stage four. They said six months."},
+            {"speaker": "B", "text": "Oh God. Oh no. No no no..."},
+            {"speaker": "A", "text": "I haven't told the kids yet. I don't know how."},
+        ],
+    },
+    {
+        "id": "easy_02",
+        "has_shift": True,
+        "shift_turn": 3,
+        "emotion_before": "confused",
+        "emotion_after": "excited",
+        "trigger": "surprise party reveal",
+        "difficulty": "easy",
+        "dialogue": [
+            {"speaker": "A", "text": "Why are we going to this empty restaurant? It's closed."},
+            {"speaker": "B", "text": "Just trust me. Come inside."},
+            {"speaker": "Everyone", "text": "SURPRISE!!! HAPPY BIRTHDAY!!!"},
+            {"speaker": "A", "text": "OH MY GOD!!! I can't believe this!! You guys!! I'm going to CRY! This is the BEST thing ever!!"},
+        ],
+    },
+    {
+        "id": "easy_03",
+        "has_shift": True,
+        "shift_turn": 3,
+        "emotion_before": "calm",
+        "emotion_after": "furious",
+        "trigger": "discovery of betrayal",
+        "difficulty": "easy",
+        "dialogue": [
+            {"speaker": "A", "text": "So how was your weekend?"},
+            {"speaker": "B", "text": "Good, quiet. Stayed home."},
+            {"speaker": "A", "text": "Really? Because I just saw photos of you with my wife at a hotel. DON'T you dare lie to me."},
+            {"speaker": "B", "text": "I— I can explain—"},
+            {"speaker": "A", "text": "There is NOTHING to explain. Get out. GET OUT NOW."},
+        ],
+    },
+    {
+        "id": "easy_04",
+        "has_shift": True,
+        "shift_turn": 2,
+        "emotion_before": "nervous",
+        "emotion_after": "overjoyed",
+        "trigger": "announcement of pregnancy after long fertility struggle",
+        "difficulty": "easy",
+        "dialogue": [
+            {"speaker": "A", "text": "I'm so scared to look at the results. After five rounds of IVF, I can't take another negative."},
+            {"speaker": "B", "text": "Whatever happens, I'm here. Look whenever you're ready."},
+            {"speaker": "A", "text": "It's... it's positive. IT'S POSITIVE!! WE'RE HAVING A BABY!!! *sobbing* Oh my God, finally, FINALLY!"},
+            {"speaker": "B", "text": "I love you so much. We did it. We really did it."},
+        ],
+    },
+    # === VERY HARD ITEMS (mixed emotions, masked emotions, cultural signals) ===
+    {
+        "id": "vhard_01",
+        "has_shift": True,
+        "shift_turn": 4,
+        "emotion_before": "proud",
+        "emotion_after": "bittersweet",
+        "trigger": "child leaving home triggers simultaneous pride and loss",
+        "difficulty": "very_hard",
+        "mixed_emotions": ["proud", "sad", "bittersweet", "happy", "grieving"],
+        "dialogue": [
+            {"speaker": "A", "text": "I finished packing the car. Everything fits."},
+            {"speaker": "B", "text": "Good. You've got the toolkit your grandfather gave you?"},
+            {"speaker": "A", "text": "Yeah. And the quilt mom made."},
+            {"speaker": "B", "text": "Look at you. All grown up. Driving across the country to start your life."},
+            {"speaker": "A", "text": "Dad, don't get weird on me."},
+            {"speaker": "B", "text": "I'm not. I'm really not. I'm so damn proud of you. Your room's going to be exactly how you left it. For whenever."},
+        ],
+    },
+    {
+        "id": "vhard_02",
+        "has_shift": True,
+        "shift_turn": 3,
+        "emotion_before": "cheerful",
+        "emotion_after": "performing_cheerful",
+        "trigger": "speaker masks deep distress behind aggressive positivity",
+        "difficulty": "very_hard",
+        "surface_emotion": "cheerful",
+        "real_emotion": "desperate",
+        "dialogue": [
+            {"speaker": "A", "text": "How are things going?"},
+            {"speaker": "B", "text": "Amazing! Best year of my life, honestly."},
+            {"speaker": "A", "text": "Didn't you just lose your job and your apartment?"},
+            {"speaker": "B", "text": "Best thing that ever happened to me! Fresh start! I'm actually sleeping in my car right now and it's SO freeing. No rent! No commute! I wake up and I'm already where I need to be. Haha!"},
+            {"speaker": "A", "text": "...are you OK?"},
+            {"speaker": "B", "text": "Never better! Everything is GREAT. Why does everyone keep asking me that? I'm FINE."},
+        ],
+    },
+    {
+        "id": "vhard_03",
+        "has_shift": True,
+        "shift_turn": 4,
+        "emotion_before": "agreeable",
+        "emotion_after": "refusing",
+        "trigger": "indirect refusal disguised as enthusiastic deflection (East Asian communication pattern)",
+        "difficulty": "very_hard",
+        "surface_emotion": "enthusiastic",
+        "real_emotion": "refusing",
+        "dialogue": [
+            {"speaker": "A", "text": "We'd love for you to lead the Tokyo project. You'd be perfect."},
+            {"speaker": "B", "text": "That is such a wonderful opportunity. Thank you for thinking of me."},
+            {"speaker": "A", "text": "Great! So you'll take it?"},
+            {"speaker": "B", "text": "It would be very challenging. I would need to study very carefully. Perhaps someone with more experience would do a better job. I wouldn't want to disappoint such an important project."},
+            {"speaker": "A", "text": "But we want YOU."},
+            {"speaker": "B", "text": "You're too kind. I will think about it very seriously. Let me consult with my family."},
+        ],
+    },
+    {
+        "id": "vhard_04",
+        "has_shift": True,
+        "shift_turn": 3,
+        "emotion_before": "normal",
+        "emotion_after": "dissociated",
+        "trigger": "describing traumatic event in flat clinical tone indicates emotional shutdown",
+        "difficulty": "very_hard",
+        "dialogue": [
+            {"speaker": "A", "text": "You said something happened on Tuesday?"},
+            {"speaker": "B", "text": "Yes. I was in a car accident."},
+            {"speaker": "A", "text": "Oh my God, are you OK?!"},
+            {"speaker": "B", "text": "The vehicle was traveling at approximately 45 miles per hour when it crossed the median. Impact was on the driver side. The airbag deployed. I sustained a fractured radius and three broken ribs. The other driver did not survive."},
+            {"speaker": "A", "text": "That's... that sounds horrifying."},
+            {"speaker": "B", "text": "The hospital food was adequate. They discharged me Thursday."},
+        ],
+    },
+    {
+        "id": "vhard_05",
+        "has_shift": True,
+        "shift_turn": 3,
+        "emotion_before": "warm",
+        "emotion_after": "hostile",
+        "trigger": "Southern politeness formulas masking genuine contempt (bless your heart pattern)",
+        "difficulty": "very_hard",
+        "surface_emotion": "warm",
+        "real_emotion": "contemptuous",
+        "dialogue": [
+            {"speaker": "A", "text": "Did y'all see Linda's new landscaping? She hired some company from the city."},
+            {"speaker": "B", "text": "Oh honey, I saw it. Bless her heart, she's really trying."},
+            {"speaker": "A", "text": "She told me it cost fifteen thousand dollars."},
+            {"speaker": "B", "text": "Well isn't that just precious. I'm sure it looks real nice to someone who didn't grow up with a garden. She's just so brave to try new things at her age. We should bring her a pie, poor thing."},
+        ],
+    },
+    {
+        "id": "vhard_06",
+        "has_shift": True,
+        "shift_turn": 5,
+        "emotion_before": "concerned",
+        "emotion_after": "conflicted",
+        "trigger": "speaker realizes their help is enabling harmful behavior but loves the person",
+        "difficulty": "very_hard",
+        "mixed_emotions": ["loving", "angry", "conflicted", "guilty", "helpless"],
+        "dialogue": [
+            {"speaker": "A", "text": "He called again last night. Needed money."},
+            {"speaker": "B", "text": "Did you send it?"},
+            {"speaker": "A", "text": "He said it was for rent."},
+            {"speaker": "B", "text": "Was it?"},
+            {"speaker": "A", "text": "No. Probably not. But he's my son, and if I don't... what if something happens? And if I do... I know exactly what happens. So."},
+            {"speaker": "B", "text": "There's no right answer here."},
+            {"speaker": "A", "text": "No. There really isn't."},
+        ],
+    },
     {
         "id": "cam_03",
         "has_shift": True,
@@ -501,6 +674,15 @@ EMOTION_SYNONYMS = {
     "hurt": ["wounded", "pained", "stung", "offended", "disappointed", "sad"],
     "amused": ["entertained", "tickled", "diverted", "delighted"],
     "resigned": ["accepting", "defeated", "surrendered", "fatalistic", "giving up"],
+    "bittersweet": ["mixed", "happy-sad", "nostalgic pride", "proud but sad", "joyful grief"],
+    "dissociated": ["clinical", "flat", "detached", "numb", "shutdown", "emotionless", "robotic"],
+    "performing_cheerful": ["forced cheerfulness", "fake happy", "manic positivity", "desperate", "masking"],
+    "refusing": ["declining", "indirect no", "polite refusal", "deflecting", "avoidant"],
+    "conflicted": ["torn", "ambivalent", "mixed feelings", "uncertain", "guilty", "helpless"],
+    "desperate": ["panicked", "frantic", "barely holding on", "at breaking point"],
+    "overjoyed": ["ecstatic", "euphoric", "thrilled", "over the moon", "elated"],
+    "devastated": ["crushed", "destroyed", "heartbroken", "shattered", "grief-stricken"],
+    "contemptuous": ["condescending", "disdainful", "snobbish", "mocking", "dismissive", "sarcastic"],
     "suspicious": ["distrustful", "wary", "doubtful", "paranoid", "skeptical"],
     "patronizing": ["condescending", "superior", "belittling", "talking down"],
     "vulnerable": ["exposed", "raw", "unguarded", "open", "fragile"],
@@ -520,6 +702,34 @@ def emotion_match(model_emotion: str, target_emotion: str, strict: bool = False)
         return True
     synonyms = EMOTION_SYNONYMS.get(target_lower, [])
     return any(s in model_lower for s in synonyms)
+
+
+def score_mixed_emotions(model_emotion: str, mixed_list: list) -> float:
+    """Score mixed-emotion items: 0.5 for one match, 1.0 for two+."""
+    model_lower = model_emotion.lower().strip()
+    matches = sum(1 for e in mixed_list if e.lower() in model_lower or
+                  any(s in model_lower for s in EMOTION_SYNONYMS.get(e.lower(), [])))
+    if matches >= 2:
+        return 1.0
+    elif matches >= 1:
+        return 0.5
+    return 0.0
+
+
+def score_masked_emotion(model_emotion: str, surface: str, real: str) -> float:
+    """Score masked-emotion items: 1.0 for real, 0.0 for surface, 0.5 for acknowledging mask."""
+    model_lower = model_emotion.lower().strip()
+    # Check if model identified the real emotion
+    if emotion_match(model_emotion, real):
+        return 1.0
+    # Check if model mentions masking/performing/hiding
+    mask_words = ["mask", "hiding", "performing", "pretending", "fake", "forced", "facade"]
+    if any(w in model_lower for w in mask_words):
+        return 0.5
+    # If model just says the surface emotion, that's wrong
+    if emotion_match(model_emotion, surface):
+        return 0.0
+    return 0.25  # unrecognized but not the surface trap
 
 
 @kbench.task(name="social_cog_emotional_prosody")
@@ -602,15 +812,24 @@ def social_cog_emotional_prosody(llm) -> float:
                 # Check turn identification
                 actual_turn = item["shift_turn"]
                 difficulty = item.get("difficulty", "standard")
-                # Expert/subtle: exact match required; standard: ±1 tolerance
-                if difficulty in ("subtle", "expert"):
+                # Easy: ±1 tolerance; standard: ±1; subtle/expert/very_hard/camouflaged: exact
+                if difficulty in ("subtle", "expert", "very_hard", "camouflaged"):
                     result["turn_correct"] = model_shift_turn == actual_turn
                 else:
                     result["turn_correct"] = abs(model_shift_turn - actual_turn) <= 1
                 
-                # Check emotion labels
+                # Check emotion labels — special handling for mixed/masked emotions
                 result["before_correct"] = emotion_match(model_before, item["emotion_before"])
-                result["after_correct"] = emotion_match(model_after, item["emotion_after"])
+                
+                if "mixed_emotions" in item:
+                    result["after_score"] = score_mixed_emotions(model_after, item["mixed_emotions"])
+                    result["after_correct"] = result["after_score"] >= 0.5
+                elif "surface_emotion" in item and "real_emotion" in item:
+                    result["after_score"] = score_masked_emotion(model_after, item["surface_emotion"], item["real_emotion"])
+                    result["after_correct"] = result["after_score"] >= 0.5
+                else:
+                    result["after_correct"] = emotion_match(model_after, item["emotion_after"])
+                    result["after_score"] = 1.0 if result["after_correct"] else 0.0
                 
                 # Check trigger (keyword overlap)
                 trigger_words = set(item["trigger"].lower().split())
@@ -626,56 +845,60 @@ def social_cog_emotional_prosody(llm) -> float:
     # ─── Compute Metrics ─────
     shift_items = [r for r in results if r["has_shift_actual"]]
     control_items = [r for r in results if not r["has_shift_actual"]]
-    
-    # Split shift items into standard and subtle
-    # Check if item has 'difficulty' field set to 'subtle'
     item_lookup = {item["id"]: item for item in PROSODY_ITEMS}
-    standard_shift = [r for r in shift_items if item_lookup.get(r["id"], {}).get("difficulty") != "subtle"]
-    subtle_shift = [r for r in shift_items if item_lookup.get(r["id"], {}).get("difficulty") == "subtle"]
     
-    def compute_shift_metrics(items):
+    # Categorize by difficulty tier
+    easy_items = [r for r in shift_items if item_lookup.get(r["id"], {}).get("difficulty") == "easy"]
+    medium_items = [r for r in shift_items if item_lookup.get(r["id"], {}).get("difficulty", "standard") in ("standard", "subtle", None)]
+    hard_items = [r for r in shift_items if item_lookup.get(r["id"], {}).get("difficulty") in ("expert", "camouflaged", "very_hard")]
+    
+    def compute_shift_metrics(items, strict_turn=False):
         if not items:
-            return 0, 0, 0
+            return 0, 0, 0, 0
         detection = sum(1 for r in items if r.get("shift_detected", False)) / len(items)
         e_scores = []
         t_scores = []
+        turn_scores = []
         for r in items:
             if r.get("shift_detected", False):
-                e_scores.append((int(r.get("before_correct", False)) + int(r.get("after_correct", False))) / 2)
+                after_s = r.get("after_score", 1.0 if r.get("after_correct", False) else 0.0)
+                before_s = 1.0 if r.get("before_correct", False) else 0.0
+                e_scores.append((before_s + after_s) / 2)
                 t_scores.append(r.get("trigger_score", 0))
+                turn_scores.append(1.0 if r.get("turn_correct", False) else 0.0)
         emotion = np.mean(e_scores) if e_scores else 0
         trigger = np.mean(t_scores) if t_scores else 0
-        return detection, emotion, trigger
+        turn_acc = np.mean(turn_scores) if turn_scores else 0
+        return detection, emotion, trigger, turn_acc
     
-    std_det, std_emo, std_trig = compute_shift_metrics(standard_shift)
-    sub_det, sub_emo, sub_trig = compute_shift_metrics(subtle_shift)
+    easy_det, easy_emo, _, _ = compute_shift_metrics(easy_items)
+    med_det, med_emo, med_trig, _ = compute_shift_metrics(medium_items)
+    hard_det, hard_emo, hard_trig, hard_turn = compute_shift_metrics(hard_items, strict_turn=True)
     
-    # False alarm rate (detecting shift in controls)
-    false_alarms = sum(1 for r in control_items if not r.get("correct_no_shift", True))
-    false_alarm_rate = false_alarms / len(control_items) if control_items else 0
-    
-    # Expert items
-    expert_shift = [r for r in shift_items if item_lookup.get(r["id"], {}).get("difficulty") == "expert"]
-    exp_det, exp_emo, exp_trig = compute_shift_metrics(expert_shift)
-    
-    # Camouflaged shift items (look stable but have real shifts)
-    cam_shift = [r for r in shift_items if item_lookup.get(r["id"], {}).get("difficulty") == "camouflaged"]
-    cam_det, cam_emo, cam_trig = compute_shift_metrics(cam_shift)
-    
-    # Adversarial controls (penalize false alarms more)
+    # False alarm rate
     adv_controls = [r for r in control_items if item_lookup.get(r["id"], {}).get("difficulty") == "adversarial_control"]
     plain_controls = [r for r in control_items if item_lookup.get(r["id"], {}).get("difficulty") != "adversarial_control"]
     plain_fa = sum(1 for r in plain_controls if not r.get("correct_no_shift", True)) / len(plain_controls) if plain_controls else 0
     adv_fa = sum(1 for r in adv_controls if not r.get("correct_no_shift", True)) / len(adv_controls) if adv_controls else 0
-    false_alarm_rate = 0.4 * plain_fa + 0.6 * adv_fa  # Adversarial false alarms weighted more
+    false_alarm_rate = 0.4 * plain_fa + 0.6 * adv_fa
     
-    # Composite: 10% standard, 15% subtle, 20% expert, 35% camouflaged, 20% false alarm resistance
-    standard_score = 0.40 * std_det + 0.30 * float(std_emo) + 0.20 * float(std_trig) + 0.10 * (1 - false_alarm_rate)
-    subtle_score = 0.40 * sub_det + 0.30 * float(sub_emo) + 0.20 * float(sub_trig) + 0.10 * (1 - false_alarm_rate)
-    expert_score = 0.40 * exp_det + 0.30 * float(exp_emo) + 0.20 * float(exp_trig) + 0.10 * (1 - false_alarm_rate)
-    cam_score = 0.60 * cam_det + 0.25 * float(cam_emo) + 0.15 * float(cam_trig)  # Detection dominates for camouflaged
+    # Three-tier composite
+    easy_score = 0.50 * easy_det + 0.50 * float(easy_emo)
+    medium_score = 0.40 * med_det + 0.30 * float(med_emo) + 0.20 * float(med_trig) + 0.10 * (1 - false_alarm_rate)
+    # Hard tier: stricter — emotion requires BOTH before+after correct (multiplicative)
+    # Recompute hard emotion as multiplicative (both must be right)
+    hard_both_emo_scores = []
+    for r in hard_items:
+        if r.get("shift_detected", False):
+            after_s = r.get("after_score", 1.0 if r.get("after_correct", False) else 0.0)
+            before_s = 1.0 if r.get("before_correct", False) else 0.0
+            hard_both_emo_scores.append(before_s * after_s)  # multiplicative: both must be right
+    hard_emo_strict = np.mean(hard_both_emo_scores) if hard_both_emo_scores else 0
     
-    score = round(0.10 * standard_score + 0.15 * subtle_score + 0.20 * expert_score + 0.35 * cam_score + 0.20 * (1 - false_alarm_rate), 4)
+    hard_score = (0.25 * hard_det + 0.35 * float(hard_emo_strict) + 0.10 * float(hard_trig)
+                  + 0.20 * hard_turn + 0.10 * (1 - false_alarm_rate))
+    
+    score = round(0.10 * easy_score + 0.30 * medium_score + 0.60 * hard_score, 4)
     
     # ─── Logging ─────
     print(f"\n{'='*60}")
@@ -693,22 +916,19 @@ def social_cog_emotional_prosody(llm) -> float:
             print(f"  {correct} {r['id']}")
     
     print(f"\n--- Summary ---")
-    print(f"Standard detection:  {std_det:.2%}")
-    print(f"Standard emotion:   {std_emo:.2%}")
-    print(f"Standard trigger:   {std_trig:.2%}")
-    print(f"Subtle detection:   {sub_det:.2%}")
-    print(f"Subtle emotion:     {sub_emo:.2%}")
-    print(f"Subtle trigger:     {sub_trig:.2%}")
-    print(f"Expert detection:   {exp_det:.2%}")
-    print(f"Expert emotion:     {exp_emo:.2%}")
-    print(f"Expert trigger:     {exp_trig:.2%}")
-    print(f"Camouflaged detect: {cam_det:.2%}")
-    print(f"Camouflaged emotion:{cam_emo:.2%}")
+    print(f"Easy detection:     {easy_det:.2%} (N={len(easy_items)})")
+    print(f"Easy emotion:       {easy_emo:.2%}")
+    print(f"Medium detection:   {med_det:.2%} (N={len(medium_items)})")
+    print(f"Medium emotion:     {med_emo:.2%}")
+    print(f"Medium trigger:     {med_trig:.2%}")
+    print(f"Hard detection:     {hard_det:.2%} (N={len(hard_items)})")
+    print(f"Hard emotion:       {hard_emo:.2%}")
+    print(f"Hard trigger:       {hard_trig:.2%}")
+    print(f"Hard turn accuracy: {hard_turn:.2%}")
     print(f"False alarm rate:   {false_alarm_rate:.2%}")
-    print(f"Standard score:     {standard_score:.4f}")
-    print(f"Subtle score:       {subtle_score:.4f}")
-    print(f"Expert score:       {expert_score:.4f}")
-    print(f"Camouflaged score:  {cam_score:.4f}")
+    print(f"Easy tier score:    {easy_score:.4f} (weight 0.10)")
+    print(f"Medium tier score:  {medium_score:.4f} (weight 0.30)")
+    print(f"Hard tier score:    {hard_score:.4f} (weight 0.60)")
     print(f"Composite score:    {score:.4f}")
     
     return score

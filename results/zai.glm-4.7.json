@@ -123,11 +123,6 @@
       "error": null,
       "duration_s": 675.0
     },
-    "social_cog_emotional_prosody": {
-      "score": 0.5637,
-      "error": null,
-      "duration_s": 172.4
-    },
     "attention_selective": {
       "score": 0.7167,
       "error": null,
