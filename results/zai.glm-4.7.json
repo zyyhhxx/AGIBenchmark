@@ -1,7 +1,7 @@
 {
   "model": "zai.glm-4.7",
   "model_label": "GLM 4.7",
-  "timestamp": "2026-04-11T23:40:47.098626+00:00",
+  "timestamp": "2026-04-12T01:14:39.917359+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.652,
@@ -117,6 +117,21 @@
       "score": 0.775,
       "error": null,
       "duration_s": 32.0
+    },
+    "metacog_error_detection": {
+      "score": 0.9129,
+      "error": null,
+      "duration_s": 135.5
+    },
+    "learning_curves": {
+      "score": 0.7403,
+      "error": null,
+      "duration_s": 675.0
+    },
+    "social_cog_emotional_prosody": {
+      "score": 0.4756,
+      "error": null,
+      "duration_s": 116.3
     }
   }
 }

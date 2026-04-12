@@ -1,5 +1,12 @@
 # KNOWLEDGE.md — AGI Benchmark
 
+## Notebook Hard-Rule Violations — Cleanup Patterns (2026-04-12)
+- **Duplicate `.nbconvert.ipynb` files:** Artefact of running `jupyter nbconvert` without `--output`; safe to delete. `exec_func_crt.nbconvert.ipynb` was one such duplicate.
+- **Broken relative imports** (`from data.canary_items import ...`): kbench notebooks must be self-contained — inline all data directly in the notebook rather than importing from a sibling `data/` package. This is a hard requirement for Kaggle submission.
+- **Duplicate cells:** Common pattern is cell N being an exact copy of cell 0 (setup) or a standalone `.run()` that already appears inside a task cell. Safe to delete the redundant copy.
+- **Validation command:** `jupyter nbconvert --to notebook <file> --output /tmp/test.ipynb` exit-0 is sufficient syntax validation for all `.ipynb` files.
+
+
 ## social_cog_pragmatic Benchmark — Tiered Redesign (2026-04-11)
 - **Problem:** Original flat benchmark scored 0.824–1.0 across models (std≈0.061) — too easy, ceiling effect.
 - **Fix:** 3-tier difficulty design: direct implicature (0.15 weight), indirect/contextual (0.35), complex multi-layer (0.50). Per-tier score = `intended_accuracy - 0.1 × literal_trap_rate`.

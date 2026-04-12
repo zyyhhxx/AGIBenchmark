@@ -1,0 +1,60 @@
+Sun Apr 12 00:15:00 UTC 2026: Starting 4-benchmark sequential rerun
+
+Sun Apr 12 00:15:00 UTC 2026: attention_selective x anthropic.claude-opus-4-6-v1
+  SKIP (already scored)
+
+Sun Apr 12 00:15:01 UTC 2026: attention_selective x anthropic.claude-sonnet-4-6
+  SKIP (already scored)
+
+Sun Apr 12 00:15:02 UTC 2026: attention_selective x deepseek.r1-v1:0
+  SKIP (already scored)
+
+Sun Apr 12 00:15:03 UTC 2026: attention_selective x zai.glm-4.7
+  SKIP (already scored)
+
+Sun Apr 12 00:15:04 UTC 2026: attention_selective x openai.gpt-oss-120b-1:0
+  SKIP (already scored)
+
+Sun Apr 12 00:15:06 UTC 2026: attention_selective x meta.llama3-3-70b-instruct-v1:0
+  SKIP (already scored)
+
+Sun Apr 12 00:15:07 UTC 2026: attention_selective x meta.llama4-maverick-17b-instruct-v1:0
+  SKIP (already scored)
+
+Sun Apr 12 00:15:08 UTC 2026: attention_selective x mistral.ministral-3-3b-instruct
+  SKIP (already scored)
+
+Sun Apr 12 00:15:09 UTC 2026: attention_selective x amazon.nova-pro-v1:0
+  SKIP (already scored)
+
+Sun Apr 12 00:15:10 UTC 2026: attention_selective x qwen.qwen3-next-80b-a3b
+  SKIP (already scored)
+
+Sun Apr 12 00:15:11 UTC 2026: learning_curves x anthropic.claude-opus-4-6-v1
+  ⏰ TIMEOUT
+
+Sun Apr 12 00:30:12 UTC 2026: learning_curves x anthropic.claude-sonnet-4-6
+  ⏰ TIMEOUT
+
+Sun Apr 12 00:45:13 UTC 2026: learning_curves x deepseek.r1-v1:0
+  ⏰ TIMEOUT
+
+Sun Apr 12 01:00:14 UTC 2026: learning_curves x zai.glm-4.7
+  SKIP (already scored)
+
+Sun Apr 12 01:00:16 UTC 2026: learning_curves x openai.gpt-oss-120b-1:0
+  ⏰ TIMEOUT
+
+Sun Apr 12 01:15:17 UTC 2026: learning_curves x meta.llama3-3-70b-instruct-v1:0
+  SKIP (already scored)
+
+Sun Apr 12 01:15:18 UTC 2026: learning_curves x meta.llama4-maverick-17b-instruct-v1:0
+  SKIP (already scored)
+
+Sun Apr 12 01:15:19 UTC 2026: learning_curves x mistral.ministral-3-3b-instruct
+  SKIP (already scored)
+
+Sun Apr 12 01:15:20 UTC 2026: learning_curves x amazon.nova-pro-v1:0
+  SKIP (already scored)
+
+Sun Apr 12 01:15:21 UTC 2026: learning_curves x qwen.qwen3-next-80b-a3b

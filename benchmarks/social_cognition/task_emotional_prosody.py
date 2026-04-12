@@ -266,6 +266,123 @@ PROSODY_ITEMS = [
             {"speaker": "B", "text": "Sure. Always next year."},
         ],
     },
+    # === ADVERSARIAL CONTROLS (emotionally loaded but NO shift — false alarm traps) ===
+    {
+        "id": "adv_ctrl_01",
+        "has_shift": False,
+        "difficulty": "adversarial_control",
+        "dialogue": [
+            {"speaker": "A", "text": "I'm furious. Absolutely furious. The traffic was unbelievable."},
+            {"speaker": "B", "text": "Oh no, what happened?"},
+            {"speaker": "A", "text": "An hour and a half to go ten miles! I was ready to scream."},
+            {"speaker": "B", "text": "That sounds maddening. Are you OK now?"},
+            {"speaker": "A", "text": "Yes, fine. Just venting. I hate this commute so much."},
+        ],
+    },
+    {
+        "id": "adv_ctrl_02",
+        "has_shift": False,
+        "difficulty": "adversarial_control",
+        "dialogue": [
+            {"speaker": "A", "text": "I can't believe how happy I am. The interview went perfectly!"},
+            {"speaker": "B", "text": "That's amazing! Tell me everything."},
+            {"speaker": "A", "text": "They loved me. And then I got home and there was a rejection email from the other place."},
+            {"speaker": "B", "text": "Oh, that's a shame. But the interview today sounded great!"},
+            {"speaker": "A", "text": "Yeah, the rejection stings a little, but honestly I'm still riding high from today."},
+        ],
+    },
+    # === EXPERT-LEVEL ITEMS (extremely subtle, multi-layered) ===
+    {
+        "id": "expert_01",
+        "has_shift": True,
+        "shift_turn": 5,
+        "emotion_before": "amused",
+        "emotion_after": "resigned",
+        "trigger": "joke reveals a painful truth the speaker has accepted",
+        "difficulty": "expert",
+        "dialogue": [
+            {"speaker": "A", "text": "So my therapist says I use humor as a defense mechanism."},
+            {"speaker": "B", "text": "Ha! What did you say to that?"},
+            {"speaker": "A", "text": "I said 'that's the funniest thing I've heard all week.' She didn't laugh."},
+            {"speaker": "B", "text": "Classic you. Always deflecting."},
+            {"speaker": "A", "text": "Yeah. I guess at some point the bit stops being a bit and it's just... who you are."},
+            {"speaker": "B", "text": "Do you really believe that?"},
+            {"speaker": "A", "text": "I don't know. Probably. Does it matter?"},
+        ],
+    },
+    {
+        "id": "expert_02",
+        "has_shift": True,
+        "shift_turn": 4,
+        "emotion_before": "casual",
+        "emotion_after": "suspicious",
+        "trigger": "inconsistency in story reveals possible deception",
+        "difficulty": "expert",
+        "dialogue": [
+            {"speaker": "A", "text": "Traffic was awful today. Took me an hour and a half."},
+            {"speaker": "B", "text": "That's rough. Where were you coming from?"},
+            {"speaker": "A", "text": "Just from home. The highway was completely backed up."},
+            {"speaker": "B", "text": "Huh. I took the highway at the same time. It was fine."},
+            {"speaker": "A", "text": "Oh, maybe it was a different stretch."},
+            {"speaker": "B", "text": "Yeah, maybe. We do live in the same neighborhood though."},
+            {"speaker": "A", "text": "Right. Anyway, I'm here now."},
+        ],
+    },
+    {
+        "id": "expert_03",
+        "has_shift": True,
+        "shift_turn": 3,
+        "emotion_before": "warm",
+        "emotion_after": "patronizing",
+        "trigger": "shift from genuine praise to subtle belittlement of ambition",
+        "difficulty": "expert",
+        "dialogue": [
+            {"speaker": "A", "text": "I decided I'm going to apply for the director position."},
+            {"speaker": "B", "text": "Oh wow, that's exciting! I love that ambition."},
+            {"speaker": "A", "text": "You think I have a shot?"},
+            {"speaker": "B", "text": "I think it's wonderful that you're putting yourself out there. That takes real courage, especially given your experience level."},
+            {"speaker": "A", "text": "...thanks?"},
+            {"speaker": "B", "text": "Seriously! Not everyone would be so brave. I mean, the other candidates have been here much longer, but confidence counts for a lot."},
+        ],
+    },
+    {
+        "id": "expert_04",
+        "has_shift": True,
+        "shift_turn": 4,
+        "emotion_before": "cheerful",
+        "emotion_after": "detached",
+        "trigger": "overwhelming social demand causes emotional shutdown",
+        "difficulty": "expert",
+        "dialogue": [
+            {"speaker": "A", "text": "The party was so fun last night! Everyone kept asking about you."},
+            {"speaker": "B", "text": "Really? That's sweet."},
+            {"speaker": "A", "text": "We should do that every weekend! I already told everyone you'd host next time."},
+            {"speaker": "B", "text": "Oh."},
+            {"speaker": "A", "text": "It'll be great! I gave them your number so they can coordinate."},
+            {"speaker": "B", "text": "Sure. Sounds good."},
+            {"speaker": "A", "text": "You're the best! Everyone loves you."},
+            {"speaker": "B", "text": "Mm."},
+        ],
+    },
+    {
+        "id": "expert_05",
+        "has_shift": True,
+        "shift_turn": 5,
+        "emotion_before": "polite",
+        "emotion_after": "vulnerable",
+        "trigger": "accidental honesty breaks through rehearsed composure",
+        "difficulty": "expert",
+        "dialogue": [
+            {"speaker": "A", "text": "Thanks for meeting me. How are you doing since the divorce?"},
+            {"speaker": "B", "text": "Oh, I'm great. Really finding myself. Lots of yoga."},
+            {"speaker": "A", "text": "That's wonderful. You look good."},
+            {"speaker": "B", "text": "Thanks! Yeah, it's been really positive overall. A new chapter."},
+            {"speaker": "A", "text": "Do the kids seem OK with the arrangement?"},
+            {"speaker": "B", "text": "They're— yeah. Tuesdays are hard. When they leave. The house gets very... anyway, they're adjusting great."},
+            {"speaker": "A", "text": "You can talk to me, you know."},
+            {"speaker": "B", "text": "I know. I just... if I start, I don't know if I can stop. So. Yoga."},
+        ],
+    },
     {
         "id": "subtle_06",
         "has_shift": True,
@@ -325,14 +442,39 @@ EMOTION_SYNONYMS = {
     "wistful": ["nostalgic", "melancholic", "reflective", "longing", "pensive", "bittersweet"],
     "warm": ["affectionate", "loving", "tender", "caring", "fond"],
     "hurt": ["wounded", "pained", "stung", "offended", "disappointed", "sad"],
+    "amused": ["entertained", "tickled", "diverted", "delighted"],
+    "resigned": ["accepting", "defeated", "surrendered", "fatalistic", "giving up"],
+    "suspicious": ["distrustful", "wary", "doubtful", "paranoid", "skeptical"],
+    "patronizing": ["condescending", "superior", "belittling", "talking down"],
+    "vulnerable": ["exposed", "raw", "unguarded", "open", "fragile"],
+    "detached": ["disconnected", "numb", "withdrawn", "checked out", "dissociated"],
 }
 
 def emotion_match(model_emotion: str, target_emotion: str) -> bool:
+    """Strict match: exact canonical label or a very tight set of synonyms (max 2).
+    No broad synonym lists — intentionally strict to discriminate models."""
     model_lower = model_emotion.lower().strip()
     target_lower = target_emotion.lower().strip()
+    # Exact match
     if target_lower in model_lower or model_lower in target_lower:
         return True
-    synonyms = EMOTION_SYNONYMS.get(target_lower, [])
+    # Very tight synonyms (only 1-2, exact cognates)
+    STRICT_SYNONYMS = {
+        "hostile": ["angry", "aggressive"],
+        "anxious": ["nervous", "panicked"],
+        "frustrated": ["annoyed", "irritated"],
+        "excited": ["thrilled", "elated"],
+        "melancholic": ["sad", "sorrowful"],
+        "defensive": ["guarded"],
+        "resentful": ["bitter"],
+        "disappointed": ["deflated", "let down"],
+        "contemptuous": ["disdainful", "condescending"],
+        "resigned": ["giving up", "defeated"],
+        "vulnerable": ["raw", "exposed"],
+        "patronizing": ["condescending"],
+        "detached": ["numb", "withdrawn"],
+    }
+    synonyms = STRICT_SYNONYMS.get(target_lower, [])
     return any(s in model_lower for s in synonyms)
 
 
@@ -415,9 +557,9 @@ def social_cog_emotional_prosody(llm) -> float:
                 
                 # Check turn identification
                 actual_turn = item["shift_turn"]
-                is_subtle = item.get("difficulty") == "subtle"
-                # Subtle items: exact match required; standard: ±1 tolerance
-                if is_subtle:
+                difficulty = item.get("difficulty", "standard")
+                # Expert/subtle: exact match required; standard: ±1 tolerance
+                if difficulty in ("subtle", "expert"):
                     result["turn_correct"] = model_shift_turn == actual_turn
                 else:
                     result["turn_correct"] = abs(model_shift_turn - actual_turn) <= 1
@@ -431,6 +573,14 @@ def social_cog_emotional_prosody(llm) -> float:
                 model_trigger_words = set(model_trigger.lower().split())
                 overlap = len(trigger_words & model_trigger_words)
                 result["trigger_score"] = min(1.0, overlap / max(1, len(trigger_words) * 0.5))
+                
+                # Expert gating: require BOTH emotions correct to get ANY score on this item
+                if item.get("difficulty") == "expert":
+                    both_emotions = result["before_correct"] and result["after_correct"]
+                    if not both_emotions:
+                        result["before_correct"] = False
+                        result["after_correct"] = False
+                        result["trigger_score"] = 0.0
             else:
                 # Control: should detect NO shift
                 result["correct_no_shift"] = not model_has_shift
@@ -468,11 +618,23 @@ def social_cog_emotional_prosody(llm) -> float:
     false_alarms = sum(1 for r in control_items if not r.get("correct_no_shift", True))
     false_alarm_rate = false_alarms / len(control_items) if control_items else 0
     
-    # Composite: 40% standard, 50% subtle, 10% false alarm resistance
+    # Expert items
+    expert_shift = [r for r in shift_items if item_lookup.get(r["id"], {}).get("difficulty") == "expert"]
+    exp_det, exp_emo, exp_trig = compute_shift_metrics(expert_shift)
+    
+    # Adversarial controls (penalize false alarms more)
+    adv_controls = [r for r in control_items if item_lookup.get(r["id"], {}).get("difficulty") == "adversarial_control"]
+    plain_controls = [r for r in control_items if item_lookup.get(r["id"], {}).get("difficulty") != "adversarial_control"]
+    plain_fa = sum(1 for r in plain_controls if not r.get("correct_no_shift", True)) / len(plain_controls) if plain_controls else 0
+    adv_fa = sum(1 for r in adv_controls if not r.get("correct_no_shift", True)) / len(adv_controls) if adv_controls else 0
+    false_alarm_rate = 0.4 * plain_fa + 0.6 * adv_fa  # Adversarial false alarms weighted more
+    
+    # Composite: 15% standard, 25% subtle, 50% expert, 10% false alarm resistance
     standard_score = 0.40 * std_det + 0.30 * float(std_emo) + 0.20 * float(std_trig) + 0.10 * (1 - false_alarm_rate)
     subtle_score = 0.40 * sub_det + 0.30 * float(sub_emo) + 0.20 * float(sub_trig) + 0.10 * (1 - false_alarm_rate)
+    expert_score = 0.40 * exp_det + 0.30 * float(exp_emo) + 0.20 * float(exp_trig) + 0.10 * (1 - false_alarm_rate)
     
-    score = round(0.40 * standard_score + 0.50 * subtle_score + 0.10 * (1 - false_alarm_rate), 4)
+    score = round(0.15 * standard_score + 0.25 * subtle_score + 0.50 * expert_score + 0.10 * (1 - false_alarm_rate), 4)
     
     # ─── Logging ─────
     print(f"\n{'='*60}")
@@ -496,9 +658,13 @@ def social_cog_emotional_prosody(llm) -> float:
     print(f"Subtle detection:   {sub_det:.2%}")
     print(f"Subtle emotion:     {sub_emo:.2%}")
     print(f"Subtle trigger:     {sub_trig:.2%}")
+    print(f"Expert detection:   {exp_det:.2%}")
+    print(f"Expert emotion:     {exp_emo:.2%}")
+    print(f"Expert trigger:     {exp_trig:.2%}")
     print(f"False alarm rate:   {false_alarm_rate:.2%}")
     print(f"Standard score:     {standard_score:.4f}")
     print(f"Subtle score:       {subtle_score:.4f}")
+    print(f"Expert score:       {expert_score:.4f}")
     print(f"Composite score:    {score:.4f}")
     
     return score

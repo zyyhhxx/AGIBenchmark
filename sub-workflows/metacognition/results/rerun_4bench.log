@@ -1,0 +1,27 @@
+Sat Apr 11 23:57:58 UTC 2026: Starting 4-benchmark rerun
+
+Sat Apr 11 23:57:58 UTC 2026: RUN attention_selective x Claude Opus 4.6 (anthropic.claude-opus-4-6-v1)
+  ✅ Score=0.815 Duration=165.3s
+Sun Apr 12 00:00:47 UTC 2026: SKIP attention_selective x Claude Sonnet 4.6 (already scored)
+Sun Apr 12 00:00:47 UTC 2026: SKIP attention_selective x DeepSeek-R1 (already scored)
+Sun Apr 12 00:00:47 UTC 2026: SKIP attention_selective x GLM 4.7 (already scored)
+Sun Apr 12 00:00:47 UTC 2026: SKIP attention_selective x GPT-OSS-120B (already scored)
+Sun Apr 12 00:00:47 UTC 2026: SKIP attention_selective x Llama 3.3 70B (already scored)
+Sun Apr 12 00:00:47 UTC 2026: SKIP attention_selective x Llama 4 Maverick 17B (already scored)
+Sun Apr 12 00:00:47 UTC 2026: SKIP attention_selective x Ministral 3B (already scored)
+Sun Apr 12 00:00:47 UTC 2026: SKIP attention_selective x Nova Pro (already scored)
+Sun Apr 12 00:00:47 UTC 2026: SKIP attention_selective x Qwen3 Next 80B (already scored)
+
+Sun Apr 12 00:00:47 UTC 2026: RUN learning_curves x Claude Opus 4.6 (anthropic.claude-opus-4-6-v1)
+  ❌ No result output. Last 5 lines:
+
+
+Sun Apr 12 00:03:01 UTC 2026: RUN learning_curves x Claude Sonnet 4.6 (anthropic.claude-sonnet-4-6)
+  ❌ No result output. Last 5 lines:
+
+
+Sun Apr 12 00:06:43 UTC 2026: RUN learning_curves x DeepSeek-R1 (deepseek.r1-v1:0)
+  ❌ No result output. Last 5 lines:
+
+
+Sun Apr 12 00:07:25 UTC 2026: RUN learning_curves x GLM 4.7 (zai.glm-4.7)
