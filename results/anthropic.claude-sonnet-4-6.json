@@ -1,7 +1,7 @@
 {
   "model": "anthropic.claude-sonnet-4-6",
   "model_label": "Claude Sonnet 4.6",
-  "timestamp": "2026-04-12T01:12:39.549276+00:00",
+  "timestamp": "2026-04-12T01:20:04.640772+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.9886,
@@ -124,9 +124,9 @@
       "duration_s": 248.0
     },
     "social_cog_emotional_prosody": {
-      "score": 0.6042,
+      "score": 0.5057,
       "error": null,
-      "duration_s": 215.6
+      "duration_s": 218.6
     }
   }
 }

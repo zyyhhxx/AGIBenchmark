@@ -450,31 +450,33 @@ EMOTION_SYNONYMS = {
     "detached": ["disconnected", "numb", "withdrawn", "checked out", "dissociated"],
 }
 
-def emotion_match(model_emotion: str, target_emotion: str) -> bool:
-    """Strict match: exact canonical label or a very tight set of synonyms (max 2).
-    No broad synonym lists — intentionally strict to discriminate models."""
+def emotion_match(model_emotion: str, target_emotion: str, strict: bool = False) -> bool:
+    """Match model emotion to target. strict=True uses narrow synonyms only (for expert items)."""
     model_lower = model_emotion.lower().strip()
     target_lower = target_emotion.lower().strip()
-    # Exact match
     if target_lower in model_lower or model_lower in target_lower:
         return True
-    # Very tight synonyms (only 1-2, exact cognates)
-    STRICT_SYNONYMS = {
-        "hostile": ["angry", "aggressive"],
-        "anxious": ["nervous", "panicked"],
-        "frustrated": ["annoyed", "irritated"],
-        "excited": ["thrilled", "elated"],
-        "melancholic": ["sad", "sorrowful"],
-        "defensive": ["guarded"],
-        "resentful": ["bitter"],
-        "disappointed": ["deflated", "let down"],
-        "contemptuous": ["disdainful", "condescending"],
-        "resigned": ["giving up", "defeated"],
-        "vulnerable": ["raw", "exposed"],
-        "patronizing": ["condescending"],
-        "detached": ["numb", "withdrawn"],
-    }
-    synonyms = STRICT_SYNONYMS.get(target_lower, [])
+    if strict:
+        STRICT_SYNONYMS = {
+            "hostile": ["angry", "aggressive"],
+            "anxious": ["nervous", "panicked"],
+            "frustrated": ["annoyed", "irritated"],
+            "excited": ["thrilled", "elated"],
+            "melancholic": ["sad", "sorrowful"],
+            "defensive": ["guarded"],
+            "resentful": ["bitter"],
+            "disappointed": ["deflated", "let down"],
+            "contemptuous": ["disdainful", "condescending"],
+            "resigned": ["giving up", "defeated"],
+            "vulnerable": ["raw", "exposed"],
+            "patronizing": ["condescending"],
+            "detached": ["numb", "withdrawn"],
+            "amused": ["entertained"],
+            "suspicious": ["distrustful", "wary"],
+        }
+        synonyms = STRICT_SYNONYMS.get(target_lower, [])
+    else:
+        synonyms = EMOTION_SYNONYMS.get(target_lower, [])
     return any(s in model_lower for s in synonyms)
 
 
@@ -564,9 +566,10 @@ def social_cog_emotional_prosody(llm) -> float:
                 else:
                     result["turn_correct"] = abs(model_shift_turn - actual_turn) <= 1
                 
-                # Check emotion labels
-                result["before_correct"] = emotion_match(model_before, item["emotion_before"])
-                result["after_correct"] = emotion_match(model_after, item["emotion_after"])
+                # Check emotion labels (strict for expert items)
+                is_expert = item.get("difficulty") == "expert"
+                result["before_correct"] = emotion_match(model_before, item["emotion_before"], strict=is_expert)
+                result["after_correct"] = emotion_match(model_after, item["emotion_after"], strict=is_expert)
                 
                 # Check trigger (keyword overlap)
                 trigger_words = set(item["trigger"].lower().split())

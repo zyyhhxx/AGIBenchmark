@@ -1,7 +1,7 @@
 {
   "model": "anthropic.claude-opus-4-6-v1",
   "model_label": "Claude Opus 4.6",
-  "timestamp": "2026-04-12T01:15:42.803581+00:00",
+  "timestamp": "2026-04-12T01:16:21.864448+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.9947,
@@ -124,9 +124,9 @@
       "duration_s": 346.8
     },
     "social_cog_emotional_prosody": {
-      "score": 0.5254,
+      "score": 0.5201,
       "error": null,
-      "duration_s": 305.7
+      "duration_s": 329.4
     }
   }
 }

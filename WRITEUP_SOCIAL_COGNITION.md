@@ -51,7 +51,7 @@ We evaluated 10 models via Amazon Bedrock:
 |------|------|-----|-------|-------------------|---------------------|
 | False Belief (ToM) | 0.710 | 0.178 | 0.623 | Llama 4 (1.00) | GPT-OSS-120B (0.38) |
 | Pragmatic Inference | 0.733 | 0.220 | 0.652 | GPT-OSS-120B (0.96) | Nova Pro (0.30) |
-| Sarcasm Detection | 0.839 | 0.141 | 0.481 | GLM 4.7 (0.95) | Llama 4 (0.46) |
+| Sarcasm Detection | 0.839 | 0.141 | 0.481 | GLM 4.7 (0.94) | Llama 4 (0.46) |
 | Emotional Prosody | 0.808 | 0.049 | 0.172 | Qwen3 80B (0.86) | Ministral 3B (0.69) |
 
 **Insight 1 — No model dominates social cognition.** Unlike other tracks where Claude Opus or DeepSeek-R1 consistently lead, social cognition shows varied top performers: Llama 4 leads ToM, GPT-OSS-120B leads pragmatics, GLM 4.7 leads sarcasm, Qwen3 leads prosody. This suggests social cognitive abilities are shaped by training data composition (cultural exposure, dialogue data) rather than raw model scale.
@@ -60,7 +60,7 @@ We evaluated 10 models via Amazon Bedrock:
 
 **Insight 3 — Pragmatic inference shows surprising inversions.** GPT-OSS-120B (0.96) dramatically outperforms Claude Opus (0.87) on pragmatic inference, while Nova Pro (0.30) collapses to near-floor. This wide range (0.652) suggests that conversational pragmatics — understanding speaker intent, Gricean maxim violations, and social context — varies dramatically across model families in ways not predicted by scale alone.
 
-**Insight 4 — Sarcasm and prosody reveal a dissociation.** Llama 4 Maverick scores 0.46 on sarcasm (worst) but 0.82 on emotional prosody (near-top). Conversely, GLM 4.7 leads sarcasm (0.95) but scores below average on prosody (0.77). This double dissociation suggests sarcasm detection (requiring integration of incongruity, context, and speaker intent) taps different social-cognitive resources than emotional state inference.
+**Insight 4 — Sarcasm and prosody reveal a dissociation.** Llama 4 Maverick scores 0.46 on sarcasm (worst) but 0.82 on emotional prosody (near-top). Conversely, GLM 4.7 leads sarcasm (0.94) but scores below average on prosody (0.77). This double dissociation suggests sarcasm detection (requiring integration of incongruity, context, and speaker intent) taps different social-cognitive resources than emotional state inference.
 
 **Average cross-benchmark std = 0.147**, demonstrating good overall discrimination. Pragmatic inference (std = 0.220) and false belief (std = 0.178) are the strongest discriminators.
 

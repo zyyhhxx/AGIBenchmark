@@ -53,7 +53,7 @@ We evaluated 10 models via Amazon Bedrock (9 for N-back due to Qwen3 OOM):
 | CRT | 0.681 | 0.150 | 0.460 | Claude Opus (0.91) | Ministral 3B (0.45) |
 | N-back | 0.889 | 0.182 | 0.486 | Claude Opus (1.00) | Ministral 3B (0.51) |
 | Task Switching | 0.881 | 0.116 | 0.288 | Claude Opus (1.00) | Nova Pro (0.71) |
-| Tower of London | 0.252 | 0.280 | 0.800 | Claude Opus (0.80) | Claude Sonnet (0.00) |
+| Tower of London | 0.252 | 0.280 | 0.800 | Claude Opus (0.80) | 3 models (0.00) |
 | WCST | 0.607 | 0.237 | 0.739 | Claude Opus (1.00) | Ministral 3B (0.26) |
 
 **Insight 1 — Tower of London is the hardest benchmark.** Mean score 0.252, with 3 models scoring 0.000, makes ToL the most challenging task across all 5 tracks. Multi-step planning with look-ahead appears to be a genuine capability gap — even mid-tier models (Nova Pro: 0.28, Qwen3: 0.29) barely exceed chance. Only Claude Opus (0.80) and GPT-OSS-120B (0.68) demonstrate reliable planning depth, suggesting that planning may emerge only at the largest scales.

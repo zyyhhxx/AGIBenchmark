@@ -1,5 +1,13 @@
 # KNOWLEDGE.md — AGI Benchmark
 
+## Writeup Score Verification — All Tracks (2026-04-12)
+- Calibration (metacog): mean=0.165, std=0.332 — only Claude Opus achieves meaningful BSS; 6 models score exactly 0.000 (DeepSeek-R1, Llama 3.3, Llama 4, Ministral 3B, Nova Pro, Qwen3)
+- Canary (metacog): std=0.305, range=1.000 — Ministral 3B scores 0.000 (fails canary entirely)
+- Sarcasm top performer: GLM 4.7 at 0.9450 (not Claude models)
+- ToL (exec functions) bottom: 3 models tie at 0.000 (Claude Sonnet, GLM 4.7, Llama 4 Maverick)
+- All 5 writeup word counts verified under 1500: Attention=1102, Learning=1114, Metacognition=1263, Exec Functions=1186, Social Cognition=1190
+- Score matrix cross-check: tables in writeups match score_matrix_all_tracks.csv after fixes in this task
+
 ## Notebook Hard-Rule Violations — Cleanup Patterns (2026-04-12)
 - **Duplicate `.nbconvert.ipynb` files:** Artefact of running `jupyter nbconvert` without `--output`; safe to delete. `exec_func_crt.nbconvert.ipynb` was one such duplicate.
 - **Broken relative imports** (`from data.canary_items import ...`): kbench notebooks must be self-contained — inline all data directly in the notebook rather than importing from a sibling `data/` package. This is a hard requirement for Kaggle submission.

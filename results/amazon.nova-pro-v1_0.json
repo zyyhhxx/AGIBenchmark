@@ -1,7 +1,7 @@
 {
   "model": "amazon.nova-pro-v1:0",
   "model_label": "Nova Pro",
-  "timestamp": "2026-04-12T01:01:53.263389+00:00",
+  "timestamp": "2026-04-12T01:20:04.987196+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.726,
@@ -127,6 +127,11 @@
       "score": 0.682,
       "error": null,
       "duration_s": 467.5
+    },
+    "social_cog_emotional_prosody": {
+      "score": 0.4839,
+      "error": null,
+      "duration_s": 81.3
     }
   }
 }
