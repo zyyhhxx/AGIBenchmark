@@ -189,4 +189,5 @@ def learning_curves(llm) -> float:
 
 
 # ─── Run ────────────────────────────────────────────────────────────
-learning_curves.run(llm=kbench.llm)
+if __name__ == '__main__':
+    learning_curves.run(llm=kbench.llm)
