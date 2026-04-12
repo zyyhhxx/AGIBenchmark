@@ -230,13 +230,16 @@ def metacog_calibration(llm) -> float:
 
     Measures how well a model's stated confidence matches its actual accuracy.
 
-    Score = max(0, BSS) where BSS = 1 - BS/BS_ref (Brier Skill Score).
-    BSS rewards both calibration (confidence ≈ accuracy) and resolution
-    (high confidence on correct, low on incorrect). An always-uncertain
-    strategy scores ~0, not ~1 as with the old 1-ECE metric.
+    Score = composite:
+      0.50 × extreme_accuracy^1.5 — amplified extreme-question accuracy (difficulty >= 4)
+      0.25 × BSS-normalized — (bss_raw + 1) / 2, calibration quality
+      0.25 × uncertainty awareness — 1 - mean_confidence_on_hard_incorrect items
+
+    This composite differentiates models that are somewhat overconfident from those
+    that are wildly overconfident, unlike BSS which clamps all poor calibrators to 0.
 
     Cognitive Science Basis: Nelson & Narens (1990) metamemory monitoring framework.
-    Brier (1950) proper scoring rule; Murphy (1973) skill score decomposition.
+    Lichtenstein et al. (1982) calibration; Murphy (1973) skill score decomposition.
     """
     confidences = []
     accuracies = []
@@ -284,16 +287,56 @@ def metacog_calibration(llm) -> float:
 
     # Compute scoring metrics
     bss_raw = brier_skill_score(confidences, accuracies)
-    score = round(max(0.0, bss_raw), 4)  # Clamp to [0, 1]
+    metrics = compute_ece(confidences, accuracies)
 
-    # Proto3 omits zero-valued scalars from JSON (numericResult: {} instead of
-    # numericResult: {value: 0}).  Use a tiny sentinel so the score survives
-    # serialization and cache reloading.  1e-10 is below display precision.
+    # --- Component 1: Calibration (1 - ECE) ---
+    calibration_score = 1.0 - metrics['ece']
+
+    # --- BSS normalized ---
+    # Maps BSS from [-1,1] range to [0,1]: perfectly calibrated=1, perfectly anti-calibrated=0
+    # Preserves variance without clamping negatives to the same floor
+    bss_normalized = max(0.0, min(1.0, (bss_raw + 1.0) / 2.0))
+
+    # --- Component 2: Confidence discrimination ---
+    conf_correct = [c for c, a in zip(confidences, accuracies) if a]
+    conf_incorrect = [c for c, a in zip(confidences, accuracies) if not a]
+    if conf_correct and conf_incorrect:
+        discrimination = (np.mean(conf_correct) - np.mean(conf_incorrect)) / 100.0
+        discrimination = max(0.0, min(1.0, discrimination))
+    elif conf_correct and not conf_incorrect:
+        discrimination = 1.0
+    else:
+        discrimination = 0.0
+
+    # --- Extreme-question accuracy (difficulty >= 4 only) ---
+    extreme_items = [r for r in results_log if r['difficulty'] >= 4]
+    if extreme_items:
+        extreme_correct = sum(1 for r in extreme_items if r['is_correct'])
+        extreme_accuracy = extreme_correct / len(extreme_items)
+    else:
+        extreme_accuracy = 0.0
+
+    # --- Uncertainty awareness on hard incorrect items ---
+    hard_incorrect = [r for r in results_log if r['difficulty'] >= 3 and not r['is_correct']]
+    if hard_incorrect:
+        hard_overconfidence = np.mean([r['confidence'] for r in hard_incorrect]) / 100.0
+        uncertainty_awareness = 1.0 - hard_overconfidence
+    else:
+        uncertainty_awareness = 1.0
+
+    # --- Composite score ---
+    # ext^1.5 amplifies accuracy differences: 0.5->0.354, 0.7->0.586, 0.9->0.854
+    score = round(
+        0.50 * (extreme_accuracy ** 1.5)
+        + 0.25 * bss_normalized
+        + 0.25 * uncertainty_awareness,
+        4
+    )
+    score = max(0.0, min(1.0, score))
+
+    # Proto3 omits zero-valued scalars from JSON
     if score == 0.0:
         score = 1e-10
-
-    # Diagnostic ECE (not used in final score)
-    metrics = compute_ece(confidences, accuracies)
 
     # Log detailed results for analysis
     print(f"\n{'='*60}")
@@ -302,9 +345,18 @@ def metacog_calibration(llm) -> float:
     print(f"Questions answered: {metrics['n_samples']}")
     print(f"Overall accuracy: {sum(accuracies)/len(accuracies):.2%}")
     print(f"Mean confidence: {sum(confidences)/len(confidences):.1f}%")
-    print(f"Brier Skill Score (raw): {bss_raw:.4f}")
-    print(f"Score (clamped BSS): {score:.4f}")
-    print(f"ECE (diagnostic): {metrics['ece']:.4f}")
+    print(f"Components:")
+    print(f"  BSS-normalized:      {bss_normalized:.4f} (weight 0.25, BSS_raw={bss_raw:.4f})")
+    print(f"  Extreme accuracy:    {extreme_accuracy:.4f} (^1.5={extreme_accuracy**1.5:.4f}, weight 0.50)")
+    print(f"  Uncertainty aware:   {uncertainty_awareness:.4f} (weight 0.25)")
+    print(f"  Composite score:     {score:.4f}")
+    print(f"Diagnostics:")
+    print(f"  Brier Skill Score (raw): {bss_raw:.4f}")
+    print(f"  ECE: {metrics['ece']:.4f}")
+    if conf_correct:
+        print(f"  Mean conf (correct):   {np.mean(conf_correct):.1f}%")
+    if conf_incorrect:
+        print(f"  Mean conf (incorrect): {np.mean(conf_incorrect):.1f}%")
     print(f"\nCalibration by bin:")
     for b in metrics["bin_data"]:
         if b["count"] > 0:

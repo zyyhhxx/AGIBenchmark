@@ -1,6 +1,6 @@
 track,benchmark,Claude Opus 4.6,DeepSeek-R1,GPT-OSS-120B,Llama 3.3 70B,Qwen3 Next 80B,Nova Pro,Llama 4 Maverick 17B,Claude Sonnet 4.6,GLM 4.7,Ministral 3B
 metacognition,metacog_canary,0.9947,0.8670,0.8030,1.0000,0.9920,0.7260,0.9280,0.9886,0.6520,0.0000
-metacognition,metacog_calibration,,0.0000,,,,,0.0000,,,
+metacognition,metacog_calibration,0.5996,0.5914,0.6090,0.4209,0.4907,0.4730,0.5668,0.5748,0.5226,0.3501
 metacognition,metacog_control,0.6900,0.4533,0.6887,0.6617,0.4246,0.7479,0.6150,0.3500,0.6617,0.2000
 metacognition,metacog_epistemic_humility,0.7987,0.8802,0.6629,0.9200,0.9200,0.8756,0.9029,0.8376,0.8833,0.2000
 metacognition,metacog_epistemic_revision,0.9600,0.7375,0.7200,0.7500,0.8800,0.7500,0.8300,0.9600,0.7500,0.6700

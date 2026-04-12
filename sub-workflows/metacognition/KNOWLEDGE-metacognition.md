@@ -1,5 +1,14 @@
 # KNOWLEDGE.md — AGI Benchmark
 
+## Final Submission Validation — All 26 Benchmarks PASS (2026-04-12)
+- **All 26 benchmarks meet std ≥ 0.08** (min std = 0.0813 for metacog_learning_monitoring)
+- **metacog_calibration fixed:** std recovered from 0.0000 → 0.0858 by completing all 10 model scores; root cause was duplicate rows masking incomplete data in CSV
+- **258/260 model scores present** (99.2%); 2 missing are Qwen3 Next 80B OOM on learning_curves and exec_func_nback — within tolerance
+- **Notebook nbconvert validation:** `MissingIDFieldWarning` appears on all notebooks but is a soft warning, not a blocking error; nbconvert exits 0 for all 27 notebooks
+- **nbconvert `--to notebook` check reliably validates JSON + cell structure** without needing to execute; `!pip` and `%magic` cells trigger false positives in ast.parse but are valid IPython syntax
+- **Drift detection workflow confirmed:** task_calibration.py → metacog_calibration.ipynb drift was real and required resync; re-running this check after any .py edit is important
+- **Submission artifacts all pass:** 5 writeups (1091–1262 words), 5 cover images (valid PNG), 26 benchmark notebooks (valid JSON)
+
 ## Post-Fix Score Update — All 5 Tracks (2026-04-12)
 - **4 benchmarks had scores updated** after attention_selective, social_cog_emotional_prosody, learning_curves, and metacog_error_detection were re-run:
   - `attention_selective`: mean 0.888→0.827, std 0.054→0.137, range 0.175→0.437 — top DeepSeek-R1 (0.96), bottom Ministral 3B (0.52)

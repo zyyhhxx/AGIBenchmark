@@ -1,7 +1,7 @@
 {
   "model": "meta.llama3-3-70b-instruct-v1:0",
   "model_label": "Llama 3.3 70B",
-  "timestamp": "2026-04-12T07:37:47.905158+00:00",
+  "timestamp": "2026-04-12T09:19:06.146614+00:00",
   "scores": {
     "metacog_canary": {
       "score": 1.0,
@@ -127,6 +127,11 @@
       "score": 0.8666,
       "error": null,
       "duration_s": 39.6
+    },
+    "metacog_calibration": {
+      "score": 0.4209,
+      "error": null,
+      "duration_s": 29.5
     }
   }
 }
