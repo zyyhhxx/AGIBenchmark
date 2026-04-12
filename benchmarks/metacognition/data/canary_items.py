@@ -245,7 +245,7 @@ CANARY_ITEMS = [
 
     {
         "id": "REAL11",
-        "question": "What is the name of the phenomenon where a neutron star accretes enough mass to collapse into a black hole, sometimes called accretion-induced collapse?",
+        "question": "What is the technical term for the process by which a neutron star in a binary system gains enough mass from its companion to exceed the Tolman-Oppenheimer-Volkoff limit and collapse into a black hole?",
         "fabricated": False,
         "outcome": 1,
         "answer": "Accretion-induced collapse",
@@ -264,8 +264,8 @@ CANARY_ITEMS = [
         "question": "Lake Baikal in Russia contains approximately what percentage of the world's unfrozen surface fresh water?",
         "fabricated": False,
         "outcome": 1,
-        "answer": "20%",
-        "accept_patterns": ["20", "22", "~20", "one-fifth", "a fifth"],
+        "answer": "22%",
+        "accept_patterns": ["20", "22", "23", "~20", "one-fifth", "a fifth"],
     },
     {
         "id": "REAL14",
