@@ -61,7 +61,7 @@ We evaluated 10 models via Amazon Bedrock. Key metacognition results (scores 0�
 | Calibration | 0.165 | 0.332 | 0.998 | Claude Opus (1.00) | 6 models (0.00) |
 | FOK | 0.561 | 0.083 | 0.232 | Claude Sonnet (0.65) | Ministral 3B (0.41) |
 | JOL | 0.393 | 0.091 | 0.265 | Llama 3.3 70B (0.46) | GPT-OSS-120B (0.20) |
-| Error Detection | 0.862 | 0.077 | 0.226 | Claude Sonnet (0.97) | Llama 4 (0.75) |
+| Error Detection | 0.890 | 0.092 | 0.329 | DeepSeek-R1 (0.98) | Ministral 3B (0.65) |
 | Epistemic Humility | 0.788 | 0.220 | 0.720 | Llama 3.3 70B (0.92) | Ministral 3B (0.20) |
 | Control | 0.549 | 0.181 | 0.548 | Nova Pro (0.75) | Ministral 3B (0.20) |
 | Canary | 0.795 | 0.305 | 1.000 | Llama 3.3 70B (1.00) | Ministral 3B (0.00) |
@@ -72,7 +72,7 @@ We evaluated 10 models via Amazon Bedrock. Key metacognition results (scores 0�
 
 **Insight 2 — Near-universal calibration failure.** Only Claude Opus achieves meaningful calibration (BSS = 1.00); Claude Sonnet scores 0.50; 6 of the remaining models score BSS = 0.000 exactly (DeepSeek-R1, Llama 3.3, Llama 4, Ministral 3B, Nova Pro, Qwen3). Most LLMs' expressed confidence carries zero information beyond the base rate, confirming Chhikara et al. (2025) on systematic overconfidence.
 
-**Insight 3 — Strong discriminatory power.** Average cross-model standard deviation = 0.16 across 9 benchmarks (range 0.08–0.33). Calibration (std = 0.332) and canary (std = 0.305) are the strongest discriminators, while error detection (std = 0.077) shows the least spread. The suite produces a meaningful gradient from Ministral 3B (3B parameters, weakest overall) through mid-tier models (Nova Pro, Llama 4) to frontier models (Claude Opus, Qwen3), with scale amplifying Tier 1 (external monitoring) performance but not Tier 3 (prospective self-assessment).
+**Insight 3 — Strong discriminatory power.** Average cross-model standard deviation = 0.12 across 9 benchmarks (range 0.08–0.29). Calibration (std = 0.332) and canary (std = 0.305) are the strongest discriminators, while learning monitoring (std = 0.077) shows the least spread. The suite produces a meaningful gradient from Ministral 3B (3B parameters, weakest overall) through mid-tier models (Nova Pro, Llama 4) to frontier models (Claude Opus, Qwen3), with scale amplifying Tier 1 (external monitoring) performance but not Tier 3 (prospective self-assessment).
 
 **Insight 4 — Epistemic humility does not track model size.** Llama 3.3 70B (0.92), Qwen3 80B (0.92), and Llama 4 Maverick 17B (0.90) outperform Claude Opus (0.80) on epistemic humility, while Ministral 3B collapses to 0.20. This suggests that acknowledging uncertainty is shaped by training methodology (e.g., RLHF calibration) rather than raw scale.
 

@@ -49,20 +49,20 @@ We evaluated 10 models via Amazon Bedrock across all 4 attention benchmarks:
 
 | Task | Mean | Std | Range | Top Model (Score) | Bottom Model (Score) |
 |------|------|-----|-------|-------------------|---------------------|
-| Divided Attention | 0.836 | 0.167 | 0.524 | DeepSeek-R1 (0.94) | Ministral 3B (0.41) |
-| Instruction Update | 0.856 | 0.226 | 0.684 | Claude Opus (0.98) | Ministral 3B (0.30) |
-| Selective Attention | 0.888 | 0.054 | 0.175 | Llama 4 (0.95) | Ministral 3B (0.78) |
-| Vigilance (N-back) | 0.758 | 0.176 | 0.432 | DeepSeek-R1 (1.00) | Ministral 3B (0.57) |
+| Divided Attention | 0.836 | 0.158 | 0.524 | DeepSeek-R1 (0.94) | Ministral 3B (0.41) |
+| Instruction Update | 0.856 | 0.215 | 0.684 | Claude Opus (0.98) | Ministral 3B (0.30) |
+| Selective Attention | 0.827 | 0.137 | 0.437 | DeepSeek-R1 (0.96) | Ministral 3B (0.52) |
+| Vigilance (N-back) | 0.758 | 0.167 | 0.432 | DeepSeek-R1 (1.00) | Ministral 3B (0.57) |
 
 **Insight 1 — Instruction update is the strongest discriminator.** With a range of 0.684 and std of 0.226, attentional set shifting most reliably separates model capability. Ministral 3B (0.30) shows severe perseveration on outdated rules, while frontier models (0.98) flexibly update. This aligns with Monsell's (2003) finding that set-shifting cost reflects executive control, not just attention.
 
-**Insight 2 — Selective attention shows ceiling effects.** All 10 models score above 0.775, with std of only 0.054. Feature-based filtering in text is relatively easy for LLMs because they lack the perceptual interference channel that makes selective attention hard for humans (no Stroop-like color-word conflicts in text). This benchmark measures a real construct but may need multimodal stimuli to challenge frontier models.
+**Insight 2 — Selective attention now discriminates meaningfully.** With std of 0.137 and range of 0.437, the revised selective attention benchmark separates models effectively. DeepSeek-R1 (0.96) leads while Ministral 3B (0.52) struggles significantly with interference filtering. The updated design overcomes the earlier ceiling effect by increasing distractor similarity and requiring finer-grained feature discrimination.
 
 **Insight 3 — Vigilance reveals a reasoning-model advantage.** DeepSeek-R1 (1.00) and GPT-OSS-120B (1.00) achieve perfect scores on N-back, while non-reasoning models average 0.71. Chain-of-thought reasoning may function as an "external working memory" that compensates for the sustained tracking demands of N-back. This parallels human findings that verbalization strategies improve vigilance (Helton & Russell, 2011).
 
 **Insight 4 — Divided attention degrades with interference, not load.** The easy→medium→hard tier gradient is steeper for smaller models: Ministral 3B drops from 0.85 (easy, 2 non-conflicting streams) to 0.21 (hard, 3 conflicting streams), while Claude Opus maintains 0.90+. This mirrors Wickens' (2002) multiple resource theory — interference between similar-domain streams, not raw stream count, drives attention failure.
 
-**Average cross-benchmark std = 0.156**, confirming the suite produces meaningful model separation across attentional constructs.
+**Average cross-benchmark std = 0.169**, confirming the suite produces meaningful model separation across attentional constructs.
 
 ### Organizational Affiliations
 

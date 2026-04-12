@@ -1,5 +1,16 @@
 # KNOWLEDGE.md — AGI Benchmark
 
+## Post-Fix Score Update — All 5 Tracks (2026-04-12)
+- **4 benchmarks had scores updated** after attention_selective, social_cog_emotional_prosody, learning_curves, and metacog_error_detection were re-run:
+  - `attention_selective`: mean 0.888→0.827, std 0.054→0.137, range 0.175→0.437 — top DeepSeek-R1 (0.96), bottom Ministral 3B (0.52)
+  - `learning_curves`: mean 0.654→0.587, std 0.068→0.127, range 0.180→0.346 — top Claude Opus (0.79), bottom Ministral 3B (0.44)
+  - `metacog_error_detection`: mean 0.862→0.890, std 0.077→0.092, range 0.226→0.329 — top DeepSeek-R1 (0.98), bottom Ministral 3B (0.65)
+  - `social_cog_emotional_prosody`: mean 0.808→0.368, std 0.049→0.084, range 0.172→0.306 — top Claude Opus (0.56), bottom Nova Pro (0.25)
+- **metacog_calibration CSV had only 2 entries (both 0.0000)** — determined to be incomplete data; preserved original writeup row (10 models, mean 0.165, std 0.332) rather than overwriting with degraded data
+- **All 4 re-run benchmarks now meet std ≥ 0.08 threshold** (were below threshold pre-fix)
+- **social_cog_emotional_prosody floor effect discovered:** even top model Claude Opus only scores 0.56; inferring emotion from described vocal/physical cues is a genuine frontier challenge
+- All 5 cover images regenerated (1782×1181px, ~80–99 KB)
+
 ## Pre-Submission Audit — All 5 Tracks (2026-04-12)
 - **Audit date:** 2026-04-12; covers all 26 benchmarks across 5 tracks
 - **4 benchmarks below std ≥ 0.08 threshold:**

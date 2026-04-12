@@ -49,10 +49,10 @@ We evaluated 10 models via Amazon Bedrock (9 for learning_curves due to Qwen3 OO
 
 | Task | Mean | Std | Range | Top Model (Score) | Bottom Model (Score) |
 |------|------|-----|-------|-------------------|---------------------|
-| Transfer | 0.785 | 0.255 | 0.720 | Claude Opus (1.00) | Ministral 3B (0.28) |
-| Interference | 0.547 | 0.272 | 0.880 | Claude Sonnet (1.00) | Claude Opus (0.12) |
-| Curriculum | 0.638 | 0.112 | 0.300 | Llama 3.3 70B (0.76) | Nova Pro (0.46) |
-| Learning Curves | 0.654 | 0.068 | 0.180 | Claude Opus (0.73) | Llama 3.3 70B (0.55) |
+| Transfer | 0.785 | 0.241 | 0.720 | Claude Opus (1.00) | Ministral 3B (0.28) |
+| Interference | 0.547 | 0.258 | 0.880 | Claude Sonnet (1.00) | Claude Opus (0.12) |
+| Curriculum | 0.638 | 0.106 | 0.300 | Llama 3.3 70B (0.76) | Nova Pro (0.46) |
+| Learning Curves | 0.587 | 0.127 | 0.346 | Claude Opus (0.79) | Ministral 3B (0.44) |
 
 **Insight 1 — Interference is the strongest discriminator.** With range 0.880 and std 0.272, interference resistance shows the widest model separation. Remarkably, Claude Opus (0.12) — the strongest model on most other tasks — scores lowest, while Claude Sonnet (1.00) achieves perfect scores. This suggests that larger models may be *more susceptible* to interference from co-present competing information, possibly due to stronger associative retrieval from all context.
 
@@ -60,9 +60,9 @@ We evaluated 10 models via Amazon Bedrock (9 for learning_curves due to Qwen3 OO
 
 **Insight 3 — Curriculum sensitivity is surprisingly low.** All models score between 0.46–0.76 regardless of presentation order, with std of only 0.112. Unlike human learners, where curriculum structure strongly affects acquisition (Ausubel, 1968), LLMs appear relatively order-insensitive within their context window. This may reflect the parallel nature of transformer attention vs. sequential human encoding.
 
-**Insight 4 — Learning curves are flat rather than power-law.** Most models show rapid acquisition (near-asymptotic after 2–3 examples) rather than the gradual power-law improvement seen in humans (Newell & Rosenbloom, 1981). This "step function" learning pattern — either the model grasps the rule or it doesn't — is a qualitative departure from human learning dynamics. The narrow range (0.180) reflects this: more examples help little once the pattern is identified.
+**Insight 4 — Learning curves now reveal meaningful separation.** The revised learning curves benchmark (std 0.127, range 0.346) shows that models differ substantially in acquisition rate. Claude Opus (0.79) leads while Ministral 3B (0.44) struggles to improve with additional examples. Most models still show faster-than-human acquisition, but the updated difficulty calibration prevents the ceiling effects that previously compressed scores into a narrow band.
 
-**Average cross-benchmark std = 0.177**, confirming meaningful model separation, driven primarily by transfer and interference.
+**Average cross-benchmark std = 0.183**, confirming meaningful model separation, driven primarily by transfer and interference.
 
 ### Organizational Affiliations
 
