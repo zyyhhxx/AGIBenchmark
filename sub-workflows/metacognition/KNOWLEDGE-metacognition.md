@@ -1,5 +1,20 @@
 # KNOWLEDGE.md — AGI Benchmark
 
+## Pre-Submission Audit — All 5 Tracks (2026-04-12)
+- **Audit date:** 2026-04-12; covers all 26 benchmarks across 5 tracks
+- **4 benchmarks below std ≥ 0.08 threshold:**
+  - `metacog_error_detection`: std=0.0769 (delta -0.003, borderline)
+  - `attention_selective`: std=0.0544
+  - `learning_curves`: std=0.0682
+  - `social_cog_emotional_prosody`: std=0.0491
+- **2 benchmarks with 9/10 model scores (Qwen3 OOM):** learning_curves, exec_func_nback
+- **Notebook validation:** all 27 notebooks pass `jupyter nbconvert` syntax validation; no duplicate cells, broken imports, `.nbconvert` duplicates, or multiple `.run()` calls
+- **Naming mismatches (confirmed non-drift):** task_metacognitive_control→metacog_control, task_learning_curves→learning_curves, task_switching→exec_func_task_switch
+- **Genuine drift:** social_cog_emotional_prosody .py is ~2h newer than .ipynb (sync needed before submission)
+- **Uncommitted files:** results/qwen.qwen3-next-80b-a3b.json and sub-workflows/metacognition/results/rerun_log.txt
+- **Executive Functions:** only fully clean track (all 5 benchmarks pass std ≥ 0.08, min std=0.1161)
+- **Pattern:** borderline benchmarks (std 0.07–0.08) don't need redesign but should be monitored; hard failures (<0.06) warrant intervention before submission
+
 ## Cover Image Generation — All 5 Tracks (2026-04-12)
 - Script generates grouped bar charts from `repo/results/score_matrix_all_tracks.csv`
 - 5 representative models: Claude Opus 4.6, Claude Sonnet 4.6, Nova Pro, Llama 3.3 70B, Ministral 3B

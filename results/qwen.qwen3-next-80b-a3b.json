@@ -1,7 +1,7 @@
 {
   "model": "qwen.qwen3-next-80b-a3b",
   "model_label": "Qwen3 Next 80B",
-  "timestamp": "2026-04-12T01:22:47.139550+00:00",
+  "timestamp": "2026-04-12T01:27:11.070017+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.992,
@@ -117,6 +117,11 @@
       "score": 0.8382,
       "error": null,
       "duration_s": 266.7
+    },
+    "learning_curves": {
+      "score": null,
+      "error": "An error occurred (InternalServerException) when calling the Converse operation (reached max retries: 0): The system encountered an unexpected error during processing. Try your request again.",
+      "duration_s": 707.9
     }
   }
 }
