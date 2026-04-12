@@ -223,7 +223,7 @@ def compute_ece(confidences_0_100: list, accuracies: list, n_bins: int = 10) -> 
 
 # ─── The Benchmark Task ────────────────────────────────────────────
 
-@kbench.task(name="metacog_calibration")
+@kbench.task(name="Retrospective Calibration")
 def metacog_calibration(llm) -> float:
     """
     Metacognitive Calibration Benchmark.
