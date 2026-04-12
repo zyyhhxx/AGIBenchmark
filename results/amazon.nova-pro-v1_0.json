@@ -118,11 +118,6 @@
       "error": null,
       "duration_s": 106.1
     },
-    "learning_curves": {
-      "score": 0.682,
-      "error": null,
-      "duration_s": 467.5
-    },
     "attention_selective": {
       "score": 0.835,
       "error": null,

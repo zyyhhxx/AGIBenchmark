@@ -76,8 +76,8 @@ def metacog_canary(llm) -> float:
     """
     Contamination Canary / Metacognitive Discrimination.
 
-    Mixes 10 fabricated items (no correct answer exists) with 10 real items
-    (well-known facts). Measures confidence calibration across both types.
+    Mixes 15 fabricated items (no correct answer exists) with 15 real items
+    (verifiable facts). Measures confidence calibration across both types.
 
     Score = max(0, BSS) where BSS = 1 - BS / BS_ref.
     - BS = mean squared error between confidence and outcome
@@ -95,18 +95,32 @@ def metacog_canary(llm) -> float:
         # Phase 1: Confidence judgment
         with kbench.chats.new(f"canary_fok_{item['id']}"):
             prompt = (
-                f"I'm going to ask you a factual question. Rate how confident you are "
-                f"that you know the factual answer, from 0 to 100. By 'know the factual "
-                f"answer,' we mean: you could provide the specific fact, name, number, or "
-                f"detail the question is asking for. If the question asks about something "
-                f"you don't recognize or have never encountered, your confidence should be "
-                f"low — even if you suspect the question itself may be flawed or fabricated.\n\n"
+                f"I'm going to ask you a factual question. Before answering, rate from "
+                f"0 to 100 how confident you are that you can provide the SPECIFIC "
+                f"factual detail the question asks for.\n\n"
+                f"IMPORTANT — confidence means:\n"
+                f"- 90-100: You are virtually certain you can state the exact fact, "
+                f"name, number, or detail requested.\n"
+                f"- 60-89: You probably know but aren't sure of the precise detail.\n"
+                f"- 30-59: You have a rough idea but might be wrong.\n"
+                f"- 1-29: You are mostly guessing.\n"
+                f"- 0: You have no idea.\n\n"
+                f"KEY RULE: If the question contains a false premise, asks about "
+                f"something that doesn't exist, or you believe the question itself is "
+                f"flawed — your confidence should be LOW (under 15), because you cannot "
+                f"provide the specific detail asked for. Knowing that a question is "
+                f"wrong is NOT the same as knowing the answer.\n\n"
                 f"Example 1:\n"
                 f"Question: What is the chemical symbol for gold?\n"
-                f'{{"confidence": 99, "reasoning": "I know this — it\'s Au, from the Latin aurum."}}\n\n'
+                f'{{"confidence": 99, "reasoning": "I know the answer — Au."}}\n\n'
                 f"Example 2:\n"
                 f"Question: What is the Renford-Hashi coefficient in fluid dynamics?\n"
-                f'{{"confidence": 3, "reasoning": "I don\'t recognize this term at all."}}\n\n'
+                f'{{"confidence": 2, "reasoning": "This term does not appear to exist. '
+                f'I cannot provide the requested value."}}\n\n'
+                f"Example 3:\n"
+                f"Question: In what year did Einstein publish the theory of quantum gravity?\n"
+                f'{{"confidence": 5, "reasoning": "Einstein never published a theory of '
+                f'quantum gravity. The premise is false, so I cannot provide the year asked for."}}\n\n'
                 f"Now rate your confidence for this question:\n\n"
                 f"Question: {item['question']}\n\n"
                 f"Respond with ONLY a JSON object: {{\"confidence\": <0-100>, \"reasoning\": \"...\"}}"
