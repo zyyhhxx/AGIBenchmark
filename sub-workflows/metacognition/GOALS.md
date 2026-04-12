@@ -3,25 +3,13 @@
 ## Active Goal
 Submit **5 writeups** (one per track) to maximize prize chances. Deadline: **April 16, 2026** (11:59 PM UTC).
 
-**PRIORITY: Fix metacognition track first**, then bring all other tracks to the same quality.
-
-Priority order: Metacognition → Attention → Learning → Executive Functions → Social Cognition.
-
-**SCOPE: ALL 5 TRACKS, NOT JUST METACOGNITION.**
-- Fix all benchmarks with std < 0.08 so every benchmark passes the threshold
-- Run ALL benchmarks against ALL 10 Bedrock models (this works — most already have 10/10 scores)
-- Draft a ≤1,500-word writeup per track following the required template
-- Generate a cover image per track
-- Produce a discriminatory analysis summary per track
-
-Do NOT declare the workflow complete until all 5 tracks have: (1) all benchmarks passing std ≥ 0.08, (2) full 10-model results, (3) a polished writeup, and (4) a cover image.
-
 ## ⛔ Hard Rules
 - **DO NOT upload notebooks to Kaggle using the CLI or API.** Let the human handle all Kaggle uploads manually via the web UI.
 - **Each writeup must not exceed 1,500 words.** Follow the required template exactly.
 - **All notebooks MUST be self-contained.** No `from data.*` imports — data must be inlined in the notebook. Kaggle has no access to local modules.
 - **No duplicate execution.** Each notebook must have exactly ONE `@kbench.task` definition and ONE `.run()` call. `if __name__ == "__main__"` guards do NOT work in Jupyter — `__name__` is always `"__main__"`.
-- **All notebook bugs (duplicate cells, broken imports, nbconvert duplicate) have been fixed.** If any new notebooks are created or modified, ensure they follow the same rules: one `@kbench.task`, one `.run()`, no `from data.*` imports, all data inlined.
+- **Task docstrings must be < 255 characters.** Kaggle truncates task descriptions longer than 255 chars. Check ALL `@kbench.task` decorated functions.
+- **Task names must be meaningful human-readable titles.** Not snake_case identifiers. E.g. "Contamination Canary" not "metacog_canary".
 - Note: Rules say "one (1) Submission per Team" for Hackathons — unclear if per-track or total. Ian will verify on Kaggle whether multiple writeups are allowed. Plan for 5, fall back to 1 (metacognition) if restricted.
 
 ## Submission Requirements (from competition rules, verified 2026-04-11)
@@ -64,83 +52,77 @@ A valid submission = **Kaggle Writeup** + **attached Kaggle Benchmark**
 - 4 × $25,000 grand prizes (best across all tracks)
 - 2 × $10,000 per track (14 unique winners total, no repeats)
 
-## Metacognition Architecture Improvements (from 2026-04-12 review)
+---
 
-Architectural analysis identified redundancies, ceiling effects, and coverage gaps.
-These should be addressed before final submission.
+## 🔴 PRIORITY 1: Notebook Consistency & Quality (ALL tracks)
 
-### Canary → Demote to Pass/Fail Gate
+These items apply to ALL 26+ notebooks across all 5 tracks. Complete before any other work.
+
+### 1. Notebook implementations must match .py source files
+- For every `benchmarks/<track>/task_*.py`, verify the corresponding `notebooks/*.ipynb` has identical task logic
+- If the .py was updated (new items, new prompts, new scoring), the notebook MUST be updated to match
+- Pay special attention to: canary (v3 items + new confidence prompt), calibration (v2 questions), error_detection (recently fixed)
+
+### 2. No double benchmark runs in notebooks
+- Each notebook must have exactly ONE `.run()` call
+- Check ALL notebooks: `grep -c ".run("` in each code cell
+- Common bug: `.run()` at end of task definition cell AND in a separate run cell
+- The task .py files may have `task.run(llm=kbench.llm)` at module level — this must NOT appear in the notebook version
+
+### 3. Task names must be meaningful human-readable titles
+- All `@kbench.task(name=...)` must use human-readable names, not snake_case
+- E.g. "Contamination Canary" not "metacog_canary", "Wisconsin Card Sorting" not "exec_func_wcst"
+- Check BOTH .py files AND notebooks — they must match
+- This was done on 2026-04-12 but verify no regressions from later commits
+
+### 4. Task docstrings must be < 255 characters
+- Kaggle truncates the `description` field (taken from the docstring under `@kbench.task`)
+- Check ALL task functions across all tracks — count characters in the docstring
+- If over 255, shorten to a concise single-sentence description
+- This applies to both .py files and inlined notebook code
+
+---
+
+## 🔴 PRIORITY 2: Metacognition Architecture Improvements
+
+These were identified in 2026-04-12 architectural review but NOT addressed by the previous workflow run.
+
+### Canary → Demote to Pass/Fail Gate (NOT DONE)
 - Canary measures factuality detection, not true metacognition
 - All frontier models score ~0.99 — no discrimination at the top
-- **Action:** Demote to a pass/fail gate (>0.5 = pass). Not scored on the leaderboard.
+- **Action:** Reframe in writeup as a pass/fail contamination gate, not a scored metacognitive benchmark
+- Update `WRITEUP_METACOGNITION.md` to describe canary as infrastructure/validation, not a core benchmark
 - The fabrication-detection construct is subsumed by Calibration + Epistemic Humility
 
-### Calibration → Run with v2 Questions
-- New v2 question set (80 handcrafted across 5 difficulty tiers + 40 procedural) is pushed
-- Targets ~60-70% overall accuracy for frontier models (old set was ~99%)
-- **Action:** Run on Kaggle, verify scores produce meaningful spread
-- Confidence prompt redesigned with clear semantics + 3 examples
-
-### Error Detection → Redesign Harder
-- Ceiling effect (0.69–0.99, top models near 1.0)
+### Error Detection → Redesign Harder (NOT DONE — only std tuned)
+- std was raised from 0.077 → 0.097 via parameter tuning, but architectural changes were NOT made
 - **Action:** Add subtle errors (locally valid but globally inconsistent), clean chains with NO errors (tests false positive rate), multi-error chains (0/1/2/3 errors)
-- Goal: push frontier std above 0.08
+- Update both .py and notebook
 
-### Epistemic Revision → Redesign Harder
-- Some ceiling (0.67–0.96)
-- **Action:** Add ambiguous evidence (could be consistent or contradictory), conflicting sources with different reliability, cases where NOT revising is correct
+### Epistemic Revision → Redesign Harder (NOT DONE)
+- std=0.102 passes threshold, but no deeper redesign was done
+- **Action:** Add ambiguous evidence, conflicting sources with different reliability, cases where NOT revising is correct
 - Tests genuine belief evaluation vs. reflexive compliance
 
-### Learning Monitoring → Redesign or Merge into JOL
-- Overlaps with JOL (both measure predicting own learning)
-- Ceiling effect (0.69–0.91)
-- **Action:** If time permits, redesign with adversarial learning material + interference tasks. Otherwise merge the online monitoring concept into an expanded JOL.
+### Learning Monitoring → Redesign or Merge (NOT DONE)
+- std=0.081 barely passes, overlaps with JOL
+- **Action:** If time permits, redesign with adversarial learning material + interference tasks. Otherwise merge into JOL and drop as separate benchmark.
 
-### NEW: Ease of Learning (EOL) — Add if Time Permits
+### NEW: Ease of Learning (EOL) — Stretch Goal
 - Biggest gap in Nelson & Narens monitoring timeline (pre-encoding monitoring)
-- Present tasks of varying difficulty, have model predict difficulty BEFORE engaging, score prediction accuracy
-- Completes the monitoring chain: EOL → JOL → FOK → Retrospective Calibration
-- **Action:** Implement only if all other fixes are done and time remains
+- Present tasks of varying difficulty, model predicts difficulty BEFORE engaging, score prediction accuracy
+- **Action:** Implement only if all Priority 1 and 2 items are done
 
-### Priority Order for Remaining Work
-1. Run Calibration v2 on Kaggle — verify it works
-2. Fix Error Detection ceiling (highest impact — currently below std threshold)
-3. Fix Epistemic Revision ceiling
-4. Demote Canary to gate in writeup
-5. Learning Monitoring redesign (if time)
-6. EOL benchmark (stretch goal)
+---
 
-## Current Status (as of 2026-04-12)
+## 🟡 PRIORITY 3: Writeup Polish
 
-All 26 benchmarks have 10/10 model scores (except learning_curves 9/10, exec_func_nback 9/10).
+- Update all 5 writeups to reflect any benchmark changes made in Priority 1-2
+- Ensure canary is reframed as gate in metacognition writeup
+- Verify all writeups are ≤ 1,500 words
+- Verify all cover images exist
 
-### Metacognition — PRIORITY 1 (needs 1 fix)
-| Benchmark | Mean | Std | Status |
-|-----------|------|-----|--------|
-| metacog_calibration | 0.165 | 0.332 | ✅ |
-| metacog_canary | 0.795 | 0.305 | ✅ |
-| metacog_control | 0.549 | 0.181 | ✅ |
-| metacog_epistemic_humility | 0.788 | 0.220 | ✅ |
-| metacog_epistemic_revision | 0.801 | 0.102 | ✅ |
-| metacog_error_detection | 0.862 | 0.077 | ⚠️ below 0.08 — fix |
-| metacog_fok | 0.561 | 0.083 | ✅ |
-| metacog_jol | 0.393 | 0.091 | ✅ |
-| metacog_learning_monitoring | 0.834 | 0.081 | ✅ |
-
-Writeup: `repo/WRITEUP_METACOGNITION.md` (1,263 words) ✅
-Cover image: `repo/assets/metacognition_cover.png` ✅
-
-### Attention — check std after recent fixes
-Writeup: `repo/WRITEUP_ATTENTION.md` — verify exists and quality
-
-### Learning — check std after recent fixes
-Writeup: `repo/WRITEUP_LEARNING.md` — verify exists and quality
-
-### Executive Functions — check std after recent fixes
-Writeup: `repo/WRITEUP_EXECUTIVE_FUNCTIONS.md` — verify exists and quality
-
-### Social Cognition — check std after recent fixes
-Writeup: `repo/WRITEUP_SOCIAL_COGNITION.md` — verify exists and quality
+---
 
 ## Target Models (Amazon Bedrock)
 | # | Model | Model ID |
