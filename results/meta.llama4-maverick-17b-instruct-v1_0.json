@@ -127,11 +127,6 @@
       "score": 0.5705,
       "error": null,
       "duration_s": 303.6
-    },
-    "social_cog_emotional_prosody": {
-      "score": 0.4622,
-      "error": null,
-      "duration_s": 39.4
     }
   }
 }

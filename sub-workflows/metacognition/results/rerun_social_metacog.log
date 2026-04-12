@@ -44,3 +44,11 @@ Sun Apr 12 01:08:09 UTC 2026: learning_curves x mistral.ministral-3-3b-instruct
 Sun Apr 12 01:08:11 UTC 2026: learning_curves x amazon.nova-pro-v1:0
   SKIP
 Sun Apr 12 01:08:12 UTC 2026: learning_curves x qwen.qwen3-next-80b-a3b
+  ⏰ TIMEOUT
+Sun Apr 12 01:23:13 UTC 2026: learning_curves x meta.llama3-3-70b-instruct-v1:0
+  SKIP
+Sun Apr 12 01:23:14 UTC 2026: learning_curves x meta.llama4-maverick-17b-instruct-v1:0
+  SKIP
+Sun Apr 12 01:23:15 UTC 2026: learning_curves x zai.glm-4.7
+  SKIP
+Sun Apr 12 01:23:16 UTC 2026: learning_curves x openai.gpt-oss-120b-1:0

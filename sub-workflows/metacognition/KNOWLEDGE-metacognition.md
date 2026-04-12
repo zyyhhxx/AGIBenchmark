@@ -1,5 +1,12 @@
 # KNOWLEDGE.md — AGI Benchmark
 
+## Cover Image Generation — All 5 Tracks (2026-04-12)
+- Script generates grouped bar charts from `repo/results/score_matrix_all_tracks.csv`
+- 5 representative models: Claude Opus 4.6, Claude Sonnet 4.6, Nova Pro, Llama 3.3 70B, Ministral 3B
+- Human baseline band: green shaded region 0.60–0.85
+- Output: `repo/assets/{track}_cover.png` at 1782×1181px (150 DPI); metacognition at 2564×1205px due to more benchmarks
+- File sizes: 80–100 KB each — acceptable quality/size tradeoff
+
 ## Writeup Score Verification — All Tracks (2026-04-12)
 - Calibration (metacog): mean=0.165, std=0.332 — only Claude Opus achieves meaningful BSS; 6 models score exactly 0.000 (DeepSeek-R1, Llama 3.3, Llama 4, Ministral 3B, Nova Pro, Qwen3)
 - Canary (metacog): std=0.305, range=1.000 — Ministral 3B scores 0.000 (fails canary entirely)

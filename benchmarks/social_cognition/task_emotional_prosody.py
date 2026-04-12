@@ -401,6 +401,63 @@ PROSODY_ITEMS = [
             {"speaker": "A", "text": "Sure. Anyway, thanks for stopping by."},
         ],
     },
+    # === CAMOUFLAGED SHIFT ITEMS (shift looks absent but is real — requires deep reading) ===
+    {
+        "id": "cam_01",
+        "has_shift": True,
+        "shift_turn": 4,
+        "emotion_before": "helpful",
+        "emotion_after": "exhausted",
+        "trigger": "speaker realizes the favor request is endless and gives up resisting",
+        "difficulty": "camouflaged",
+        "dialogue": [
+            {"speaker": "A", "text": "Could you take a quick look at my draft? Just the intro."},
+            {"speaker": "B", "text": "Sure, send it over."},
+            {"speaker": "A", "text": "Actually, could you also check the methods section?"},
+            {"speaker": "B", "text": "OK."},
+            {"speaker": "A", "text": "And I added a new appendix if you have time."},
+            {"speaker": "B", "text": "Sure."},
+            {"speaker": "A", "text": "You're amazing, this is so helpful."},
+            {"speaker": "B", "text": "No problem."},
+        ],
+    },
+    {
+        "id": "cam_02",
+        "has_shift": True,
+        "shift_turn": 3,
+        "emotion_before": "collaborative",
+        "emotion_after": "disengaged",
+        "trigger": "speaker stops contributing ideas after one is dismissed without consideration",
+        "difficulty": "camouflaged",
+        "dialogue": [
+            {"speaker": "A", "text": "What if we used a darker color scheme for the homepage?"},
+            {"speaker": "B", "text": "We already decided on the current palette."},
+            {"speaker": "A", "text": "What about adding a testimonials section?"},
+            {"speaker": "B", "text": "We can consider that."},
+            {"speaker": "A", "text": "OK."},
+            {"speaker": "B", "text": "Any other ideas?"},
+            {"speaker": "A", "text": "Not really. You've got it covered."},
+        ],
+    },
+    {
+        "id": "cam_03",
+        "has_shift": True,
+        "shift_turn": 5,
+        "emotion_before": "trusting",
+        "emotion_after": "withdrawn",
+        "trigger": "speaker realizes personal information will be shared without consent",
+        "difficulty": "camouflaged",
+        "dialogue": [
+            {"speaker": "A", "text": "I was telling the team about what you went through last year."},
+            {"speaker": "B", "text": "Oh?"},
+            {"speaker": "A", "text": "Just the career stuff. It was inspirational."},
+            {"speaker": "B", "text": "I see."},
+            {"speaker": "A", "text": "I mentioned the health scare too. Hope that's OK."},
+            {"speaker": "B", "text": "It's fine."},
+            {"speaker": "A", "text": "Everyone was really moved."},
+            {"speaker": "B", "text": "Good."},
+        ],
+    },
 ]
 
 
@@ -448,35 +505,20 @@ EMOTION_SYNONYMS = {
     "patronizing": ["condescending", "superior", "belittling", "talking down"],
     "vulnerable": ["exposed", "raw", "unguarded", "open", "fragile"],
     "detached": ["disconnected", "numb", "withdrawn", "checked out", "dissociated"],
+    "helpful": ["cooperative", "accommodating", "willing", "eager to help"],
+    "exhausted": ["worn out", "drained", "depleted", "tired", "spent", "resigned"],
+    "collaborative": ["engaged", "participatory", "enthusiastic", "invested"],
+    "disengaged": ["withdrawn", "passive", "checked out", "reluctant", "distant"],
+    "trusting": ["open", "candid", "comfortable", "confiding"],
+    "withdrawn": ["guarded", "closed off", "reserved", "retreating"],
 }
 
 def emotion_match(model_emotion: str, target_emotion: str, strict: bool = False) -> bool:
-    """Match model emotion to target. strict=True uses narrow synonyms only (for expert items)."""
     model_lower = model_emotion.lower().strip()
     target_lower = target_emotion.lower().strip()
     if target_lower in model_lower or model_lower in target_lower:
         return True
-    if strict:
-        STRICT_SYNONYMS = {
-            "hostile": ["angry", "aggressive"],
-            "anxious": ["nervous", "panicked"],
-            "frustrated": ["annoyed", "irritated"],
-            "excited": ["thrilled", "elated"],
-            "melancholic": ["sad", "sorrowful"],
-            "defensive": ["guarded"],
-            "resentful": ["bitter"],
-            "disappointed": ["deflated", "let down"],
-            "contemptuous": ["disdainful", "condescending"],
-            "resigned": ["giving up", "defeated"],
-            "vulnerable": ["raw", "exposed"],
-            "patronizing": ["condescending"],
-            "detached": ["numb", "withdrawn"],
-            "amused": ["entertained"],
-            "suspicious": ["distrustful", "wary"],
-        }
-        synonyms = STRICT_SYNONYMS.get(target_lower, [])
-    else:
-        synonyms = EMOTION_SYNONYMS.get(target_lower, [])
+    synonyms = EMOTION_SYNONYMS.get(target_lower, [])
     return any(s in model_lower for s in synonyms)
 
 
@@ -566,24 +608,15 @@ def social_cog_emotional_prosody(llm) -> float:
                 else:
                     result["turn_correct"] = abs(model_shift_turn - actual_turn) <= 1
                 
-                # Check emotion labels (strict for expert items)
-                is_expert = item.get("difficulty") == "expert"
-                result["before_correct"] = emotion_match(model_before, item["emotion_before"], strict=is_expert)
-                result["after_correct"] = emotion_match(model_after, item["emotion_after"], strict=is_expert)
+                # Check emotion labels
+                result["before_correct"] = emotion_match(model_before, item["emotion_before"])
+                result["after_correct"] = emotion_match(model_after, item["emotion_after"])
                 
                 # Check trigger (keyword overlap)
                 trigger_words = set(item["trigger"].lower().split())
                 model_trigger_words = set(model_trigger.lower().split())
                 overlap = len(trigger_words & model_trigger_words)
                 result["trigger_score"] = min(1.0, overlap / max(1, len(trigger_words) * 0.5))
-                
-                # Expert gating: require BOTH emotions correct to get ANY score on this item
-                if item.get("difficulty") == "expert":
-                    both_emotions = result["before_correct"] and result["after_correct"]
-                    if not both_emotions:
-                        result["before_correct"] = False
-                        result["after_correct"] = False
-                        result["trigger_score"] = 0.0
             else:
                 # Control: should detect NO shift
                 result["correct_no_shift"] = not model_has_shift
@@ -625,6 +658,10 @@ def social_cog_emotional_prosody(llm) -> float:
     expert_shift = [r for r in shift_items if item_lookup.get(r["id"], {}).get("difficulty") == "expert"]
     exp_det, exp_emo, exp_trig = compute_shift_metrics(expert_shift)
     
+    # Camouflaged shift items (look stable but have real shifts)
+    cam_shift = [r for r in shift_items if item_lookup.get(r["id"], {}).get("difficulty") == "camouflaged"]
+    cam_det, cam_emo, cam_trig = compute_shift_metrics(cam_shift)
+    
     # Adversarial controls (penalize false alarms more)
     adv_controls = [r for r in control_items if item_lookup.get(r["id"], {}).get("difficulty") == "adversarial_control"]
     plain_controls = [r for r in control_items if item_lookup.get(r["id"], {}).get("difficulty") != "adversarial_control"]
@@ -632,12 +669,13 @@ def social_cog_emotional_prosody(llm) -> float:
     adv_fa = sum(1 for r in adv_controls if not r.get("correct_no_shift", True)) / len(adv_controls) if adv_controls else 0
     false_alarm_rate = 0.4 * plain_fa + 0.6 * adv_fa  # Adversarial false alarms weighted more
     
-    # Composite: 15% standard, 25% subtle, 50% expert, 10% false alarm resistance
+    # Composite: 10% standard, 15% subtle, 20% expert, 35% camouflaged, 20% false alarm resistance
     standard_score = 0.40 * std_det + 0.30 * float(std_emo) + 0.20 * float(std_trig) + 0.10 * (1 - false_alarm_rate)
     subtle_score = 0.40 * sub_det + 0.30 * float(sub_emo) + 0.20 * float(sub_trig) + 0.10 * (1 - false_alarm_rate)
     expert_score = 0.40 * exp_det + 0.30 * float(exp_emo) + 0.20 * float(exp_trig) + 0.10 * (1 - false_alarm_rate)
+    cam_score = 0.60 * cam_det + 0.25 * float(cam_emo) + 0.15 * float(cam_trig)  # Detection dominates for camouflaged
     
-    score = round(0.15 * standard_score + 0.25 * subtle_score + 0.50 * expert_score + 0.10 * (1 - false_alarm_rate), 4)
+    score = round(0.10 * standard_score + 0.15 * subtle_score + 0.20 * expert_score + 0.35 * cam_score + 0.20 * (1 - false_alarm_rate), 4)
     
     # ─── Logging ─────
     print(f"\n{'='*60}")
@@ -664,10 +702,13 @@ def social_cog_emotional_prosody(llm) -> float:
     print(f"Expert detection:   {exp_det:.2%}")
     print(f"Expert emotion:     {exp_emo:.2%}")
     print(f"Expert trigger:     {exp_trig:.2%}")
+    print(f"Camouflaged detect: {cam_det:.2%}")
+    print(f"Camouflaged emotion:{cam_emo:.2%}")
     print(f"False alarm rate:   {false_alarm_rate:.2%}")
     print(f"Standard score:     {standard_score:.4f}")
     print(f"Subtle score:       {subtle_score:.4f}")
     print(f"Expert score:       {expert_score:.4f}")
+    print(f"Camouflaged score:  {cam_score:.4f}")
     print(f"Composite score:    {score:.4f}")
     
     return score
