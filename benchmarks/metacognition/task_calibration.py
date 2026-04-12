@@ -327,8 +327,5 @@ def metacog_calibration(llm) -> float:
 # On Kaggle: use kbench.llm
 # Locally: this will error without the Kaggle proxy, but the code is testable
 
-metacog_calibration.run(llm=kbench.llm)
-
-# ─── Choose this task for leaderboard ──────────────────────────────
-# In the final cell of the Kaggle notebook:
-# %choose metacog_calibration
+if __name__ == '__main__':
+    metacog_calibration.run(llm=kbench.llm)

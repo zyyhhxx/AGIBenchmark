@@ -1,7 +1,7 @@
 {
   "model": "meta.llama4-maverick-17b-instruct-v1:0",
   "model_label": "Llama 4 Maverick 17B",
-  "timestamp": "2026-04-12T04:04:37.326711+00:00",
+  "timestamp": "2026-04-12T06:35:45.304049+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.928,
@@ -127,6 +127,11 @@
       "score": 0.3408,
       "error": null,
       "duration_s": 77.4
+    },
+    "learning_curves": {
+      "score": 0.5667,
+      "error": null,
+      "duration_s": 461.0
     }
   }
 }

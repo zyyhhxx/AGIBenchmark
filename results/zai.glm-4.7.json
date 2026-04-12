@@ -18,11 +18,6 @@
       "error": null,
       "duration_s": 251.5
     },
-    "metacog_calibration": {
-      "score": 0.0251,
-      "error": null,
-      "duration_s": 437.4
-    },
     "metacog_learning_monitoring": {
       "score": 0.9098,
       "error": null,

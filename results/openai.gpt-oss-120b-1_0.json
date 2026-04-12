@@ -93,11 +93,6 @@
       "error": null,
       "duration_s": 56.2
     },
-    "metacog_calibration": {
-      "score": 0.1241,
-      "error": null,
-      "duration_s": 93.9
-    },
     "social_cog_pragmatic": {
       "score": 0.956,
       "error": null,

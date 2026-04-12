@@ -259,8 +259,11 @@ def create_bedrock_llm(model_id: str, timeout: int = CALL_TIMEOUT):
             return self._call(prompt)
 
         def prompt(self, prompt, **kw):
-            rf = kw.get('response_format')
+            rf = kw.get('response_format') or kw.get('schema')
             if rf is not None and hasattr(rf, '__dataclass_fields__'):
+                kw.pop('response_format', None)
+                kw.pop('schema', None)
+                kw['response_format'] = rf
                 return self._handle_response_format(prompt, kw)
             kw.pop('response_format', None)
             kw.pop('schema', None)
@@ -385,9 +388,9 @@ def run_model(model_id: str, benchmarks: list, output_dir: str):
     print(f"\n--- {label} Summary ---")
     for bname, data in scores.items():
         if data["score"] is not None:
-            print(f"  {bname:45s} → {data['score']:.4f}  ({data['duration_s']}s)")
+            print(f"  {bname:45s} → {data['score']:.4f}  ({data.get('duration_s', '?')}s)")
         else:
-            print(f"  {bname:45s} → ERROR: {(data['error'] or '')[:50]}  ({data['duration_s']}s)")
+            print(f"  {bname:45s} → ERROR: {(data['error'] or '')[:50]}  ({data.get('duration_s', '?')}s)")
     print(f"Total tokens: in={llm._total_input_tokens}, out={llm._total_output_tokens}")
 
     return output
