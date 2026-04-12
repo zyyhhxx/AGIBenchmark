@@ -1,7 +1,7 @@
 {
   "model": "openai.gpt-oss-120b-1:0",
   "model_label": "GPT-OSS-120B",
-  "timestamp": "2026-04-12T07:18:56.033093+00:00",
+  "timestamp": "2026-04-12T07:37:03.306696+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.803,
@@ -108,11 +108,6 @@
       "error": null,
       "duration_s": 224.3
     },
-    "metacog_error_detection": {
-      "score": 0.9226,
-      "error": null,
-      "duration_s": 116.9
-    },
     "attention_selective": {
       "score": 0.96,
       "error": null,
@@ -127,6 +122,11 @@
       "score": 0.6855,
       "error": null,
       "duration_s": 1040.1
+    },
+    "metacog_error_detection": {
+      "score": 0.9079,
+      "error": null,
+      "duration_s": 69.1
     }
   }
 }

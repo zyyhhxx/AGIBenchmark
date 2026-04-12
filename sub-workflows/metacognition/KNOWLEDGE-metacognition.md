@@ -557,6 +557,15 @@ Final scores across 26 benchmarks × 10 Bedrock models compiled in `repo/results
 - **Design insight:** Multiplicative scoring for multi-part answers (require ALL components correct) is the strongest lever for compressing scores downward without changing task content.
 - **Cache risk:** Nova Pro had a stale cached run with different code version (0.2460 cached vs 0.2502 fresh). Always invalidate cache after changing scoring logic.
 
+## metacog_error_detection Discrimination Fix — Final Results (2026-04-12)
+- **Root cause of low std (0.077):** Only 2 hard (d=3) error items existed in the original 48; most hard items were correct chains that don't penalize weaker models.
+- **Fix:** Added 8 hard items (E33-E40, d=3) targeting statistical reasoning traps: base rate neglect, Simpson's paradox, off-by-one, unit conversion, LCD arithmetic, inclusion-exclusion, Bayesian inference, correlation-causation. Added 4 easy anchor items (E41-E44, d=1): simple addition, area formula, division, time conversion errors.
+- **Final 10-model scores:** DeepSeek-R1=0.9781, Claude Sonnet 4.6=0.9667, Claude Opus 4.6=0.9664, Llama 4 Maverick=0.9472, GLM 4.7=0.9156, GPT-OSS-120B=0.9079, Llama 3.3 70B=0.8666, Nova Pro=0.8628, Qwen3 80B=0.8410, Ministral 3B=0.6491 → std=0.0924 ✅
+- **Primary discriminator:** Ministral 3B (0.6491) on statistical reasoning items (base rate neglect, Bayesian inference).
+- **Cache pitfall:** kbench skips re-running updated benchmarks with stale cached results — always clear per-model result cache after modifying benchmark items.
+- **Design insight:** Statistical reasoning fallacy items (base rate neglect, Simpson's paradox) are the strongest discriminators for error_detection — frontier models handle them well but smaller models fail systematically.
+- **Artifact:** `repo/benchmarks/metacognition/task_error_detection.py`, `repo/benchmarks/metacognition/data/error_detection_chains.py`, `repo/notebooks/metacog_error_detection.ipynb`
+
 ## learning_curves v3 Discrimination Fix — Final Results (2026-04-12)
 - **Root cause of v2 low discrimination (std=0.068):** Abstract system generator produced trivial surface-renaming tasks — models could pattern-match outputs without genuine structural inference.
 - **Fix:** Replaced `generate_abstract_system` with `generate_structural_transfer` (coordinate-pair encoding + word-problem embedding). Added `generate_positional_system` and `generate_stateful_system` to `HARD_LEARNING_SYSTEMS`. Far-transfer prompt reduced to 2 worked examples (withholds full transfer rules, forcing genuine inference).

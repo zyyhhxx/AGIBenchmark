@@ -1,7 +1,7 @@
 {
   "model": "deepseek.r1-v1:0",
   "model_label": "DeepSeek-R1",
-  "timestamp": "2026-04-12T06:35:51.922204+00:00",
+  "timestamp": "2026-04-12T07:35:49.126572+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.867,
@@ -113,11 +113,6 @@
       "error": null,
       "duration_s": 243.9
     },
-    "metacog_error_detection": {
-      "score": 0.9863,
-      "error": null,
-      "duration_s": 354.3
-    },
     "attention_selective": {
       "score": 0.96,
       "error": null,
@@ -132,6 +127,11 @@
       "score": 0.7413,
       "error": null,
       "duration_s": 3477.2
+    },
+    "metacog_error_detection": {
+      "score": 0.9781,
+      "error": null,
+      "duration_s": 195.0
     }
   }
 }
