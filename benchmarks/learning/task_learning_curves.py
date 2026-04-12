@@ -14,7 +14,7 @@ Cognitive Science Basis:
 - Transfer of learning (Thorndike & Woodworth, 1901)
 - Sample efficiency as a measure of learning ability
 
-Score: 0.25*standard + 0.50*far_transfer + 0.25*steep
+Score: 0.20*standard + 0.50*far_transfer + 0.30*steep
 """
 
 import kaggle_benchmarks as kbench
@@ -95,7 +95,7 @@ def learning_curves(llm) -> float:
     """
     Learning Curves Benchmark v2.
 
-    Score = 0.25*standard + 0.50*far_transfer + 0.25*steep
+    Score = 0.20*standard + 0.50*far_transfer + 0.30*steep
     """
 
     # ═══ CONDITION A: Standard Learning Curves (0.25) ═══
@@ -140,8 +140,8 @@ def learning_curves(llm) -> float:
 
     # ═══ CONDITION B: Far-Transfer (0.50) ═══
     # Train on base system (rules + examples), then test on transfer system
-    # (same structure, different surface) with rules but NO examples.
-    # Measures whether learning transfers across surface-feature changes.
+    # with different representation. Only base rules/examples + 2 transfer
+    # examples provided — model must infer the structural mapping.
     transfer_scores = []
     for i, pair in enumerate(FAR_TRANSFER_PAIRS):
         base = pair["base"]
@@ -151,7 +151,7 @@ def learning_curves(llm) -> float:
             n_correct = 0
             for test_item in transfer.test_items:
                 prompt_parts = [
-                    f"You previously learned the rule system: **{base.name}**\n",
+                    f"You learned the rule system: **{base.name}**\n",
                     f"Description: {base.description}\n",
                     "\n**Rules:**",
                 ]
@@ -161,20 +161,23 @@ def learning_curves(llm) -> float:
                 for ex in base.examples[:8]:
                     prompt_parts.append(f"  Input: {ex['input']}  →  Output: {ex['output']}")
 
-                prompt_parts.append(f"\n\n--- NOW: NEW DOMAIN ---")
-                prompt_parts.append(f"The same underlying rules apply, but in a different format.")
+                prompt_parts.append(f"\n\n--- NOW: TRANSFER TO A NEW REPRESENTATION ---")
+                prompt_parts.append(f"The same underlying rules apply, but inputs/outputs use a different format.")
                 prompt_parts.append(f"New system: **{transfer.name}**")
                 prompt_parts.append(f"Description: {transfer.description}\n")
-                prompt_parts.append("**Rules (same structure, new surface):**")
-                for rule in transfer.rules:
-                    prompt_parts.append(f"- {rule}")
-                prompt_parts.append("\n(No examples provided for this new format — transfer your learning.)")
+
+                # Provide only 2 worked examples — model must figure out mapping
+                if transfer.examples:
+                    prompt_parts.append("**Worked examples in the new format:**")
+                    for ex in transfer.examples[:2]:
+                        prompt_parts.append(f"  Input: {ex['input']}  →  Output: {ex['output']}")
+                prompt_parts.append("\nFigure out how the new representation maps to the original rules, then apply them.")
 
                 test_prompt = "\n".join(prompt_parts) + (
-                    f"\n\nApply the rules to this input:\n"
+                    f"\n\nApply the rules to this new-format input:\n"
                     f"Input: {test_item['input']}\n\n"
                     f"Respond with ONLY a JSON object:\n"
-                    f'{{"answer": "<output after applying rules>", "reasoning": "<your steps>"}}'
+                    f'{{"answer": "<output in the new format>", "reasoning": "<your steps>"}}'
                 )
                 try:
                     result = llm.prompt(test_prompt, schema=RuleAnswer)
@@ -211,7 +214,7 @@ def learning_curves(llm) -> float:
     steep_score = np.mean(steep_scores) if steep_scores else 0
 
     # ═══ COMPOSITE ═══
-    score = round(0.25 * std_score + 0.50 * far_transfer_score + 0.25 * steep_score, 4)
+    score = round(0.20 * std_score + 0.50 * far_transfer_score + 0.30 * steep_score, 4)
 
     # ── Logging ──
     print(f"\n{'='*60}")
