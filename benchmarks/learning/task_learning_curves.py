@@ -139,16 +139,59 @@ def learning_curves(llm) -> float:
     )
 
     # ═══ CONDITION B: Far-Transfer (0.50) ═══
-    # Train on base system with 8 examples, test on transfer system's test items
+    # Train on base system (rules + examples), then test on transfer system
+    # (same structure, different surface) with rules but NO examples.
+    # Measures whether learning transfers across surface-feature changes.
     transfer_scores = []
     for i, pair in enumerate(FAR_TRANSFER_PAIRS):
         base = pair["base"]
         transfer = pair["transfer"]
-        # Train model on base system with examples, test on transfer test items
-        acc = _eval_system(llm, base, 8, transfer.test_items,
-                           f"far_transfer_{i}")
-        transfer_scores.append(acc)
-        print(f"  Far-transfer {i} ({base.name} → {transfer.name}): {acc:.2%}")
+
+        with kbench.chats.new(f"far_transfer_{i}"):
+            n_correct = 0
+            for test_item in transfer.test_items:
+                prompt_parts = [
+                    f"You previously learned the rule system: **{base.name}**\n",
+                    f"Description: {base.description}\n",
+                    "\n**Rules:**",
+                ]
+                for rule in base.rules:
+                    prompt_parts.append(f"- {rule}")
+                prompt_parts.append(f"\n**Training examples ({min(8, len(base.examples))}):**")
+                for ex in base.examples[:8]:
+                    prompt_parts.append(f"  Input: {ex['input']}  →  Output: {ex['output']}")
+
+                prompt_parts.append(f"\n\n--- NOW: NEW DOMAIN ---")
+                prompt_parts.append(f"The same underlying rules apply, but in a different format.")
+                prompt_parts.append(f"New system: **{transfer.name}**")
+                prompt_parts.append(f"Description: {transfer.description}\n")
+                prompt_parts.append("**Rules (same structure, new surface):**")
+                for rule in transfer.rules:
+                    prompt_parts.append(f"- {rule}")
+                prompt_parts.append("\n(No examples provided for this new format — transfer your learning.)")
+
+                test_prompt = "\n".join(prompt_parts) + (
+                    f"\n\nApply the rules to this input:\n"
+                    f"Input: {test_item['input']}\n\n"
+                    f"Respond with ONLY a JSON object:\n"
+                    f'{{"answer": "<output after applying rules>", "reasoning": "<your steps>"}}'
+                )
+                try:
+                    result = llm.prompt(test_prompt, schema=RuleAnswer)
+                    answer = result.answer
+                except Exception:
+                    raw = llm.prompt(test_prompt)
+                    try:
+                        parsed = json.loads(re.search(r'\{.*\}', raw, re.DOTALL).group())
+                        answer = str(parsed.get("answer", raw))
+                    except Exception:
+                        answer = raw
+                if check_output(answer, test_item["output"]):
+                    n_correct += 1
+
+            acc = n_correct / len(transfer.test_items) if transfer.test_items else 0
+            transfer_scores.append(acc)
+            print(f"  Far-transfer {i} ({base.name} → {transfer.name}): {acc:.2%}")  
 
     far_transfer_score = np.mean(transfer_scores) if transfer_scores else 0
 

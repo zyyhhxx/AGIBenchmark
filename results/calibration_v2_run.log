@@ -1,0 +1,50 @@
+
+Models: 10
+Benchmarks: 1
+Total runs: 10
+
+############################################################
+# MODEL: Claude Opus 4.6 (anthropic.claude-opus-4-6-v1)
+# Benchmarks: 1
+############################################################
+  Resumed: 25 benchmarks already scored, skipping them
+
+[1/1] metacog_calibration — already scored (0.9984), skipping
+
+Results saved to /home/ubuntu/.openclaw/workspace-agi-bench/repo/results/anthropic.claude-opus-4-6-v1.json
+
+--- Claude Opus 4.6 Summary ---
+  metacog_canary                                → 0.9947  (110.3s)
+  metacog_fok                                   → 0.5983  (1265.7s)
+  metacog_jol                                   → 0.4643  (422.9s)
+  metacog_calibration                           → 0.9984  (488.2s)
+  metacog_learning_monitoring                   → 0.8093  (529.4s)
+  metacog_control                               → 0.6900  (133.4s)
+  metacog_epistemic_revision                    → 0.9600  (329.3s)
+  metacog_epistemic_humility                    → 0.7987  (233.1s)
+  learning_transfer                             → 1.0000  (158.9s)
+  learning_curriculum                           → 0.7000  (189.0s)
+  attention_vigilance                           → 0.8559  (65.8s)
+  attention_divided                             → 0.9306  (30.1s)
+  attention_instruction_update                  → 0.9833  (40.6s)
+  exec_func_task_switch                         → 1.0000  (11.8s)
+  exec_func_nback                               → 1.0000  (1089.0s)
+  exec_func_crt                                 → 0.9142  (248.8s)
+  learning_interference                         → 0.1200  (680.5s)
+  exec_func_wcst                                → 1.0000  (60.3s)
+  social_cog_false_belief                       → 0.5833  (811.1s)
+  exec_func_tol                                 → 0.8000  (176.8s)
+  social_cog_pragmatic                          → 0.8674  (392.5s)
+  social_cog_sarcasm                            → 0.9261  (345.1s)
+  metacog_error_detection                       → 0.9664  (346.8s)
+  attention_selective                           → 0.9500  (47.3s)
+Traceback (most recent call last):
+  File "/home/ubuntu/.openclaw/workspace-agi-bench/repo/scripts/run_benchmark_bedrock.py", line 472, in <module>
+    main()
+  File "/home/ubuntu/.openclaw/workspace-agi-bench/repo/scripts/run_benchmark_bedrock.py", line 450, in main
+    result = run_model(model_id, targets, args.output_dir)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/.openclaw/workspace-agi-bench/repo/scripts/run_benchmark_bedrock.py", line 388, in run_model
+    print(f"  {bname:45s} → {data['score']:.4f}  ({data['duration_s']}s)")
+                                                   ~~~~^^^^^^^^^^^^^^
+KeyError: 'duration_s'
