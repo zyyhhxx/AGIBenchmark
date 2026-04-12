@@ -64,6 +64,52 @@ A valid submission = **Kaggle Writeup** + **attached Kaggle Benchmark**
 - 4 × $25,000 grand prizes (best across all tracks)
 - 2 × $10,000 per track (14 unique winners total, no repeats)
 
+## Metacognition Architecture Improvements (from 2026-04-12 review)
+
+Architectural analysis identified redundancies, ceiling effects, and coverage gaps.
+These should be addressed before final submission.
+
+### Canary → Demote to Pass/Fail Gate
+- Canary measures factuality detection, not true metacognition
+- All frontier models score ~0.99 — no discrimination at the top
+- **Action:** Demote to a pass/fail gate (>0.5 = pass). Not scored on the leaderboard.
+- The fabrication-detection construct is subsumed by Calibration + Epistemic Humility
+
+### Calibration → Run with v2 Questions
+- New v2 question set (80 handcrafted across 5 difficulty tiers + 40 procedural) is pushed
+- Targets ~60-70% overall accuracy for frontier models (old set was ~99%)
+- **Action:** Run on Kaggle, verify scores produce meaningful spread
+- Confidence prompt redesigned with clear semantics + 3 examples
+
+### Error Detection → Redesign Harder
+- Ceiling effect (0.69–0.99, top models near 1.0)
+- **Action:** Add subtle errors (locally valid but globally inconsistent), clean chains with NO errors (tests false positive rate), multi-error chains (0/1/2/3 errors)
+- Goal: push frontier std above 0.08
+
+### Epistemic Revision → Redesign Harder
+- Some ceiling (0.67–0.96)
+- **Action:** Add ambiguous evidence (could be consistent or contradictory), conflicting sources with different reliability, cases where NOT revising is correct
+- Tests genuine belief evaluation vs. reflexive compliance
+
+### Learning Monitoring → Redesign or Merge into JOL
+- Overlaps with JOL (both measure predicting own learning)
+- Ceiling effect (0.69–0.91)
+- **Action:** If time permits, redesign with adversarial learning material + interference tasks. Otherwise merge the online monitoring concept into an expanded JOL.
+
+### NEW: Ease of Learning (EOL) — Add if Time Permits
+- Biggest gap in Nelson & Narens monitoring timeline (pre-encoding monitoring)
+- Present tasks of varying difficulty, have model predict difficulty BEFORE engaging, score prediction accuracy
+- Completes the monitoring chain: EOL → JOL → FOK → Retrospective Calibration
+- **Action:** Implement only if all other fixes are done and time remains
+
+### Priority Order for Remaining Work
+1. Run Calibration v2 on Kaggle — verify it works
+2. Fix Error Detection ceiling (highest impact — currently below std threshold)
+3. Fix Epistemic Revision ceiling
+4. Demote Canary to gate in writeup
+5. Learning Monitoring redesign (if time)
+6. EOL benchmark (stretch goal)
+
 ## Current Status (as of 2026-04-12)
 
 All 26 benchmarks have 10/10 model scores (except learning_curves 9/10, exec_func_nback 9/10).
