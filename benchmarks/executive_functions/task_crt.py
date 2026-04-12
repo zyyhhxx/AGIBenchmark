@@ -136,7 +136,7 @@ def check_answer(model_answer: str, correct: str, intuitive_wrong: str):
 
 # ─── The Benchmark Task ────────────────────────────────────────────
 
-@kbench.task(name="exec_func_crt")
+@kbench.task(name="Cognitive Reflection Test")
 def exec_func_crt(llm) -> float:
     """
     Cognitive Reflection Test Benchmark.

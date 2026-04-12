@@ -145,7 +145,7 @@ def compute_ece(confidences: list, accuracies: list, n_bins: int = 5) -> float:
 
 # ─── The Benchmark Task ────────────────────────────────────────────
 
-@kbench.task(name="metacog_jol")
+@kbench.task(name="Judgment of Learning")
 def metacog_jol(llm) -> float:
     """
     Judgment-of-Learning (JOL) Benchmark.

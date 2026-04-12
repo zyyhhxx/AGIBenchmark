@@ -151,7 +151,7 @@ def run_tier(llm, target, distractors: list, prefix: str) -> dict:
     }
 
 
-@kbench.task(name="learning_interference")
+@kbench.task(name="Proactive & Retroactive Interference")
 def learning_interference(llm) -> float:
     """
     Proactive & Retroactive Interference Benchmark (v3).

@@ -135,7 +135,7 @@ TIERS = {
 
 # ─── The Benchmark Task ────────────────────────────────────────────
 
-@kbench.task(name="exec_func_tol")
+@kbench.task(name="Tower of London")
 def exec_func_tol(llm) -> float:
     """
     Tower of London Planning Benchmark.

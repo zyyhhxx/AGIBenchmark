@@ -537,7 +537,7 @@ def check_patterns(answer: str, patterns: list) -> bool:
 
 # ─── The Benchmark Task ────────────────────────────────────────────
 
-@kbench.task(name="metacog_epistemic_revision")
+@kbench.task(name="Epistemic Revision")
 def metacog_epistemic_revision(llm) -> float:
     """
     Epistemic Revision Benchmark: Belief Updating Under Contradiction.

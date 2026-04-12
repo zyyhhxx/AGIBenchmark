@@ -154,7 +154,7 @@ def run_block(llm, block_name: str, trials: list) -> dict:
     }
 
 
-@kbench.task(name="exec_func_task_switch")
+@kbench.task(name="Task Switching")
 def exec_func_task_switch(llm) -> float:
     """
     Task-Switching Benchmark (v2 — batch presentation, harder rules).

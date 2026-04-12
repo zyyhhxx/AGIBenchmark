@@ -341,7 +341,7 @@ def assess_explanation_quality(explanation: str, item: dict) -> float:
 
 # ─── Main Task ──────────────────────────────────────────────────────
 
-@kbench.task(name="metacog_epistemic_humility")
+@kbench.task(name="Epistemic Humility")
 def metacog_epistemic_humility(llm) -> float:
     """
     Epistemic Humility Benchmark.

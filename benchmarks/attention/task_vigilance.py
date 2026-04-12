@@ -125,7 +125,7 @@ def run_nback_condition(llm, data: dict, condition_name: str) -> dict:
     return all_results
 
 
-@kbench.task(name="attention_vigilance")
+@kbench.task(name="Sustained Vigilance")
 def attention_vigilance(llm) -> float:
     """
     N-Back Sustained Attention (Vigilance) Benchmark.

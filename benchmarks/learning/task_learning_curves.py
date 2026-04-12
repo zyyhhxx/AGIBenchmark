@@ -1,27 +1,20 @@
 """
-Learning Benchmark 1: Novel Rule System Learning Curves
+Learning Benchmark 1: Novel Rule System Learning Curves (v2)
 
-Measures how model performance improves with increasing numbers of
-training examples — the fundamental learning curve.
+Measures how model performance improves with increasing training examples,
+including far-transfer and steep learning conditions.
 
-Protocol:
-1. Present a novel rule system description (rules only, no examples)
-2. Incrementally provide training examples: 0, 2, 4, 8, 12 examples
-3. At each step, test on held-out problems
-4. Plot accuracy vs. number of training examples
-5. Measure learning curve shape and efficiency
+Three conditions:
+  A) Standard learning curves (0.25 weight) — original 8 systems, checkpoints 0-12
+  B) Far-transfer (0.50 weight) — train on base system, test on abstract reskin
+  C) Steep/hard (0.25 weight) — only 3 training examples before test on difficulty-3 systems
 
 Cognitive Science Basis:
 - Power Law of Practice (Newell & Rosenbloom, 1981)
-- Learning curves (Bryan & Harter, 1897)
+- Transfer of learning (Thorndike & Woodworth, 1901)
 - Sample efficiency as a measure of learning ability
 
-Key Innovation:
-- Rule systems are procedurally generated → not in training data
-- Tests genuine in-context learning, not memorization
-- Multiple difficulty levels test learning capacity
-
-Score: Composite of learning rate, asymptotic accuracy, and sample efficiency.
+Score: 0.25*standard + 0.50*far_transfer + 0.25*steep
 """
 
 import kaggle_benchmarks as kbench
@@ -29,7 +22,9 @@ from dataclasses import dataclass
 import numpy as np
 import re
 import json
-from data.rule_systems import LEARNING_CURVE_SYSTEMS
+from data.rule_systems import (
+    LEARNING_CURVE_SYSTEMS, FAR_TRANSFER_PAIRS, HARD_LEARNING_SYSTEMS,
+)
 
 
 @dataclass
@@ -38,200 +33,157 @@ class RuleAnswer:
     reasoning: str
 
 
-# Test checkpoints: how many examples to show before each test
 CHECKPOINTS = [0, 2, 4, 8, 12]
+HARD_CHECKPOINTS = [0, 3]  # Only 0 and 3 examples for steep condition
 
 
 def normalize_output(text: str) -> str:
-    """Normalize output for comparison."""
     text = text.strip().lower()
     text = re.sub(r'\s+', ' ', text)
     return text
 
 
 def check_output(model_output: str, expected: str) -> bool:
-    """Check if model output matches expected."""
     m = normalize_output(model_output)
     e = normalize_output(expected)
-    # Exact match or containment
     return e in m or m in e
 
 
-def fit_power_law(x: np.ndarray, y: np.ndarray) -> tuple[float, float, float]:
-    """
-    Fit y = a * x^b + c (power law of practice).
-    Returns (a, b, c) or best-effort approximation.
-    """
-    # Simple: use log-linear regression on non-zero x
-    mask = x > 0
-    if mask.sum() < 2:
-        return (0.0, 0.0, float(y[0]) if len(y) > 0 else 0.0)
+def _eval_system(llm, system, n_examples, test_items, chat_label):
+    """Evaluate a system with n_examples training, return accuracy on test_items."""
+    n_actual = min(n_examples, len(system.examples))
+    with kbench.chats.new(chat_label):
+        prompt_parts = [
+            f"You are learning the rule system: **{system.name}**\n",
+            f"Description: {system.description}\n",
+            "\n**Rules:**",
+        ]
+        for rule in system.rules:
+            prompt_parts.append(f"- {rule}")
 
-    log_x = np.log(x[mask])
-    # Subtract baseline (zero-shot)
-    baseline = y[0] if len(y) > 0 else 0
-    y_adj = y[mask] - baseline
-    y_adj = np.maximum(y_adj, 0.001)  # Avoid log(0)
-    log_y = np.log(y_adj)
+        if n_actual > 0:
+            prompt_parts.append(f"\n**Training examples ({n_actual}):**")
+            for ex in system.examples[:n_actual]:
+                prompt_parts.append(f"  Input: {ex['input']}  →  Output: {ex['output']}")
 
-    # Linear regression in log space
-    try:
-        b, log_a = np.polyfit(log_x, log_y, 1)
-        a = np.exp(log_a)
-        return (float(a), float(b), float(baseline))
-    except Exception:
-        return (0.0, 0.0, float(baseline))
+        n_correct = 0
+        for test_item in test_items:
+            test_prompt = "\n".join(prompt_parts) + (
+                f"\n\nNow apply the rules to this new input:\n"
+                f"Input: {test_item['input']}\n\n"
+                f"Respond with ONLY a JSON object:\n"
+                f'{{"answer": "<output after applying rules>", "reasoning": "<your steps>"}}'
+            )
+            try:
+                result = llm.prompt(test_prompt, schema=RuleAnswer)
+                answer = result.answer
+            except Exception:
+                raw = llm.prompt(test_prompt)
+                try:
+                    parsed = json.loads(re.search(r'\{.*\}', raw, re.DOTALL).group())
+                    answer = str(parsed.get("answer", raw))
+                except Exception:
+                    answer = raw
+            if check_output(answer, test_item["output"]):
+                n_correct += 1
+
+        return n_correct / len(test_items) if test_items else 0
 
 
-@kbench.task(name="learning_curves")
+@kbench.task(name="Learning Curves")
 def learning_curves(llm) -> float:
     """
-    Learning Curves Benchmark.
+    Learning Curves Benchmark v2.
 
-    Tests how model performance improves with training examples
-    for novel rule systems that cannot be in training data.
-
-    Score = weighted average of:
-      0.30 * mean_asymptotic_accuracy
-      0.30 * mean_learning_rate (normalized)
-      0.20 * mean_sample_efficiency (normalized)
-      0.20 * curve_quality (does it show genuine learning?)
+    Score = 0.25*standard + 0.50*far_transfer + 0.25*steep
     """
-    all_curves = []
-    results_log = []
 
+    # ═══ CONDITION A: Standard Learning Curves (0.25) ═══
+    all_curves = []
     for system in LEARNING_CURVE_SYSTEMS:
         curve = {"system": system.name, "difficulty": system.difficulty, "checkpoints": []}
-
-        for n_examples in CHECKPOINTS:
-            # Only use up to n_examples from the pool
-            n_examples_actual = min(n_examples, len(system.examples))
-
-            with kbench.chats.new(f"{system.name}_n{n_examples}"):
-                # Build prompt with rules + n examples
-                prompt_parts = [
-                    f"You are learning the rule system: **{system.name}**\n",
-                    f"Description: {system.description}\n",
-                    "\n**Rules:**",
-                ]
-                for rule in system.rules:
-                    prompt_parts.append(f"- {rule}")
-
-                if n_examples_actual > 0:
-                    prompt_parts.append(f"\n**Training examples ({n_examples_actual}):**")
-                    for ex in system.examples[:n_examples_actual]:
-                        prompt_parts.append(f"  Input: {ex['input']}  →  Output: {ex['output']}")
-
-                # Test on held-out items
-                n_correct = 0
-                for ti, test_item in enumerate(system.test_items):
-                    test_prompt = "\n".join(prompt_parts) + (
-                        f"\n\nNow apply the rules to this new input:\n"
-                        f"Input: {test_item['input']}\n\n"
-                        f"Respond with ONLY a JSON object:\n"
-                        f'{{"answer": "<output after applying rules>", "reasoning": "<your steps>"}}'
-                    )
-
-                    try:
-                        result = llm.prompt(test_prompt, schema=RuleAnswer)
-                        answer = result.answer
-                    except Exception:
-                        raw = llm.prompt(test_prompt)
-                        try:
-                            parsed = json.loads(re.search(r'\{.*\}', raw, re.DOTALL).group())
-                            answer = str(parsed.get("answer", raw))
-                        except Exception:
-                            answer = raw
-
-                    if check_output(answer, test_item["output"]):
-                        n_correct += 1
-
-                accuracy = n_correct / len(system.test_items) if system.test_items else 0
-                curve["checkpoints"].append({
-                    "n_examples": n_examples,
-                    "accuracy": accuracy,
-                    "n_correct": n_correct,
-                    "n_total": len(system.test_items),
-                })
-
+        for n_ex in CHECKPOINTS:
+            acc = _eval_system(llm, system, n_ex, system.test_items,
+                               f"{system.name}_n{n_ex}")
+            curve["checkpoints"].append({"n_examples": n_ex, "accuracy": acc})
         all_curves.append(curve)
 
-    # ── Compute Metrics ──
+    # Compute standard score (same as v1)
     asymptotic_accs = []
     learning_rates = []
     sample_efficiencies = []
     curve_qualities = []
 
     for curve in all_curves:
-        checkpoints = curve["checkpoints"]
-        x = np.array([c["n_examples"] for c in checkpoints], dtype=float)
-        y = np.array([c["accuracy"] for c in checkpoints], dtype=float)
-
-        # Asymptotic accuracy (last checkpoint)
-        asymptotic = float(y[-1])
-        asymptotic_accs.append(asymptotic)
-
-        # Learning rate: improvement from 0 to max examples
-        learning_rate = float(y[-1] - y[0]) if len(y) > 1 else 0
-        learning_rates.append(max(0, learning_rate))
-
-        # Sample efficiency: first checkpoint where accuracy >= 0.8 (lower = better)
-        efficiency = len(CHECKPOINTS)  # Default: never reached
-        for i, c in enumerate(checkpoints):
+        y = np.array([c["accuracy"] for c in curve["checkpoints"]])
+        asymptotic_accs.append(float(y[-1]))
+        learning_rates.append(max(0, float(y[-1] - y[0])))
+        eff = len(CHECKPOINTS)
+        for i, c in enumerate(curve["checkpoints"]):
             if c["accuracy"] >= 0.8:
-                efficiency = i
+                eff = i
                 break
-        # Normalize: 0 = worst (never), 1 = best (zero-shot)
-        sample_efficiencies.append(1 - efficiency / len(CHECKPOINTS))
-
-        # Curve quality: is there monotonic improvement? (genuine learning)
+        sample_efficiencies.append(1 - eff / len(CHECKPOINTS))
         if len(y) > 1:
-            improvements = np.diff(y)
-            # Fraction of steps that show improvement or maintenance
-            quality = np.mean(improvements >= -0.05)  # Allow tiny dips
+            curve_qualities.append(float(np.mean(np.diff(y) >= -0.05)))
         else:
-            quality = 0.5
-        curve_qualities.append(float(quality))
+            curve_qualities.append(0.5)
 
-    # Overall score — weighted by difficulty^1.5 to amplify hard-system gaps
-    diff_weights = [c["difficulty"] ** 1.5 for c in all_curves]
-    total_w = sum(diff_weights)
-    mean_asymptotic = sum(a * w for a, w in zip(asymptotic_accs, diff_weights)) / total_w
-    mean_lr = sum(a * w for a, w in zip(learning_rates, diff_weights)) / total_w
-    mean_se = sum(a * w for a, w in zip(sample_efficiencies, diff_weights)) / total_w
-    mean_cq = sum(a * w for a, w in zip(curve_qualities, diff_weights)) / total_w
-
-    score = round(
-        0.30 * mean_asymptotic + 0.30 * mean_lr + 0.20 * mean_se + 0.20 * mean_cq,
-        4
+    dw = [c["difficulty"] ** 1.5 for c in all_curves]
+    tw = sum(dw)
+    std_score = (
+        0.30 * sum(a*w for a,w in zip(asymptotic_accs, dw)) / tw +
+        0.30 * sum(a*w for a,w in zip(learning_rates, dw)) / tw +
+        0.20 * sum(a*w for a,w in zip(sample_efficiencies, dw)) / tw +
+        0.20 * sum(a*w for a,w in zip(curve_qualities, dw)) / tw
     )
+
+    # ═══ CONDITION B: Far-Transfer (0.50) ═══
+    # Train on base system with 8 examples, test on transfer system's test items
+    transfer_scores = []
+    for i, pair in enumerate(FAR_TRANSFER_PAIRS):
+        base = pair["base"]
+        transfer = pair["transfer"]
+        # Train model on base system with examples, test on transfer test items
+        acc = _eval_system(llm, base, 8, transfer.test_items,
+                           f"far_transfer_{i}")
+        transfer_scores.append(acc)
+        print(f"  Far-transfer {i} ({base.name} → {transfer.name}): {acc:.2%}")
+
+    far_transfer_score = np.mean(transfer_scores) if transfer_scores else 0
+
+    # ═══ CONDITION C: Steep/Hard (0.25) ═══
+    # Only 3 training examples on difficulty-3 systems
+    steep_scores = []
+    for system in HARD_LEARNING_SYSTEMS:
+        acc_0 = _eval_system(llm, system, 0, system.test_items,
+                             f"steep_{system.name}_n0")
+        acc_3 = _eval_system(llm, system, 3, system.test_items,
+                             f"steep_{system.name}_n3")
+        # Score = how much learned from just 3 examples × accuracy
+        steep_score = 0.40 * acc_3 + 0.60 * max(0, acc_3 - acc_0)
+        steep_scores.append(steep_score)
+        print(f"  Steep {system.name}: 0-shot={acc_0:.2%}, 3-shot={acc_3:.2%}, score={steep_score:.3f}")
+
+    steep_score = np.mean(steep_scores) if steep_scores else 0
+
+    # ═══ COMPOSITE ═══
+    score = round(0.25 * std_score + 0.50 * far_transfer_score + 0.25 * steep_score, 4)
 
     # ── Logging ──
     print(f"\n{'='*60}")
-    print(f"LEARNING CURVES BENCHMARK RESULTS")
+    print(f"LEARNING CURVES BENCHMARK v2 RESULTS")
     print(f"{'='*60}")
-    print(f"Systems tested: {len(LEARNING_CURVE_SYSTEMS)}")
-    print(f"Checkpoints: {CHECKPOINTS}")
+    print(f"\nCondition A (Standard): {std_score:.4f}")
+    print(f"Condition B (Far-Transfer): {far_transfer_score:.4f}")
+    print(f"Condition C (Steep/Hard): {steep_score:.4f}")
+    print(f"\nComposite (0.25*A + 0.50*B + 0.25*C): {score:.4f}")
 
     for curve in all_curves:
         print(f"\n--- {curve['system']} (difficulty={curve['difficulty']}) ---")
         for cp in curve["checkpoints"]:
             bar = "█" * int(cp["accuracy"] * 20)
-            print(f"  n={cp['n_examples']:2d}: {cp['accuracy']:.2%} ({cp['n_correct']}/{cp['n_total']}) {bar}")
-
-    print(f"\n--- Aggregate Metrics ---")
-    print(f"Mean asymptotic accuracy: {mean_asymptotic:.3f}")
-    print(f"Mean learning rate:       {mean_lr:.3f}")
-    print(f"Mean sample efficiency:   {mean_se:.3f}")
-    print(f"Mean curve quality:       {mean_cq:.3f}")
-    print(f"Composite score:          {score:.4f}")
-
-    # Per-system summary
-    print(f"\n--- Per-System Summary ---")
-    for i, curve in enumerate(all_curves):
-        print(f"  {curve['system']}: asym={asymptotic_accs[i]:.2f}, "
-              f"lr={learning_rates[i]:.2f}, se={sample_efficiencies[i]:.2f}, "
-              f"cq={curve_qualities[i]:.2f}")
+            print(f"  n={cp['n_examples']:2d}: {cp['accuracy']:.2%} {bar}")
 
     return score
 

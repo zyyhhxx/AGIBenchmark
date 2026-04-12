@@ -326,7 +326,7 @@ def score_hard_trial(llm, trial) -> float:
     return correct / total if total > 0 else 0
 
 
-@kbench.task(name="attention_divided")
+@kbench.task(name="Divided Attention")
 def attention_divided(llm) -> float:
     """
     Divided Attention (Multi-Stream Interference) Benchmark.

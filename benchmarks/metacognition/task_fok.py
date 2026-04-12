@@ -231,7 +231,7 @@ def compute_auc(confidences: list, accuracies: list) -> float:
 
 # ─── The Benchmark Task ────────────────────────────────────────────
 
-@kbench.task(name="metacog_fok")
+@kbench.task(name="Feeling of Knowing")
 def metacog_fok(llm) -> float:
     """
     Feeling-of-Knowing (FOK) Benchmark.

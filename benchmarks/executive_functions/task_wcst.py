@@ -122,7 +122,7 @@ def _parse_responses(raw: str, n_expected: int) -> list:
     return choices
 
 
-@kbench.task(name="exec_func_wcst")
+@kbench.task(name="Wisconsin Card Sorting")
 def exec_func_wcst(llm) -> float:
     """
     Wisconsin Card Sort Test Analogue (batch-prompt version).

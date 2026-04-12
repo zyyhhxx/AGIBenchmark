@@ -73,7 +73,7 @@ SYSTEMS = [
 ]
 
 
-@kbench.task(name="metacog_learning_monitoring")
+@kbench.task(name="Learning Monitoring")
 def metacog_learning_monitoring(llm) -> float:
     """
     Metacognitive Monitoring During Learning.

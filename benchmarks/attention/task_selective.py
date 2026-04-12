@@ -191,7 +191,7 @@ TIER3_ITEMS = [
 ALL_ITEMS = TIER1_ITEMS + TIER2_ITEMS + TIER3_ITEMS
 
 
-@kbench.task(name="attention_selective", version=2)
+@kbench.task(name="Selective Attention", version=2)
 def attention_selective(llm) -> float:
     """
     Selective Attention — Conjunction Search Benchmark v2.

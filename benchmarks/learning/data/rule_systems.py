@@ -259,3 +259,58 @@ TRANSFER_FAR_SYSTEM = generate_number_system("transfer_far", difficulty=2)
 # Systems for interference testing
 INTERFERENCE_A = generate_symbol_system("interf_a", difficulty=2)
 INTERFERENCE_B = generate_symbol_system("interf_b_similar", difficulty=2)
+
+
+# ── Abstract rule systems for far-transfer ──────────────────────────
+def generate_abstract_system(seed: str, base_system: RuleSystem) -> RuleSystem:
+    """Generate a far-transfer system: same abstract rules, different surface features."""
+    rng = _make_rng(seed)
+    if base_system.domain == "symbol":
+        animals = ["cat", "dog", "fish", "bird", "frog", "ant", "bee", "owl"]
+        shapes_used = sorted({s for rule in base_system.rules for s in ["\u25b3","\u25cb","\u25a1","\u25c7","\u2605","\u2b21","\u2b1f","\u25bd"] if s in rule})
+        animal_pool = rng.sample(animals, min(len(shapes_used)+2, len(animals)))
+        shape_map = {s: animal_pool[i % len(animal_pool)] for i, s in enumerate(shapes_used)}
+        def remap(text):
+            for s, a in shape_map.items():
+                text = text.replace(s, a)
+            return text
+        return RuleSystem(
+            name=f"AbstractTransfer-{seed}",
+            description="Apply transformation rules to animal-name sequences (same structure, different surface)",
+            rules=[remap(r) for r in base_system.rules],
+            examples=[{"input": remap(e["input"]), "output": remap(e["output"])} for e in base_system.examples],
+            test_items=[{"input": remap(t["input"]), "output": remap(t["output"])} for t in base_system.test_items],
+            difficulty=base_system.difficulty + 1,
+            n_rules=len(base_system.rules),
+            domain="abstract",
+        )
+    else:
+        new_rules = [r.replace("add","combine").replace("multiply","merge").replace("double","twin") for r in base_system.rules]
+        return RuleSystem(
+            name=f"AbstractTransfer-{seed}",
+            description="Evaluate expressions using renamed operators (same math, different names)",
+            rules=new_rules,
+            examples=base_system.examples,
+            test_items=base_system.test_items,
+            difficulty=base_system.difficulty + 1,
+            n_rules=len(new_rules),
+            domain="abstract",
+        )
+
+
+FAR_TRANSFER_PAIRS = [
+    {"base": generate_symbol_system("ft_sym_1", difficulty=2), "transfer": None},
+    {"base": generate_symbol_system("ft_sym_2", difficulty=3), "transfer": None},
+    {"base": generate_number_system("ft_num_1", difficulty=2), "transfer": None},
+    {"base": generate_number_system("ft_num_2", difficulty=3), "transfer": None},
+]
+for pair in FAR_TRANSFER_PAIRS:
+    pair["transfer"] = generate_abstract_system(f"xfer_{pair['base'].name}", pair["base"])
+
+# Hard condition systems — reduced training window (only 3 examples)
+HARD_LEARNING_SYSTEMS = [
+    generate_symbol_system("lc_hard_sym_steep", difficulty=3),
+    generate_number_system("lc_hard_num_steep", difficulty=3),
+    generate_symbol_system("lc_hard_abstract_1", difficulty=3),
+    generate_number_system("lc_hard_abstract_2", difficulty=3),
+]

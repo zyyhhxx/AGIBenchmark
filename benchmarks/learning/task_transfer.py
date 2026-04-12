@@ -54,7 +54,7 @@ NEAR_SYSTEM = generate_symbol_system("transfer_near_v2", difficulty=2)
 FAR_SYSTEM = generate_number_system("transfer_far_v2", difficulty=2)
 
 
-@kbench.task(name="learning_transfer")
+@kbench.task(name="Near & Far Transfer")
 def learning_transfer(llm) -> float:
     """
     Near vs. Far Transfer Benchmark.

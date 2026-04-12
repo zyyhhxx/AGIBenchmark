@@ -109,7 +109,7 @@ def _score_tier(items, llm, tier_label):
     return tier_score, intended_acc, literal_trap, results, category_results
 
 
-@kbench.task(name="social_cog_pragmatic", version=2)
+@kbench.task(name="Pragmatic Inference", version=2)
 def social_cog_pragmatic(llm) -> float:
     """
     Pragmatic Inference Benchmark (v2 — difficulty-tiered).

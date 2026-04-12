@@ -295,7 +295,7 @@ def score_trial(llm, trial) -> float:
     return correct / total if total > 0 else 0
 
 
-@kbench.task(name="attention_instruction_update")
+@kbench.task(name="Attention to Instruction Update")
 def attention_instruction_update(llm) -> float:
     """
     Attention to Instruction Updates Benchmark (v2).

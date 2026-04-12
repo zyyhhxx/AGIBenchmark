@@ -410,7 +410,7 @@ def check_answer(model_answer: str, question: dict) -> bool:
 
 # ─── The Benchmark Task ────────────────────────────────────────────
 
-@kbench.task(name="metacog_control")
+@kbench.task(name="Metacognitive Control")
 def metacog_control(llm) -> float:
     """
     Metacognitive Control Benchmark: Strategic Re-Reading.

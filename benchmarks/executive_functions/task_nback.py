@@ -101,7 +101,7 @@ def dprime_fallback(hits, misses, false_alarms, correct_rejections):
     return round(float(d_prime), 4)
 
 
-@kbench.task(name="exec_func_nback")
+@kbench.task(name="N-Back Working Memory")
 def exec_func_nback(llm) -> float:
     """
     N-back Working Memory Benchmark.

@@ -62,7 +62,7 @@ def check_misleading(model_answer: str, misleading_patterns: list) -> bool:
     return any(pattern.lower() in model_lower for pattern in misleading_patterns)
 
 
-@kbench.task(name="social_cog_false_belief")
+@kbench.task(name="False Belief (Theory of Mind)")
 def social_cog_false_belief(llm) -> float:
     """
     False-Belief Theory of Mind Benchmark (v6).

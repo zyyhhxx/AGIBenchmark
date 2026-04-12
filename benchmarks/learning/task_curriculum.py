@@ -94,7 +94,7 @@ def run_curriculum(llm, system, examples: list, label: str) -> float:
     return correct / len(system.test_items) if system.test_items else 0
 
 
-@kbench.task(name="learning_curriculum")
+@kbench.task(name="Curriculum Sensitivity")
 def learning_curriculum(llm) -> float:
     """
     Curriculum Sensitivity Benchmark.

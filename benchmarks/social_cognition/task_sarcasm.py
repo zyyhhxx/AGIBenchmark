@@ -76,7 +76,7 @@ def compute_auc(ratings: list, labels: list) -> float:
     return round(float(auc), 4)
 
 
-@kbench.task(name="social_cog_sarcasm")
+@kbench.task(name="Sarcasm Detection")
 def social_cog_sarcasm(llm) -> float:
     """
     Sarcasm Detection in Context Benchmark.

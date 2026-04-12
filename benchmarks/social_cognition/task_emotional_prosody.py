@@ -916,7 +916,7 @@ def score_masked_emotion(model_emotion: str, surface: str, real: str) -> float:
     return 0.25  # unrecognized but not the surface trap
 
 
-@kbench.task(name="social_cog_emotional_prosody")
+@kbench.task(name="Emotional Prosody in Text")
 def social_cog_emotional_prosody(llm) -> float:
     """
     Emotional Prosody in Text Benchmark.

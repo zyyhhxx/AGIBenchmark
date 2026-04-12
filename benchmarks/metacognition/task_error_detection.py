@@ -121,7 +121,7 @@ def compute_dprime(hit_rate: float, false_alarm_rate: float) -> float:
 
 # ─── The Benchmark Task ────────────────────────────────────────────
 
-@kbench.task(name="metacog_error_detection")
+@kbench.task(name="Error Detection")
 def metacog_error_detection(llm) -> float:
     """
     Error Detection Benchmark.

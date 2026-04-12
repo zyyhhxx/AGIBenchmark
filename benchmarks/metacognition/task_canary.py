@@ -71,7 +71,7 @@ def _extract_confidence(text: str) -> int:
     return 50
 
 
-@kbench.task(name="metacog_canary")
+@kbench.task(name="Contamination Canary")
 def metacog_canary(llm) -> float:
     """
     Contamination Canary / Metacognitive Discrimination.
