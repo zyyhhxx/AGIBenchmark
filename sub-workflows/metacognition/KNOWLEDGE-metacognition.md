@@ -535,3 +535,15 @@ Final scores across 26 benchmarks × 10 Bedrock models compiled in `repo/results
 - **Learning writeup:** Cites Thorndike (1932), Ausubel (1968). Key finding: transfer scales cleanly with model size; interference resistance does not (suggests distinct mechanism). Curriculum sensitivity is low for LLMs vs. humans.
 - **Executive functions writeup:** Cites Miyake et al. (2000), Diamond (2013). Key finding: exec_func_tol (Tower of London) most discriminatory (range=0.80); inhibition is most size-sensitive.
 - **Social cognition writeup:** Cites Baron-Cohen et al. (1985), Grice (1975). Key finding: pragmatic inference shows family-level inversions (GPT-OSS-120B > Claude Opus); ToM degrades non-linearly at 3rd order for most models.
+
+## attention_selective v2 Redesign — Conjunction Search (2026-04-12)
+- **Problem:** v1 had std=0.054 (ceiling clustering 0.775–0.950) due to flat Stroop-analogue items
+- **Fix:** Replaced with 3-tier conjunction search (Treisman & Gelade, 1980):
+  - Tier 1: 4 pop-out items, weight 0.10 (easy single-feature)
+  - Tier 2: 10 feature-conjunction items, weight 0.40 (2-feature binding)
+  - Tier 3: 12 triple-conjunction items, weight 0.50 (3–5 features, near-miss distractors)
+- **Result:** std=0.1318, mean=0.8268; score range 0.4367 across 10 models
+- **Model spread:** DeepSeek-R1/GPT-OSS-120B 0.960 → Ministral 3B 0.523
+- **Bug found during redesign:** T3_09 had non-unique answer (Marcus & George both matched); T2_07 had wrong answer (6→7) — both fixed
+- **Notebook structure:** `.run()` appears as standalone cell (cell 6: `attention_selective.run()`); prior validator turns incorrectly flagged it as missing because grep on docstring matched first
+- **Lesson:** When checking for `.run()`, verify it is a standalone call cell, not inside a docstring. The notebook cell structure (cell index) is authoritative.
