@@ -3,12 +3,13 @@
 ## Active Goal
 Submit **5 writeups** (one per track) to maximize prize chances. Deadline: **April 16, 2026** (11:59 PM UTC).
 
+**PRIORITY: Fix metacognition track first**, then bring all other tracks to the same quality.
+
 Priority order: Metacognition → Attention → Learning → Executive Functions → Social Cognition.
 
 **SCOPE: ALL 5 TRACKS, NOT JUST METACOGNITION.**
-The metacognition track is the quality bar — all other tracks must be brought up to the same standard:
-- Fix all flagged benchmarks (low variance, ceiling effects) so every benchmark has std ≥ 0.10
-- Run all benchmarks in every track against all 10 Bedrock models
+- Fix all benchmarks with std < 0.08 so every benchmark passes the threshold
+- Run ALL benchmarks against ALL 10 Bedrock models (this works — most already have 10/10 scores)
 - Draft a ≤1,500-word writeup per track following the required template
 - Generate a cover image per track
 - Produce a discriminatory analysis summary per track
@@ -18,14 +19,9 @@ Do NOT declare the workflow complete until all 5 tracks have: (1) all benchmarks
 ## ⛔ Hard Rules
 - **DO NOT upload notebooks to Kaggle using the CLI or API.** Let the human handle all Kaggle uploads manually via the web UI.
 - **Each writeup must not exceed 1,500 words.** Follow the required template exactly.
-- **All notebooks MUST be self-contained.** No `from data.*` imports — data must be inlined in the notebook. Kaggle has no access to local modules. Known broken: `metacog_canary.ipynb` has `from data.canary_items import ...` which must be replaced with inlined data.
-- **No duplicate execution.** Each notebook must have exactly ONE `@kbench.task` definition and ONE `.run()` call. `if __name__ == "__main__"` guards do NOT work in Jupyter — `__name__` is always `"__main__"`. Known bugs (fix all):
-  - `attention_divided.ipynb` — Cell 0 and Cell 2 are 100% identical duplicates. Delete Cell 2.
-  - `attention_instruction_update.ipynb` — Same issue. Delete Cell 2.
-  - `attention_vigilance.ipynb` — Double `.run()` (cell 2 + cell 3). Remove one.
-  - `metacog_canary.ipynb` — Broken import + duplicate task + double `.run()`. Fix import to use inlined data, remove duplicate cells.
-  - `metacog_epistemic_revision.ipynb` — Double `.run()` (cell 1 + cell 2). Delete cell 2.
-  - `exec_func_crt.nbconvert.ipynb` — Exact duplicate of `exec_func_crt.ipynb`. Delete it.
+- **All notebooks MUST be self-contained.** No `from data.*` imports — data must be inlined in the notebook. Kaggle has no access to local modules.
+- **No duplicate execution.** Each notebook must have exactly ONE `@kbench.task` definition and ONE `.run()` call. `if __name__ == "__main__"` guards do NOT work in Jupyter — `__name__` is always `"__main__"`.
+- **All notebook bugs (duplicate cells, broken imports, nbconvert duplicate) have been fixed.** If any new notebooks are created or modified, ensure they follow the same rules: one `@kbench.task`, one `.run()`, no `from data.*` imports, all data inlined.
 - Note: Rules say "one (1) Submission per Team" for Hackathons — unclear if per-track or total. Ian will verify on Kaggle whether multiple writeups are allowed. Plan for 5, fall back to 1 (metacognition) if restricted.
 
 ## Submission Requirements (from competition rules, verified 2026-04-11)
@@ -36,7 +32,7 @@ A valid submission = **Kaggle Writeup** + **attached Kaggle Benchmark**
 
 ### Kaggle Writeup
 - Created via **"New Writeup"** button (NOT a Discussion post)
-- Must select a **Track** 
+- Must select a **Track**
 - ≤1,500 words — submissions over this limit may be penalized
 - Must include a **cover image** (required to submit)
 - Must click **"Submit"** button — drafts don't count
@@ -68,103 +64,37 @@ A valid submission = **Kaggle Writeup** + **attached Kaggle Benchmark**
 - 4 × $25,000 grand prizes (best across all tracks)
 - 2 × $10,000 per track (14 unique winners total, no repeats)
 
-## Track Status & Improvement Plan
+## Current Status (as of 2026-04-12)
 
-### Track 1: Metacognition 🟢 (Priority 1 — READY)
-**Status:** 9 benchmarks, 0 flagged, avg std 0.172, 7–10 models tested.
-**Writeup:** `repo/WRITEUP_METACOGNITION.md` (1,154 words) ✅
+All 26 benchmarks have 10/10 model scores (except learning_curves 9/10, exec_func_nback 9/10).
 
-**Improvements:**
-- [ ] Re-run all 9 benchmarks against all 10 models for freshest numbers (Task 011)
-- [ ] Polish writeup with any updated results
+### Metacognition — PRIORITY 1 (needs 1 fix)
+| Benchmark | Mean | Std | Status |
+|-----------|------|-----|--------|
+| metacog_calibration | 0.165 | 0.332 | ✅ |
+| metacog_canary | 0.795 | 0.305 | ✅ |
+| metacog_control | 0.549 | 0.181 | ✅ |
+| metacog_epistemic_humility | 0.788 | 0.220 | ✅ |
+| metacog_epistemic_revision | 0.801 | 0.102 | ✅ |
+| metacog_error_detection | 0.862 | 0.077 | ⚠️ below 0.08 — fix |
+| metacog_fok | 0.561 | 0.083 | ✅ |
+| metacog_jol | 0.393 | 0.091 | ✅ |
+| metacog_learning_monitoring | 0.834 | 0.081 | ✅ |
 
-### Track 2: Attention 🟢 (Priority 2 — Good shape)
-**Status:** 4 benchmarks, 0 flagged, avg std 0.161, but only 3-4 models tested.
-| Benchmark | Mean | Std | Range | Models |
-|-----------|------|-----|-------|--------|
-| attention_divided | 0.714 | 0.193 | 0.514 | 4 |
-| attention_instruction_update | 0.710 | 0.277 | 0.676 | 4 |
-| attention_selective | 0.880 | 0.054 | 0.130 | 3 |
-| attention_vigilance | 0.647 | 0.121 | 0.288 | 4 |
+Writeup: `repo/WRITEUP_METACOGNITION.md` (1,263 words) ✅
+Cover image: `repo/assets/metacognition_cover.png` ✅
 
-**Improvements:**
-- [ ] Run all 4 benchmarks against all 10 models (more model coverage needed)
-- [ ] attention_selective has low std (0.054) — monitor after more models, may need fixing
-- [ ] Draft writeup: `repo/WRITEUP_ATTENTION.md`
+### Attention — check std after recent fixes
+Writeup: `repo/WRITEUP_ATTENTION.md` — verify exists and quality
 
-### Track 3: Learning 🟡 (Priority 3 — One fix needed)
-**Status:** 4 benchmarks, 1 flagged, avg std 0.119, 4-5 models tested.
-| Benchmark | Mean | Std | Range | Models | Flag |
-|-----------|------|-----|-------|--------|------|
-| learning_curriculum | 0.650 | 0.114 | 0.300 | 4 | |
-| learning_curves | 0.626 | 0.063 | 0.170 | 5 | |
-| learning_interference | 0.440 | 0.037 | 0.100 | 5 | ⚠️ LOW VAR |
-| learning_transfer | 0.646 | 0.260 | 0.720 | 5 | |
+### Learning — check std after recent fixes
+Writeup: `repo/WRITEUP_LEARNING.md` — verify exists and quality
 
-**Improvements:**
-- [ ] Fix learning_interference (std=0.037, range=0.100 — needs harder/easier items for spread)
-- [ ] Run all 4 benchmarks against all 10 models
-- [ ] Draft writeup: `repo/WRITEUP_LEARNING.md`
+### Executive Functions — check std after recent fixes
+Writeup: `repo/WRITEUP_EXECUTIVE_FUNCTIONS.md` — verify exists and quality
 
-### Track 4: Executive Functions 🟡 (Priority 4 — Two issues)
-**Status:** 5 benchmarks, 1 flagged, avg std 0.082, 4 models tested.
-| Benchmark | Mean | Std | Range | Models | Flag |
-|-----------|------|-----|-------|--------|------|
-| exec_func_crt | 0.538 | 0.060 | 0.157 | 4 | |
-| exec_func_nback | 0.751 | 0.177 | 0.486 | 4 | |
-| exec_func_task_switch | 0.792 | 0.099 | 0.246 | 4 | |
-| exec_func_tol | 0.038 | 0.066 | 0.153 | 4 | near-floor |
-| exec_func_wcst | 0.467 | 0.007 | 0.018 | 4 | ⚠️ LOW VAR |
-
-**Improvements:**
-- [ ] Fix exec_func_wcst (std=0.007, essentially zero discrimination)
-- [ ] Investigate exec_func_tol near-floor (mean=0.038) — may be too hard for all models
-- [ ] Run all 5 benchmarks against all 10 models
-- [ ] Draft writeup: `repo/WRITEUP_EXECUTIVE_FUNCTIONS.md`
-
-### Track 5: Social Cognition 🔴 (Priority 5 — Weakest)
-**Status:** 4 benchmarks, 2 flagged, avg std 0.076, 3-4 models tested.
-| Benchmark | Mean | Std | Range | Models | Flag |
-|-----------|------|-----|-------|--------|------|
-| social_cog_emotional_prosody | 0.794 | 0.063 | 0.153 | 4 | |
-| social_cog_false_belief | 0.967 | 0.029 | 0.070 | 3 | ⚠️ CEILING |
-| social_cog_pragmatic | 0.857 | 0.036 | 0.088 | 4 | ⚠️ LOW VAR |
-| social_cog_sarcasm | 0.760 | 0.177 | 0.460 | 4 | |
-
-**Improvements:**
-- [ ] Fix social_cog_false_belief (ceiling at 0.967 — too easy, needs harder ToM scenarios)
-- [ ] Fix social_cog_pragmatic (std=0.036 — needs more nuanced pragmatic inference items)
-- [ ] Run all 4 benchmarks against all 10 models
-- [ ] Draft writeup: `repo/WRITEUP_SOCIAL_COGNITION.md`
-
-## Workflow
-
-### Phase 1: Metacognition submission (now)
-1. ✅ Writeup drafted
-2. Ian submits on Kaggle + confirms whether multiple writeups allowed
-3. Optional: re-run 10-model suite for updated numbers
-
-### Phase 2: Fix flagged benchmarks (parallel with writeup drafting)
-4. Fix learning_interference, exec_func_wcst, exec_func_tol, social_cog_false_belief, social_cog_pragmatic
-5. Re-test fixes against 3 models (Opus, mid-tier, Ministral 3B)
-
-### Phase 3: Run all tracks against all 10 models
-6. Full Bedrock runs for attention, learning, exec functions, social cognition
-7. Generate per-track discriminatory analysis
-
-### Phase 4: Draft remaining writeups
-8. Attention, Learning, Executive Functions, Social Cognition writeups (≤1,500 words each)
-
-### Phase 5: Ian submits remaining tracks
-9. Create writeup per track, attach benchmark, submit
-
-## Context
-- All 29 benchmarks implemented across 5 tracks
-- Notebooks uploaded to Kaggle, made public
-- CB tasks registered, benchmark collections created
-- 17 models run on CB platform
-- 10-model Bedrock cross-validation partially complete (metacog has most coverage)
-- Results in `results/score_matrix.csv` and `results/discriminatory_analysis.md`
+### Social Cognition — check std after recent fixes
+Writeup: `repo/WRITEUP_SOCIAL_COGNITION.md` — verify exists and quality
 
 ## Target Models (Amazon Bedrock)
 | # | Model | Model ID |

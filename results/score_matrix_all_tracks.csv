@@ -12,7 +12,7 @@ exec_func_nback,executive_functions,1.0000,1.0000,1.0000,1.0000,1.0000,1.0000,0.
 exec_func_task_switch,executive_functions,1.0000,0.9005,1.0000,0.9315,1.0000,0.7225,0.9587,0.7750,0.7125,0.8100
 exec_func_tol,executive_functions,0.8000,0.0000,0.1533,0.0000,0.6800,0.1533,0.0000,0.1600,0.2800,0.2900
 exec_func_wcst,executive_functions,1.0000,0.6985,0.6392,0.4719,0.5309,0.4792,0.4614,0.2607,0.5264,1.0000
-social_cog_emotional_prosody,social_cognition,0.8022,0.8356,0.8272,0.7694,0.8139,0.8383,0.8217,0.6856,0.8300,0.8578
+social_cog_emotional_prosody,social_cognition,0.4280,0.4124,0.2596,0.2704,0.1957,0.1937,0.1734,0.3480,0.3372,0.2123
 social_cog_false_belief,social_cognition,0.5833,0.7937,0.7083,0.5938,0.3771,0.8625,1.0000,0.6823,0.6375,0.8625
 social_cog_pragmatic,social_cognition,0.8674,0.7774,0.6782,0.9200,0.9560,0.8680,0.9120,0.4757,0.3041,0.5691
 social_cog_sarcasm,social_cognition,0.9261,0.8147,0.8936,0.9450,0.9100,0.9239,0.4636,0.7972,0.8536,0.8627

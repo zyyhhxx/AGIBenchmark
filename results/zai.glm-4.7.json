@@ -1,7 +1,7 @@
 {
   "model": "zai.glm-4.7",
   "model_label": "GLM 4.7",
-  "timestamp": "2026-04-12T01:43:35.104664+00:00",
+  "timestamp": "2026-04-12T02:36:47.507817+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.652,
@@ -127,6 +127,11 @@
       "score": 0.7167,
       "error": null,
       "duration_s": 18.9
+    },
+    "social_cog_emotional_prosody": {
+      "score": 0.2704,
+      "error": null,
+      "duration_s": 184.3
     }
   }
 }

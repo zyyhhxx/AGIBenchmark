@@ -631,6 +631,128 @@ PROSODY_ITEMS = [
             {"speaker": "B", "text": "Good."},
         ],
     },
+    # === EXTREME ITEMS (structural/register-based cues only — no emotional vocabulary) ===
+    {
+        "id": "extreme_01",
+        "has_shift": True,
+        "shift_turn": 4,
+        "emotion_before": "comfortable",
+        "emotion_after": "distancing",
+        "trigger": "code-switch from casual to formal register signals emotional withdrawal",
+        "difficulty": "extreme",
+        "dialogue": [
+            {"speaker": "A", "text": "Hey, so about what happened at dinner—"},
+            {"speaker": "B", "text": "Yeah, that was weird, right?"},
+            {"speaker": "A", "text": "I mean, the way she just said that in front of everyone."},
+            {"speaker": "B", "text": "I appreciate you bringing this to my attention. I'll take it under advisement."},
+            {"speaker": "A", "text": "Uh... what?"},
+            {"speaker": "B", "text": "If there's nothing else, I have some things to attend to."},
+        ],
+    },
+    {
+        "id": "extreme_02",
+        "has_shift": True,
+        "shift_turn": 4,
+        "emotion_before": "engaged",
+        "emotion_after": "shutting_down",
+        "trigger": "progressive sentence truncation signals emotional withdrawal through structure not content",
+        "difficulty": "extreme",
+        "dialogue": [
+            {"speaker": "A", "text": "I think we need to talk about us."},
+            {"speaker": "B", "text": "OK, yeah, I've been thinking about that too actually, and I have a lot of thoughts about where we are and what we should do going forward."},
+            {"speaker": "A", "text": "I've been seeing someone else."},
+            {"speaker": "B", "text": "Oh."},
+            {"speaker": "A", "text": "It just happened. I'm sorry."},
+            {"speaker": "B", "text": "OK."},
+            {"speaker": "A", "text": "Can we talk about this?"},
+            {"speaker": "B", "text": "No."},
+        ],
+    },
+    {
+        "id": "extreme_03",
+        "has_shift": True,
+        "shift_turn": 4,
+        "emotion_before": "enthusiastic",
+        "emotion_after": "hollow",
+        "trigger": "speaker maintains positive words but structure collapses into rote affirmations revealing emotional emptiness",
+        "difficulty": "extreme",
+        "surface_emotion": "enthusiastic",
+        "real_emotion": "hollow",
+        "dialogue": [
+            {"speaker": "A", "text": "We got approved for the expansion! Three new locations!"},
+            {"speaker": "B", "text": "That's fantastic! I've been hoping for this. The team is going to be thrilled!"},
+            {"speaker": "A", "text": "And they want YOU to lead the rollout. Six months, all three cities."},
+            {"speaker": "B", "text": "Great. That's great. Good. Really good."},
+            {"speaker": "A", "text": "You'll need to relocate temporarily. Starting next week."},
+            {"speaker": "B", "text": "Great. Sure. Good."},
+        ],
+    },
+    {
+        "id": "extreme_04",
+        "has_shift": True,
+        "shift_turn": 5,
+        "emotion_before": "neutral",
+        "emotion_after": "territorial",
+        "trigger": "third-party praise reveals jealousy through how another person is discussed",
+        "difficulty": "extreme",
+        "dialogue": [
+            {"speaker": "A", "text": "The new hire is settling in really well."},
+            {"speaker": "B", "text": "Yeah, seems fine."},
+            {"speaker": "A", "text": "Everyone loves her. She figured out the database issue in like an hour."},
+            {"speaker": "B", "text": "That issue was mostly fixed already. I'd done 90% of the work last week."},
+            {"speaker": "A", "text": "Oh, I didn't realize. Anyway, the VP mentioned her in the all-hands."},
+            {"speaker": "B", "text": "Did he. That's nice. I've been fixing database issues here for three years but sure. An hour. Impressive."},
+        ],
+    },
+    {
+        "id": "extreme_05",
+        "has_shift": True,
+        "shift_turn": 3,
+        "emotion_before": "calm",
+        "emotion_after": "panicking",
+        "trigger": "sentence structure disintegrates into run-on fragments signaling panic through syntax not vocabulary",
+        "difficulty": "extreme",
+        "dialogue": [
+            {"speaker": "A", "text": "I just checked the account."},
+            {"speaker": "B", "text": "And?"},
+            {"speaker": "A", "text": "It's empty, it's all gone, every penny, I checked three times and called the bank and they said there were transfers yesterday, multiple transfers, someone moved everything to an account I don't recognize, our savings, the kids' college fund, the emergency fund, all of it, I don't know what to do."},
+            {"speaker": "B", "text": "Wait, slow down—"},
+            {"speaker": "A", "text": "I can't slow down because we have nothing, literally nothing, and mortgage is due Friday and I don't—"},
+        ],
+    },
+    {
+        "id": "extreme_06",
+        "has_shift": True,
+        "shift_turn": 4,
+        "emotion_before": "affectionate",
+        "emotion_after": "manipulative",
+        "trigger": "affection becomes transactional as speaker pivots compliments into leverage for a request",
+        "difficulty": "extreme",
+        "dialogue": [
+            {"speaker": "A", "text": "You know, you really are the best friend anyone could ask for."},
+            {"speaker": "B", "text": "Aw, that's so sweet! What brought that on?"},
+            {"speaker": "A", "text": "Just thinking about how much you've always been there for me. Through everything."},
+            {"speaker": "B", "text": "Of course. That's what friends are for."},
+            {"speaker": "A", "text": "And that's exactly why I know you won't say no when I tell you I need to borrow twelve thousand dollars."},
+            {"speaker": "B", "text": "I— wait, what?"},
+            {"speaker": "A", "text": "After everything we've been through? You'd really let money come between us?"},
+        ],
+    },
+    # === ADDITIONAL ADVERSARIAL CONTROL (no shift — to increase false alarm penalty) ===
+    {
+        "id": "adv_ctrl_03",
+        "has_shift": False,
+        "difficulty": "adversarial_control",
+        "dialogue": [
+            {"speaker": "A", "text": "I don't know what to do anymore. My mother is driving me absolutely insane."},
+            {"speaker": "B", "text": "What happened now?"},
+            {"speaker": "A", "text": "She called three times today. Three! To tell me I'm loading the dishwasher wrong."},
+            {"speaker": "B", "text": "That does sound infuriating."},
+            {"speaker": "A", "text": "It IS. But I love her. She means well. She just... has opinions. About everything. Loudly."},
+            {"speaker": "B", "text": "Sounds like my dad with the thermostat."},
+            {"speaker": "A", "text": "Ha! Parents. Can't live with them, literally couldn't exist without them."},
+        ],
+    },
 ]
 
 
@@ -693,15 +815,33 @@ EMOTION_SYNONYMS = {
     "disengaged": ["withdrawn", "passive", "checked out", "reluctant", "distant"],
     "trusting": ["open", "candid", "comfortable", "confiding"],
     "withdrawn": ["guarded", "closed off", "reserved", "retreating"],
+    "comfortable": ["at ease", "relaxed"],
+    "distancing": ["formal", "cold", "withdrawing"],
+    "shutting_down": ["shutdown", "closing off"],
+    "hollow": ["empty", "going through the motions"],
+    "territorial": ["jealous", "threatened"],
+    "panicking": ["frantic", "spiraling"],
+    "manipulative": ["calculating", "coercive"],
+    "affectionate": ["loving", "warm"],
+    "engaged": ["invested", "interested"],
 }
 
 def emotion_match(model_emotion: str, target_emotion: str, strict: bool = False) -> bool:
+    """Match emotions. strict=True requires exact/substring match only (no synonyms)."""
     model_lower = model_emotion.lower().strip()
     target_lower = target_emotion.lower().strip()
+    if target_lower == model_lower:
+        return True
     if target_lower in model_lower or model_lower in target_lower:
         return True
+    if strict:
+        # Strict mode: only top-2 closest synonyms
+        synonyms = EMOTION_SYNONYMS.get(target_lower, [])
+        top_synonyms = synonyms[:2] if synonyms else []
+        return any(s == model_lower or s in model_lower or model_lower in s for s in top_synonyms)
+    # Non-strict: check all synonyms
     synonyms = EMOTION_SYNONYMS.get(target_lower, [])
-    return any(s in model_lower for s in synonyms)
+    return any(s == model_lower or s in model_lower or model_lower in s for s in synonyms)
 
 
 def score_mixed_emotions(model_emotion: str, mixed_list: list) -> float:
@@ -809,17 +949,15 @@ def social_cog_emotional_prosody(llm) -> float:
                 # Check shift detection
                 result["shift_detected"] = model_has_shift
                 
-                # Check turn identification
+                # Check turn identification — exact match required for all items
                 actual_turn = item["shift_turn"]
-                difficulty = item.get("difficulty", "standard")
-                # Easy: ±1 tolerance; standard: ±1; subtle/expert/very_hard/camouflaged: exact
-                if difficulty in ("subtle", "expert", "very_hard", "camouflaged"):
-                    result["turn_correct"] = model_shift_turn == actual_turn
-                else:
-                    result["turn_correct"] = abs(model_shift_turn - actual_turn) <= 1
+                result["turn_correct"] = model_shift_turn == actual_turn
                 
                 # Check emotion labels — special handling for mixed/masked emotions
-                result["before_correct"] = emotion_match(model_before, item["emotion_before"])
+                # Strict emotion matching for hard items
+                difficulty = item.get("difficulty", "standard")
+                use_strict = difficulty in ("expert", "camouflaged", "very_hard", "extreme")
+                result["before_correct"] = emotion_match(model_before, item["emotion_before"], strict=use_strict)
                 
                 if "mixed_emotions" in item:
                     result["after_score"] = score_mixed_emotions(model_after, item["mixed_emotions"])
@@ -828,14 +966,15 @@ def social_cog_emotional_prosody(llm) -> float:
                     result["after_score"] = score_masked_emotion(model_after, item["surface_emotion"], item["real_emotion"])
                     result["after_correct"] = result["after_score"] >= 0.5
                 else:
-                    result["after_correct"] = emotion_match(model_after, item["emotion_after"])
+                    result["after_correct"] = emotion_match(model_after, item["emotion_after"], strict=use_strict)
                     result["after_score"] = 1.0 if result["after_correct"] else 0.0
                 
-                # Check trigger (keyword overlap)
-                trigger_words = set(item["trigger"].lower().split())
-                model_trigger_words = set(model_trigger.lower().split())
+                # Check trigger (strict keyword overlap — require 60% of key words)
+                stop_words = {"a", "an", "the", "of", "in", "to", "and", "or", "is", "was", "that", "for", "on", "with", "as", "at", "by", "from"}
+                trigger_words = set(item["trigger"].lower().split()) - stop_words
+                model_trigger_words = set(model_trigger.lower().split()) - stop_words
                 overlap = len(trigger_words & model_trigger_words)
-                result["trigger_score"] = min(1.0, overlap / max(1, len(trigger_words) * 0.5))
+                result["trigger_score"] = min(1.0, overlap / max(1, len(trigger_words) * 0.6))
             else:
                 # Control: should detect NO shift
                 result["correct_no_shift"] = not model_has_shift
@@ -850,7 +989,7 @@ def social_cog_emotional_prosody(llm) -> float:
     # Categorize by difficulty tier
     easy_items = [r for r in shift_items if item_lookup.get(r["id"], {}).get("difficulty") == "easy"]
     medium_items = [r for r in shift_items if item_lookup.get(r["id"], {}).get("difficulty", "standard") in ("standard", "subtle", None)]
-    hard_items = [r for r in shift_items if item_lookup.get(r["id"], {}).get("difficulty") in ("expert", "camouflaged", "very_hard")]
+    hard_items = [r for r in shift_items if item_lookup.get(r["id"], {}).get("difficulty") in ("expert", "camouflaged", "very_hard", "extreme")]
     
     def compute_shift_metrics(items, strict_turn=False):
         if not items:
@@ -882,9 +1021,9 @@ def social_cog_emotional_prosody(llm) -> float:
     adv_fa = sum(1 for r in adv_controls if not r.get("correct_no_shift", True)) / len(adv_controls) if adv_controls else 0
     false_alarm_rate = 0.4 * plain_fa + 0.6 * adv_fa
     
-    # Three-tier composite
-    easy_score = 0.50 * easy_det + 0.50 * float(easy_emo)
-    medium_score = 0.40 * med_det + 0.30 * float(med_emo) + 0.20 * float(med_trig) + 0.10 * (1 - false_alarm_rate)
+    # Three-tier composite — detection excluded (doesn't discriminate; all models ~100%)
+    easy_score = float(easy_emo)
+    medium_score = 0.40 * float(med_emo) + 0.35 * float(med_trig) + 0.25 * (1 - false_alarm_rate)
     # Hard tier: stricter — emotion requires BOTH before+after correct (multiplicative)
     # Recompute hard emotion as multiplicative (both must be right)
     hard_both_emo_scores = []
@@ -895,8 +1034,17 @@ def social_cog_emotional_prosody(llm) -> float:
             hard_both_emo_scores.append(before_s * after_s)  # multiplicative: both must be right
     hard_emo_strict = np.mean(hard_both_emo_scores) if hard_both_emo_scores else 0
     
-    hard_score = (0.25 * hard_det + 0.35 * float(hard_emo_strict) + 0.10 * float(hard_trig)
-                  + 0.20 * hard_turn + 0.10 * (1 - false_alarm_rate))
+    # Depth penalty: for hard items where shift detected but emotion_after wrong, apply -0.1
+    depth_penalties = []
+    for r in hard_items:
+        if r.get("shift_detected", False) and not r.get("after_correct", False):
+            depth_penalties.append(-0.1)
+        else:
+            depth_penalties.append(0.0)
+    depth_penalty = np.mean(depth_penalties) if depth_penalties else 0.0
+    
+    hard_score = max(0.0, (0.40 * float(hard_emo_strict) + 0.20 * float(hard_trig)
+                  + 0.30 * hard_turn + 0.10 * (1 - false_alarm_rate)) + depth_penalty)
     
     score = round(0.10 * easy_score + 0.30 * medium_score + 0.60 * hard_score, 4)
     
@@ -926,6 +1074,7 @@ def social_cog_emotional_prosody(llm) -> float:
     print(f"Hard trigger:       {hard_trig:.2%}")
     print(f"Hard turn accuracy: {hard_turn:.2%}")
     print(f"False alarm rate:   {false_alarm_rate:.2%}")
+    print(f"Depth penalty:      {depth_penalty:.4f}")
     print(f"Easy tier score:    {easy_score:.4f} (weight 0.10)")
     print(f"Medium tier score:  {medium_score:.4f} (weight 0.30)")
     print(f"Hard tier score:    {hard_score:.4f} (weight 0.60)")
@@ -935,4 +1084,5 @@ def social_cog_emotional_prosody(llm) -> float:
 
 
 # ─── Run ────────────────────────────────────────────────────────────
-social_cog_emotional_prosody.run(llm=kbench.llm)
+if __name__ == "__main__":
+    social_cog_emotional_prosody.run(llm=kbench.llm)
