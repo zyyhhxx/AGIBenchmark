@@ -286,6 +286,12 @@ def metacog_calibration(llm) -> float:
     bss_raw = brier_skill_score(confidences, accuracies)
     score = round(max(0.0, bss_raw), 4)  # Clamp to [0, 1]
 
+    # Proto3 omits zero-valued scalars from JSON (numericResult: {} instead of
+    # numericResult: {value: 0}).  Use a tiny sentinel so the score survives
+    # serialization and cache reloading.  1e-10 is below display precision.
+    if score == 0.0:
+        score = 1e-10
+
     # Diagnostic ECE (not used in final score)
     metrics = compute_ece(confidences, accuracies)
 

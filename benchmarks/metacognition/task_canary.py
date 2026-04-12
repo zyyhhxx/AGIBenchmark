@@ -165,6 +165,10 @@ def metacog_canary(llm) -> float:
 
     score = round(max(0.0, bss_raw), 4)
 
+    # Proto3 omits zero-valued scalars from JSON — use tiny sentinel
+    if score == 0.0:
+        score = 1e-10
+
     # Diagnostic metrics
     fab_results = [r for r in results if r["fabricated"]]
     real_results = [r for r in results if not r["fabricated"]]
