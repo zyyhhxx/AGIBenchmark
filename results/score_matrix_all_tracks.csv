@@ -1,5 +1,5 @@
 track,benchmark,Claude Opus 4.6,DeepSeek-R1,GPT-OSS-120B,Llama 3.3 70B,Qwen3 Next 80B,Nova Pro,Llama 4 Maverick 17B,Claude Sonnet 4.6,GLM 4.7,Ministral 3B
-learning,learning_curves,,,,0.5238,,0.6820,0.5705,,0.7403,0.6652
+learning,learning_curves,0.7873,0.7413,0.6855,0.4542,,0.443,0.5667,0.6606,0.5074,0.441
 learning,learning_transfer,1.0000,1.0000,1.0000,0.5200,0.7500,0.5500,0.8800,1.0000,0.8700,0.2800
 learning,learning_interference,0.1200,0.4500,0.5000,0.4000,0.9300,0.7830,0.4000,1.0000,0.4500,0.4410
 learning,learning_curriculum,0.7000,0.5200,0.7000,0.7600,0.4600,0.4600,0.7000,0.7000,0.7000,0.6800

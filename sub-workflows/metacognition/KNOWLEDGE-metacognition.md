@@ -556,3 +556,13 @@ Final scores across 26 benchmarks × 10 Bedrock models compiled in `repo/results
 - **Ranking note:** Nova Pro (0.2502) ranks lowest — unexpectedly below Ministral 3B (0.3077). DeepSeek-R1 also underperforms expectations; reasoning-format JSON parsing may inflate difficulty for these models.
 - **Design insight:** Multiplicative scoring for multi-part answers (require ALL components correct) is the strongest lever for compressing scores downward without changing task content.
 - **Cache risk:** Nova Pro had a stale cached run with different code version (0.2460 cached vs 0.2502 fresh). Always invalidate cache after changing scoring logic.
+
+## learning_curves v3 Discrimination Fix — Final Results (2026-04-12)
+- **Root cause of v2 low discrimination (std=0.068):** Abstract system generator produced trivial surface-renaming tasks — models could pattern-match outputs without genuine structural inference.
+- **Fix:** Replaced `generate_abstract_system` with `generate_structural_transfer` (coordinate-pair encoding + word-problem embedding). Added `generate_positional_system` and `generate_stateful_system` to `HARD_LEARNING_SYSTEMS`. Far-transfer prompt reduced to 2 worked examples (withholds full transfer rules, forcing genuine inference).
+- **Composite weights:** Changed from 0.25/0.50/0.25 → 0.20/0.50/0.30 (standard/far_transfer/steep), increasing penalty for failing the harder steep condition.
+- **Final v3 scores (9 models):** Claude Opus 4.6=0.7873, DeepSeek-R1=0.7413, GPT-OSS-120B=0.6855, Claude Sonnet 4.6=0.6606, Llama 4 Maverick=0.5667, GLM 4.7=0.5074, Llama 3.3 70B=0.4542, Nova Pro=0.4430, Ministral 3B=0.4410 → std=0.1271, range=0.3463 ✅
+- **Qwen3 Next 80B:** OOM — excluded from stats.
+- **Ranking shift:** GLM 4.7 dropped sharply (v2: 0.7403 → v3: 0.5074) and Nova Pro dropped (v2: 0.6820 → v3: 0.4430) — these models were inflated by the trivial abstract system; structural transfer is genuinely harder for them.
+- **Design insight:** Withholding transfer rules (only 2 examples instead of full system spec) is the key lever — models must infer the structural mapping, not just apply stated rules.
+- **Artifact:** `repo/benchmarks/learning/task_learning_curves.py`, `repo/benchmarks/learning/data/rule_systems.py`
