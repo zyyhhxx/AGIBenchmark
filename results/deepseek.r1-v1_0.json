@@ -1,7 +1,7 @@
 {
   "model": "deepseek.r1-v1:0",
   "model_label": "DeepSeek-R1",
-  "timestamp": "2026-04-12T02:36:59.866752+00:00",
+  "timestamp": "2026-04-12T03:56:58.118384+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.867,
@@ -124,9 +124,9 @@
       "duration_s": 89.5
     },
     "social_cog_emotional_prosody": {
-      "score": 0.2353,
+      "score": 0.3285,
       "error": null,
-      "duration_s": 546.5
+      "duration_s": 534.7
     }
   }
 }

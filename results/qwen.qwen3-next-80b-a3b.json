@@ -1,7 +1,7 @@
 {
   "model": "qwen.qwen3-next-80b-a3b",
   "model_label": "Qwen3 Next 80B",
-  "timestamp": "2026-04-12T02:38:21.969591+00:00",
+  "timestamp": "2026-04-12T04:09:32.274543+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.992,
@@ -119,9 +119,9 @@
       "duration_s": 7.7
     },
     "social_cog_emotional_prosody": {
-      "score": 0.2123,
+      "score": 0.4036,
       "error": null,
-      "duration_s": 262.5
+      "duration_s": 292.9
     }
   }
 }

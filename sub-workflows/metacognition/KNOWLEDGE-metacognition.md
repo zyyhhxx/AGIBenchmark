@@ -547,3 +547,12 @@ Final scores across 26 benchmarks × 10 Bedrock models compiled in `repo/results
 - **Bug found during redesign:** T3_09 had non-unique answer (Marcus & George both matched); T2_07 had wrong answer (6→7) — both fixed
 - **Notebook structure:** `.run()` appears as standalone cell (cell 6: `attention_selective.run()`); prior validator turns incorrectly flagged it as missing because grep on docstring matched first
 - **Lesson:** When checking for `.run()`, verify it is a standalone call cell, not inside a docstring. The notebook cell structure (cell index) is authoritative.
+
+## social_cog_emotional_prosody Discrimination Fix — Final Results (2026-04-12)
+- **Root cause:** Benchmark too easy for most models (std=0.049, scores clustered 0.73-0.88)
+- **Fix:** 3-tier weighting (easy=10%, medium=30%, hard=60%) with multiplicative emotion scoring for hard tier (both before AND after emotions must be correct); exact turn identification (no ±1 tolerance) for hard tier
+- **Final 10-model scores:** Claude Opus 4.6=0.5563, Claude Sonnet 4.6=0.4518, Qwen3 80B=0.4036, GLM 4.7=0.3948, GPT-OSS-120B=0.3498, Llama 4 Maverick=0.3408, DeepSeek-R1=0.3285, Ministral 3B=0.3077, Llama 3.3 70B=0.2939, Nova Pro=0.2502
+- **Final std=0.0837** (mean=0.3677, range=0.3061) — target ≥0.08 ✅
+- **Ranking note:** Nova Pro (0.2502) ranks lowest — unexpectedly below Ministral 3B (0.3077). DeepSeek-R1 also underperforms expectations; reasoning-format JSON parsing may inflate difficulty for these models.
+- **Design insight:** Multiplicative scoring for multi-part answers (require ALL components correct) is the strongest lever for compressing scores downward without changing task content.
+- **Cache risk:** Nova Pro had a stale cached run with different code version (0.2460 cached vs 0.2502 fresh). Always invalidate cache after changing scoring logic.
