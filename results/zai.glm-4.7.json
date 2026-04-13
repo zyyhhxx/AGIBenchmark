@@ -3,36 +3,6 @@
   "model_label": "GLM 4.7",
   "timestamp": "2026-04-12T09:21:58.345526+00:00",
   "scores": {
-    "metacog_canary": {
-      "score": 0.652,
-      "error": null,
-      "duration_s": 117.6
-    },
-    "metacog_fok": {
-      "score": 0.5397,
-      "error": null,
-      "duration_s": 912.8
-    },
-    "metacog_jol": {
-      "score": 0.401,
-      "error": null,
-      "duration_s": 251.5
-    },
-    "metacog_learning_monitoring": {
-      "score": 0.9098,
-      "error": null,
-      "duration_s": 334.0
-    },
-    "metacog_control": {
-      "score": 0.6617,
-      "error": null,
-      "duration_s": 168.8
-    },
-    "metacog_epistemic_humility": {
-      "score": 0.8833,
-      "error": null,
-      "duration_s": 149.7
-    },
     "learning_transfer": {
       "score": 0.87,
       "error": null,
@@ -83,11 +53,6 @@
       "error": null,
       "duration_s": 144.8
     },
-    "metacog_epistemic_revision": {
-      "score": 0.75,
-      "error": null,
-      "duration_s": 126.8
-    },
     "learning_interference": {
       "score": 0.45,
       "error": null,
@@ -122,16 +87,6 @@
       "score": 0.5074,
       "error": null,
       "duration_s": 599.0
-    },
-    "metacog_error_detection": {
-      "score": 0.9156,
-      "error": null,
-      "duration_s": 129.4
-    },
-    "metacog_calibration": {
-      "score": 0.5226,
-      "error": null,
-      "duration_s": 201.7
     }
   }
 }

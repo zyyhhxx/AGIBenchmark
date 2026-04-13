@@ -1,0 +1,9 @@
+{
+  "benchmark": "metacog_canary",
+  "model": "amazon.nova-pro-v1_0",
+  "score": 0.373,
+  "error": null,
+  "duration_s": 60.9,
+  "n_calls": 60,
+  "timestamp": "2026-04-13T12:22:59.052882+00:00"
+}

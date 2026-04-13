@@ -1,0 +1,9 @@
+{
+  "benchmark": "metacog_epistemic_humility",
+  "model": "zai.glm-4.7",
+  "score": 0.8833,
+  "error": null,
+  "duration_s": 398.3,
+  "n_calls": 24,
+  "timestamp": "2026-04-13T16:11:58.430679+00:00"
+}

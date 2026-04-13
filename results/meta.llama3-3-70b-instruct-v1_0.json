@@ -3,41 +3,6 @@
   "model_label": "Llama 3.3 70B",
   "timestamp": "2026-04-12T09:19:06.146614+00:00",
   "scores": {
-    "metacog_canary": {
-      "score": 1.0,
-      "error": null,
-      "duration_s": 11.5
-    },
-    "metacog_fok": {
-      "score": 0.6059,
-      "error": null,
-      "duration_s": 89.6
-    },
-    "metacog_jol": {
-      "score": 0.4647,
-      "error": null,
-      "duration_s": 48.0
-    },
-    "metacog_learning_monitoring": {
-      "score": 0.8144,
-      "error": null,
-      "duration_s": 33.4
-    },
-    "metacog_control": {
-      "score": 0.6617,
-      "error": null,
-      "duration_s": 31.5
-    },
-    "metacog_epistemic_revision": {
-      "score": 0.75,
-      "error": null,
-      "duration_s": 42.4
-    },
-    "metacog_epistemic_humility": {
-      "score": 0.92,
-      "error": null,
-      "duration_s": 32.6
-    },
     "learning_transfer": {
       "score": 0.52,
       "error": null,
@@ -122,16 +87,6 @@
       "score": 0.4542,
       "error": null,
       "duration_s": 644.6
-    },
-    "metacog_error_detection": {
-      "score": 0.8666,
-      "error": null,
-      "duration_s": 39.6
-    },
-    "metacog_calibration": {
-      "score": 0.4209,
-      "error": null,
-      "duration_s": 29.5
     }
   }
 }

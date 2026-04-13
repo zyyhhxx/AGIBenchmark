@@ -1,0 +1,9 @@
+{
+  "benchmark": "metacog_fok",
+  "model": "anthropic.claude-sonnet-4-6",
+  "score": 0.6396,
+  "error": null,
+  "duration_s": 357.5,
+  "n_calls": 162,
+  "timestamp": "2026-04-13T12:48:02.721902+00:00"
+}

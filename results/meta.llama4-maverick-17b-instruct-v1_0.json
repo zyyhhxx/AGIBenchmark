@@ -3,41 +3,6 @@
   "model_label": "Llama 4 Maverick 17B",
   "timestamp": "2026-04-12T09:19:02.754676+00:00",
   "scores": {
-    "metacog_canary": {
-      "score": 0.928,
-      "error": null,
-      "duration_s": 13.0
-    },
-    "metacog_fok": {
-      "score": 0.5674,
-      "error": null,
-      "duration_s": 85.3
-    },
-    "metacog_jol": {
-      "score": 0.4647,
-      "error": null,
-      "duration_s": 30.9
-    },
-    "metacog_learning_monitoring": {
-      "score": 0.8262,
-      "error": null,
-      "duration_s": 90.9
-    },
-    "metacog_control": {
-      "score": 0.615,
-      "error": null,
-      "duration_s": 20.2
-    },
-    "metacog_epistemic_revision": {
-      "score": 0.83,
-      "error": null,
-      "duration_s": 54.2
-    },
-    "metacog_epistemic_humility": {
-      "score": 0.9029,
-      "error": null,
-      "duration_s": 28.1
-    },
     "learning_transfer": {
       "score": 0.88,
       "error": null,
@@ -122,16 +87,6 @@
       "score": 0.5667,
       "error": null,
       "duration_s": 461.0
-    },
-    "metacog_error_detection": {
-      "score": 0.9472,
-      "error": null,
-      "duration_s": 34.3
-    },
-    "metacog_calibration": {
-      "score": 0.5668,
-      "error": null,
-      "duration_s": 26.1
     }
   }
 }

@@ -3,41 +3,6 @@
   "model_label": "Claude Opus 4.6",
   "timestamp": "2026-04-12T09:27:35.316014+00:00",
   "scores": {
-    "metacog_canary": {
-      "score": 0.9947,
-      "error": null,
-      "duration_s": 110.3
-    },
-    "metacog_fok": {
-      "score": 0.5983,
-      "error": null,
-      "duration_s": 1265.7
-    },
-    "metacog_jol": {
-      "score": 0.4643,
-      "error": null,
-      "duration_s": 422.9
-    },
-    "metacog_learning_monitoring": {
-      "score": 0.8093,
-      "error": null,
-      "duration_s": 529.4
-    },
-    "metacog_control": {
-      "score": 0.69,
-      "error": null,
-      "duration_s": 133.4
-    },
-    "metacog_epistemic_revision": {
-      "score": 0.96,
-      "error": null,
-      "duration_s": 329.3
-    },
-    "metacog_epistemic_humility": {
-      "score": 0.7987,
-      "error": null,
-      "duration_s": 233.1
-    },
     "learning_transfer": {
       "score": 1.0,
       "error": null,
@@ -121,16 +86,6 @@
       "score": 0.7873,
       "error": null,
       "duration_s": 2090.1
-    },
-    "metacog_error_detection": {
-      "score": 0.9664,
-      "error": null,
-      "duration_s": 184.4
-    },
-    "metacog_calibration": {
-      "score": 0.5996,
-      "error": null,
-      "duration_s": 334.6
     }
   }
 }

@@ -1,0 +1,9 @@
+{
+  "benchmark": "metacog_fok",
+  "model": "anthropic.claude-opus-4-6-v1",
+  "score": 0.609,
+  "error": null,
+  "duration_s": 556.7,
+  "n_calls": 162,
+  "timestamp": "2026-04-13T09:39:28.856698+00:00"
+}

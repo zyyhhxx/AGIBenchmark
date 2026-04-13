@@ -1,0 +1,9 @@
+{
+  "benchmark": "metacog_error_detection",
+  "model": "deepseek.r1-v1_0",
+  "score": 0.9081,
+  "error": null,
+  "duration_s": 269.7,
+  "n_calls": 65,
+  "timestamp": "2026-04-13T10:39:40.469474+00:00"
+}

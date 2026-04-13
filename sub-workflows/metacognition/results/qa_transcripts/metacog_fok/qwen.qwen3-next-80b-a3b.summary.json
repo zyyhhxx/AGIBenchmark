@@ -1,0 +1,9 @@
+{
+  "benchmark": "metacog_fok",
+  "model": "qwen.qwen3-next-80b-a3b",
+  "score": 0.6303,
+  "error": null,
+  "duration_s": 328.3,
+  "n_calls": 162,
+  "timestamp": "2026-04-13T11:44:30.452890+00:00"
+}

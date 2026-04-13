@@ -1,0 +1,9 @@
+{
+  "benchmark": "metacog_epistemic_humility",
+  "model": "openai.gpt-oss-120b-1_0",
+  "score": null,
+  "error": "An error occurred (ValidationException) when calling the Converse operation: The model returned the following errors: {\"error\":{\"code\":\"validation_error\",\"message\":\"Internal server error\",\"param\":null",
+  "duration_s": 42.3,
+  "n_calls": 7,
+  "timestamp": "2026-04-13T11:30:03.613800+00:00"
+}

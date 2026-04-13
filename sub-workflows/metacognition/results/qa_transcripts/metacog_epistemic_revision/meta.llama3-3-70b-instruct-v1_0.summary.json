@@ -1,0 +1,9 @@
+{
+  "benchmark": "metacog_epistemic_revision",
+  "model": "meta.llama3-3-70b-instruct-v1_0",
+  "score": 0.75,
+  "error": null,
+  "duration_s": 59.8,
+  "n_calls": 42,
+  "timestamp": "2026-04-13T11:35:55.066741+00:00"
+}

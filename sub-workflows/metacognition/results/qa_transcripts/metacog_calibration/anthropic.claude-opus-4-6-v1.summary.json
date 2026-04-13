@@ -1,0 +1,9 @@
+{
+  "benchmark": "metacog_calibration",
+  "model": "anthropic.claude-opus-4-6-v1",
+  "score": 0.5726,
+  "error": null,
+  "duration_s": 361.7,
+  "n_calls": 120,
+  "timestamp": "2026-04-13T09:49:20.325792+00:00"
+}

@@ -1,0 +1,9 @@
+{
+  "benchmark": "metacog_learning_monitoring",
+  "model": "zai.glm-4.7",
+  "score": 0.8754,
+  "error": null,
+  "duration_s": 756.2,
+  "n_calls": 39,
+  "timestamp": "2026-04-13T15:46:47.288405+00:00"
+}

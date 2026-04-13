@@ -1,0 +1,9 @@
+{
+  "benchmark": "metacog_epistemic_revision",
+  "model": "qwen.qwen3-next-80b-a3b",
+  "score": 0.92,
+  "error": null,
+  "duration_s": 1057.0,
+  "n_calls": 42,
+  "timestamp": "2026-04-13T12:19:50.014136+00:00"
+}

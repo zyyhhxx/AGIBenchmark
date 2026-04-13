@@ -1,0 +1,9 @@
+{
+  "benchmark": "metacog_epistemic_revision",
+  "model": "openai.gpt-oss-120b-1_0",
+  "score": 0.64,
+  "error": null,
+  "duration_s": 223.0,
+  "n_calls": 42,
+  "timestamp": "2026-04-13T11:29:19.261244+00:00"
+}

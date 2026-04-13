@@ -1,0 +1,9 @@
+{
+  "benchmark": "metacog_fok",
+  "model": "meta.llama3-3-70b-instruct-v1_0",
+  "score": 0.6097,
+  "error": null,
+  "duration_s": 47.1,
+  "n_calls": 162,
+  "timestamp": "2026-04-13T11:31:37.763528+00:00"
+}

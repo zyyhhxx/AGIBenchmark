@@ -1,0 +1,9 @@
+{
+  "benchmark": "metacog_epistemic_humility",
+  "model": "qwen.qwen3-next-80b-a3b",
+  "score": 0.9186,
+  "error": null,
+  "duration_s": 121.0,
+  "n_calls": 24,
+  "timestamp": "2026-04-13T12:21:53.084555+00:00"
+}

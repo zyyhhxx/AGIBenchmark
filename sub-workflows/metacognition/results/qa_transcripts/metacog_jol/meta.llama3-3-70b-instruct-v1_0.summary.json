@@ -1,0 +1,9 @@
+{
+  "benchmark": "metacog_jol",
+  "model": "meta.llama3-3-70b-instruct-v1_0",
+  "score": 0.5,
+  "error": null,
+  "duration_s": 51.0,
+  "n_calls": 48,
+  "timestamp": "2026-04-13T11:32:30.783904+00:00"
+}

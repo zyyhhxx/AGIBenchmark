@@ -1,0 +1,9 @@
+{
+  "benchmark": "metacog_calibration",
+  "model": "amazon.nova-pro-v1_0",
+  "score": 0.4694,
+  "error": null,
+  "duration_s": 93.9,
+  "n_calls": 120,
+  "timestamp": "2026-04-13T12:28:20.340317+00:00"
+}

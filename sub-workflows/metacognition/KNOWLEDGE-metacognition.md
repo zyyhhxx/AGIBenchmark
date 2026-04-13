@@ -1,5 +1,16 @@
 # KNOWLEDGE.md — AGI Benchmark
 
+## External Monitoring Tier Analysis — canary, epistemic_humility, error_detection (2026-04-13)
+- **Score gradient:** error_detection (mean=0.871) > epistemic_humility (mean=0.805) > canary (mean=0.546) — reflects increasing difficulty: arithmetic error detection is easiest, confidence calibration on fabricated facts is hardest
+- **Best discriminator:** metacog_canary (std=0.280, range=0.875) — no ceiling, floor effect (10%) is by design (Ministral 3B = 0.000)
+- **Mild ceiling on error_detection:** 30% of models >0.95; hard statistical items (E33-E40: base rate neglect, Simpson's paradox, Bayesian inference) are the key discriminators
+- **Ministral 3B failure modes per benchmark:** hallucination with confidence=95-99 on fabricated facts (canary); hedging/confabulating on unknowable items (epistemic_humility); false positive error detection — claims errors in correct solutions (error_detection)
+- **Claude hedging penalty:** Claude Opus (0.797) and Sonnet (0.838) score mid-tier on epistemic_humility despite being frontier models — hedged responses ("maybe") are penalized vs. flat refusal ("no"); Llama 3.3 70B scores highest (0.921) by consistently refusing outright
+- **Rank inversion on epistemic_humility:** Llama 3.3 70B > Nova Pro > Claude models — not a scoring bug; reflects behavioral difference (refusal vs. epistemic hedging)
+- **GPT-OSS-120B missing** on epistemic_humility (ValidationException); 9/10 coverage acceptable
+- **All 149 items: zero debatable ground truth** across all three benchmarks
+- **All three benchmarks: KEEP AS-IS** — no items to revise, no scoring changes needed
+
 ## Retry Bias Fix — All 7 Metacognition Notebooks (2026-04-13)
 - **Root cause:** `schema=` parameter in `llm.prompt()` calls caused retry loops on parse failure, biasing scores upward (models got extra attempts).
 - **Fix pattern:** Remove `schema=`, add `_strip_think()` helper to strip `<think>...</think>` tags, then extract JSON with `re.search(r'\{.*\}', cleaned, re.DOTALL)` and `json.loads()` — single LLM call only.

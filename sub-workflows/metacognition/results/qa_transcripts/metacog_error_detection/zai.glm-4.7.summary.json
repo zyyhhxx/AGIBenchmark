@@ -1,0 +1,9 @@
+{
+  "benchmark": "metacog_error_detection",
+  "model": "zai.glm-4.7",
+  "score": 0.8237,
+  "error": null,
+  "duration_s": 1822.9,
+  "n_calls": 65,
+  "timestamp": "2026-04-13T15:34:09.087669+00:00"
+}

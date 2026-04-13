@@ -3,26 +3,6 @@
   "model_label": "Ministral 3B",
   "timestamp": "2026-04-12T09:39:29.184943+00:00",
   "scores": {
-    "metacog_canary": {
-      "score": 0.0,
-      "error": null,
-      "duration_s": 58.9
-    },
-    "metacog_learning_monitoring": {
-      "score": 0.6906,
-      "error": null,
-      "duration_s": 85.1
-    },
-    "metacog_control": {
-      "score": 0.2,
-      "error": null,
-      "duration_s": 80.8
-    },
-    "metacog_epistemic_humility": {
-      "score": 0.2,
-      "error": null,
-      "duration_s": 73.7
-    },
     "learning_transfer": {
       "score": 0.28,
       "error": null,
@@ -68,21 +48,6 @@
       "error": null,
       "duration_s": 131.3
     },
-    "metacog_fok": {
-      "score": 0.4132,
-      "error": null,
-      "duration_s": 148.4
-    },
-    "metacog_jol": {
-      "score": 0.4315,
-      "error": null,
-      "duration_s": 62.3
-    },
-    "metacog_epistemic_revision": {
-      "score": 0.67,
-      "error": null,
-      "duration_s": 25.4
-    },
     "learning_interference": {
       "score": 0.441,
       "error": null,
@@ -122,16 +87,6 @@
       "score": 0.441,
       "error": null,
       "duration_s": 884.6
-    },
-    "metacog_error_detection": {
-      "score": 0.6491,
-      "error": null,
-      "duration_s": 109.6
-    },
-    "metacog_calibration": {
-      "score": 0.3501,
-      "error": null,
-      "duration_s": 138.3
     }
   }
 }

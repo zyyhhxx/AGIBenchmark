@@ -3,41 +3,6 @@
   "model_label": "Claude Sonnet 4.6",
   "timestamp": "2026-04-12T09:24:37.495497+00:00",
   "scores": {
-    "metacog_canary": {
-      "score": 0.9886,
-      "error": null,
-      "duration_s": 68.6
-    },
-    "metacog_fok": {
-      "score": 0.6452,
-      "error": null,
-      "duration_s": 554.3
-    },
-    "metacog_jol": {
-      "score": 0.4631,
-      "error": null,
-      "duration_s": 165.3
-    },
-    "metacog_learning_monitoring": {
-      "score": 0.7068,
-      "error": null,
-      "duration_s": 256.4
-    },
-    "metacog_control": {
-      "score": 0.35,
-      "error": null,
-      "duration_s": 97.5
-    },
-    "metacog_epistemic_revision": {
-      "score": 0.96,
-      "error": null,
-      "duration_s": 212.8
-    },
-    "metacog_epistemic_humility": {
-      "score": 0.8376,
-      "error": null,
-      "duration_s": 181.5
-    },
     "learning_transfer": {
       "score": 1.0,
       "error": null,
@@ -122,16 +87,6 @@
       "score": 0.6606,
       "error": null,
       "duration_s": 1206.3
-    },
-    "metacog_error_detection": {
-      "score": 0.9667,
-      "error": null,
-      "duration_s": 163.3
-    },
-    "metacog_calibration": {
-      "score": 0.5748,
-      "error": null,
-      "duration_s": 156.8
     }
   }
 }

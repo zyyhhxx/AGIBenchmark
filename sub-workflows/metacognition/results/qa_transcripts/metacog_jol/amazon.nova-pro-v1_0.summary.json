@@ -1,0 +1,9 @@
+{
+  "benchmark": "metacog_jol",
+  "model": "amazon.nova-pro-v1_0",
+  "score": 0.3645,
+  "error": null,
+  "duration_s": 75.1,
+  "n_calls": 48,
+  "timestamp": "2026-04-13T12:26:44.405291+00:00"
+}

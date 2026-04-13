@@ -1,0 +1,9 @@
+{
+  "benchmark": "metacog_epistemic_humility",
+  "model": "amazon.nova-pro-v1_0",
+  "score": 0.92,
+  "error": null,
+  "duration_s": 47.4,
+  "n_calls": 24,
+  "timestamp": "2026-04-13T12:33:29.058769+00:00"
+}

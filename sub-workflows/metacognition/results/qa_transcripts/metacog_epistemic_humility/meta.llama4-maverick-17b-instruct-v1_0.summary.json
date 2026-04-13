@@ -1,0 +1,9 @@
+{
+  "benchmark": "metacog_epistemic_humility",
+  "model": "meta.llama4-maverick-17b-instruct-v1_0",
+  "score": 0.8943,
+  "error": null,
+  "duration_s": 12.8,
+  "n_calls": 24,
+  "timestamp": "2026-04-13T12:39:02.040623+00:00"
+}

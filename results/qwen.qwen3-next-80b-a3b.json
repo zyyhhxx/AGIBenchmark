@@ -3,41 +3,6 @@
   "model_label": "Qwen3 Next 80B",
   "timestamp": "2026-04-12T09:26:28.210477+00:00",
   "scores": {
-    "metacog_canary": {
-      "score": 0.992,
-      "error": null,
-      "duration_s": 232.0
-    },
-    "metacog_fok": {
-      "score": 0.6354,
-      "error": null,
-      "duration_s": 1484.1
-    },
-    "metacog_jol": {
-      "score": 0.3627,
-      "error": null,
-      "duration_s": 654.2
-    },
-    "metacog_learning_monitoring": {
-      "score": 0.891,
-      "error": null,
-      "duration_s": 585.3
-    },
-    "metacog_control": {
-      "score": 0.4246,
-      "error": null,
-      "duration_s": 221.4
-    },
-    "metacog_epistemic_revision": {
-      "score": 0.88,
-      "error": null,
-      "duration_s": 946.4
-    },
-    "metacog_epistemic_humility": {
-      "score": 0.92,
-      "error": null,
-      "duration_s": 137.5
-    },
     "learning_interference": {
       "score": 0.93,
       "error": null,
@@ -112,16 +77,6 @@
       "score": 0.4036,
       "error": null,
       "duration_s": 292.9
-    },
-    "metacog_error_detection": {
-      "score": 0.841,
-      "error": null,
-      "duration_s": 167.7
-    },
-    "metacog_calibration": {
-      "score": 0.4907,
-      "error": null,
-      "duration_s": 267.5
     }
   }
 }

@@ -3,41 +3,6 @@
   "model_label": "Nova Pro",
   "timestamp": "2026-04-12T09:19:32.551782+00:00",
   "scores": {
-    "metacog_canary": {
-      "score": 0.726,
-      "error": null,
-      "duration_s": 36.3
-    },
-    "metacog_fok": {
-      "score": 0.4155,
-      "error": null,
-      "duration_s": 250.8
-    },
-    "metacog_jol": {
-      "score": 0.4019,
-      "error": null,
-      "duration_s": 73.4
-    },
-    "metacog_learning_monitoring": {
-      "score": 0.9101,
-      "error": null,
-      "duration_s": 62.5
-    },
-    "metacog_control": {
-      "score": 0.7479,
-      "error": null,
-      "duration_s": 40.5
-    },
-    "metacog_epistemic_revision": {
-      "score": 0.75,
-      "error": null,
-      "duration_s": 81.2
-    },
-    "metacog_epistemic_humility": {
-      "score": 0.8756,
-      "error": null,
-      "duration_s": 72.7
-    },
     "learning_transfer": {
       "score": 0.55,
       "error": null,
@@ -122,16 +87,6 @@
       "score": 0.443,
       "error": null,
       "duration_s": 651.5
-    },
-    "metacog_error_detection": {
-      "score": 0.8628,
-      "error": null,
-      "duration_s": 56.2
-    },
-    "metacog_calibration": {
-      "score": 0.473,
-      "error": null,
-      "duration_s": 55.9
     }
   }
 }

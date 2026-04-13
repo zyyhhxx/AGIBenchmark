@@ -1,0 +1,9 @@
+{
+  "benchmark": "metacog_epistemic_humility",
+  "model": "anthropic.claude-opus-4-6-v1",
+  "score": 0.7969,
+  "error": null,
+  "duration_s": 110.8,
+  "n_calls": 24,
+  "timestamp": "2026-04-13T10:06:24.341618+00:00"
+}

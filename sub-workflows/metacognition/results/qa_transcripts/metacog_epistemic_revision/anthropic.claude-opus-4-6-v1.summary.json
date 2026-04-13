@@ -1,0 +1,9 @@
+{
+  "benchmark": "metacog_epistemic_revision",
+  "model": "anthropic.claude-opus-4-6-v1",
+  "score": 0.96,
+  "error": null,
+  "duration_s": 300.5,
+  "n_calls": 42,
+  "timestamp": "2026-04-13T10:04:31.452240+00:00"
+}

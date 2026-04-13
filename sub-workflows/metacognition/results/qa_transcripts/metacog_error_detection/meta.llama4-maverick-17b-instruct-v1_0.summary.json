@@ -1,0 +1,9 @@
+{
+  "benchmark": "metacog_error_detection",
+  "model": "meta.llama4-maverick-17b-instruct-v1_0",
+  "score": 0.9536,
+  "error": null,
+  "duration_s": 34.7,
+  "n_calls": 65,
+  "timestamp": "2026-04-13T12:36:40.432671+00:00"
+}

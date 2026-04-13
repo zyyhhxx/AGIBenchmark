@@ -1,0 +1,9 @@
+{
+  "benchmark": "metacog_control",
+  "model": "mistral.ministral-3-3b-instruct",
+  "score": 0.2125,
+  "error": null,
+  "duration_s": 47.9,
+  "n_calls": 12,
+  "timestamp": "2026-04-13T16:25:13.772663+00:00"
+}

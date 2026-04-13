@@ -1,0 +1,9 @@
+{
+  "benchmark": "metacog_canary",
+  "model": "meta.llama3-3-70b-instruct-v1_0",
+  "score": 0.324,
+  "error": null,
+  "duration_s": 39.9,
+  "n_calls": 60,
+  "timestamp": "2026-04-13T11:30:48.590405+00:00"
+}

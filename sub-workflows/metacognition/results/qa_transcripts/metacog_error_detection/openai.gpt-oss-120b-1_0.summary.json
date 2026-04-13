@@ -1,0 +1,9 @@
+{
+  "benchmark": "metacog_error_detection",
+  "model": "openai.gpt-oss-120b-1_0",
+  "score": 0.9078,
+  "error": null,
+  "duration_s": 208.0,
+  "n_calls": 65,
+  "timestamp": "2026-04-13T11:21:49.004809+00:00"
+}
