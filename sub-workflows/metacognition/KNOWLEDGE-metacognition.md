@@ -1,5 +1,14 @@
 # KNOWLEDGE.md — AGI Benchmark
 
+## Self-Monitoring Tier Analysis — epistemic_revision, learning_monitoring, control (2026-04-13)
+- **Score gradient:** learning_monitoring (mean=0.814) > epistemic_revision (mean=0.794) > control (mean=0.495) — control is substantially harder, requiring both monitoring accuracy and strategic action under constraint
+- **Best discriminator:** metacog_control (std=0.221, range=0.490) — bimodal split: 6 models cluster 0.61–0.69 (strategic re-reading works), 4 models at 0.20–0.35 (strategic failure)
+- **Borderline discriminator:** metacog_learning_monitoring (std=0.093, passes ≥0.08 threshold) — compressed range due to simultaneous variance required in both learning accuracy and confidence calibration
+- **Claude hedging penalty:** Claude Sonnet 4.6 scores 0.70 on learning_monitoring — reports conservative confidence 55–72 throughout even as accuracy is high; poor gamma correlation drags down score. Consistent with epistemic_humility pattern in KNOWLEDGE.
+- **Reasoning models vs. metacognitive control:** DeepSeek-R1 scores 0.21 on control (2nd lowest). Extended chain-of-thought reasoning causes confabulation when context is missing — model generates plausible-sounding answers about unrelated real domains (e.g., Indian classical music tala/avartan) instead of recognizing the information gap. Same confabulation pattern seen in Qwen3 Next 80B (0.20, lowest).
+- **GPT-OSS-120B epistemic scoping failure:** Scores 0.64 on epistemic_revision — correctly identifies contradictions but over-applies revisions to uncontradicted rules, causing transfer errors. Genuine metacognitive scoping failure.
+- **All three benchmarks: KEEP AS-IS** — zero debatable ground truth items, all use synthetic/fictional domains, no parsing artifacts
+
 ## External Monitoring Tier Analysis — canary, epistemic_humility, error_detection (2026-04-13)
 - **Score gradient:** error_detection (mean=0.871) > epistemic_humility (mean=0.805) > canary (mean=0.546) — reflects increasing difficulty: arithmetic error detection is easiest, confidence calibration on fabricated facts is hardest
 - **Best discriminator:** metacog_canary (std=0.280, range=0.875) — no ceiling, floor effect (10%) is by design (Ministral 3B = 0.000)
