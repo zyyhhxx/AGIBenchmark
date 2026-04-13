@@ -38,6 +38,11 @@ class LearnAndMonitor:
     reasoning: str
 
 
+def _strip_think(text: str) -> str:
+    """Remove <think>...</think> tags that some models wrap around output."""
+    return re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL).strip()
+
+
 def normalize_output(text: str) -> str:
     text = text.strip().lower()
     text = re.sub(r'\s+', ' ', text)
@@ -135,19 +140,15 @@ def metacog_learning_monitoring(llm) -> float:
                         f"\"reasoning\": \"<brief>\"}}"
                     )
 
+                    raw = llm.prompt(test_prompt)
+                    cleaned = _strip_think(raw)
                     try:
-                        result = llm.prompt(test_prompt, schema=LearnAndMonitor)
-                        answer = result.answer
-                        conf = max(0, min(100, result.learning_confidence))
+                        parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
+                        answer = str(parsed.get("answer", cleaned))
+                        conf = max(0, min(100, int(parsed.get("learning_confidence", 50))))
                     except Exception:
-                        raw = llm.prompt(test_prompt)
-                        try:
-                            parsed = json.loads(re.search(r'\{.*\}', raw, re.DOTALL).group())
-                            answer = str(parsed.get("answer", raw))
-                            conf = max(0, min(100, int(parsed.get("learning_confidence", 50))))
-                        except Exception:
-                            answer = raw
-                            conf = 50
+                        answer = cleaned
+                        conf = 50
 
                     if check_output(answer, test_items[ti]["output"]):
                         stage_correct += 1

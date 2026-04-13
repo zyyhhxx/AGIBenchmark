@@ -262,6 +262,13 @@ class EpistemicResponse:
     explanation: str      # Why they can/cannot answer
 
 
+# ─── Helpers ────────────────────────────────────────────────────────
+
+def _strip_think(text: str) -> str:
+    """Remove <think>...</think> tags that some models wrap around output."""
+    return re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL).strip()
+
+
 # ─── Scoring Functions ──────────────────────────────────────────────
 
 def normalize(text: str) -> str:
@@ -369,26 +376,19 @@ def metacog_epistemic_humility(llm) -> float:
                 f'}}'
             )
             
+            raw = llm.prompt(prompt)
+            cleaned = _strip_think(raw)
             try:
-                response = llm.prompt(prompt, schema=EpistemicResponse)
-                can_answer = response.can_answer.lower().strip()
-                confidence = max(0, min(100, response.confidence))
-                answer = response.answer
-                explanation = response.explanation
+                parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
+                can_answer = str(parsed.get("can_answer", "yes")).lower().strip()
+                confidence = max(0, min(100, int(parsed.get("confidence", 50))))
+                answer = str(parsed.get("answer", ""))
+                explanation = str(parsed.get("explanation", ""))
             except Exception:
-                # Fallback: raw text parsing
-                raw = llm.prompt(prompt)
-                try:
-                    parsed = json.loads(re.search(r'\{.*\}', raw, re.DOTALL).group())
-                    can_answer = str(parsed.get("can_answer", "yes")).lower().strip()
-                    confidence = max(0, min(100, int(parsed.get("confidence", 50))))
-                    answer = str(parsed.get("answer", ""))
-                    explanation = str(parsed.get("explanation", ""))
-                except Exception:
-                    can_answer = "yes"  # Assume confabulation if can't parse
-                    confidence = 50
-                    answer = raw[:500]
-                    explanation = ""
+                can_answer = "yes"  # Assume confabulation if can't parse
+                confidence = 50
+                answer = cleaned[:500]
+                explanation = ""
             
             # Classify the model's response
             model_says_answerable = can_answer in ("yes", "maybe")

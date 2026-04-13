@@ -50,6 +50,13 @@ class ErrorReview:
 
 # ─── Helpers ─────────────────────────────────────────────────────
 
+# ─── Helpers ───────────────────────────────────────────────────────
+
+def _strip_think(text: str) -> str:
+    """Remove <think>...</think> tags that some models wrap around output."""
+    return re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL).strip()
+
+
 def goodman_kruskal_gamma(x: list, y: list) -> float:
     n = len(x)
     concordant = 0
@@ -154,27 +161,21 @@ def metacog_error_detection(llm) -> float:
         )
 
         with kbench.chats.new(f"review_{chain['id']}"):
+            raw = llm.prompt(prompt)
+            cleaned = _strip_think(raw)
             try:
-                review = llm.prompt(prompt, schema=ErrorReview)
-                pred_has_error = review.has_error
-                pred_step = review.error_step
-                confidence = max(0, min(100, review.confidence))
-                explanation = review.explanation
+                parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
+                pred_has_error = bool(parsed.get("has_error", False))
+                pred_step = int(parsed.get("error_step", 0))
+                confidence = max(0, min(100, int(parsed.get("confidence", 50))))
+                explanation = str(parsed.get("explanation", ""))
             except Exception:
-                raw = llm.prompt(prompt)
-                try:
-                    parsed = json.loads(re.search(r'\{.*\}', raw, re.DOTALL).group())
-                    pred_has_error = bool(parsed.get("has_error", False))
-                    pred_step = int(parsed.get("error_step", 0))
-                    confidence = max(0, min(100, int(parsed.get("confidence", 50))))
-                    explanation = str(parsed.get("explanation", ""))
-                except Exception:
-                    # Crude fallback: look for keywords
-                    raw_lower = raw.lower()
-                    pred_has_error = any(w in raw_lower for w in ["error", "mistake", "incorrect", "wrong"])
-                    pred_step = 0
-                    confidence = 50
-                    explanation = raw[:200]
+                # Crude fallback: look for keywords
+                raw_lower = cleaned.lower()
+                pred_has_error = any(w in raw_lower for w in ["error", "mistake", "incorrect", "wrong"])
+                pred_step = 0
+                confidence = 50
+                explanation = cleaned[:200]
 
         # Score this chain
         actual_has_error = chain["has_error"]

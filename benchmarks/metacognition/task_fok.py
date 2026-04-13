@@ -54,6 +54,13 @@ class FOKAnswer:
     is_guess: bool    # Whether this is a guess vs a confident answer
 
 
+# ─── Helpers ────────────────────────────────────────────────────────
+
+def _strip_think(text: str) -> str:
+    """Remove <think>...</think> tags that some models wrap around output."""
+    return re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL).strip()
+
+
 # ─── Answer Verification ────────────────────────────────────────────
 
 def normalize(text: str) -> str:
@@ -272,19 +279,15 @@ def metacog_fok(llm) -> float:
                 f'{{"confidence": <0-100>, "reasoning": "<brief explanation>"}}'
             )
 
+            raw = llm.prompt(phase1_prompt)
+            cleaned = _strip_think(raw)
             try:
-                fok = llm.prompt(phase1_prompt, schema=FOKJudgment)
-                fok_confidence = max(0, min(100, fok.confidence))
-                fok_reasoning = fok.reasoning
+                parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
+                fok_confidence = max(0, min(100, int(parsed.get("confidence", 50))))
+                fok_reasoning = str(parsed.get("reasoning", ""))
             except Exception:
-                raw = llm.prompt(phase1_prompt)
-                try:
-                    parsed = json.loads(re.search(r'\{.*\}', raw, re.DOTALL).group())
-                    fok_confidence = max(0, min(100, int(parsed.get("confidence", 50))))
-                    fok_reasoning = str(parsed.get("reasoning", ""))
-                except Exception:
-                    fok_confidence = 50
-                    fok_reasoning = raw[:200]
+                fok_confidence = 50
+                fok_reasoning = cleaned[:200]
 
         # ── Phase 2: Answer Attempt (separate chat — no confidence leakage) ──
         with kbench.chats.new(f"fok_phase2_{i}"):
@@ -296,19 +299,15 @@ def metacog_fok(llm) -> float:
                 f'{{"answer": "<your answer>", "is_guess": <true/false>}}'
             )
 
+            raw = llm.prompt(phase2_prompt)
+            cleaned = _strip_think(raw)
             try:
-                ans = llm.prompt(phase2_prompt, schema=FOKAnswer)
-                answer = ans.answer
-                is_guess = ans.is_guess
+                parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
+                answer = str(parsed.get("answer", cleaned))
+                is_guess = bool(parsed.get("is_guess", False))
             except Exception:
-                raw = llm.prompt(phase2_prompt)
-                try:
-                    parsed = json.loads(re.search(r'\{.*\}', raw, re.DOTALL).group())
-                    answer = str(parsed.get("answer", raw))
-                    is_guess = bool(parsed.get("is_guess", False))
-                except Exception:
-                    answer = raw
-                    is_guess = False
+                answer = cleaned
+                is_guess = False
 
         is_correct = check_answer(answer, q)
         fok_ratings.append(fok_confidence)

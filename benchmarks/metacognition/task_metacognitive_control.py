@@ -399,6 +399,13 @@ class QuestionAnswer:
     answer: str
 
 
+# ─── Helpers ────────────────────────────────────────────────────────
+
+def _strip_think(text: str) -> str:
+    """Remove <think>...</think> tags that some models wrap around output."""
+    return re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL).strip()
+
+
 # ─── Answer Checking ────────────────────────────────────────────────
 
 def check_answer(model_answer: str, question: dict) -> bool:
@@ -467,19 +474,15 @@ def metacog_control(llm) -> float:
                 f'{{"selected_sections": "S1,S2,S3", "reasoning": "brief explanation"}}'
             )
 
+            raw = llm.prompt(select_prompt)
+            cleaned = _strip_think(raw)
             try:
-                sel = llm.prompt(select_prompt, schema=SectionSelection)
-                selected_raw = sel.selected_sections
-                selection_reasoning = sel.reasoning
+                parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
+                selected_raw = str(parsed.get("selected_sections", "S1,S2,S3"))
+                selection_reasoning = str(parsed.get("reasoning", ""))
             except Exception:
-                raw = llm.prompt(select_prompt)
-                try:
-                    parsed = json.loads(re.search(r'\{.*\}', raw, re.DOTALL).group())
-                    selected_raw = str(parsed.get("selected_sections", "S1,S2,S3"))
-                    selection_reasoning = str(parsed.get("reasoning", ""))
-                except Exception:
-                    selected_raw = "S1,S2,S3"
-                    selection_reasoning = raw[:200]
+                selected_raw = "S1,S2,S3"
+                selection_reasoning = cleaned[:200]
 
         # Parse selected sections
         selected_ids = [s.strip().upper() for s in re.findall(r'S\d+', selected_raw)]
@@ -520,16 +523,13 @@ def metacog_control(llm) -> float:
                     f'{{"answer": "<your detailed answer>"}}'
                 )
 
+                raw = llm.prompt(q_prompt)
+                cleaned = _strip_think(raw)
                 try:
-                    ans = llm.prompt(q_prompt, schema=QuestionAnswer)
-                    answer = ans.answer
+                    parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
+                    answer = str(parsed.get("answer", cleaned))
                 except Exception:
-                    raw = llm.prompt(q_prompt)
-                    try:
-                        parsed = json.loads(re.search(r'\{.*\}', raw, re.DOTALL).group())
-                        answer = str(parsed.get("answer", raw))
-                    except Exception:
-                        answer = raw
+                    answer = cleaned
 
                 is_correct = check_answer(answer, q)
                 all_accuracies.append(is_correct)

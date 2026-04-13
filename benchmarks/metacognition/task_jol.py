@@ -60,6 +60,13 @@ class RuleAnswer:
 
 # ─── Helpers ─────────────────────────────────────────────────────
 
+# ─── Helpers ───────────────────────────────────────────────────────
+
+def _strip_think(text: str) -> str:
+    """Remove <think>...</think> tags that some models wrap around output."""
+    return re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL).strip()
+
+
 def normalize(text: str) -> str:
     text = text.lower().strip()
     text = re.sub(r'[^\w\s]', ' ', text)
@@ -185,16 +192,13 @@ def metacog_jol(llm) -> float:
                 f'{{"confidence": <0-100>, "reasoning": "<brief>"}}'
             )
 
+            raw = llm.prompt(jol_prompt)
+            cleaned = _strip_think(raw)
             try:
-                jol = llm.prompt(jol_prompt, schema=JOLRating)
-                jol_conf = max(0, min(100, jol.confidence))
+                parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
+                jol_conf = max(0, min(100, int(parsed.get("confidence", 50))))
             except Exception:
-                raw = llm.prompt(jol_prompt)
-                try:
-                    parsed = json.loads(re.search(r'\{.*\}', raw, re.DOTALL).group())
-                    jol_conf = max(0, min(100, int(parsed.get("confidence", 50))))
-                except Exception:
-                    jol_conf = 50
+                jol_conf = 50
 
             all_jol_ratings.append(jol_conf)
             results_log.append({
@@ -218,16 +222,13 @@ def metacog_jol(llm) -> float:
                 f'{{"definition": "<recalled definition>", "confidence": <0-100>}}'
             )
 
+            raw = llm.prompt(recall_prompt)
+            cleaned = _strip_think(raw)
             try:
-                recall = llm.prompt(recall_prompt, schema=RecallAttempt)
-                recalled_def = recall.definition
+                parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
+                recalled_def = str(parsed.get("definition", cleaned))
             except Exception:
-                raw = llm.prompt(recall_prompt)
-                try:
-                    parsed = json.loads(re.search(r'\{.*\}', raw, re.DOTALL).group())
-                    recalled_def = str(parsed.get("definition", raw))
-                except Exception:
-                    recalled_def = raw
+                recalled_def = cleaned
 
             is_correct = recall_match(recalled_def, pair["definition"])
             all_accuracies.append(is_correct)
@@ -253,9 +254,11 @@ def metacog_jol(llm) -> float:
                 f"the {rs['rule_name']} rules to answer test questions.\n\n"
                 f"Respond with ONLY: {{\"confidence\": <0-100>, \"reasoning\": \"<brief>\"}}"
             )
+            raw = llm.prompt(jol_prompt)
+            cleaned = _strip_think(raw)
             try:
-                jol = llm.prompt(jol_prompt, schema=JOLRating)
-                jol_conf = max(0, min(100, jol.confidence))
+                parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
+                jol_conf = max(0, min(100, int(parsed.get("confidence", 50))))
             except Exception:
                 jol_conf = 50
 
@@ -270,16 +273,13 @@ def metacog_jol(llm) -> float:
                     f"{tq['q']}\n\n"
                     f"Respond with ONLY: {{\"answer\": \"<answer>\", \"reasoning\": \"<steps>\"}}"
                 )
+                raw = llm.prompt(test_prompt)
+                cleaned = _strip_think(raw)
                 try:
-                    ans = llm.prompt(test_prompt, schema=RuleAnswer)
-                    answer = ans.answer
+                    parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
+                    answer = str(parsed.get("answer", cleaned))
                 except Exception:
-                    raw = llm.prompt(test_prompt)
-                    try:
-                        parsed = json.loads(re.search(r'\{.*\}', raw, re.DOTALL).group())
-                        answer = str(parsed.get("answer", raw))
-                    except Exception:
-                        answer = raw
+                    answer = cleaned
 
                 correct = normalize(tq["a"]) in normalize(answer)
                 if correct:

@@ -1,12 +1,5 @@
 # KNOWLEDGE.md — AGI Benchmark
 
-## Retry Bias Fix — All 7 Metacognition Notebooks (2026-04-13)
-- **Root cause:** `schema=` parameter in `llm.prompt()` calls caused retry loops on parse failure, biasing scores upward (models got extra attempts).
-- **Fix pattern:** Remove `schema=`, add `_strip_think()` helper to strip `<think>...</think>` tags, then extract JSON with `re.search(r'\{.*\}', cleaned, re.DOTALL)` and `json.loads()` — single LLM call only.
-- **Affected files:** task_calibration.py, task_epistemic_humility.py, task_error_detection.py, task_fok.py, task_jol.py, task_learning_monitoring.py, task_metacognitive_control.py (all in repo/benchmarks/metacognition/).
-- **Validation:** `python3 -m py_compile` and `jupyter nbconvert --to notebook` both pass on all 7 files post-fix.
-- **No score impact recorded** — smoke test on metacog_fok confirmed correct parse path; full re-run not performed in this task.
-
 ## Final Submission Validation — All 26 Benchmarks PASS (2026-04-12)
 - **All 26 benchmarks meet std ≥ 0.08** (min std = 0.0813 for metacog_learning_monitoring)
 - **metacog_calibration fixed:** std recovered from 0.0000 → 0.0858 by completing all 10 model scores; root cause was duplicate rows masking incomplete data in CSV

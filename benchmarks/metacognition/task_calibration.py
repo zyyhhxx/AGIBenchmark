@@ -98,6 +98,13 @@ class ConfidentAnswer:
     confidence: int       # 0-100 confidence rating
 
 
+# ─── Helpers ────────────────────────────────────────────────────────
+
+def _strip_think(text: str) -> str:
+    """Remove <think>...</think> tags that some models wrap around output."""
+    return re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL).strip()
+
+
 # ─── Answer Verification ────────────────────────────────────────────
 
 def normalize(text: str) -> str:
@@ -255,21 +262,16 @@ def metacog_calibration(llm) -> float:
                 f'{{"answer": "<your answer>", "confidence": <0-100>}}'
             )
 
+            raw = llm.prompt(prompt)
+            cleaned = _strip_think(raw)
             try:
-                result = llm.prompt(prompt, schema=ConfidentAnswer)
-                answer = result.answer
-                confidence = max(0, min(100, result.confidence))
+                parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
+                answer = str(parsed.get("answer", ""))
+                confidence = int(parsed.get("confidence", 50))
+                confidence = max(0, min(100, confidence))
             except Exception:
-                # Fallback: try to parse raw text
-                raw = llm.prompt(prompt)
-                try:
-                    parsed = json.loads(re.search(r'\{.*\}', raw, re.DOTALL).group())
-                    answer = str(parsed.get("answer", ""))
-                    confidence = int(parsed.get("confidence", 50))
-                    confidence = max(0, min(100, confidence))
-                except Exception:
-                    answer = raw
-                    confidence = 50  # Default if parsing fails
+                answer = cleaned
+                confidence = 50  # Default if parsing fails
 
             is_correct = check_answer(answer, q["answer"])
             confidences.append(confidence)
