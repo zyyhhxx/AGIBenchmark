@@ -264,6 +264,9 @@ def metacog_calibration(llm) -> float:
 
             raw = llm.prompt(prompt)
             cleaned = _strip_think(raw)
+            # Strip triple-backtick JSON fences (e.g. ```json ... ```)
+            cleaned = re.sub(r'```(?:json)?\s*', '', cleaned)
+            cleaned = re.sub(r'```\s*$', '', cleaned, flags=re.MULTILINE)
             try:
                 parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
                 answer = str(parsed.get("answer", ""))

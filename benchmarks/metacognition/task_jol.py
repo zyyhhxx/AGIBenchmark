@@ -298,7 +298,12 @@ def metacog_jol(llm) -> float:
     recall_rate = sum(all_accuracies) / len(all_accuracies)
     bss_raw = brier_skill_score(all_jol_ratings, [int(a) for a in all_accuracies])
 
-    gamma_norm = (gamma + 1) / 2
+    # Penalize constant-confidence models: if std(confidences) < 1.0,
+    # gamma is meaningless — remove the free 0.50 gamma_norm score.
+    if np.std(all_jol_ratings) < 1.0:
+        gamma_norm = 0.0
+    else:
+        gamma_norm = (gamma + 1) / 2
     score = round(0.40 * gamma_norm + 0.30 * max(0.0, bss_raw) + 0.30 * recall_rate, 4)
 
     # ── Logging ──

@@ -7,6 +7,12 @@
 - **JOL perverse incentive:** Constant-zero-confidence → gamma_norm=0.50 (free 0.20 score). Models refusing to engage score ≥ models that attempt recall but confabulate. Does not distort current rankings but monitor if pattern becomes dominant.
 - **FOK is cleanest benchmark:** No parsing issues, good confidence spread (std 21–32 per model), GPT-OSS-120B top (0.670), Ministral 3B bottom (0.388)
 - **Calibration universal overconfidence:** All models mean confidence 94–99%. Claude Sonnet 4.6 best at modulating (std=10.1, range 35–100); scores highest (0.632). Ministral 3B confidence std=2.3 (nearly constant high) — 11/120 parse failures.
+## Batch 1 Scoring/Parsing Fixes — Confirmed Deployed (2026-04-13)
+- **JOL std-penalty:** `if np.std(all_jol_ratings) < 1.0: gamma_norm = 0.0` added to task_jol.py. Constant-confidence models lose the free 0.20 score. No current model has std < 1.0 (Ministral 3B std=2.3), so rankings unchanged but perverse incentive removed.
+- **Backtick fence stripping:** `re.sub(r'```(?:json)?\s*', '', cleaned)` + closing fence strip added to JSON extraction in task_calibration.py (Phase 1) and task_fok.py (Phase 1 and Phase 2). Fixes Ministral 3B's 11/120 parse failures that defaulted to confidence=50.
+- **Notebooks synced:** metacog_jol.ipynb, metacog_calibration.ipynb, metacog_fok.ipynb all contain the respective fixes and pass `jupyter nbconvert` syntax validation.
+- **Step 5 (retroactive recalc) is not feasible locally** — no Q&A transcripts; benchmarks run on Kaggle Community Benchmarks platform. Impact analysis based on scoring formula: backtick fix eliminates confidence=50 defaults for Ministral 3B, improving its calibration score.
+
 - **Calibration ground truth verified:** All difficulty 4–5 items confirmed correct (primes=21, sum=49/20, pi digit=5, sphere SA=615.75, birthday paradox=50%, groups of order 8=5)
 - **Calibration borderline std:** 0.0830 (0.003 above threshold) — monitor on future model additions
 - **All three benchmarks: KEEP AS-IS**

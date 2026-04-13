@@ -281,6 +281,9 @@ def metacog_fok(llm) -> float:
 
             raw = llm.prompt(phase1_prompt)
             cleaned = _strip_think(raw)
+            # Strip triple-backtick JSON fences (e.g. ```json ... ```)
+            cleaned = re.sub(r'```(?:json)?\s*', '', cleaned)
+            cleaned = re.sub(r'```\s*$', '', cleaned, flags=re.MULTILINE)
             try:
                 parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
                 fok_confidence = max(0, min(100, int(parsed.get("confidence", 50))))
@@ -301,6 +304,9 @@ def metacog_fok(llm) -> float:
 
             raw = llm.prompt(phase2_prompt)
             cleaned = _strip_think(raw)
+            # Strip triple-backtick JSON fences (e.g. ```json ... ```)
+            cleaned = re.sub(r'```(?:json)?\s*', '', cleaned)
+            cleaned = re.sub(r'```\s*$', '', cleaned, flags=re.MULTILINE)
             try:
                 parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
                 answer = str(parsed.get("answer", cleaned))
