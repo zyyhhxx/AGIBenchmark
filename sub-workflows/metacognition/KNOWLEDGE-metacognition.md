@@ -1,5 +1,16 @@
 # KNOWLEDGE.md — AGI Benchmark
 
+## Prospective Self-Assessment Tier Analysis — jol, fok, calibration (2026-04-13)
+- **Score gradient:** metacog_fok (mean=0.571) > metacog_calibration (mean=0.521) > metacog_jol (mean=0.376) — JOL is hardest due to chat isolation preventing study-phase recall
+- **Best discriminator:** metacog_jol (std=0.119, range=0.300); all three pass std ≥ 0.08
+- **Critical JOL platform behavior:** Models do NOT retain study-phase context during JOL/recall phases despite `kbench.chats.new()` context manager — each `llm.prompt()` call is isolated. Claude Sonnet 4.6 and Llama 3.3 70B report confidence=0 for all words; Nova Pro confabulates definitions.
+- **JOL perverse incentive:** Constant-zero-confidence → gamma_norm=0.50 (free 0.20 score). Models refusing to engage score ≥ models that attempt recall but confabulate. Does not distort current rankings but monitor if pattern becomes dominant.
+- **FOK is cleanest benchmark:** No parsing issues, good confidence spread (std 21–32 per model), GPT-OSS-120B top (0.670), Ministral 3B bottom (0.388)
+- **Calibration universal overconfidence:** All models mean confidence 94–99%. Claude Sonnet 4.6 best at modulating (std=10.1, range 35–100); scores highest (0.632). Ministral 3B confidence std=2.3 (nearly constant high) — 11/120 parse failures.
+- **Calibration ground truth verified:** All difficulty 4–5 items confirmed correct (primes=21, sum=49/20, pi digit=5, sphere SA=615.75, birthday paradox=50%, groups of order 8=5)
+- **Calibration borderline std:** 0.0830 (0.003 above threshold) — monitor on future model additions
+- **All three benchmarks: KEEP AS-IS**
+
 ## Self-Monitoring Tier Analysis — epistemic_revision, learning_monitoring, control (2026-04-13)
 - **Score gradient:** learning_monitoring (mean=0.814) > epistemic_revision (mean=0.794) > control (mean=0.495) — control is substantially harder, requiring both monitoring accuracy and strategic action under constraint
 - **Best discriminator:** metacog_control (std=0.221, range=0.490) — bimodal split: 6 models cluster 0.61–0.69 (strategic re-reading works), 4 models at 0.20–0.35 (strategic failure)
