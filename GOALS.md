@@ -68,6 +68,26 @@ Each plan should cover:
 
 ---
 
+## Step 4: Execute Improvement Plans
+
+Implement the fixes identified in Step 3, track by track.
+
+**For each fix:**
+- Document what was changed and why (link to Step 2 analysis)
+- Record before/after: old scoring behavior vs new
+- If items were revised, added, or removed — note the diff
+- If scoring logic changed — explain the rationale
+- If re-running models is required — re-run and compare old vs new scores
+
+**Deliverable per track:** An `IMPROVEMENT_LOG.md` in each track's writeup directory documenting:
+- Actions taken
+- Items changed (with IDs)
+- Scoring changes (with formulas)
+- Re-run results (if applicable)
+- Remaining known limitations
+
+---
+
 ## Known Issues to Address
 
 - **Retry bias**: 18/26 notebooks give thinking models a retry advantage (see `docs/RETRY_BIAS_ISSUE.md`). Fix all before re-running.
