@@ -11,6 +11,13 @@
 - **Calibration borderline std:** 0.0830 (0.003 above threshold) — monitor on future model additions
 - **All three benchmarks: KEEP AS-IS**
 
+## Metacognition Track Improvement Plan — Summary (2026-04-13)
+- **All 9 benchmarks rated KEEP AS-IS** — no drops, no scoring bugs, no ground truth errors
+- **Batch 1 (no re-run, ~1 hr):** (1) JOL constant-confidence variation penalty: if std(confidences)<1.0, set gamma_norm=0.0 to remove free-score incentive; (2) Ministral 3B parse hardening: strip triple-backtick JSON wrappers before extraction
+- **Batch 2 (re-run required, ~3 hrs, ~31 model runs):** (1) Calibration: add 10–15 difficulty-5 items (std=0.083 is borderline); (2) Learning monitoring: raise rules to difficulty 3–4 to widen accuracy spread; (3) Error detection: add ecological fallacy/Berkson/p-hacking items to address 30% ceiling; (4) Retry GPT-OSS-120B epistemic_humility (ValidationException)
+- **Batch 3:** None needed
+- **Key fragility:** metacog_calibration std=0.083 is only 0.003 above threshold — most at-risk benchmark if model roster changes
+
 ## Self-Monitoring Tier Analysis — epistemic_revision, learning_monitoring, control (2026-04-13)
 - **Score gradient:** learning_monitoring (mean=0.814) > epistemic_revision (mean=0.794) > control (mean=0.495) — control is substantially harder, requiring both monitoring accuracy and strategic action under constraint
 - **Best discriminator:** metacog_control (std=0.221, range=0.490) — bimodal split: 6 models cluster 0.61–0.69 (strategic re-reading works), 4 models at 0.20–0.35 (strategic failure)
