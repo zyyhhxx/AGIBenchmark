@@ -91,4 +91,3 @@ Implement the fixes identified in Step 3, track by track.
 ## Known Issues to Address
 
 - **Retry bias**: 18/26 notebooks give thinking models a retry advantage (see `docs/RETRY_BIAS_ISSUE.md`). Fix all before re-running.
-- **Stale writeup data**: Writeup audit found 23 issues (see `docs/writeup_audit.txt`). Fix after Step 2 analysis is complete.
