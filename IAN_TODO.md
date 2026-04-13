@@ -1,105 +1,42 @@
-# 🚨 IAN'S ACTION ITEMS — Quick Reference
-**Last updated:** 2026-04-09 05:55 UTC | **Deadline: April 16, 2026**
+# 🚨 IAN'S SUBMISSION CHECKLIST (FINAL)
+**Updated:** 2026-04-11 | **Deadline: April 16, 2026 (5 days left)**
 
-> **Agent update (05:55 UTC):** Kaggle API still rate limited (429). Expanded divided attention items 5→15. Created local benchmark runner — confirmed Gemini API works with kbench SDK! Free tier quota exhausted though. **Key discovery: we can run benchmarks locally against Gemini if billing is enabled.** All Kaggle web UI work still needs Ian.
+## What To Submit
 
-## Priority 1: Upload 4 Missing Notebooks (15 min)
-The Kaggle API cannot create or find these notebooks. Upload fresh via web UI.
+A valid submission = **Kaggle Writeup** + **attached Kaggle Benchmark**
 
-**Go to:** https://www.kaggle.com/code → "New Notebook" → File → Upload Notebook
+## Steps (in order)
 
-| # | File in `repo/notebooks/` | Suggested Title |
-|---|---|---|
-| 1 | `exec_func_crt.ipynb` | AGI Bench: Cognitive Reflection Test |
-| 2 | `metacog_canary.ipynb` | AGI Bench: Contamination Canary |
-| 3 | `metacog_epistemic_humility.ipynb` | AGI Bench: Epistemic Humility |
-| 4 | `social_cog_emotional_prosody.ipynb` | AGI Bench: Emotional Prosody |
+### 1. Ensure Benchmark is ready (~2 min)
+- Your metacognition benchmark + tasks should already be created from CB registration
+- Confirm URL looks like: `https://www.kaggle.com/benchmarks/ianstudy/<benchmark-name>`
+- Tasks and benchmark should be **private** (they auto-publish after deadline)
 
-For each: Upload → Settings → **Make Public** → **Enable Internet** → Save
+### 2. Create Writeup (~10 min)
+1. Go to competition page → click **"New Writeup"**
+2. **Track:** Select **Metacognition**
+3. **Title:** "Does Your AI Know What It Doesn't Know? A 9-Task Metacognition Benchmark Suite"
+4. **Content:** Copy-paste from `repo/WRITEUP_METACOGNITION.md` (1,154 words, under 1,500 limit)
+5. **Cover image:** Add one (required). Suggestion: a chart showing the bimodal metacognition pattern, or a clean graphic of the 9-task suite.
 
-## Priority 2: Clean Up ~70 Duplicate Private Notebooks (10 min)
-**Go to:** https://www.kaggle.com/ianstudy/code
+### 3. Attach Benchmark (~2 min)
+1. In the writeup, go to **"Attachments"** section
+2. Click **"Add a link"**
+3. Select your metacognition benchmark from the panel
+4. Verify it shows as a project link
 
-There are ~70 private notebooks (ghost entries from API retry loops). Delete any with:
-- Title showing as "[Private Notebook]" or blank
-- Duplicate titles or slugs
-- Keep only the ones with proper "AGI Bench:" titles and 2026 dates
+### 4. Submit (~1 min)
+1. **Save** the writeup
+2. Click **"Submit"** button in the top right corner
+3. ⚠️ Draft writeups are NOT considered — you MUST click Submit
 
-## Priority 3: Make 6 Rate-Limited Notebooks Public (2 min)
-**These notebooks were uploaded correctly but remain private due to API rate limits.**
+### 5. Optional: Submit other tracks
+If time permits, we can prepare writeups for Attention, Learning, etc. as separate submissions.
 
-**Go to:** https://www.kaggle.com/ianstudy/code → find each notebook → Settings → Make Public
-
-| # | Kaggle Slug | Direct Link |
-|---|-------------|-------------|
-| 1 | agi-bench-2026-epistemic-humility-v2 | https://www.kaggle.com/code/ianstudy/agi-bench-2026-epistemic-humility-v2 |
-| 2 | agi-bench-2026-error-detection-submetrics-v2 | https://www.kaggle.com/code/ianstudy/agi-bench-2026-error-detection-submetrics-v2 |
-| 3 | agi-bench-2026-fok-v2 | https://www.kaggle.com/code/ianstudy/agi-bench-2026-fok-v2 |
-| 4 | agi-bench-2026-fok-submetrics-v2 | https://www.kaggle.com/code/ianstudy/agi-bench-2026-fok-submetrics-v2 |
-| 5 | agi-bench-2026-jol-v2 | https://www.kaggle.com/code/ianstudy/agi-bench-2026-jol-v2 |
-| 6 | agi-bench-2026-jol-submetrics-v2 | https://www.kaggle.com/code/ianstudy/agi-bench-2026-jol-submetrics-v2 |
-
-For each: Settings → **Make Public** → Save. That's all — content is already correct.
-
-## Priority 4: Submit to Community Benchmarks (30 min)
-**Go to:** https://www.kaggle.com/benchmarks/tasks/new
-
-For each of the 25 core benchmark notebooks:
-1. "Import from Notebook" → search by title
-2. The `@kbench.task` decorator handles registration
-3. Run the notebook to create the CB task
-
-**Do NOT submit:** submission_overview, dashboard, test notebooks
-
-See `KAGGLE_SUBMISSION_PLAYBOOK.md` for full details and recommended order.
-
-## Priority 5: Post Discussion (5 min)
-Copy `KAGGLE_DISCUSSION_DRAFT.md` content to a new discussion post on:
-https://www.kaggle.com/competitions/kaggle-measuring-agi/discussion
-
-Community upvotes = **15% of the final score**.
-
----
-
-## What's Already Done (no action needed)
-- ✅ 29 benchmarks implemented and validated
-- ✅ 26 notebooks already public on Kaggle
-- ✅ All notebooks have pip installs, @kbench.task, .run() calls
-- ✅ Submission narrative, methodology, cognitive rationale written
-- ✅ Psychometric validation complete
-- ✅ All DESIGN.md files up to date
-- ✅ Local benchmark runner ready: `scripts/run_benchmark_local.py`
-- ✅ Expanded divided attention items (5→15)
-- ✅ Predicted cognitive profiles for frontier models
-
-## NEW: Get Frontier Model Results Locally
-The agent discovered that benchmarks can run locally against Gemini via the kbench SDK.
-**If billing is enabled on the Gemini API key:**
-```bash
-cd repo
-.venv/bin/python3 scripts/run_benchmark_local.py --model gemini-2.5-flash --benchmark metacog_canary
-# Or run all:
-.venv/bin/python3 scripts/run_benchmark_local.py --model gemini-2.5-pro --benchmark all --output results/gemini_2.5_pro.json
-```
-This would give us actual frontier model results for the narrative — a major differentiator vs just mock data.
-
-## Priority 6: Fix Non-Discriminatory Benchmarks (Post-Upload)
-**Based on 10-model cross-validation results (discriminatory_analysis.md):**
-
-These 5 benchmarks showed zero or near-zero variance across models and need redesign:
-
-| Benchmark | Problem | Fix |
-|-----------|---------|-----|
-| `attention_vigilance` | All 10 models score 1.0 | Add harder distractors, longer sequences, adversarial items |
-| `metacog_canary` | All 10 models score 0.0 | Verify scoring logic isn't broken; simplify if intentionally hard |
-| `metacog_epistemic_revision` | Std=0.013, all ~0.81 | Add harder contradictions, deeper inference chains |
-| `attention_divided` | Std=0.013, all ~0.92 | Increase dual-task complexity |
-| `exec_func_crt` | Std=0.028, all ~0.36 | Generate harder procedural variants |
-
-**After fixing:** re-upload fixed notebooks to Kaggle and re-register as CB tasks.
-
-## Priority 7: Fill Missing Model Results
-Many benchmarks errored on specific models (marked "—" in score matrix). Re-run with:
-- Longer timeouts for reasoning models (DeepSeek-R1, Opus)
-- Better error handling for structured output failures
-- Priority: fill gaps for Opus 4.6 (most ERRORs) and GPT-OSS 120B
+## ✅ Already Done
+- [x] All notebooks uploaded to Kaggle
+- [x] Notebooks made public
+- [x] Ghost notebooks deleted
+- [x] CB tasks registered
+- [x] Benchmark collection created
+- [x] 17 models run on CB platform

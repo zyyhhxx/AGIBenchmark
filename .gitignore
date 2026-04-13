@@ -12,3 +12,10 @@ logs/
 
 # v2 coordinator
 coordinator_state.json
+
+# State files and temporary artifacts
+.drip_test_state.json
+.spot_test_state.json
+.kaggle_*.json
+.kaggle_*.txt
+upload_bundle.zip
