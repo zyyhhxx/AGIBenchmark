@@ -1,0 +1,294 @@
+==============================================================================
+AGI BENCHMARK WRITEUP AUDIT REPORT
+Generated: 2026-04-13
+Auditor: Claw (subagent)
+==============================================================================
+
+Files Audited:
+  - docs/writeups/METACOGNITION.md
+  - docs/writeups/ATTENTION.md
+  - docs/writeups/EXECUTIVE_FUNCTIONS.md
+  - docs/writeups/LEARNING.md
+  - docs/writeups/SOCIAL_COGNITION.md
+
+Cross-referenced against:
+  - 10 model result JSON files in results/
+  - 26 notebooks in notebooks/
+  - COMPETITION_RULES.md, COMPETITION_REQUIREMENTS_CHECKLIST.md, CB_SUBMISSION_GUIDE.md
+
+==============================================================================
+CROSS-TRACK ISSUES (Apply to ALL 5 writeups)
+==============================================================================
+
+[CRITICAL] #CT-1: No Kaggle model placeholders in any writeup
+  The following 6 models will be run on Kaggle but NONE of the 5 writeups
+  contain placeholder sections, "TBD" markers, or any mention of them:
+    - Gemini 2.5 Flash
+    - Gemma 3 1B
+    - Claude Opus 4.6 (also has local results — no note about Kaggle replacing/supplementing)
+    - DeepSeek-R1 (also has local results — no note about Kaggle replacing/supplementing)
+    - Gemini 2.5 Pro
+    - GPT-5.4
+  All writeups say "We evaluated 10 models via Amazon Bedrock" with no forward
+  reference to Kaggle results pending.
+
+[IMPORTANT] #CT-2: No disambiguation for Claude Opus 4.6 and DeepSeek-R1
+  Both models have local (Bedrock) results AND will be re-run on Kaggle.
+  Writeups should clarify that Kaggle results will replace or supplement
+  local results. Currently no mention of this anywhere.
+
+[MINOR] #CT-3: Inconsistent standard deviation convention across tracks
+  - ATTENTION uses population std (N denominator) in tables
+  - EXECUTIVE_FUNCTIONS uses sample std (N-1 denominator) in tables
+  - METACOGNITION uses sample std (N-1 denominator) in tables
+  - LEARNING uses population std (N denominator) in tables
+  - SOCIAL_COGNITION uses population std (N denominator) in tables
+  Should be consistent across all 5 writeups.
+
+[MINOR] #CT-4: "Dataset" section naming vs competition template
+  Competition requires "Dataset provenance, columns, data types" section.
+  All writeups label it simply "Dataset". Content is mostly adequate but
+  explicit column/data-type documentation varies in completeness.
+
+[MINOR] #CT-5: No benchmark collection link in any writeup
+  Per COMPETITION_REQUIREMENTS_CHECKLIST, the final submission needs a
+  benchmark link. None of the writeups include it (likely because CB
+  registration is not yet complete).
+
+==============================================================================
+TRACK 1: METACOGNITION (9 tasks)
+==============================================================================
+
+[CRITICAL] #M-1: Calibration scores are entirely stale/wrong
+  The calibration row in the results table is from an old benchmark version:
+
+  WRITEUP CLAIMS:  Mean=0.165  Std=0.332  Range=0.998  Top=Claude Opus (1.00)  Bot=6 models (0.00)
+  ACTUAL JSON:     Mean=0.520  Std=0.081  Range=0.259  Top=GPT-OSS (0.609)     Bot=Ministral (0.350)
+
+  Every single number in the calibration row is wrong. No model scores 0.00
+  or 1.00 on calibration in the current results.
+
+[CRITICAL] #M-2: Insight 2 ("Near-universal calibration failure") is entirely invalid
+  States: "Only Claude Opus achieves meaningful calibration (BSS = 1.00);
+  Claude Sonnet scores 0.50; 6 of the remaining models score BSS = 0.000 exactly
+  (DeepSeek-R1, Llama 3.3, Llama 4, Ministral 3B, Nova Pro, Qwen3)."
+  
+  Actual scores: ALL models score between 0.35–0.61. No model at 0.00 or 1.00.
+  This entire insight must be rewritten from current data.
+
+[CRITICAL] #M-3: Insight 3 discriminatory power claims are wrong
+  States: "Calibration (std = 0.332) and canary (std = 0.305) are the strongest
+  discriminators." In reality, calibration std = 0.081, making it one of the
+  WEAKEST discriminators (second lowest after learning monitoring at 0.077).
+
+[IMPORTANT] #M-4: Average cross-model std is wrong
+  Writeup claims "Average cross-model standard deviation = 0.12 across 9
+  benchmarks (range 0.08–0.29)."
+  Actual (using sample stds from current data):
+    FOK=0.083, JOL=0.096, Error=0.097, Humility=0.220, Control=0.191,
+    Canary=0.322, Revision=0.108, LearningMon=0.086, Calibration=0.085
+    Average ≈ 0.143
+  The "0.12" figure is incorrect regardless of std convention used.
+
+[IMPORTANT] #M-5: Three-tier pattern stats change with corrected calibration
+  Writeup says Tier 3 (FOK, JOL, calibration) mean = 0.39 with a "2:1
+  dissociation" vs Tier 1 (mean 0.82). With corrected calibration (0.52),
+  Tier 3 mean becomes ~0.49. The dissociation is ~1.7:1, not 2:1.
+  The qualitative insight still holds but the magnitude is overstated.
+
+[IMPORTANT] #M-6: Scoring description is oversimplified and partially wrong
+  Writeup states: "Primary metric per task is a composite of gamma correlation
+  (resolution), Brier Skill Score (calibration + discrimination), and
+  task-specific accuracy."
+  
+  Actual scoring varies dramatically by task:
+    - Calibration: 0.50*extreme_accuracy^1.5 + 0.25*BSS + 0.25*uncertainty_awareness
+    - FOK: 0.40*gamma_norm + 0.30*BSS + 0.30*AUC
+    - JOL: 0.40*gamma_norm + 0.30*BSS + 0.30*recall_rate
+    - Control: 0.35*selection_relevance + 0.35*strategic_gain + 0.30*accuracy (no gamma, no BSS)
+    - Epistemic Humility: 0.35*detection + 0.25*(1-confabulation) + ... (no gamma, no BSS)
+    - Error Detection: 0.35*F1 + 0.25*localization + ... (no gamma, no BSS)
+    - Canary: max(0, BSS) only (no gamma)
+    - Epistemic Revision: 0.10*violation + 0.10*revision + ... (no gamma)
+    - Learning Monitoring: 0.30*gamma + 0.30*accuracy + ...
+  
+  Only FOK, JOL, and Learning Monitoring actually use gamma. Claiming it's a
+  blanket formula is misleading.
+
+[MINOR] #M-7: Calibration scoring description doesn't match code
+  Writeup says "BSS was chosen over raw ECE" implying BSS is the primary metric.
+  Actual code: BSS is only 25% of the composite (0.50*extreme_accuracy^1.5 +
+  0.25*BSS + 0.25*uncertainty_awareness). Extreme accuracy (50% weight) is
+  actually the dominant component.
+
+[MINOR] #M-8: FOK Std mismatch (cosmetic)
+  Table says Std=0.083 (sample std). Computed population std = 0.078.
+  Consistent with sample std convention but differs from other tracks.
+
+Verified correct (non-calibration rows):
+  ✅ FOK: Mean=0.561, Top=Claude Sonnet(0.65), Bot=Ministral 3B(0.41)
+  ✅ JOL: Mean=0.393, Top=Llama 3.3 70B(0.46), Bot=GPT-OSS-120B(0.20)
+  ✅ Error Detection: Mean=0.890, Top=DeepSeek-R1(0.98), Bot=Ministral(0.65)
+  ✅ Epistemic Humility: Mean=0.788, Top=Llama 3.3(0.92), Bot=Ministral(0.20)
+  ✅ Control: Mean=0.549, Top=Nova Pro(0.75), Bot=Ministral(0.20)
+  ✅ Canary: Mean=0.795, Top=Llama 3.3(1.00), Bot=Ministral(0.00)
+  ✅ Epistemic Revision: Mean=0.801, Top=Claude Opus(0.96), Bot=Ministral(0.67)
+  ✅ Learning Monitoring: Mean=0.834, Top=Nova Pro(0.91), Bot=Ministral(0.69)
+  ✅ Insight 4 (epistemic humility/scale): All cited scores verified correct.
+  ✅ Task count: 9 tasks match 9 notebooks
+  ✅ Benchmark names: All 9 match notebook names
+  ✅ All 7 competition-required sections present
+
+==============================================================================
+TRACK 2: ATTENTION (4 tasks)
+==============================================================================
+
+[MINOR] #A-1: Internal std inconsistency in Insight 1
+  Table says Instruction Update Std = 0.215 (population std).
+  Insight 1 text says "std of 0.226" (sample std).
+  These refer to the same benchmark but use different conventions.
+
+[MINOR] #A-2: Vigilance insight refers to "N-back" — potential confusion
+  Insight 3: "DeepSeek-R1 (1.00) and GPT-OSS-120B (1.00) achieve perfect
+  scores on N-back." The attention vigilance task uses N-back paradigm, but
+  there is also a separate exec_func_nback benchmark in Executive Functions.
+  Calling the vigilance task "N-back" could confuse readers. Consider
+  "vigilance N-back" or "sustained attention N-back" for clarity.
+
+[MINOR] #A-3: "non-reasoning models average 0.71" — slightly off
+  Insight 3 claims non-reasoning models average 0.71 on vigilance.
+  Actual average of 8 non-reasoning models = 0.698 ≈ 0.70, not 0.71.
+  Very minor rounding difference.
+
+Verified correct:
+  ✅ Divided Attention: Mean=0.836, Std=0.158, Top=DeepSeek(0.94), Bot=Ministral(0.41)
+  ✅ Instruction Update: Mean=0.856, Top=Claude Opus(0.98), Bot=Ministral(0.30)
+  ✅ Selective Attention: Mean=0.827, Std=0.137, Top=DeepSeek(0.96), Bot=Ministral(0.52)
+  ✅ Vigilance: Mean=0.758, Top=DeepSeek(1.00), Bot=Ministral(0.57)
+  ✅ Average cross-benchmark std = 0.169 (verified)
+  ✅ Scoring formulas match notebook code (vigilance weights, divided tier weights)
+  ✅ Task count: 4 tasks match 4 notebooks
+  ✅ All 7 competition-required sections present
+
+==============================================================================
+TRACK 3: EXECUTIVE FUNCTIONS (5 tasks)
+==============================================================================
+
+[MINOR] #E-1: Std values use sample std (N-1) — inconsistent with other tracks
+  CRT: Table=0.150 (sample), pop=0.143
+  N-back: Table=0.182 (sample), pop=0.171
+  Task Switching: Table=0.116 (sample), pop=0.110
+  ToL: Table=0.280 (sample), pop=0.265
+  WCST: Table=0.237 (sample), pop=0.225
+  Internally consistent within this writeup, but differs from Attention/
+  Learning/Social writeups that use population std.
+
+[MINOR] #E-2: WCST Insight 2 — "rest clustered 0.45–0.70" excludes Ministral
+  States "bimodal distribution (two models at 1.00, rest clustered 0.45–0.70)"
+  but Ministral 3B scores 0.26, well outside the 0.45–0.70 cluster.
+  Should say "most rest clustered 0.46–0.70, with Ministral outlier at 0.26."
+
+Verified correct:
+  ✅ CRT: Mean=0.681, Top=Claude Opus(0.91), Bot=Ministral(0.45)
+  ✅ N-back: Mean=0.889, Top=Claude Opus(1.00), Bot=Ministral(0.51), N=9 (Qwen3 OOM)
+  ✅ Task Switching: Mean=0.881, Top=Claude Opus(1.00), Bot=Nova Pro(0.71)
+  ✅ ToL: Mean=0.252, Top=Claude Opus(0.80), Bot=3 models(0.00) [Sonnet, Llama4, GLM]
+  ✅ WCST: Mean=0.607, Top=Claude Opus(1.00), Bot=Ministral(0.26)
+  ✅ Average cross-benchmark std = 0.193 (verified with sample stds)
+  ✅ WCST scoring weights (0.25/0.45/0.30) match notebook code
+  ✅ Task count: 5 tasks match 5 notebooks
+  ✅ All 7 competition-required sections present
+
+==============================================================================
+TRACK 4: LEARNING (4 tasks)
+==============================================================================
+
+[IMPORTANT] #L-1: Transfer scoring description is incomplete
+  Writeup says: "Transfer uses accuracy on novel-domain items."
+  Actual code: score = 0.30*identical + 0.35*near + 0.35*far
+  The three transfer distances with different weights are not described.
+
+[IMPORTANT] #L-2: Curriculum scoring description is inaccurate
+  Writeup says: "Curriculum measures accuracy variance across orderings."
+  Actual code: score = 0.40*max_accuracy + 0.30*sensitivity +
+    0.30*optimal_ordering_bonus
+  The actual formula is substantially different from what's described.
+
+[IMPORTANT] #L-3: Learning curves scoring description is wrong
+  Writeup says: "Learning curves fit power-law improvement and extract
+  learning rate parameters."
+  Actual code: score = 0.20*standard + 0.50*far_transfer + 0.30*steep
+  No power-law fitting occurs. The score is a weighted composite of
+  standard accuracy, far transfer performance, and learning steepness.
+
+[MINOR] #L-4: Learning curves notebook has mismatched print statement
+  Code computes: 0.20*standard + 0.50*far_transfer + 0.30*steep
+  But prints: "Composite (0.25*A + 0.50*B + 0.25*C)"
+  The print label doesn't match the actual calculation. Not a writeup issue
+  per se, but the writeup's description doesn't match either formula.
+
+Verified correct:
+  ✅ Transfer: Mean=0.785, Top=Claude Opus(1.00), Bot=Ministral(0.28)
+  ✅ Interference: Mean=0.547, Top=Claude Sonnet(1.00), Bot=Claude Opus(0.12)
+  ✅ Curriculum: Mean=0.638, Top=Llama 3.3(0.76), Bot=Nova Pro(0.46)
+  ✅ Learning Curves: Mean=0.587, Top=Claude Opus(0.79), Bot=Ministral(0.44), N=9
+  ✅ Interference scoring (0.30*control + 0.70*interference, tier weights 0.15/0.35/0.50) matches code
+  ✅ Average cross-benchmark std = 0.183 (verified)
+  ✅ Insight 1 (Claude Opus lowest on interference at 0.12): verified
+  ✅ Task count: 4 tasks match 4 notebooks
+  ✅ All 7 competition-required sections present
+
+==============================================================================
+TRACK 5: SOCIAL COGNITION (4 tasks)
+==============================================================================
+
+[IMPORTANT] #S-1: Insight 1 incorrectly says "Qwen3 leads prosody"
+  Insight 1 text: "Llama 4 leads ToM, GPT-OSS-120B leads pragmatics, GLM 4.7
+  leads sarcasm, Qwen3 leads prosody."
+  
+  The writeup's own table correctly shows Claude Opus (0.56) as the top model
+  for emotional prosody. Qwen3 (0.40) is third after Claude Sonnet (0.45).
+  The insight text contradicts the table.
+
+[MINOR] #S-2: GLM sarcasm rounding
+  Table says "GLM 4.7 (0.94)". Actual: 0.945, which standard-rounds to 0.95.
+  0.94 is only correct if truncating, not rounding.
+
+Verified correct:
+  ✅ False Belief: Mean=0.710, Top=Llama 4(1.00), Bot=GPT-OSS(0.38)
+  ✅ Pragmatic Inference: Mean=0.733, Top=GPT-OSS(0.96), Bot=Nova Pro(0.30)
+  ✅ Sarcasm Detection: Mean=0.839, Bot=Llama 4(0.46)
+  ✅ Emotional Prosody: Mean=0.368, Top=Claude Opus(0.56), Bot=Nova Pro(0.25)
+  ✅ False Belief scoring weights (0.05/0.05/0.10/0.60/0.20) match code
+  ✅ Pragmatic Inference tier weights (0.15/0.35/0.50) match code
+  ✅ Average cross-benchmark std = 0.149 (verified)
+  ✅ Task count: 4 tasks match 4 notebooks
+  ✅ All 7 competition-required sections present
+
+==============================================================================
+SUMMARY
+==============================================================================
+
+CRITICAL issues:  4  (3 Metacognition calibration, 1 cross-track placeholders)
+IMPORTANT issues: 9  (2 cross-track, 3 Metacognition, 3 Learning, 1 Social Cog)
+MINOR issues:     11 (3 cross-track, 2 Metacognition, 3 Attention, 2 Exec Func,
+                      1 Learning [notebook bug], 2 Social Cog... wait let me recount)
+
+Recount:
+  Cross-track: 1 CRITICAL, 1 IMPORTANT, 3 MINOR = 5
+  Metacognition: 3 CRITICAL, 3 IMPORTANT, 2 MINOR = 8
+  Attention: 3 MINOR = 3
+  Executive Functions: 2 MINOR = 2
+  Learning: 3 IMPORTANT, 1 MINOR = 4
+  Social Cognition: 1 IMPORTANT, 1 MINOR = 2
+
+TOTAL: 4 CRITICAL, 7 IMPORTANT, 12 MINOR = 23 issues
+
+Priority actions:
+  1. [CRITICAL] Fix Metacognition calibration row — ALL numbers wrong
+  2. [CRITICAL] Rewrite Metacognition Insights 2 and 3 from current data
+  3. [CRITICAL] Add Kaggle model placeholders to all 5 writeups
+  4. [IMPORTANT] Fix Social Cognition Insight 1 ("Qwen3 leads prosody" → "Claude Opus leads prosody")
+  5. [IMPORTANT] Fix Learning scoring descriptions (Transfer, Curriculum, Learning Curves)
+  6. [IMPORTANT] Fix Metacognition scoring description (not all tasks use gamma+BSS)
+  7. [IMPORTANT] Recalculate Metacognition average cross-model std
