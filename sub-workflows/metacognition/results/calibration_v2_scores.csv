@@ -1,0 +1,19 @@
+model,before_score_120items,after_score_132items,delta
+DeepSeek-R1,0.5914,0.6582,0.0668
+Claude Sonnet 4.6,0.5748,0.6581,0.0833
+GPT-OSS-120B,0.609,0.597,-0.012
+Claude Opus 4.6,0.5996,0.5753,-0.0243
+Llama 4 Maverick 17B,0.5668,0.5545,-0.0123
+GLM 4.7,0.5226,0.4972,-0.0254
+Qwen3 Next 80B,0.4907,0.4904,-0.0003
+Nova Pro,0.473,0.4501,-0.0229
+Llama 3.3 70B,0.4209,0.4061,-0.0148
+Ministral 3B,0.3501,0.3003,-0.0498
+
+STATISTICS,before,after,delta
+mean,0.5199,0.5187,-0.0012
+std,0.0858,0.1135,0.0276
+range,0.2589,0.3579,
+n_items,120,132,+12
+n_models,10,10,
+std_target_>=0.10,FAIL (0.0814),PASS (0.1135),

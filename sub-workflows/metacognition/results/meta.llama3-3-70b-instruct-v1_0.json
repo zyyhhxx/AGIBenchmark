@@ -1,7 +1,7 @@
 {
   "model": "meta.llama3-3-70b-instruct-v1:0",
   "model_label": "Llama 3.3 70B",
-  "timestamp": "2026-04-11T19:56:40.813565+00:00",
+  "timestamp": "2026-04-13T18:51:06.850114+00:00",
   "scores": {
     "metacog_canary": {
       "score": 1.0,
@@ -17,11 +17,6 @@
       "score": 0.4647,
       "error": null,
       "duration_s": 48.0
-    },
-    "metacog_calibration": {
-      "score": 0.0,
-      "error": null,
-      "duration_s": 31.6
     },
     "metacog_error_detection": {
       "score": 0.8768,
@@ -132,6 +127,16 @@
       "score": 0.8625,
       "error": null,
       "duration_s": 37.0
+    },
+    "metacog_calibration": {
+      "score": 0.4063,
+      "error": null,
+      "duration_s": 69.4
+    }
+  },
+  "benchmarks": {
+    "metacog_calibration": {
+      "score": 0.4061
     }
   }
 }

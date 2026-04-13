@@ -1,7 +1,7 @@
 {
   "model": "qwen.qwen3-next-80b-a3b",
   "model_label": "Qwen3 Next 80B",
-  "timestamp": "2026-04-12T09:26:28.210477+00:00",
+  "timestamp": "2026-04-13T19:44:14.557748+00:00",
   "scores": {
     "learning_interference": {
       "score": 0.93,
@@ -77,6 +77,11 @@
       "score": 0.4036,
       "error": null,
       "duration_s": 292.9
+    },
+    "metacog_calibration": {
+      "score": 0.5079,
+      "error": null,
+      "duration_s": 437.5
     }
   }
 }

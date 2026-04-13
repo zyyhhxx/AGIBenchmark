@@ -1,7 +1,7 @@
 {
   "model": "openai.gpt-oss-120b-1:0",
   "model_label": "GPT-OSS-120B",
-  "timestamp": "2026-04-11T23:28:45.303895+00:00",
+  "timestamp": "2026-04-13T20:22:34.290061+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.803,
@@ -42,11 +42,6 @@
       "score": 0.6629,
       "error": null,
       "duration_s": 208.5
-    },
-    "learning_curves": {
-      "score": null,
-      "error": "TIMEOUT after 600s",
-      "duration_s": 600
     },
     "learning_transfer": {
       "score": 1.0,
@@ -108,11 +103,6 @@
       "error": null,
       "duration_s": 56.2
     },
-    "metacog_calibration": {
-      "score": 0.1241,
-      "error": null,
-      "duration_s": 93.9
-    },
     "social_cog_pragmatic": {
       "score": 0.956,
       "error": null,
@@ -132,6 +122,11 @@
       "score": 0.3771,
       "error": null,
       "duration_s": 224.3
+    }
+  },
+  "benchmarks": {
+    "metacog_calibration": {
+      "score": 0.597
     }
   }
 }

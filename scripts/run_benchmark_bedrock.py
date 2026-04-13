@@ -81,9 +81,9 @@ BENCHMARKS = {
 # Rate limiting
 DELAY_BETWEEN_BENCHMARKS = 2   # seconds
 DELAY_BETWEEN_MODELS = 5       # seconds
-CALL_TIMEOUT = 300              # seconds per Bedrock call
+CALL_TIMEOUT = 600              # seconds per Bedrock call
 SLOW_BENCHMARKS = {'exec_func_wcst', 'exec_func_tol', 'exec_func_nback', 'exec_func_crt', 'exec_func_task_switch', 'attention_divided', 'attention_instruction_update'}
-SLOW_TIMEOUT = 300              # seconds for known slow benchmarks
+SLOW_TIMEOUT = 900              # seconds for known slow benchmarks
 
 
 def resolve_model_id(model_arg: str) -> str:

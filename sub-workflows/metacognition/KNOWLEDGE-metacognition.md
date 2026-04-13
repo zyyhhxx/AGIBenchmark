@@ -7,6 +7,17 @@
 - **JOL perverse incentive:** Constant-zero-confidence → gamma_norm=0.50 (free 0.20 score). Models refusing to engage score ≥ models that attempt recall but confabulate. Does not distort current rankings but monitor if pattern becomes dominant.
 - **FOK is cleanest benchmark:** No parsing issues, good confidence spread (std 21–32 per model), GPT-OSS-120B top (0.670), Ministral 3B bottom (0.388)
 - **Calibration universal overconfidence:** All models mean confidence 94–99%. Claude Sonnet 4.6 best at modulating (std=10.1, range 35–100); scores highest (0.632). Ministral 3B confidence std=2.3 (nearly constant high) — 11/120 parse failures.
+## metacog_calibration v2 — Difficulty-5 Item Expansion (2026-04-13)
+- **12 new difficulty-5 items added** to `procedural_calibration.py` covering: Catalan numbers, derangements, Stirling numbers (combinatorics); integer partitions, Euler totient, continued fractions, Bernoulli numbers, 1729 taxicab number (number theory); modular arithmetic; trailing zeros in 100!, digital root.
+- **Total items:** 132 (25 d1, 30 d2, 35 d3, 15 d4, 27 d5). Extreme items (d≥4) = 42 (31.8% of total).
+- **Scores — all 10 models (132-item benchmark):** DeepSeek-R1=0.6582, Sonnet 4.6=0.6581, GPT-OSS-120B=0.5970, Opus 4.6=0.5753, Maverick 17B=0.5545, GLM 4.7=0.4972, Qwen3 80B=0.4904, Nova Pro=0.4501, Llama 3.3 70B=0.4061, Ministral 3B=0.3003
+- **Before/after:** mean 0.5199→0.5187, std 0.0858→0.1076, range 0.2589→0.3579. **std≥0.10 target: PASS**
+- **Universal overconfidence persists:** All models mean confidence 94–99% on difficulty-5 items.
+- **GLM 4.7 Bedrock issues:** Repeated ValidationException (internal server error) on Bedrock; runs may take 3600s+ to complete. Budget extra time.
+- **DeepSeek-R1 response format:** Returns both `text` block and `reasoningContent` block; KeyError on `text` can occur intermittently — likely transient Bedrock issue, not a parsing bug.
+- **Sequential runs required:** Parallel execution of 10 model runs causes SIGTERM due to resource contention on the EC2 instance. Run models one at a time with skip-if-scored logic.
+- **AWS_PROFILE fix:** Set `~/.aws/config` with empty `[default]` profile to prevent boto3 ProfileNotFound errors when `AWS_PROFILE=default` is set in environment.
+
 ## Batch 1 Scoring/Parsing Fixes — Confirmed Deployed (2026-04-13)
 - **JOL std-penalty:** `if np.std(all_jol_ratings) < 1.0: gamma_norm = 0.0` added to task_jol.py. Constant-confidence models lose the free 0.20 score. No current model has std < 1.0 (Ministral 3B std=2.3), so rankings unchanged but perverse incentive removed.
 - **Backtick fence stripping:** `re.sub(r'```(?:json)?\s*', '', cleaned)` + closing fence strip added to JSON extraction in task_calibration.py (Phase 1) and task_fok.py (Phase 1 and Phase 2). Fixes Ministral 3B's 11/120 parse failures that defaulted to confidence=50.

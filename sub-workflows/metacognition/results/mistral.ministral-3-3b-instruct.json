@@ -1,7 +1,7 @@
 {
   "model": "mistral.ministral-3-3b-instruct",
   "model_label": "Ministral 3B",
-  "timestamp": "2026-04-12T00:07:21.345285+00:00",
+  "timestamp": "2026-04-13T19:28:14.154314+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.0,
@@ -127,11 +127,11 @@
       "score": 0.6823,
       "error": null,
       "duration_s": 36.8
-    },
+    }
+  },
+  "benchmarks": {
     "metacog_calibration": {
-      "score": 0.0,
-      "error": null,
-      "duration_s": 66.0
+      "score": 0.3003
     }
   }
 }

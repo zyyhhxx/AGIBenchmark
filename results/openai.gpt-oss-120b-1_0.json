@@ -1,7 +1,7 @@
 {
   "model": "openai.gpt-oss-120b-1:0",
   "model_label": "GPT-OSS-120B",
-  "timestamp": "2026-04-12T09:28:51.007668+00:00",
+  "timestamp": "2026-04-13T20:14:55.229111+00:00",
   "scores": {
     "learning_transfer": {
       "score": 1.0,
@@ -87,6 +87,11 @@
       "score": 0.6855,
       "error": null,
       "duration_s": 1040.1
+    },
+    "metacog_calibration": {
+      "score": 0.6492,
+      "error": null,
+      "duration_s": 785.4
     }
   }
 }

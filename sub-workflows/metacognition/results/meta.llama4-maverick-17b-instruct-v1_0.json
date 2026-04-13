@@ -1,7 +1,7 @@
 {
   "model": "meta.llama4-maverick-17b-instruct-v1:0",
   "model_label": "Llama 4 Maverick 17B",
-  "timestamp": "2026-04-11T21:01:13.105512+00:00",
+  "timestamp": "2026-04-13T18:51:11.307801+00:00",
   "scores": {
     "metacog_canary": {
       "score": 0.928,
@@ -17,11 +17,6 @@
       "score": 0.4647,
       "error": null,
       "duration_s": 30.9
-    },
-    "metacog_calibration": {
-      "score": 0.0,
-      "error": null,
-      "duration_s": 32.0
     },
     "metacog_error_detection": {
       "score": 0.7479,
@@ -132,6 +127,16 @@
       "score": 1.0,
       "error": null,
       "duration_s": 109.8
+    },
+    "metacog_calibration": {
+      "score": 0.5505,
+      "error": null,
+      "duration_s": 52.4
+    }
+  },
+  "benchmarks": {
+    "metacog_calibration": {
+      "score": 0.5545
     }
   }
 }
