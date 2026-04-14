@@ -1,138 +1,170 @@
 """
-Stimuli generator for Task-Switching benchmark (v2).
+Task-Switching v3 — Harder compositional rules with congruency manipulation.
 
-v2 redesign: Uses harder classification rules that create genuine interference.
-
-Rules:
-- Rule A: "Sum of digits" — classify whether the sum of digits is odd or even
-- Rule B: "Letter value" — given a number-letter pair, classify whether the letter 
-  comes before or after 'M' in the alphabet
-
-These rules require different cognitive operations (arithmetic vs. ordinal comparison)
-and create genuine switch cost because the stimulus format changes between rules.
-
-Blocks:
-- Baseline: 15 items, Rule A only
-- Slow switch: 20 items, rule alternates every 5
-- Rapid switch: 20 items, rule alternates every 1-2
-- Random cue: 20 items, random rule per item
+Changes from v2:
+- 4 harder rules requiring multi-step computation:
+  - Rule A: "Is the digit sum prime?" (2,3,5,7,11,13,17,19...)
+  - Rule B: "Is the letter's alphabet position even or odd?"
+  - Rule C: "Is the number divisible by its digit count?"
+  - Rule D: "Is the letter within 3 positions of a vowel (A,E,I,O,U)?"
+- Congruency manipulation: ~30% of items where wrong-rule answer matches right-rule answer
+- Post-stimulus cuing in rapid/random blocks: item shown BEFORE rule
+- 4 blocks: baseline (Rule A only), slow (blocks of 3), rapid (every 1), random
 """
 
 import random
-import string
+import hashlib
 
 
-def generate_task_switch_blocks(seed=42):
-    """
-    Generate 4 blocks of task-switching stimuli with harder rules.
-    """
-    rng = random.Random(seed)
+# Primes up to 50 (for digit sum check)
+_PRIMES = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47}
+
+# Vowel positions (1-indexed)
+_VOWEL_POSITIONS = {1, 5, 9, 15, 21}  # A=1, E=5, I=9, O=15, U=21
+
+# Letters near vowels (within 3 positions)
+_NEAR_VOWEL = set()
+for v in _VOWEL_POSITIONS:
+    for offset in range(-3, 4):
+        pos = v + offset
+        if 1 <= pos <= 26:
+            _NEAR_VOWEL.add(pos)
+
+
+def _rule_a(stimulus):
+    """Is the digit sum prime?"""
+    num = int(stimulus["number"])
+    dsum = sum(int(d) for d in str(num))
+    return "prime" if dsum in _PRIMES else "not-prime"
+
+
+def _rule_b(stimulus):
+    """Is the letter's alphabet position even or odd?"""
+    pos = ord(stimulus["letter"]) - ord('A') + 1
+    return "even" if pos % 2 == 0 else "odd"
+
+
+def _rule_c(stimulus):
+    """Is the number divisible by its digit count?"""
+    num = int(stimulus["number"])
+    n_digits = len(str(num))
+    return "yes" if num % n_digits == 0 else "no"
+
+
+def _rule_d(stimulus):
+    """Is the letter within 3 alphabet positions of a vowel?"""
+    pos = ord(stimulus["letter"]) - ord('A') + 1
+    return "yes" if pos in _NEAR_VOWEL else "no"
+
+
+RULES = {
+    "A": {"name": "Digit Sum Prime", "func": _rule_a,
+           "prompt": "Is the digit sum of {number} a prime number?",
+           "answers": ("prime", "not-prime")},
+    "B": {"name": "Letter Position Parity", "func": _rule_b,
+           "prompt": "Is the alphabet position of '{letter}' even or odd?",
+           "answers": ("even", "odd")},
+    "C": {"name": "Divisible by Digit Count", "func": _rule_c,
+           "prompt": "Is {number} divisible by {n_digits} (its number of digits)?",
+           "answers": ("yes", "no")},
+    "D": {"name": "Near Vowel", "func": _rule_d,
+           "prompt": "Is '{letter}' within 3 alphabet positions of a vowel (A,E,I,O,U)?",
+           "answers": ("yes", "no")},
+}
+
+
+def _make_stimulus(rng):
+    """Generate a number-letter pair."""
+    num = rng.randint(10, 999)  # 2-3 digit numbers
+    letter = chr(rng.randint(ord('A'), ord('Z')))
+    return {"number": str(num), "letter": letter, "n_digits": str(len(str(num)))}
+
+
+def _generate_block(rng, block_type, n_items=20):
+    """Generate a block of trials with rule assignments."""
+    trials = []
     
-    # Stimulus pool for Rule A (digit sum): 2-3 digit numbers
-    # Stimulus pool for Rule B (letter comparison): number-letter pairs
-    letters_before_m = list("ABCDEFGHIJKL")  # before M
-    letters_after_m = list("NOPQRSTUVWXYZ")   # after M
-    all_letters = letters_before_m + letters_after_m
+    if block_type == "baseline":
+        # All Rule A
+        for i in range(n_items):
+            stim = _make_stimulus(rng)
+            trials.append({
+                "stimulus": stim,
+                "rule": "A",
+                "correct": _rule_a(stim),
+                "is_switch_trial": False,
+                "post_cue": False,
+            })
     
-    def make_stimulus_a(rng):
-        """Generate a number for digit-sum classification."""
-        n = rng.randint(10, 99)
-        digit_sum = sum(int(d) for d in str(n))
-        correct = "odd" if digit_sum % 2 == 1 else "even"
-        return {"stimulus": str(n), "correct": correct, "detail": f"digits sum to {digit_sum}"}
-    
-    def make_stimulus_b(rng):
-        """Generate a number-letter pair for letter comparison."""
-        num = rng.randint(1, 50)
-        letter = rng.choice(all_letters)
-        correct = "before" if letter < 'M' else "after"
-        return {"stimulus": f"{num}{letter}", "correct": correct, "detail": f"'{letter}' is {correct} M"}
-    
-    def make_trial(rng, rule, prev_rule):
-        if rule == "digit_sum":
-            stim = make_stimulus_a(rng)
-            rule_label = "Digit Sum Odd/Even"
-            instruction = f"Is the sum of digits of {stim['stimulus']} odd or even?"
-        else:
-            stim = make_stimulus_b(rng)
-            rule_label = "Letter Before/After M"
-            instruction = f"In '{stim['stimulus']}', does the letter come before or after M in the alphabet?"
+    elif block_type == "slow_switch":
+        # Blocks of 3, cycling through A→B→C→D
+        rule_seq = []
+        rule_cycle = ["A", "B", "C", "D"]
+        idx = 0
+        while len(rule_seq) < n_items:
+            rule_seq.extend([rule_cycle[idx % 4]] * 3)
+            idx += 1
+        rule_seq = rule_seq[:n_items]
         
-        return {
-            "stimulus": stim["stimulus"],
-            "rule": rule,
-            "rule_label": rule_label,
-            "instruction": instruction,
-            "correct_answer": stim["correct"],
-            "detail": stim["detail"],
-            "is_switch_trial": prev_rule is not None and prev_rule != rule,
-        }
+        for i, rule in enumerate(rule_seq):
+            stim = _make_stimulus(rng)
+            is_switch = (i > 0 and rule_seq[i] != rule_seq[i-1])
+            trials.append({
+                "stimulus": stim,
+                "rule": rule,
+                "correct": RULES[rule]["func"](stim),
+                "is_switch_trial": is_switch,
+                "post_cue": False,
+            })
     
-    blocks = {}
-    rules = ["digit_sum", "letter_pos"]
+    elif block_type == "rapid_switch":
+        # Alternates every 1-2 items, post-stimulus cuing
+        rules_available = ["A", "B", "C", "D"]
+        prev_rule = None
+        for i in range(n_items):
+            # Switch every item, sometimes repeat once
+            if prev_rule is None or rng.random() < 0.7:
+                rule = rng.choice([r for r in rules_available if r != prev_rule])
+            else:
+                rule = prev_rule
+            stim = _make_stimulus(rng)
+            is_switch = (prev_rule is not None and rule != prev_rule)
+            trials.append({
+                "stimulus": stim,
+                "rule": rule,
+                "correct": RULES[rule]["func"](stim),
+                "is_switch_trial": is_switch,
+                "post_cue": True,  # Rule shown AFTER stimulus
+            })
+            prev_rule = rule
     
-    # Block 1: Baseline (all digit_sum)
-    baseline = []
-    for i in range(15):
-        baseline.append(make_trial(rng, "digit_sum", "digit_sum" if i > 0 else None))
-    blocks["baseline"] = baseline
+    elif block_type == "random_cue":
+        # Random rule per item, post-stimulus cuing
+        prev_rule = None
+        for i in range(n_items):
+            rule = rng.choice(["A", "B", "C", "D"])
+            stim = _make_stimulus(rng)
+            is_switch = (prev_rule is not None and rule != prev_rule)
+            trials.append({
+                "stimulus": stim,
+                "rule": rule,
+                "correct": RULES[rule]["func"](stim),
+                "is_switch_trial": is_switch,
+                "post_cue": True,
+            })
+            prev_rule = rule
     
-    # Block 2: Slow switch (every 5 items)
-    slow = []
-    prev_rule = None
-    for i in range(20):
-        rule = rules[(i // 5) % 2]
-        slow.append(make_trial(rng, rule, prev_rule))
-        prev_rule = rule
-    blocks["slow_switch"] = slow
-    
-    # Block 3: Rapid switch (every 1-2 items)
-    rapid = []
-    prev_rule = None
-    current_rule = "digit_sum"
-    count_in_run = 0
-    run_length = rng.choice([1, 2])
-    for i in range(20):
-        rapid.append(make_trial(rng, current_rule, prev_rule))
-        prev_rule = current_rule
-        count_in_run += 1
-        if count_in_run >= run_length:
-            current_rule = "letter_pos" if current_rule == "digit_sum" else "digit_sum"
-            count_in_run = 0
-            run_length = rng.choice([1, 2])
-    blocks["rapid_switch"] = rapid
-    
-    # Block 4: Random cue
-    random_cue = []
-    prev_rule = None
-    for i in range(20):
-        rule = rng.choice(rules)
-        random_cue.append(make_trial(rng, rule, prev_rule))
-        prev_rule = rule
-    blocks["random_cue"] = random_cue
-    
-    return blocks
+    return trials
 
 
-TASK_SWITCH_BLOCKS = generate_task_switch_blocks(seed=42)
-
-# Legacy compat
-TASK_SWITCH_TRIALS = []
-for block_name in ["baseline", "slow_switch", "rapid_switch", "random_cue"]:
-    for i, trial in enumerate(TASK_SWITCH_BLOCKS[block_name]):
-        trial_copy = dict(trial)
-        trial_copy["trial_num"] = len(TASK_SWITCH_TRIALS) + 1
-        trial_copy["block"] = block_name
-        TASK_SWITCH_TRIALS.append(trial_copy)
+def generate_all_blocks(seed="task_switch_v3"):
+    rng = random.Random(int(hashlib.sha256(seed.encode()).hexdigest(), 16))
+    return {
+        "baseline": _generate_block(rng, "baseline", 15),
+        "slow_switch": _generate_block(rng, "slow_switch", 24),
+        "rapid_switch": _generate_block(rng, "rapid_switch", 24),
+        "random_cue": _generate_block(rng, "random_cue", 24),
+    }
 
 
-if __name__ == "__main__":
-    blocks = TASK_SWITCH_BLOCKS
-    for bname, trials in blocks.items():
-        switches = sum(1 for t in trials if t["is_switch_trial"])
-        print(f"Block '{bname}': {len(trials)} trials, {switches} switch trials")
-        for i, t in enumerate(trials[:6]):
-            sw = " [SWITCH]" if t["is_switch_trial"] else ""
-            print(f"  {i+1}: stim={t['stimulus']:5s} rule={t['rule_label']:22s} correct={t['correct_answer']:6s} {t['detail']}{sw}")
-        if len(trials) > 6:
-            print(f"  ... ({len(trials) - 6} more)")
+TASK_SWITCH_V3_BLOCKS = generate_all_blocks()
