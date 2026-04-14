@@ -11,6 +11,13 @@
 - **Cross-benchmark ranking insight:** TOL best discriminates frontier-tier models; N-back least discriminating (ceiling effect for most). Task_switch shows non-monotonic size-vs-capability relationship.
 - **Artifact paths:** `repo/sub-workflows/benchmark-qa/results/qa_transcripts/exec_func_{crt,nback,task_switch,tol,wcst}/` — 10 .jsonl + 10 .summary.json + aggregate_stats.json each.
 
+## Executive Functions Track — QA Pass, All KEEP AS-IS (2026-04-14)
+- **Track average std: 0.204** (2.5× above 0.08 threshold) — all 5 benchmarks healthy, no changes needed.
+- **N-back fragility:** std=0.161 is driven entirely by Nova Pro outlier (0.462); 8/10 models at 1.000. If Nova Pro drops from roster, N-back becomes non-discriminating. Advisory: add 4-back/5-back in future iteration.
+- **WCST ceiling cluster:** 5/10 models score 1.0 (perfect). Current std=0.268 acceptable; harder variants (ambiguous shift signals) advised for future.
+- **CRT parse edge case:** Ministral 3B regex grabs "28" from reasoning chain instead of JSON answer on CRT01 — ~0.05 impact on single item. Not worth re-run at current threshold.
+- **Conditional Step 8 pattern confirmed:** When all benchmarks return KEEP AS-IS, skip Steps 2–7 (no code changes, no re-runs) and go directly to track-level log. This is valid and expected per task design.
+
 ## attention_selective Benchmark Results — All 10 Models (2026-04-14)
 - **Scores:** Claude Opus 4.6=1.000, DeepSeek-R1=1.000, Claude Sonnet 4.6=0.9583, GPT-OSS-120B=0.9583, Llama 3.3 70B=0.8767, Nova Pro=0.7967, Llama 4 Maverick 17B=0.7567, Qwen3 Next 80B=0.7300, GLM 4.7=0.7167, Ministral 3B=0.5233
 - **Aggregate:** mean=0.8317, std=0.1471 (≥0.08 ✅), range=0.4767; 10/10 coverage, 0 failures
