@@ -1,0 +1,21 @@
+{
+  "model_label": "llama_4_maverick_17b",
+  "model_id": "us.meta.llama4-maverick-17b-instruct-v1:0",
+  "composite_score": 0.9275,
+  "tier_scores": {
+    "easy": 1.0,
+    "medium": 0.9666666666666667,
+    "hard": 0.875
+  },
+  "per_trial": {
+    "E1": 1.0,
+    "E2": 1.0,
+    "M1": 1.0,
+    "M2": 0.9333333333333333,
+    "H1": 0.9166666666666666,
+    "H2": 0.875,
+    "H3": 0.8333333333333334
+  },
+  "total_duration_s": 14.4,
+  "n_trials": 7
+}

@@ -1,0 +1,21 @@
+{
+  "model_label": "ministral_3b",
+  "model_id": "mistral.ministral-3-3b-instruct",
+  "composite_score": 0.4139,
+  "tier_scores": {
+    "easy": 0.125,
+    "medium": 0.0,
+    "hard": 0.7777777777777778
+  },
+  "per_trial": {
+    "E1": 0.0,
+    "E2": 0.25,
+    "M1": 0.0,
+    "M2": 0.0,
+    "H1": 0.875,
+    "H2": 0.875,
+    "H3": 0.5833333333333334
+  },
+  "total_duration_s": 15.0,
+  "n_trials": 7
+}

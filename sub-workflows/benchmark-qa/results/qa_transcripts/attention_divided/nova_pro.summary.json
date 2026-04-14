@@ -1,0 +1,21 @@
+{
+  "model_label": "nova_pro",
+  "model_id": "us.amazon.nova-pro-v1:0",
+  "composite_score": 0.7064,
+  "tier_scores": {
+    "easy": 0.9375,
+    "medium": 0.43333333333333335,
+    "hard": 0.7777777777777778
+  },
+  "per_trial": {
+    "E1": 1.0,
+    "E2": 0.875,
+    "M1": 0.0,
+    "M2": 0.8666666666666667,
+    "H1": 0.8333333333333334,
+    "H2": 0.75,
+    "H3": 0.75
+  },
+  "total_duration_s": 11.0,
+  "n_trials": 7
+}

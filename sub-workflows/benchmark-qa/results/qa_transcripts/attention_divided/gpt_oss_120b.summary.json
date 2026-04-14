@@ -1,0 +1,21 @@
+{
+  "model_label": "gpt_oss_120b",
+  "model_id": "openai.gpt-oss-120b-1:0",
+  "composite_score": 0.9375,
+  "tier_scores": {
+    "easy": 1.0,
+    "medium": 1.0,
+    "hard": 0.875
+  },
+  "per_trial": {
+    "E1": 1.0,
+    "E2": 1.0,
+    "M1": 1.0,
+    "M2": 1.0,
+    "H1": 0.9166666666666666,
+    "H2": 0.875,
+    "H3": 0.8333333333333334
+  },
+  "total_duration_s": 37.3,
+  "n_trials": 7
+}
