@@ -13,8 +13,8 @@ Core Problem Fixed (v1/v2):
 Previous versions gave the model all rules in EVERY condition — making it
 instruction following, not genuine transfer. v3 forces actual abstraction:
 - Near transfer: same domain but INCOMPLETE rules (1 rule omitted)
-- Far transfer: different domain, NO rules — only 2 worked examples
-- Zero-shot structural: completely different representation, only 1 example
+- Far transfer: different domain, NO rules — 2 worked examples per operator (6 total)
+- Zero-shot structural: completely different representation, only 2 curated examples
 
 Score = weighted accuracy across 4 conditions.
 """
@@ -46,7 +46,89 @@ def normalize_output(text: str) -> str:
 def check_output(model_output: str, expected: str) -> bool:
     m = normalize_output(model_output)
     e = normalize_output(expected)
+    if m == e:
+        return True
+    # For numeric expected values, use word-boundary matching
+    # to avoid false positives like "1" matching "13"
+    if e.lstrip('-').isdigit():
+        return bool(re.search(r'(?<!\d)' + re.escape(e) + r'(?!\d)', m))
     return e in m or m in e
+
+
+def _select_balanced_far_examples(system, n_per_op=2):
+    """Select examples covering all operators, n_per_op per operator.
+
+    Ensures the model sees at least n_per_op worked examples for EVERY
+    operator in the system, rather than a random slice that may miss some.
+    """
+    from collections import defaultdict
+    by_op = defaultdict(list)
+    for ex in system.examples:
+        op = ex["input"].split("(")[0].strip()
+        by_op[op].append(ex)
+    selected = []
+    for op in sorted(by_op.keys()):  # deterministic order
+        selected.extend(by_op[op][:n_per_op])
+    return selected
+
+
+def _select_zero_shot_examples(system):
+    """Select 2 examples that together cover all tokens and show both branches of C.
+
+    Criteria (in priority order):
+    1. Token coverage — together the pair must use all of {A, B, C, D}
+    2. C-branch diversity — one example where C doubles (counter > 0 at first C),
+       one where C sets to 1 (counter <= 0 at first C)
+    3. Disambiguation — the "C sets to 1" example must produce a DIFFERENT
+       output under the hypothesis "C always doubles" so the model can
+       distinguish the two branches from the data alone
+    4. Brevity — shorter examples are easier to learn from
+    """
+    required = {"A", "B", "C", "D"}
+    c_doubles, c_else = [], []
+
+    for ex in system.examples:
+        toks = ex["input"].split()
+        if "C" not in toks:
+            continue
+        counter = 0
+        for t in toks:
+            if t == "C":
+                (c_doubles if counter > 0 else c_else).append(ex)
+                break
+            elif t == "A":
+                counter += 2
+            elif t == "B":
+                counter -= 1
+            elif t == "D":
+                counter = 0
+
+    best_pair, best_score = None, -1
+    for ex_d in c_doubles:
+        for ex_e in c_else:
+            covered = set(ex_d["input"].split()) | set(ex_e["input"].split())
+            if not required.issubset(covered):
+                continue
+            # Check disambiguation: does "C always doubles" give wrong output?
+            cd, cc = 0, 0  # counter under double-hypothesis vs correct rules
+            for t in ex_e["input"].split():
+                if t == "A":
+                    cd += 2; cc += 2
+                elif t == "B":
+                    cd -= 1; cc -= 1
+                elif t == "D":
+                    cd = 0; cc = 0
+                elif t == "C":
+                    cd *= 2
+                    cc = cc * 2 if cc > 0 else 1
+            disambig = (cd != cc)
+            n_toks = len(ex_d["input"].split()) + len(ex_e["input"].split())
+            score = (10 if disambig else 0) + (20 - n_toks)
+            if score > best_score:
+                best_score = score
+                best_pair = [ex_d, ex_e]
+
+    return best_pair or [system.examples[0], system.examples[1]]
 
 
 def _extract_answer(raw: str) -> str:
@@ -81,8 +163,8 @@ def learning_transfer(llm) -> float:
     Four conditions with increasing transfer distance:
     1. Identical (weight 0.15): same system, all rules given, held-out items
     2. Near transfer (weight 0.25): same domain (symbol), INCOMPLETE rules (1 omitted)
-    3. Far transfer (weight 0.30): different domain (number), NO rules — 2 worked examples only
-    4. Zero-shot structural (weight 0.30): stateful system, NO rules — 1 worked example only
+    3. Far transfer (weight 0.30): different domain (number), NO rules — 2 examples per operator
+    4. Zero-shot structural (weight 0.30): stateful system, NO rules — 2 curated examples only
 
     Score = 0.15 * identical + 0.25 * near + 0.30 * far + 0.30 * zero_shot
     """
@@ -137,10 +219,11 @@ def learning_transfer(llm) -> float:
     # ── Condition 3: Far Transfer ──────────────────────────────────
     # Different domain (number system). NO explicit rules given.
     # Only 2 worked examples + description. Model must abstract principles.
+    far_examples = _select_balanced_far_examples(TRANSFER_FAR_V3, n_per_op=2)
     far_block = f"\n**New Rule System (different domain): {TRANSFER_FAR_V3.name}**\n"
     far_block += f"Description: {TRANSFER_FAR_V3.description}\n\n"
-    far_block += "**NO rules provided.** Infer the operators from these 2 worked examples:\n"
-    for ex in TRANSFER_FAR_V3.examples[:2]:
+    far_block += f"**NO rules provided.** Infer the operators from these {len(far_examples)} worked examples:\n"
+    for ex in far_examples:
         far_block += f"  Input: {ex['input']}  →  Output: {ex['output']}\n"
     far_block += "\n(You must deduce how the operators work from the examples above.)\n"
 
@@ -166,12 +249,13 @@ def learning_transfer(llm) -> float:
     # Completely different representation: stateful accumulator.
     # Only description + 1 worked example. No rules.
     # Model must infer rules from minimal information + structural analogy.
-    zs_ex = TRANSFER_ZERO_SHOT_V3.examples[0]
+    zs_examples = _select_zero_shot_examples(TRANSFER_ZERO_SHOT_V3)
     zs_block = f"\n**New Rule System (completely different representation): {TRANSFER_ZERO_SHOT_V3.name}**\n"
     zs_block += f"Description: {TRANSFER_ZERO_SHOT_V3.description}\n\n"
-    zs_block += "**NO rules provided.** Only one worked example:\n"
-    zs_block += f"  Input: {zs_ex['input']}  →  Output: {zs_ex['output']}\n"
-    zs_block += "\n(Tokens are A, B, C, D. Figure out what each token does from this single example "
+    zs_block += f"**NO rules provided.** Only {len(zs_examples)} worked examples:\n"
+    for ex in zs_examples:
+        zs_block += f"  Input: {ex['input']}  →  Output: {ex['output']}\n"
+    zs_block += "\n(Tokens are A, B, C, D. Figure out what each token does from these examples "
     zs_block += "and any structural analogy you can draw from your prior learning.)\n"
 
     condition_results = []
@@ -181,7 +265,7 @@ def learning_transfer(llm) -> float:
                 f"You previously learned a symbol transformation system:\n\n"
                 f"{train_block}\n"
                 f"Now attempt zero-shot structural transfer to a radically different system.\n"
-                f"You have only ONE worked example. Infer the complete rule set.\n"
+                f"You have only {len(zs_examples)} worked examples. Infer the complete rule set.\n"
                 f"{zs_block}\n"
                 f"Apply the inferred rules to:\n"
                 f"Input: {test_item['input']}\n\n"
