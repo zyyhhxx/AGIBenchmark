@@ -281,24 +281,24 @@ EXTREME_TRIALS = [
             "]}"
         ),
         # Verification:
-        # RHYTHM: R=SECOND? No, R is 18th letter → SECOND. Vowels: y is not counted → 0. Length 6 → MEDIUM. Consonant clusters: rh=2, thm=3 → 3
+        # RHYTHM: R=SECOND? No, R is 18th letter → SECOND. Vowels: y is not counted → 0. Length 6 → MEDIUM. Consonant clusters: r,h,y,t,h,m all consonants (no AEIOU) → 6
         # BEAUTIFUL: B → FIRST. Vowels: e,a,u,i,u = 5. Length 9 → LONG. Consonant clusters: b=1, t=1, f=1, l=1 → 1
         # CAT: C → FIRST. Vowels: a = 1. Length 3 → SHORT. Consonant clusters: c=1, t=1 → 1
         # STRENGTH: S → SECOND. Vowels: e = 1. Length 8 → LONG. Consonant clusters: str=3, ngth=4 → 4
         # ELOQUENT: E → FIRST. Vowels: e,o,u,e = 4. Length 8 → LONG. Consonant clusters: l=1, q=1, nt=2 → 2
         # GYM: G → FIRST. Vowels: 0 (y not counted). Length 3 → SHORT. Consonant clusters: gym=3 → 3
-        # PSYCHOLOGY: P → SECOND. Vowels: o,o = 2 (y not counted). Length 10 → LONG. Consonant clusters: ps=2, ch=2, l=1, g=1 → 2
+        # PSYCHOLOGY: P → SECOND. Vowels: o,o = 2 (y not counted). Length 10 → LONG. Consonant clusters: psych=5, l=1, gy=2 → 5
         # QUEUE: Q → SECOND. Vowels: u,e,u,e = 4. Length 5 → MEDIUM. Consonant clusters: q=1 → 1
         # SCHNAPPS: S → SECOND. Vowels: a = 1. Length 8 → LONG. Consonant clusters: schn=4, pps=3 → 4
         # FLY: F → FIRST. Vowels: 0. Length 3 → SHORT. Consonant clusters: fly=3 → 3
         "answers": [
-            {"A": "SECOND", "B": "0", "C": "MEDIUM", "D": "3"},
+            {"A": "SECOND", "B": "0", "C": "MEDIUM", "D": "6"},
             {"A": "FIRST",  "B": "5", "C": "LONG",   "D": "1"},
             {"A": "FIRST",  "B": "1", "C": "SHORT",  "D": "1"},
             {"A": "SECOND", "B": "1", "C": "LONG",   "D": "4"},
             {"A": "FIRST",  "B": "4", "C": "LONG",   "D": "2"},
             {"A": "FIRST",  "B": "0", "C": "SHORT",  "D": "3"},
-            {"A": "SECOND", "B": "2", "C": "LONG",   "D": "2"},
+            {"A": "SECOND", "B": "2", "C": "LONG",   "D": "5"},
             {"A": "SECOND", "B": "4", "C": "MEDIUM", "D": "1"},
             {"A": "SECOND", "B": "1", "C": "LONG",   "D": "4"},
             {"A": "FIRST",  "B": "0", "C": "SHORT",  "D": "3"},

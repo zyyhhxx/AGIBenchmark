@@ -1,0 +1,10 @@
+{
+  "benchmark": "learning_curriculum",
+  "model_id": "amazon.nova-pro-v1:0",
+  "model_label": "Nova Pro",
+  "score": 0.52,
+  "error": null,
+  "duration_s": 12.9,
+  "n_questions": 20,
+  "timestamp": "2026-04-14T09:49:48.120169+00:00"
+}

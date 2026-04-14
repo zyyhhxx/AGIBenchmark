@@ -1,0 +1,10 @@
+{
+  "benchmark": "learning_curriculum",
+  "model_id": "anthropic.claude-sonnet-4-6",
+  "model_label": "Claude Sonnet 4.6",
+  "score": 0.7,
+  "error": null,
+  "duration_s": 92.5,
+  "n_questions": 20,
+  "timestamp": "2026-04-14T09:51:45.939707+00:00"
+}

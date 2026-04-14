@@ -1,0 +1,10 @@
+{
+  "benchmark": "learning_curriculum",
+  "model_id": "meta.llama4-maverick-17b-instruct-v1:0",
+  "model_label": "Llama 4 Maverick 17B",
+  "score": 0.7,
+  "error": null,
+  "duration_s": 21.2,
+  "n_questions": 20,
+  "timestamp": "2026-04-14T09:50:11.358885+00:00"
+}

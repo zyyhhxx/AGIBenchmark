@@ -31,19 +31,21 @@ We constructed 9 tasks grounded in the Nelson & Narens (1990) metacognitive moni
 
 ### Dataset
 
-Items use a mix of **curated question sets** and **procedural generation**, with all data inlined directly in the Kaggle notebooks (no external data dependencies):
+Items use a mix of **LLM-generated question sets** and **procedural generation**, with all data inlined directly in the Kaggle notebooks (no external data dependencies):
 
 | Task | Data Source | Item Count | Contamination Resistance |
 |------|------------|------------|-------------------------|
-| Calibration | Curated trivia across 5 difficulty tiers + procedurally generated arithmetic | ~132 items | Difficulty tiers target frontier model accuracy bands; procedural math prevents memorization |
-| FOK | Curated knowledge questions + procedural arithmetic | ~81 items | Two-phase protocol (confidence before answer) prevents post-hoc rationalization |
-| JOL | Curated word-definition pairs + procedurally generated pseudowords (seeded RNG) | ~20 pairs | Invented vocabulary cannot appear in training data |
-| Error Detection | Curated reasoning chains with planted errors + procedurally generated arithmetic chains | ~72 items | Novel problem instances with programmatically placed errors |
+| Calibration | LLM-generated trivia across 5 difficulty tiers + procedurally generated arithmetic | ~132 items | Difficulty tiers target frontier model accuracy bands; procedural math prevents memorization |
+| FOK | LLM-generated knowledge questions + procedural arithmetic | ~81 items | Two-phase protocol (confidence before answer) prevents post-hoc rationalization |
+| JOL | LLM-generated word-definition pairs + procedurally generated pseudowords (seeded RNG) | ~20 pairs | Invented vocabulary cannot appear in training data |
+| Error Detection | LLM-generated reasoning chains with planted errors + procedurally generated arithmetic chains | ~72 items | Novel problem instances with programmatically placed errors |
 | Learning Monitoring | Procedurally generated rule systems (seeded RNG, symbol and number domains) | 4 rule systems | Entirely generated at evaluation time; no memorization possible |
-| Control | Curated study passages with strategic re-reading prompts | ~15 items | Tests allocation strategy, not knowledge recall |
-| Epistemic Humility | Curated mix of answerable, unanswerable, and fabricated-entity questions | ~24 items | Fabricated entities (e.g., "Kingdom of Trevalia") are unknowable by construction |
-| Epistemic Revision | Curated fictional rule systems (e.g., "Zorblatt Chemistry") with belief-contradicting evidence | ~3 systems | Entirely fictional domains prevent prior knowledge from helping |
-| Canary | Curated fabricated facts mixed with real facts | ~60 items | Fabricated items use false premises that cannot be memorized |
+| Control | LLM-generated study passages with strategic re-reading prompts | ~15 items | Tests allocation strategy, not knowledge recall |
+| Epistemic Humility | LLM-generated mix of answerable, unanswerable, and fabricated-entity questions | ~24 items | Fabricated entities (e.g., "Kingdom of Trevalia") are unknowable by construction |
+| Epistemic Revision | LLM-generated fictional rule systems (e.g., "Zorblatt Chemistry") with belief-contradicting evidence | ~3 systems | Entirely fictional domains prevent prior knowledge from helping |
+| Canary | LLM-generated fabricated facts mixed with verified real facts | ~60 items | Fabricated items use false premises that cannot be memorized |
+
+All non-procedural items were generated using Claude, then verified for factual accuracy (real-fact items) and logical consistency (fictional domains, reasoning chains). Items are frozen at benchmark creation time — no generation occurs during evaluation.
 
 **Item schema:** Each task produces items with task-specific fields. Model responses are parsed into structured `confidence` (0–100 integer) and `answer` fields via regex extraction, with conservative fallback scoring for malformed output.
 
@@ -61,7 +63,7 @@ Items use a mix of **curated question sets** and **procedural generation**, with
 
 Only FOK, JOL, and Learning Monitoring use gamma correlation. BSS was chosen over raw ECE where applicable because ECE rewards always-hedging-to-50% strategies, while BSS properly penalizes uninformative confidence.
 
-**Provenance:** All benchmark data is self-contained within the Kaggle notebooks. Curated items draw from public-domain knowledge across STEM, humanities, and logic domains. No copyrighted datasets are used. Fictional domains (Zorblatt Chemistry, Kingdom of Trevalia, invented vocabulary) ensure that no prior training data can provide an advantage.
+**Provenance:** All benchmark data is self-contained within the Kaggle notebooks. LLM-generated items draw from public-domain knowledge across STEM, humanities, and logic domains, and were verified for correctness after generation. No copyrighted datasets are used. Fictional domains (Zorblatt Chemistry, Kingdom of Trevalia, invented vocabulary) ensure that no prior training data can provide an advantage.
 
 ### Technical Details
 

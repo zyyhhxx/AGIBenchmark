@@ -1,0 +1,10 @@
+{
+  "benchmark": "learning_curriculum",
+  "model_id": "meta.llama3-3-70b-instruct-v1:0",
+  "model_label": "Llama 3.3 70B",
+  "score": 0.76,
+  "error": null,
+  "duration_s": 5.0,
+  "n_questions": 20,
+  "timestamp": "2026-04-14T09:49:27.359371+00:00"
+}
