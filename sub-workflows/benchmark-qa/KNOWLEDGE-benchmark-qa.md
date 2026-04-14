@@ -1,5 +1,14 @@
 # KNOWLEDGE.md — AGI Benchmark
 
+## attention_selective Benchmark Results — All 10 Models (2026-04-14)
+- **Scores:** Claude Opus 4.6=1.000, DeepSeek-R1=1.000, Claude Sonnet 4.6=0.9583, GPT-OSS-120B=0.9583, Llama 3.3 70B=0.8767, Nova Pro=0.7967, Llama 4 Maverick 17B=0.7567, Qwen3 Next 80B=0.7300, GLM 4.7=0.7167, Ministral 3B=0.5233
+- **Aggregate:** mean=0.8317, std=0.1471 (≥0.08 ✅), range=0.4767; 10/10 coverage, 0 failures
+- **Task tiers:** T1 (single feature), T2 (feature conjunction), T3 (triple conjunction). T2 is primary discriminator — varies 50%–100% across models. T3 surprisingly homogeneous (most models ≥83%).
+- **Top models:** Claude Opus 4.6 and DeepSeek-R1 achieve perfect 1.0; top 4 cluster at ≥0.95
+- **Bottom models:** Ministral 3B lowest at 0.5233; Qwen3 and GLM cluster in 0.71–0.73 range
+- **Retry bias:** attention_selective unaffected (no schema= parameter used)
+- **Artifact path:** `repo/sub-workflows/benchmark-qa/results/qa_transcripts/attention_selective/` — 10 .jsonl + 10 .summary.json + aggregate_stats.json
+
 ## attention_divided Benchmark Results — All 10 Models (2026-04-14)
 - **Scores:** Claude Opus 4.6=0.9375, Claude Sonnet 4.6=0.9375, DeepSeek-R1=0.9375, GPT-OSS-120B=0.9375, Llama 4 Maverick 17B=0.9275, GLM 4.7=0.9167, Qwen3 Next 80B=0.8803, Llama 3.3 70B=0.8333, Nova Pro=0.7064, Ministral 3B=0.4139
 - **Aggregate:** mean=0.8428, std=0.1675 (≥0.08 ✅), range=0.5236; 10/10 coverage, 0 failures

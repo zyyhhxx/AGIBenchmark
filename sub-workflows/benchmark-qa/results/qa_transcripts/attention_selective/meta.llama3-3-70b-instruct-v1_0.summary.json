@@ -1,0 +1,13 @@
+{
+  "model_id": "meta.llama3-3-70b-instruct-v1:0",
+  "model_label": "Llama 3.3 70B",
+  "benchmark": "attention_selective",
+  "score": 0.8767,
+  "tier1_acc": 1.0,
+  "tier2_acc": 0.9,
+  "tier3_acc": 0.8333,
+  "n_items": 26,
+  "n_correct": 23,
+  "duration_s": 18.6,
+  "timestamp": "2026-04-14T06:22:03.132909+00:00"
+}

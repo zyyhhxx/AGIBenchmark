@@ -1,0 +1,13 @@
+{
+  "model_id": "mistral.ministral-3-3b-instruct",
+  "model_label": "Ministral 3B",
+  "benchmark": "attention_selective",
+  "score": 0.5233,
+  "tier1_acc": 0.75,
+  "tier2_acc": 0.6,
+  "tier3_acc": 0.4167,
+  "n_items": 26,
+  "n_correct": 14,
+  "duration_s": 50.9,
+  "timestamp": "2026-04-14T06:23:48.497067+00:00"
+}
