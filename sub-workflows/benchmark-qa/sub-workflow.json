@@ -1,6 +1,6 @@
 {
-  "name": "metacognition",
-  "description": "AGI benchmark hackathon — cognitive ability benchmarks for Kaggle competition",
+  "name": "benchmark-qa",
+  "description": "AGI benchmark hackathon \u2014 Phase 2 QA for all 26 benchmarks across 5 cognitive tracks",
   "mode": "definitive",
   "agent_id": "agi-bench",
   "models": {
