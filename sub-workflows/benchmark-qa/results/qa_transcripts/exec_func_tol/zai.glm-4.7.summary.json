@@ -1,0 +1,15 @@
+{
+  "model_id": "zai.glm-4.7",
+  "model_label": "GLM 4.7",
+  "benchmark": "exec_func_tol",
+  "score": 0.7,
+  "n_items": 20,
+  "n_correct": 14,
+  "duration_s": 381.9,
+  "timestamp": "2026-04-14T09:16:41.207385+00:00",
+  "tier_means": {
+    "easy": 1.0,
+    "medium": 1.0,
+    "hard": 0.4
+  }
+}

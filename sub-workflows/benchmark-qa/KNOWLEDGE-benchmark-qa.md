@@ -1,5 +1,16 @@
 # KNOWLEDGE.md — AGI Benchmark
 
+## Executive Functions Track — All 5 Benchmarks, All 10 Models (2026-04-14)
+- **Retry bias fix applied:** CRT and N-back had `schema=` parameter removed; `_strip_think()` helper + regex JSON extraction added. Task_switch, TOL, WCST were unaffected.
+- **All 10/10 models scored, 0 failures** across all 5 benchmarks.
+- **CRT (Cognitive Reflection Test):** mean=0.7731, std=0.1494, range=0.447 ✅ — Opus 4.6=0.95, Sonnet 4.6=0.919, DeepSeek-R1=0.918, GPT-OSS-120B=0.886, Qwen3 80B=0.799, GLM 4.7=0.760, Maverick 17B=0.842, Llama 3.3 70B=0.593, Nova Pro=0.555, Ministral 3B=0.507
+- **N-back (Working Memory):** mean=0.9442, std=0.1608, range=0.538 ✅ — 8 of 10 models score ≥0.98; Nova Pro is sole outlier at 0.462; 60 items per level. High ceiling for most frontier models.
+- **Task Switch:** mean=0.8212, std=0.1509, range=0.470 ✅ — Surprising non-monotonic pattern: Ministral 3B (0.775) outscores Maverick 17B (0.530); GLM 4.7 (0.929) strong; Opus 4.6/DeepSeek-R1/GPT ceiling at 1.0.
+- **Tower of London (TOL):** mean=0.492, std=0.2846, range=0.820 ✅ — Best discriminator; Opus 4.6=0.90, Sonnet 4.6=0.80 but DeepSeek-R1 only 0.64; GLM 4.7 unexpectedly strong (0.70); Ministral 3B near floor (0.08). TOL tests genuine planning, not pattern matching.
+- **WCST (Wisconsin Card Sort):** mean=0.7821, std=0.2678, range=0.636 ✅ — Top 5 models (Opus, Sonnet, DeepSeek, GPT, Qwen3) all score 1.0 (perfect acc, 0 perseverative errors, 6/6 categories); Llama 3.3 70B lowest at 0.364.
+- **Cross-benchmark ranking insight:** TOL best discriminates frontier-tier models; N-back least discriminating (ceiling effect for most). Task_switch shows non-monotonic size-vs-capability relationship.
+- **Artifact paths:** `repo/sub-workflows/benchmark-qa/results/qa_transcripts/exec_func_{crt,nback,task_switch,tol,wcst}/` — 10 .jsonl + 10 .summary.json + aggregate_stats.json each.
+
 ## attention_selective Benchmark Results — All 10 Models (2026-04-14)
 - **Scores:** Claude Opus 4.6=1.000, DeepSeek-R1=1.000, Claude Sonnet 4.6=0.9583, GPT-OSS-120B=0.9583, Llama 3.3 70B=0.8767, Nova Pro=0.7967, Llama 4 Maverick 17B=0.7567, Qwen3 Next 80B=0.7300, GLM 4.7=0.7167, Ministral 3B=0.5233
 - **Aggregate:** mean=0.8317, std=0.1471 (≥0.08 ✅), range=0.4767; 10/10 coverage, 0 failures

@@ -1,0 +1,13 @@
+{
+  "model_id": "anthropic.claude-opus-4-6-v1",
+  "model_label": "Claude Opus 4.6",
+  "benchmark": "exec_func_wcst",
+  "score": 1.0,
+  "n_items": 35,
+  "n_correct": 35,
+  "duration_s": 70.2,
+  "timestamp": "2026-04-14T09:17:54.384319+00:00",
+  "accuracy": 1.0,
+  "perseveration_rate": 0.0,
+  "categories_norm": 1.0
+}

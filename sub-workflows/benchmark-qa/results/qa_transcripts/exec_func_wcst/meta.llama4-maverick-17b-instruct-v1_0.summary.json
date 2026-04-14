@@ -1,0 +1,13 @@
+{
+  "model_id": "meta.llama4-maverick-17b-instruct-v1:0",
+  "model_label": "Llama 4 Maverick 17B",
+  "benchmark": "exec_func_wcst",
+  "score": 0.9707,
+  "n_items": 35,
+  "n_correct": 33,
+  "duration_s": 24.8,
+  "timestamp": "2026-04-14T09:20:10.873181+00:00",
+  "accuracy": 0.9429,
+  "perseveration_rate": 0.0333,
+  "categories_norm": 1.0
+}

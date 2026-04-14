@@ -1,0 +1,13 @@
+{
+  "model_id": "amazon.nova-pro-v1:0",
+  "model_label": "Nova Pro",
+  "benchmark": "exec_func_wcst",
+  "score": 0.475,
+  "n_items": 35,
+  "n_correct": 14,
+  "duration_s": 35.5,
+  "timestamp": "2026-04-14T09:20:49.422664+00:00",
+  "accuracy": 0.4,
+  "perseveration_rate": 0.5,
+  "categories_norm": 0.5
+}

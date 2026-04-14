@@ -1,0 +1,13 @@
+{
+  "model_id": "openai.gpt-oss-120b-1:0",
+  "model_label": "GPT-OSS-120B",
+  "benchmark": "exec_func_wcst",
+  "score": 1.0,
+  "n_items": 35,
+  "n_correct": 35,
+  "duration_s": 29.2,
+  "timestamp": "2026-04-14T09:19:40.114897+00:00",
+  "accuracy": 1.0,
+  "perseveration_rate": 0.0,
+  "categories_norm": 1.0
+}

@@ -1,0 +1,13 @@
+{
+  "model_id": "anthropic.claude-sonnet-4-6",
+  "model_label": "Claude Sonnet 4.6",
+  "benchmark": "exec_func_wcst",
+  "score": 1.0,
+  "n_items": 35,
+  "n_correct": 35,
+  "duration_s": 67.5,
+  "timestamp": "2026-04-14T09:19:04.902978+00:00",
+  "accuracy": 1.0,
+  "perseveration_rate": 0.0,
+  "categories_norm": 1.0
+}

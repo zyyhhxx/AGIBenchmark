@@ -1,0 +1,13 @@
+{
+  "model_id": "zai.glm-4.7",
+  "model_label": "GLM 4.7",
+  "benchmark": "exec_func_wcst",
+  "score": 0.4,
+  "n_items": 35,
+  "n_correct": 14,
+  "duration_s": 9.5,
+  "timestamp": "2026-04-14T09:23:45.523902+00:00",
+  "accuracy": 0.4,
+  "perseveration_rate": 0.3333,
+  "categories_norm": 0.0
+}

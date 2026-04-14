@@ -1,0 +1,13 @@
+{
+  "model_id": "deepseek.r1-v1:0",
+  "model_label": "DeepSeek-R1",
+  "benchmark": "exec_func_wcst",
+  "score": 1.0,
+  "n_items": 35,
+  "n_correct": 35,
+  "duration_s": 54.2,
+  "timestamp": "2026-04-14T09:19:00.495335+00:00",
+  "accuracy": 1.0,
+  "perseveration_rate": 0.0,
+  "categories_norm": 1.0
+}
