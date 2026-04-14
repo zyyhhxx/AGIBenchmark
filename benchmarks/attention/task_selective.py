@@ -11,11 +11,12 @@ Cognitive Science Basis:
 - Posner & Snyder (1975): Inhibition of return in selective attention
 
 Protocol:
-- Tier 1 (Pop-out): Single-feature targets, minimal distractors (weight 0.10)
-- Tier 2 (Feature conjunction): 2-feature filtering among 10+ distractors (weight 0.40)
-- Tier 3 (Triple-conjunction): 3-4 feature filtering, high similarity near-misses (weight 0.50)
+- Tier 1 (Pop-out): Single-feature targets, minimal distractors (weight 0.08)
+- Tier 2 (Feature conjunction): 2-feature filtering among 10+ distractors (weight 0.22)
+- Tier 3 (Triple-conjunction): 3-4 feature filtering, high similarity near-misses (weight 0.35)
+- Tier 4 (Quadruple-conjunction): 5-7 feature filtering, edge cases, ambiguous near-misses (weight 0.35)
 
-Score = 0.10 * tier1_acc + 0.40 * tier2_acc + 0.50 * tier3_acc
+Score = 0.08 * tier1_acc + 0.22 * tier2_acc + 0.35 * tier3_acc + 0.35 * tier4_acc
 """
 
 import kaggle_benchmarks as kbench
@@ -193,8 +194,98 @@ TIER3_ITEMS = [
      "correct": "USB Hub,Multimeter,Soldering Iron,Tape Measure"},
 ]
 
+# Tier 4: Quadruple-conjunction search — 4+ simultaneous constraints with
+# high similarity near-misses and ambiguous edge cases. Each item requires
+# checking at least 4 independent dimensions.
+TIER4_ITEMS = [
+    {"id": "T4_01", "tier": 4,
+     "instruction": "Find students meeting ALL SIX criteria: (1) GPA above 3.5, (2) age 20-25, (3) major is STEM (Science, Technology, Engineering, Math), (4) has internship experience, (5) no disciplinary record, (6) enrolled full-time. Report names comma-separated.\n\nAlice, GPA 3.8, age 22, Computer Science, internship: yes, disciplinary: none, full-time\nBob, GPA 3.6, age 24, Mathematics, internship: yes, disciplinary: none, part-time\nClara, GPA 3.9, age 21, Biology, internship: yes, disciplinary: none, full-time\nDave, GPA 3.4, age 23, Engineering, internship: yes, disciplinary: none, full-time\nEva, GPA 3.7, age 26, Physics, internship: yes, disciplinary: none, full-time\nFinn, GPA 3.5, age 20, Chemistry, internship: no, disciplinary: none, full-time\nGrace, GPA 3.8, age 22, English, internship: yes, disciplinary: none, full-time\nHank, GPA 3.6, age 24, Statistics, internship: yes, disciplinary: warning, full-time\nIvy, GPA 3.7, age 23, Computer Engineering, internship: yes, disciplinary: none, full-time\nJack, GPA 3.9, age 25, Data Science, internship: yes, disciplinary: none, full-time",
+     "text": "10 students as above",
+     # Alice: 3.8>3.5 YES, 22 in 20-25 YES, CS=STEM YES, intern YES, no disc YES, full-time YES → YES
+     # Bob: 3.6>3.5 YES, 24 YES, Math=STEM YES, intern YES, no disc YES, part-time NO → NO
+     # Clara: 3.9>3.5 YES, 21 YES, Biology=STEM YES, intern YES, no disc YES, full-time YES → YES
+     # Dave: 3.4>3.5 NO → NO
+     # Eva: 3.7>3.5 YES, 26 NOT in 20-25 NO → NO
+     # Finn: 3.5>3.5 NO (must be ABOVE 3.5) → NO
+     # Grace: 3.8 YES, 22 YES, English NOT STEM → NO
+     # Hank: 3.6 YES, 24 YES, Statistics=STEM YES, intern YES, disciplinary: warning → NO
+     # Ivy: 3.7 YES, 23 YES, CompEng=STEM YES, intern YES, no disc YES, full-time YES → YES
+     # Jack: 3.9 YES, 25 YES, DataSci=STEM YES, intern YES, no disc YES, full-time YES → YES
+     "correct": "Alice,Clara,Ivy,Jack"},
+    {"id": "T4_02", "tier": 4,
+     "instruction": "Find recipes meeting ALL FIVE: (1) prep time ≤30 min, (2) vegetarian, (3) fewer than 500 calories per serving, (4) contains at least 3 of these allergens-free: gluten-free, nut-free, dairy-free, soy-free, (5) rated 4+ stars. Report recipe names comma-separated.\n\nPasta Primavera: prep 25 min, vegetarian, 480 cal, gluten:yes dairy:yes nut-free soy-free, 4.2 stars\nQuinoa Bowl: prep 20 min, vegetarian, 320 cal, gluten-free nut-free dairy-free soy-free, 4.5 stars\nChicken Stir-Fry: prep 15 min, non-vegetarian, 410 cal, gluten-free nut-free dairy-free soy:yes, 4.3 stars\nVeggie Curry: prep 35 min, vegetarian, 380 cal, gluten-free nut-free dairy-free soy-free, 4.7 stars\nCaprese Salad: prep 10 min, vegetarian, 290 cal, gluten-free nut-free soy-free dairy:yes, 4.1 stars\nTofu Scramble: prep 20 min, vegetarian, 310 cal, gluten-free dairy-free nut-free soy:yes, 3.8 stars\nFruit Smoothie: prep 5 min, vegetarian, 180 cal, gluten-free dairy-free nut-free soy-free, 4.4 stars\nCheese Quesadilla: prep 15 min, vegetarian, 520 cal, nut-free soy-free gluten:yes dairy:yes, 4.0 stars\nRice Paper Rolls: prep 25 min, vegetarian, 220 cal, gluten-free nut-free dairy-free soy:yes, 4.6 stars\nBean Salad: prep 15 min, vegetarian, 270 cal, gluten-free nut-free dairy-free soy-free, 4.3 stars",
+     "text": "10 recipes as above",
+     # Pasta Primavera: ≤30 YES, veg YES, <500 YES, allergen-free: nut-free+soy-free=2 NO (need ≥3) → NO
+     # Quinoa Bowl: ≤30 YES, veg YES, <500 YES, gluten-free+nut-free+dairy-free+soy-free=4 YES, 4.5≥4 YES → YES
+     # Chicken Stir-Fry: non-vegetarian → NO
+     # Veggie Curry: prep 35 >30 → NO
+     # Caprese Salad: ≤30 YES, veg YES, <500 YES, gluten-free+nut-free+soy-free=3 YES, 4.1≥4 YES → YES
+     # Tofu Scramble: ≤30 YES, veg YES, <500 YES, gluten-free+dairy-free+nut-free=3 YES, 3.8<4 NO → NO
+     # Fruit Smoothie: ≤30 YES, veg YES, <500 YES, gluten-free+dairy-free+nut-free+soy-free=4 YES, 4.4≥4 YES → YES
+     # Cheese Quesadilla: ≤30 YES, veg YES, 520≥500 NO → NO
+     # Rice Paper Rolls: ≤30 YES, veg YES, <500 YES, gluten-free+nut-free+dairy-free=3 YES, 4.6≥4 YES → YES
+     # Bean Salad: ≤30 YES, veg YES, <500 YES, gluten-free+nut-free+dairy-free+soy-free=4 YES, 4.3≥4 YES → YES
+     "correct": "Quinoa Bowl,Caprese Salad,Fruit Smoothie,Rice Paper Rolls,Bean Salad"},
+    {"id": "T4_03", "tier": 4,
+     "instruction": "Find apartments meeting ALL SIX: (1) rent under $2000/mo, (2) 2+ bedrooms, (3) has parking, (4) allows pets, (5) within 3 miles of downtown, (6) built after 2000. Report unit IDs comma-separated.\n\nA101: $1800/mo, 2 bed, parking: yes, pets: yes, 2.5 mi from downtown, built 2005\nA102: $2100/mo, 3 bed, parking: yes, pets: yes, 1.0 mi from downtown, built 2010\nA103: $1500/mo, 1 bed, parking: yes, pets: yes, 2.0 mi from downtown, built 2015\nA104: $1900/mo, 2 bed, parking: no, pets: yes, 1.5 mi from downtown, built 2008\nA105: $1750/mo, 2 bed, parking: yes, pets: no, 2.8 mi from downtown, built 2012\nA106: $1650/mo, 3 bed, parking: yes, pets: yes, 3.5 mi from downtown, built 2003\nA107: $1400/mo, 2 bed, parking: yes, pets: yes, 2.0 mi from downtown, built 1998\nA108: $1850/mo, 2 bed, parking: yes, pets: yes, 1.2 mi from downtown, built 2018\nA109: $1950/mo, 4 bed, parking: yes, pets: yes, 2.9 mi from downtown, built 2001\nA110: $1700/mo, 2 bed, parking: yes, pets: yes, 3.0 mi from downtown, built 2006",
+     "text": "10 apartments as above",
+     # A101: <2000 YES, 2bed YES, parking YES, pets YES, 2.5≤3 YES, 2005>2000 YES → YES
+     # A102: $2100≥2000 NO → NO
+     # A103: 1bed <2 NO → NO
+     # A104: parking NO → NO
+     # A105: pets NO → NO
+     # A106: 3.5>3 NO → NO
+     # A107: 1998≤2000 NO → NO
+     # A108: <2000 YES, 2bed YES, parking YES, pets YES, 1.2≤3 YES, 2018>2000 YES → YES
+     # A109: <2000 YES, 4bed≥2 YES, parking YES, pets YES, 2.9≤3 YES, 2001>2000 YES → YES
+     # A110: <2000 YES, 2bed YES, parking YES, pets YES, 3.0≤3 YES, 2006>2000 YES → YES
+     "correct": "A101,A108,A109,A110"},
+    {"id": "T4_04", "tier": 4,
+     "instruction": "Find stocks meeting ALL FIVE criteria: (1) P/E ratio between 10 and 25, (2) dividend yield above 2%, (3) market cap over $10B, (4) positive revenue growth (YoY), (5) debt-to-equity ratio under 1.5. Report tickers comma-separated.\n\nAAPL: P/E 28, div 0.5%, cap $2.8T, rev growth +8%, D/E 1.8\nJNJ: P/E 15, div 3.0%, cap $380B, rev growth +3%, D/E 0.4\nTSLA: P/E 65, div 0%, cap $800B, rev growth +15%, D/E 0.1\nPFE: P/E 12, div 5.8%, cap $160B, rev growth -15%, D/E 0.8\nJPM: P/E 11, div 2.5%, cap $520B, rev growth +6%, D/E 1.2\nNKE: P/E 30, div 1.5%, cap $140B, rev growth +4%, D/E 0.9\nKO: P/E 22, div 3.1%, cap $260B, rev growth +2%, D/E 1.6\nABBV: P/E 18, div 3.8%, cap $290B, rev growth +5%, D/E 2.1\nPG: P/E 24, div 2.4%, cap $350B, rev growth +3%, D/E 0.7\nXOM: P/E 14, div 3.5%, cap $450B, rev growth +12%, D/E 0.3",
+     "text": "10 stocks as above",
+     # AAPL: P/E 28 >25 NO → NO
+     # JNJ: P/E 15 YES, div 3.0>2 YES, cap 380B>10B YES, rev +3% YES, D/E 0.4<1.5 YES → YES
+     # TSLA: P/E 65 >25 NO → NO
+     # PFE: P/E 12 YES, div 5.8>2 YES, cap 160B YES, rev -15% NOT positive NO → NO
+     # JPM: P/E 11 YES, div 2.5>2 YES, cap 520B YES, rev +6% YES, D/E 1.2<1.5 YES → YES
+     # NKE: P/E 30 >25 NO → NO
+     # KO: P/E 22 YES, div 3.1>2 YES, cap 260B YES, rev +2% YES, D/E 1.6≥1.5 NO → NO
+     # ABBV: P/E 18 YES, div 3.8>2 YES, cap 290B YES, rev +5% YES, D/E 2.1≥1.5 NO → NO
+     # PG: P/E 24 YES, div 2.4>2 YES, cap 350B YES, rev +3% YES, D/E 0.7<1.5 YES → YES
+     # XOM: P/E 14 YES, div 3.5>2 YES, cap 450B YES, rev +12% YES, D/E 0.3<1.5 YES → YES
+     "correct": "JNJ,JPM,PG,XOM"},
+    {"id": "T4_05", "tier": 4,
+     "instruction": "Find servers meeting ALL SEVEN: (1) uptime above 99.9%, (2) CPU usage under 80%, (3) memory usage under 75%, (4) disk usage under 90%, (5) located in US or EU, (6) running Linux, (7) last patched within 30 days (today is day 100). Report server IDs comma-separated.\n\nSRV01: uptime 99.95%, CPU 72%, mem 68%, disk 85%, US-East, Linux, patched day 95\nSRV02: uptime 99.80%, CPU 55%, mem 60%, disk 70%, EU-West, Linux, patched day 80\nSRV03: uptime 99.99%, CPU 88%, mem 45%, disk 50%, US-West, Linux, patched day 92\nSRV04: uptime 99.92%, CPU 65%, mem 72%, disk 88%, EU-Central, Linux, patched day 75\nSRV05: uptime 99.95%, CPU 70%, mem 74%, disk 91%, US-East, Linux, patched day 98\nSRV06: uptime 99.91%, CPU 45%, mem 55%, disk 60%, Asia-Pacific, Linux, patched day 90\nSRV07: uptime 99.98%, CPU 78%, mem 70%, disk 82%, US-West, Windows, patched day 96\nSRV08: uptime 99.93%, CPU 60%, mem 65%, disk 75%, EU-West, Linux, patched day 85\nSRV09: uptime 99.96%, CPU 50%, mem 48%, disk 55%, US-Central, Linux, patched day 99\nSRV10: uptime 99.88%, CPU 42%, mem 38%, disk 40%, EU-East, Linux, patched day 88",
+     "text": "10 servers as above",
+     # SRV01: 99.95>99.9 YES, 72<80 YES, 68<75 YES, 85<90 YES, US YES, Linux YES, day95→100-95=5≤30 YES → YES
+     # SRV02: 99.80<99.9 NO → NO
+     # SRV03: 99.99 YES, 88≥80 NO → NO
+     # SRV04: 99.92 YES, 65<80 YES, 72<75 YES, 88<90 YES, EU YES, Linux YES, day75→100-75=25≤30 YES → YES
+     # SRV05: 99.95 YES, 70<80 YES, 74<75 YES, 91≥90 NO → NO
+     # SRV06: 99.91 YES, 45<80 YES, 55<75 YES, 60<90 YES, Asia-Pacific NOT US/EU NO → NO
+     # SRV07: 99.98 YES, 78<80 YES, 70<75 YES, 82<90 YES, US YES, Windows NOT Linux NO → NO
+     # SRV08: 99.93 YES, 60<80 YES, 65<75 YES, 75<90 YES, EU YES, Linux YES, day85→100-85=15≤30 YES → YES
+     # SRV09: 99.96 YES, 50<80 YES, 48<75 YES, 55<90 YES, US YES, Linux YES, day99→100-99=1≤30 YES → YES
+     # SRV10: 99.88<99.9 NO → NO
+     "correct": "SRV01,SRV04,SRV08,SRV09"},
+    {"id": "T4_06", "tier": 4,
+     "instruction": "Find candidates meeting ALL criteria: (1) experience 5-15 years, (2) has a Master's or PhD, (3) speaks at least 2 languages, (4) willing to relocate, (5) salary expectation under $150K, (6) no employment gap longer than 6 months in last 5 years. Report names comma-separated.\n\nAlice: 8 yrs exp, PhD, speaks English+French+Mandarin, relocate: yes, expects $140K, gaps: none\nBob: 12 yrs exp, Master's, speaks English, relocate: yes, expects $130K, gaps: none\nClara: 4 yrs exp, PhD, speaks English+Spanish, relocate: yes, expects $120K, gaps: none\nDave: 10 yrs exp, Bachelor's, speaks English+German+Japanese, relocate: yes, expects $125K, gaps: none\nEva: 7 yrs exp, Master's, speaks English+Italian, relocate: no, expects $135K, gaps: none\nFinn: 14 yrs exp, Master's, speaks English+Portuguese, relocate: yes, expects $145K, gaps: 8 months in 2023\nGrace: 6 yrs exp, PhD, speaks English+Korean, relocate: yes, expects $155K, gaps: none\nHank: 11 yrs exp, Master's, speaks English+Arabic+Hindi, relocate: yes, expects $128K, gaps: none\nIvy: 9 yrs exp, Master's, speaks English+Russian, relocate: yes, expects $138K, gaps: 3 months in 2022\nJack: 16 yrs exp, PhD, speaks English+French, relocate: yes, expects $142K, gaps: none",
+     "text": "10 candidates as above",
+     # Alice: 8 YES (5-15), PhD YES, 3 langs YES, relocate YES, $140K<150K YES, no gap YES → YES
+     # Bob: 12 YES, Master's YES, 1 lang NO → NO
+     # Clara: 4 <5 NO → NO
+     # Dave: 10 YES, Bachelor's NO → NO
+     # Eva: 7 YES, Master's YES, 2 langs YES, relocate NO → NO
+     # Finn: 14 YES, Master's YES, 2 langs YES, relocate YES, $145K<150K YES, 8mo gap >6 NO → NO
+     # Grace: 6 YES, PhD YES, 2 langs YES, relocate YES, $155K≥150K NO → NO
+     # Hank: 11 YES, Master's YES, 3 langs YES, relocate YES, $128K<150K YES, no gap YES → YES
+     # Ivy: 9 YES, Master's YES, 2 langs YES, relocate YES, $138K<150K YES, 3mo≤6 YES → YES
+     # Jack: 16 >15 NO → NO
+     "correct": "Alice,Hank,Ivy"},
+]
 
-ALL_ITEMS = TIER1_ITEMS + TIER2_ITEMS + TIER3_ITEMS
+
+ALL_ITEMS = TIER1_ITEMS + TIER2_ITEMS + TIER3_ITEMS + TIER4_ITEMS
 
 
 @kbench.task(name="Selective Attention", version=2)
@@ -205,14 +296,15 @@ def attention_selective(llm) -> float:
     Tests ability to filter information using multiple criteria simultaneously,
     analogous to visual conjunction search (Treisman & Gelade, 1980).
 
-    Three difficulty tiers:
-    - Tier 1 (Pop-out): single feature, easy (weight 0.10)
-    - Tier 2 (Conjunction): 2 features to bind (weight 0.40)
-    - Tier 3 (Triple-conjunction): 3-5 features, many near-miss distractors (weight 0.50)
+    Four difficulty tiers:
+    - Tier 1 (Pop-out): single feature, easy (weight 0.08)
+    - Tier 2 (Conjunction): 2 features to bind (weight 0.22)
+    - Tier 3 (Triple-conjunction): 3-5 features, many near-miss distractors (weight 0.35)
+    - Tier 4 (Quadruple-conjunction): 5-7 features, edge cases, high similarity (weight 0.35)
 
-    Score = 0.10 * tier1_acc + 0.40 * tier2_acc + 0.50 * tier3_acc
+    Score = 0.08 * tier1_acc + 0.22 * tier2_acc + 0.35 * tier3_acc + 0.35 * tier4_acc
     """
-    tier_results = {1: [], 2: [], 3: []}
+    tier_results = {1: [], 2: [], 3: [], 4: []}
 
     for item in ALL_ITEMS:
         with kbench.chats.new(f"sel_{item['id']}"):
@@ -243,15 +335,16 @@ def attention_selective(llm) -> float:
 
     # Compute per-tier accuracy
     tier_accs = {}
-    for tier in [1, 2, 3]:
+    for tier in [1, 2, 3, 4]:
         items = tier_results[tier]
         tier_accs[tier] = sum(1 for r in items if r["correct"]) / len(items) if items else 0
 
     # Composite score with tier weights
     score = round(
-        0.10 * tier_accs[1] +
-        0.40 * tier_accs[2] +
-        0.50 * tier_accs[3],
+        0.08 * tier_accs[1] +
+        0.22 * tier_accs[2] +
+        0.35 * tier_accs[3] +
+        0.35 * tier_accs[4],
         4
     )
 
@@ -261,21 +354,23 @@ def attention_selective(llm) -> float:
     print(f"{'='*60}")
     print(f"Treisman & Gelade (1980); Wolfe (1994); Duncan & Humphreys (1989)")
 
-    for tier in [1, 2, 3]:
-        tier_names = {1: "POP-OUT (easy)", 2: "FEATURE CONJUNCTION (medium)", 3: "TRIPLE-CONJUNCTION (hard)"}
+    for tier in [1, 2, 3, 4]:
+        tier_names = {1: "POP-OUT (easy)", 2: "FEATURE CONJUNCTION (medium)",
+                      3: "TRIPLE-CONJUNCTION (hard)", 4: "QUADRUPLE-CONJUNCTION (extreme)"}
         items = tier_results[tier]
         acc = tier_accs[tier]
-        weight = {1: 0.10, 2: 0.40, 3: 0.50}[tier]
+        weight = {1: 0.08, 2: 0.22, 3: 0.35, 4: 0.35}[tier]
         print(f"\n--- TIER {tier}: {tier_names[tier]} (n={len(items)}, acc={acc:.2%}, weight={weight}) ---")
         for r in items:
             status = "✓" if r["correct"] else "✗"
             print(f"  {status} {r['id']}: got '{r['answer'][:40]}', expected '{r['expected'][:40]}'")
 
     print(f"\n--- SUMMARY ---")
-    print(f"Tier 1 (pop-out):            {tier_accs[1]:.2%} × 0.10 = {0.10 * tier_accs[1]:.4f}")
-    print(f"Tier 2 (conjunction):        {tier_accs[2]:.2%} × 0.40 = {0.40 * tier_accs[2]:.4f}")
-    print(f"Tier 3 (triple-conjunction): {tier_accs[3]:.2%} × 0.50 = {0.50 * tier_accs[3]:.4f}")
-    print(f"Composite score:             {score:.4f}")
+    print(f"Tier 1 (pop-out):                {tier_accs[1]:.2%} × 0.08 = {0.08 * tier_accs[1]:.4f}")
+    print(f"Tier 2 (conjunction):            {tier_accs[2]:.2%} × 0.22 = {0.22 * tier_accs[2]:.4f}")
+    print(f"Tier 3 (triple-conjunction):      {tier_accs[3]:.2%} × 0.35 = {0.35 * tier_accs[3]:.4f}")
+    print(f"Tier 4 (quadruple-conjunction):   {tier_accs[4]:.2%} × 0.35 = {0.35 * tier_accs[4]:.4f}")
+    print(f"Composite score:                 {score:.4f}")
 
     return score
 

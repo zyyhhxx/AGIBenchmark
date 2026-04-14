@@ -1,0 +1,10 @@
+{
+  "benchmark": "learning_curriculum",
+  "model_id": "anthropic.claude-opus-4-6-v1",
+  "model_label": "Claude Opus 4.6",
+  "score": 0.7,
+  "error": null,
+  "duration_s": 124.1,
+  "n_questions": 20,
+  "timestamp": "2026-04-14T09:47:28.165858+00:00"
+}

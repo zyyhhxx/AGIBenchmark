@@ -1,0 +1,10 @@
+{
+  "benchmark": "learning_curriculum",
+  "model_id": "deepseek.r1-v1:0",
+  "model_label": "DeepSeek-R1",
+  "score": 0.52,
+  "error": null,
+  "duration_s": 71.1,
+  "n_questions": 20,
+  "timestamp": "2026-04-14T09:48:41.278383+00:00"
+}

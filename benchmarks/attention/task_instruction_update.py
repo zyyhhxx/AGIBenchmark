@@ -220,6 +220,151 @@ HARD_TRIALS = [
         # racecar: r,a,c,e = 4; committee: c,o,m,i,t,e = 6
         "answers": ["4", "3", "4", "3", "6", "5", "4", "6"],
     },
+    {
+        "id": "H6_DEEP_CHAIN",
+        "prompt": (
+            "Process numbers through a 5-PHASE chained rule system. Each phase "
+            "BUILDS on the previous.\n\n"
+            "PHASE 1 (items 1-4): Compute number mod 5.\n"
+            "PHASE 2 (items 5-8): Take result of (number mod 5), then add 2.\n"
+            "PHASE 3 (items 9-12): Take result of (number mod 5 + 2). "
+            "If that result is prime (2,3,5,7), negate it. Otherwise keep it.\n"
+            "PHASE 4 (items 13-16): Take the Phase 3 result, then multiply by the "
+            "phase number (4).\n"
+            "PHASE 5 (items 17-20): Take the Phase 4 result, then: if the ORIGINAL "
+            "number was even, add 10 to the final result. If odd, keep as-is.\n\n"
+            "Items:\n"
+            "1. 17\n2. 23\n3. 40\n4. 9\n"
+            "5. 12\n6. 31\n7. 48\n8. 7\n"
+            "9. 19\n10. 26\n11. 35\n12. 44\n"
+            "13. 22\n14. 38\n15. 11\n16. 53\n"
+            "17. 14\n18. 29\n19. 36\n20. 47\n\n"
+            'Respond as JSON: {"answers": ["ans1", ..., "ans20"]}'
+        ),
+        # PHASE 1: mod 5
+        # 1. 17 mod 5 = 2
+        # 2. 23 mod 5 = 3
+        # 3. 40 mod 5 = 0
+        # 4.  9 mod 5 = 4
+        #
+        # PHASE 2: mod 5 + 2
+        # 5. 12 mod 5 = 2, +2 = 4
+        # 6. 31 mod 5 = 1, +2 = 3
+        # 7. 48 mod 5 = 3, +2 = 5
+        # 8.  7 mod 5 = 2, +2 = 4
+        #
+        # PHASE 3: mod 5 + 2, then negate if prime
+        # 9.  19 mod 5 = 4, +2 = 6, not prime → 6
+        # 10. 26 mod 5 = 1, +2 = 3, prime → -3
+        # 11. 35 mod 5 = 0, +2 = 2, prime → -2
+        # 12. 44 mod 5 = 4, +2 = 6, not prime → 6
+        #
+        # PHASE 4: phase 3 result * 4
+        # 13. 22 mod 5 = 2, +2 = 4, not prime? 4 is not prime → 4, *4 = 16
+        # 14. 38 mod 5 = 3, +2 = 5, prime → -5, *4 = -20
+        # 15. 11 mod 5 = 1, +2 = 3, prime → -3, *4 = -12
+        # 16. 53 mod 5 = 3, +2 = 5, prime → -5, *4 = -20
+        #
+        # PHASE 5: phase 4 result, then +10 if original is even
+        # 17. 14 mod 5 = 4, +2 = 6, not prime → 6, *4 = 24, 14 is even → 24+10 = 34
+        # 18. 29 mod 5 = 4, +2 = 6, not prime → 6, *4 = 24, 29 is odd → 24
+        # 19. 36 mod 5 = 1, +2 = 3, prime → -3, *4 = -12, 36 is even → -12+10 = -2
+        # 20. 47 mod 5 = 2, +2 = 4, not prime → 4, *4 = 16, 47 is odd → 16
+        "answers": ["2", "3", "0", "4",
+                     "4", "3", "5", "4",
+                     "6", "-3", "-2", "6",
+                     "16", "-20", "-12", "-20",
+                     "34", "24", "-2", "16"],
+    },
+    {
+        "id": "H7_CONDITIONAL",
+        "prompt": (
+            "Process words with CONDITIONAL rules that depend on item properties.\n\n"
+            "PHASE 1 (items 1-6): If the word starts with a VOWEL (A,E,I,O,U), "
+            "respond with the word's LENGTH. If it starts with a CONSONANT, respond "
+            "with the LAST LETTER (uppercase).\n\n"
+            "PHASE 2 (items 7-11): SWAP the rules! Vowel-start → LAST LETTER. "
+            "Consonant-start → LENGTH.\n\n"
+            "PHASE 3 (items 12-16): OVERRIDE: If the word has exactly 5 letters, "
+            "respond 'FIVE' regardless. Otherwise apply the PHASE 2 (swapped) rules.\n\n"
+            "Items:\n"
+            "1. orange\n2. tree\n3. island\n4. desk\n5. umbrella\n6. pencil\n"
+            "7. apple\n8. bridge\n9. eagle\n10. forest\n11. igloo\n"
+            "12. ocean\n13. stone\n14. enter\n15. blackboard\n16. unity\n\n"
+            'Respond as JSON: {"answers": ["ans1", ..., "ans16"]}'
+        ),
+        # PHASE 1: vowel-start → length; consonant-start → last letter
+        # 1. orange: O=vowel → length=6
+        # 2. tree: T=consonant → last letter=E
+        # 3. island: I=vowel → length=6
+        # 4. desk: D=consonant → last letter=K
+        # 5. umbrella: U=vowel → length=8
+        # 6. pencil: P=consonant → last letter=L
+        #
+        # PHASE 2 (swapped): vowel-start → last letter; consonant-start → length
+        # 7. apple: A=vowel → last letter=E
+        # 8. bridge: B=consonant → length=6
+        # 9. eagle: E=vowel → last letter=E
+        # 10. forest: F=consonant → length=6
+        # 11. igloo: I=vowel → last letter=O
+        #
+        # PHASE 3: 5-letter → 'FIVE'; else apply phase 2 swapped rules
+        # 12. ocean: 5 letters → FIVE
+        # 13. stone: 5 letters → FIVE
+        # 14. enter: 5 letters → FIVE
+        # 15. blackboard: 10 letters, B=consonant → length=10
+        # 16. unity: 5 letters → FIVE
+        "answers": ["6", "E", "6", "K", "8", "L",
+                     "E", "6", "E", "6", "O",
+                     "FIVE", "FIVE", "FIVE", "10", "FIVE"],
+    },
+    {
+        "id": "H8_INTERLEAVE",
+        "prompt": (
+            "Process items with INTERLEAVED cycling rules.\n\n"
+            "The rules cycle through 4 phases: R1 → R2 → R1' → R2'\n"
+            "Each phase applies to 4 consecutive items.\n\n"
+            "R1 (items 1-4): Classify as POSITIVE (≥0) or NEGATIVE (<0).\n"
+            "R2 (items 5-8): Respond with the ABSOLUTE VALUE.\n"
+            "R1' (items 9-12): Modified R1 — classify as POSITIVE (≥0) or "
+            "NEGATIVE (<0), BUT flip the answer (POSITIVE→NEGATIVE, NEGATIVE→POSITIVE).\n"
+            "R2' (items 13-16): Modified R2 — respond with absolute value, "
+            "then ADD 100 to it.\n\n"
+            "Items:\n"
+            "1. 15\n2. -8\n3. 0\n4. -23\n"
+            "5. -42\n6. 17\n7. -3\n8. 56\n"
+            "9. 7\n10. -11\n11. 0\n12. -35\n"
+            "13. -19\n14. 44\n15. -7\n16. 88\n\n"
+            'Respond as JSON: {"answers": ["ans1", ..., "ans16"]}'
+        ),
+        # R1 (items 1-4): ≥0 → POSITIVE, <0 → NEGATIVE
+        # 1. 15 → POSITIVE
+        # 2. -8 → NEGATIVE
+        # 3. 0 → POSITIVE (0 ≥ 0)
+        # 4. -23 → NEGATIVE
+        #
+        # R2 (items 5-8): absolute value
+        # 5. |-42| = 42
+        # 6. |17| = 17
+        # 7. |-3| = 3
+        # 8. |56| = 56
+        #
+        # R1' (items 9-12): classify then FLIP
+        # 9.  7 ≥ 0 → POSITIVE → flip → NEGATIVE
+        # 10. -11 < 0 → NEGATIVE → flip → POSITIVE
+        # 11. 0 ≥ 0 → POSITIVE → flip → NEGATIVE
+        # 12. -35 < 0 → NEGATIVE → flip → POSITIVE
+        #
+        # R2' (items 13-16): |x| + 100
+        # 13. |-19| + 100 = 19 + 100 = 119
+        # 14. |44| + 100 = 44 + 100 = 144
+        # 15. |-7| + 100 = 7 + 100 = 107
+        # 16. |88| + 100 = 88 + 100 = 188
+        "answers": ["POSITIVE", "NEGATIVE", "POSITIVE", "NEGATIVE",
+                     "42", "17", "3", "56",
+                     "NEGATIVE", "POSITIVE", "NEGATIVE", "POSITIVE",
+                     "119", "144", "107", "188"],
+    },
 ]
 
 
@@ -228,7 +373,7 @@ def normalize_answer(text: str) -> str:
     for kw in ("NON-LIVING", "LIVING", "NON-MAMMAL", "MAMMAL",
                "SHORT", "LONG", "ODD", "EVEN", "HIGH", "LOW",
                "POSITIVE", "NEGATIVE", "ROUND", "ANGULAR",
-               "SMALL", "BIG", "YES", "NO"):
+               "SMALL", "BIG", "YES", "NO", "FIVE"):
         if kw in t:
             return kw
     nums = re.findall(r'-?\d+', t)
@@ -312,10 +457,10 @@ def attention_instruction_update(llm) -> float:
     Tiers:
       EASY:   Single switch, explicit markers (3 trials, 24 items)
       MEDIUM: Two switches, less obvious markers (3 trials, 28 items)
-      HARD:   Contradictory/chained/reversal (5 trials, 58 items)
+      HARD:   Contradictory/chained/reversal/deep-chain/conditional/interleaved (8 trials, 110 items)
 
-    Total: 11 trials, 110 items.
-    Score = 0.20 * easy + 0.30 * medium + 0.50 * hard
+    Total: 14 trials, 162 items.
+    Score = 0.15 * easy + 0.25 * medium + 0.60 * hard
 
     Cognitive Science: Monsell (2003), Meiran (1996), Allport et al. (1994).
     """
@@ -344,7 +489,7 @@ def attention_instruction_update(llm) -> float:
     medium_mean = sum(tier_scores["medium"]) / len(tier_scores["medium"])
     hard_mean = sum(tier_scores["hard"]) / len(tier_scores["hard"])
 
-    score = round(0.20 * easy_mean + 0.30 * medium_mean + 0.50 * hard_mean, 4)
+    score = round(0.15 * easy_mean + 0.25 * medium_mean + 0.60 * hard_mean, 4)
 
     total_items = sum(len(t["answers"]) for t in EASY_TRIALS + MEDIUM_TRIALS + HARD_TRIALS)
 
@@ -356,7 +501,7 @@ def attention_instruction_update(llm) -> float:
     print(f"EASY   (single switch):         {easy_mean:.3f}  ({len(EASY_TRIALS)} trials)")
     print(f"MEDIUM (two switches):          {medium_mean:.3f}  ({len(MEDIUM_TRIALS)} trials)")
     print(f"HARD   (contradict/chain/revert):{hard_mean:.3f}  ({len(HARD_TRIALS)} trials)")
-    print(f"\nComposite (0.20E+0.30M+0.50H):  {score:.4f}")
+    print(f"\nComposite (0.15E+0.25M+0.60H):  {score:.4f}")
 
     return score
 
