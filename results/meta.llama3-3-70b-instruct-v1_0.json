@@ -1,7 +1,7 @@
 {
   "model": "meta.llama3-3-70b-instruct-v1:0",
   "model_label": "Llama 3.3 70B",
-  "timestamp": "2026-04-13T18:32:24.322017+00:00",
+  "timestamp": "2026-04-13T23:54:23.093821+00:00",
   "scores": {
     "learning_transfer": {
       "score": 0.52,
@@ -92,6 +92,11 @@
       "score": 0.4054,
       "error": null,
       "duration_s": 54.5
+    },
+    "metacog_learning_monitoring": {
+      "score": 0.5529,
+      "error": null,
+      "duration_s": 78.4
     }
   }
 }

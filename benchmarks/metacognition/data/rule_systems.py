@@ -80,7 +80,7 @@ def generate_symbol_system(seed: str = "sym_default", difficulty: int = 1) -> Ru
                     i += 1
             return result
 
-    else:  # difficulty == 3
+    elif difficulty == 3:
         # Multi-pass with conditional rules
         src = rng.sample(shapes[:6], 5)
         dst = rng.sample(shapes, 5)
@@ -104,6 +104,49 @@ def generate_symbol_system(seed: str = "sym_default", difficulty: int = 1) -> Ru
             # Conditional
             if cond in seq:  # Check original sequence
                 result = [extra_map.get(s, s) for s in result]
+            return result
+
+    else:  # difficulty == 4
+        # Three-pass with counting, conditional branching, and chained transforms
+        src = rng.sample(shapes[:7], 6)
+        dst = rng.sample(shapes, 6)
+        # Pass 1: simple substitutions
+        mapping1 = {src[0]: dst[0], src[1]: dst[1], src[2]: dst[2]}
+        # Pass 2: adjacent-pair merging
+        pair_trigger = (dst[0], dst[1])  # After pass 1, if these are adjacent → merge to dst[3]
+        merge_result = dst[3]
+        # Pass 3: count-based conditional
+        count_symbol = dst[2]  # If count of this symbol >= 2, reverse the sequence
+        # Pass 4: parity rule — if sequence length is odd, swap first and last
+
+        rules = [
+            f"Pass 1: Replace {s} with {d}" for s, d in mapping1.items()
+        ]
+        rules.append(f"Pass 2: If {pair_trigger[0]} is immediately followed by {pair_trigger[1]}, replace BOTH with a single {merge_result}")
+        rules.append(f"Pass 3: If the sequence now contains 2 or more {count_symbol}, reverse the entire sequence")
+        rules.append(f"Pass 4: If the final sequence length is odd, swap the first and last symbols")
+        rules.append("All other symbols stay the same throughout all passes")
+
+        def apply_rules(seq):
+            # Pass 1: substitution
+            result = [mapping1.get(s, s) for s in seq]
+            # Pass 2: adjacent-pair merging
+            merged = []
+            i = 0
+            while i < len(result):
+                if i + 1 < len(result) and result[i] == pair_trigger[0] and result[i+1] == pair_trigger[1]:
+                    merged.append(merge_result)
+                    i += 2
+                else:
+                    merged.append(result[i])
+                    i += 1
+            result = merged
+            # Pass 3: count-based reversal
+            if result.count(count_symbol) >= 2:
+                result = result[::-1]
+            # Pass 4: odd-length swap
+            if len(result) % 2 == 1 and len(result) >= 2:
+                result[0], result[-1] = result[-1], result[0]
             return result
 
     # Generate examples
@@ -175,7 +218,7 @@ def generate_number_system(seed: str = "num_default", difficulty: int = 1) -> Ru
         ]
         op_map = {a_op: a_fn, b_op: b_fn, c_op: c_fn}
 
-    else:  # difficulty == 3
+    elif difficulty == 3:
         a_op, b_op, c_op = ops[0], ops[1], ops[2]
         # Nested operations
         a_fn = lambda x, y: x + y + 1
@@ -187,16 +230,31 @@ def generate_number_system(seed: str = "num_default", difficulty: int = 1) -> Ru
         ]
         op_map = {a_op: a_fn, b_op: b_fn}
 
+    else:  # difficulty == 4
+        a_op, b_op, c_op = ops[0], ops[1], ops[2]
+        # Three operators with nesting, conditionals, and modular arithmetic
+        a_fn = lambda x, y: (x * y) % 7 + 1   # multiply mod 7, +1 to avoid 0
+        b_fn = lambda x, y: abs(x - y) * 2 + 1  # scaled difference
+        c_fn = lambda x, y: (x + y) if (x + y) <= 10 else (x + y) - 10  # wrap-around addition
+        rules = [
+            f"'{a_op}(x, y)' means: multiply x and y, take remainder when divided by 7, then add 1",
+            f"'{b_op}(x, y)' means: absolute difference of x and y, doubled, plus 1",
+            f"'{c_op}(x, y)' means: add x and y; if result > 10, subtract 10",
+            f"Operations can be nested: e.g., '{a_op}({b_op}(x, y), z)'",
+            f"SPECIAL: If the final result is even, add 1 to make it odd",
+        ]
+        op_map = {a_op: a_fn, b_op: b_fn, c_op: c_fn}
+
     # Generate examples
     all_items = []
-    for _ in range(20):
+    for _ in range(25 if difficulty >= 4 else 20):
         if difficulty <= 2:
             op_name = rng.choice(list(op_map.keys()))
             x = rng.randint(1, 9)
             y = rng.randint(1, 9)
             result = op_map[op_name](x, y)
             expr = f"{op_name}({x}, {y})"
-        else:
+        elif difficulty == 3:
             # Allow nesting
             if rng.random() < 0.5:
                 op_name = rng.choice(list(op_map.keys()))
@@ -211,6 +269,38 @@ def generate_number_system(seed: str = "num_default", difficulty: int = 1) -> Ru
                 inner_result = op_map[inner_op](x, y)
                 result = op_map[outer_op](inner_result, z)
                 expr = f"{outer_op}({inner_op}({x}, {y}), {z})"
+        else:  # difficulty == 4
+            # Always nested, sometimes double-nested, with parity rule
+            r = rng.random()
+            if r < 0.3:
+                op_name = rng.choice(list(op_map.keys()))
+                x = rng.randint(1, 9)
+                y = rng.randint(1, 9)
+                result = op_map[op_name](x, y)
+                if result % 2 == 0:
+                    result += 1
+                expr = f"{op_name}({x}, {y})"
+            elif r < 0.7:
+                inner_op = rng.choice(list(op_map.keys()))
+                outer_op = rng.choice(list(op_map.keys()))
+                x, y, z = rng.randint(1, 7), rng.randint(1, 7), rng.randint(1, 7)
+                inner_result = op_map[inner_op](x, y)
+                result = op_map[outer_op](inner_result, z)
+                if result % 2 == 0:
+                    result += 1
+                expr = f"{outer_op}({inner_op}({x}, {y}), {z})"
+            else:
+                # Triple nesting
+                op1 = rng.choice(list(op_map.keys()))
+                op2 = rng.choice(list(op_map.keys()))
+                op3 = rng.choice(list(op_map.keys()))
+                a, b, c, d = [rng.randint(1, 5) for _ in range(4)]
+                r1 = op_map[op1](a, b)
+                r2 = op_map[op2](r1, c)
+                result = op_map[op3](r2, d)
+                if result % 2 == 0:
+                    result += 1
+                expr = f"{op3}({op2}({op1}({a}, {b}), {c}), {d})"
 
         all_items.append({"input": expr, "output": str(result)})
 

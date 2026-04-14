@@ -1,7 +1,7 @@
 {
   "model": "deepseek.r1-v1:0",
   "model_label": "DeepSeek-R1",
-  "timestamp": "2026-04-13T18:45:48.233256+00:00",
+  "timestamp": "2026-04-13T23:46:56.494351+00:00",
   "scores": {
     "learning_transfer": {
       "score": 1.0,
@@ -92,6 +92,11 @@
       "score": 0.5872,
       "error": null,
       "duration_s": 592.6
+    },
+    "metacog_learning_monitoring": {
+      "score": 0.9089,
+      "error": null,
+      "duration_s": 927.6
     }
   }
 }

@@ -7,6 +7,14 @@
 - **JOL perverse incentive:** Constant-zero-confidence → gamma_norm=0.50 (free 0.20 score). Models refusing to engage score ≥ models that attempt recall but confabulate. Does not distort current rankings but monitor if pattern becomes dominant.
 - **FOK is cleanest benchmark:** No parsing issues, good confidence spread (std 21–32 per model), GPT-OSS-120B top (0.670), Ministral 3B bottom (0.388)
 - **Calibration universal overconfidence:** All models mean confidence 94–99%. Claude Sonnet 4.6 best at modulating (std=10.1, range 35–100); scores highest (0.632). Ministral 3B confidence std=2.3 (nearly constant high) — 11/120 parse failures.
+## metacog_learning_monitoring v2 — Difficulty 3-4 Rule Systems (2026-04-14)
+- **Change:** SYSTEMS updated from 3 entries (d2, d2, d3) to 4 entries (d3, d3, d4, d4). Difficulty-4 rules added to both symbol and number generators: symbol d4 = 3-pass with pair merging + count-based reversal + parity swap; number d4 = 3 operators with mod arithmetic, wrap-around addition, nested expressions, even→odd parity rule.
+- **Score spread (7 valid models):** std=0.181, range=0.497 — both targets met (std≥0.10, range≥0.30).
+- **Scores by model:** Claude Sonnet 4.6=0.9393, DeepSeek-R1=0.9089, Llama 4 Maverick 17B=0.7496, GLM 4.7=0.7079, Nova Pro=0.6264, Llama 3.3 70B=0.5529, Ministral 3B=0.4422.
+- **3 models errored (timeout/unknown):** Claude Opus 4.6, GPT-OSS-120B, Qwen3 Next 80B. Likely timeout at 360s. These don't affect spread calculation on valid scores.
+- **Old baseline:** std=0.0771, range=0.2195 (difficulty 2-3) — inadequate separation.
+- **Key takeaway:** Moving to difficulty 4 for rule-based systems dramatically improves model discrimination on learning monitoring.
+
 ## metacog_calibration v2 — Difficulty-5 Item Expansion (2026-04-13)
 - **12 new difficulty-5 items added** to `procedural_calibration.py` covering: Catalan numbers, derangements, Stirling numbers (combinatorics); integer partitions, Euler totient, continued fractions, Bernoulli numbers, 1729 taxicab number (number theory); modular arithmetic; trailing zeros in 100!, digital root.
 - **Total items:** 132 (25 d1, 30 d2, 35 d3, 15 d4, 27 d5). Extreme items (d≥4) = 42 (31.8% of total).

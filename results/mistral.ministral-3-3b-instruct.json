@@ -1,7 +1,7 @@
 {
   "model": "mistral.ministral-3-3b-instruct",
   "model_label": "Ministral 3B",
-  "timestamp": "2026-04-13T20:01:42.662495+00:00",
+  "timestamp": "2026-04-14T00:13:02.559564+00:00",
   "scores": {
     "learning_transfer": {
       "score": 0.28,
@@ -88,10 +88,10 @@
       "error": null,
       "duration_s": 884.6
     },
-    "metacog_calibration": {
-      "score": null,
-      "error": "Read timeout on endpoint URL: \"https://bedrock-runtime.us-east-1.amazonaws.com/model/mistral.ministral-3-3b-instruct/converse\"",
-      "duration_s": 483.7
+    "metacog_learning_monitoring": {
+      "score": 0.4422,
+      "error": null,
+      "duration_s": 80.5
     }
   }
 }

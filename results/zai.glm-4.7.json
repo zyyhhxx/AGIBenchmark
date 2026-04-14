@@ -1,7 +1,7 @@
 {
   "model": "zai.glm-4.7",
   "model_label": "GLM 4.7",
-  "timestamp": "2026-04-13T21:09:25.925199+00:00",
+  "timestamp": "2026-04-14T00:11:36.925647+00:00",
   "scores": {
     "learning_transfer": {
       "score": 0.87,
@@ -92,6 +92,11 @@
       "score": 0.4971,
       "error": null,
       "duration_s": 3263.5
+    },
+    "metacog_learning_monitoring": {
+      "score": 0.7079,
+      "error": null,
+      "duration_s": 471.6
     }
   }
 }

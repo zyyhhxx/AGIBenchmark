@@ -1,0 +1,11 @@
+model,label,score,duration_s,error
+anthropic.claude-opus-4-6-v1,Claude Opus 4.6,None,360,unknown
+anthropic.claude-sonnet-4-6,Claude Sonnet 4.6,0.9393,356,
+deepseek.r1-v1:0,DeepSeek-R1,0.9089,929,
+openai.gpt-oss-120b-1:0,GPT-OSS-120B,None,361,unknown
+meta.llama3-3-70b-instruct-v1:0,Llama 3.3 70B,0.5529,80,
+qwen.qwen3-next-80b-a3b,Qwen3 Next 80B,None,360,unknown
+amazon.nova-pro-v1:0,Nova Pro,0.6264,69,
+meta.llama4-maverick-17b-instruct-v1:0,Llama 4 Maverick 17B,0.7496,119,
+zai.glm-4.7,GLM 4.7,0.7079,474,
+mistral.ministral-3-3b-instruct,Ministral 3B,0.4422,83,

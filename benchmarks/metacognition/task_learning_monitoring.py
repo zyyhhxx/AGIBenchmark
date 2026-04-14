@@ -72,9 +72,10 @@ def goodman_kruskal_gamma(x: list, y: list) -> float:
 
 # Generate systems for this benchmark
 SYSTEMS = [
-    generate_symbol_system("crossdomain_sym_1", difficulty=2),
-    generate_number_system("crossdomain_num_1", difficulty=2),
-    generate_symbol_system("crossdomain_sym_2", difficulty=3),
+    generate_symbol_system("crossdomain_sym_1", difficulty=3),
+    generate_number_system("crossdomain_num_1", difficulty=3),
+    generate_symbol_system("crossdomain_sym_2", difficulty=4),
+    generate_number_system("crossdomain_num_2", difficulty=4),
 ]
 
 

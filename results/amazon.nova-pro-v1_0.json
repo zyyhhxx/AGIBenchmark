@@ -1,7 +1,7 @@
 {
   "model": "amazon.nova-pro-v1:0",
   "model_label": "Nova Pro",
-  "timestamp": "2026-04-13T18:33:09.585379+00:00",
+  "timestamp": "2026-04-14T00:01:37.664270+00:00",
   "scores": {
     "learning_transfer": {
       "score": 0.55,
@@ -92,6 +92,11 @@
       "score": 0.4375,
       "error": null,
       "duration_s": 97.8
+    },
+    "metacog_learning_monitoring": {
+      "score": 0.6264,
+      "error": null,
+      "duration_s": 66.3
     }
   }
 }
