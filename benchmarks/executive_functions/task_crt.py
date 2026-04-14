@@ -55,6 +55,11 @@ class CRTResponse:
 
 # ─── Answer Extraction & Checking ───────────────────────────────────
 
+
+def _strip_think(text: str) -> str:
+    """Remove <think>...</think> blocks from model output."""
+    return re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL).strip()
+
 def extract_answer_from_text(text: str) -> str:
     """Extract the core answer from a potentially verbose LLM response."""
     text = text.strip()
@@ -169,7 +174,7 @@ def exec_func_crt(llm) -> float:
                 reasoning = response.reasoning
             except Exception:
                 raw = llm.prompt(prompt)
-                answer = extract_answer_from_text(raw)
+                answer = extract_answer_from_text(_strip_think(raw))
                 confidence = 50
                 reasoning = ""
 

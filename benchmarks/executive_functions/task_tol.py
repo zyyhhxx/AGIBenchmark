@@ -35,6 +35,11 @@ from data.tol_problems import TOL_PROBLEMS, state_str, PEG_CAPACITY, apply_move,
 
 # ─── Move Parsing ───────────────────────────────────────────────────
 
+
+def _strip_think(text: str) -> str:
+    """Remove <think>...</think> blocks from model output."""
+    return re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL).strip()
+
 def parse_moves(text) -> list:
     """Parse move list from model response into (src, dst) tuples.
     
@@ -177,7 +182,7 @@ def exec_func_tol(llm) -> float:
             raw = llm.prompt(prompt)
 
         # Parse and validate
-        moves = parse_moves(raw)
+        moves = parse_moves(_strip_think(raw))
         validation = validate_solution(start, goal, moves)
 
         # Compute optimality ratio

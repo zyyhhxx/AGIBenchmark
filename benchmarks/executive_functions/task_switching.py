@@ -45,6 +45,11 @@ def normalize_answer(answer: str, rule: str) -> str:
     return answer
 
 
+
+def _strip_think(text: str) -> str:
+    """Remove <think>...</think> blocks from model output."""
+    return re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL).strip()
+
 def parse_batch_response(response_text: str, trials: list) -> list:
     """Parse batch response — one answer per line, numbered."""
     lines = response_text.strip().split('\n')
@@ -109,7 +114,7 @@ def run_block(llm, block_name: str, trials: list) -> dict:
     with kbench.chats.new(f"switch_{block_name}"):
         raw = llm.prompt(prompt)
     
-    answers = parse_batch_response(raw, trials)
+    answers = parse_batch_response(_strip_think(raw), trials)
     
     results = []
     for i, trial in enumerate(trials):

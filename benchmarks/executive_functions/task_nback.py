@@ -29,6 +29,12 @@ Shortcut Resistance:
 
 import kaggle_benchmarks as kbench
 import json as _json
+
+def _strip_think(text: str) -> str:
+    """Remove <think>...</think> blocks from model output."""
+    return re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL).strip()
+
+
 def _safe_log(data): print(_json.dumps(data, indent=2, default=str))
 from dataclasses import dataclass
 import numpy as np
@@ -152,6 +158,7 @@ def exec_func_nback(llm) -> float:
                     model_says_match = response.is_match
                 except Exception:
                     raw = llm.prompt(prompt)
+                    raw = _strip_think(raw)
                     model_says_match = "match" in raw.lower() and "no match" not in raw.lower()
             
             is_target = trial["is_target"]

@@ -85,6 +85,11 @@ def _format_block_prompt(block: dict) -> str:
     return "\n".join(lines)
 
 
+
+def _strip_think(text: str) -> str:
+    """Remove <think>...</think> blocks from model output."""
+    return re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL).strip()
+
 def _parse_responses(raw: str, n_expected: int) -> list:
     """Parse model response into list of int choices (1-4).
     
@@ -149,7 +154,7 @@ def exec_func_wcst(llm) -> float:
             raw = ""
         
         n_test = len(block["test_trials"])
-        choices = _parse_responses(raw, n_test)
+        choices = _parse_responses(_strip_think(raw), n_test)
         
         for trial, choice in zip(block["test_trials"], choices):
             correct = (choice == trial["correct_answer"])
