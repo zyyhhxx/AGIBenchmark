@@ -41,6 +41,7 @@ def _strip_think(text: str) -> str:
 def _parse_responses(raw: str, expected_count: int) -> list:
     """Extract YES/NO responses from model output."""
     raw = _strip_think(raw)
+    raw = re.sub(r"//.*", "", raw)  # Strip JS-style comments
     # Try JSON array first
     try:
         m = re.search(r'\[.*\]', raw, re.DOTALL)

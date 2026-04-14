@@ -253,6 +253,7 @@ def _strip_think(text: str) -> str:
 
 def extract_json(raw: str) -> dict:
     raw = _strip_think(raw)
+    raw = re.sub(r"//.*", "", raw)  # Strip JS-style comments from JSON
     """Extract JSON from model response."""
     try:
         return json.loads(raw)
