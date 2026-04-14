@@ -1,22 +1,22 @@
 {
   "benchmark": "social_cog_sarcasm",
   "n_models": 10,
-  "mean": 0.9772,
-  "std": 0.0251,
-  "min": 0.9094,
-  "max": 0.9985,
-  "range": 0.0891,
+  "mean": 0.871,
+  "std": 0.0761,
+  "min": 0.6911,
+  "max": 0.9548,
+  "range": 0.2637,
   "scores": {
-    "anthropic.claude-opus-4-6-v1": 0.9808,
-    "anthropic.claude-sonnet-4-6": 0.9804,
-    "deepseek.r1-v1:0": 0.9761,
-    "openai.gpt-oss-120b-1:0": 0.9693,
-    "meta.llama3-3-70b-instruct-v1:0": 0.9981,
-    "meta.llama4-maverick-17b-instruct-v1:0": 0.9686,
-    "amazon.nova-pro-v1:0": 0.9985,
-    "mistral.ministral-3-3b-instruct": 0.9094,
-    "qwen.qwen3-next-80b-a3b": 0.994,
-    "zai.glm-4.7": 0.997
+    "anthropic.claude-opus-4-6-v1": 0.9548,
+    "anthropic.claude-sonnet-4-6": 0.9419,
+    "deepseek.r1-v1:0": 0.8887,
+    "openai.gpt-oss-120b-1:0": 0.8342,
+    "meta.llama3-3-70b-instruct-v1:0": 0.9453,
+    "meta.llama4-maverick-17b-instruct-v1:0": 0.8647,
+    "amazon.nova-pro-v1:0": 0.8623,
+    "mistral.ministral-3-3b-instruct": 0.6911,
+    "qwen.qwen3-next-80b-a3b": 0.8083,
+    "zai.glm-4.7": 0.9186
   },
-  "timestamp": "2026-04-14T16:13:49.978968+00:00"
+  "timestamp": "2026-04-14T18:15:41.709991+00:00"
 }

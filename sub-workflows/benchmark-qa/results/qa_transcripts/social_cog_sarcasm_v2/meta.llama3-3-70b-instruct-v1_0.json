@@ -1,0 +1,9 @@
+{
+  "model": "meta.llama3-3-70b-instruct-v1:0",
+  "model_label": "Llama 3.3 70B",
+  "score": 0.9454,
+  "error": null,
+  "duration_s": 54.9,
+  "timestamp": "2026-04-14T18:43:00.548428+00:00",
+  "version": "v2_3tier_85items"
+}

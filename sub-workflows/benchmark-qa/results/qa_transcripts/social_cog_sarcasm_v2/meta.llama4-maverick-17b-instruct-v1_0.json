@@ -1,0 +1,9 @@
+{
+  "model": "meta.llama4-maverick-17b-instruct-v1:0",
+  "model_label": "Llama 4 Maverick 17B",
+  "score": 0.9184,
+  "error": null,
+  "duration_s": 198.4,
+  "timestamp": "2026-04-14T19:14:56.665476+00:00",
+  "version": "v2_3tier_85items"
+}

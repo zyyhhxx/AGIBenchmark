@@ -1,0 +1,9 @@
+{
+  "model": "mistral.ministral-3-3b-instruct",
+  "model_label": "Ministral 3B",
+  "score": 0.7162,
+  "error": null,
+  "duration_s": 34.9,
+  "timestamp": "2026-04-14T19:23:57.153461+00:00",
+  "version": "v2_3tier_85items"
+}

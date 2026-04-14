@@ -831,3 +831,14 @@ Final scores across 26 benchmarks × 10 Bedrock models compiled in `repo/results
 - **Pragmatic reasoning gap confirmed:** Llama 3.3 70B scores 0.236 on pragmatic vs 0.863 on false_belief — pragmatic inference harder than explicit ToM for smaller instruction-tuned models.
 - **DeepSeek-R1 dissociation:** 0.976 sarcasm, 0.456 pragmatic, 0.331 emotional_prosody — strong on explicit irony, weak on implicit pragmatic cues and emotional prosodic shifts.
 - **Artifact paths:** `repo/sub-workflows/benchmark-qa/results/analysis_social_cog_{emotional_prosody,false_belief,pragmatic,sarcasm}.md`
+
+## Social Cognition Track — Sarcasm Redesign v2 Final Results (2026-04-14)
+- **Problem solved:** sarcasm v1 std=0.025 (all models ≥0.909) → v2 std=0.1034 (4.1× improvement, range=0.348)
+- **Redesign:** Flat 40-item → 3-tier 85-item. Tier 1 (obvious, 40 items, weight=0.05), Tier 2 (contextual, 15 items, weight=0.15), Tier 3 (subtle/deadpan/cultural, 30 items, weight=0.80)
+- **Scoring:** Tier 1/2 use composite (0.50×AUC + 0.30×(1-cal_error) + 0.20×threshold_acc); Tier 3 uses binary accuracy only (AUC too forgiving for subtle items)
+- **v2 scores:** Opus 4.6=0.968, Llama 3.3 70B=0.945, GLM 4.7=0.919, Maverick 17B=0.918, Sonnet 4.6=0.887, Nova Pro=0.862, DeepSeek-R1=0.836, GPT-OSS-120B=0.808, Ministral 3B=0.716, Qwen3 80B=0.620
+- **Hardest Tier 3 items:** S45 (professional obligatory positivity: IT on 47th password reset) and S46 (chef with impossible dietary restrictions) — 7/10 and 6/10 models fail respectively
+- **Qwen3 sarcasm-bias:** Misclassifies sincere items N31-N37 as sarcastic (14/30 Tier 3 errors); possible instruction-following artifact, not true comprehension failure
+- **All 4 Social Cognition benchmarks now PASS std ≥ 0.08:** emotional_prosody=0.089, false_belief=0.113, pragmatic=0.162, sarcasm v2=0.103
+- **Track average std:** 0.117 (1.5× above threshold)
+- **Artifact paths:** `repo/benchmarks/social_cognition/task_sarcasm.py`, `data/sarcasm_items.py`, `repo/notebooks/social_cog_sarcasm.ipynb`, `results/improvement_log_social_cog_sarcasm.md`, `results/improvement_log_social_cog_track.md`

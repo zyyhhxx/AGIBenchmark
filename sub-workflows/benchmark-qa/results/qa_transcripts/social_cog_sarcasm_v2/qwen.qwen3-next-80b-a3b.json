@@ -1,0 +1,9 @@
+{
+  "model": "qwen.qwen3-next-80b-a3b",
+  "model_label": "Qwen3 Next 80B",
+  "score": 0.6198,
+  "error": null,
+  "duration_s": 641.7,
+  "timestamp": "2026-04-14T19:09:23.843491+00:00",
+  "version": "v2_3tier_85items"
+}

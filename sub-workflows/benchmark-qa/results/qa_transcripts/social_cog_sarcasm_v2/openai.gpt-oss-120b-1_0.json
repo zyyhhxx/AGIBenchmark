@@ -1,0 +1,9 @@
+{
+  "model": "openai.gpt-oss-120b-1:0",
+  "model_label": "GPT-OSS-120B",
+  "score": 0.8075,
+  "error": null,
+  "duration_s": 643.1,
+  "timestamp": "2026-04-14T18:42:02.645672+00:00",
+  "version": "v2_3tier_85items"
+}

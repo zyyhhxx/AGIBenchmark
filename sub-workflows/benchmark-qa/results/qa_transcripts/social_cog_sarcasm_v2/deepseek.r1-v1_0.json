@@ -1,0 +1,9 @@
+{
+  "model": "deepseek.r1-v1:0",
+  "model_label": "DeepSeek-R1",
+  "score": 0.836,
+  "error": null,
+  "duration_s": 238.0,
+  "timestamp": "2026-04-14T18:31:16.465926+00:00",
+  "version": "v2_3tier_85items"
+}

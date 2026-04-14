@@ -1,0 +1,99 @@
+=== Sarcasm v2 Benchmark Run (70 items, 3 tiers) ===
+Items: T1=40, T2=15, T3=15
+  SKIP Claude Opus 4.6 — already scored: 0.9629
+  Running DeepSeek-R1 (us.deepseek.r1-v1:0)...
+    10/70 items done
+    20/70 items done
+    30/70 items done
+    40/70 items done
+    50/70 items done
+    60/70 items done
+    70/70 items done
+  DeepSeek-R1: score=0.9514 (T1=0.9872, T2=0.976, T3=0.9293) [254s]
+  Running GPT-OSS-120B (openai.gpt-oss-120b-1:0)...
+    10/70 items done
+    20/70 items done
+    30/70 items done
+    40/70 items done
+    50/70 items done
+    60/70 items done
+    70/70 items done
+  GPT-OSS-120B: score=0.9384 (T1=0.9748, T2=0.9716, T3=0.9106) [389s]
+  Running Llama 3.3 70B (us.meta.llama3-3-70b-instruct-v1:0)...
+    10/70 items done
+    20/70 items done
+    30/70 items done
+    40/70 items done
+    50/70 items done
+    60/70 items done
+    70/70 items done
+  Llama 3.3 70B: score=0.9844 (T1=0.9985, T2=0.992, T3=0.977) [119s]
+  Running Qwen3 Next 80B (qwen.qwen3-next-80b-a3b)...
+    10/70 items done
+    20/70 items done
+    30/70 items done
+    40/70 items done
+    50/70 items done
+    60/70 items done
+    70/70 items done
+  Qwen3 Next 80B: score=0.9158 (T1=0.9899, T2=0.967, T3=0.8697) [389s]
+  Running Nova Pro (us.amazon.nova-pro-v1:0)...
+    10/70 items done
+    20/70 items done
+    30/70 items done
+    40/70 items done
+    50/70 items done
+    60/70 items done
+    70/70 items done
+  Nova Pro: score=0.9617 (T1=0.997, T2=0.972, T3=0.9487) [208s]
+  Running Llama 4 Maverick 17B (us.meta.llama4-maverick-17b-instruct-v1:0)...
+    10/70 items done
+    20/70 items done
+    30/70 items done
+    40/70 items done
+    50/70 items done
+    60/70 items done
+    70/70 items done
+  Llama 4 Maverick 17B: score=0.9737 (T1=0.9966, T2=0.986, T3=0.9617) [211s]
+  Running Claude Sonnet 4.6 (us.anthropic.claude-sonnet-4-6)...
+    10/70 items done
+    20/70 items done
+    30/70 items done
+    40/70 items done
+    50/70 items done
+    60/70 items done
+    70/70 items done
+  Claude Sonnet 4.6: score=0.9482 (T1=0.9802, T2=0.9672, T3=0.9303) [345s]
+  Running GLM 4.7 (zai.glm-4.7)...
+    10/70 items done
+    20/70 items done
+    30/70 items done
+    40/70 items done
+    50/70 items done
+    60/70 items done
+    70/70 items done
+  GLM 4.7: score=0.9745 (T1=0.9981, T2=0.991, T3=0.9597) [496s]
+  Running Ministral 3B (mistral.ministral-3-3b-instruct)...
+    10/70 items done
+    20/70 items done
+    30/70 items done
+    40/70 items done
+    50/70 items done
+    60/70 items done
+    70/70 items done
+  Ministral 3B: score=0.8653 (T1=0.9709, T2=0.889, T3=0.831) [197s]
+
+=== RESULTS ===
+  Llama 3.3 70B: 0.9844
+  GLM 4.7: 0.9745
+  Llama 4 Maverick 17B: 0.9737
+  Claude Opus 4.6: 0.9629
+  Nova Pro: 0.9617
+  DeepSeek-R1: 0.9514
+  Claude Sonnet 4.6: 0.9482
+  GPT-OSS-120B: 0.9384
+  Qwen3 Next 80B: 0.9158
+  Ministral 3B: 0.8653
+
+Aggregate: mean=0.9476, std=0.0333, range=0.1191
+std >= 0.08: FAIL ❌

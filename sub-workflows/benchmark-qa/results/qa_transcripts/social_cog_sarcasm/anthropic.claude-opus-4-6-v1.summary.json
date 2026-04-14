@@ -2,13 +2,37 @@
   "model": "anthropic.claude-opus-4-6-v1",
   "model_label": "Claude Opus 4.6",
   "benchmark": "social_cog_sarcasm",
-  "score": 0.9808,
-  "duration_s": 178.3,
-  "timestamp": "2026-04-14T15:58:53.923643+00:00",
+  "score": 0.968,
+  "duration_s": 427.8,
+  "timestamp": "2026-04-14T17:37:34.307443+00:00",
   "details": {
-    "n_items": 40,
-    "auc": 1.0,
-    "calibration_error": 0.064,
-    "threshold_accuracy": 1.0
+    "n_items": 85,
+    "tier1": {
+      "auc": 1.0,
+      "cal_error": 0.066,
+      "threshold_acc": 1.0,
+      "composite": 0.9802,
+      "n": 40
+    },
+    "tier2": {
+      "auc": 1.0,
+      "cal_error": 0.0973,
+      "threshold_acc": 1.0,
+      "composite": 0.9708,
+      "n": 15
+    },
+    "tier3": {
+      "auc": 0.9864,
+      "cal_error": 0.1307,
+      "threshold_acc": 0.9667,
+      "composite": 0.9473,
+      "n": 30
+    },
+    "tier_weights": {
+      "tier1": 0.05,
+      "tier2": 0.15,
+      "tier3": 0.8
+    },
+    "tier3_score_metric": "binary_accuracy"
   }
 }

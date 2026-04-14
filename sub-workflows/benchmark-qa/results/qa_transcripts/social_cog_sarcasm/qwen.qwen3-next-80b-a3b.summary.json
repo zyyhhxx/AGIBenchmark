@@ -2,13 +2,37 @@
   "model": "qwen.qwen3-next-80b-a3b",
   "model_label": "Qwen3 Next 80B",
   "benchmark": "social_cog_sarcasm",
-  "score": 0.994,
-  "duration_s": 135.8,
-  "timestamp": "2026-04-14T16:11:23.320694+00:00",
+  "score": 0.8083,
+  "duration_s": 737.5,
+  "timestamp": "2026-04-14T18:08:56.154407+00:00",
   "details": {
-    "n_items": 40,
-    "auc": 1.0,
-    "calibration_error": 0.02,
-    "threshold_accuracy": 1.0
+    "n_items": 85,
+    "tier1": {
+      "auc": 1.0,
+      "cal_error": 0.035,
+      "threshold_acc": 1.0,
+      "composite": 0.9895,
+      "n": 40
+    },
+    "tier2": {
+      "auc": 1.0,
+      "cal_error": 0.1,
+      "threshold_acc": 1.0,
+      "composite": 0.97,
+      "n": 15
+    },
+    "tier3": {
+      "auc": 0.9412,
+      "cal_error": 0.191,
+      "threshold_acc": 0.7667,
+      "composite": 0.8666,
+      "n": 30
+    },
+    "tier_weights": {
+      "tier1": 0.05,
+      "tier2": 0.15,
+      "tier3": 0.8
+    },
+    "tier3_score_metric": "binary_accuracy"
   }
 }

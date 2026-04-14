@@ -2,13 +2,37 @@
   "model": "mistral.ministral-3-3b-instruct",
   "model_label": "Ministral 3B",
   "benchmark": "social_cog_sarcasm",
-  "score": 0.9094,
-  "duration_s": 65.1,
-  "timestamp": "2026-04-14T16:09:05.493272+00:00",
+  "score": 0.6911,
+  "duration_s": 165.8,
+  "timestamp": "2026-04-14T17:56:36.647565+00:00",
   "details": {
-    "n_items": 40,
-    "auc": 1.0,
-    "calibration_error": 0.1188,
-    "threshold_accuracy": 0.725
+    "n_items": 85,
+    "tier1": {
+      "auc": 1.0,
+      "cal_error": 0.0713,
+      "threshold_acc": 0.925,
+      "composite": 0.9636,
+      "n": 40
+    },
+    "tier2": {
+      "auc": 1.0,
+      "cal_error": 0.2167,
+      "threshold_acc": 0.8667,
+      "composite": 0.9083,
+      "n": 15
+    },
+    "tier3": {
+      "auc": 0.991,
+      "cal_error": 0.2817,
+      "threshold_acc": 0.6333,
+      "composite": 0.8377,
+      "n": 30
+    },
+    "tier_weights": {
+      "tier1": 0.05,
+      "tier2": 0.15,
+      "tier3": 0.8
+    },
+    "tier3_score_metric": "binary_accuracy"
   }
 }

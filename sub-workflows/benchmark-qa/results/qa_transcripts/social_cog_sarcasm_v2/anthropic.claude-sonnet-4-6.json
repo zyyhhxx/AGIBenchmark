@@ -1,0 +1,9 @@
+{
+  "model": "anthropic.claude-sonnet-4-6",
+  "model_label": "Claude Sonnet 4.6",
+  "score": 0.8874,
+  "error": null,
+  "duration_s": 340.8,
+  "timestamp": "2026-04-14T19:20:40.539265+00:00",
+  "version": "v2_3tier_85items"
+}

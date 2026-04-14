@@ -2,13 +2,37 @@
   "model": "deepseek.r1-v1:0",
   "model_label": "DeepSeek-R1",
   "benchmark": "social_cog_sarcasm",
-  "score": 0.9761,
-  "duration_s": 90.7,
-  "timestamp": "2026-04-14T16:02:58.543165+00:00",
+  "score": 0.8887,
+  "duration_s": 245.2,
+  "timestamp": "2026-04-14T17:39:17.674477+00:00",
   "details": {
-    "n_items": 40,
-    "auc": 1.0,
-    "calibration_error": 0.0463,
-    "threshold_accuracy": 0.95
+    "n_items": 85,
+    "tier1": {
+      "auc": 1.0,
+      "cal_error": 0.0388,
+      "threshold_acc": 1.0,
+      "composite": 0.9884,
+      "n": 40
+    },
+    "tier2": {
+      "auc": 1.0,
+      "cal_error": 0.09,
+      "threshold_acc": 1.0,
+      "composite": 0.973,
+      "n": 15
+    },
+    "tier3": {
+      "auc": 0.991,
+      "cal_error": 0.0967,
+      "threshold_acc": 0.8667,
+      "composite": 0.9398,
+      "n": 30
+    },
+    "tier_weights": {
+      "tier1": 0.05,
+      "tier2": 0.15,
+      "tier3": 0.8
+    },
+    "tier3_score_metric": "binary_accuracy"
   }
 }

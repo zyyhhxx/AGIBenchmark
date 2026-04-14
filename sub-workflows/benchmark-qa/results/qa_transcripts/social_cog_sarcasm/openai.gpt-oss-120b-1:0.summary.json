@@ -2,13 +2,37 @@
   "model": "openai.gpt-oss-120b-1:0",
   "model_label": "GPT-OSS-120B",
   "benchmark": "social_cog_sarcasm",
-  "score": 0.9693,
-  "duration_s": 170.7,
-  "timestamp": "2026-04-14T16:05:51.288354+00:00",
+  "score": 0.8342,
+  "duration_s": 484.7,
+  "timestamp": "2026-04-14T17:47:24.423586+00:00",
   "details": {
-    "n_items": 40,
-    "auc": 1.0,
-    "calibration_error": 0.0857,
-    "threshold_accuracy": 0.975
+    "n_items": 85,
+    "tier1": {
+      "auc": 1.0,
+      "cal_error": 0.0845,
+      "threshold_acc": 1.0,
+      "composite": 0.9747,
+      "n": 40
+    },
+    "tier2": {
+      "auc": 1.0,
+      "cal_error": 0.1007,
+      "threshold_acc": 1.0,
+      "composite": 0.9698,
+      "n": 15
+    },
+    "tier3": {
+      "auc": 0.9819,
+      "cal_error": 0.154,
+      "threshold_acc": 0.8,
+      "composite": 0.9048,
+      "n": 30
+    },
+    "tier_weights": {
+      "tier1": 0.05,
+      "tier2": 0.15,
+      "tier3": 0.8
+    },
+    "tier3_score_metric": "binary_accuracy"
   }
 }

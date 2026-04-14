@@ -1,0 +1,9 @@
+{
+  "model": "amazon.nova-pro-v1:0",
+  "model_label": "Nova Pro",
+  "score": 0.8623,
+  "error": null,
+  "duration_s": 128.4,
+  "timestamp": "2026-04-14T19:11:35.265804+00:00",
+  "version": "v2_3tier_85items"
+}

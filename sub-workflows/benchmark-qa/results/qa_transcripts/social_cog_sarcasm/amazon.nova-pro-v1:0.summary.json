@@ -2,13 +2,37 @@
   "model": "amazon.nova-pro-v1:0",
   "model_label": "Nova Pro",
   "benchmark": "social_cog_sarcasm",
-  "score": 0.9985,
-  "duration_s": 61.3,
-  "timestamp": "2026-04-14T16:07:58.423254+00:00",
+  "score": 0.8623,
+  "duration_s": 124.8,
+  "timestamp": "2026-04-14T17:53:48.874285+00:00",
   "details": {
-    "n_items": 40,
-    "auc": 1.0,
-    "calibration_error": 0.005,
-    "threshold_accuracy": 1.0
+    "n_items": 85,
+    "tier1": {
+      "auc": 1.0,
+      "cal_error": 0.0075,
+      "threshold_acc": 1.0,
+      "composite": 0.9977,
+      "n": 40
+    },
+    "tier2": {
+      "auc": 1.0,
+      "cal_error": 0.0933,
+      "threshold_acc": 1.0,
+      "composite": 0.972,
+      "n": 15
+    },
+    "tier3": {
+      "auc": 0.9864,
+      "cal_error": 0.1183,
+      "threshold_acc": 0.8333,
+      "composite": 0.9244,
+      "n": 30
+    },
+    "tier_weights": {
+      "tier1": 0.05,
+      "tier2": 0.15,
+      "tier3": 0.8
+    },
+    "tier3_score_metric": "binary_accuracy"
   }
 }

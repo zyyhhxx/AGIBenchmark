@@ -1,0 +1,9 @@
+{
+  "model": "anthropic.claude-opus-4-6-v1",
+  "model_label": "Claude Opus 4.6",
+  "score": 0.968,
+  "error": null,
+  "duration_s": 539.3,
+  "timestamp": "2026-04-14T18:27:15.406541+00:00",
+  "version": "v2_3tier_85items"
+}

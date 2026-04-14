@@ -1,0 +1,9 @@
+{
+  "model": "zai.glm-4.7",
+  "model_label": "GLM 4.7",
+  "score": 0.9186,
+  "error": null,
+  "duration_s": 155.7,
+  "timestamp": "2026-04-14T19:23:19.256141+00:00",
+  "version": "v2_3tier_85items"
+}

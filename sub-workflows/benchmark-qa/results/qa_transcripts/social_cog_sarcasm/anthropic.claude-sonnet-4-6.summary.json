@@ -2,13 +2,37 @@
   "model": "anthropic.claude-sonnet-4-6",
   "model_label": "Claude Sonnet 4.6",
   "benchmark": "social_cog_sarcasm",
-  "score": 0.9804,
-  "duration_s": 149.9,
-  "timestamp": "2026-04-14T16:01:25.861949+00:00",
+  "score": 0.8875,
+  "duration_s": 360.2,
+  "timestamp": "2026-04-14T17:37:34.308468+00:00",
   "details": {
-    "n_items": 40,
-    "auc": 1.0,
-    "calibration_error": 0.0652,
-    "threshold_accuracy": 1.0
+    "n_items": 85,
+    "tier1": {
+      "auc": 1.0,
+      "cal_error": 0.0653,
+      "threshold_acc": 1.0,
+      "composite": 0.9804,
+      "n": 40
+    },
+    "tier2": {
+      "auc": 1.0,
+      "cal_error": 0.1087,
+      "threshold_acc": 1.0,
+      "composite": 0.9674,
+      "n": 15
+    },
+    "tier3": {
+      "auc": 0.9819,
+      "cal_error": 0.114,
+      "threshold_acc": 0.8667,
+      "composite": 0.9301,
+      "n": 30
+    },
+    "tier_weights": {
+      "tier1": 0.05,
+      "tier2": 0.15,
+      "tier3": 0.8
+    },
+    "tier3_score_metric": "binary_accuracy"
   }
 }
