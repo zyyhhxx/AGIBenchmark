@@ -1,0 +1,12 @@
+{
+  "model_id": "meta.llama4-maverick-17b-instruct-v1:0",
+  "model_label": "Llama 4 Maverick 17B",
+  "benchmark": "attention_vigilance",
+  "score": 0.8559,
+  "error": null,
+  "duration_s": 29.5,
+  "llm_calls": 14,
+  "input_tokens": 5793,
+  "output_tokens": 6433,
+  "timestamp": "2026-04-14T06:39:31.904142+00:00"
+}

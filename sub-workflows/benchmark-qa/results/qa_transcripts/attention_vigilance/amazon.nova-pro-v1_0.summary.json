@@ -1,0 +1,12 @@
+{
+  "model_id": "amazon.nova-pro-v1:0",
+  "model_label": "Nova Pro",
+  "benchmark": "attention_vigilance",
+  "score": 0.6329,
+  "error": null,
+  "duration_s": 32.9,
+  "llm_calls": 14,
+  "input_tokens": 5893,
+  "output_tokens": 3918,
+  "timestamp": "2026-04-14T06:38:57.388331+00:00"
+}

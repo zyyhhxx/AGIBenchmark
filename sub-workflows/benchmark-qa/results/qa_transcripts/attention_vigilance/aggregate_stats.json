@@ -1,0 +1,36 @@
+{
+  "benchmark": "attention_vigilance",
+  "n_models": 10,
+  "n_success": 10,
+  "n_fail": 0,
+  "scores": {
+    "anthropic.claude-opus-4-6-v1": 0.8559,
+    "deepseek.r1-v1:0": 1.0,
+    "openai.gpt-oss-120b-1:0": 1.0,
+    "meta.llama3-3-70b-instruct-v1:0": 0.5653,
+    "qwen.qwen3-next-80b-a3b": 0.7073,
+    "amazon.nova-pro-v1:0": 0.6329,
+    "meta.llama4-maverick-17b-instruct-v1:0": 0.8559,
+    "anthropic.claude-sonnet-4-6": 0.8647,
+    "zai.glm-4.7": 0.5599,
+    "mistral.ministral-3-3b-instruct": 0.5856
+  },
+  "labels": {
+    "anthropic.claude-opus-4-6-v1": "Claude Opus 4.6",
+    "deepseek.r1-v1:0": "DeepSeek-R1",
+    "openai.gpt-oss-120b-1:0": "GPT-OSS-120B",
+    "meta.llama3-3-70b-instruct-v1:0": "Llama 3.3 70B",
+    "qwen.qwen3-next-80b-a3b": "Qwen3 Next 80B",
+    "amazon.nova-pro-v1:0": "Nova Pro",
+    "meta.llama4-maverick-17b-instruct-v1:0": "Llama 4 Maverick 17B",
+    "anthropic.claude-sonnet-4-6": "Claude Sonnet 4.6",
+    "zai.glm-4.7": "GLM 4.7",
+    "mistral.ministral-3-3b-instruct": "Ministral 3B"
+  },
+  "mean": 0.7628,
+  "std": 0.1738,
+  "min": 0.5599,
+  "max": 1.0,
+  "range": 0.4401,
+  "timestamp": "2026-04-14T06:43:42.353781+00:00"
+}

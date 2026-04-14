@@ -1,0 +1,12 @@
+{
+  "model_id": "mistral.ministral-3-3b-instruct",
+  "model_label": "Ministral 3B",
+  "benchmark": "attention_vigilance",
+  "score": 0.5856,
+  "error": null,
+  "duration_s": 46.5,
+  "llm_calls": 14,
+  "input_tokens": 5935,
+  "output_tokens": 4179,
+  "timestamp": "2026-04-14T06:43:42.353604+00:00"
+}

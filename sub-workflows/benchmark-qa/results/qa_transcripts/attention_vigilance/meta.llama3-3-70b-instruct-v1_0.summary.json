@@ -1,0 +1,12 @@
+{
+  "model_id": "meta.llama3-3-70b-instruct-v1:0",
+  "model_label": "Llama 3.3 70B",
+  "benchmark": "attention_vigilance",
+  "score": 0.5653,
+  "error": null,
+  "duration_s": 4.1,
+  "llm_calls": 14,
+  "input_tokens": 5807,
+  "output_tokens": 413,
+  "timestamp": "2026-04-14T06:35:18.734252+00:00"
+}

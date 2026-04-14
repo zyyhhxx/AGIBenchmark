@@ -1,0 +1,12 @@
+{
+  "model_id": "openai.gpt-oss-120b-1:0",
+  "model_label": "GPT-OSS-120B",
+  "benchmark": "attention_vigilance",
+  "score": 1.0,
+  "error": null,
+  "duration_s": 64.8,
+  "llm_calls": 14,
+  "input_tokens": 6213,
+  "output_tokens": 6702,
+  "timestamp": "2026-04-14T06:35:09.569526+00:00"
+}

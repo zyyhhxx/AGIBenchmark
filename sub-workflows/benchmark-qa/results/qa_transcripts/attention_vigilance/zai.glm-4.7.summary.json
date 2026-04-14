@@ -1,0 +1,12 @@
+{
+  "model_id": "zai.glm-4.7",
+  "model_label": "GLM 4.7",
+  "benchmark": "attention_vigilance",
+  "score": 0.5599,
+  "error": null,
+  "duration_s": 126.8,
+  "llm_calls": 14,
+  "input_tokens": 5387,
+  "output_tokens": 469,
+  "timestamp": "2026-04-14T06:42:50.814624+00:00"
+}

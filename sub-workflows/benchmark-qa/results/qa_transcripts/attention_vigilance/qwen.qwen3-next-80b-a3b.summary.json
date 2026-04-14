@@ -1,0 +1,12 @@
+{
+  "model_id": "qwen.qwen3-next-80b-a3b",
+  "model_label": "Qwen3 Next 80B",
+  "benchmark": "attention_vigilance",
+  "score": 0.7073,
+  "error": null,
+  "duration_s": 175.7,
+  "llm_calls": 14,
+  "input_tokens": 5991,
+  "output_tokens": 413,
+  "timestamp": "2026-04-14T06:38:19.415956+00:00"
+}

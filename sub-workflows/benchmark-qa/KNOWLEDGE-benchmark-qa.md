@@ -44,6 +44,16 @@
 - **Sequential runs required:** Parallel execution of 10 model runs causes SIGTERM due to resource contention on the EC2 instance. Run models one at a time with skip-if-scored logic.
 - **AWS_PROFILE fix:** Set `~/.aws/config` with empty `[default]` profile to prevent boto3 ProfileNotFound errors when `AWS_PROFILE=default` is set in environment.
 
+## attention_vigilance Benchmark Results — All 10 Models (2026-04-14)
+- **Scores:** DeepSeek-R1=1.000, GPT-OSS-120B=1.000, Claude Sonnet 4.6=0.8647, Claude Opus 4.6=0.8559, Llama 4 Maverick 17B=0.8559, Qwen3 Next 80B=0.7073, Nova Pro=0.6329, Ministral 3B=0.5856, Llama 3.3 70B=0.5653, GLM 4.7=0.5599
+- **Aggregate:** mean=0.7628, std=0.1738 (≥0.08 ✅), range=0.4401; 10/10 coverage, 0 failures
+- **Task structure:** N-back task with 2-back (weight=0.55) and 4-back (weight=0.45) conditions. 2-back: 77 items, overall acc=0.75 (top models); 4-back: 56 items, overall acc=0.64 (top models). 4-back is the discriminator — hit rate drops to 0.231 for bottom models.
+- **Vigilance decrement:** 4-back condition shows near-zero decrement (0.000), suggesting models don't fatigue like humans but also don't improve; 2-back shows slight 0.015 decrement.
+- **Ceiling models:** DeepSeek-R1 and GPT-OSS-120B both score 1.0 — 4-back not fully saturating top models.
+- **Bottom cluster:** Llama 3.3 70B (4.1s duration — very fast, suspicious), GLM 4.7, and Ministral 3B all cluster 0.56–0.59. Llama 3.3 70B's 4.1s runtime suggests minimal reasoning effort.
+- **Retry bias:** attention_vigilance unaffected (no schema= parameter used).
+- **Artifact path:** `repo/sub-workflows/benchmark-qa/results/qa_transcripts/attention_vigilance/` — 10 .jsonl + 10 .summary.json + aggregate_stats.json
+
 ## Batch 1 Scoring/Parsing Fixes — Confirmed Deployed (2026-04-13)
 - **JOL std-penalty:** `if np.std(all_jol_ratings) < 1.0: gamma_norm = 0.0` added to task_jol.py. Constant-confidence models lose the free 0.20 score. No current model has std < 1.0 (Ministral 3B std=2.3), so rankings unchanged but perverse incentive removed.
 - **Backtick fence stripping:** `re.sub(r'```(?:json)?\s*', '', cleaned)` + closing fence strip added to JSON extraction in task_calibration.py (Phase 1) and task_fok.py (Phase 1 and Phase 2). Fixes Ministral 3B's 11/120 parse failures that defaulted to confidence=50.

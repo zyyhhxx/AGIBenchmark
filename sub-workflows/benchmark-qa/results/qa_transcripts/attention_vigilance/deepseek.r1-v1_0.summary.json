@@ -1,0 +1,12 @@
+{
+  "model_id": "deepseek.r1-v1:0",
+  "model_label": "DeepSeek-R1",
+  "benchmark": "attention_vigilance",
+  "score": 1.0,
+  "error": null,
+  "duration_s": 42.3,
+  "llm_calls": 14,
+  "input_tokens": 5534,
+  "output_tokens": 7598,
+  "timestamp": "2026-04-14T06:33:59.741997+00:00"
+}
