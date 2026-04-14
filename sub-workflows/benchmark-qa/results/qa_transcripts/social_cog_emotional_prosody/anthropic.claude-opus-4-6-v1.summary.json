@@ -1,0 +1,17 @@
+{
+  "model": "anthropic.claude-opus-4-6-v1",
+  "model_label": "Claude Opus 4.6",
+  "benchmark": "social_cog_emotional_prosody",
+  "score": 0.564,
+  "duration_s": 399.5,
+  "timestamp": "2026-04-14T14:22:33.409930+00:00",
+  "details": {
+    "easy_score": 0.375,
+    "medium_score": 0.4934,
+    "hard_score": 0.3624,
+    "false_alarm_rate": 0.7,
+    "n_items": 43,
+    "n_shift": 36,
+    "n_control": 7
+  }
+}

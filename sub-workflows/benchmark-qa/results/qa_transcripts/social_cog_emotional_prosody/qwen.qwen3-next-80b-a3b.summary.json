@@ -1,0 +1,17 @@
+{
+  "model": "qwen.qwen3-next-80b-a3b",
+  "model_label": "Qwen3 Next 80B",
+  "benchmark": "social_cog_emotional_prosody",
+  "score": 0.3741,
+  "duration_s": 80.5,
+  "timestamp": "2026-04-14T14:33:44.328351+00:00",
+  "details": {
+    "easy_score": 0.375,
+    "medium_score": 0.4851,
+    "hard_score": 0.0988,
+    "false_alarm_rate": 0.7,
+    "n_items": 43,
+    "n_shift": 36,
+    "n_control": 7
+  }
+}

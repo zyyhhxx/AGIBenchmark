@@ -1,0 +1,31 @@
+{
+  "model": "deepseek.r1-v1:0",
+  "model_label": "DeepSeek-R1",
+  "benchmark": "social_cog_pragmatic",
+  "score": 0.4558,
+  "duration_s": 126.0,
+  "timestamp": "2026-04-14T15:41:52.926925+00:00",
+  "details": {
+    "n_items": 45,
+    "tier_scores": {
+      "direct": {
+        "score": 0.672,
+        "intended_acc": 0.68,
+        "literal_trap": 0.08,
+        "n": 25
+      },
+      "indirect": {
+        "score": 0.3,
+        "intended_acc": 0.3,
+        "literal_trap": 0.0,
+        "n": 10
+      },
+      "complex": {
+        "score": 0.5,
+        "intended_acc": 0.5,
+        "literal_trap": 0.0,
+        "n": 10
+      }
+    }
+  }
+}

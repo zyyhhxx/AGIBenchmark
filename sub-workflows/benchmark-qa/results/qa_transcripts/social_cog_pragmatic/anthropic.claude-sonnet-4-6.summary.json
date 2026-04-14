@@ -1,0 +1,31 @@
+{
+  "model": "anthropic.claude-sonnet-4-6",
+  "model_label": "Claude Sonnet 4.6",
+  "benchmark": "social_cog_pragmatic",
+  "score": 0.7174,
+  "duration_s": 281.6,
+  "timestamp": "2026-04-14T15:39:44.887008+00:00",
+  "details": {
+    "n_items": 45,
+    "tier_scores": {
+      "direct": {
+        "score": 0.716,
+        "intended_acc": 0.72,
+        "literal_trap": 0.04,
+        "n": 25
+      },
+      "indirect": {
+        "score": 0.6,
+        "intended_acc": 0.6,
+        "literal_trap": 0.0,
+        "n": 10
+      },
+      "complex": {
+        "score": 0.8,
+        "intended_acc": 0.8,
+        "literal_trap": 0.0,
+        "n": 10
+      }
+    }
+  }
+}

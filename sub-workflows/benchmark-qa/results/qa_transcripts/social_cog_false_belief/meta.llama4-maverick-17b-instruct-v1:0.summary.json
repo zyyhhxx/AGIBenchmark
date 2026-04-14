@@ -1,0 +1,25 @@
+{
+  "model": "meta.llama4-maverick-17b-instruct-v1:0",
+  "model_label": "Llama 4 Maverick 17B",
+  "benchmark": "social_cog_false_belief",
+  "score": 0.7542,
+  "duration_s": 72.4,
+  "timestamp": "2026-04-14T15:06:43.910880+00:00",
+  "details": {
+    "n_scenarios": 34,
+    "tier_scores": {
+      "1": 1.0,
+      "2": 1.0,
+      "3": 1.0,
+      "4": 0.9167,
+      "5": 0.25
+    },
+    "tier_counts": {
+      "1": 4,
+      "2": 4,
+      "3": 6,
+      "4": 12,
+      "5": 8
+    }
+  }
+}

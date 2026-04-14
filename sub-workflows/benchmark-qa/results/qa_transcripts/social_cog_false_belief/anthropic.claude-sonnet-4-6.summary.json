@@ -1,0 +1,25 @@
+{
+  "model": "anthropic.claude-sonnet-4-6",
+  "model_label": "Claude Sonnet 4.6",
+  "benchmark": "social_cog_false_belief",
+  "score": 0.8521,
+  "duration_s": 327.7,
+  "timestamp": "2026-04-14T14:48:29.721751+00:00",
+  "details": {
+    "n_scenarios": 34,
+    "tier_scores": {
+      "1": 1.0,
+      "2": 1.0,
+      "3": 1.0,
+      "4": 0.8333,
+      "5": 0.875
+    },
+    "tier_counts": {
+      "1": 4,
+      "2": 4,
+      "3": 6,
+      "4": 12,
+      "5": 8
+    }
+  }
+}

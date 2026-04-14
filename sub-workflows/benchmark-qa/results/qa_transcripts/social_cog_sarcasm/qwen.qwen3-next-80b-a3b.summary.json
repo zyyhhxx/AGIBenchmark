@@ -1,0 +1,14 @@
+{
+  "model": "qwen.qwen3-next-80b-a3b",
+  "model_label": "Qwen3 Next 80B",
+  "benchmark": "social_cog_sarcasm",
+  "score": 0.994,
+  "duration_s": 135.8,
+  "timestamp": "2026-04-14T16:11:23.320694+00:00",
+  "details": {
+    "n_items": 40,
+    "auc": 1.0,
+    "calibration_error": 0.02,
+    "threshold_accuracy": 1.0
+  }
+}

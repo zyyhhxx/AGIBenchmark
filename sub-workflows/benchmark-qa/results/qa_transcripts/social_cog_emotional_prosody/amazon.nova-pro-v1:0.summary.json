@@ -1,0 +1,17 @@
+{
+  "model": "amazon.nova-pro-v1:0",
+  "model_label": "Nova Pro",
+  "benchmark": "social_cog_emotional_prosody",
+  "score": 0.2775,
+  "duration_s": 66.2,
+  "timestamp": "2026-04-14T14:31:40.261879+00:00",
+  "details": {
+    "easy_score": 0.625,
+    "medium_score": 0.3642,
+    "hard_score": 0.0533,
+    "false_alarm_rate": 0.7,
+    "n_items": 43,
+    "n_shift": 36,
+    "n_control": 7
+  }
+}

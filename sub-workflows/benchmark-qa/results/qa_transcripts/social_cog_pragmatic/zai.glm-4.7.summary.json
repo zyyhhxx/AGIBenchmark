@@ -1,0 +1,31 @@
+{
+  "model": "zai.glm-4.7",
+  "model_label": "GLM 4.7",
+  "benchmark": "social_cog_pragmatic",
+  "score": 0.4268,
+  "duration_s": 163.7,
+  "timestamp": "2026-04-14T15:55:53.652396+00:00",
+  "details": {
+    "n_items": 45,
+    "tier_scores": {
+      "direct": {
+        "score": 0.712,
+        "intended_acc": 0.72,
+        "literal_trap": 0.08,
+        "n": 25
+      },
+      "indirect": {
+        "score": 0.5,
+        "intended_acc": 0.5,
+        "literal_trap": 0.0,
+        "n": 10
+      },
+      "complex": {
+        "score": 0.29,
+        "intended_acc": 0.3,
+        "literal_trap": 0.1,
+        "n": 10
+      }
+    }
+  }
+}

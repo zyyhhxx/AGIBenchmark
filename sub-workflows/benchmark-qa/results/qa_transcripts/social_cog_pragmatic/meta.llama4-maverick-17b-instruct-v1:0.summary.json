@@ -1,0 +1,31 @@
+{
+  "model": "meta.llama4-maverick-17b-instruct-v1:0",
+  "model_label": "Llama 4 Maverick 17B",
+  "benchmark": "social_cog_pragmatic",
+  "score": 0.3718,
+  "duration_s": 35.4,
+  "timestamp": "2026-04-14T15:47:21.083316+00:00",
+  "details": {
+    "n_items": 45,
+    "tier_scores": {
+      "direct": {
+        "score": 0.712,
+        "intended_acc": 0.72,
+        "literal_trap": 0.08,
+        "n": 25
+      },
+      "indirect": {
+        "score": 0.2,
+        "intended_acc": 0.2,
+        "literal_trap": 0.0,
+        "n": 10
+      },
+      "complex": {
+        "score": 0.39,
+        "intended_acc": 0.4,
+        "literal_trap": 0.1,
+        "n": 10
+      }
+    }
+  }
+}

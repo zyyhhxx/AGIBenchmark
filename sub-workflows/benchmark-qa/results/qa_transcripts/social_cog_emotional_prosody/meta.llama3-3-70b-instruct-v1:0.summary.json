@@ -1,0 +1,17 @@
+{
+  "model": "meta.llama3-3-70b-instruct-v1:0",
+  "model_label": "Llama 3.3 70B",
+  "benchmark": "social_cog_emotional_prosody",
+  "score": 0.2682,
+  "duration_s": 26.2,
+  "timestamp": "2026-04-14T14:30:06.114552+00:00",
+  "details": {
+    "easy_score": 0.5,
+    "medium_score": 0.4306,
+    "hard_score": 0.0327,
+    "false_alarm_rate": 0.7,
+    "n_items": 43,
+    "n_shift": 36,
+    "n_control": 7
+  }
+}

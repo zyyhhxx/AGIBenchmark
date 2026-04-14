@@ -1,0 +1,14 @@
+{
+  "model": "meta.llama3-3-70b-instruct-v1:0",
+  "model_label": "Llama 3.3 70B",
+  "benchmark": "social_cog_sarcasm",
+  "score": 0.9981,
+  "duration_s": 38.5,
+  "timestamp": "2026-04-14T16:06:31.827865+00:00",
+  "details": {
+    "n_items": 40,
+    "auc": 1.0,
+    "calibration_error": 0.0062,
+    "threshold_accuracy": 1.0
+  }
+}

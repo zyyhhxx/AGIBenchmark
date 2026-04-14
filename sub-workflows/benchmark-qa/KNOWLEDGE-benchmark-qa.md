@@ -806,3 +806,18 @@ Final scores across 26 benchmarks × 10 Bedrock models compiled in `repo/results
 - learning_interference structural fragility: without Ministral 3B, std drops to ~0.035 (below threshold) — single-outlier dependency on discrimination
 - learning_transfer Ministral 3B true score estimated ~0.45–0.55 (67% parse failure rate artificially deflates to 0.35)
 - learning_curves backtick parse fix would improve Ministral 3B score by ~0.05 (79/260 failures = 30%)
+
+## Social Cognition Track — All 4 Benchmarks, All 10 Models (2026-04-14)
+- **Benchmarks:** emotional_prosody, false_belief, pragmatic, sarcasm — 10/10 model coverage each
+- **Retry bias fix applied:** All 4 task files had `schema=` parameter removed; `_strip_think()` + `_strip_fences()` helpers + regex JSON extraction added before this run.
+- **Score distributions:**
+  - emotional_prosody: mean=0.3549, std=0.0888, range=0.2958 — lowest performing; Opus 4.6 best at 0.564
+  - false_belief: mean=0.7069, std=0.1128, range=0.3000 — mid-range; Llama 3.3 70B and Qwen3 tied at 0.8625 (top)
+  - pragmatic: mean=0.4786, std=0.1622, range=0.5756 — best discriminator (range=0.576); Opus 4.6=0.811 vs Llama 3.3 70B=0.236
+  - sarcasm: mean=0.9772, std=0.0251, range=0.0891 — near-ceiling across all models; nearly all frontier models ≥0.97
+- **Ceiling effect:** sarcasm is effectively saturated — all 10 models score ≥0.909; range barely clears the 0.08 threshold via std=0.025. Future iteration should add harder irony/sarcasm variants.
+- **Hardest task:** emotional_prosody (mean=0.355) — no model exceeds 0.564; tests nuanced prosodic shift detection in dialogue.
+- **Best discriminator:** pragmatic (std=0.162, range=0.576) — large spread between top models (Opus/Sonnet) and instruction-tuned smaller models (Llama 3.3, Ministral, GLM).
+- **Pragmatic reasoning gap:** Llama 3.3 70B scores 0.236 on pragmatic vs 0.863 on false_belief — large intra-model gap suggesting pragmatic inference is harder than explicit ToM for smaller models.
+- **DeepSeek-R1 anomaly:** Scores 0.976 on sarcasm but only 0.456 on pragmatic and 0.331 on emotional_prosody — strong at explicit irony detection, weak on implicit pragmatic cues and emotional tone shifts.
+- **Artifact paths:** `repo/sub-workflows/benchmark-qa/results/qa_transcripts/social_cog_{emotional_prosody,false_belief,pragmatic,sarcasm}/` — 10 .jsonl + 10 .summary.json + aggregate_stats.json each.

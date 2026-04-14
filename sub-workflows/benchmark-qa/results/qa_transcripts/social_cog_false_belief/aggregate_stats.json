@@ -1,0 +1,22 @@
+{
+  "benchmark": "social_cog_false_belief",
+  "n_models": 10,
+  "mean": 0.7069,
+  "std": 0.1128,
+  "min": 0.5625,
+  "max": 0.8625,
+  "range": 0.3,
+  "scores": {
+    "anthropic.claude-opus-4-6-v1": 0.5833,
+    "anthropic.claude-sonnet-4-6": 0.8521,
+    "deepseek.r1-v1:0": 0.7083,
+    "openai.gpt-oss-120b-1:0": 0.6125,
+    "meta.llama3-3-70b-instruct-v1:0": 0.8625,
+    "meta.llama4-maverick-17b-instruct-v1:0": 0.7542,
+    "amazon.nova-pro-v1:0": 0.6458,
+    "mistral.ministral-3-3b-instruct": 0.5625,
+    "qwen.qwen3-next-80b-a3b": 0.8625,
+    "zai.glm-4.7": 0.625
+  },
+  "timestamp": "2026-04-14T15:29:06.497052+00:00"
+}

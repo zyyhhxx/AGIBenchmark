@@ -1,0 +1,17 @@
+{
+  "model": "zai.glm-4.7",
+  "model_label": "GLM 4.7",
+  "benchmark": "social_cog_emotional_prosody",
+  "score": 0.2989,
+  "duration_s": 79.6,
+  "timestamp": "2026-04-14T14:35:05.965621+00:00",
+  "details": {
+    "easy_score": 0.625,
+    "medium_score": 0.349,
+    "hard_score": 0.0739,
+    "false_alarm_rate": 0.7,
+    "n_items": 43,
+    "n_shift": 36,
+    "n_control": 7
+  }
+}

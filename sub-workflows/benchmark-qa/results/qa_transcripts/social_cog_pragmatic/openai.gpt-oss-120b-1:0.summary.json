@@ -1,0 +1,31 @@
+{
+  "model": "openai.gpt-oss-120b-1:0",
+  "model_label": "GPT-OSS-120B",
+  "benchmark": "social_cog_pragmatic",
+  "score": 0.4793,
+  "duration_s": 250.2,
+  "timestamp": "2026-04-14T15:46:05.127759+00:00",
+  "details": {
+    "n_items": 45,
+    "tier_scores": {
+      "direct": {
+        "score": 0.752,
+        "intended_acc": 0.76,
+        "literal_trap": 0.08,
+        "n": 25
+      },
+      "indirect": {
+        "score": 0.19,
+        "intended_acc": 0.2,
+        "literal_trap": 0.1,
+        "n": 10
+      },
+      "complex": {
+        "score": 0.6,
+        "intended_acc": 0.6,
+        "literal_trap": 0.0,
+        "n": 10
+      }
+    }
+  }
+}

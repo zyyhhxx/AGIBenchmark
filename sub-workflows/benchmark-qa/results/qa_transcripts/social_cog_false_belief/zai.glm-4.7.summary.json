@@ -1,0 +1,25 @@
+{
+  "model": "zai.glm-4.7",
+  "model_label": "GLM 4.7",
+  "benchmark": "social_cog_false_belief",
+  "score": 0.625,
+  "duration_s": 250.7,
+  "timestamp": "2026-04-14T15:29:04.496633+00:00",
+  "details": {
+    "n_scenarios": 34,
+    "tier_scores": {
+      "1": 1.0,
+      "2": 0.875,
+      "3": 0.6667,
+      "4": 0.6667,
+      "5": 0.5
+    },
+    "tier_counts": {
+      "1": 4,
+      "2": 4,
+      "3": 6,
+      "4": 12,
+      "5": 8
+    }
+  }
+}

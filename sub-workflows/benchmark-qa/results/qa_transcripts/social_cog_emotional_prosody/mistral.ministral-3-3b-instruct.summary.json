@@ -1,0 +1,17 @@
+{
+  "model": "mistral.ministral-3-3b-instruct",
+  "model_label": "Ministral 3B",
+  "benchmark": "social_cog_emotional_prosody",
+  "score": 0.3106,
+  "duration_s": 39.5,
+  "timestamp": "2026-04-14T14:32:21.811808+00:00",
+  "details": {
+    "easy_score": 0.5,
+    "medium_score": 0.2656,
+    "hard_score": 0.1121,
+    "false_alarm_rate": 0.8,
+    "n_items": 43,
+    "n_shift": 36,
+    "n_control": 7
+  }
+}

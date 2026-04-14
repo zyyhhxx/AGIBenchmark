@@ -1,0 +1,31 @@
+{
+  "model": "meta.llama3-3-70b-instruct-v1:0",
+  "model_label": "Llama 3.3 70B",
+  "benchmark": "social_cog_pragmatic",
+  "score": 0.2358,
+  "duration_s": 36.5,
+  "timestamp": "2026-04-14T15:46:43.652132+00:00",
+  "details": {
+    "n_items": 45,
+    "tier_scores": {
+      "direct": {
+        "score": 0.672,
+        "intended_acc": 0.68,
+        "literal_trap": 0.08,
+        "n": 25
+      },
+      "indirect": {
+        "score": 0.1,
+        "intended_acc": 0.1,
+        "literal_trap": 0.0,
+        "n": 10
+      },
+      "complex": {
+        "score": 0.2,
+        "intended_acc": 0.2,
+        "literal_trap": 0.0,
+        "n": 10
+      }
+    }
+  }
+}

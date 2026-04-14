@@ -1,0 +1,25 @@
+{
+  "model": "mistral.ministral-3-3b-instruct",
+  "model_label": "Ministral 3B",
+  "benchmark": "social_cog_false_belief",
+  "score": 0.5625,
+  "duration_s": 118.8,
+  "timestamp": "2026-04-14T15:10:22.154681+00:00",
+  "details": {
+    "n_scenarios": 34,
+    "tier_scores": {
+      "1": 0.25,
+      "2": 1.0,
+      "3": 0.0,
+      "4": 0.625,
+      "5": 0.5
+    },
+    "tier_counts": {
+      "1": 4,
+      "2": 4,
+      "3": 6,
+      "4": 12,
+      "5": 8
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "model": "zai.glm-4.7",
+  "model_label": "GLM 4.7",
+  "benchmark": "social_cog_sarcasm",
+  "score": 0.997,
+  "duration_s": 142.7,
+  "timestamp": "2026-04-14T16:13:47.978656+00:00",
+  "details": {
+    "n_items": 40,
+    "auc": 1.0,
+    "calibration_error": 0.01,
+    "threshold_accuracy": 1.0
+  }
+}

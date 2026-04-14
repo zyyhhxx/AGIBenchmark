@@ -1,0 +1,17 @@
+{
+  "model": "anthropic.claude-sonnet-4-6",
+  "model_label": "Claude Sonnet 4.6",
+  "benchmark": "social_cog_emotional_prosody",
+  "score": 0.4699,
+  "duration_s": 172.0,
+  "timestamp": "2026-04-14T14:25:27.370820+00:00",
+  "details": {
+    "easy_score": 0.5,
+    "medium_score": 0.4517,
+    "hard_score": 0.23,
+    "false_alarm_rate": 0.7,
+    "n_items": 43,
+    "n_shift": 36,
+    "n_control": 7
+  }
+}

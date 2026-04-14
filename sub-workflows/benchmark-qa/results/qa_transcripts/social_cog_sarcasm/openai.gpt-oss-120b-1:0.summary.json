@@ -1,0 +1,14 @@
+{
+  "model": "openai.gpt-oss-120b-1:0",
+  "model_label": "GPT-OSS-120B",
+  "benchmark": "social_cog_sarcasm",
+  "score": 0.9693,
+  "duration_s": 170.7,
+  "timestamp": "2026-04-14T16:05:51.288354+00:00",
+  "details": {
+    "n_items": 40,
+    "auc": 1.0,
+    "calibration_error": 0.0857,
+    "threshold_accuracy": 0.975
+  }
+}

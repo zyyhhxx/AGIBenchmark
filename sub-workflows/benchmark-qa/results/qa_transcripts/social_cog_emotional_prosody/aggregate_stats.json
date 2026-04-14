@@ -1,0 +1,22 @@
+{
+  "benchmark": "social_cog_emotional_prosody",
+  "n_models": 10,
+  "mean": 0.3549,
+  "std": 0.0888,
+  "min": 0.2682,
+  "max": 0.564,
+  "range": 0.2958,
+  "scores": {
+    "anthropic.claude-opus-4-6-v1": 0.564,
+    "anthropic.claude-sonnet-4-6": 0.4699,
+    "deepseek.r1-v1:0": 0.3307,
+    "openai.gpt-oss-120b-1:0": 0.3072,
+    "meta.llama3-3-70b-instruct-v1:0": 0.2682,
+    "meta.llama4-maverick-17b-instruct-v1:0": 0.3481,
+    "amazon.nova-pro-v1:0": 0.2775,
+    "mistral.ministral-3-3b-instruct": 0.3106,
+    "qwen.qwen3-next-80b-a3b": 0.3741,
+    "zai.glm-4.7": 0.2989
+  },
+  "timestamp": "2026-04-14T14:35:07.965981+00:00"
+}

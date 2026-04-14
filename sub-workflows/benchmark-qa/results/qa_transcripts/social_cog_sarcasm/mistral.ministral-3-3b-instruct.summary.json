@@ -1,0 +1,14 @@
+{
+  "model": "mistral.ministral-3-3b-instruct",
+  "model_label": "Ministral 3B",
+  "benchmark": "social_cog_sarcasm",
+  "score": 0.9094,
+  "duration_s": 65.1,
+  "timestamp": "2026-04-14T16:09:05.493272+00:00",
+  "details": {
+    "n_items": 40,
+    "auc": 1.0,
+    "calibration_error": 0.1188,
+    "threshold_accuracy": 0.725
+  }
+}

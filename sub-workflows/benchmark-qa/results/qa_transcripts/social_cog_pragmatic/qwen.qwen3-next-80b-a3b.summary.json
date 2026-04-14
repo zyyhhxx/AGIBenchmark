@@ -1,0 +1,31 @@
+{
+  "model": "qwen.qwen3-next-80b-a3b",
+  "model_label": "Qwen3 Next 80B",
+  "benchmark": "social_cog_pragmatic",
+  "score": 0.4828,
+  "duration_s": 188.0,
+  "timestamp": "2026-04-14T15:53:07.902701+00:00",
+  "details": {
+    "n_items": 45,
+    "tier_scores": {
+      "direct": {
+        "score": 0.752,
+        "intended_acc": 0.76,
+        "literal_trap": 0.08,
+        "n": 25
+      },
+      "indirect": {
+        "score": 0.5,
+        "intended_acc": 0.5,
+        "literal_trap": 0.0,
+        "n": 10
+      },
+      "complex": {
+        "score": 0.39,
+        "intended_acc": 0.4,
+        "literal_trap": 0.1,
+        "n": 10
+      }
+    }
+  }
+}

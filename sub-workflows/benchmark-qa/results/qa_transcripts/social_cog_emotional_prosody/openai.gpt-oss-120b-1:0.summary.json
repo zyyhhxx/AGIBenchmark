@@ -1,0 +1,17 @@
+{
+  "model": "openai.gpt-oss-120b-1:0",
+  "model_label": "GPT-OSS-120B",
+  "benchmark": "social_cog_emotional_prosody",
+  "score": 0.3072,
+  "duration_s": 85.1,
+  "timestamp": "2026-04-14T14:29:37.875513+00:00",
+  "details": {
+    "easy_score": 0.625,
+    "medium_score": 0.2682,
+    "hard_score": 0.1078,
+    "false_alarm_rate": 0.7,
+    "n_items": 43,
+    "n_shift": 36,
+    "n_control": 7
+  }
+}

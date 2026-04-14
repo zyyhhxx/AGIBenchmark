@@ -1,0 +1,25 @@
+{
+  "model": "deepseek.r1-v1:0",
+  "model_label": "DeepSeek-R1",
+  "benchmark": "social_cog_false_belief",
+  "score": 0.7083,
+  "duration_s": 499.7,
+  "timestamp": "2026-04-14T14:56:51.414118+00:00",
+  "details": {
+    "n_scenarios": 34,
+    "tier_scores": {
+      "1": 1.0,
+      "2": 1.0,
+      "3": 1.0,
+      "4": 0.5833,
+      "5": 1.0
+    },
+    "tier_counts": {
+      "1": 4,
+      "2": 4,
+      "3": 6,
+      "4": 12,
+      "5": 8
+    }
+  }
+}

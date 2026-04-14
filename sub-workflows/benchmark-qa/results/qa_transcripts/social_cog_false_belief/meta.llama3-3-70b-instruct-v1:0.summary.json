@@ -1,0 +1,25 @@
+{
+  "model": "meta.llama3-3-70b-instruct-v1:0",
+  "model_label": "Llama 3.3 70B",
+  "benchmark": "social_cog_false_belief",
+  "score": 0.8625,
+  "duration_s": 31.8,
+  "timestamp": "2026-04-14T15:05:29.485206+00:00",
+  "details": {
+    "n_scenarios": 34,
+    "tier_scores": {
+      "1": 1.0,
+      "2": 1.0,
+      "3": 0.6667,
+      "4": 0.9167,
+      "5": 0.75
+    },
+    "tier_counts": {
+      "1": 4,
+      "2": 4,
+      "3": 6,
+      "4": 12,
+      "5": 8
+    }
+  }
+}

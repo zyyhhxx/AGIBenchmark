@@ -1,0 +1,17 @@
+{
+  "model": "meta.llama4-maverick-17b-instruct-v1:0",
+  "model_label": "Llama 4 Maverick 17B",
+  "benchmark": "social_cog_emotional_prosody",
+  "score": 0.3481,
+  "duration_s": 23.9,
+  "timestamp": "2026-04-14T14:30:32.029228+00:00",
+  "details": {
+    "easy_score": 0.25,
+    "medium_score": 0.5337,
+    "hard_score": 0.0616,
+    "false_alarm_rate": 0.8,
+    "n_items": 43,
+    "n_shift": 36,
+    "n_control": 7
+  }
+}

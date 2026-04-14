@@ -1,0 +1,25 @@
+{
+  "model": "anthropic.claude-opus-4-6-v1",
+  "model_label": "Claude Opus 4.6",
+  "benchmark": "social_cog_false_belief",
+  "score": 0.5833,
+  "duration_s": 472.0,
+  "timestamp": "2026-04-14T14:42:59.981459+00:00",
+  "details": {
+    "n_scenarios": 34,
+    "tier_scores": {
+      "1": 1.0,
+      "2": 1.0,
+      "3": 0.8333,
+      "4": 0.4167,
+      "5": 1.0
+    },
+    "tier_counts": {
+      "1": 4,
+      "2": 4,
+      "3": 6,
+      "4": 12,
+      "5": 8
+    }
+  }
+}

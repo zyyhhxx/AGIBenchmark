@@ -1,0 +1,17 @@
+{
+  "model": "deepseek.r1-v1:0",
+  "model_label": "DeepSeek-R1",
+  "benchmark": "social_cog_emotional_prosody",
+  "score": 0.3307,
+  "duration_s": 161.4,
+  "timestamp": "2026-04-14T14:28:10.749488+00:00",
+  "details": {
+    "easy_score": 0.625,
+    "medium_score": 0.374,
+    "hard_score": 0.0945,
+    "false_alarm_rate": 0.9,
+    "n_items": 43,
+    "n_shift": 36,
+    "n_control": 7
+  }
+}

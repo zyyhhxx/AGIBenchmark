@@ -1,0 +1,14 @@
+{
+  "model": "deepseek.r1-v1:0",
+  "model_label": "DeepSeek-R1",
+  "benchmark": "social_cog_sarcasm",
+  "score": 0.9761,
+  "duration_s": 90.7,
+  "timestamp": "2026-04-14T16:02:58.543165+00:00",
+  "details": {
+    "n_items": 40,
+    "auc": 1.0,
+    "calibration_error": 0.0463,
+    "threshold_accuracy": 0.95
+  }
+}
