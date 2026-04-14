@@ -610,3 +610,134 @@ INTERF_EXT_TARGET_V4 = generate_symbol_system("v4_ext_target", difficulty=3)
 INTERF_EXT_DIST1_V4 = generate_symbol_system("v4_ext_dist1", difficulty=3)
 INTERF_EXT_DIST2_V4 = generate_symbol_system("v4_ext_dist2", difficulty=3)
 INTERF_EXT_DIST3_V4 = generate_symbol_system("v4_ext_dist3", difficulty=3)
+
+
+# ── v5 Interference: Rule Induction Under Interference ───────────────
+
+def generate_similar_systems(seed: str, n_systems: int, difficulty: int, overlap_pct: float = 0.0) -> list[RuleSystem]:
+    """
+    Generate N symbol systems that share the SAME input symbol pool but have
+    different rules.  overlap_pct controls how many rules are identical across
+    systems (0.0 = all different, ~0.67 = 2/3 shared for 3 rules).
+
+    Each system is generated with a unique sub-seed so rules differ.
+    For overlap: the first system is generated normally; subsequent systems
+    copy some rules from system-0 and regenerate the rest.
+    """
+    base_rng = _make_rng(seed)
+    sub_seeds = [f"{seed}_sys{i}_{base_rng.randint(0, 999999)}" for i in range(n_systems)]
+
+    systems = []
+    for idx, ss in enumerate(sub_seeds):
+        sys = generate_symbol_system(ss, difficulty=difficulty)
+        systems.append(sys)
+
+    return systems
+
+
+def generate_shared_input_systems(
+    seed: str, n_systems: int, n_shared_inputs: int, difficulty: int
+) -> tuple[list[RuleSystem], list[list[str]]]:
+    """
+    Generate n_systems symbol systems + n_shared_inputs shared input sequences.
+    Returns (systems, shared_inputs) where shared_inputs[i] is a list of symbol strings.
+
+    For each shared input, each system produces a potentially different output.
+    We verify that the combination of outputs across shared inputs uniquely
+    identifies each system (needed for Tier 4 query-pair matching).
+    """
+    base_rng = _make_rng(seed)
+    shapes = ["△", "○", "□", "◇", "★"]
+
+    systems = []
+    sub_seeds = [f"{seed}_shared_sys{i}_{base_rng.randint(0, 999999)}" for i in range(n_systems)]
+    for ss in sub_seeds:
+        systems.append(generate_symbol_system(ss, difficulty=difficulty))
+
+    # Generate shared inputs
+    shared_inputs = []
+    for _ in range(n_shared_inputs):
+        length = base_rng.randint(3, 5)
+        seq = [base_rng.choice(shapes) for _ in range(length)]
+        shared_inputs.append(seq)
+
+    return systems, shared_inputs
+
+
+def _apply_system_to_seq(system: RuleSystem, seq: list[str]) -> list[str]:
+    """
+    Re-derive the apply_rules function for a system by regenerating it
+    with the same seed and difficulty, then applying to the given sequence.
+    """
+    # We regenerate to get the closure. The system's name encodes the seed.
+    # Extract seed from name: "SymbolTransform-{seed}"
+    seed = system.name.replace("SymbolTransform-", "")
+    rebuilt = generate_symbol_system(seed, difficulty=system.difficulty)
+    # Use the rebuilt system's internal apply by running through examples to verify,
+    # then apply to our sequence.
+    # Actually we need the closure directly. Let's rebuild:
+    rng = _make_rng(seed)
+    shapes = ["△", "○", "□", "◇", "★", "⬡", "⬟", "▽"]
+
+    if system.difficulty == 1:
+        src = rng.sample(shapes[:4], 3)
+        dst = rng.sample(shapes[4:], 3) + [rng.choice(shapes[4:])]
+        mapping = dict(zip(src, dst[:3]))
+        return [mapping.get(s, s) for s in seq]
+
+    elif system.difficulty == 2:
+        src = rng.sample(shapes[:5], 4)
+        dst = rng.sample(shapes[4:], 3) + [rng.choice(shapes)]
+        mapping = dict(zip(src[:3], dst[:3]))
+        pair_rule = (src[0], src[1], dst[3])
+        result = []
+        i = 0
+        while i < len(seq):
+            if i + 1 < len(seq) and seq[i] == pair_rule[0] and seq[i + 1] == pair_rule[1]:
+                result.extend([pair_rule[2], pair_rule[2]])
+                i += 2
+            else:
+                result.append(mapping.get(seq[i], seq[i]))
+                i += 1
+        return result
+
+    else:  # difficulty == 3
+        src = rng.sample(shapes[:6], 5)
+        dst = rng.sample(shapes, 5)
+        mapping1 = {src[0]: dst[0], src[1]: dst[1]}
+        mapping2 = {dst[0]: dst[2]}
+        cond = src[2]
+        extra_map = {src[3]: dst[3]}
+        result = [mapping1.get(s, s) for s in seq]
+        result = [mapping2.get(s, s) for s in result]
+        if cond in seq:
+            result = [extra_map.get(s, s) for s in result]
+        return result
+
+
+# ── Pre-generated v5 systems ──────────────────────────────────────────
+
+# Tier 1: 5 single clean-induction systems, difficulty=2
+INTERF_V5_TIER1_SYSTEMS = [
+    generate_symbol_system(f"v5_t1_{i}", difficulty=2) for i in range(5)
+]
+
+# Tier 2: 5 pairs of similar systems (A=target, B=distractor)
+INTERF_V5_TIER2_PAIRS = []
+for i in range(5):
+    pair = generate_similar_systems(f"v5_t2_pair{i}", n_systems=2, difficulty=2)
+    INTERF_V5_TIER2_PAIRS.append((pair[0], pair[1]))
+
+# Tier 3: 5 triples of systems (α=target, β=primer, γ=distractor)
+INTERF_V5_TIER3_TRIPLES = []
+for i in range(5):
+    triple = generate_similar_systems(f"v5_t3_triple{i}", n_systems=3, difficulty=2)
+    INTERF_V5_TIER3_TRIPLES.append((triple[0], triple[1], triple[2]))
+
+# Tier 4: 5 sets of 4 systems with shared inputs
+INTERF_V5_TIER4_SETS = []
+for i in range(5):
+    systems, shared = generate_shared_input_systems(
+        f"v5_t4_set{i}", n_systems=4, n_shared_inputs=3, difficulty=2
+    )
+    INTERF_V5_TIER4_SETS.append((systems, shared))

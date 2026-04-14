@@ -1,50 +1,36 @@
 """
-Learning Benchmark 3: Proactive & Retroactive Interference (v4)
+Learning Benchmark 3: Rule Induction Under Interference (v5)
 
-Tests whether the presence of competing learned systems interferes
-with the correct application of a target system.
+Core insight: never state rules as text. Force the model to INDUCE rules
+from input→output examples. When induction competes with similar-looking
+examples from different systems, interference becomes real.
 
-Cognitive Science Basis:
-- Underwood (1957): Proactive inhibition in retention
-- Postman (1961): Retroactive inhibition
-- Anderson (2003): Retrieval-induced forgetting
-- Wickens (1972): Release from proactive interference
+Tier Structure:
+- Tier 1 (0.10): Clean induction — 5 examples from ONE system, induce & apply
+- Tier 2 (0.25): Labeled groups — 2 groups (A/B), 4 examples each, same symbol set
+- Tier 3 (0.35): Interleaved + anti-pattern priming — 3 systems scattered, worked
+                  example of WRONG system primes incorrect procedure
+- Tier 4 (0.30): Unlabeled clustering — 4 systems, 12 unlabeled examples, query pair
+                  identifies target system
 
-v4 Design:
-- Easy (0.10):  1 distractor, difficulty=1 (same as v3)
-- Medium (0.25): cross-contamination — shared symbol pool, different rules for shared symbols
-- Hard (0.35):  3 distractors, difficulty=3, DELAYED interference (5 filler items between
-                all-systems presentation and target test), plus rule-conflict items
-- Extreme (0.30): 4 systems all difficulty=3, interleaved 6-examples-per-distractor vs
-                  2-examples-for-target, test on the LEAST-presented system
-
-Per tier: score = 0.30 * control + 0.70 * interference_accuracy
-Composite = 0.10 * easy + 0.25 * medium + 0.35 * hard + 0.30 * extreme
+Composite = 0.10 * tier1 + 0.25 * tier2 + 0.35 * tier3 + 0.30 * tier4
 """
 
 import kaggle_benchmarks as kbench
-from dataclasses import dataclass
 import re
 import json
+import random
+import hashlib
 from data.rule_systems import (
-    INTERF_EASY_TARGET_V4,
-    INTERF_EASY_DISTRACT_V4,
-    INTERF_MED_TARGET_V4,
-    INTERF_MED_DISTRACT_V4,
-    INTERF_HARD_TARGET_V4,
-    INTERF_HARD_DIST1_V4,
-    INTERF_HARD_DIST2_V4,
-    INTERF_HARD_DIST3_V4,
-    INTERF_HARD_FILLER_V4,
-    INTERF_EXT_TARGET_V4,
-    INTERF_EXT_DIST1_V4,
-    INTERF_EXT_DIST2_V4,
-    INTERF_EXT_DIST3_V4,
+    INTERF_V5_TIER1_SYSTEMS,
+    INTERF_V5_TIER2_PAIRS,
+    INTERF_V5_TIER3_TRIPLES,
+    INTERF_V5_TIER4_SETS,
+    _apply_system_to_seq,
 )
 
 
 def _strip_think(text: str) -> str:
-    """Strip <think>...</think> tags from reasoning model output."""
     return re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL).strip()
 
 
@@ -70,321 +56,231 @@ def _extract_answer(raw: str) -> str:
         return cleaned
 
 
-def _format_system(system, max_examples: int = 6) -> str:
-    """Format a rule system for prompt inclusion."""
-    text = f"**{system.name}**\nRules:\n"
-    for r in system.rules:
-        text += f"  - {r}\n"
-    text += "Examples:\n"
-    for ex in system.examples[:max_examples]:
-        text += f"  {ex['input']} → {ex['output']}\n"
-    return text
+def _fmt_examples(system, n: int) -> str:
+    lines = []
+    for ex in system.examples[:n]:
+        lines.append(f"{ex['input']} → {ex['output']}")
+    return "\n".join(lines)
 
 
-def _test_items(llm, system, context: str, prefix: str) -> float:
-    """Test model on system's test items with given context. Returns accuracy."""
+def _make_rng(seed: str) -> random.Random:
+    h = int(hashlib.sha256(seed.encode()).hexdigest(), 16)
+    return random.Random(h)
+
+
+# ── Tier 1: Clean Induction ─────────────────────────────────────────
+
+def run_tier1(llm) -> float:
     correct = 0
-    items = system.test_items
-
-    for ti, test_item in enumerate(items):
-        with kbench.chats.new(f"{prefix}_{ti}"):
-            prompt = (
-                context
-                + f"\nInput: {test_item['input']}\n\n"
-                + f"Respond with ONLY: {{\"answer\": \"<output>\"}}"
-            )
+    total = 0
+    for si, system in enumerate(INTERF_V5_TIER1_SYSTEMS):
+        test_item = system.test_items[0]
+        prompt = (
+            "Study these transformations:\n"
+            + _fmt_examples(system, 5)
+            + f"\n\nApplying the same pattern:\n{test_item['input']} → ?\n\n"
+            + 'Respond with ONLY: {"answer": "<output>"}'
+        )
+        with kbench.chats.new(f"t1_{si}"):
             raw = llm.prompt(prompt)
             answer = _extract_answer(raw)
             if check_output(answer, test_item["output"]):
                 correct += 1
-
-    return correct / len(items) if items else 0
-
-
-# ── Tier runners ─────────────────────────────────────────────────────
-
-def run_easy_tier(llm) -> dict:
-    """Easy: 1 distractor, difficulty=1 (same as v3)."""
-    target = INTERF_EASY_TARGET_V4
-    distractor = INTERF_EASY_DISTRACT_V4
-    target_text = _format_system(target)
-
-    ctrl_context = (
-        f"You have learned the following rule system:\n\n{target_text}\n"
-        f"Apply the **{target.name}** rules to this input."
-    )
-    control = _test_items(llm, target, ctrl_context, "easy_ctrl")
-
-    all_text = _format_system(target, 6) + "\n" + _format_system(distractor, 6)
-    interf_context = (
-        f"You have learned ALL of these rule systems:\n\n{all_text}\n"
-        f"Now apply ONLY the **{target.name}** rules (ignore all other systems) to this input."
-    )
-    interference = _test_items(llm, target, interf_context, "easy_interf")
-
-    tier_score = round(0.30 * control + 0.70 * interference, 4)
-    return {"control": control, "interference": interference, "tier_score": tier_score}
+            total += 1
+    return correct / total if total else 0
 
 
-def run_medium_tier(llm) -> dict:
-    """
-    Medium: cross-contamination.
-    Both systems share some symbols but apply DIFFERENT rules to them.
-    Adds 2 cross-contamination items where the correct answer under the target
-    coincidentally matches what the distractor system would produce — testing
-    whether the model is truly applying the right system or just guessing.
-    """
-    target = INTERF_MED_TARGET_V4
-    distractor = INTERF_MED_DISTRACT_V4
-    target_text = _format_system(target)
+# ── Tier 2: Labeled Groups ──────────────────────────────────────────
 
-    ctrl_context = (
-        f"You have learned the following rule system:\n\n{target_text}\n"
-        f"Apply the **{target.name}** rules to this input."
-    )
-    control = _test_items(llm, target, ctrl_context, "med_ctrl")
-
-    # Cross-contamination: present both systems with explicit note about shared symbols
-    shared_symbols_note = (
-        "\n⚠️  WARNING: These two systems share some symbols but apply DIFFERENT rules to them. "
-        "You must apply EXACTLY the rules of the specified system, not the other.\n"
-    )
-    all_text = (
-        _format_system(target, 6)
-        + "\n"
-        + _format_system(distractor, 6)
-        + shared_symbols_note
-    )
-
-    # Cross-contamination test items: use the first 3 target test items normally,
-    # but also note that the distractor's answer for those inputs may look plausible
-    contamination_note = (
-        "\nNote: for some inputs, both systems may produce similar-looking outputs. "
-        "Only the exact output of the specified system is correct.\n"
-    )
-    interf_context = (
-        f"You have learned ALL of these rule systems:\n\n{all_text}"
-        f"{contamination_note}\n"
-        f"Now apply ONLY the **{target.name}** rules to this input."
-    )
-    interference = _test_items(llm, target, interf_context, "med_interf")
-
-    tier_score = round(0.30 * control + 0.70 * interference, 4)
-    return {"control": control, "interference": interference, "tier_score": tier_score}
+def run_tier2(llm) -> float:
+    correct = 0
+    total = 0
+    for pi, (target, distractor) in enumerate(INTERF_V5_TIER2_PAIRS):
+        test_item = target.test_items[0]
+        prompt = (
+            "Two transformation systems are shown below.\n\n"
+            "--- Group A ---\n"
+            + _fmt_examples(target, 4)
+            + "\n\n--- Group B ---\n"
+            + _fmt_examples(distractor, 4)
+            + f"\n\nApplying the GROUP A pattern:\n{test_item['input']} → ?\n\n"
+            + 'Respond with ONLY: {"answer": "<output>"}'
+        )
+        with kbench.chats.new(f"t2_{pi}"):
+            raw = llm.prompt(prompt)
+            answer = _extract_answer(raw)
+            if check_output(answer, test_item["output"]):
+                correct += 1
+            total += 1
+    return correct / total if total else 0
 
 
-def run_hard_tier(llm) -> dict:
-    """
-    Hard: 3 distractors, difficulty=3, DELAYED interference.
+# ── Tier 3: Interleaved + Anti-Pattern Priming ──────────────────────
 
-    Protocol:
-    1. Present all 4 systems (target + 3 distractors) with examples
-    2. Show 5 filler items from a 5th unrelated system (delay/interference buffer)
-    3. THEN present the test item and ask for target system output
-    4. Also includes rule-conflict framing: distractors are noted to contradict the target
-    """
-    target = INTERF_HARD_TARGET_V4
-    dist1 = INTERF_HARD_DIST1_V4
-    dist2 = INTERF_HARD_DIST2_V4
-    dist3 = INTERF_HARD_DIST3_V4
-    filler = INTERF_HARD_FILLER_V4
+def run_tier3(llm) -> float:
+    correct = 0
+    total = 0
+    for ti, (alpha, beta, gamma) in enumerate(INTERF_V5_TIER3_TRIPLES):
+        rng = _make_rng(f"t3_shuffle_{ti}")
 
-    target_text = _format_system(target)
-    ctrl_context = (
-        f"You have learned the following rule system:\n\n{target_text}\n"
-        f"Apply the **{target.name}** rules to this input."
-    )
-    control = _test_items(llm, target, ctrl_context, "hard_ctrl")
+        # Build interleaved examples: 3 per system, scattered
+        tagged = []
+        for ex in alpha.examples[:3]:
+            tagged.append(f"[α] {ex['input']} → {ex['output']}")
+        for ex in beta.examples[:3]:
+            tagged.append(f"[β] {ex['input']} → {ex['output']}")
+        for ex in gamma.examples[:3]:
+            tagged.append(f"[γ] {ex['input']} → {ex['output']}")
+        rng.shuffle(tagged)
 
-    # Build the delayed interference context
-    n_ex = 3  # fewer examples per system to keep context bounded
-    all_systems_text = (
-        _format_system(target, n_ex)
-        + "\n" + _format_system(dist1, n_ex)
-        + "\n" + _format_system(dist2, n_ex)
-        + "\n" + _format_system(dist3, n_ex)
-    )
-
-    # Filler items (delay buffer — 5 items from a separate system)
-    filler_block = "\n**[Unrelated processing task — complete before the final test]**\n"
-    filler_block += "Process the following items using the most recently shown system:\n"
-    for item in filler.test_items[:5]:
-        filler_block += f"  {item['input']} → {item['output']}\n"
-    filler_block += "(Above items processed. Now return to the target system.)\n"
-
-    # Rule-conflict note
-    conflict_note = (
-        "\n⚠️  Note: Some distractors have rules that DIRECTLY CONTRADICT the target system's rules. "
-        "Do NOT let these override your memory of the target system.\n"
-    )
-
-    def build_delayed_context(test_input):
-        return (
-            f"You have learned ALL of the following rule systems:\n\n"
-            f"{all_systems_text}"
-            f"{conflict_note}"
-            f"{filler_block}\n"
-            f"After the above processing, apply ONLY the **{target.name}** rules "
-            f"(ignore all other systems) to this input."
+        # Build worked example of β (the WRONG system) as primer
+        beta_test = beta.test_items[0]
+        worked = (
+            f"\nHere is a worked example of [β]:\n"
+            f"Input: {beta_test['input']}\n"
+            f"Step 1: Apply first transformation rule\n"
+            f"Step 2: Apply second transformation rule\n"
+            f"Output: {beta_test['output']}\n"
         )
 
-    # Run delayed interference
-    correct = 0
-    items = target.test_items
-    for ti, test_item in enumerate(items):
-        ctx = build_delayed_context(test_item["input"])
-        with kbench.chats.new(f"hard_interf_{ti}"):
-            prompt = ctx + f"\nInput: {test_item['input']}\n\nRespond with ONLY: {{\"answer\": \"<output>\"}}"
+        test_item = alpha.test_items[0]
+        prompt = (
+            "Observe these transformations from three systems:\n\n"
+            + "\n".join(tagged)
+            + worked
+            + f"\nNow apply the [α] pattern:\n{test_item['input']} → ?\n\n"
+            + 'Respond with ONLY: {"answer": "<output>"}'
+        )
+        with kbench.chats.new(f"t3_{ti}"):
             raw = llm.prompt(prompt)
             answer = _extract_answer(raw)
             if check_output(answer, test_item["output"]):
                 correct += 1
-    interference = correct / len(items) if items else 0
-
-    tier_score = round(0.30 * control + 0.70 * interference, 4)
-    return {"control": control, "interference": interference, "tier_score": tier_score}
+            total += 1
+    return correct / total if total else 0
 
 
-def run_extreme_tier(llm) -> dict:
-    """
-    Extreme: 4 systems all at difficulty=3.
-    The target is the LEAST-presented system: only 2 examples.
-    Distractors each get 6 examples — 3x more exposure.
-    Examples from all systems are INTERLEAVED in the prompt.
-    Model must identify and apply the under-represented system.
-    """
-    target = INTERF_EXT_TARGET_V4
-    dist1 = INTERF_EXT_DIST1_V4
-    dist2 = INTERF_EXT_DIST2_V4
-    dist3 = INTERF_EXT_DIST3_V4
+# ── Tier 4: Unlabeled Clustering ────────────────────────────────────
 
-    target_text = _format_system(target)
-    ctrl_context = (
-        f"You have learned the following rule system:\n\n{target_text}\n"
-        f"Apply the **{target.name}** rules to this input."
-    )
-    control = _test_items(llm, target, ctrl_context, "ext_ctrl")
+def run_tier4(llm) -> float:
+    correct = 0
+    total = 0
+    for si, (systems, shared_inputs) in enumerate(INTERF_V5_TIER4_SETS):
+        rng = _make_rng(f"t4_shuffle_{si}")
 
-    # Build interleaved prompt: 2 target examples mixed with 6 each from distractors
-    target_exs = target.examples[:2]
-    d1_exs = dist1.examples[:6]
-    d2_exs = dist2.examples[:6]
-    d3_exs = dist3.examples[:6]
+        # Compute outputs for each system on each shared input
+        all_transformations = []  # (input_str, output_str, system_idx)
+        outputs_by_system = {}  # system_idx -> list of output strings
+        for sys_idx, sys in enumerate(systems):
+            outputs_by_system[sys_idx] = []
+            for seq in shared_inputs:
+                out = _apply_system_to_seq(sys, seq)
+                inp_str = " ".join(seq)
+                out_str = " ".join(out)
+                all_transformations.append((inp_str, out_str, sys_idx))
+                outputs_by_system[sys_idx].append(out_str)
 
-    # Interleave: d1[0], d2[0], target[0], d3[0], d1[1], d2[1], target[1], d3[1], d1[2..5], d2[2..5], d3[2..5]
-    interleaved_examples = []
-    interleaved_examples.append(f"  [{dist1.name}] {d1_exs[0]['input']} → {d1_exs[0]['output']}")
-    interleaved_examples.append(f"  [{dist2.name}] {d2_exs[0]['input']} → {d2_exs[0]['output']}")
-    interleaved_examples.append(f"  [{target.name}] {target_exs[0]['input']} → {target_exs[0]['output']}")
-    interleaved_examples.append(f"  [{dist3.name}] {d3_exs[0]['input']} → {d3_exs[0]['output']}")
-    interleaved_examples.append(f"  [{dist1.name}] {d1_exs[1]['input']} → {d1_exs[1]['output']}")
-    interleaved_examples.append(f"  [{dist2.name}] {d2_exs[1]['input']} → {d2_exs[1]['output']}")
-    interleaved_examples.append(f"  [{target.name}] {target_exs[1]['input']} → {target_exs[1]['output']}")
-    interleaved_examples.append(f"  [{dist3.name}] {d3_exs[1]['input']} → {d3_exs[1]['output']}")
-    for i in range(2, 6):
-        interleaved_examples.append(f"  [{dist1.name}] {d1_exs[i]['input']} → {d1_exs[i]['output']}")
-        interleaved_examples.append(f"  [{dist2.name}] {d2_exs[i]['input']} → {d2_exs[i]['output']}")
-        interleaved_examples.append(f"  [{dist3.name}] {d3_exs[i]['input']} → {d3_exs[i]['output']}")
+        # Verify uniqueness: each system should have unique output signature
+        sigs = {}
+        for sys_idx, outs in outputs_by_system.items():
+            sig = tuple(outs)
+            if sig in sigs:
+                # Collision — skip this set
+                continue
+            sigs[sig] = sys_idx
 
-    # System headers
-    system_headers = (
-        f"**Systems you have learned:**\n"
-        f"1. {target.name}: {target.description}\n"
-        f"   Rules: {' | '.join(target.rules)}\n\n"
-        f"2. {dist1.name}: {dist1.description}\n"
-        f"   Rules: {' | '.join(dist1.rules)}\n\n"
-        f"3. {dist2.name}: {dist2.description}\n"
-        f"   Rules: {' | '.join(dist2.rules)}\n\n"
-        f"4. {dist3.name}: {dist3.description}\n"
-        f"   Rules: {' | '.join(dist3.rules)}\n\n"
-    )
+        if len(sigs) < len(systems):
+            # Can't disambiguate — skip
+            continue
 
-    interleaved_block = "\n**Interleaved examples from all systems:**\n" + "\n".join(interleaved_examples)
+        # Pick target system (first one)
+        target_idx = 0
+        target_sys = systems[target_idx]
 
-    extreme_note = (
-        f"\n⚠️  You saw far fewer examples of **{target.name}** than the other systems. "
-        f"Apply ONLY the **{target.name}** rules to the test item below.\n"
-    )
+        # Query pair: use a shared input to identify the target
+        query_inp = " ".join(shared_inputs[0])
+        query_out = outputs_by_system[target_idx][0]
 
-    interf_context = (
-        system_headers
-        + interleaved_block
-        + extreme_note
-        + f"Now apply ONLY the **{target.name}** rules to this input."
-    )
-    interference = _test_items(llm, target, interf_context, "ext_interf")
+        # Verify query pair uniquely identifies target
+        matching = [idx for idx, outs in outputs_by_system.items() if outs[0] == query_out]
+        if len(matching) != 1:
+            continue  # ambiguous, skip
 
-    tier_score = round(0.30 * control + 0.70 * interference, 4)
-    return {"control": control, "interference": interference, "tier_score": tier_score}
+        # Build unlabeled block (shuffled)
+        lines = []
+        for inp_str, out_str, _ in all_transformations:
+            lines.append(f"{inp_str} → {out_str}")
+        rng.shuffle(lines)
+
+        # Test item: use a test item from the target system
+        test_item = target_sys.test_items[0]
+
+        prompt = (
+            f"{'Twelve' if len(all_transformations) == 12 else str(len(all_transformations))} "
+            f"transformations are shown (from several different systems, unlabeled):\n\n"
+            + "\n".join(lines)
+            + f"\n\nThis transformation follows one of the patterns above:\n"
+            + f"{query_inp} → {query_out}\n\n"
+            + f"Applying that SAME pattern:\n{test_item['input']} → ?\n\n"
+            + 'Respond with ONLY: {"answer": "<output>"}'
+        )
+        with kbench.chats.new(f"t4_{si}"):
+            raw = llm.prompt(prompt)
+            answer = _extract_answer(raw)
+            if check_output(answer, test_item["output"]):
+                correct += 1
+            total += 1
+    return correct / total if total else 0
 
 
-@kbench.task(name="Proactive & Retroactive Interference v4")
+@kbench.task(name="Rule Induction Under Interference v5")
 def learning_interference(llm) -> float:
     """
-    Proactive & Retroactive Interference Benchmark (v4).
+    Rule Induction Under Interference Benchmark (v5).
 
-    Four tiers:
-    - Easy (0.10):    1 distractor, difficulty=1
-    - Medium (0.25):  cross-contamination (shared symbols, different rules)
-    - Hard (0.35):    3 distractors, difficulty=3, delayed interference + rule conflicts
-    - Extreme (0.30): 4 systems difficulty=3, interleaved (target only 2 examples vs 6 each for distractors)
+    Four tiers testing rule induction with increasing interference:
+    - Tier 1 (0.10): Clean induction from examples
+    - Tier 2 (0.25): Labeled groups with overlapping symbols
+    - Tier 3 (0.35): Interleaved systems + wrong-system priming
+    - Tier 4 (0.30): Unlabeled clustering + query-pair identification
 
-    Per tier: score = 0.30 * control + 0.70 * interference_accuracy
-    Composite = 0.10 * easy + 0.25 * medium + 0.35 * hard + 0.30 * extreme
+    Composite = 0.10 * tier1 + 0.25 * tier2 + 0.35 * tier3 + 0.30 * tier4
     """
 
     print("\n" + "=" * 60)
-    print("LEARNING INTERFERENCE BENCHMARK v4")
+    print("RULE INDUCTION UNDER INTERFERENCE v5")
     print("=" * 60)
 
-    # ── Easy Tier ──
-    print("\n--- EASY TIER (1 distractor, difficulty=1) ---")
-    easy = run_easy_tier(llm)
-    print(f"  Control: {easy['control']:.1%}")
-    print(f"  With distractor: {easy['interference']:.1%}")
-    print(f"  Tier score: {easy['tier_score']:.4f}")
+    # Tier 1
+    print("\n--- TIER 1: Clean Induction (5 items) ---")
+    t1 = run_tier1(llm)
+    print(f"  Accuracy: {t1:.1%}")
 
-    # ── Medium Tier ──
-    print("\n--- MEDIUM TIER (cross-contamination, difficulty=2) ---")
-    medium = run_medium_tier(llm)
-    print(f"  Control: {medium['control']:.1%}")
-    print(f"  With cross-contamination: {medium['interference']:.1%}")
-    print(f"  Tier score: {medium['tier_score']:.4f}")
+    # Tier 2
+    print("\n--- TIER 2: Labeled Groups (5 items) ---")
+    t2 = run_tier2(llm)
+    print(f"  Accuracy: {t2:.1%}")
 
-    # ── Hard Tier ──
-    print("\n--- HARD TIER (3 distractors, delayed interference, difficulty=3) ---")
-    hard = run_hard_tier(llm)
-    print(f"  Control: {hard['control']:.1%}")
-    print(f"  With 3 distractors + delay: {hard['interference']:.1%}")
-    print(f"  Tier score: {hard['tier_score']:.4f}")
+    # Tier 3
+    print("\n--- TIER 3: Interleaved + Priming (5 items) ---")
+    t3 = run_tier3(llm)
+    print(f"  Accuracy: {t3:.1%}")
 
-    # ── Extreme Tier ──
-    print("\n--- EXTREME TIER (4 systems, interleaved, under-presented target) ---")
-    extreme = run_extreme_tier(llm)
-    print(f"  Control: {extreme['control']:.1%}")
-    print(f"  Extreme interference: {extreme['interference']:.1%}")
-    print(f"  Tier score: {extreme['tier_score']:.4f}")
+    # Tier 4
+    print("\n--- TIER 4: Unlabeled Clustering (up to 5 items) ---")
+    t4 = run_tier4(llm)
+    print(f"  Accuracy: {t4:.1%}")
 
-    # ── Composite ──
-    score = round(
-        0.10 * easy["tier_score"]
-        + 0.25 * medium["tier_score"]
-        + 0.35 * hard["tier_score"]
-        + 0.30 * extreme["tier_score"],
-        4
-    )
+    # Composite
+    score = round(0.10 * t1 + 0.25 * t2 + 0.35 * t3 + 0.30 * t4, 4)
     score = max(0.0, min(1.0, score))
 
     print(f"\n{'=' * 60}")
     print(f"COMPOSITE SCORE: {score:.4f}")
-    print(f"  Easy:    {easy['tier_score']:.4f} × 0.10 = {0.10 * easy['tier_score']:.4f}")
-    print(f"  Medium:  {medium['tier_score']:.4f} × 0.25 = {0.25 * medium['tier_score']:.4f}")
-    print(f"  Hard:    {hard['tier_score']:.4f} × 0.35 = {0.35 * hard['tier_score']:.4f}")
-    print(f"  Extreme: {extreme['tier_score']:.4f} × 0.30 = {0.30 * extreme['tier_score']:.4f}")
+    print(f"  Tier 1: {t1:.4f} × 0.10 = {0.10 * t1:.4f}")
+    print(f"  Tier 2: {t2:.4f} × 0.25 = {0.25 * t2:.4f}")
+    print(f"  Tier 3: {t3:.4f} × 0.35 = {0.35 * t3:.4f}")
+    print(f"  Tier 4: {t4:.4f} × 0.30 = {0.30 * t4:.4f}")
     print(f"{'=' * 60}")
 
     return score
-
-
-# ─── Run ────────────────────────────────────────────────────────────
-learning_interference.run(llm=kbench.llm)
