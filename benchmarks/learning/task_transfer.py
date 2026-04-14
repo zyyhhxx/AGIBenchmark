@@ -1,16 +1,22 @@
 """
-Learning Benchmark 2: Near vs. Far Transfer
+Learning Benchmark 2: Near vs. Far Transfer (v3)
 
-Tests whether models can generalize learned rules to novel contexts.
-Near transfer: same structure, different surface features.
-Far transfer: same principle, completely different domain.
+Tests whether models can genuinely transfer learned structure to novel contexts,
+NOT just follow explicit instructions.
 
 Cognitive Science Basis:
 - Thorndike & Woodworth (1901): Transfer of practice
 - Barnett & Ceci (2002): Taxonomy of far transfer
-- Genuine learning should show some transfer; pure memorization shows none.
+- Anderson (1987): ACT* theory — procedural vs. declarative transfer
 
-Score: Weighted transfer performance across distances.
+Core Problem Fixed (v1/v2):
+Previous versions gave the model all rules in EVERY condition — making it
+instruction following, not genuine transfer. v3 forces actual abstraction:
+- Near transfer: same domain but INCOMPLETE rules (1 rule omitted)
+- Far transfer: different domain, NO rules — only 2 worked examples
+- Zero-shot structural: completely different representation, only 1 example
+
+Score = weighted accuracy across 4 conditions.
 """
 
 import kaggle_benchmarks as kbench
@@ -19,7 +25,10 @@ import numpy as np
 import re
 import json
 from data.rule_systems import (
-    generate_symbol_system, generate_number_system
+    TRANSFER_TRAIN_V3,
+    TRANSFER_NEAR_V3,
+    TRANSFER_FAR_V3,
+    TRANSFER_ZERO_SHOT_V3,
 )
 
 
@@ -40,154 +49,185 @@ def check_output(model_output: str, expected: str) -> bool:
     return e in m or m in e
 
 
-# ── Transfer Test Sets ──
-# Training system: symbol transform (difficulty 2)
-# Near transfer: same type (symbol) with different symbols
-# Far transfer: number system with structurally analogous rules
-
-TRAIN_SYSTEM = generate_symbol_system("transfer_train_v2", difficulty=2)
-NEAR_SYSTEM = generate_symbol_system("transfer_near_v2", difficulty=2)
-
-# For far transfer: we teach the symbol system, then test on number
-# system that has analogous structure but different domain
-FAR_SYSTEM = generate_number_system("transfer_far_v2", difficulty=2)
+def _extract_answer(raw: str) -> str:
+    cleaned = _strip_think(raw)
+    cleaned = re.sub(r'//.*', '', cleaned)
+    try:
+        parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
+        return str(parsed.get("answer", cleaned))
+    except Exception:
+        return cleaned
 
 
-@kbench.task(name="Near & Far Transfer")
+# ── Build training block (full rules + 10 examples) ─────────────────
+
+def _full_system_block(system, max_examples: int = 10) -> str:
+    block = f"**Rule System: {system.name}**\n"
+    block += f"Description: {system.description}\n\n"
+    block += "**Rules:**\n"
+    for r in system.rules:
+        block += f"  - {r}\n"
+    block += "\n**Examples:**\n"
+    for ex in system.examples[:max_examples]:
+        block += f"  Input: {ex['input']}  →  Output: {ex['output']}\n"
+    return block
+
+
+@kbench.task(name="Near & Far Transfer v3")
 def learning_transfer(llm) -> float:
     """
-    Near vs. Far Transfer Benchmark.
+    Near vs. Far Transfer Benchmark (v3).
 
-    Train on one rule system, then test transfer to:
-    1. Identical: same system, new test items (baseline)
-    2. Near: same domain, different surface features
-    3. Far: different domain, structurally similar rules
+    Four conditions with increasing transfer distance:
+    1. Identical (weight 0.15): same system, all rules given, held-out items
+    2. Near transfer (weight 0.25): same domain (symbol), INCOMPLETE rules (1 omitted)
+    3. Far transfer (weight 0.30): different domain (number), NO rules — 2 worked examples only
+    4. Zero-shot structural (weight 0.30): stateful system, NO rules — 1 worked example only
 
-    Score = 0.30 * identical_acc + 0.35 * near_acc + 0.35 * far_acc
-
-    Transfer ratio = far_acc / identical_acc measures genuine generalization.
+    Score = 0.15 * identical + 0.25 * near + 0.30 * far + 0.30 * zero_shot
     """
 
-    # Build training prompt (10 examples from training system)
-    training_examples = TRAIN_SYSTEM.examples[:10]
-    train_block = f"**Rule System: {TRAIN_SYSTEM.name}**\n\n"
-    train_block += f"Description: {TRAIN_SYSTEM.description}\n\n"
-    train_block += "**Rules:**\n"
-    for r in TRAIN_SYSTEM.rules:
-        train_block += f"- {r}\n"
-    train_block += "\n**Examples:**\n"
-    for ex in training_examples:
-        train_block += f"  Input: {ex['input']}  →  Output: {ex['output']}\n"
-
+    train_block = _full_system_block(TRANSFER_TRAIN_V3, max_examples=10)
     results = {}
 
-    # ── Condition 1: Identical (same system, held-out test items) ──
+    # ── Condition 1: Identical ─────────────────────────────────────
+    # Same system, all rules given, held-out test items. Baseline.
     condition_results = []
-    for ti, test_item in enumerate(TRAIN_SYSTEM.test_items):
+    for ti, test_item in enumerate(TRANSFER_TRAIN_V3.test_items):
         with kbench.chats.new(f"identical_{ti}"):
             prompt = (
-                train_block +
-                f"\nApply the rules to this new input:\n"
+                f"You have learned the following rule system:\n\n{train_block}\n"
+                f"Apply the rules to this new input:\n"
                 f"Input: {test_item['input']}\n\n"
                 f"Respond with ONLY: {{\"answer\": \"<output>\", \"reasoning\": \"<steps>\"}}"
             )
             raw = llm.prompt(prompt)
-            cleaned = _strip_think(raw)
-            cleaned = re.sub(r'//.*', '', cleaned)
-            try:
-                parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
-                answer = str(parsed.get("answer", cleaned))
-            except Exception:
-                answer = cleaned
-
+            answer = _extract_answer(raw)
             condition_results.append(check_output(answer, test_item["output"]))
     results["identical"] = sum(condition_results) / len(condition_results)
 
-    # ── Condition 2: Near Transfer (same domain, different specifics) ──
-    # Show training system, then test on NEAR system items with NEAR rules revealed
-    near_block = f"\n\n**New Rule System: {NEAR_SYSTEM.name}**\n"
-    near_block += f"Description: {NEAR_SYSTEM.description}\n\n"
-    near_block += "**Rules:**\n"
-    for r in NEAR_SYSTEM.rules:
-        near_block += f"- {r}\n"
-    near_block += "\n(No examples provided — use your understanding from the previous system.)\n"
+    # ── Condition 2: Near Transfer ─────────────────────────────────
+    # Same domain (symbol), but 1 rule is OMITTED from the new system.
+    # Model must infer the missing rule from structural similarity to training.
+    near_block = f"\n**New Rule System (similar domain): {TRANSFER_NEAR_V3.name}**\n"
+    near_block += f"Description: {TRANSFER_NEAR_V3.description}\n\n"
+    near_block += "**Rules (note: one rule has been omitted — infer it from context):**\n"
+    for r in TRANSFER_NEAR_V3.rules:
+        near_block += f"  - {r}\n"
+    near_block += "\n(No worked examples provided — use structural analogy from the training system above.)\n"
 
     condition_results = []
-    for ti, test_item in enumerate(NEAR_SYSTEM.test_items):
+    for ti, test_item in enumerate(TRANSFER_NEAR_V3.test_items):
         with kbench.chats.new(f"near_{ti}"):
             prompt = (
-                f"You previously learned a rule system. Now apply a similar but different system.\n\n"
-                f"**Previous system for reference:**\n{train_block}\n"
+                f"You previously learned a symbol transformation system:\n\n"
+                f"{train_block}\n"
+                f"Now apply a similar system where ONE rule has been deliberately omitted.\n"
+                f"Infer the missing rule from the structural similarity to the training system above.\n"
                 f"{near_block}\n"
-                f"Apply the NEW rules to:\nInput: {test_item['input']}\n\n"
-                f"Respond with ONLY: {{\"answer\": \"<output>\", \"reasoning\": \"<steps>\"}}"
+                f"Apply the NEW system's rules (inferring the omitted rule) to:\n"
+                f"Input: {test_item['input']}\n\n"
+                f"Respond with ONLY: {{\"answer\": \"<output>\", \"reasoning\": \"<inferred rule + steps>\"}}"
             )
             raw = llm.prompt(prompt)
-            cleaned = _strip_think(raw)
-            cleaned = re.sub(r'//.*', '', cleaned)
-            try:
-                parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
-                answer = str(parsed.get("answer", cleaned))
-            except Exception:
-                answer = cleaned
-
+            answer = _extract_answer(raw)
             condition_results.append(check_output(answer, test_item["output"]))
     results["near"] = sum(condition_results) / len(condition_results)
 
-    # ── Condition 3: Far Transfer (different domain) ──
-    far_block = f"\n\n**New Rule System: {FAR_SYSTEM.name}**\n"
-    far_block += f"Description: {FAR_SYSTEM.description}\n\n"
-    far_block += "**Rules:**\n"
-    for r in FAR_SYSTEM.rules:
-        far_block += f"- {r}\n"
-    far_block += "\n(No examples provided — use your general learning ability.)\n"
+    # ── Condition 3: Far Transfer ──────────────────────────────────
+    # Different domain (number system). NO explicit rules given.
+    # Only 2 worked examples + description. Model must abstract principles.
+    far_block = f"\n**New Rule System (different domain): {TRANSFER_FAR_V3.name}**\n"
+    far_block += f"Description: {TRANSFER_FAR_V3.description}\n\n"
+    far_block += "**NO rules provided.** Infer the operators from these 2 worked examples:\n"
+    for ex in TRANSFER_FAR_V3.examples[:2]:
+        far_block += f"  Input: {ex['input']}  →  Output: {ex['output']}\n"
+    far_block += "\n(You must deduce how the operators work from the examples above.)\n"
 
     condition_results = []
-    for ti, test_item in enumerate(FAR_SYSTEM.test_items):
+    for ti, test_item in enumerate(TRANSFER_FAR_V3.test_items):
         with kbench.chats.new(f"far_{ti}"):
             prompt = (
-                f"You previously learned a symbol transformation system. "
-                f"Now apply a completely different kind of rule system.\n\n"
+                f"You previously learned a symbol transformation system:\n\n"
+                f"{train_block}\n"
+                f"Now apply your general learning ability to a completely different kind of system.\n"
+                f"No rules are given — you must infer the operator semantics from examples.\n"
                 f"{far_block}\n"
-                f"Apply the rules to:\nInput: {test_item['input']}\n\n"
-                f"Respond with ONLY: {{\"answer\": \"<output>\", \"reasoning\": \"<steps>\"}}"
+                f"Apply the inferred rules to:\n"
+                f"Input: {test_item['input']}\n\n"
+                f"Respond with ONLY: {{\"answer\": \"<output>\", \"reasoning\": \"<inferred rules + steps>\"}}"
             )
             raw = llm.prompt(prompt)
-            cleaned = _strip_think(raw)
-            cleaned = re.sub(r'//.*', '', cleaned)
-            try:
-                parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
-                answer = str(parsed.get("answer", cleaned))
-            except Exception:
-                answer = cleaned
-
+            answer = _extract_answer(raw)
             condition_results.append(check_output(answer, test_item["output"]))
     results["far"] = sum(condition_results) / len(condition_results)
+
+    # ── Condition 4: Zero-Shot Structural Transfer ─────────────────
+    # Completely different representation: stateful accumulator.
+    # Only description + 1 worked example. No rules.
+    # Model must infer rules from minimal information + structural analogy.
+    zs_ex = TRANSFER_ZERO_SHOT_V3.examples[0]
+    zs_block = f"\n**New Rule System (completely different representation): {TRANSFER_ZERO_SHOT_V3.name}**\n"
+    zs_block += f"Description: {TRANSFER_ZERO_SHOT_V3.description}\n\n"
+    zs_block += "**NO rules provided.** Only one worked example:\n"
+    zs_block += f"  Input: {zs_ex['input']}  →  Output: {zs_ex['output']}\n"
+    zs_block += "\n(Tokens are A, B, C, D. Figure out what each token does from this single example "
+    zs_block += "and any structural analogy you can draw from your prior learning.)\n"
+
+    condition_results = []
+    for ti, test_item in enumerate(TRANSFER_ZERO_SHOT_V3.test_items):
+        with kbench.chats.new(f"zero_shot_{ti}"):
+            prompt = (
+                f"You previously learned a symbol transformation system:\n\n"
+                f"{train_block}\n"
+                f"Now attempt zero-shot structural transfer to a radically different system.\n"
+                f"You have only ONE worked example. Infer the complete rule set.\n"
+                f"{zs_block}\n"
+                f"Apply the inferred rules to:\n"
+                f"Input: {test_item['input']}\n\n"
+                f"Respond with ONLY: {{\"answer\": \"<output>\", \"reasoning\": \"<inferred rules + computation>\"}}"
+            )
+            raw = llm.prompt(prompt)
+            answer = _extract_answer(raw)
+            condition_results.append(check_output(answer, test_item["output"]))
+    results["zero_shot"] = sum(condition_results) / len(condition_results)
 
     # ── Compute Metrics ──
     identical = results["identical"]
     near = results["near"]
     far = results["far"]
+    zero_shot = results["zero_shot"]
 
-    # Transfer ratios
     near_ratio = near / identical if identical > 0 else 0
     far_ratio = far / identical if identical > 0 else 0
+    zs_ratio = zero_shot / identical if identical > 0 else 0
 
-    score = round(0.30 * identical + 0.35 * near + 0.35 * far, 4)
+    score = round(
+        0.15 * identical
+        + 0.25 * near
+        + 0.30 * far
+        + 0.30 * zero_shot,
+        4
+    )
 
     # ── Logging ──
     print(f"\n{'='*60}")
-    print(f"NEAR VS. FAR TRANSFER BENCHMARK RESULTS")
+    print(f"NEAR VS. FAR TRANSFER BENCHMARK v3 RESULTS")
     print(f"{'='*60}")
     print(f"\n--- Transfer Performance ---")
-    print(f"Identical (baseline): {identical:.2%}")
-    print(f"Near transfer:        {near:.2%}  (ratio: {near_ratio:.2f})")
-    print(f"Far transfer:         {far:.2%}  (ratio: {far_ratio:.2f})")
+    print(f"Identical (baseline, 0.15):           {identical:.2%}")
+    print(f"Near transfer (0.25):                 {near:.2%}  (ratio: {near_ratio:.2f})")
+    print(f"Far transfer (0.30):                  {far:.2%}  (ratio: {far_ratio:.2f})")
+    print(f"Zero-shot structural (0.30):          {zero_shot:.2%}  (ratio: {zs_ratio:.2f})")
     print(f"\n--- Transfer Gradient ---")
-    gradient = [identical, near, far]
-    for i, (label, val) in enumerate(zip(["Identical", "Near", "Far"], gradient)):
+    for label, val, w in [
+        ("Identical", identical, 0.15),
+        ("Near     ", near, 0.25),
+        ("Far      ", far, 0.30),
+        ("Zero-shot", zero_shot, 0.30),
+    ]:
         bar = "█" * int(val * 30)
-        print(f"  {label:10s}: {val:.2%} {bar}")
+        print(f"  {label}: {val:.2%} {bar}")
     print(f"\nComposite score: {score:.4f}")
 
     return score

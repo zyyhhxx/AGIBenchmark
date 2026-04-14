@@ -13,6 +13,7 @@ Systems are seeded for reproducibility across runs.
 
 import random
 import hashlib
+import copy
 from dataclasses import dataclass, field
 
 
@@ -522,3 +523,90 @@ HARD_LEARNING_SYSTEMS = [
     generate_positional_system("lc_hard_positional", difficulty=3),
     generate_stateful_system("lc_hard_stateful", difficulty=3),
 ]
+
+
+# ── New generators for v3 transfer / v4 interference ────────────────
+
+def generate_incomplete_system(system: RuleSystem, n_omit: int = 1) -> RuleSystem:
+    """
+    Return a copy of a system with n_omit transformation rules removed from the rules list.
+
+    The apply function (and therefore test_items answers) remains correct.
+    The model must infer the missing rules from structural context.
+
+    Omission strategy: skip rules that are transformation rules (not the
+    catch-all "All other symbols stay the same" rule).
+    """
+    # Identify omittable indices: transformation rules, not catch-all
+    omittable = [
+        i for i, r in enumerate(system.rules)
+        if not r.lower().startswith("all other")
+        and not r.lower().startswith("output:")
+        and not r.lower().startswith("start with")
+    ]
+    # Omit from the middle to preserve first and last context
+    omit_idxs = set(omittable[1:1 + n_omit]) if len(omittable) > 1 else set(omittable[:n_omit])
+
+    new_rules = [r for i, r in enumerate(system.rules) if i not in omit_idxs]
+    new_system = RuleSystem(
+        name=system.name + "-incomplete",
+        description=system.description,
+        rules=new_rules,
+        examples=list(system.examples),   # full examples kept for context
+        test_items=list(system.test_items),  # answers still valid
+        difficulty=system.difficulty,
+        n_rules=len(new_rules),
+        domain=system.domain,
+    )
+    return new_system
+
+
+def generate_zero_shot_transfer_system(seed: str = "zs_default") -> RuleSystem:
+    """
+    Generate a zero-shot structural transfer system.
+
+    Uses the stateful accumulator representation — completely different from
+    symbol/number systems. Only 1 worked example is provided in the benchmark;
+    the model must infer the rules from description + structural analogy.
+    """
+    return generate_stateful_system(seed=seed, difficulty=3)
+
+
+# ── v3 Transfer systems ──────────────────────────────────────────────
+
+# Training system: symbol difficulty=2 (rules fully given — baseline)
+TRANSFER_TRAIN_V3 = generate_symbol_system("v3_transfer_train", difficulty=2)
+
+# Near transfer: same domain (symbol), difficulty=2 — 1 rule omitted
+_NEAR_FULL_V3 = generate_symbol_system("v3_transfer_near", difficulty=2)
+TRANSFER_NEAR_V3 = generate_incomplete_system(_NEAR_FULL_V3, n_omit=1)
+
+# Far transfer: number domain, difficulty=2 — only 2 worked examples shown
+TRANSFER_FAR_V3 = generate_number_system("v3_transfer_far", difficulty=2)
+
+# Zero-shot structural: stateful system — only description + 1 example shown
+TRANSFER_ZERO_SHOT_V3 = generate_zero_shot_transfer_system("v3_transfer_zeroshot")
+
+
+# ── v4 Interference systems ──────────────────────────────────────────
+
+# Easy tier: difficulty=1, 1 distractor (unchanged from v3)
+INTERF_EASY_TARGET_V4 = generate_symbol_system("v4_easy_target", difficulty=1)
+INTERF_EASY_DISTRACT_V4 = generate_symbol_system("v4_easy_distract", difficulty=1)
+
+# Medium tier: difficulty=2, cross-contamination (overlapping symbol pool, different rules)
+INTERF_MED_TARGET_V4 = generate_symbol_system("v4_med_target", difficulty=2)
+INTERF_MED_DISTRACT_V4 = generate_symbol_system("v4_med_distract", difficulty=2)
+
+# Hard tier: difficulty=3, 3 distractors, delayed interference
+INTERF_HARD_TARGET_V4 = generate_symbol_system("v4_hard_target", difficulty=3)
+INTERF_HARD_DIST1_V4 = generate_symbol_system("v4_hard_dist1", difficulty=3)
+INTERF_HARD_DIST2_V4 = generate_symbol_system("v4_hard_dist2", difficulty=3)
+INTERF_HARD_DIST3_V4 = generate_symbol_system("v4_hard_dist3", difficulty=3)
+INTERF_HARD_FILLER_V4 = generate_symbol_system("v4_hard_filler", difficulty=2)  # filler for delay
+
+# Extreme tier: 4 systems all difficulty=3, target gets only 2 examples
+INTERF_EXT_TARGET_V4 = generate_symbol_system("v4_ext_target", difficulty=3)
+INTERF_EXT_DIST1_V4 = generate_symbol_system("v4_ext_dist1", difficulty=3)
+INTERF_EXT_DIST2_V4 = generate_symbol_system("v4_ext_dist2", difficulty=3)
+INTERF_EXT_DIST3_V4 = generate_symbol_system("v4_ext_dist3", difficulty=3)
