@@ -1,0 +1,37 @@
+{
+  "model_id": "meta.llama3-3-70b-instruct-v1:0",
+  "model_label": "Llama 3.3 70B",
+  "benchmark": "exec_func_task_switch",
+  "score": 0.705,
+  "n_items": 75,
+  "n_correct": 46,
+  "duration_s": 6.0,
+  "timestamp": "2026-04-14T08:35:43.301816+00:00",
+  "blocks": {
+    "baseline": {
+      "accuracy": 0.4,
+      "n_correct": 6,
+      "n_trials": 15,
+      "n_parsed": 15
+    },
+    "slow_switch": {
+      "accuracy": 0.6,
+      "n_correct": 12,
+      "n_trials": 20,
+      "n_parsed": 20
+    },
+    "rapid_switch": {
+      "accuracy": 0.7,
+      "n_correct": 14,
+      "n_trials": 20,
+      "n_parsed": 20
+    },
+    "random_cue": {
+      "accuracy": 0.7,
+      "n_correct": 14,
+      "n_trials": 20,
+      "n_parsed": 20
+    }
+  },
+  "switch_cost": -0.1131
+}

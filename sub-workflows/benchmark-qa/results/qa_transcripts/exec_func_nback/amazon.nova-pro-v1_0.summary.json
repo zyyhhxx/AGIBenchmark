@@ -1,0 +1,42 @@
+{
+  "model_id": "amazon.nova-pro-v1:0",
+  "model_label": "Nova Pro",
+  "benchmark": "exec_func_nback",
+  "score": 0.462,
+  "n_items": 174,
+  "n_correct": 146,
+  "duration_s": 264.2,
+  "timestamp": "2026-04-14T08:26:42.378771+00:00",
+  "per_level": {
+    "1": {
+      "d_prime": 1.5101,
+      "hit_rate": 0.2,
+      "fa_rate": 0.0,
+      "accuracy": 0.7966,
+      "hits": 3,
+      "misses": 12,
+      "false_alarms": 0,
+      "correct_rejections": 44
+    },
+    "2": {
+      "d_prime": 3.0544,
+      "hit_rate": 0.8,
+      "fa_rate": 0.0,
+      "accuracy": 0.9483,
+      "hits": 12,
+      "misses": 3,
+      "false_alarms": 0,
+      "correct_rejections": 43
+    },
+    "3": {
+      "d_prime": 1.2592,
+      "hit_rate": 0.1333,
+      "fa_rate": 0.0,
+      "accuracy": 0.7719,
+      "hits": 2,
+      "misses": 13,
+      "false_alarms": 0,
+      "correct_rejections": 42
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "model_id": "deepseek.r1-v1:0",
+  "model_label": "DeepSeek-R1",
+  "benchmark": "exec_func_task_switch",
+  "score": 1.0,
+  "n_items": 75,
+  "n_correct": 75,
+  "duration_s": 19.7,
+  "timestamp": "2026-04-14T08:35:21.531394+00:00",
+  "blocks": {
+    "baseline": {
+      "accuracy": 1.0,
+      "n_correct": 15,
+      "n_trials": 15,
+      "n_parsed": 15
+    },
+    "slow_switch": {
+      "accuracy": 1.0,
+      "n_correct": 20,
+      "n_trials": 20,
+      "n_parsed": 20
+    },
+    "rapid_switch": {
+      "accuracy": 1.0,
+      "n_correct": 20,
+      "n_trials": 20,
+      "n_parsed": 20
+    },
+    "random_cue": {
+      "accuracy": 1.0,
+      "n_correct": 20,
+      "n_trials": 20,
+      "n_parsed": 20
+    }
+  },
+  "switch_cost": 0.0
+}

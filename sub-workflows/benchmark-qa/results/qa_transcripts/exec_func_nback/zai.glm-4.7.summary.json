@@ -1,0 +1,42 @@
+{
+  "model_id": "zai.glm-4.7",
+  "model_label": "GLM 4.7",
+  "benchmark": "exec_func_nback",
+  "score": 1.0,
+  "n_items": 174,
+  "n_correct": 174,
+  "duration_s": 275.2,
+  "timestamp": "2026-04-14T08:34:04.747075+00:00",
+  "per_level": {
+    "1": {
+      "d_prime": 4.1493,
+      "hit_rate": 1.0,
+      "fa_rate": 0.0,
+      "accuracy": 1.0,
+      "hits": 15,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 44
+    },
+    "2": {
+      "d_prime": 4.1407,
+      "hit_rate": 1.0,
+      "fa_rate": 0.0,
+      "accuracy": 1.0,
+      "hits": 15,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 43
+    },
+    "3": {
+      "d_prime": 4.1319,
+      "hit_rate": 1.0,
+      "fa_rate": 0.0,
+      "accuracy": 1.0,
+      "hits": 15,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 42
+    }
+  }
+}
