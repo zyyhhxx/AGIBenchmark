@@ -43,6 +43,16 @@
 - **Batch 3:** None needed
 - **Key fragility:** metacog_calibration std=0.083 is only 0.003 above threshold — most at-risk benchmark if model roster changes
 
+## metacog_error_detection v2 — Hard Statistical Fallacy Expansion (2026-04-14)
+- **7 new difficulty=3 items added (E45–E51):** ecological fallacy, Berkson's paradox, multiple comparisons/p-hacking (×2), survivorship bias, regression to the mean, misapplied Simpson's paradox.
+- **Total items: 72** (was 65). Difficulty-3 items: 31 (was 24, 43% of total).
+- **Ceiling effect RESOLVED:** 0/10 models scored >0.95 (was ~30%). Target was <10%. ✅
+- **v2 scores (10 models):** Opus 4.6=0.9467, Sonnet 4.5=0.8979, DeepSeek-R1=0.8958, Qwen3 80B=0.843, GLM 4.7=0.821, Nova Pro=0.8164, Maverick 17B=0.7809, Ministral 3B=0.6465, GPT-OSS-120B=0.4301, Llama 3.3 70B=0.4301.
+- **Spread:** std≈0.17, range=0.52 (strong discrimination). GPT-OSS-120B and Llama 3.3 70B cluster at 0.43 — may be floor effect for those models.
+- **Model ID lesson:** Bedrock model IDs require `us.` cross-region inference profile prefix for Anthropic (Opus, Sonnet), DeepSeek-R1, and Meta Llama 4. Direct foundation model IDs work for Nova Pro, Ministral, Llama 3.3, GLM, Qwen3, GPT-OSS.
+- **Sonnet 4.6 unavailable:** Substituted `us.anthropic.claude-sonnet-4-5-20250929-v1:0`.
+- **Gamma column:** Several non-Anthropic models return gamma=-1.0 — likely no confidence scores returned; expected behavior.
+
 ## Self-Monitoring Tier Analysis — epistemic_revision, learning_monitoring, control (2026-04-13)
 - **Score gradient:** learning_monitoring (mean=0.814) > epistemic_revision (mean=0.794) > control (mean=0.495) — control is substantially harder, requiring both monitoring accuracy and strategic action under constraint
 - **Best discriminator:** metacog_control (std=0.221, range=0.490) — bimodal split: 6 models cluster 0.61–0.69 (strategic re-reading works), 4 models at 0.20–0.35 (strategic failure)
