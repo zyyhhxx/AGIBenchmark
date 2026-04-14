@@ -681,3 +681,12 @@ Final scores across 26 benchmarks × 10 Bedrock models compiled in `repo/results
 - **Confabulation pattern:** 5/14 unanswerable items failed (subjective, paradox, underspecified, category_error types) — GPT-OSS-120B attempts answers on philosophically ambiguous items instead of deferring
 - **Previous failure:** ValidationException on Bedrock; retry with increased timeout (600s) succeeded
 - **Benchmark discrimination:** epistemic_humility range spans 0.2000–0.9214 (Ministral 3B to Llama 3.3 70B), std adequate for model separation
+
+## Metacognition Track — Full Improvement Cycle Completed (2026-04-14)
+- **Final state:** All 9 benchmarks pass std ≥ 0.08 threshold; 10/10 model coverage on all benchmarks
+- **3 benchmarks improved via targeted revisions:** calibration (0.086→0.108 std), learning_monitoring (0.077→0.181 std), error_detection (0.092→0.170 std)
+- **Ceiling effect resolved on error_detection:** 30% of models >0.95 → 0% after adding 7 statistical fallacy items (d3)
+- **Parsing robustness pattern:** Backtick fence stripping (`re.sub(r'```(?:json)?\s*', '', cleaned)`) needed for Ministral 3B; apply proactively to all JSON-parsing benchmarks
+- **JOL gamma penalty:** Defensive fix — if model confidence std < 1.0, set gamma_norm=0.0 to prevent non-engaging models from scoring free 0.20
+- **Remaining structural limitation:** 3 large models (Opus 4.6, GPT-OSS-120B, Qwen3 Next 80B) time out on difficulty-4 learning_monitoring rules at 360s; their v2 scores not captured
+- **IMPROVEMENT_LOG.md** at `repo/sub-workflows/metacognition/IMPROVEMENT_LOG.md` documents full cycle for audit/reproducibility
