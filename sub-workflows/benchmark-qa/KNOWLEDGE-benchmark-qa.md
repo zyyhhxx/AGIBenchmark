@@ -798,3 +798,11 @@ Final scores across 26 benchmarks × 10 Bedrock models compiled in `repo/results
 - **learning_transfer:** mean=0.7860, std=0.2259, range=0.6500 — Top 4 models perfect (1.0); Ministral 3B floor at 0.350. Best discriminator among learning benchmarks.
 - **Cross-benchmark ranking:** learning_transfer > learning_curves as discriminators. interference has ceiling effect for top models.
 - **Artifact paths:** `repo/sub-workflows/benchmark-qa/results/qa_transcripts/learning_{curriculum,curves,interference,transfer}/` — 10 .jsonl + aggregate_stats.json each.
+
+## Learning Track — QA Improvement Pass Completed (2026-04-14)
+- All 4 benchmarks passed QA with KEEP AS-IS — no code changes, no re-runs required
+- Track improvement log: `repo/sub-workflows/benchmark-qa/results/improvement_log_learning_track.md`
+- Future advisory: add difficulty-4 tiers to curriculum/curves/interference/transfer to reduce ceiling effects
+- learning_interference structural fragility: without Ministral 3B, std drops to ~0.035 (below threshold) — single-outlier dependency on discrimination
+- learning_transfer Ministral 3B true score estimated ~0.45–0.55 (67% parse failure rate artificially deflates to 0.35)
+- learning_curves backtick parse fix would improve Ministral 3B score by ~0.05 (79/260 failures = 30%)
