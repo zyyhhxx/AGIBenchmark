@@ -1,0 +1,10 @@
+{
+  "benchmark": "learning_curves",
+  "model_id": "zai.glm-4.7",
+  "model_label": "GLM 4.7",
+  "score": 0.4562,
+  "error": null,
+  "duration_s": 1300.5,
+  "n_questions": 260,
+  "timestamp": "2026-04-14T13:37:43.801565+00:00"
+}

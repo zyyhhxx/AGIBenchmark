@@ -1,0 +1,10 @@
+{
+  "benchmark": "learning_transfer",
+  "model_id": "mistral.ministral-3-3b-instruct",
+  "model_label": "Ministral 3B",
+  "score": 0.35,
+  "error": null,
+  "duration_s": 29.2,
+  "n_questions": 15,
+  "timestamp": "2026-04-14T13:16:01.250715+00:00"
+}

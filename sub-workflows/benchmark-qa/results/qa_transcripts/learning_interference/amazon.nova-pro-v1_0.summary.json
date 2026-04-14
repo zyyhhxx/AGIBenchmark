@@ -1,0 +1,10 @@
+{
+  "benchmark": "learning_interference",
+  "model_id": "amazon.nova-pro-v1:0",
+  "model_label": "Nova Pro",
+  "score": 0.902,
+  "error": null,
+  "duration_s": 22.0,
+  "n_questions": 30,
+  "timestamp": "2026-04-14T13:03:15.258800+00:00"
+}

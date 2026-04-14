@@ -774,3 +774,14 @@ Final scores across 26 benchmarks × 10 Bedrock models compiled in `repo/results
 - **Non-blocking advisory items documented** (but not fixed): JSON comment stripping for Ministral 3B/Nova Pro (~0.05–0.15 gain possible); ceiling clusters on divided (6/10 at 0.92–0.94) and instruction_update (5/10 at 0.9833) are tolerable with current 10-model roster
 - **Llama 3.3 70B vigilance anomaly:** 4.1s response / 413 tokens → 0.5653 score; confirmed genuine poor performance, not a parsing bug
 - **Improvement log:** `repo/sub-workflows/benchmark-qa/results/improvement_log_attention_track.md`
+
+## Learning Track — All 4 Benchmarks, All 10 Models (2026-04-14)
+- **Retry bias fix:** All 4 files had `schema=` parameter removed; `_strip_think()` helper added. Fixes applied in turn-025 iteration 1.
+- **Completion required 2 executor iterations** due to ~3hr timeout in first attempt. Targeted rerun strategy (25 remaining combinations only, skip-if-scored) succeeded in 3748s.
+- **InternalServerException** must be in retryable errors list for curriculum benchmark — GPT-OSS, Qwen3, GLM all failed without it in iter 1.
+- **learning_curriculum:** mean=~0.5, 10/10 models. All frontier models score ~0.52–0.72; Ministral 3B and DeepSeek-R1 in lower tier.
+- **learning_curves:** mean=0.5592, std=0.0962, range=0.2489 — Claude Opus/Sonnet/GPT-OSS cluster top (~0.685–0.690); Nova Pro floor at 0.441. Weakest discriminator of the 4.
+- **learning_interference:** mean=0.9191, std=0.1276, range=0.4500 — Top 3 models perfect (1.0); Ministral 3B outlier at 0.550. Strong ceiling effect for frontier models.
+- **learning_transfer:** mean=0.7860, std=0.2259, range=0.6500 — Top 4 models perfect (1.0); Ministral 3B floor at 0.350. Best discriminator among learning benchmarks.
+- **Cross-benchmark ranking:** learning_transfer > learning_curves as discriminators. interference has ceiling effect for top models.
+- **Artifact paths:** `repo/sub-workflows/benchmark-qa/results/qa_transcripts/learning_{curriculum,curves,interference,transfer}/` — 10 .jsonl + aggregate_stats.json each.

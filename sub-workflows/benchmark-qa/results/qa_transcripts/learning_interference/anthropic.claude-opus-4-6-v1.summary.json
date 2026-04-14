@@ -1,0 +1,10 @@
+{
+  "benchmark": "learning_interference",
+  "model_id": "anthropic.claude-opus-4-6-v1",
+  "model_label": "Claude Opus 4.6",
+  "score": 1.0,
+  "error": null,
+  "duration_s": 124.0,
+  "n_questions": 30,
+  "timestamp": "2026-04-14T12:55:04.435756+00:00"
+}

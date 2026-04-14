@@ -1,0 +1,10 @@
+{
+  "benchmark": "learning_curves",
+  "model_id": "mistral.ministral-3-3b-instruct",
+  "model_label": "Ministral 3B",
+  "score": 0.4782,
+  "error": null,
+  "duration_s": 879.5,
+  "n_questions": 260,
+  "timestamp": "2026-04-14T13:52:25.312582+00:00"
+}

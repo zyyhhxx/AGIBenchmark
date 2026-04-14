@@ -1,0 +1,10 @@
+{
+  "benchmark": "learning_curves",
+  "model_id": "deepseek.r1-v1:0",
+  "model_label": "DeepSeek-R1",
+  "score": 0.5705,
+  "error": null,
+  "duration_s": 1982.1,
+  "n_questions": 260,
+  "timestamp": "2026-04-14T10:55:36.615120+00:00"
+}

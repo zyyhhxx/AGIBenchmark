@@ -1,0 +1,10 @@
+{
+  "benchmark": "learning_interference",
+  "model_id": "openai.gpt-oss-120b-1:0",
+  "model_label": "GPT-OSS-120B",
+  "score": 1.0,
+  "error": null,
+  "duration_s": 39.7,
+  "n_questions": 30,
+  "timestamp": "2026-04-14T12:58:16.633795+00:00"
+}

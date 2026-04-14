@@ -2,9 +2,9 @@
   "benchmark": "learning_curriculum",
   "model_id": "qwen.qwen3-next-80b-a3b",
   "model_label": "Qwen3 Next 80B",
-  "score": null,
-  "error": "An error occurred (InternalServerException) when calling the Converse operation (reached max retries: 0): The system encountered an unexpected error during processing. Try your request again.",
-  "duration_s": 6.3,
-  "n_questions": 1,
-  "timestamp": "2026-04-14T09:54:16.150988+00:00"
+  "score": 0.46,
+  "error": null,
+  "duration_s": 32.1,
+  "n_questions": 20,
+  "timestamp": "2026-04-14T13:53:37.194432+00:00"
 }

@@ -1,0 +1,10 @@
+{
+  "benchmark": "learning_curves",
+  "model_id": "qwen.qwen3-next-80b-a3b",
+  "model_label": "Qwen3 Next 80B",
+  "score": 0.5836,
+  "error": null,
+  "duration_s": 2851.0,
+  "n_questions": 260,
+  "timestamp": "2026-04-14T11:58:37.082570+00:00"
+}

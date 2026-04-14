@@ -2,9 +2,9 @@
   "benchmark": "learning_curriculum",
   "model_id": "openai.gpt-oss-120b-1:0",
   "model_label": "GPT-OSS-120B",
-  "score": null,
-  "error": "An error occurred (InternalServerException) when calling the Converse operation (reached max retries: 0): The system encountered an unexpected error during processing. Try your request again.",
-  "duration_s": 101.3,
-  "n_questions": 11,
-  "timestamp": "2026-04-14T09:54:07.847565+00:00"
+  "score": 0.7,
+  "error": null,
+  "duration_s": 35.7,
+  "n_questions": 20,
+  "timestamp": "2026-04-14T13:53:03.049855+00:00"
 }

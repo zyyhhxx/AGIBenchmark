@@ -1,0 +1,10 @@
+{
+  "benchmark": "learning_interference",
+  "model_id": "zai.glm-4.7",
+  "model_label": "GLM 4.7",
+  "score": 0.93,
+  "error": null,
+  "duration_s": 41.8,
+  "n_questions": 30,
+  "timestamp": "2026-04-14T13:06:14.593559+00:00"
+}

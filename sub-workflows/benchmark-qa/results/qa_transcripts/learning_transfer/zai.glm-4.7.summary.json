@@ -1,0 +1,10 @@
+{
+  "benchmark": "learning_transfer",
+  "model_id": "zai.glm-4.7",
+  "model_label": "GLM 4.7",
+  "score": 0.81,
+  "error": null,
+  "duration_s": 57.3,
+  "n_questions": 15,
+  "timestamp": "2026-04-14T13:15:29.961970+00:00"
+}

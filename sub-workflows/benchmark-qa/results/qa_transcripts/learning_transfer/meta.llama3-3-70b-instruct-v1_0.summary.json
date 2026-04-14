@@ -1,0 +1,10 @@
+{
+  "benchmark": "learning_transfer",
+  "model_id": "meta.llama3-3-70b-instruct-v1:0",
+  "model_label": "Llama 3.3 70B",
+  "score": 0.52,
+  "error": null,
+  "duration_s": 24.2,
+  "n_questions": 15,
+  "timestamp": "2026-04-14T13:10:11.500806+00:00"
+}

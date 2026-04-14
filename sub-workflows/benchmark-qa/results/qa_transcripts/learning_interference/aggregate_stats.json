@@ -1,0 +1,22 @@
+{
+  "benchmark": "learning_interference",
+  "n_models": 10,
+  "mean": 0.9191,
+  "std": 0.1276,
+  "range": 0.45,
+  "min": 0.55,
+  "max": 1.0,
+  "per_model": {
+    "Claude Opus 4.6": 1.0,
+    "Claude Sonnet 4.6": 1.0,
+    "GPT-OSS-120B": 1.0,
+    "DeepSeek-R1": 0.979,
+    "Llama 4 Maverick 17B": 0.97,
+    "Llama 3.3 70B": 0.93,
+    "Qwen3 Next 80B": 0.93,
+    "GLM 4.7": 0.93,
+    "Nova Pro": 0.902,
+    "Ministral 3B": 0.55
+  },
+  "timestamp": "2026-04-14T13:54:48.288270+00:00"
+}

@@ -2,9 +2,9 @@
   "benchmark": "learning_curriculum",
   "model_id": "zai.glm-4.7",
   "model_label": "GLM 4.7",
-  "score": null,
-  "error": "An error occurred (InternalServerException) when calling the Converse operation (reached max retries: 0): The system encountered an unexpected error during processing. Try your request again.",
-  "duration_s": 64.5,
-  "n_questions": 16,
-  "timestamp": "2026-04-14T09:55:22.721777+00:00"
+  "score": 0.7,
+  "error": null,
+  "duration_s": 67.1,
+  "n_questions": 20,
+  "timestamp": "2026-04-14T13:54:46.286602+00:00"
 }

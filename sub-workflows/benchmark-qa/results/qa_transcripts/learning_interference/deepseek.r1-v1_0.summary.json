@@ -1,0 +1,10 @@
+{
+  "benchmark": "learning_interference",
+  "model_id": "deepseek.r1-v1:0",
+  "model_label": "DeepSeek-R1",
+  "score": 0.979,
+  "error": null,
+  "duration_s": 148.4,
+  "n_questions": 30,
+  "timestamp": "2026-04-14T12:57:34.911755+00:00"
+}

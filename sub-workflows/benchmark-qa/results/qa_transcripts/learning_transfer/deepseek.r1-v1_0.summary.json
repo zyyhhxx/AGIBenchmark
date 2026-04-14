@@ -1,0 +1,10 @@
+{
+  "benchmark": "learning_transfer",
+  "model_id": "deepseek.r1-v1:0",
+  "model_label": "DeepSeek-R1",
+  "score": 1.0,
+  "error": null,
+  "duration_s": 69.8,
+  "n_questions": 15,
+  "timestamp": "2026-04-14T13:09:19.189814+00:00"
+}

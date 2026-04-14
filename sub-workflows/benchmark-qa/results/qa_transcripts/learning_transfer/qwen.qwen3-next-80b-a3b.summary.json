@@ -1,0 +1,10 @@
+{
+  "benchmark": "learning_transfer",
+  "model_id": "qwen.qwen3-next-80b-a3b",
+  "model_label": "Qwen3 Next 80B",
+  "score": 0.75,
+  "error": null,
+  "duration_s": 140.5,
+  "n_questions": 15,
+  "timestamp": "2026-04-14T13:12:34.031340+00:00"
+}

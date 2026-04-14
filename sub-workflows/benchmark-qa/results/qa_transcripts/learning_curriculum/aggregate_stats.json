@@ -1,19 +1,22 @@
 {
   "benchmark": "learning_curriculum",
-  "n_models": 7,
-  "mean": 0.6543,
-  "std": 0.088,
-  "range": 0.24,
-  "min": 0.52,
+  "n_models": 10,
+  "mean": 0.644,
+  "std": 0.0975,
+  "range": 0.3,
+  "min": 0.46,
   "max": 0.76,
   "per_model": {
     "Llama 3.3 70B": 0.76,
     "Claude Opus 4.6": 0.7,
     "Claude Sonnet 4.6": 0.7,
     "Llama 4 Maverick 17B": 0.7,
+    "GPT-OSS-120B": 0.7,
+    "GLM 4.7": 0.7,
     "Ministral 3B": 0.68,
     "Nova Pro": 0.52,
-    "DeepSeek-R1": 0.52
+    "DeepSeek-R1": 0.52,
+    "Qwen3 Next 80B": 0.46
   },
-  "timestamp": "2026-04-14T09:56:19.414002+00:00"
+  "timestamp": "2026-04-14T13:54:48.287339+00:00"
 }

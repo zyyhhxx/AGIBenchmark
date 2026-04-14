@@ -1,0 +1,10 @@
+{
+  "benchmark": "learning_interference",
+  "model_id": "mistral.ministral-3-3b-instruct",
+  "model_label": "Ministral 3B",
+  "score": 0.55,
+  "error": null,
+  "duration_s": 24.7,
+  "n_questions": 30,
+  "timestamp": "2026-04-14T13:06:41.357099+00:00"
+}
