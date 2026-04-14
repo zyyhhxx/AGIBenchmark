@@ -3,8 +3,8 @@
   "model_id": "qwen.qwen3-next-80b-a3b",
   "model_label": "Qwen3 Next 80B",
   "score": null,
-  "error": "An error occurred (ValidationException) when calling the Converse operation: The model returned the following errors: {\"error\":{\"code\":\"validation_error\",\"message\":\"Internal server error\",\"param\":null,\"type\":\"invalid_request_error\"}}",
-  "duration_s": 3.8,
-  "n_questions": 3,
-  "timestamp": "2026-04-14T09:49:33.231962+00:00"
+  "error": "An error occurred (InternalServerException) when calling the Converse operation (reached max retries: 0): The system encountered an unexpected error during processing. Try your request again.",
+  "duration_s": 6.3,
+  "n_questions": 1,
+  "timestamp": "2026-04-14T09:54:16.150988+00:00"
 }

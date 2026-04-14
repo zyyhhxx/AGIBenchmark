@@ -2,9 +2,9 @@
   "benchmark": "learning_curriculum",
   "model_id": "mistral.ministral-3-3b-instruct",
   "model_label": "Ministral 3B",
-  "score": 0.68,
-  "error": null,
-  "duration_s": 28.5,
-  "n_questions": 20,
-  "timestamp": "2026-04-14T09:43:58.617218+00:00"
+  "score": null,
+  "error": "An error occurred (ValidationException) when calling the Converse operation: The model returned the following errors: {\"error\":{\"code\":\"validation_error\",\"message\":\"Internal server error\",\"param\":null,\"type\":\"invalid_request_error\"}}",
+  "duration_s": 23.1,
+  "n_questions": 12,
+  "timestamp": "2026-04-14T09:52:26.518261+00:00"
 }
