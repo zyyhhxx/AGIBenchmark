@@ -15,8 +15,9 @@ Protocol:
   EASY:   2 streams, no conflict between streams
   MEDIUM: 3 streams, mild cross-stream interference
   HARD:   3 streams with direct conflicts (same items, different rules)
+  EXTREME: Triple-stream interleaved with 4 rules, cross-stream conflicts
 
-Score = 0.20 * easy + 0.30 * medium + 0.50 * hard
+Score = 0.15 * easy + 0.20 * medium + 0.30 * hard + 0.35 * extreme
 
 Shortcut Resistance:
 - Streams share overlapping items so the model must track which rule applies where
@@ -502,48 +503,60 @@ def attention_divided(llm) -> float:
     Divided Attention (Multi-Stream Interference) Benchmark.
 
     Tests performance under simultaneous multi-stream monitoring with
-    cross-stream interference. Three difficulty tiers:
+    cross-stream interference. Four difficulty tiers:
       EASY (2 streams, no conflict): baseline
       MEDIUM (3 streams, shared domain): mild interference
       HARD (3 streams, SAME items, different rules): maximum interference
+      EXTREME (triple-stream interleaved, 4 rules, cross-stream conflicts)
 
-    Score = 0.20 * easy + 0.30 * medium + 0.50 * hard
+    Score = 0.15 * easy + 0.20 * medium + 0.30 * hard + 0.35 * extreme
 
     Cognitive Science Basis:
     - Pashler (1994) central bottleneck theory
     - Wickens (2002) Multiple Resource Theory
     - Navon & Gopher (1979) performance-resource functions
     """
-    tier_scores = {"easy": [], "medium": [], "hard": []}
+    tier_scores = {"easy": [], "medium": [], "hard": [], "extreme": []}
     
     for trial in EASY_TRIALS:
         acc = score_flat_trial(llm, trial)
         tier_scores["easy"].append(acc)
-        print(f"  [easy  ] {trial['id']}: {acc:.3f}")
+        print(f"  [easy   ] {trial['id']}: {acc:.3f}")
     
     for trial in MEDIUM_TRIALS:
         acc = score_flat_trial(llm, trial)
         tier_scores["medium"].append(acc)
-        print(f"  [medium] {trial['id']}: {acc:.3f}")
+        print(f"  [medium ] {trial['id']}: {acc:.3f}")
     
     for trial in HARD_TRIALS:
         acc = score_hard_trial(llm, trial)
         tier_scores["hard"].append(acc)
-        print(f"  [hard  ] {trial['id']}: {acc:.3f}")
+        print(f"  [hard   ] {trial['id']}: {acc:.3f}")
+    
+    for trial in EXTREME_TRIALS:
+        # X1, X2 use per-item multi-rule format; X3 uses flat answer list
+        if isinstance(trial["answers"][0], dict):
+            acc = score_hard_trial(llm, trial)
+        else:
+            acc = score_extreme_flat_trial(llm, trial)
+        tier_scores["extreme"].append(acc)
+        print(f"  [extreme] {trial['id']}: {acc:.3f}")
     
     easy_mean = sum(tier_scores["easy"]) / len(tier_scores["easy"]) if tier_scores["easy"] else 0
     medium_mean = sum(tier_scores["medium"]) / len(tier_scores["medium"]) if tier_scores["medium"] else 0
     hard_mean = sum(tier_scores["hard"]) / len(tier_scores["hard"]) if tier_scores["hard"] else 0
+    extreme_mean = sum(tier_scores["extreme"]) / len(tier_scores["extreme"]) if tier_scores["extreme"] else 0
     
-    score = round(0.20 * easy_mean + 0.30 * medium_mean + 0.50 * hard_mean, 4)
+    score = round(0.15 * easy_mean + 0.20 * medium_mean + 0.30 * hard_mean + 0.35 * extreme_mean, 4)
     
     print(f"\n{'='*60}")
     print(f"DIVIDED ATTENTION (MULTI-STREAM INTERFERENCE) RESULTS")
     print(f"{'='*60}")
-    print(f"EASY   (2 streams, no conflict):     {easy_mean:.3f}")
-    print(f"MEDIUM (3 streams, shared domain):   {medium_mean:.3f}")
-    print(f"HARD   (3 streams, same items):      {hard_mean:.3f}")
-    print(f"\nComposite (0.20E + 0.30M + 0.50H):  {score:.4f}")
+    print(f"EASY    (2 streams, no conflict):         {easy_mean:.3f}")
+    print(f"MEDIUM  (3 streams, shared domain):       {medium_mean:.3f}")
+    print(f"HARD    (3 streams, same items):           {hard_mean:.3f}")
+    print(f"EXTREME (triple-stream, 4 rules):          {extreme_mean:.3f}")
+    print(f"\nComposite (0.15E + 0.20M + 0.30H + 0.35X): {score:.4f}")
     
     return score
 
