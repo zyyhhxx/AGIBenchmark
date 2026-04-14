@@ -44,6 +44,15 @@
 - **Sequential runs required:** Parallel execution of 10 model runs causes SIGTERM due to resource contention on the EC2 instance. Run models one at a time with skip-if-scored logic.
 - **AWS_PROFILE fix:** Set `~/.aws/config` with empty `[default]` profile to prevent boto3 ProfileNotFound errors when `AWS_PROFILE=default` is set in environment.
 
+## Attention Track QA Validation — All 4 Benchmarks (2026-04-14)
+- **All 4 attention benchmarks PASS QA:** divided (std=0.1675), selective (std=0.1550), vigilance (std=0.1738), instruction_update (std=0.2131) — all ≥0.08 threshold ✅
+- **Phase stability:** Phase 1 → Phase 2 std delta <0.02 across all benchmarks — highly reproducible.
+- **JSON comment parsing bug (cross-benchmark):** Ministral 3B and Nova Pro produce JavaScript-style `// comments` in JSON responses. `json.loads()` rejects these, scoring correct answers as 0. Affects divided (Ministral easy/medium, Nova Pro medium) and instruction_update (Ministral 6/11 trials). Fix: `re.sub(r'//.*', '', text)` before `json.loads()`. Impact: +0.05–0.15 for Ministral 3B; +0.03–0.05 for Nova Pro. Not yet patched — advisory only.
+- **Llama 3.3 70B vigilance anomaly:** Completes 14 N-back segments in 4.1s (vs 42–72s for other models), producing only 413 tokens total. Score=0.5653 is genuine poor performance from minimal computation, not a parsing bug.
+- **instruction_update highest discriminator:** std=0.2131, range=0.6841 — widest spread of all 4 attention benchmarks. H4_CHAINED (mod arithmetic with chained modifications) is the key trial — GLM, Qwen3, Nova Pro all drop to ~0.57 on this trial alone.
+- **Ground truth verified correct** across all 4 benchmarks (N-back sequences, conjunction search items, dual-stream math/classification, instruction update rules). No debatable items found.
+- **Think-tag leakage:** None detected across all 40 model runs.
+
 ## attention_vigilance Benchmark Results — All 10 Models (2026-04-14)
 - **Scores:** DeepSeek-R1=1.000, GPT-OSS-120B=1.000, Claude Sonnet 4.6=0.8647, Claude Opus 4.6=0.8559, Llama 4 Maverick 17B=0.8559, Qwen3 Next 80B=0.7073, Nova Pro=0.6329, Ministral 3B=0.5856, Llama 3.3 70B=0.5653, GLM 4.7=0.5599
 - **Aggregate:** mean=0.7628, std=0.1738 (≥0.08 ✅), range=0.4401; 10/10 coverage, 0 failures
