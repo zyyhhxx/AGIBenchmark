@@ -1,0 +1,13 @@
+{
+  "model_id": "anthropic.claude-sonnet-4-6",
+  "model_label": "Claude Sonnet 4.6",
+  "benchmark": "attention_instruction_update",
+  "score": 0.9833,
+  "easy_mean": 1.0,
+  "medium_mean": 1.0,
+  "hard_mean": 0.9667,
+  "n_trials": 11,
+  "n_items": 110,
+  "duration_s": 53.1,
+  "timestamp": "2026-04-14T06:50:39.757367+00:00"
+}

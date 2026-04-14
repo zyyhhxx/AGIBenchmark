@@ -1,0 +1,13 @@
+{
+  "model_id": "zai.glm-4.7",
+  "model_label": "GLM 4.7",
+  "benchmark": "attention_instruction_update",
+  "score": 0.8905,
+  "easy_mean": 1.0,
+  "medium_mean": 1.0,
+  "hard_mean": 0.781,
+  "n_trials": 11,
+  "n_items": 110,
+  "duration_s": 139.5,
+  "timestamp": "2026-04-14T06:57:46.166777+00:00"
+}

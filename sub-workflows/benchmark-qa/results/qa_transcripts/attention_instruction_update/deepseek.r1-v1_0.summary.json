@@ -1,0 +1,13 @@
+{
+  "model_id": "deepseek.r1-v1:0",
+  "model_label": "DeepSeek-R1",
+  "benchmark": "attention_instruction_update",
+  "score": 0.9833,
+  "easy_mean": 1.0,
+  "medium_mean": 1.0,
+  "hard_mean": 0.9667,
+  "n_trials": 11,
+  "n_items": 110,
+  "duration_s": 49.8,
+  "timestamp": "2026-04-14T06:51:32.524713+00:00"
+}

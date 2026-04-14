@@ -1,0 +1,13 @@
+{
+  "model_id": "mistral.ministral-3-3b-instruct",
+  "model_label": "Ministral 3B",
+  "benchmark": "attention_instruction_update",
+  "score": 0.2992,
+  "easy_mean": 0.3333,
+  "medium_mean": 0.4417,
+  "hard_mean": 0.2,
+  "n_trials": 11,
+  "n_items": 110,
+  "duration_s": 31.6,
+  "timestamp": "2026-04-14T06:54:21.647585+00:00"
+}

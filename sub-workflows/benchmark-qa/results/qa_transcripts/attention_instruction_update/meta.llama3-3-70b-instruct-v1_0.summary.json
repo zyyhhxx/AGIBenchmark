@@ -1,0 +1,13 @@
+{
+  "model_id": "meta.llama3-3-70b-instruct-v1:0",
+  "model_label": "Llama 3.3 70B",
+  "benchmark": "attention_instruction_update",
+  "score": 0.9525,
+  "easy_mean": 1.0,
+  "medium_mean": 0.925,
+  "hard_mean": 0.95,
+  "n_trials": 11,
+  "n_items": 110,
+  "duration_s": 21.2,
+  "timestamp": "2026-04-14T06:52:52.138290+00:00"
+}

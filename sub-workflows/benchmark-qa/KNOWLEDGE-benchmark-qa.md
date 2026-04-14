@@ -719,6 +719,16 @@ Final scores across 26 benchmarks × 10 Bedrock models compiled in `repo/results
 - **Remaining structural limitation:** 3 large models (Opus 4.6, GPT-OSS-120B, Qwen3 Next 80B) time out on difficulty-4 learning_monitoring rules at 360s; their v2 scores not captured
 - **IMPROVEMENT_LOG.md** at `repo/sub-workflows/metacognition/IMPROVEMENT_LOG.md` documents full cycle for audit/reproducibility
 
+## attention_instruction_update Benchmark Results — All 10 Models (2026-04-14)
+- **Scores:** Claude Opus 4.6=0.9833, Claude Sonnet 4.6=0.9833, DeepSeek-R1=0.9833, GPT-OSS-120B=0.9833, Llama 4 Maverick 17B=0.9833, Llama 3.3 70B=0.9525, GLM 4.7=0.8905, Qwen3 Next 80B=0.8900, Nova Pro=0.7646, Ministral 3B=0.2992
+- **Aggregate:** mean=0.8713, std=0.2022 (≥0.08 ✅), range=0.6841; 10/10 coverage, 0 failures
+- **Trial structure:** 11 trials per model (Easy, Medium, Hard difficulty tiers). Easy×2, Medium×3, Hard×6 approximate breakdown.
+- **Ceiling cluster:** 5 models tie at 0.9833 (Claude Opus, Sonnet, DeepSeek-R1, GPT-OSS-120B, Llama 4 Maverick). Only H2_EMBEDDED trial breaks the ceiling (2/12 wrong responses among top models).
+- **Key discriminating trial:** H4_CHAINED (mod arithmetic with chained modifications) — GLM 4.7, Qwen3 Next 80B, Nova Pro all drop to 0.571 on this trial.
+- **Ministral 3B parsing anomaly:** Scores 0/8 on E1 and E2 (simple single-switch trials) despite scoring 1.0 on H1_REVERSAL — attributed to JSON extraction failure on flat answer format, not cognitive inability.
+- **Retry bias:** Unaffected (no schema= parameter used).
+- **Artifact path:** `repo/sub-workflows/benchmark-qa/results/qa_transcripts/attention_instruction_update/` — 10 .jsonl + 10 .summary.json + aggregate_stats.json
+
 ## Track Rename & Scope Expansion (2026-04-14)
 - **Renamed:** sub-workflow from `metacognition` to `benchmark-qa` to cover all 26 benchmarks across 5 cognitive tracks
 - **Metacognition track (9 benchmarks): COMPLETE.** Full Phase 2 cycle done — retry bias fix, 10-model re-runs with Q&A transcripts, per-benchmark analysis, improvement plan, scoring/item fixes, improvement log. All 9 pass std ≥ 0.08.

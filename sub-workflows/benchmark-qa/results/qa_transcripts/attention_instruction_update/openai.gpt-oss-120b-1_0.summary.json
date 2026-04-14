@@ -1,0 +1,13 @@
+{
+  "model_id": "openai.gpt-oss-120b-1:0",
+  "model_label": "GPT-OSS-120B",
+  "benchmark": "attention_instruction_update",
+  "score": 0.9833,
+  "easy_mean": 1.0,
+  "medium_mean": 1.0,
+  "hard_mean": 0.9667,
+  "n_trials": 11,
+  "n_items": 110,
+  "duration_s": 52.4,
+  "timestamp": "2026-04-14T06:52:27.969495+00:00"
+}
