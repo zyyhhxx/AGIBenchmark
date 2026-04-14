@@ -101,7 +101,7 @@ We evaluated 6 models on the [Kaggle Community Benchmarks platform](https://www.
 
 #### Supplementary: Local Bedrock Validation (10 models)
 
-We additionally validated the benchmarks against 10 models via Amazon Bedrock (Claude Opus 4.6, Claude Sonnet 4.6, DeepSeek-R1, GPT-OSS-120B, Llama 3.3 70B, Llama 4 Maverick 17B, Nova Pro, Ministral 3B, Qwen3 Next 80B, GLM 4.7). Cross-model patterns were consistent with Kaggle results: the three-tier structure held, calibration remained the tightest discriminator among frontier models, and Ministral 3B (3B parameters) showed floor effects comparable to Gemma 3 1B. Full local results are available in the benchmark repository.
+We additionally validated the benchmarks against 10 models via Amazon Bedrock (Claude Opus 4.6, Claude Sonnet 4.6, DeepSeek-R1, GPT-OSS-120B, Llama 3.3 70B, Llama 4 Maverick 17B, Nova Pro, Ministral 3B, Qwen3 Next 80B, GLM 4.7). Cross-model patterns were consistent with Kaggle results: the three-tier structure held, calibration remained the tightest discriminator among frontier models, and Ministral 3B (3B parameters) showed floor effects comparable to Gemma 3 1B.
 
 ### Organizational Affiliations
 
