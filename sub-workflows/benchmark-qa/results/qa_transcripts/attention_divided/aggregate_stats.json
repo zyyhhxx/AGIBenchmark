@@ -1,0 +1,23 @@
+{
+  "benchmark": "attention_divided",
+  "n_models": 10,
+  "n_failures": 0,
+  "mean": 0.8428,
+  "std": 0.1675,
+  "range": 0.5236,
+  "min": 0.4139,
+  "max": 0.9375,
+  "per_model": {
+    "claude_opus_4.6": 0.9375,
+    "claude_sonnet_4.6": 0.9375,
+    "deepseek_r1": 0.9375,
+    "gpt_oss_120b": 0.9375,
+    "llama_4_maverick_17b": 0.9275,
+    "glm_4.7": 0.9167,
+    "qwen3_next_80b": 0.8803,
+    "llama_3.3_70b": 0.8333,
+    "nova_pro": 0.7064,
+    "ministral_3b": 0.4139
+  },
+  "failures": []
+}

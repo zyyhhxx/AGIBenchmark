@@ -1,5 +1,14 @@
 # KNOWLEDGE.md — AGI Benchmark
 
+## attention_divided Benchmark Results — All 10 Models (2026-04-14)
+- **Scores:** Claude Opus 4.6=0.9375, Claude Sonnet 4.6=0.9375, DeepSeek-R1=0.9375, GPT-OSS-120B=0.9375, Llama 4 Maverick 17B=0.9275, GLM 4.7=0.9167, Qwen3 Next 80B=0.8803, Llama 3.3 70B=0.8333, Nova Pro=0.7064, Ministral 3B=0.4139
+- **Aggregate:** mean=0.8428, std=0.1675 (≥0.08 ✅), range=0.5236; 10/10 coverage, 0 failures
+- **Task structure:** 7 trials per model (easy×2, medium×2, hard×3), dual-stream interleaved tasks (math + category classification, etc.)
+- **Ceiling effect:** Top 4 models cluster at 0.9375; hard tier is the primary discriminator
+- **Parsing anomalies:** Ministral 3B scores 0.0 on easy/medium but 0.778 on hard — likely JSON parsing issue with flat-answer format on simpler tiers; Nova Pro scores 0.0 on M1 (parity/magnitude/digit-sum) but normal on M2
+- **Retry bias:** attention_divided unaffected (no schema= parameter used)
+- **Artifact path:** `repo/sub-workflows/benchmark-qa/results/qa_transcripts/attention_divided/` — 10 .jsonl + 10 .summary.json + aggregate_stats.json
+
 ## Prospective Self-Assessment Tier Analysis — jol, fok, calibration (2026-04-13)
 - **Score gradient:** metacog_fok (mean=0.571) > metacog_calibration (mean=0.521) > metacog_jol (mean=0.376) — JOL is hardest due to chat isolation preventing study-phase recall
 - **Best discriminator:** metacog_jol (std=0.119, range=0.300); all three pass std ≥ 0.08
