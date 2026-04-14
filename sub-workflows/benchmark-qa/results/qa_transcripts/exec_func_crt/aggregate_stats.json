@@ -1,0 +1,54 @@
+{
+  "benchmark": "exec_func_crt",
+  "n_models": 10,
+  "n_valid": 10,
+  "n_failed": 0,
+  "scores": {
+    "anthropic.claude-opus-4-6-v1": {
+      "label": "Claude Opus 4.6",
+      "score": 0.95
+    },
+    "anthropic.claude-sonnet-4-6": {
+      "label": "Claude Sonnet 4.6",
+      "score": 0.9189
+    },
+    "deepseek.r1-v1:0": {
+      "label": "DeepSeek-R1",
+      "score": 0.9179
+    },
+    "openai.gpt-oss-120b-1:0": {
+      "label": "GPT-OSS-120B",
+      "score": 0.8857
+    },
+    "meta.llama3-3-70b-instruct-v1:0": {
+      "label": "Llama 3.3 70B",
+      "score": 0.5928
+    },
+    "meta.llama4-maverick-17b-instruct-v1:0": {
+      "label": "Llama 4 Maverick 17B",
+      "score": 0.8422
+    },
+    "amazon.nova-pro-v1:0": {
+      "label": "Nova Pro",
+      "score": 0.5547
+    },
+    "mistral.ministral-3-3b-instruct": {
+      "label": "Ministral 3B",
+      "score": 0.5071
+    },
+    "qwen.qwen3-next-80b-a3b": {
+      "label": "Qwen3 Next 80B",
+      "score": 0.7986
+    },
+    "zai.glm-4.7": {
+      "label": "GLM 4.7",
+      "score": 0.7598
+    }
+  },
+  "mean": 0.7728,
+  "std": 0.1558,
+  "min": 0.5071,
+  "max": 0.95,
+  "range": 0.4429,
+  "timestamp": "2026-04-14T07:45:28.979432+00:00"
+}

@@ -1,0 +1,42 @@
+{
+  "model_id": "openai.gpt-oss-120b-1:0",
+  "model_label": "GPT-OSS-120B",
+  "benchmark": "exec_func_nback",
+  "score": 0.9802,
+  "n_items": 174,
+  "n_correct": 173,
+  "duration_s": 724.1,
+  "timestamp": "2026-04-14T08:22:09.199152+00:00",
+  "per_level": {
+    "1": {
+      "d_prime": 3.6046,
+      "hit_rate": 0.9333,
+      "fa_rate": 0.0,
+      "accuracy": 0.9831,
+      "hits": 14,
+      "misses": 1,
+      "false_alarms": 0,
+      "correct_rejections": 44
+    },
+    "2": {
+      "d_prime": 4.1407,
+      "hit_rate": 1.0,
+      "fa_rate": 0.0,
+      "accuracy": 1.0,
+      "hits": 15,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 43
+    },
+    "3": {
+      "d_prime": 4.1319,
+      "hit_rate": 1.0,
+      "fa_rate": 0.0,
+      "accuracy": 1.0,
+      "hits": 15,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 42
+    }
+  }
+}
