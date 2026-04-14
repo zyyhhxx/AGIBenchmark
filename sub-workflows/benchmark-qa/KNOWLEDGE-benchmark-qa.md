@@ -821,3 +821,13 @@ Final scores across 26 benchmarks × 10 Bedrock models compiled in `repo/results
 - **Pragmatic reasoning gap:** Llama 3.3 70B scores 0.236 on pragmatic vs 0.863 on false_belief — large intra-model gap suggesting pragmatic inference is harder than explicit ToM for smaller models.
 - **DeepSeek-R1 anomaly:** Scores 0.976 on sarcasm but only 0.456 on pragmatic and 0.331 on emotional_prosody — strong at explicit irony detection, weak on implicit pragmatic cues and emotional tone shifts.
 - **Artifact paths:** `repo/sub-workflows/benchmark-qa/results/qa_transcripts/social_cog_{emotional_prosody,false_belief,pragmatic,sarcasm}/` — 10 .jsonl + 10 .summary.json + aggregate_stats.json each.
+
+## Social Cognition Track — QA Pass, Detailed Findings (2026-04-14)
+- **All 4 benchmarks QA'd; 3 KEEP AS-IS (emotional_prosody, false_belief, pragmatic), 1 REVISE (sarcasm)**
+- **sarcasm ceiling confirmed:** std=0.025, all 10 models ≥0.909; sarcasm detection trivially solved even by Ministral 3B. Without Ministral 3B, std ~0.011. REVISE: add deadpan/cultural/ambiguous sincerity items or adopt 3-tier difficulty like pragmatic.
+- **Opus 4 4th-order ToM failure:** Claude Opus 4.6 fails 8/34 false_belief items at 4th-order nested perspective (collapses nested belief chains to ground truth). Genuine cognitive failure, not a parsing artifact. Consistent failure mode.
+- **false_belief tier-weight discrepancy resolved:** Task spec says 0.05/0.05/0.10/0.60/0.20 but deployed code (v5 final iteration) uses 0.00/0.00/0.05/0.70/0.25. Code is authoritative; spec was not updated after v5 redesign.
+- **Ministral 3B backtick fence rates:** emotional_prosody 43/43 (100%), pragmatic 39/45 (87%), sarcasm 36/40 (90%). `_strip_fences()` handles all — zero parse failures result. No think-tag leakage across all 40 model runs.
+- **Pragmatic reasoning gap confirmed:** Llama 3.3 70B scores 0.236 on pragmatic vs 0.863 on false_belief — pragmatic inference harder than explicit ToM for smaller instruction-tuned models.
+- **DeepSeek-R1 dissociation:** 0.976 sarcasm, 0.456 pragmatic, 0.331 emotional_prosody — strong on explicit irony, weak on implicit pragmatic cues and emotional prosodic shifts.
+- **Artifact paths:** `repo/sub-workflows/benchmark-qa/results/analysis_social_cog_{emotional_prosody,false_belief,pragmatic,sarcasm}.md`
