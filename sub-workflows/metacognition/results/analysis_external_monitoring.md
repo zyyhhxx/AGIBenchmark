@@ -37,9 +37,9 @@
 ### metacog_epistemic_humility
 | Metric | Value |
 |--------|-------|
-| N | 9 (GPT-OSS-120B missing — ValidationException) |
-| Mean | 0.8053 |
-| Std | 0.2307 |
+| N | 10 |
+| Mean | 0.7947 |
+| Std | 0.2193 |
 | Min | 0.2000 (Ministral 3B) |
 | Max | 0.9214 (Llama 3.3 70B) |
 | Range | 0.7214 |
@@ -57,8 +57,8 @@
 | DeepSeek-R1 | 0.8756 |
 | Claude Sonnet 4.6 | 0.8376 |
 | Claude Opus 4.6 | 0.7969 |
+| GPT-OSS-120B | 0.6990 |
 | Ministral 3B | 0.2000 |
-| GPT-OSS-120B | — (error) |
 
 ### metacog_error_detection
 | Metric | Value |
@@ -199,7 +199,7 @@ The scoring (BSS over confidence-answer pairs) correctly rewards calibrated unce
 
 **Rationale:** Strong discriminator (std=0.231, range=0.721). Clean separation: 8 models cluster 0.80–0.92, Ministral 3B anchors at 0.200. No ceiling effect. The item set effectively tests knowledge boundary awareness through a mix of: knowable facts, unknowable future predictions, fabricated entities, and subjective questions.
 
-**Note:** GPT-OSS-120B has a missing score due to a Bedrock ValidationException (not a benchmark issue). One model at 9/10 is acceptable coverage.
+**Note:** GPT-OSS-120B score (0.6990) recovered on retry — 10/10 model coverage achieved. GPT-OSS-120B struggled with subjective, paradox, and underspecified questions (confabulated on 5/14 unanswerable items).
 
 **Observation (not a bug):** Claude models score lower than expected (Opus=0.797, Sonnet=0.838) because they hedge rather than refuse outright on unknowable items. The scoring formula rewards decisive `can_answer: "no"` over `can_answer: "maybe"` with caveats. This is a deliberate design choice — the benchmark measures clean epistemic boundaries, not nuanced uncertainty expression. If the goal shifts to rewarding calibrated hedging, the scoring formula would need revision, but for the current construct ("does the model know what it doesn't know?"), flat refusal IS the correct behavior.
 
@@ -218,7 +218,7 @@ The scoring (BSS over confidence-answer pairs) correctly rewards calibrated unce
 | Benchmark | Action | Std | Range | Ceiling | Floor | Ground Truth |
 |-----------|--------|-----|-------|---------|-------|-------------|
 | metacog_canary | KEEP AS-IS | 0.280 | 0.875 | None | 10% (by design) | Valid |
-| metacog_epistemic_humility | KEEP AS-IS | 0.231 | 0.721 | None | None | Valid |
+| metacog_epistemic_humility | KEEP AS-IS | 0.219 | 0.721 | None | None | Valid |
 | metacog_error_detection | KEEP AS-IS | 0.092 | 0.308 | 30% (mild) | None | Valid |
 
 All three benchmarks in the external monitoring tier meet the discrimination threshold (std ≥ 0.08), have valid ground truth, and effectively measure their target constructs. No items flagged for revision. No scoring formula changes needed.

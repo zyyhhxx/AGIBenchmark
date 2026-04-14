@@ -1,0 +1,12 @@
+{
+  "model": "openai.gpt-oss-120b-1:0",
+  "model_label": "GPT-OSS-120B",
+  "timestamp": "2026-04-14T02:22:02.683418+00:00",
+  "scores": {
+    "metacog_epistemic_humility": {
+      "score": 0.699,
+      "error": null,
+      "duration_s": 33.8
+    }
+  }
+}

@@ -675,3 +675,9 @@ Final scores across 26 benchmarks × 10 Bedrock models compiled in `repo/results
 - **Ranking shift:** GLM 4.7 dropped sharply (v2: 0.7403 → v3: 0.5074) and Nova Pro dropped (v2: 0.6820 → v3: 0.4430) — these models were inflated by the trivial abstract system; structural transfer is genuinely harder for them.
 - **Design insight:** Withholding transfer rules (only 2 examples instead of full system spec) is the key lever — models must infer the structural mapping, not just apply stated rules.
 - **Artifact:** `repo/benchmarks/learning/task_learning_curves.py`, `repo/benchmarks/learning/data/rule_systems.py`
+
+## GPT-OSS-120B metacog_epistemic_humility Recovery — 10/10 Coverage (2026-04-14)
+- **Score:** 0.6990 (9th of 10 models; above only Ministral 3B at 0.2000)
+- **Confabulation pattern:** 5/14 unanswerable items failed (subjective, paradox, underspecified, category_error types) — GPT-OSS-120B attempts answers on philosophically ambiguous items instead of deferring
+- **Previous failure:** ValidationException on Bedrock; retry with increased timeout (600s) succeeded
+- **Benchmark discrimination:** epistemic_humility range spans 0.2000–0.9214 (Ministral 3B to Llama 3.3 70B), std adequate for model separation
