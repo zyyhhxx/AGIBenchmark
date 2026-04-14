@@ -1,5 +1,18 @@
 # KNOWLEDGE.md — AGI Benchmark
 
+## Learning Track — All 4 Benchmarks, All 10 Models (2026-04-14)
+- **Benchmarks:** curriculum, curves, interference, transfer — 10/10 model coverage each
+- **Score distributions:** curriculum mean=0.644 std=0.0975 range=0.300; curves mean=0.559 std=0.0962 range=0.249; interference mean=0.919 std=0.1276 range=0.450; transfer mean=0.786 std=0.2259 range=0.650
+- **All 4 pass std ≥ 0.08 threshold → KEEP AS-IS**
+- **Best discriminator:** transfer (delta=0.65); **weakest:** curves (range=0.249, top 3 within 0.005)
+- **Ceiling effects:** interference — 9/10 models ≥0.90, spread depends on Ministral 3B outlier; transfer — 4/10 models at 1.0 (40% ceiling)
+- **Ministral 3B parsing failures:** curriculum 1/20 (5%), curves 79/260 (30%), interference 5/30 (17%), transfer 10/15 (67%) — sole source of parsing failures across all 4 benchmarks
+- **Context-length fix confirmed deployed:** max_examples 6→4 when ≥2 distractors; 0 context errors for Ministral 3B post-fix
+- **No think-tag leakage, no scoring artifacts** across all 40 model runs
+- **Scoring formulas verified:** curriculum (0.40×max_acc + 0.30×sensitivity + 0.30×ordering_bonus), curves (0.20×standard + 0.50×far + 0.30×steep), interference (per-tier 0.30×control + 0.70×interference), transfer (0.30×identical + 0.35×near + 0.35×far)
+- **Ground truth verified:** transfer train exception □◇→▽▽ correct, far transfer blix(8,9)=25 correct
+- **Artifact paths:** `repo/sub-workflows/benchmark-qa/results/analysis_learning_{curriculum,curves,interference,transfer}.md`
+
 ## Executive Functions Track — All 5 Benchmarks, All 10 Models (2026-04-14)
 - **Retry bias fix applied:** CRT and N-back had `schema=` parameter removed; `_strip_think()` helper + regex JSON extraction added. Task_switch, TOL, WCST were unaffected.
 - **All 10/10 models scored, 0 failures** across all 5 benchmarks.
