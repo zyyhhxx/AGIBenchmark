@@ -109,6 +109,13 @@ Execute all improvements identified in Task 2, then re-run the benchmark.
 - **GLM 4.7 Bedrock issues**: Repeated ValidationException; budget extra time.
 - **DeepSeek-R1 response format**: Returns both `text` and `reasoningContent` blocks; handle KeyError on `text`.
 
+## Final Quality Check (per benchmark, as part of Task 3)
+
+1. **No double execution in notebooks.** Ensure the Kaggle notebook does not run the benchmark twice (e.g., duplicate `run()` calls, or a `run()` in a cell AND in `if __name__`). Each benchmark must execute exactly once.
+2. **No local imports in notebooks.** Everything imported from local files (e.g., `from data.procedural_calibration import ...`, `from task_calibration import ...`) must be **inlined** directly into the notebook cells. Kaggle notebooks cannot access local Python modules — all code must be self-contained within the notebook.
+
+---
+
 ## Success Criteria
 
 All 26 benchmarks pass:
