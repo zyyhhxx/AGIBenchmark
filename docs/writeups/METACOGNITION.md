@@ -38,7 +38,19 @@ All items are **procedurally generated** at evaluation time using seeded random 
 
 **Item schema:** Each task produces items with fields: `id` (unique identifier), `question` (prompt text), `expected_answer` (ground truth), `difficulty` (easy/medium/hard), `domain` (knowledge category). Model responses are parsed into structured `confidence` (0–100 integer) and `answer` fields.
 
-**Scoring:** Primary metric per task is a composite of gamma correlation (resolution), Brier Skill Score (calibration + discrimination), and task-specific accuracy. BSS was chosen over raw ECE because ECE rewards always-hedging-to-50% strategies, while BSS properly penalizes uninformative confidence.
+**Scoring:** Each task uses a task-specific composite metric tailored to its construct:
+
+- **Calibration:** 0.50 × extreme-item accuracy^1.5 + 0.25 × BSS + 0.25 × uncertainty awareness
+- **FOK:** 0.40 × gamma correlation + 0.30 × BSS + 0.30 × AUC
+- **JOL:** 0.40 × gamma correlation + 0.30 × BSS + 0.30 × recall rate
+- **Error Detection:** 0.35 × F1 + 0.25 × localization accuracy + 0.20 × severity weighting + 0.20 × confidence calibration
+- **Learning Monitoring:** 0.30 × gamma correlation + 0.30 × accuracy + 0.20 × confidence calibration + 0.20 × learning curve fit
+- **Control:** 0.35 × selection relevance + 0.35 × strategic gain + 0.30 × accuracy
+- **Epistemic Humility:** 0.35 × detection + 0.25 × (1 − confabulation) + 0.20 × confidence discrimination + 0.20 × appropriate refusal
+- **Epistemic Revision:** 0.10 × violation detection + 0.10 × revision + 0.30 × rule accuracy + 0.25 × transfer + 0.25 × confidence tracking
+- **Canary:** max(0, BSS) — pure calibration on fabricated vs. real items
+
+Only FOK, JOL, and Learning Monitoring use gamma correlation. BSS was chosen over raw ECE where applicable because ECE rewards always-hedging-to-50% strategies, while BSS properly penalizes uninformative confidence.
 
 **Provenance:** Question content draws from public-domain knowledge across STEM, humanities, and logic domains. No copyrighted datasets are used. Novel stimuli (JOL word pairs, epistemic revision rules, canary fabrications) are generated programmatically.
 
@@ -58,21 +70,21 @@ We evaluated 10 models via Amazon Bedrock. Key metacognition results (scores 0�
 
 | Task | Mean | Std | Range | Top Model (Score) | Bottom Model (Score) |
 |------|------|-----|-------|-------------------|---------------------|
-| Calibration | 0.165 | 0.332 | 0.998 | Claude Opus (1.00) | 6 models (0.00) |
-| FOK | 0.561 | 0.083 | 0.232 | Claude Sonnet (0.65) | Ministral 3B (0.41) |
-| JOL | 0.393 | 0.091 | 0.265 | Llama 3.3 70B (0.46) | GPT-OSS-120B (0.20) |
-| Error Detection | 0.890 | 0.092 | 0.329 | DeepSeek-R1 (0.98) | Ministral 3B (0.65) |
-| Epistemic Humility | 0.788 | 0.220 | 0.720 | Llama 3.3 70B (0.92) | Ministral 3B (0.20) |
-| Control | 0.549 | 0.181 | 0.548 | Nova Pro (0.75) | Ministral 3B (0.20) |
-| Canary | 0.795 | 0.305 | 1.000 | Llama 3.3 70B (1.00) | Ministral 3B (0.00) |
-| Epistemic Revision | 0.801 | 0.102 | 0.290 | Claude Opus (0.96) | Ministral 3B (0.67) |
-| Learning Monitoring | 0.834 | 0.081 | 0.220 | Nova Pro (0.91) | Ministral 3B (0.69) |
+| Calibration | 0.521 | 0.079 | 0.250 | Claude Sonnet (0.63) | Ministral 3B (0.38) |
+| FOK | 0.571 | 0.088 | 0.281 | GPT-OSS-120B (0.67) | Ministral 3B (0.39) |
+| JOL | 0.376 | 0.113 | 0.300 | Llama 3.3 70B (0.50) | DeepSeek-R1 (0.20) |
+| Error Detection | 0.871 | 0.088 | 0.308 | Claude Sonnet (0.97) | Ministral 3B (0.66) |
+| Epistemic Humility | 0.795 | 0.209 | 0.721 | Llama 3.3 70B (0.92) | Ministral 3B (0.20) |
+| Control | 0.495 | 0.210 | 0.490 | Claude Opus (0.69) | Qwen3 Next 80B (0.20) |
+| Canary | 0.546 | 0.266 | 0.875 | Claude Sonnet (0.87) | Ministral 3B (0.00) |
+| Epistemic Revision | 0.794 | 0.108 | 0.330 | Claude Opus (0.96) | Ministral 3B (0.63) |
+| Learning Monitoring | 0.814 | 0.088 | 0.277 | Qwen3 Next 80B (0.90) | Ministral 3B (0.62) |
 
-**Insight 1 — Three-tier metacognition pattern.** Across all 10 models, scores cluster into three tiers: *external monitoring* (canary, epistemic humility, error detection; mean 0.82), *self-monitoring* (epistemic revision, control, learning monitoring; mean 0.73), and *prospective self-assessment* (FOK, JOL, calibration; mean 0.39). This 2:1 dissociation between external and internal metacognition replicates across model families and scales.
+**Insight 1 — Three-tier metacognition pattern.** Across all 10 models, scores cluster into three tiers: *external monitoring* (canary, epistemic humility, error detection; mean 0.74), *self-monitoring* (epistemic revision, control, learning monitoring; mean 0.70), and *prospective self-assessment* (FOK, JOL, calibration; mean 0.49). The 1.5:1 dissociation between external and prospective metacognition replicates across model families and scales, suggesting that evaluating external information is fundamentally easier than monitoring one's own future performance.
 
-**Insight 2 — Near-universal calibration failure.** Only Claude Opus achieves meaningful calibration (BSS = 1.00); Claude Sonnet scores 0.50; 6 of the remaining models score BSS = 0.000 exactly (DeepSeek-R1, Llama 3.3, Llama 4, Ministral 3B, Nova Pro, Qwen3). Most LLMs' expressed confidence carries zero information beyond the base rate, confirming Chhikara et al. (2025) on systematic overconfidence.
+**Insight 2 — Universal overconfidence despite moderate calibration spread.** All 10 models achieve non-trivial calibration scores (range 0.38–0.63), but the tight spread (std = 0.079) indicates this is the hardest benchmark to discriminate on. All models report mean confidence of 94–99% across difficulty levels, confirming Chhikara et al. (2025) on systematic overconfidence. Claude Sonnet 4.6 leads (0.63) by modulating confidence most effectively (std = 10.1 across items), while Ministral 3B (0.38) reports near-constant high confidence. The benchmark's composite scoring — 50% extreme-item accuracy, 25% BSS, 25% uncertainty awareness — rewards models that can identify *which specific items* are hard, not just overall accuracy.
 
-**Insight 3 — Strong discriminatory power.** Average cross-model standard deviation = 0.12 across 9 benchmarks (range 0.08–0.29). Calibration (std = 0.332) and canary (std = 0.305) are the strongest discriminators, while learning monitoring (std = 0.077) shows the least spread. The suite produces a meaningful gradient from Ministral 3B (3B parameters, weakest overall) through mid-tier models (Nova Pro, Llama 4) to frontier models (Claude Opus, Qwen3), with scale amplifying Tier 1 (external monitoring) performance but not Tier 3 (prospective self-assessment).
+**Insight 3 — Strong discriminatory power.** Average cross-model standard deviation = 0.139 across 9 benchmarks (range 0.079–0.266). Canary (std = 0.266), control (std = 0.210), and epistemic humility (std = 0.209) are the strongest discriminators, while calibration (std = 0.079) shows the least spread. The suite produces a meaningful gradient from Ministral 3B (3B parameters, weakest overall) through mid-tier models (Nova Pro, Llama 4 Maverick) to frontier models (Claude Sonnet, Qwen3), with scale amplifying Tier 1 (external monitoring) performance but not Tier 3 (prospective self-assessment).
 
 **Insight 4 — Epistemic humility does not track model size.** Llama 3.3 70B (0.92), Qwen3 80B (0.92), and Llama 4 Maverick 17B (0.90) outperform Claude Opus (0.80) on epistemic humility, while Ministral 3B collapses to 0.20. This suggests that acknowledging uncertainty is shaped by training methodology (e.g., RLHF calibration) rather than raw scale.
 
