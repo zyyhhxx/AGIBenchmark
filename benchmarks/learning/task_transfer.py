@@ -23,10 +23,9 @@ from data.rule_systems import (
 )
 
 
-@dataclass
-class TransferAnswer:
-    answer: str
-    reasoning: str
+def _strip_think(text: str) -> str:
+    """Strip <think>...</think> tags from reasoning model output."""
+    return re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL).strip()
 
 
 def normalize_output(text: str) -> str:
@@ -92,16 +91,13 @@ def learning_transfer(llm) -> float:
                 f"Input: {test_item['input']}\n\n"
                 f"Respond with ONLY: {{\"answer\": \"<output>\", \"reasoning\": \"<steps>\"}}"
             )
+            raw = llm.prompt(prompt)
+            cleaned = _strip_think(raw)
             try:
-                result = llm.prompt(prompt, schema=TransferAnswer)
-                answer = result.answer
+                parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
+                answer = str(parsed.get("answer", cleaned))
             except Exception:
-                raw = llm.prompt(prompt)
-                try:
-                    parsed = json.loads(re.search(r'\{.*\}', raw, re.DOTALL).group())
-                    answer = str(parsed.get("answer", raw))
-                except Exception:
-                    answer = raw
+                answer = cleaned
 
             condition_results.append(check_output(answer, test_item["output"]))
     results["identical"] = sum(condition_results) / len(condition_results)
@@ -125,16 +121,13 @@ def learning_transfer(llm) -> float:
                 f"Apply the NEW rules to:\nInput: {test_item['input']}\n\n"
                 f"Respond with ONLY: {{\"answer\": \"<output>\", \"reasoning\": \"<steps>\"}}"
             )
+            raw = llm.prompt(prompt)
+            cleaned = _strip_think(raw)
             try:
-                result = llm.prompt(prompt, schema=TransferAnswer)
-                answer = result.answer
+                parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
+                answer = str(parsed.get("answer", cleaned))
             except Exception:
-                raw = llm.prompt(prompt)
-                try:
-                    parsed = json.loads(re.search(r'\{.*\}', raw, re.DOTALL).group())
-                    answer = str(parsed.get("answer", raw))
-                except Exception:
-                    answer = raw
+                answer = cleaned
 
             condition_results.append(check_output(answer, test_item["output"]))
     results["near"] = sum(condition_results) / len(condition_results)
@@ -157,16 +150,13 @@ def learning_transfer(llm) -> float:
                 f"Apply the rules to:\nInput: {test_item['input']}\n\n"
                 f"Respond with ONLY: {{\"answer\": \"<output>\", \"reasoning\": \"<steps>\"}}"
             )
+            raw = llm.prompt(prompt)
+            cleaned = _strip_think(raw)
             try:
-                result = llm.prompt(prompt, schema=TransferAnswer)
-                answer = result.answer
+                parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
+                answer = str(parsed.get("answer", cleaned))
             except Exception:
-                raw = llm.prompt(prompt)
-                try:
-                    parsed = json.loads(re.search(r'\{.*\}', raw, re.DOTALL).group())
-                    answer = str(parsed.get("answer", raw))
-                except Exception:
-                    answer = raw
+                answer = cleaned
 
             condition_results.append(check_output(answer, test_item["output"]))
     results["far"] = sum(condition_results) / len(condition_results)

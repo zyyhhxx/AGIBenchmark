@@ -126,6 +126,7 @@ def generate_nback_sequence(
     }
 
 
-# Pre-generate sequences for 3-back and 4-back conditions
+# Pre-generate sequences for 3-back, 4-back, and 6-back conditions
 VIGILANCE_3BACK = generate_nback_sequence("vig_3back_v2", length=80, n_back=3, near_miss_rate=0.15)
 VIGILANCE_4BACK = generate_nback_sequence("vig_4back_v2", length=60, n_back=4, near_miss_rate=0.15)
+VIGILANCE_6BACK = generate_nback_sequence("vig_6back_v2", length=80, n_back=6, near_miss_rate=0.18)

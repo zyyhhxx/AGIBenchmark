@@ -33,9 +33,9 @@ import random
 from benchmarks.learning.data.rule_systems import generate_symbol_system
 
 
-@dataclass
-class CurriculumAnswer:
-    answer: str
+def _strip_think(text: str) -> str:
+    """Strip <think>...</think> tags from reasoning model output."""
+    return re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL).strip()
 
 
 def normalize_output(text: str) -> str:
@@ -77,16 +77,13 @@ def run_curriculum(llm, system, examples: list, label: str) -> float:
                 f"Respond with ONLY: {{\"answer\": \"<output>\"}}"
             )
 
+            raw = llm.prompt(prompt)
+            cleaned = _strip_think(raw)
             try:
-                result = llm.prompt(prompt, schema=CurriculumAnswer)
-                answer = result.answer
+                parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
+                answer = str(parsed.get("answer", cleaned))
             except Exception:
-                raw = llm.prompt(prompt)
-                try:
-                    parsed = json.loads(re.search(r'\{.*\}', raw, re.DOTALL).group())
-                    answer = str(parsed.get("answer", raw))
-                except Exception:
-                    answer = raw
+                answer = cleaned
 
             if check_output(answer, test_item["output"]):
                 correct += 1

@@ -27,10 +27,9 @@ from data.rule_systems import (
 )
 
 
-@dataclass
-class RuleAnswer:
-    answer: str
-    reasoning: str
+def _strip_think(text: str) -> str:
+    """Strip <think>...</think> tags from reasoning model output."""
+    return re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL).strip()
 
 
 CHECKPOINTS = [0, 2, 4, 8, 12]
@@ -74,16 +73,13 @@ def _eval_system(llm, system, n_examples, test_items, chat_label):
                 f"Respond with ONLY a JSON object:\n"
                 f'{{"answer": "<output after applying rules>", "reasoning": "<your steps>"}}'
             )
+            raw = llm.prompt(test_prompt)
+            cleaned = _strip_think(raw)
             try:
-                result = llm.prompt(test_prompt, schema=RuleAnswer)
-                answer = result.answer
+                parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
+                answer = str(parsed.get("answer", cleaned))
             except Exception:
-                raw = llm.prompt(test_prompt)
-                try:
-                    parsed = json.loads(re.search(r'\{.*\}', raw, re.DOTALL).group())
-                    answer = str(parsed.get("answer", raw))
-                except Exception:
-                    answer = raw
+                answer = cleaned
             if check_output(answer, test_item["output"]):
                 n_correct += 1
 
@@ -179,16 +175,13 @@ def learning_curves(llm) -> float:
                     f"Respond with ONLY a JSON object:\n"
                     f'{{"answer": "<output in the new format>", "reasoning": "<your steps>"}}'
                 )
+                raw = llm.prompt(test_prompt)
+                cleaned = _strip_think(raw)
                 try:
-                    result = llm.prompt(test_prompt, schema=RuleAnswer)
-                    answer = result.answer
+                    parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
+                    answer = str(parsed.get("answer", cleaned))
                 except Exception:
-                    raw = llm.prompt(test_prompt)
-                    try:
-                        parsed = json.loads(re.search(r'\{.*\}', raw, re.DOTALL).group())
-                        answer = str(parsed.get("answer", raw))
-                    except Exception:
-                        answer = raw
+                    answer = cleaned
                 if check_output(answer, test_item["output"]):
                     n_correct += 1
 

@@ -75,27 +75,33 @@ All tasks are implemented using the `kaggle-benchmarks` SDK with the `@kbench.ta
 
 ### Results, Insights, and Conclusions
 
-We evaluated 10 models via Amazon Bedrock. Key metacognition results (scores 0–1, higher = better):
+We evaluated 6 models on the Kaggle Community Benchmarks platform. Results (scores 0–1, higher = better):
 
 | Task | Mean | Std | Range | Top Model (Score) | Bottom Model (Score) |
 |------|------|-----|-------|-------------------|---------------------|
-| Calibration | 0.521 | 0.079 | 0.250 | Claude Sonnet (0.63) | Ministral 3B (0.38) |
-| FOK | 0.571 | 0.088 | 0.281 | GPT-OSS-120B (0.67) | Ministral 3B (0.39) |
-| JOL | 0.376 | 0.113 | 0.300 | Llama 3.3 70B (0.50) | DeepSeek-R1 (0.20) |
-| Error Detection | 0.871 | 0.088 | 0.308 | Claude Sonnet (0.97) | Ministral 3B (0.66) |
-| Epistemic Humility | 0.795 | 0.209 | 0.721 | Llama 3.3 70B (0.92) | Ministral 3B (0.20) |
-| Control | 0.495 | 0.210 | 0.490 | Claude Opus (0.69) | Qwen3 Next 80B (0.20) |
-| Canary | 0.546 | 0.266 | 0.875 | Claude Sonnet (0.87) | Ministral 3B (0.00) |
-| Epistemic Revision | 0.794 | 0.108 | 0.330 | Claude Opus (0.96) | Ministral 3B (0.63) |
-| Learning Monitoring | 0.814 | 0.088 | 0.277 | Qwen3 Next 80B (0.90) | Ministral 3B (0.62) |
+| Calibration | 0.483 | 0.176 | 0.493 | Gemini 2.5 Pro (0.59) | Gemma 3 1B (0.09) |
+| FOK | 0.466 | 0.180 | 0.525 | Claude Opus 4.6 (0.62) | Gemini 2.5 Pro (0.09) |
+| JOL | 0.647 | 0.165 | 0.464 | Claude Opus 4.6 (0.79) | Gemma 3 1B (0.33) |
+| Error Detection | 0.845 | 0.203 | 0.580 | DeepSeek-R1 (0.98) | Gemma 3 1B (0.40) |
+| Epistemic Humility | 0.766 | 0.145 | 0.427 | Claude Opus 4.6 (0.88) | Gemma 3 1B (0.45) |
+| Control | 0.781 | 0.266 | 0.723 | Claude Opus 4.6 (0.91) | Gemma 3 1B (0.19) |
+| Canary | 0.761 | 0.347 | 0.992 | Gemini 2.5 Pro (0.99) | Gemma 3 1B (0.00) |
+| Epistemic Revision | 0.793 | 0.161 | 0.502 | Claude Opus 4.6 (0.96) | Gemma 3 1B (0.46) |
+| Learning Monitoring | 0.792 | 0.242 | 0.702 | DeepSeek-R1 (0.97) | Gemma 3 1B (0.26) |
 
-**Insight 1 — Three-tier metacognition pattern.** Across all 10 models, scores cluster into three tiers: *external monitoring* (canary, epistemic humility, error detection; mean 0.74), *self-monitoring* (epistemic revision, control, learning monitoring; mean 0.70), and *prospective self-assessment* (FOK, JOL, calibration; mean 0.49). The 1.5:1 dissociation between external and prospective metacognition replicates across model families and scales, suggesting that evaluating external information is fundamentally easier than monitoring one's own future performance.
+**Overall model ranking:** Claude Opus 4.6 (0.826) > DeepSeek-R1 (0.808) > Gemini 2.5 Flash (0.799) > GPT-5.4 (0.753) > Gemini 2.5 Pro (0.748) > Gemma 3 1B (0.290).
 
-**Insight 2 — Universal overconfidence despite moderate calibration spread.** All 10 models achieve non-trivial calibration scores (range 0.38–0.63), but the tight spread (std = 0.079) indicates this is the hardest benchmark to discriminate on. All models report mean confidence of 94–99% across difficulty levels, confirming Chhikara et al. (2025) on systematic overconfidence. Claude Sonnet 4.6 leads (0.63) by modulating confidence most effectively (std = 10.1 across items), while Ministral 3B (0.38) reports near-constant high confidence. The benchmark's composite scoring — 50% extreme-item accuracy, 25% BSS, 25% uncertainty awareness — rewards models that can identify *which specific items* are hard, not just overall accuracy.
+**Insight 1 — Two-tier metacognition pattern.** Scores separate into *monitoring tasks* (canary, epistemic humility, error detection, epistemic revision, control, learning monitoring; mean 0.79) and *prospective self-assessment* (FOK, JOL, calibration; mean 0.53). This 1.5:1 dissociation holds across all 6 models, suggesting that evaluating external information and monitoring ongoing cognition is fundamentally easier than predicting one's own future performance.
 
-**Insight 3 — Strong discriminatory power.** Average cross-model standard deviation = 0.139 across 9 benchmarks (range 0.079–0.266). Canary (std = 0.266), control (std = 0.210), and epistemic humility (std = 0.209) are the strongest discriminators, while calibration (std = 0.079) shows the least spread. The suite produces a meaningful gradient from Ministral 3B (3B parameters, weakest overall) through mid-tier models (Nova Pro, Llama 4 Maverick) to frontier models (Claude Sonnet, Qwen3), with scale amplifying Tier 1 (external monitoring) performance but not Tier 3 (prospective self-assessment).
+**Insight 2 — Calibration reveals systematic overconfidence.** All frontier models cluster tightly on calibration (0.50–0.59), while Gemma 3 1B collapses to 0.09. The spread (std = 0.176) is driven primarily by the small-model floor effect. Frontier models universally report high confidence (94–99%) even on difficulty-5 items, confirming Chhikara et al. (2025) on systematic overconfidence. The benchmark's composite scoring — 50% extreme-item accuracy, 25% BSS, 25% uncertainty awareness — rewards models that can identify *which specific items* are hard, not just overall accuracy.
 
-**Insight 4 — Epistemic humility does not track model size.** Llama 3.3 70B (0.92), Qwen3 80B (0.92), and Llama 4 Maverick 17B (0.90) outperform Claude Opus (0.80) on epistemic humility, while Ministral 3B collapses to 0.20. This suggests that acknowledging uncertainty is shaped by training methodology (e.g., RLHF calibration) rather than raw scale.
+**Insight 3 — Strong discriminatory power.** Average cross-model standard deviation = 0.210 across 9 benchmarks (range 0.145–0.347). Canary (std = 0.347) and control (std = 0.266) are the strongest discriminators, separating models that can maintain focused attention from those that cannot. Gemma 3 1B (1B parameters) consistently anchors the floor, scoring 0.00 on canary (complete failure to distinguish fabricated from real facts) and 0.09 on calibration. All 5 frontier models score above 0.75 on the suite overall.
+
+**Insight 4 — FOK anomaly for Gemini 2.5 Pro.** Gemini 2.5 Pro scores 0.09 on Feeling-of-Knowing — dramatically lower than its strong performance on other tasks (0.59–0.99). This suggests a specific failure in two-phase prospective monitoring (rating confidence *before* answering), possibly due to training that discourages expressing low confidence. This is not a parsing artifact: the model produces valid structured responses but with poorly calibrated pre-answer confidence.
+
+#### Supplementary: Local Bedrock Validation (10 models)
+
+We additionally validated the benchmarks against 10 models via Amazon Bedrock (Claude Opus 4.6, Claude Sonnet 4.6, DeepSeek-R1, GPT-OSS-120B, Llama 3.3 70B, Llama 4 Maverick 17B, Nova Pro, Ministral 3B, Qwen3 Next 80B, GLM 4.7). Cross-model patterns were consistent with Kaggle results: the three-tier structure held, calibration remained the tightest discriminator among frontier models, and Ministral 3B (3B parameters) showed floor effects comparable to Gemma 3 1B. Full local results are available in the benchmark repository.
 
 ### Organizational Affiliations
 
