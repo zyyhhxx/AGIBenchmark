@@ -71,6 +71,7 @@ Every Kaggle benchmark notebook MUST satisfy ALL of the following. No exceptions
 7. **`_strip_think()` in every benchmark** — all benchmarks that parse model output must strip `<think>...</think>` tags before parsing (DeepSeek R1 fix).
 8. **JS-style comment stripping** — benchmarks that parse JSON must strip `//` comments: `re.sub(r'//.*', '', raw)`.
 9. **Task docstring ≤ 255 chars** — the docstring immediately under `@kbench.task()` must be ≤255 characters (Kaggle validation requirement).
+10. **No version numbers in notebooks** — do not include version references (v2, v3, etc.) in task names, markdown cells, or docstrings. The writeup presents only the latest version; previous versions are irrelevant to the reader.
 
 ### Verification Command
 

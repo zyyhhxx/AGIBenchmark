@@ -233,7 +233,7 @@ def run_tier4(llm) -> float:
     return correct / total if total else 0
 
 
-@kbench.task(name="Rule Induction Under Interference v5")
+@kbench.task(name="Rule Induction Under Interference")
 def learning_interference(llm) -> float:
     """Rule Induction Under Interference Benchmark (v5).
 

@@ -155,7 +155,7 @@ def _full_system_block(system, max_examples: int = 10) -> str:
     return block
 
 
-@kbench.task(name="Near & Far Transfer v3")
+@kbench.task(name="Near & Far Transfer")
 def learning_transfer(llm) -> float:
     """Near vs. Far Transfer Benchmark (v3).
 
