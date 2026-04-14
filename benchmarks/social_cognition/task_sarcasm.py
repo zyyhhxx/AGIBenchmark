@@ -166,6 +166,7 @@ def social_cog_sarcasm(llm) -> float:
                 raw = llm.prompt(prompt)
                 cleaned = _strip_think(raw)
                 cleaned = _strip_fences(cleaned)
+                cleaned = _re.sub(r'//.*', '', cleaned)
                 m = _re.search(r'\{.*\}', cleaned, _re.DOTALL)
                 data = _json.loads(m.group()) if m else {}
                 rating = int(data.get("sincerity_rating", 50))

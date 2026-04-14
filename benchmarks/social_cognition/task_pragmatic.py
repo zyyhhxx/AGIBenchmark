@@ -29,10 +29,16 @@ Shortcut Resistance:
 
 import kaggle_benchmarks as kbench
 import json as _json
+import re as _re
 def _safe_log(data): print(_json.dumps(data, indent=2, default=str))
 from dataclasses import dataclass
 import numpy as np
 from data.pragmatic_items import PRAGMATIC_ITEMS_DIRECT, PRAGMATIC_ITEMS_INDIRECT, PRAGMATIC_ITEMS_COMPLEX
+
+
+def _strip_think(text):
+    """Remove <think>...</think> blocks from model output."""
+    return _re.sub(r'<think>.*?</think>', '', text, flags=_re.DOTALL).strip()
 
 
 @dataclass
@@ -75,7 +81,7 @@ def _score_tier(items, llm, tier_label):
                 is_literal = response.is_literal
             except Exception:
                 raw = llm.prompt(prompt)
-                speaker_intent = raw
+                speaker_intent = _strip_think(raw)
                 is_literal = False
 
         got_intended = check_patterns(speaker_intent, item["intended_accept"])

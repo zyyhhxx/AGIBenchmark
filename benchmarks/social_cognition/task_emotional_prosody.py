@@ -26,6 +26,11 @@ import json
 import re
 import numpy as np
 
+
+def _strip_think(text):
+    """Remove <think>...</think> blocks from model output."""
+    return re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL).strip()
+
 # ─── Stimuli ─────────────────────────────────────────────────────────
 
 PROSODY_ITEMS = [
@@ -970,7 +975,9 @@ def social_cog_emotional_prosody(llm) -> float:
                         # Last resort fallback
                         raw = llm.prompt(prompt)
                         try:
-                            parsed = json.loads(re.search(r'\{.*\}', raw, re.DOTALL).group())
+                            cleaned = _strip_think(raw)
+                            cleaned = re.sub(r'//.*', '', cleaned)
+                            parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
                             model_has_shift = bool(parsed.get("has_shift", True))
                             model_shift_turn = int(parsed.get("shift_turn", 0))
                             model_before = str(parsed.get("emotion_before", ""))

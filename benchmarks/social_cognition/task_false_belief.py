@@ -37,10 +37,16 @@ Shortcut Resistance:
 
 import kaggle_benchmarks as kbench
 import json as _json
+import re as _re
 def _safe_log(data): print(_json.dumps(data, indent=2, default=str))
 from dataclasses import dataclass
 import numpy as np
 from data.false_belief_scenarios import FALSE_BELIEF_SCENARIOS
+
+
+def _strip_think(text):
+    """Remove <think>...</think> blocks from model output."""
+    return _re.sub(r'<think>.*?</think>', '', text, flags=_re.DOTALL).strip()
 
 
 @dataclass
@@ -94,7 +100,7 @@ def social_cog_false_belief(llm) -> float:
                 response = llm.prompt(belief_prompt, schema=ToMResponse)
                 belief_answer = response.answer
             except Exception:
-                belief_answer = llm.prompt(belief_prompt)
+                belief_answer = _strip_think(llm.prompt(belief_prompt))
             belief_correct = check_answer(belief_answer, scenario["belief_accept"])
             scenario_results["belief_correct"] = belief_correct
             scenario_results["belief_answer"] = belief_answer
@@ -112,7 +118,7 @@ def social_cog_false_belief(llm) -> float:
                 response = llm.prompt(reality_prompt, schema=ToMResponse)
                 reality_answer = response.answer
             except Exception:
-                reality_answer = llm.prompt(reality_prompt)
+                reality_answer = _strip_think(llm.prompt(reality_prompt))
             reality_correct = check_answer(reality_answer, scenario["reality_accept"])
             scenario_results["reality_correct"] = reality_correct
         
@@ -123,7 +129,7 @@ def social_cog_false_belief(llm) -> float:
                 response = llm.prompt(memory_prompt, schema=ToMResponse)
                 memory_answer = response.answer
             except Exception:
-                memory_answer = llm.prompt(memory_prompt)
+                memory_answer = _strip_think(llm.prompt(memory_prompt))
             memory_correct = check_answer(memory_answer, scenario["memory_accept"])
             scenario_results["memory_correct"] = memory_correct
         
