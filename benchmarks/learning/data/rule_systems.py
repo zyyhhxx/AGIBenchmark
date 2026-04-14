@@ -654,12 +654,24 @@ def generate_shared_input_systems(
     for ss in sub_seeds:
         systems.append(generate_symbol_system(ss, difficulty=difficulty))
 
-    # Generate shared inputs
+    # Generate shared inputs — each must produce UNIQUE outputs across all systems
     shared_inputs = []
-    for _ in range(n_shared_inputs):
+    max_attempts = 200
+    attempt = 0
+    while len(shared_inputs) < n_shared_inputs and attempt < max_attempts:
+        attempt += 1
         length = base_rng.randint(3, 5)
         seq = [base_rng.choice(shapes) for _ in range(length)]
-        shared_inputs.append(seq)
+        # Check all systems produce unique outputs on this input
+        outputs = []
+        for sys in systems:
+            out = _apply_system_to_seq(sys, seq)
+            outputs.append(" ".join(out))
+        if len(set(outputs)) == len(systems):
+            shared_inputs.append(seq)
+
+    if len(shared_inputs) < n_shared_inputs:
+        raise ValueError(f"Could not find {n_shared_inputs} shared inputs with unique outputs after {max_attempts} attempts (seed={seed})")
 
     return systems, shared_inputs
 
