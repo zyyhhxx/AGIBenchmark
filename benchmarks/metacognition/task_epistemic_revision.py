@@ -40,6 +40,14 @@ from dataclasses import dataclass
 import json
 import re
 
+
+
+# ─── Helpers ───────────────────────────────────────────────────────
+
+def _strip_think(text: str) -> str:
+    """Remove <think>...</think> tags that some models wrap around output."""
+    return re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL).strip()
+
 # ─── Rule Systems ───────────────────────────────────────────────────
 
 RULE_SYSTEMS = [
@@ -607,6 +615,8 @@ def metacog_epistemic_revision(llm) -> float:
             raw_revision = llm.prompt(revise_prompt)
 
         # Parse revision response — robust fallback chain
+        raw_revision = _strip_think(raw_revision)
+        raw_revision = re.sub(r'//.*', '', raw_revision)
         violation_correct = 0
         revision_quality = 0
         revisions = []

@@ -281,6 +281,7 @@ def metacog_fok(llm) -> float:
 
             raw = llm.prompt(phase1_prompt)
             cleaned = _strip_think(raw)
+            cleaned = re.sub(r'//.*', '', cleaned)
             # Strip triple-backtick JSON fences (e.g. ```json ... ```)
             cleaned = re.sub(r'```(?:json)?\s*', '', cleaned)
             cleaned = re.sub(r'```\s*$', '', cleaned, flags=re.MULTILINE)
@@ -304,6 +305,7 @@ def metacog_fok(llm) -> float:
 
             raw = llm.prompt(phase2_prompt)
             cleaned = _strip_think(raw)
+            cleaned = re.sub(r'//.*', '', cleaned)
             # Strip triple-backtick JSON fences (e.g. ```json ... ```)
             cleaned = re.sub(r'```(?:json)?\s*', '', cleaned)
             cleaned = re.sub(r'```\s*$', '', cleaned, flags=re.MULTILINE)

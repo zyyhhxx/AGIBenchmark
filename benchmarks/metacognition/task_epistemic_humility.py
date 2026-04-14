@@ -378,6 +378,7 @@ def metacog_epistemic_humility(llm) -> float:
             
             raw = llm.prompt(prompt)
             cleaned = _strip_think(raw)
+            cleaned = re.sub(r'//.*', '', cleaned)
             try:
                 parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
                 can_answer = str(parsed.get("can_answer", "yes")).lower().strip()

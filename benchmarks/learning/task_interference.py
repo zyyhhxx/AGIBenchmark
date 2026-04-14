@@ -74,6 +74,7 @@ def _test_items(llm, system, context: str, prefix: str) -> float:
             )
             raw = llm.prompt(prompt)
             cleaned = _strip_think(raw)
+            cleaned = re.sub(r'//.*', '', cleaned)
             try:
                 parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
                 answer = str(parsed.get("answer", cleaned))

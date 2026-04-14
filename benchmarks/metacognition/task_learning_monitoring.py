@@ -143,6 +143,7 @@ def metacog_learning_monitoring(llm) -> float:
 
                     raw = llm.prompt(test_prompt)
                     cleaned = _strip_think(raw)
+                    cleaned = re.sub(r'//.*', '', cleaned)
                     try:
                         parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
                         answer = str(parsed.get("answer", cleaned))

@@ -20,6 +20,7 @@ import json as _json
 def _safe_log(data): print(_json.dumps(data, indent=2, default=str))
 from dataclasses import dataclass
 import numpy as np
+import re
 from data.canary_items import CANARY_ITEMS, CANARY_CONFIDENCE_THRESHOLD
 
 
@@ -37,6 +38,12 @@ class CanaryAnswer:
     is_guess: bool
 
 
+
+def _strip_think(text: str) -> str:
+    """Remove <think>...</think> tags that some models wrap around output."""
+    return re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL).strip()
+
+
 def _check_real_answer(answer: str, item: dict) -> bool:
     """Check if model's answer matches a real item's expected answer."""
     lower = answer.lower()
@@ -45,7 +52,9 @@ def _check_real_answer(answer: str, item: dict) -> bool:
 
 def _extract_confidence(text: str) -> int:
     """Extract confidence score from model response, handling various formats."""
-    import re, json
+    import json
+    text = _strip_think(text)
+    text = re.sub(r'//.*', '', text)
     # Try JSON first
     try:
         m = re.search(r'\{.*\}', text, re.DOTALL)

@@ -128,17 +128,23 @@ def _dprime(hits, misses, fa, cr):
     """Compute d-prime with log-linear correction."""
     hr = (hits + 0.5) / (hits + misses + 1)
     far = (fa + 0.5) / (fa + cr + 1)
-    # Rational approx of inverse normal CDF
+    # Rational approx of inverse normal CDF (Abramowitz & Stegun 26.2.23)
     def _ppf(p):
         import math
-        if p <= 0: return -4.0
-        if p >= 1: return 4.0
-        if p < 0.5:
-            t = math.sqrt(-2 * math.log(p))
-            return -(2.515517 + 0.802853*t + 0.010328*t*t) / \
-                    (1 + 1.432788*t + 0.189269*t*t + 0.001308*t*t*t) + t
-        else:
-            return -_ppf(1 - p)
+        if p <= 0.0001: return -3.7
+        if p >= 0.9999: return 3.7
+        if p == 0.5: return 0.0
+        if p > 0.5:
+            return -_ppf_low(1.0 - p)
+        return _ppf_low(p)
+    def _ppf_low(p):
+        # For p < 0.5: returns negative z-score
+        import math
+        t = math.sqrt(-2.0 * math.log(p))
+        # Rational approximation (Hastings, 1955)
+        z = t - (2.515517 + 0.802853*t + 0.010328*t*t) / \
+                (1.0 + 1.432788*t + 0.189269*t*t + 0.001308*t*t*t)
+        return -z  # negative for p < 0.5
     return round(_ppf(hr) - _ppf(far), 4)
 
 

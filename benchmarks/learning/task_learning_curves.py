@@ -75,6 +75,7 @@ def _eval_system(llm, system, n_examples, test_items, chat_label):
             )
             raw = llm.prompt(test_prompt)
             cleaned = _strip_think(raw)
+            cleaned = re.sub(r'//.*', '', cleaned)
             try:
                 parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
                 answer = str(parsed.get("answer", cleaned))
@@ -177,6 +178,7 @@ def learning_curves(llm) -> float:
                 )
                 raw = llm.prompt(test_prompt)
                 cleaned = _strip_think(raw)
+                cleaned = re.sub(r'//.*', '', cleaned)
                 try:
                     parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
                     answer = str(parsed.get("answer", cleaned))

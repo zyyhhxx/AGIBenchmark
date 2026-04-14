@@ -163,6 +163,7 @@ def metacog_error_detection(llm) -> float:
         with kbench.chats.new(f"review_{chain['id']}"):
             raw = llm.prompt(prompt)
             cleaned = _strip_think(raw)
+            cleaned = re.sub(r'//.*', '', cleaned)
             try:
                 parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
                 pred_has_error = bool(parsed.get("has_error", False))

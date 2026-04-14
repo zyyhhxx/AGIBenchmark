@@ -264,6 +264,7 @@ def metacog_calibration(llm) -> float:
 
             raw = llm.prompt(prompt)
             cleaned = _strip_think(raw)
+            cleaned = re.sub(r'//.*', '', cleaned)
             # Strip triple-backtick JSON fences (e.g. ```json ... ```)
             cleaned = re.sub(r'```(?:json)?\s*', '', cleaned)
             cleaned = re.sub(r'```\s*$', '', cleaned, flags=re.MULTILINE)

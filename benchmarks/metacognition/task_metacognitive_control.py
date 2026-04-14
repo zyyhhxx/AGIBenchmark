@@ -476,6 +476,7 @@ def metacog_control(llm) -> float:
 
             raw = llm.prompt(select_prompt)
             cleaned = _strip_think(raw)
+            cleaned = re.sub(r'//.*', '', cleaned)
             try:
                 parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
                 selected_raw = str(parsed.get("selected_sections", "S1,S2,S3"))
@@ -525,6 +526,7 @@ def metacog_control(llm) -> float:
 
                 raw = llm.prompt(q_prompt)
                 cleaned = _strip_think(raw)
+                cleaned = re.sub(r'//.*', '', cleaned)
                 try:
                     parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
                     answer = str(parsed.get("answer", cleaned))

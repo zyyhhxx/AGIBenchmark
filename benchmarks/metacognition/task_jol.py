@@ -194,6 +194,7 @@ def metacog_jol(llm) -> float:
 
             raw = llm.prompt(jol_prompt)
             cleaned = _strip_think(raw)
+            cleaned = re.sub(r'//.*', '', cleaned)
             try:
                 parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
                 jol_conf = max(0, min(100, int(parsed.get("confidence", 50))))
@@ -224,6 +225,7 @@ def metacog_jol(llm) -> float:
 
             raw = llm.prompt(recall_prompt)
             cleaned = _strip_think(raw)
+            cleaned = re.sub(r'//.*', '', cleaned)
             try:
                 parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
                 recalled_def = str(parsed.get("definition", cleaned))
@@ -256,6 +258,7 @@ def metacog_jol(llm) -> float:
             )
             raw = llm.prompt(jol_prompt)
             cleaned = _strip_think(raw)
+            cleaned = re.sub(r'//.*', '', cleaned)
             try:
                 parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
                 jol_conf = max(0, min(100, int(parsed.get("confidence", 50))))
@@ -275,6 +278,7 @@ def metacog_jol(llm) -> float:
                 )
                 raw = llm.prompt(test_prompt)
                 cleaned = _strip_think(raw)
+                cleaned = re.sub(r'//.*', '', cleaned)
                 try:
                     parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
                     answer = str(parsed.get("answer", cleaned))
