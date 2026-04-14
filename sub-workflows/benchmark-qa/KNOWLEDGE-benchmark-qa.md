@@ -749,3 +749,10 @@ Final scores across 26 benchmarks × 10 Bedrock models compiled in `repo/results
 - **Phase 1 runs exist** for all remaining benchmarks (task/run JSONs in workspace root)
 - **Notebooks:** 7 metacog notebooks already improved; remaining 17 need the same treatment
 - **Known issue:** Retry bias affects 18/26 notebooks total (see docs/RETRY_BIAS_ISSUE.md) — metacog ones fixed, others still affected
+
+## Attention Track — QA Improvement Cycle Complete (2026-04-14)
+- **All 4 benchmarks passed** evaluation with KEEP AS-IS verdict; no changes implemented, re-runs skipped per Step 7
+- **Track average std: 0.1774** (well above 0.08 threshold across divided/selective/vigilance/instruction_update)
+- **Non-blocking advisory items documented** (but not fixed): JSON comment stripping for Ministral 3B/Nova Pro (~0.05–0.15 gain possible); ceiling clusters on divided (6/10 at 0.92–0.94) and instruction_update (5/10 at 0.9833) are tolerable with current 10-model roster
+- **Llama 3.3 70B vigilance anomaly:** 4.1s response / 413 tokens → 0.5653 score; confirmed genuine poor performance, not a parsing bug
+- **Improvement log:** `repo/sub-workflows/benchmark-qa/results/improvement_log_attention_track.md`
