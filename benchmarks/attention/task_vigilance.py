@@ -13,7 +13,7 @@ Protocol:
 1. Present sequence items one segment at a time (10 items per segment)
 2. For each item at position i (where i >= n), model decides:
    "Is this letter the SAME as the letter n positions back?"
-3. 3-back condition (80 items) + 4-back condition (60 items)
+3. 3-back condition (80 items) + 4-back condition (60 items) + 6-back condition (80 items)
 4. Near-miss distractors (confusable letters) increase false alarm rate
 5. Target rate decreases over time → vigilance decrement
 
@@ -30,7 +30,7 @@ decreasing target rate make perfect scores very unlikely.
 import kaggle_benchmarks as kbench
 import re
 import json
-from benchmarks.attention.data.vigilance_stimuli import VIGILANCE_3BACK, VIGILANCE_4BACK
+from benchmarks.attention.data.vigilance_stimuli import VIGILANCE_3BACK, VIGILANCE_4BACK, VIGILANCE_6BACK
 
 
 
@@ -137,14 +137,15 @@ def attention_vigilance(llm) -> float:
     """
     N-Back Sustained Attention (Vigilance) Benchmark.
 
-    Runs 3-back (80 items) and 4-back (60 items) conditions.
+    Runs 3-back (80 items), 4-back (60 items), and 6-back (80 items) conditions.
 
     Score = 0.35 * overall_accuracy + 0.35 * sensitivity (hit_rate - FA_rate)
             + 0.15 * vigilance_decrement_resistance + 0.15 * (1 - false_alarm_rate)
     """
     conditions = [
-        ("3-back", VIGILANCE_3BACK, 0.55),  # weight
-        ("4-back", VIGILANCE_4BACK, 0.45),
+        ("3-back", VIGILANCE_3BACK, 0.30),  # weight
+        ("4-back", VIGILANCE_4BACK, 0.35),
+        ("6-back", VIGILANCE_6BACK, 0.35),
     ]
 
     condition_scores = []

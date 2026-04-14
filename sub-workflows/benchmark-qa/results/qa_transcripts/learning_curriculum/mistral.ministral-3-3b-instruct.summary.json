@@ -1,0 +1,10 @@
+{
+  "benchmark": "learning_curriculum",
+  "model_id": "mistral.ministral-3-3b-instruct",
+  "model_label": "Ministral 3B",
+  "score": 0.68,
+  "error": null,
+  "duration_s": 28.5,
+  "n_questions": 20,
+  "timestamp": "2026-04-14T09:43:58.617218+00:00"
+}

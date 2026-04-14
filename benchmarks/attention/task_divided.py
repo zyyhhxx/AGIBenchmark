@@ -219,12 +219,146 @@ HARD_TRIALS = [
     },
 ]
 
+# EXTREME tier: triple-stream interleaving with cross-stream conflicts
+# 3 streams applied to SAME items with conflicting rules + a 4th meta-rule
+EXTREME_TRIALS = [
+    {
+        "id": "X1",
+        "prompt": (
+            "CRITICAL: Apply FOUR DIFFERENT rules to the SAME set of numbers.\n\n"
+            "RULES:\n"
+            "- Rule A (Parity): Is the number ODD or EVEN?\n"
+            "- Rule B (Magnitude): Is the number HIGH (>50) or LOW (≤50)?\n"
+            "- Rule C (Digit Sum Parity): Sum the digits. Is the digit sum ODD or EVEN?\n"
+            "- Rule D (Nearest Multiple of 10): What is the nearest multiple of 10? "
+            "(If equidistant, round UP. E.g., 35→40, 72→70, 65→70)\n\n"
+            "For EACH number, give all four answers.\n\n"
+            "Numbers: 37, 64, 19, 82, 55, 43, 91, 28, 76, 50\n\n"
+            'Respond as JSON: {"results": [\n'
+            '  {"number": "37", "A": "...", "B": "...", "C": "...", "D": "..."},\n'
+            "  ... for all 10 numbers\n"
+            "]}"
+        ),
+        # Verification:
+        # 37: ODD, LOW, 3+7=10 EVEN, nearest 10: 40
+        # 64: EVEN, HIGH, 6+4=10 EVEN, nearest 10: 60
+        # 19: ODD, LOW, 1+9=10 EVEN, nearest 10: 20
+        # 82: EVEN, HIGH, 8+2=10 EVEN, nearest 10: 80
+        # 55: ODD, HIGH, 5+5=10 EVEN, nearest 10: 60 (55 equidistant → round UP)
+        # 43: ODD, LOW, 4+3=7 ODD, nearest 10: 40
+        # 91: ODD, HIGH, 9+1=10 EVEN, nearest 10: 90
+        # 28: EVEN, LOW, 2+8=10 EVEN, nearest 10: 30
+        # 76: EVEN, HIGH, 7+6=13 ODD, nearest 10: 80
+        # 50: EVEN, LOW, 5+0=5 ODD, nearest 10: 50
+        "answers": [
+            {"A": "ODD",  "B": "LOW",  "C": "EVEN", "D": "40"},
+            {"A": "EVEN", "B": "HIGH", "C": "EVEN", "D": "60"},
+            {"A": "ODD",  "B": "LOW",  "C": "EVEN", "D": "20"},
+            {"A": "EVEN", "B": "HIGH", "C": "EVEN", "D": "80"},
+            {"A": "ODD",  "B": "HIGH", "C": "EVEN", "D": "60"},
+            {"A": "ODD",  "B": "LOW",  "C": "ODD",  "D": "40"},
+            {"A": "ODD",  "B": "HIGH", "C": "EVEN", "D": "90"},
+            {"A": "EVEN", "B": "LOW",  "C": "EVEN", "D": "30"},
+            {"A": "EVEN", "B": "HIGH", "C": "ODD",  "D": "80"},
+            {"A": "EVEN", "B": "LOW",  "C": "ODD",  "D": "50"},
+        ],
+    },
+    {
+        "id": "X2",
+        "prompt": (
+            "Apply FOUR rules to each word simultaneously.\n\n"
+            "RULES:\n"
+            "- Rule A (Alpha Half): First letter in FIRST half (A-M) or SECOND half (N-Z)?\n"
+            "- Rule B (Vowel Count): How many vowels (a,e,i,o,u)?\n"
+            "- Rule C (Length Category): SHORT (≤4 letters), MEDIUM (5-7 letters), or LONG (8+ letters)\n"
+            "- Rule D (Consonant Cluster): What is the longest consecutive consonant sequence? "
+            "(e.g., 'strength' has 'ngth'=4, 'apple' has 'ppl'=3)\n\n"
+            "Words: RHYTHM, BEAUTIFUL, CAT, STRENGTH, ELOQUENT, GYM, PSYCHOLOGY, QUEUE, SCHNAPPS, FLY\n\n"
+            'Respond as JSON: {"results": [\n'
+            '  {"word": "RHYTHM", "A": "...", "B": "...", "C": "...", "D": "..."},\n'
+            "  ... for all 10 words\n"
+            "]}"
+        ),
+        # Verification:
+        # RHYTHM: R=SECOND? No, R is 18th letter → SECOND. Vowels: y is not counted → 0. Length 6 → MEDIUM. Consonant clusters: rh=2, thm=3 → 3
+        # BEAUTIFUL: B → FIRST. Vowels: e,a,u,i,u = 5. Length 9 → LONG. Consonant clusters: b=1, t=1, f=1, l=1 → 1
+        # CAT: C → FIRST. Vowels: a = 1. Length 3 → SHORT. Consonant clusters: c=1, t=1 → 1
+        # STRENGTH: S → SECOND. Vowels: e = 1. Length 8 → LONG. Consonant clusters: str=3, ngth=4 → 4
+        # ELOQUENT: E → FIRST. Vowels: e,o,u,e = 4. Length 8 → LONG. Consonant clusters: l=1, q=1, nt=2 → 2
+        # GYM: G → FIRST. Vowels: 0 (y not counted). Length 3 → SHORT. Consonant clusters: gym=3 → 3
+        # PSYCHOLOGY: P → SECOND. Vowels: o,o = 2 (y not counted). Length 10 → LONG. Consonant clusters: ps=2, ch=2, l=1, g=1 → 2
+        # QUEUE: Q → SECOND. Vowels: u,e,u,e = 4. Length 5 → MEDIUM. Consonant clusters: q=1 → 1
+        # SCHNAPPS: S → SECOND. Vowels: a = 1. Length 8 → LONG. Consonant clusters: schn=4, pps=3 → 4
+        # FLY: F → FIRST. Vowels: 0. Length 3 → SHORT. Consonant clusters: fly=3 → 3
+        "answers": [
+            {"A": "SECOND", "B": "0", "C": "MEDIUM", "D": "3"},
+            {"A": "FIRST",  "B": "5", "C": "LONG",   "D": "1"},
+            {"A": "FIRST",  "B": "1", "C": "SHORT",  "D": "1"},
+            {"A": "SECOND", "B": "1", "C": "LONG",   "D": "4"},
+            {"A": "FIRST",  "B": "4", "C": "LONG",   "D": "2"},
+            {"A": "FIRST",  "B": "0", "C": "SHORT",  "D": "3"},
+            {"A": "SECOND", "B": "2", "C": "LONG",   "D": "2"},
+            {"A": "SECOND", "B": "4", "C": "MEDIUM", "D": "1"},
+            {"A": "SECOND", "B": "1", "C": "LONG",   "D": "4"},
+            {"A": "FIRST",  "B": "0", "C": "SHORT",  "D": "3"},
+        ],
+    },
+    {
+        "id": "X3",
+        "prompt": (
+            "TRIPLE-STREAM INTERLEAVED: Three streams use DIFFERENT rules on SHARED items.\n\n"
+            "STREAMS (items assigned to streams in rotating order A, B, C, A, B, C, ...):\n"
+            "- Stream A: Compute the number mod 7.\n"
+            "- Stream B: Sum the digits, then state if the sum is PRIME or NOT PRIME.\n"
+            "- Stream C: Reverse the digits. Is reversed number LARGER, SMALLER, or EQUAL to original?\n\n"
+            "Items (stream assignment rotates A→B→C→A→B→C→...):\n"
+            "1. [A] 53\n"
+            "2. [B] 47\n"
+            "3. [C] 29\n"
+            "4. [A] 86\n"
+            "5. [B] 31\n"
+            "6. [C] 44\n"
+            "7. [A] 19\n"
+            "8. [B] 72\n"
+            "9. [C] 65\n"
+            "10. [A] 38\n"
+            "11. [B] 94\n"
+            "12. [C] 77\n"
+            "13. [A] 61\n"
+            "14. [B] 55\n"
+            "15. [C] 23\n\n"
+            'Respond as JSON: {"answers": ["ans1", "ans2", ..., "ans15"]}\n'
+            "Apply the CORRECT rule for each item's assigned stream."
+        ),
+        # Verification:
+        # 1. [A] 53 mod 7 = 53/7=7*7+4 → 4
+        # 2. [B] 47: 4+7=11, is 11 prime? YES → PRIME
+        # 3. [C] 29: reversed=92, 92>29 → LARGER
+        # 4. [A] 86 mod 7 = 86/7=12*7+2 → 2
+        # 5. [B] 31: 3+1=4, is 4 prime? NO → NOT PRIME
+        # 6. [C] 44: reversed=44, 44=44 → EQUAL
+        # 7. [A] 19 mod 7 = 19/7=2*7+5 → 5
+        # 8. [B] 72: 7+2=9, is 9 prime? NO → NOT PRIME
+        # 9. [C] 65: reversed=56, 56<65 → SMALLER
+        # 10. [A] 38 mod 7 = 38/7=5*7+3 → 3
+        # 11. [B] 94: 9+4=13, is 13 prime? YES → PRIME
+        # 12. [C] 77: reversed=77, 77=77 → EQUAL
+        # 13. [A] 61 mod 7 = 61/7=8*7+5 → 5
+        # 14. [B] 55: 5+5=10, is 10 prime? NO → NOT PRIME
+        # 15. [C] 23: reversed=32, 32>23 → LARGER
+        "answers": ["4", "PRIME", "LARGER", "2", "NOT PRIME", "EQUAL",
+                     "5", "NOT PRIME", "SMALLER", "3", "PRIME", "EQUAL",
+                     "5", "NOT PRIME", "LARGER"],
+    },
+]
+
 
 def normalize_answer(text: str) -> str:
     t = str(text).strip().upper().replace(".", "").replace(",", "").replace('"', '').replace("'", "")
     for kw in ("NON-MAMMAL", "MAMMAL", "BIRD", "ODD", "EVEN", "HIGH", "LOW",
                "LARGER", "SMALLER", "EQUAL", "FIRST", "SECOND",
-               "POSITIVE", "NEGATIVE", "YES", "NO", "ABOVE", "BELOW"):
+               "POSITIVE", "NEGATIVE", "YES", "NO", "ABOVE", "BELOW",
+               "NOT PRIME", "PRIME", "SHORT", "MEDIUM", "LONG"):
         if kw in t:
             return kw
     nums = re.findall(r'-?\d+', t)
@@ -319,10 +453,13 @@ def score_hard_trial(llm, trial) -> float:
     correct = 0
     total = 0
     
+    # Determine which keys to check based on expected answers
+    rule_keys = sorted(expected_list[0].keys()) if expected_list else ["A", "B", "C"]
+    
     for i, exp in enumerate(expected_list):
         if i < len(results_list):
             item = results_list[i]
-            for key in ("A", "B", "C"):
+            for key in rule_keys:
                 total += 1
                 model_val = str(item.get(key, ""))
                 if check_answer(model_val, exp[key]):
@@ -330,6 +467,32 @@ def score_hard_trial(llm, trial) -> float:
         else:
             total += len(exp)
     
+    return correct / total if total > 0 else 0
+
+
+def score_extreme_flat_trial(llm, trial) -> float:
+    """Score an extreme trial with flat answer list (triple-stream interleaved)."""
+    with kbench.chats.new(f"divided_{trial['id']}"):
+        raw = llm.prompt(trial["prompt"])
+
+    parsed = extract_json(raw)
+    model_answers = parsed.get("answers", [])
+    expected = trial["answers"]
+
+    if not model_answers:
+        lines = [l.strip() for l in raw.split("\n") if l.strip() and not l.strip().startswith("{")]
+        model_answers = []
+        for line in lines:
+            m = re.match(r'\d+[\.):\s]+(.+)', line)
+            if m:
+                model_answers.append(m.group(1).strip())
+
+    correct = 0
+    total = len(expected)
+    for i, exp in enumerate(expected):
+        if i < len(model_answers) and check_answer(str(model_answers[i]), exp):
+            correct += 1
+
     return correct / total if total > 0 else 0
 
 

@@ -1,0 +1,13 @@
+{
+  "benchmark": "learning_curriculum",
+  "n_models": 1,
+  "mean": 0.68,
+  "std": 0.0,
+  "range": 0.0,
+  "min": 0.68,
+  "max": 0.68,
+  "per_model": {
+    "Ministral 3B": 0.68
+  },
+  "timestamp": "2026-04-14T09:44:00.617688+00:00"
+}

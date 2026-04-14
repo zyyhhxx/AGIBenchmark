@@ -75,7 +75,7 @@ All tasks are implemented using the `kaggle-benchmarks` SDK with the `@kbench.ta
 
 ### Results, Insights, and Conclusions
 
-We evaluated 6 models on the Kaggle Community Benchmarks platform. Results (scores 0–1, higher = better):
+We evaluated 6 models on the [Kaggle Community Benchmarks platform](https://www.kaggle.com/benchmarks/ianstudy/metacognition-track). Results (scores 0–1, higher = better):
 
 | Task | Mean | Std | Range | Top Model (Score) | Bottom Model (Score) |
 |------|------|-----|-------|-------------------|---------------------|
