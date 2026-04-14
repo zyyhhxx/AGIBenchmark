@@ -499,22 +499,11 @@ def score_extreme_flat_trial(llm, trial) -> float:
 
 @kbench.task(name="Divided Attention")
 def attention_divided(llm) -> float:
-    """
-    Divided Attention (Multi-Stream Interference) Benchmark.
+    """Divided Attention (Multi-Stream Interference) Benchmark.
 
     Tests performance under simultaneous multi-stream monitoring with
     cross-stream interference. Four difficulty tiers:
       EASY (2 streams, no conflict): baseline
-      MEDIUM (3 streams, shared domain): mild interference
-      HARD (3 streams, SAME items, different rules): maximum interference
-      EXTREME (triple-stream interleaved, 4 rules, cross-stream conflicts)
-
-    Score = 0.15 * easy + 0.20 * medium + 0.30 * hard + 0.35 * extreme
-
-    Cognitive Science Basis:
-    - Pashler (1994) central bottleneck theory
-    - Wickens (2002) Multiple Resource Theory
-    - Navon & Gopher (1979) performance-resource functions
     """
     tier_scores = {"easy": [], "medium": [], "hard": [], "extreme": []}
     

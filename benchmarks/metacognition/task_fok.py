@@ -240,23 +240,13 @@ def compute_auc(confidences: list, accuracies: list) -> float:
 
 @kbench.task(name="Feeling of Knowing")
 def metacog_fok(llm) -> float:
-    """
-    Feeling-of-Knowing (FOK) Benchmark.
+    """Feeling-of-Knowing (FOK) Benchmark.
 
     Two-phase protocol measuring prospective metacognitive monitoring.
     Phase 1: Rate confidence you CAN answer (without answering).
     Phase 2: Actually answer.
 
     Score = weighted composite:
-      0.40 * normalized_gamma + 0.30 * max(0, BSS) + 0.30 * AUC
-
-    BSS (Brier Skill Score) replaces the old 1-ECE component to properly
-    reward resolution (discrimination) alongside calibration. An always-
-    uncertain strategy now scores ~0 instead of ~1.
-
-    Cognitive Science Basis: Hart (1965), Nelson & Narens (1990).
-    Scoring: Brier (1950), Murphy (1973) skill score decomposition.
-    Human FOK gamma: 0.25–0.55.
     """
     fok_ratings = []
     accuracies = []

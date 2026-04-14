@@ -350,14 +350,12 @@ def assess_explanation_quality(explanation: str, item: dict) -> float:
 
 @kbench.task(name="Epistemic Humility")
 def metacog_epistemic_humility(llm) -> float:
-    """
-    Epistemic Humility Benchmark.
+    """Epistemic Humility Benchmark.
     
     Tests whether a model can appropriately recognize the limits of its
     knowledge and express uncertainty rather than confabulating.
     
-    Score = 0.35 * unanswerable_detection + 0.25 * (1 - confabulation) 
-          + 0.20 * (1 - false_refusal) + 0.20 * explanation_quality
+    Score = 0.35 * unanswerable_detection + 0.25 * (1 - confabulation)
     """
     results = []
     

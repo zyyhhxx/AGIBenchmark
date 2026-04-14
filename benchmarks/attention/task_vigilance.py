@@ -134,13 +134,11 @@ def run_nback_condition(llm, data: dict, condition_name: str) -> dict:
 
 @kbench.task(name="Sustained Vigilance")
 def attention_vigilance(llm) -> float:
-    """
-    N-Back Sustained Attention (Vigilance) Benchmark.
+    """N-Back Sustained Attention (Vigilance) Benchmark.
 
     Runs 3-back (80 items), 4-back (60 items), and 6-back (80 items) conditions.
 
     Score = 0.35 * overall_accuracy + 0.35 * sensitivity (hit_rate - FA_rate)
-            + 0.15 * vigilance_decrement_resistance + 0.15 * (1 - false_alarm_rate)
     """
     conditions = [
         ("3-back", VIGILANCE_3BACK, 0.30),  # weight

@@ -133,19 +133,11 @@ def _compute_tier_composite(results_tier: list) -> dict:
 
 @kbench.task(name="Sarcasm Detection")
 def social_cog_sarcasm(llm) -> float:
-    """
-    Sarcasm Detection in Context Benchmark.
+    """Sarcasm Detection in Context Benchmark.
 
     Tests discrimination between sarcastic and sincere utterances
     using matched-pair design with shared surface forms across 3
     difficulty tiers.
-
-    Score = 0.05 * tier1_composite + 0.15 * tier2_composite + 0.80 * tier3_binary_acc
-    Tier 1-2: 0.50 * AUC + 0.30 * (1 - cal_error) + 0.20 * threshold_acc
-    Tier 3: binary accuracy only (AUC too forgiving for subtle sarcasm)
-
-    Cognitive Science: Gibbs (1986), Shamay-Tsoory et al. (2005).
-    Human AUC: ~0.95 for adults with context (tier 1), ~0.80 (tier 3).
     """
     results = []
 

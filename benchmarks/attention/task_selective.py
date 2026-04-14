@@ -290,19 +290,12 @@ ALL_ITEMS = TIER1_ITEMS + TIER2_ITEMS + TIER3_ITEMS + TIER4_ITEMS
 
 @kbench.task(name="Selective Attention", version=2)
 def attention_selective(llm) -> float:
-    """
-    Selective Attention — Conjunction Search Benchmark v2.
+    """Selective Attention — Conjunction Search Benchmark v2.
 
     Tests ability to filter information using multiple criteria simultaneously,
     analogous to visual conjunction search (Treisman & Gelade, 1980).
 
     Four difficulty tiers:
-    - Tier 1 (Pop-out): single feature, easy (weight 0.08)
-    - Tier 2 (Conjunction): 2 features to bind (weight 0.22)
-    - Tier 3 (Triple-conjunction): 3-5 features, many near-miss distractors (weight 0.35)
-    - Tier 4 (Quadruple-conjunction): 5-7 features, edge cases, high similarity (weight 0.35)
-
-    Score = 0.08 * tier1_acc + 0.22 * tier2_acc + 0.35 * tier3_acc + 0.35 * tier4_acc
     """
     tier_results = {1: [], 2: [], 3: [], 4: []}
 

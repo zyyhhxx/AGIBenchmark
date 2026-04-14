@@ -547,22 +547,12 @@ def check_patterns(answer: str, patterns: list) -> bool:
 
 @kbench.task(name="Epistemic Revision")
 def metacog_epistemic_revision(llm) -> float:
-    """
-    Epistemic Revision Benchmark: Belief Updating Under Contradiction.
+    """Epistemic Revision Benchmark: Belief Updating Under Contradiction.
 
     Tests whether a model can revise learned rules when presented with
     contradicting evidence.
 
     Score = 0.10 * violation_detection + 0.10 * revision_quality +
-            0.60 * transfer_accuracy + 0.20 * (1 - perseveration_rate)
-
-    v4: Transfer phase uses raw experimental data (not explicit contradiction
-    interpretations). Model must inductively infer revised rules from data
-    points, then apply them to multi-step questions. All transfer questions
-    batched into single prompt to tax working memory. Weights shifted to
-    0.10/0.10/0.60/0.20 to emphasize transfer (hardest discriminating component).
-
-    Cognitive Science Basis: Gärdenfors (1988), AGM postulates.
     """
     total_results = []
     all_violation_scores = []

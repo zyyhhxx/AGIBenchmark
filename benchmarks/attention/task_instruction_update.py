@@ -449,20 +449,12 @@ def score_trial(llm, trial) -> float:
 
 @kbench.task(name="Attention to Instruction Update")
 def attention_instruction_update(llm) -> float:
-    """
-    Attention to Instruction Updates Benchmark (v2).
+    """Attention to Instruction Updates Benchmark (v2).
 
     Tests adaptation to mid-sequence rule changes with increasing complexity.
 
     Tiers:
       EASY:   Single switch, explicit markers (3 trials, 24 items)
-      MEDIUM: Two switches, less obvious markers (3 trials, 28 items)
-      HARD:   Contradictory/chained/reversal/deep-chain/conditional/interleaved (8 trials, 110 items)
-
-    Total: 14 trials, 162 items.
-    Score = 0.15 * easy + 0.25 * medium + 0.60 * hard
-
-    Cognitive Science: Monsell (2003), Meiran (1996), Allport et al. (1994).
     """
     tier_scores = {"easy": [], "medium": [], "hard": []}
     all_results = []

@@ -157,16 +157,11 @@ def _full_system_block(system, max_examples: int = 10) -> str:
 
 @kbench.task(name="Near & Far Transfer v3")
 def learning_transfer(llm) -> float:
-    """
-    Near vs. Far Transfer Benchmark (v3).
+    """Near vs. Far Transfer Benchmark (v3).
 
     Four conditions with increasing transfer distance:
     1. Identical (weight 0.15): same system, all rules given, held-out items
-    2. Near transfer (weight 0.25): same domain (symbol), INCOMPLETE rules (1 omitted)
-    3. Far transfer (weight 0.30): different domain (number), NO rules — 2 examples per operator
-    4. Zero-shot structural (weight 0.30): stateful system, NO rules — 2 curated examples only
-
-    Score = 0.15 * identical + 0.25 * near + 0.30 * far + 0.30 * zero_shot
+    2. Near transfer (weight 0.25): same domain (symbol), INCOMPLETE rules
     """
 
     train_block = _full_system_block(TRANSFER_TRAIN_V3, max_examples=10)

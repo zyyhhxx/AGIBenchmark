@@ -419,23 +419,13 @@ def check_answer(model_answer: str, question: dict) -> bool:
 
 @kbench.task(name="Metacognitive Control")
 def metacog_control(llm) -> float:
-    """
-    Metacognitive Control Benchmark: Strategic Re-Reading.
+    """Metacognitive Control Benchmark: Strategic Re-Reading.
 
     Tests whether a model can strategically allocate limited study effort
     to sections most relevant to upcoming questions.
 
     Protocol per passage:
-    1. Present full passage (all 10 sections)
-    2. Present 5 questions
-    3. Model selects exactly 3 sections to "re-read" (limited budget)
-    4. Re-present selected sections + questions → model answers
-
-    Score = 0.35 * selection_relevance + 0.35 * strategic_gain + 0.30 * accuracy
-
-    Cognitive Science Basis:
-    - Allocation of study time (Son & Metcalfe, 2000)
-    - Metacognitive control (Nelson & Narens, 1990)
+    1. Present full passage (all 10
     """
     all_selection_relevances = []
     all_accuracies = []

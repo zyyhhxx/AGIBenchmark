@@ -130,8 +130,7 @@ def compute_dprime(hit_rate: float, false_alarm_rate: float) -> float:
 
 @kbench.task(name="Error Detection")
 def metacog_error_detection(llm) -> float:
-    """
-    Error Detection Benchmark.
+    """Error Detection Benchmark.
 
     Model reviews step-by-step reasoning chains and must:
     1. Detect whether an error exists
@@ -139,9 +138,6 @@ def metacog_error_detection(llm) -> float:
     3. Rate confidence
 
     Score = 0.35 * detection_F1 + 0.25 * localization_accuracy
-            + 0.20 * (1 - ECE) + 0.20 * confidence_gamma_norm
-
-    Cognitive Science Basis: Yeung & Summerfield (2012), error monitoring.
     """
     results = []
 

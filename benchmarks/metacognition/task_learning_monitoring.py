@@ -81,17 +81,11 @@ SYSTEMS = [
 
 @kbench.task(name="Learning Monitoring")
 def metacog_learning_monitoring(llm) -> float:
-    """
-    Metacognitive Monitoring During Learning.
+    """Metacognitive Monitoring During Learning.
 
     Tests whether models can accurately track their own learning progress.
     Presents rules incrementally and measures both performance and
     self-assessment at each stage.
-
-    Score = 0.30 * monitoring_gamma + 0.30 * learning_accuracy
-            + 0.20 * (1 - monitoring_bias) + 0.20 * learning_rate
-
-    Novel benchmark combining metacognition and learning tracks.
     """
     all_monitoring_confs = []
     all_actual_accs = []

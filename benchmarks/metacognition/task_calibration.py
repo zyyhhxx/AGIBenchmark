@@ -232,21 +232,12 @@ def compute_ece(confidences_0_100: list, accuracies: list, n_bins: int = 10) -> 
 
 @kbench.task(name="Retrospective Calibration")
 def metacog_calibration(llm) -> float:
-    """
-    Metacognitive Calibration Benchmark.
+    """Metacognitive Calibration Benchmark.
 
     Measures how well a model's stated confidence matches its actual accuracy.
 
     Score = composite:
       0.50 × extreme_accuracy^1.5 — amplified extreme-question accuracy (difficulty >= 4)
-      0.25 × BSS-normalized — (bss_raw + 1) / 2, calibration quality
-      0.25 × uncertainty awareness — 1 - mean_confidence_on_hard_incorrect items
-
-    This composite differentiates models that are somewhat overconfident from those
-    that are wildly overconfident, unlike BSS which clamps all poor calibrators to 0.
-
-    Cognitive Science Basis: Nelson & Narens (1990) metamemory monitoring framework.
-    Lichtenstein et al. (1982) calibration; Murphy (1973) skill score decomposition.
     """
     confidences = []
     accuracies = []

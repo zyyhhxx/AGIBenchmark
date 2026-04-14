@@ -154,19 +154,13 @@ def compute_ece(confidences: list, accuracies: list, n_bins: int = 5) -> float:
 
 @kbench.task(name="Judgment of Learning")
 def metacog_jol(llm) -> float:
-    """
-    Judgment-of-Learning (JOL) Benchmark.
+    """Judgment-of-Learning (JOL) Benchmark.
 
     Study → JOL → Distract → Test protocol with novel stimuli.
 
     Score = 0.40 * gamma_norm + 0.30 * max(0, BSS) + 0.30 * recall_rate
 
     BSS (Brier Skill Score) replaces the old 1-ECE component to properly
-    reward resolution alongside calibration.
-
-    Cognitive Science Basis: Arbuckle & Cuddy (1969), Nelson & Narens (1990).
-    Scoring: Brier (1950), Murphy (1973) skill score decomposition.
-    Human JOL gamma: 0.40–0.90.
     """
 
     all_jol_ratings = []

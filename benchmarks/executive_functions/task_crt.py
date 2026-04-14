@@ -143,16 +143,10 @@ def check_answer(model_answer: str, correct: str, intuitive_wrong: str):
 
 @kbench.task(name="Cognitive Reflection Test")
 def exec_func_crt(llm) -> float:
-    """
-    Cognitive Reflection Test Benchmark.
+    """Cognitive Reflection Test Benchmark.
 
     Tests inhibition of intuitive-but-wrong answers in favor of
     deliberate reasoning. A core executive function measure.
-
-    Score = 0.40 * accuracy + 0.30 * (1 - trap_rate) + 0.20 * difficulty_bonus + 0.10 * calibration
-
-    Cognitive Science: Frederick (2005), Kahneman (2011).
-    Human accuracy: ~30% (general public), ~50% (MIT students).
     """
     results = []
     difficulty_correct = {"easy": [], "medium": [], "hard": [], "extreme": []}

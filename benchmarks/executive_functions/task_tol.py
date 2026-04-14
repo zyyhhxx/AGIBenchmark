@@ -142,17 +142,12 @@ TIERS = {
 
 @kbench.task(name="Tower of London")
 def exec_func_tol(llm) -> float:
-    """
-    Tower of London Planning Benchmark.
+    """Tower of London Planning Benchmark.
 
     Tests multi-step planning by requiring the model to find move sequences
     to rearrange balls on pegs to match a goal state.
 
     Score = weighted sum of per-tier mean optimality:
-      0.20 * easy(2-move) + 0.30 * medium(3-move) + 0.50 * hard(4-5 move)
-
-    Cognitive Science Basis: Shallice (1982), Owen et al. (1990).
-    Human optimality: ~90% at 2 moves, ~85% at 3 moves, ~65% at 5 moves.
     """
     results = []
     tier_scores = {"easy": [], "medium": [], "hard": []}

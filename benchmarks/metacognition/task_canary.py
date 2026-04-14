@@ -82,19 +82,12 @@ def _extract_confidence(text: str) -> int:
 
 @kbench.task(name="Contamination Canary")
 def metacog_canary(llm) -> float:
-    """
-    Contamination Canary / Metacognitive Discrimination.
+    """Contamination Canary / Metacognitive Discrimination.
 
     Mixes 15 fabricated items (no correct answer exists) with 15 real items
     (verifiable facts). Measures confidence calibration across both types.
 
-    Score = max(0, BSS) where BSS = 1 - BS / BS_ref.
-    - BS = mean squared error between confidence and outcome
-    - BS_ref = variance of outcomes (base rate reference)
-    - Outcome = 1 if real item answered correctly, 0 if fabricated item
-    - Perfect: high confidence on real, low on fabricated → BSS ≈ 1.0
-    - No discrimination (same confidence on all): BSS ≈ 0.0
-    - Inverted (high confidence on fabricated): BSS < 0 → clamped to 0.0
+    Score = max(0, BSS) where BSS = 1 -
     """
     results = []
 

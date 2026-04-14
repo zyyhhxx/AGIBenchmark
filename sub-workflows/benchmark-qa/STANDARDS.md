@@ -70,6 +70,7 @@ Every Kaggle benchmark notebook MUST satisfy ALL of the following. No exceptions
 6. **All code cells must compile** — `compile(src, name, 'exec')` must succeed for cells 1 and 2.
 7. **`_strip_think()` in every benchmark** — all benchmarks that parse model output must strip `<think>...</think>` tags before parsing (DeepSeek R1 fix).
 8. **JS-style comment stripping** — benchmarks that parse JSON must strip `//` comments: `re.sub(r'//.*', '', raw)`.
+9. **Task docstring ≤ 255 chars** — the docstring immediately under `@kbench.task()` must be ≤255 characters (Kaggle validation requirement).
 
 ### Verification Command
 
@@ -84,6 +85,12 @@ assert sum(1 for c in cells if '.run(' in ''.join(c['source'])) == 1, "Must have
 assert 'kbench' in ''.join(cells[0]['source']), "kbench must be in pip cell"
 assert not any('from data.' in ''.join(c['source']) for c in cells), "No local imports"
 assert not any('if __name__' in ''.join(c['source']) for c in cells), "No if __name__"
+# Check task docstring length
+import re
+for c in cells[1:]:
+    src = ''.join(c['source'])
+    for m in re.finditer(r'@kbench\.task\(name="[^"]+"[^)]*\)\s*\ndef\s+\w+\([^)]*\)[^:]*:\s*\n\s*"""(.*?)"""', src, re.DOTALL):
+        assert len(m.group(1).strip()) <= 255, f"Task docstring {len(m.group(1).strip())} chars > 255"
 for i, c in enumerate(cells[1:], 1):
     compile(''.join(c['source']), f'cell{i}', 'exec')  # Must not raise
 print("ALL CHECKS PASS")

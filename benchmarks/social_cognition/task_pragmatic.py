@@ -117,18 +117,11 @@ def _score_tier(items, llm, tier_label):
 
 @kbench.task(name="Pragmatic Inference", version=2)
 def social_cog_pragmatic(llm) -> float:
-    """
-    Pragmatic Inference Benchmark (v2 — difficulty-tiered).
+    """Pragmatic Inference Benchmark (v2 — difficulty-tiered).
 
     Tests understanding of speaker intent beyond literal meaning across
     three difficulty tiers: direct implicature, indirect/contextual, and
     complex multi-layer pragmatics.
-
-    Composite = 0.15 * direct + 0.35 * indirect + 0.50 * complex
-
-    Cognitive Science: Grice (1975), Horn (1984), Searle (1975),
-    Brown & Levinson (1987), Sperber & Wilson (1986).
-    Human performance: ~90-95% direct, ~75-85% indirect, ~60-75% complex.
     """
     # Run each tier
     direct_score, direct_acc, direct_lit, direct_results, direct_cats = \

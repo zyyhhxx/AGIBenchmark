@@ -70,17 +70,12 @@ def check_misleading(model_answer: str, misleading_patterns: list) -> bool:
 
 @kbench.task(name="False Belief (Theory of Mind)")
 def social_cog_false_belief(llm) -> float:
-    """
-    False-Belief Theory of Mind Benchmark (v6).
+    """False-Belief Theory of Mind Benchmark (v6).
 
     Individual scenarios only (no batch section).
     Heavy weighting toward 4th and 5th order nested beliefs.
     
     Scoring: 0.00 * tier1 + 0.00 * tier2 + 0.05 * tier3 + 0.70 * tier4 + 0.25 * tier5
-
-    Cognitive Science: Wimmer & Perner (1983), Kinderman et al. (1998), Miller (2009).
-    Human 1st-order: ~95% adults. 2nd-order: ~80%. 3rd-order: ~60%. 4th-order: ~40%.
-    5th-order (5-character cascading deception): ~20-30%.
     """
     results = []
     

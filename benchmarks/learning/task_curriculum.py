@@ -94,8 +94,7 @@ def run_curriculum(llm, system, examples: list, label: str) -> float:
 
 @kbench.task(name="Curriculum Sensitivity")
 def learning_curriculum(llm) -> float:
-    """
-    Curriculum Sensitivity Benchmark.
+    """Curriculum Sensitivity Benchmark.
 
     Tests whether example ordering affects learning.
     Genuine learning systems should show curriculum effects.
@@ -103,9 +102,6 @@ def learning_curriculum(llm) -> float:
     Score = 0.40 * max_accuracy + 0.30 * sensitivity + 0.30 * optimal_ordering_bonus
 
     Where:
-    - max_accuracy: best accuracy across orderings
-    - sensitivity: range of accuracies (higher = more sensitive to ordering)
-    - optimal_ordering_bonus: whether easy→hard beats random
     """
     system = CURRICULUM_SYSTEM
     examples = system.examples[:10]  # Use 10 examples

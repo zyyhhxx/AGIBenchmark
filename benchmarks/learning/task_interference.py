@@ -235,16 +235,11 @@ def run_tier4(llm) -> float:
 
 @kbench.task(name="Rule Induction Under Interference v5")
 def learning_interference(llm) -> float:
-    """
-    Rule Induction Under Interference Benchmark (v5).
+    """Rule Induction Under Interference Benchmark (v5).
 
     Four tiers testing rule induction with increasing interference:
     - Tier 1 (0.10): Clean induction from examples
     - Tier 2 (0.25): Labeled groups with overlapping symbols
-    - Tier 3 (0.35): Interleaved systems + wrong-system priming
-    - Tier 4 (0.30): Unlabeled clustering + query-pair identification
-
-    Composite = 0.10 * tier1 + 0.25 * tier2 + 0.35 * tier3 + 0.30 * tier4
     """
 
     print("\n" + "=" * 60)
