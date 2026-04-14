@@ -23,6 +23,12 @@ import re
 import json
 
 
+
+def _strip_think(text: str) -> str:
+    """Remove <think>...</think> blocks from model output."""
+    import re as _re
+    return _re.sub(r'<think>.*?</think>', '', text, flags=_re.DOTALL).strip()
+
 def normalize(text: str) -> str:
     """Normalize for comparison: lowercase, strip whitespace/punctuation."""
     return re.sub(r'[^\w\s,]', '', text.strip().lower())
@@ -223,7 +229,7 @@ def attention_selective(llm) -> float:
 
             try:
                 raw = llm.prompt(prompt)
-                answer = raw.strip()
+                answer = _strip_think(raw)
             except Exception as e:
                 answer = f"ERROR: {e}"
 

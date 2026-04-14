@@ -1,0 +1,37 @@
+{
+  "model_id": "qwen.qwen3-next-80b-a3b",
+  "model_label": "Qwen3 Next 80B",
+  "benchmark": "exec_func_task_switch",
+  "score": 0.8225,
+  "n_items": 75,
+  "n_correct": 56,
+  "duration_s": 11.2,
+  "timestamp": "2026-04-14T08:36:32.623380+00:00",
+  "blocks": {
+    "baseline": {
+      "accuracy": 0.6666666666666666,
+      "n_correct": 10,
+      "n_trials": 15,
+      "n_parsed": 15
+    },
+    "slow_switch": {
+      "accuracy": 0.7,
+      "n_correct": 14,
+      "n_trials": 20,
+      "n_parsed": 20
+    },
+    "rapid_switch": {
+      "accuracy": 0.85,
+      "n_correct": 17,
+      "n_trials": 20,
+      "n_parsed": 20
+    },
+    "random_cue": {
+      "accuracy": 0.75,
+      "n_correct": 15,
+      "n_trials": 20,
+      "n_parsed": 20
+    }
+  },
+  "switch_cost": -0.0724
+}

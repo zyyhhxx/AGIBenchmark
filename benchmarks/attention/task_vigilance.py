@@ -33,8 +33,14 @@ import json
 from benchmarks.attention.data.vigilance_stimuli import VIGILANCE_3BACK, VIGILANCE_4BACK
 
 
+
+def _strip_think(text: str) -> str:
+    """Remove <think>...</think> blocks from model output."""
+    return re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL).strip()
+
 def _parse_responses(raw: str, expected_count: int) -> list:
     """Extract YES/NO responses from model output."""
+    raw = _strip_think(raw)
     # Try JSON array first
     try:
         m = re.search(r'\[.*\]', raw, re.DOTALL)

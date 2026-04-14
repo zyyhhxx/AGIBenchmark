@@ -1,0 +1,37 @@
+{
+  "model_id": "zai.glm-4.7",
+  "model_label": "GLM 4.7",
+  "benchmark": "exec_func_task_switch",
+  "score": 0.9287,
+  "n_items": 75,
+  "n_correct": 72,
+  "duration_s": 8.8,
+  "timestamp": "2026-04-14T08:36:44.406757+00:00",
+  "blocks": {
+    "baseline": {
+      "accuracy": 1.0,
+      "n_correct": 15,
+      "n_trials": 15,
+      "n_parsed": 15
+    },
+    "slow_switch": {
+      "accuracy": 0.95,
+      "n_correct": 19,
+      "n_trials": 20,
+      "n_parsed": 20
+    },
+    "rapid_switch": {
+      "accuracy": 0.9,
+      "n_correct": 18,
+      "n_trials": 20,
+      "n_parsed": 20
+    },
+    "random_cue": {
+      "accuracy": 1.0,
+      "n_correct": 20,
+      "n_trials": 20,
+      "n_parsed": 20
+    }
+  },
+  "switch_cost": 0.0475
+}

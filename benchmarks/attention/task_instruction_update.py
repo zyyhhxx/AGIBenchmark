@@ -246,7 +246,13 @@ def check_answer(model_answer: str, expected: str) -> bool:
     return m == e
 
 
+def _strip_think(text: str) -> str:
+    """Remove <think>...</think> blocks from model output."""
+    return re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL).strip()
+
+
 def extract_json(raw: str) -> dict:
+    raw = _strip_think(raw)
     """Extract JSON from model response."""
     try:
         return json.loads(raw)
