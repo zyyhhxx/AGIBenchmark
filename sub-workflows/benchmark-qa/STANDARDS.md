@@ -192,6 +192,78 @@ The `exec_func_crt.ipynb` markdown cell is the reference standard. It has all re
 
 ---
 
+## Writeup Standards
+
+Each cognitive track has a writeup in `docs/writeups/`. These are discussion thread posts on Kaggle — judges evaluate them (85% weight). Every writeup must be self-contained, scientifically rigorous, and compelling.
+
+### Required Sections (7 — per competition rules)
+
+| # | Section | Purpose |
+|---|---------|----------|
+| 1 | **Problem Statement** | Ground the track in cognitive science, explain the evaluation gap, end with a bold research question |
+| 2 | **Task & Benchmark Construction** | Task overview table, difficulty calibration, test methodology, contamination resistance |
+| 3 | **Dataset** | Construction methodology, quality assurance, scoring formulas, provenance |
+| 4 | **Technical Details** | Only genuine implementation challenges (e.g., parsing confounds) — no boilerplate |
+| 5 | **Results, Insights, and Conclusions** | Results table, model ranking, 3–5 insights with scientific significance |
+| 6 | **Organizational Affiliations** | "Independent submission — no organizational affiliation." |
+| 7 | **References & Citations** | All cited works in full bibliographic format |
+
+### Section Standards
+
+**Problem Statement:**
+- Open with the cognitive science foundation (cite seminal papers)
+- Explain why current LLM benchmarks fail to measure this construct
+- Close with a bold italicized research question
+- 2–3 paragraphs maximum
+
+**Task & Benchmark Construction:**
+- **Task table** (Task | Construct | Protocol) — one row per benchmark, concise protocol descriptions with citations
+- **Difficulty calibration** paragraph — how each task scales difficulty (tiers, conditions, N-levels)
+- **Test methodology** subsection — design choices that challenge frontier models and prevent gaming (batch presentation, hidden dimensions, probabilistic feedback, etc.). This is where unique benchmark innovations go.
+- **Contamination resistance** paragraph — how stimuli avoid training data overlap (procedural generation, seeded RNG, novel domains)
+
+**Dataset:**
+- Focus on *how* data is constructed (procedural generation, seeded RNG, inlined stimuli)
+- Quality assurance: ground truth verification, deterministic reproducibility, contamination-resistant design
+- **Scoring formulas** per task — specific weights and components, not blanket descriptions. Each task's composite must be individually documented.
+- Provenance statement: synthetic generation, no copyrighted data, no external dependencies
+- Do NOT list trivial details like item counts per task
+
+**Technical Details:**
+- Only substantive implementation challenges (response parsing, format-vs-cognition confounds)
+- No boilerplate (SDK usage, decorator patterns, fresh conversations per item — these are requirements, not insights)
+- If a parsing or measurement challenge affected score validity, describe it here
+- Keep short — 1–3 bullet points maximum
+
+**Results, Insights, and Conclusions:**
+- State model roster with Kaggle benchmark link, organized by tier (frontier / mid-tier / small)
+- **Results table:** Task | Mean | Std | Range | Top Model (Score) | Bottom Model (Score)
+- **Overall model ranking** as a single line with scores
+- **3–5 insights**, each with:
+  - Bold header naming the specific finding (e.g., "N-back produces the strongest model separation")
+  - Specific scores cited as evidence
+  - Cognitive/scientific interpretation — what does this tell us about the construct?
+- **Average cross-benchmark std** as closing statistic
+- Use population std (N denominator) consistently across all writeups
+
+**References & Citations:**
+- Full bibliographic format: Author, Initials. (Year). Title. *Journal*, Volume(Issue), Pages.
+- Include all works cited in the text — no uncited references, no missing citations
+- Cite seminal papers for each cognitive construct measured
+
+### Style Rules
+
+1. **Self-contained** — no references to other tracks ("highest of all 5 tracks", "unlike metacognition")
+2. **No version numbers** — present the final benchmark design only; no v2/v3/"earlier versions"
+3. **No internal history** — no references to development iterations, redesigns, or previous runs
+4. **Title** — phrased as a research question (e.g., "Can AI Systems Plan, Inhibit, and Adapt?")
+5. **Population std** — use N denominator consistently (not sample std with N-1)
+6. **Score precision** — 2 decimal places in tables, 3 decimal places for Mean/Std/Range
+7. **Insight quality** — every insight must cite specific model scores and connect to cognitive science. No vague observations.
+8. **Benchmark link** — include the Kaggle Community Benchmarks URL in the Results section
+
+---
+
 ## Ground Truth Verification
 
 Every benchmark with deterministic stimuli must have a verification script that:

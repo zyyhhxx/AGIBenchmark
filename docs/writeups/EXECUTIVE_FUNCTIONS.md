@@ -25,11 +25,22 @@ We constructed 5 tasks mapping onto the Miyake et al. (2000) three-component fra
 
 **Difficulty calibration:** CRT includes 3 difficulty tiers (easy/hard/extreme) with extreme items requiring 3+ cognitive shifts (compound rates, recursive discounts, Bayesian reasoning). N-back scales from 2-back to 5-back with transformation variants (alphabet-shift matching) and ~15% lure trials at N±1 to test precision of position tracking. Task switching uses post-stimulus cuing in rapid/random blocks with congruency-aware item generation. ToL scales from easy to hard planning problems. WCST uses hidden dimensions (the model must discover which dimensions exist from feedback alone), probabilistic feedback (85% reliable), and multi-dimensional matching phases where two dimensions must be satisfied simultaneously.
 
+**Test methodology:** Several design choices are critical to measuring genuine executive processes rather than surface-level task completion:
+
+- **Batch presentation** (task switching, N-back): Presenting trials in sequence within a single conversation is essential. Per-trial prompts with explicit rule restatement collapse switch cost to zero — rules become trivially solvable without actual switching. Similarly, N-back requires the model to see a segment of the sequence and answer for all positions, without the N-back letter being given in the prompt.
+- **Post-stimulus cuing** (task switching): In rapid and random blocks, the stimulus is shown before the rule, forcing genuine task-set reconfiguration rather than rule-primed responses.
+- **Feedback-driven discovery** (WCST): Models receive Correct/Incorrect feedback after each sort but are never told which dimensions exist. They must discover the dimension space, infer the active rule from noisy signals (85% reliable feedback), and detect implicit rule shifts — then adapt to multi-dimensional phases where two dimensions must be satisfied simultaneously.
+- **Computationally harder rules** (task switching): Four compositional rules (prime check, position parity, divisibility, vowel proximity) with congruency-aware item generation prevent ceiling effects that simpler rules produce.
+
 **Contamination resistance:** CRT uses procedurally generated items with randomizable numeric seeds — classic bat-and-ball style items are replaced with novel algebraic-trap problems. WCST, ToL, N-back, and task switching all use novel stimuli configurations generated with seeded RNG.
 
 ### Dataset
 
-All items are procedurally generated with deterministic seeds and inlined directly in the Kaggle notebooks (no external data dependencies). Per-task item counts: CRT (15 items across 3 difficulty tiers), N-back (80 items across 2-back through 5-back with transformation and lure conditions), task switching (40+ trials across baseline, slow-switch, rapid, and random block types), ToL (20 problems scaling in difficulty), WCST (6 blocks with variable shift criteria of 3–7 correct responses).
+All stimuli are procedurally generated with deterministic seeds and inlined directly in the Kaggle notebooks (no external data dependencies). This ensures full reproducibility: given the same model responses, scores are identical across runs.
+
+**Construction methodology:** Each task uses seeded RNG to generate novel stimuli configurations. CRT items use randomizable numeric seeds to produce algebraic-trap problems that replace classic bat-and-ball variants. ToL generates disc-rearrangement configurations with verified optimal solutions. WCST generates card stimuli across hidden dimensions with probabilistic feedback schedules. N-back sequences include algorithmically placed lure trials at N±1 positions. Task switching generates stimuli with congruency-aware selection to control for response bias.
+
+**Quality assurance:** Ground truth verification scripts independently compute expected outputs for every item and compare against stored answer keys. All randomness uses seeded RNG (`random.Random(seed)` or `hashlib`-derived) — no uncontrolled randomness. Scores are clipped to [0, 1] before return.
 
 **Scoring:**
 - **CRT:** Difficulty-weighted accuracy (extreme=3.0, hard=2.0, easy=1.0)
@@ -42,13 +53,11 @@ All items are procedurally generated with deterministic seeds and inlined direct
 
 ### Technical Details
 
-All tasks use the `kaggle-benchmarks` SDK with `@kbench.task` decorators, creating fresh conversations per item. Key implementation details:
+A fresh conversation is created per item to prevent cross-item contamination. Key implementation challenges:
 
-- **CRT:** Regex-based answer parser extracts final numeric answers from free-text responses. Parser handles patterns like `**Answer:**`, `=`, and bolded numbers. Multi-pattern extraction pipeline prevents truncation artifacts.
-- **Task switching:** Batch presentation is critical — per-trial prompts with explicit rule restatement collapse switch cost to zero (rules are trivially solvable without switching). Computationally harder rules (prime check, position parity, divisibility, vowel proximity) with post-stimulus cuing (item shown before rule) prevent ceiling effects.
-- **ToL:** 5-strategy response parser cascade (MOVES: line → numbered moves → compact move list → positional notation). Full-text regex fallback was removed because chain-of-thought models produce dozens of intermediate A→B tokens in reasoning traces.
-- **N-back:** Batch presentation with segments of the sequence; model must answer for all positions without the N-back letter being given in the prompt. Transformation variants at higher N require checking alphabet-shifted matches rather than exact matches, adding a processing step on top of maintenance.
-- **WCST:** Multi-block batch-prompt architecture with explicit Correct/Incorrect feedback chains. Models must discover sorting dimensions and infer rule changes from feedback patterns alone. Probabilistic feedback (85% reliable) means occasional incorrect signals even on correct responses, requiring models to aggregate evidence across multiple trials rather than updating on single data points.
+- **CRT response parsing:** A multi-pattern regex pipeline extracts final numeric answers from free-text responses, handling formats like `**Answer:**`, `=`, and bolded numbers. The pipeline was designed to avoid truncation artifacts and prevent greedy matching on intermediate reasoning values.
+- **ToL response parsing:** A 5-strategy parser cascade (MOVES: line → numbered moves → compact move list → positional notation) handles the wide variety of response formats. Full-text regex fallback was excluded because chain-of-thought models produce dozens of intermediate A→B tokens in reasoning traces that confound greedy extraction.
+- **Separating format from cognition:** Parser design is a critical confound in executive function benchmarks. During development, ToL scores jumped from mean 0.038 to 0.252 after parser fixes alone, underscoring the importance of carefully separating *response format* failures from *cognitive* failures.
 
 ### Results, Insights, and Conclusions
 
@@ -70,11 +79,9 @@ We evaluated 8 models on the [Kaggle Community Benchmarks platform](https://www.
 
 **Insight 3 — Tower of London confirms planning as a scale-dependent capability.** ToL (std = 0.340, range = 1.000) shows clean separation: Gemini 2.5 Pro achieves perfect planning (1.00), three frontier models cluster at 0.70–0.85, and small models collapse (Gemma 3 4B: 0.14, Gemma 3 1B: 0.00). The full-range spread from 0.00 to 1.00 makes ToL the benchmark with the widest absolute separation, confirming that multi-step look-ahead planning is a genuine capability gap that scales with model size.
 
-**Insight 4 — No single model dominates across all executive functions.** Unlike metacognition where Claude Opus leads most tasks, executive functions reveal complementary strengths: Gemini 2.5 Pro leads ToL and ties for N-back/task switching, Claude Opus leads CRT, GPT-5.4 leads WCST, and three models tie on task switching. This suggests that the Miyake et al. (2000) componential model — which argues inhibition, shifting, and updating are separable constructs — holds for LLMs as well: models that excel at response inhibition (CRT) do not necessarily excel at set shifting (WCST) or planning (ToL).
+**Insight 4 — No single model dominates across all executive functions.** The results reveal complementary strengths: Gemini 2.5 Pro leads ToL and ties for N-back/task switching, Claude Opus leads CRT, GPT-5.4 leads WCST, and three models tie on task switching. This suggests that the Miyake et al. (2000) componential model — which argues inhibition, shifting, and updating are separable constructs — holds for LLMs as well: models that excel at response inhibition (CRT) do not necessarily excel at set shifting (WCST) or planning (ToL).
 
-**Insight 5 — Response parsing is a critical confound in executive function benchmarks.** Our iterative development revealed that parser bugs (truncation, greedy regex on chain-of-thought) can mask genuine capability differences. ToL scores jumped from mean 0.038 to 0.252 after parser fixes alone during initial development. CRT's multi-pattern extraction pipeline was refined to prevent regex from grabbing intermediate reasoning values. This underscores that executive function benchmarks for LLMs must carefully separate *response format* failures from *cognitive* failures.
-
-**Average cross-benchmark std = 0.259**, the highest of all 5 cognitive tracks, confirming that executive functions produce the most meaningful model separation.
+**Average cross-benchmark std = 0.259**, confirming that executive functions produce strong model separation.
 
 ### Organizational Affiliations
 
