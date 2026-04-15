@@ -5,11 +5,9 @@ Yiyang Zeng (Independent researcher)
 
 ### Problem Statement
 
-Executive functions — the higher-order cognitive processes that enable goal-directed behavior through planning, inhibition, and cognitive flexibility — are central to intelligent action (Diamond, 2013). Miyake et al. (2000) identified three core executive components: *inhibition* (suppressing prepotent responses), *shifting* (flexibly switching between tasks or mental sets), and *updating* (maintaining and manipulating working memory). These components predict real-world outcomes from academic achievement to decision-making quality.
+Executive functions — the higher-order cognitive processes that enable goal-directed behavior through planning, inhibition, and cognitive flexibility — are central to intelligent action (Diamond, 2013). Miyake et al. (2000) identified three core executive components: *inhibition* (suppressing prepotent responses), *shifting* (flexibly switching between tasks or mental sets), and *updating* (maintaining and manipulating working memory).
 
-Current LLM benchmarks test reasoning products (correct answers) but not the executive *processes* that produce them. A model that reaches the right answer through brute-force search engages different cognitive machinery than one that plans ahead, inhibits impulsive responses, and flexibly adapts strategies. Without executive function benchmarks, we cannot distinguish genuine cognitive control from pattern matching.
-
-This benchmark suite asks: **Can frontier models plan multi-step actions, inhibit prepotent responses, and flexibly shift cognitive strategies?**
+Current LLM benchmarks test reasoning products (correct answers) but not the executive *processes* that produce them. A model that reaches the right answer through brute-force search engages different cognitive machinery than one that plans ahead, inhibits impulsive responses, and flexibly adapts strategies. This benchmark suite asks: **Can frontier models plan multi-step actions, inhibit prepotent responses, and flexibly shift cognitive strategies?**
 
 ### Task & Benchmark Construction
 
@@ -18,48 +16,38 @@ We constructed 5 tasks mapping onto the Miyake et al. (2000) three-component fra
 | Task | Construct | Protocol |
 |------|-----------|----------|
 | **Cognitive Reflection Test (CRT)** | Response inhibition | Procedurally generated problems with intuitive-but-wrong answers; models must inhibit heuristic responses (Frederick, 2005) |
-| **N-back** | Working memory updating | Continuous performance task spanning 2-back through 5-back with transformation variants and lure trials; measures capacity to maintain and update items in working memory (Kirchner, 1958) |
-| **Task Switching** | Cognitive flexibility | Batch presentation with 4 compositional rules and post-stimulus cuing; measures switch cost (Rogers & Monsell, 1995; Monsell, 2003) |
-| **Tower of London (ToL)** | Multi-step planning | Solve disc-rearrangement problems requiring optimal move sequences with look-ahead; measures planning depth (Shallice, 1982) |
-| **WCST** | Set shifting / perseveration | Wisconsin Card Sorting Task with hidden sorting dimensions, probabilistic feedback, variable shift criteria, and multi-dimensional phases; measures ability to detect and adapt to implicit rule shifts (Grant & Berg, 1948; Miyake et al., 2000) |
+| **N-back** | Working memory updating | 2-back through 5-back with transformation variants and lure trials (Kirchner, 1958) |
+| **Task Switching** | Cognitive flexibility | Batch presentation with 4 compositional rules and post-stimulus cuing (Rogers & Monsell, 1995) |
+| **Tower of London (ToL)** | Multi-step planning | Disc-rearrangement problems requiring optimal move sequences with look-ahead (Shallice, 1982) |
+| **WCST** | Set shifting / perseveration | Hidden sorting dimensions, probabilistic feedback, variable shift criteria, and multi-dimensional phases (Grant & Berg, 1948) |
 
-**Difficulty calibration:** CRT includes 3 difficulty tiers (easy/hard/extreme) with extreme items requiring 3+ cognitive shifts (compound rates, recursive discounts, Bayesian reasoning). N-back scales from 2-back to 5-back with transformation variants (alphabet-shift matching) and ~15% lure trials at N±1 to test precision of position tracking. Task switching uses post-stimulus cuing in rapid/random blocks with congruency-aware item generation. ToL scales from easy to hard planning problems. WCST uses hidden dimensions (the model must discover which dimensions exist from feedback alone), probabilistic feedback (85% reliable), and multi-dimensional matching phases where two dimensions must be satisfied simultaneously.
+**Key design choices** ensure we measure genuine executive processes rather than surface-level task completion:
 
-**Test methodology:** Several design choices are critical to measuring genuine executive processes rather than surface-level task completion:
-
-- **Batch presentation** (task switching, N-back): Presenting trials in sequence within a single conversation is essential. Per-trial prompts with explicit rule restatement collapse switch cost to zero — rules become trivially solvable without actual switching. Similarly, N-back requires the model to see a segment of the sequence and answer for all positions, without the N-back letter being given in the prompt.
-- **Post-stimulus cuing** (task switching): In rapid and random blocks, the stimulus is shown before the rule, forcing genuine task-set reconfiguration rather than rule-primed responses.
-- **Feedback-driven discovery** (WCST): Models receive Correct/Incorrect feedback after each sort but are never told which dimensions exist. They must discover the dimension space, infer the active rule from noisy signals (85% reliable feedback), and detect implicit rule shifts — then adapt to multi-dimensional phases where two dimensions must be satisfied simultaneously.
-- **Computationally harder rules** (task switching): Four compositional rules (prime check, position parity, divisibility, vowel proximity) with congruency-aware item generation prevent ceiling effects that simpler rules produce.
+- **Batch presentation** (task switching, N-back): Trials are presented in sequence within a single conversation. Per-trial prompts with explicit rule restatement collapse switch cost to zero — rules become trivially solvable without actual switching. N-back requires answering for all positions in a sequence segment without the target letter given in the prompt.
+- **Post-stimulus cuing** (task switching): The stimulus is shown before the rule in rapid/random blocks, forcing genuine task-set reconfiguration rather than rule-primed responses. Four compositional rules (prime check, position parity, divisibility, vowel proximity) with congruency-aware item generation prevent ceiling effects.
+- **Feedback-driven discovery** (WCST): Models receive Correct/Incorrect feedback but are never told which sorting dimensions exist. They must discover the dimension space, infer rules from noisy signals (85% reliable feedback), and adapt to multi-dimensional phases requiring two dimensions simultaneously.
+- **Difficulty scaling** (CRT, N-back): CRT uses 3 difficulty tiers with extreme items requiring 3+ cognitive shifts. N-back extends to 5-back with transformation variants (alphabet-shift matching) and ~15% lure trials at N±1 testing position-tracking precision.
 
 **Scoring:**
 - **CRT:** Difficulty-weighted accuracy (extreme=3.0, hard=2.0, easy=1.0)
-- **N-back:** Accuracy across all conditions (2-back through 5-back, standard and transformation variants)
-- **Task switching:** Composite of 0.10×baseline + 0.25×slow-switch + 0.35×rapid + 0.30×switch-cost metric
+- **N-back:** Accuracy across all conditions (standard and transformation variants)
+- **Task switching:** 0.10×baseline + 0.25×slow-switch + 0.35×rapid + 0.30×switch-cost metric
 - **ToL:** Move optimality (optimal moves / actual moves)
-- **WCST:** Composite of accuracy (0.25), perseveration avoidance (0.45), and categories completed (0.30)
+- **WCST:** Accuracy (0.25) + perseveration avoidance (0.45) + categories completed (0.30)
 
-**Contamination resistance:** CRT uses procedurally generated items with randomizable numeric seeds — classic bat-and-ball style items are replaced with novel algebraic-trap problems. WCST, ToL, N-back, and task switching all use novel stimuli configurations generated with seeded RNG.
+**Contamination resistance:** All tasks use procedurally generated stimuli with seeded RNG. CRT replaces classic bat-and-ball items with novel algebraic-trap problems using randomizable numeric seeds.
 
 ### Dataset
 
-All stimuli are procedurally generated with deterministic seeds and inlined directly in the Kaggle notebooks (no external data dependencies). This ensures full reproducibility: given the same model responses, scores are identical across runs.
-
-**Construction methodology:** Each task uses seeded RNG to generate novel stimuli configurations. CRT items use randomizable numeric seeds to produce algebraic-trap problems that replace classic bat-and-ball variants. ToL generates disc-rearrangement configurations with verified optimal solutions. WCST generates card stimuli across hidden dimensions with probabilistic feedback schedules. N-back sequences include algorithmically placed lure trials at N±1 positions. Task switching generates stimuli with congruency-aware selection to control for response bias.
-
-**Quality assurance:** Ground truth verification scripts independently compute expected outputs for every item and compare against stored answer keys. All randomness uses seeded RNG (`random.Random(seed)` or `hashlib`-derived) — no uncontrolled randomness. Scores are clipped to [0, 1] before return. All stimuli are synthetically generated with no copyrighted datasets.
+All stimuli are procedurally generated with deterministic seeds and inlined directly in the Kaggle notebooks — no external data dependencies. Ground truth verification scripts independently compute expected outputs for every item and compare against stored answer keys. All randomness uses seeded RNG; scores are clipped to [0, 1]. No copyrighted datasets are used.
 
 ### Technical Details
 
-A fresh conversation is created per item to prevent cross-item contamination. Key implementation challenges:
-
-- **CRT response parsing:** A multi-pattern regex pipeline extracts final numeric answers from free-text responses, handling formats like `**Answer:**`, `=`, and bolded numbers. The pipeline was designed to avoid truncation artifacts and prevent greedy matching on intermediate reasoning values.
-- **ToL response parsing:** A 5-strategy parser cascade (MOVES: line → numbered moves → compact move list → positional notation) handles the wide variety of response formats. Full-text regex fallback was excluded because chain-of-thought models produce dozens of intermediate A→B tokens in reasoning traces that confound greedy extraction.
-- **Separating format from cognition:** Parser design is a critical confound in executive function benchmarks. During development, ToL scores jumped from mean 0.038 to 0.252 after parser fixes alone, underscoring the importance of carefully separating *response format* failures from *cognitive* failures.
+- **Response parsing as confound:** Parser design is critical in executive function benchmarks. ToL requires a 5-strategy parser cascade to handle diverse response formats while excluding chain-of-thought reasoning traces. CRT uses a multi-pattern regex pipeline to extract final numeric answers without matching intermediate reasoning values. During development, ToL scores jumped from 0.038 to 0.252 after parser fixes alone — underscoring the importance of separating *response format* failures from *cognitive* failures.
 
 ### Results, Insights, and Conclusions
 
-We evaluated 8 models on the [Kaggle Community Benchmarks platform](https://www.kaggle.com/benchmarks/ianstudy/executive-functions-track), spanning frontier-class (Claude Opus 4.6, DeepSeek-R1, Gemini 2.5 Pro, GPT-5.4), mid-tier (Gemini 2.5 Flash, GPT-5.4 Nano), and small models (Gemma 3 4B, Gemma 3 1B). Results (scores 0–1, higher = better):
+We evaluated 8 models on the [Kaggle Community Benchmarks platform](https://www.kaggle.com/benchmarks/ianstudy/executive-functions-track), spanning frontier (Claude Opus 4.6, DeepSeek-R1, Gemini 2.5 Pro, GPT-5.4), mid-tier (Gemini 2.5 Flash, GPT-5.4 Nano), and small models (Gemma 3 4B, Gemma 3 1B):
 
 | Task | Mean | Std | Range | Top Model (Score) | Bottom Model (Score) |
 |------|------|-----|-------|-------------------|---------------------|
@@ -69,17 +57,17 @@ We evaluated 8 models on the [Kaggle Community Benchmarks platform](https://www.
 | Tower of London | 0.573 | 0.340 | 1.000 | Gemini 2.5 Pro (1.00) | Gemma 3 1B (0.00) |
 | WCST | 0.450 | 0.136 | 0.494 | GPT-5.4 (0.77) | Gemma 3 4B (0.27) |
 
-**Overall model ranking:** Gemini 2.5 Pro (0.835) > Claude Opus 4.6 (0.785) > Gemini 2.5 Flash (0.769) > DeepSeek-R1 (0.754) > GPT-5.4 (0.670) > GPT-5.4 Nano (0.423) > Gemma 3 4B (0.304) > Gemma 3 1B (0.233).
+**Overall ranking:** Gemini 2.5 Pro (0.835) > Claude Opus 4.6 (0.785) > Gemini 2.5 Flash (0.769) > DeepSeek-R1 (0.754) > GPT-5.4 (0.670) > GPT-5.4 Nano (0.423) > Gemma 3 4B (0.304) > Gemma 3 1B (0.233).
 
-**Insight 1 — N-back produces the strongest model separation.** With std = 0.443 and range = 0.974, N-back is the most discriminating benchmark in the suite. A sharp cliff separates frontier models (Gemini 2.5 Pro, Claude Opus, Gemini Flash all at 1.00; DeepSeek-R1 at 0.99) from the rest (GPT-5.4: 0.29, GPT-5.4 Nano: 0.13, Gemma 3 4B: 0.05, Gemma 3 1B: 0.03). Three design choices prevent ceiling effects: extending to 5-back, adding transformation variants (alphabet-shift matching at higher N), and introducing ~15% lure trials at N±1 that test precision of position tracking rather than mere familiarity detection. Working memory updating at higher N appears to be a threshold capability that collapses sharply below frontier scale.
+**Insight 1 — N-back reveals a frontier cliff in working memory.** A sharp divide separates frontier models (three at 1.00, DeepSeek-R1 at 0.99) from the rest (GPT-5.4: 0.29, down to Gemma 3 1B: 0.03). The combination of 5-back depth, transformation variants, and lure trials creates a threshold that collapses sharply below frontier scale.
 
-**Insight 2 — WCST is universally hard with hidden dimensions and probabilistic feedback.** With a mean of just 0.450, WCST is the hardest benchmark in the suite. Three design innovations drive this difficulty: (1) hidden sorting dimensions force models to discover the dimension space from feedback alone rather than selecting from an enumerated list, (2) probabilistic feedback (85% reliable) prevents simple rule-following — models must aggregate noisy signals to infer the active rule, and (3) multi-dimensional phases require matching on two dimensions simultaneously. GPT-5.4 (0.77) leads decisively, while even frontier models like Claude Opus (0.37) and Gemini Pro (0.47) struggle, suggesting that genuine set-shifting flexibility under uncertainty is a distinct capability from reasoning ability.
+**Insight 2 — WCST is universally hard under uncertainty.** With a mean of just 0.450, WCST is the hardest benchmark. Hidden dimensions, probabilistic feedback, and multi-dimensional phases make this difficult even for frontier models (Claude Opus: 0.37, Gemini Pro: 0.47). GPT-5.4 (0.77) leads decisively, suggesting set-shifting flexibility under uncertainty is a distinct capability from general reasoning.
 
-**Insight 3 — Tower of London confirms planning as a scale-dependent capability.** ToL (std = 0.340, range = 1.000) shows clean separation: Gemini 2.5 Pro achieves perfect planning (1.00), three frontier models cluster at 0.70–0.85, and small models collapse (Gemma 3 4B: 0.14, Gemma 3 1B: 0.00). The full-range spread from 0.00 to 1.00 makes ToL the benchmark with the widest absolute separation, confirming that multi-step look-ahead planning is a genuine capability gap that scales with model size.
+**Insight 3 — Planning scales with model size.** ToL shows the widest absolute separation (range = 1.000): Gemini 2.5 Pro achieves perfect planning, three frontier models cluster at 0.70–0.85, and small models collapse (Gemma 3 4B: 0.14, Gemma 3 1B: 0.00). Multi-step look-ahead planning appears to be a genuine scale-dependent capability.
 
-**Insight 4 — No single model dominates across all executive functions.** The results reveal complementary strengths: Gemini 2.5 Pro leads ToL and ties for N-back/task switching, Claude Opus leads CRT, GPT-5.4 leads WCST, and three models tie on task switching. This suggests that the Miyake et al. (2000) componential model — which argues inhibition, shifting, and updating are separable constructs — holds for LLMs as well: models that excel at response inhibition (CRT) do not necessarily excel at set shifting (WCST) or planning (ToL).
+**Insight 4 — No single model dominates all executive functions.** Gemini 2.5 Pro leads ToL, Claude Opus leads CRT, GPT-5.4 leads WCST, and three models tie on task switching. This supports the Miyake et al. (2000) componential model: inhibition, shifting, and updating are separable constructs for LLMs as well.
 
-**Average cross-benchmark std = 0.259**, confirming that executive functions produce strong model separation.
+**Average cross-benchmark std = 0.259**, confirming strong model separation.
 
 ### Organizational Affiliations
 
@@ -87,18 +75,10 @@ Independent submission — no organizational affiliation.
 
 ### References & Citations
 
-- Miyake, A. et al. (2000). The unity and diversity of executive functions and their contributions to complex "frontal lobe" tasks. *Cognitive Psychology*, 41(1), 49–100.
+- Miyake, A. et al. (2000). The unity and diversity of executive functions. *Cognitive Psychology*, 41(1), 49–100.
 - Diamond, A. (2013). Executive functions. *Annual Review of Psychology*, 64, 135–168.
 - Frederick, S. (2005). Cognitive reflection and decision making. *Journal of Economic Perspectives*, 19(4), 25–42.
-- Shallice, T. (1982). Specific impairments of planning. *Philosophical Transactions of the Royal Society B*, 298(1089), 199–209.
-- Grant, D. A. & Berg, E. A. (1948). A behavioral analysis of degree of reinforcement and ease of shifting to new responses in a Weigl-type card-sorting problem. *Journal of Experimental Psychology*, 38(4), 404–411.
-- Monsell, S. (2003). Task switching. *Trends in Cognitive Sciences*, 7(3), 134–140.
+- Shallice, T. (1982). Specific impairments of planning. *Phil. Trans. R. Soc. B*, 298(1089), 199–209.
+- Grant, D. A. & Berg, E. A. (1948). A behavioral analysis of reinforcement and shifting. *Journal of Experimental Psychology*, 38(4), 404–411.
+- Rogers, R. D. & Monsell, S. (1995). Costs of a predictable switch. *Journal of Experimental Psychology: General*, 124(2), 207–231.
 - Kirchner, W. K. (1958). Age differences in short-term retention. *Journal of Experimental Psychology*, 55(4), 352–358.
-- Rogers, R. D. & Monsell, S. (1995). Costs of a predictable switch between simple cognitive tasks. *Journal of Experimental Psychology: General*, 124(2), 207–231.
-- Kahneman, D. (2011). *Thinking, Fast and Slow*. Farrar, Straus and Giroux.
-- Toplak, M. E. et al. (2011). The Cognitive Reflection Test as a predictor of performance on heuristics-and-biases tasks. *Memory & Cognition*, 39, 1275–1289.
-- Owen, A. M. et al. (1990). Planning and spatial working memory following frontal lobe lesions in man. *Neuropsychologia*, 28(10), 1021–1034.
-- Milner, B. (1963). Effects of different brain lesions on card sorting. *Archives of Neurology*, 9(1), 90–100.
-- Barceló, F. (2003). The Madrid Card Sorting Test (MCST). *Neuropsychologia*, 41(12), 1553–1567.
-- Meiran, N. (1996). Reconfiguration of processing mode prior to task performance. *Journal of Experimental Psychology: LMC*, 22(6), 1423–1442.
-- Allport, A. et al. (1994). Shifting intentional set: Exploring the dynamic control of tasks. In C. Umiltà & M. Moscovitch (Eds.), *Attention and Performance XV* (pp. 421–452).

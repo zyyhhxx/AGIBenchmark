@@ -254,8 +254,7 @@ Each cognitive track has a writeup in `docs/writeups/`. These are discussion thr
 
 ### Word Limit
 
-- **Target:** 1500 words
-- **Maximum:** 2000 words
+- **Maximum:** 1500 words
 - Judges won't read walls of text. Be concise — every sentence should earn its place.
 
 ### Style Rules
