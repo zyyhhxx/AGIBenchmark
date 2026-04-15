@@ -51,7 +51,7 @@ We evaluated 8 models on the [Kaggle Community Benchmarks platform](https://www.
 | Epistemic Humility | 0.725 | 0.169 | 0.453 | Claude Opus 4.6 (0.88) | Gemma 3 4B (0.43) |
 | Control | 0.766 | 0.235 | 0.723 | Claude Opus 4.6 / Gemini 2.5 Pro / GPT-5.4 (0.91) | Gemma 3 1B (0.19) |
 | Canary | 0.656 | 0.390 | 0.992 | Gemini 2.5 Pro (0.99) | Gemma 3 4B / Gemma 3 1B (0.00) |
-| Epistemic Revision | 0.747 | 0.163 | 0.502 | Claude Opus 4.6 (0.96) | Gemma 3 1B (0.46) |
+| Epistemic Revision | 0.747 | 0.163 | 0.503 | Claude Opus 4.6 (0.96) | Gemma 3 1B (0.46) |
 | Learning Monitoring | 0.677 | 0.292 | 0.712 | DeepSeek-R1 (0.97) | Gemma 3 4B (0.25) |
 
 **Overall ranking:** Claude Opus 4.6 (0.825) > DeepSeek-R1 (0.813) = Gemini 2.5 Flash (0.813) > Gemini 2.5 Pro (0.808) > GPT-5.4 (0.778) > GPT-5.4 Nano (0.613) > Gemma 3 4B (0.419) > Gemma 3 1B (0.274).
@@ -60,7 +60,7 @@ We evaluated 8 models on the [Kaggle Community Benchmarks platform](https://www.
 
 **Insight 2 — Calibration reveals systematic overconfidence.** Frontier models cluster tightly on calibration (0.50–0.59), while small models collapse (Gemma 3 4B: 0.29, Gemma 3 1B: 0.09). Frontier models universally report 94–99% confidence even on the hardest items, confirming Chhikara et al. (2025). The composite scoring rewards models that identify *which specific items* are hard, not just overall accuracy.
 
-**Insight 3 — Strong discriminatory power across the model spectrum.** Average cross-model std = 0.216 across 9 benchmarks (range 0.151–0.390). Canary (std = 0.417) and learning monitoring (std = 0.312) are the strongest discriminators. The suite creates a clear four-tier hierarchy: frontier (0.78–0.83), mid-tier (0.61), small-capable (0.42), and small-floor (0.27). Both Gemma models score 0.00 on canary — complete failure to distinguish fabricated from real facts.
+**Insight 3 — Strong discriminatory power across the model spectrum.** Average cross-model std = 0.216 across 9 benchmarks (range 0.151–0.390). Canary (std = 0.390) and learning monitoring (std = 0.312) are the strongest discriminators. The suite creates a clear four-tier hierarchy: frontier (0.78–0.83), mid-tier (0.61), small-capable (0.42), and small-floor (0.27). Both Gemma models score 0.00 on canary — complete failure to distinguish fabricated from real facts.
 
 **Insight 4 — FOK reveals the purest test of prospective metacognition.** GPT-5.4 achieves the highest FOK score (0.77), demonstrating strong prospective monitoring — accurately predicting its own performance before answering. Gemma 3 1B scores 0.28, showing poor discrimination between items it will answer correctly versus incorrectly. The two-phase protocol (confidence elicitation in a separate conversation from the answer attempt) isolates prospective monitoring from post-hoc rationalization.
 
