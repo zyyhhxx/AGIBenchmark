@@ -134,9 +134,46 @@ The markdown cell (cell 0) is the benchmark's public documentation. Judges evalu
 2. **No version numbers** — no v2, v3, etc. anywhere in the markdown.
 3. **Track names** — use exactly: Metacognition, Attention, Executive Functions, Learning, Social Cognition.
 4. **Human baselines** — include when available. Format: `**Human baseline:** ~30% accuracy (general public)`.
-5. **Length** — aim for 25-40 lines. Too short = insufficient documentation. Too long = judges won't read it.
-6. **Tier/condition descriptions** — if the benchmark has multiple tiers or conditions, describe each briefly in Methodology.
-7. **No implementation details** — the markdown documents *what* and *why*, not *how* the code works. No function names, variable names, or code snippets.
+5. **Length** — aim for 30-50 lines. Too short = insufficient documentation. Too long = judges won't read it.
+6. **No implementation details** — the markdown documents *what* and *why*, not *how* the code works. No function names, variable names, or code snippets.
+
+### Tier/Condition Tables
+
+When a benchmark has multiple tiers, conditions, phases, or difficulty levels, use a **table** in the Methodology section (not bullet lists):
+
+```markdown
+| Tier | Weight | Items | Description |
+|------|--------|-------|-------------|
+| Easy | 0.15 | 10 | Single-feature targets, minimal distractors |
+| Medium | 0.20 | 15 | Two-feature conjunction, partial-match distractors |
+| Hard | 0.30 | 15 | Triple-conjunction, many near-miss distractors |
+| Extreme | 0.35 | 10 | 5+ features, ambiguous edge cases |
+```
+
+Columns should include at minimum: **Tier/Condition name**, **Weight**, and **Description**. Add **Items** count if relevant.
+
+For benchmarks without tiers (single protocol), describe the methodology in prose — no table needed.
+
+### Scoring Formula + Interpretation Table
+
+The Scoring section must always contain:
+1. **Formula** in backtick inline code
+2. **Interpretation table** showing what different score ranges mean
+
+```markdown
+## Scoring
+
+`Score = 0.15 × easy + 0.20 × medium + 0.30 × hard + 0.35 × extreme`
+
+| Score | Interpretation |
+|:---:|---|
+| 0.8–1.0 | Excellent — near-perfect across all conditions |
+| 0.5–0.8 | Good — handles easy/medium but struggles with hard |
+| 0.2–0.5 | Moderate — significant degradation under difficulty |
+| 0.0–0.2 | Poor — near-chance on most conditions |
+```
+
+The interpretation table helps judges understand what the scores mean in cognitive terms, not just as numbers.
 
 ### Exemplar
 
