@@ -69,8 +69,6 @@ We evaluated 8 models on the [Kaggle Community Benchmarks platform](https://www.
 
 **Average cross-benchmark std = 0.259**, confirming strong model separation.
 
-Independent submission — no organizational affiliation.
-
 ### References & Citations
 
 - Miyake, A. et al. (2000). The unity and diversity of executive functions. *Cognitive Psychology*, 41(1), 49–100.
