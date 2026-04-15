@@ -7,7 +7,7 @@ Yiyang Zeng (Independent researcher)
 
 Executive functions — the higher-order cognitive processes that enable goal-directed behavior through planning, inhibition, and cognitive flexibility — are central to intelligent action (Diamond, 2013). Miyake et al. (2000) identified three core executive components: *inhibition* (suppressing prepotent responses), *shifting* (flexibly switching between tasks or mental sets), and *updating* (maintaining and manipulating working memory).
 
-Current LLM benchmarks test reasoning products (correct answers) but not the executive *processes* that produce them. A model that reaches the right answer through brute-force search engages different cognitive machinery than one that plans ahead, inhibits impulsive responses, and flexibly adapts strategies. This benchmark suite asks: **Can frontier models plan multi-step actions, inhibit prepotent responses, and flexibly shift cognitive strategies?**
+Current LLM benchmarks test reasoning products (correct answers) but not the executive *processes* that produce them. A model that reaches the right answer through brute-force search engages different cognitive machinery than one that plans ahead, inhibits impulsive responses, and flexibly adapts strategies. These components predict real-world outcomes from academic achievement to decision-making quality. This benchmark suite asks: **Can frontier models plan multi-step actions, inhibit prepotent responses, and flexibly shift cognitive strategies?**
 
 ### Task & Benchmark Construction
 
@@ -15,10 +15,10 @@ We constructed 5 tasks mapping onto the Miyake et al. (2000) three-component fra
 
 | Task | Construct | Protocol |
 |------|-----------|----------|
-| **Cognitive Reflection Test (CRT)** | Response inhibition | Procedurally generated problems with intuitive-but-wrong answers; models must inhibit heuristic responses (Frederick, 2005) |
-| **N-back** | Working memory updating | 2-back through 5-back with transformation variants and lure trials (Kirchner, 1958) |
+| **Cognitive Reflection Test (CRT)** | Response inhibition | Procedurally generated problems with intuitive-but-wrong answers; models must inhibit heuristic responses. Human baseline: ~30% (general public), ~50% (MIT students) (Frederick, 2005) |
+| **N-back** | Working memory updating | 2-back through 5-back with transformation variants and lure trials. Human baseline: ~90% at 2-back, ~50% at 4-back (Kirchner, 1958; Kane et al., 2007) |
 | **Task Switching** | Cognitive flexibility | Batch presentation with 4 compositional rules and post-stimulus cuing (Rogers & Monsell, 1995) |
-| **Tower of London (ToL)** | Multi-step planning | Disc-rearrangement problems requiring optimal move sequences with look-ahead (Shallice, 1982) |
+| **Tower of London (ToL)** | Multi-step planning | Disc-rearrangement problems requiring optimal move sequences with look-ahead. Human baseline: ~85% at 3 moves, ~55% at 5 moves (Shallice, 1982; Owen et al., 1990) |
 | **WCST** | Set shifting / perseveration | Hidden sorting dimensions, probabilistic feedback, variable shift criteria, and multi-dimensional phases (Grant & Berg, 1948) |
 
 **Key design choices** ensure we measure genuine executive processes rather than surface-level task completion:
@@ -35,15 +35,13 @@ We constructed 5 tasks mapping onto the Miyake et al. (2000) three-component fra
 - **ToL:** Move optimality (optimal moves / actual moves)
 - **WCST:** Accuracy (0.25) + perseveration avoidance (0.45) + categories completed (0.30)
 
+**Response parsing:** Robust output parsing is essential for separating *response format* failures from *cognitive* failures. ToL uses a 5-strategy parser cascade to handle diverse response formats while excluding chain-of-thought reasoning traces. CRT uses a multi-pattern regex pipeline to extract final numeric answers without matching intermediate reasoning values.
+
 **Contamination resistance:** All tasks use procedurally generated stimuli with seeded RNG. CRT replaces classic bat-and-ball items with novel algebraic-trap problems using randomizable numeric seeds.
 
 ### Dataset
 
 All stimuli are procedurally generated with deterministic seeds and inlined directly in the Kaggle notebooks — no external data dependencies. Ground truth verification scripts independently compute expected outputs for every item and compare against stored answer keys. All randomness uses seeded RNG; scores are clipped to [0, 1]. No copyrighted datasets are used.
-
-### Technical Details
-
-- **Response parsing as confound:** Parser design is critical in executive function benchmarks. ToL requires a 5-strategy parser cascade to handle diverse response formats while excluding chain-of-thought reasoning traces. CRT uses a multi-pattern regex pipeline to extract final numeric answers without matching intermediate reasoning values. During development, ToL scores jumped from 0.038 to 0.252 after parser fixes alone — underscoring the importance of separating *response format* failures from *cognitive* failures.
 
 ### Results, Insights, and Conclusions
 
@@ -65,11 +63,11 @@ We evaluated 8 models on the [Kaggle Community Benchmarks platform](https://www.
 
 **Insight 3 — Planning scales with model size.** ToL shows the widest absolute separation (range = 1.000): Gemini 2.5 Pro achieves perfect planning, three frontier models cluster at 0.70–0.85, and small models collapse (Gemma 3 4B: 0.14, Gemma 3 1B: 0.00). Multi-step look-ahead planning appears to be a genuine scale-dependent capability.
 
-**Insight 4 — No single model dominates all executive functions.** Gemini 2.5 Pro leads ToL, Claude Opus leads CRT, GPT-5.4 leads WCST, and three models tie on task switching. This supports the Miyake et al. (2000) componential model: inhibition, shifting, and updating are separable constructs for LLMs as well.
+**Insight 4 — No single model dominates all executive functions.** Gemini 2.5 Pro leads ToL, Claude Opus leads CRT, GPT-5.4 leads WCST, and three models tie on task switching. This supports the Miyake et al. (2000) componential model: inhibition, shifting, and updating are separable constructs for LLMs as well. Models that excel at response inhibition (CRT) do not necessarily excel at set shifting (WCST) or planning (ToL).
+
+**Insight 5 — Clear four-tier performance hierarchy.** The overall ranking reveals a clean separation: frontier models (0.75–0.84), GPT-5.4 as a mid-frontier outlier (0.67), mid-tier (GPT-5.4 Nano: 0.42), and small models (Gemma 3 4B: 0.30, Gemma 3 1B: 0.23). The 3.6× ratio between the top and bottom models (0.835 vs 0.233) demonstrates that executive function benchmarks provide a strong performance gradient across the model spectrum — neither ceiling nor floor effects dominate.
 
 **Average cross-benchmark std = 0.259**, confirming strong model separation.
-
-### Organizational Affiliations
 
 Independent submission — no organizational affiliation.
 

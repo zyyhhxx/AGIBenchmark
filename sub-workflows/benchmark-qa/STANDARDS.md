@@ -196,56 +196,53 @@ The `exec_func_crt.ipynb` markdown cell is the reference standard. It has all re
 
 Each cognitive track has a writeup in `docs/writeups/`. These are discussion thread posts on Kaggle — judges evaluate them (85% weight). Every writeup must be self-contained, scientifically rigorous, and compelling.
 
-### Required Sections (7 — per competition rules)
+### Required Sections
 
-| # | Section | Purpose |
-|---|---------|----------|
-| 1 | **Problem Statement** | Ground the track in cognitive science, explain the evaluation gap, end with a bold research question |
-| 2 | **Task & Benchmark Construction** | Task overview table, difficulty calibration, test methodology, contamination resistance |
-| 3 | **Dataset** | Construction methodology, quality assurance, scoring formulas, provenance |
-| 4 | **Technical Details** | Only genuine implementation challenges (e.g., parsing confounds) — no boilerplate |
-| 5 | **Results, Insights, and Conclusions** | Results table, model ranking, 3–5 insights with scientific significance |
-| 6 | **Organizational Affiliations** | "Independent submission — no organizational affiliation." |
-| 7 | **References & Citations** | All cited works in full bibliographic format |
+| # | Section | Word Budget | Purpose |
+|---|---------|:-----------:|----------|
+| 1 | **Problem Statement** | ~80–100 | Ground the track in cognitive science, explain the evaluation gap, end with a bold research question. Concise yet complete. |
+| 2 | **Task & Benchmark Construction** | ~400–500 | Task overview table, difficulty calibration, test methodology, scoring, contamination resistance. This is the judges' window into dataset/task quality (50% of scoring). |
+| 3 | **Dataset** | ~100–150 | Construction methodology, quality assurance, provenance |
+| 4 | **Results, Insights, and Conclusions** | ~500–600 | Results table, model ranking, 3–5 insights with scientific significance. Primary vehicle for novelty/discriminatory power (30% of scoring). |
+| 5 | **References & Citations** | As needed | Non-negotiable completeness — union of all notebook + writeup citations, verified via web search. Other sections work with the word count remaining after references. |
+| — | **Organizational Affiliations** | ~5 | One line: "Independent submission — no organizational affiliation." |
+
+**Removed sections:** Technical Details and Organizational Affiliations (as standalone section) are not required. Technical Details can be folded into Task & Benchmark Construction where relevant. Organizational affiliations is a one-liner appended at the end.
+
+**Word budget priority:** References are allocated first (non-negotiable completeness). Remaining words are distributed with priority to Results/Insights (30% novelty criterion) and Task Construction (50% dataset/task criterion).
 
 ### Section Standards
 
 **Problem Statement:**
 - Open with the cognitive science foundation (cite seminal papers)
 - Explain why current LLM benchmarks fail to measure this construct
-- Close with a bold italicized research question
-- 2–3 paragraphs maximum
+- Close with a bold research question
+- Keep concise: ~80–100 words. Every sentence must earn its place.
 
 **Task & Benchmark Construction:**
-- **Task table** (Task | Construct | Protocol) — one row per benchmark, concise protocol descriptions with citations
-- **Difficulty calibration** paragraph — how each task scales difficulty (tiers, conditions, N-levels)
-- **Test methodology** subsection — design choices that challenge frontier models and prevent gaming (batch presentation, hidden dimensions, probabilistic feedback, etc.). This is where unique benchmark innovations go.
-- **Scoring** — per-task scoring formulas with specific weights and components. Each task's composite must be individually documented. No blanket descriptions.
-- **Contamination resistance** paragraph — how stimuli avoid training data overlap (procedural generation, seeded RNG, novel domains)
+- **Task table** (Task | Construct | Protocol) — one row per benchmark, concise protocol descriptions with citations and human baselines where available
+- **Key design choices** — the design innovations that challenge frontier models and prevent gaming (batch presentation, hidden dimensions, probabilistic feedback, etc.)
+- **Scoring** per task — specific weights and components, not blanket descriptions
+- **Contamination resistance** — how stimuli avoid training data overlap
+- Any substantive implementation challenges (e.g., response parsing confounds) can be folded in here
 
 **Dataset:**
 - Focus on *how* data is constructed (procedural generation, seeded RNG, inlined stimuli)
-- Quality assurance: ground truth verification, deterministic reproducibility, contamination-resistant design
+- Quality assurance: ground truth verification, deterministic reproducibility
 - Provenance statement: synthetic generation, no copyrighted data, no external dependencies
 - Do NOT list trivial details like item counts per task
-- Do NOT include scoring formulas here — those belong in Task & Benchmark Construction
-
-**Technical Details:**
-- Only substantive implementation challenges (response parsing, format-vs-cognition confounds)
-- No boilerplate (SDK usage, decorator patterns, fresh conversations per item — these are requirements, not insights)
-- If a parsing or measurement challenge affected score validity, describe it here
-- Keep short — 1–3 bullet points maximum
 
 **Results, Insights, and Conclusions:**
 - State model roster with Kaggle benchmark link, organized by tier (frontier / mid-tier / small)
 - **Results table:** Task | Mean | Std | Range | Top Model (Score) | Bottom Model (Score)
 - **Overall model ranking** as a single line with scores
 - **3–5 insights**, each with:
-  - Bold header naming the specific finding (e.g., "N-back produces the strongest model separation")
+  - Bold header naming the specific finding
   - Specific scores cited as evidence
   - Cognitive/scientific interpretation — what does this tell us about the construct?
 - **Average cross-benchmark std** as closing statistic
 - Use population std (N denominator) consistently across all writeups
+- This section should be the longest — it carries the 30% novelty/discriminatory power criterion
 
 **References & Citations:**
 - Full bibliographic format: Author, Initials. (Year). Title. *Journal*, Volume(Issue), Pages.
