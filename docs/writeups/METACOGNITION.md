@@ -31,79 +31,43 @@ We constructed 9 tasks grounded in the Nelson & Narens (1990) metacognitive moni
 
 ### Dataset
 
-Items use a mix of **LLM-generated question sets** and **procedural generation**, with all data inlined directly in the Kaggle notebooks (no external data dependencies):
+Items use a mix of **LLM-generated question sets** and **procedural generation**, with all data inlined directly in the Kaggle notebooks (no external data dependencies). Total item counts range from ~15 (control) to ~132 (calibration). Contamination resistance is achieved through three mechanisms: (1) procedurally generated stimuli with seeded RNG (learning monitoring, JOL pseudowords, arithmetic chains), (2) fictional domains that cannot appear in training data (Zorblatt Chemistry, Kingdom of Trevalia, invented vocabulary), and (3) two-phase protocols where confidence is elicited before answers (FOK, JOL).
 
-| Task | Data Source | Item Count | Contamination Resistance |
-|------|------------|------------|-------------------------|
-| Calibration | LLM-generated trivia across 5 difficulty tiers + procedurally generated arithmetic | ~132 items | Difficulty tiers target frontier model accuracy bands; procedural math prevents memorization |
-| FOK | LLM-generated knowledge questions + procedural arithmetic | ~81 items | Two-phase protocol (confidence before answer) prevents post-hoc rationalization |
-| JOL | LLM-generated word-definition pairs + procedurally generated pseudowords (seeded RNG) | ~20 pairs | Invented vocabulary cannot appear in training data |
-| Error Detection | LLM-generated reasoning chains with planted errors + procedurally generated arithmetic chains | ~72 items | Novel problem instances with programmatically placed errors |
-| Learning Monitoring | Procedurally generated rule systems (seeded RNG, symbol and number domains) | 4 rule systems | Entirely generated at evaluation time; no memorization possible |
-| Control | LLM-generated study passages with strategic re-reading prompts | ~15 items | Tests allocation strategy, not knowledge recall |
-| Epistemic Humility | LLM-generated mix of answerable, unanswerable, and fabricated-entity questions | ~24 items | Fabricated entities (e.g., "Kingdom of Trevalia") are unknowable by construction |
-| Epistemic Revision | LLM-generated fictional rule systems (e.g., "Zorblatt Chemistry") with belief-contradicting evidence | ~3 systems | Entirely fictional domains prevent prior knowledge from helping |
-| Canary | LLM-generated fabricated facts mixed with verified real facts | ~60 items | Fabricated items use false premises that cannot be memorized |
+All non-procedural items were generated using Claude, then verified for factual accuracy and logical consistency. Items are frozen at benchmark creation time. No copyrighted datasets are used.
 
-All non-procedural items were generated using Claude, then verified for factual accuracy (real-fact items) and logical consistency (fictional domains, reasoning chains). Items are frozen at benchmark creation time — no generation occurs during evaluation.
-
-**Item schema:** Each task produces items with task-specific fields. Model responses are parsed into structured `confidence` (0–100 integer) and `answer` fields via regex extraction, with conservative fallback scoring for malformed output.
-
-**Scoring:** Each task uses a task-specific composite metric tailored to its construct:
-
-- **Calibration:** 0.50 × extreme-item accuracy^1.5 + 0.25 × BSS + 0.25 × uncertainty awareness
-- **FOK:** 0.40 × gamma correlation + 0.30 × BSS + 0.30 × AUC
-- **JOL:** 0.40 × gamma correlation + 0.30 × BSS + 0.30 × recall rate
-- **Error Detection:** 0.35 × F1 + 0.25 × localization accuracy + 0.20 × severity weighting + 0.20 × confidence calibration
-- **Learning Monitoring:** 0.30 × gamma correlation + 0.30 × accuracy + 0.20 × confidence calibration + 0.20 × learning curve fit
-- **Control:** 0.35 × selection relevance + 0.35 × strategic gain + 0.30 × accuracy
-- **Epistemic Humility:** 0.35 × detection + 0.25 × (1 − confabulation) + 0.20 × confidence discrimination + 0.20 × appropriate refusal
-- **Epistemic Revision:** 0.10 × violation detection + 0.10 × revision + 0.30 × rule accuracy + 0.25 × transfer + 0.25 × confidence tracking
-- **Canary:** max(0, BSS) — pure calibration on fabricated vs. real items
-
-Only FOK, JOL, and Learning Monitoring use gamma correlation. BSS was chosen over raw ECE where applicable because ECE rewards always-hedging-to-50% strategies, while BSS properly penalizes uninformative confidence.
-
-**Provenance:** All benchmark data is self-contained within the Kaggle notebooks. LLM-generated items draw from public-domain knowledge across STEM, humanities, and logic domains, and were verified for correctness after generation. No copyrighted datasets are used. Fictional domains (Zorblatt Chemistry, Kingdom of Trevalia, invented vocabulary) ensure that no prior training data can provide an advantage.
+**Scoring:** Each task uses a task-specific composite metric. FOK, JOL, and Learning Monitoring use gamma correlation to measure confidence–accuracy alignment. BSS was chosen over raw ECE where applicable because ECE rewards always-hedging-to-50% strategies, while BSS properly penalizes uninformative confidence. All scores are normalized to [0, 1].
 
 ### Technical Details
 
-All tasks are implemented using the `kaggle-benchmarks` SDK with the `@kbench.task` decorator. Each task:
-- Creates a fresh `kbench.chats.new()` conversation per evaluation item
-- Parses structured confidence ratings via regex extraction from free-text responses
-- Handles edge cases (refusal to answer, non-numeric confidence, malformed output) with conservative fallback scoring
-- Uses `numpy` for statistical computation (gamma correlation, BSS, ECE)
-
-**Contamination hardening:** The canary benchmark explicitly tests whether models confabulate on fabricated items. JOL uses entirely invented stimuli. Calibration questions span diverse domains so no single-domain memorization helps. Error detection chains use novel problem instances with procedurally placed errors.
+All tasks use the `kaggle-benchmarks` SDK, creating a fresh conversation per evaluation item. Confidence ratings are parsed via regex extraction from free-text responses, with conservative fallback scoring for malformed output.
 
 ### Results, Insights, and Conclusions
 
-We evaluated 6 models on the [Kaggle Community Benchmarks platform](https://www.kaggle.com/benchmarks/ianstudy/metacognition-track). Results (scores 0–1, higher = better):
+We evaluated 8 models on the [Kaggle Community Benchmarks platform](https://www.kaggle.com/benchmarks/ianstudy/metacognition-track), spanning frontier-class (Claude Opus 4.6, DeepSeek-R1, Gemini 2.5 Pro, GPT-5.4), mid-tier (Gemini 2.5 Flash, GPT-5.4 Nano), and small models (Gemma 3 4B, Gemma 3 1B). Results (scores 0–1, higher = better):
 
 | Task | Mean | Std | Range | Top Model (Score) | Bottom Model (Score) |
 |------|------|-----|-------|-------------------|---------------------|
-| Calibration | 0.483 | 0.176 | 0.493 | Gemini 2.5 Pro (0.59) | Gemma 3 1B (0.09) |
-| FOK | 0.466 | 0.180 | 0.525 | Claude Opus 4.6 (0.62) | Gemini 2.5 Pro (0.09) |
-| JOL | 0.647 | 0.165 | 0.464 | Claude Opus 4.6 (0.79) | Gemma 3 1B (0.33) |
-| Error Detection | 0.845 | 0.203 | 0.580 | DeepSeek-R1 (0.98) | Gemma 3 1B (0.40) |
-| Epistemic Humility | 0.766 | 0.145 | 0.427 | Claude Opus 4.6 (0.88) | Gemma 3 1B (0.45) |
-| Control | 0.781 | 0.266 | 0.723 | Claude Opus 4.6 (0.91) | Gemma 3 1B (0.19) |
-| Canary | 0.761 | 0.347 | 0.992 | Gemini 2.5 Pro (0.99) | Gemma 3 1B (0.00) |
-| Epistemic Revision | 0.793 | 0.161 | 0.502 | Claude Opus 4.6 (0.96) | Gemma 3 1B (0.46) |
-| Learning Monitoring | 0.792 | 0.242 | 0.702 | DeepSeek-R1 (0.97) | Gemma 3 1B (0.26) |
+| Calibration | 0.448 | 0.178 | 0.493 | Gemini 2.5 Pro (0.59) | Gemma 3 1B (0.09) |
+| FOK | 0.450 | 0.170 | 0.525 | Claude Opus 4.6 (0.62) | Gemini 2.5 Pro (0.09) |
+| JOL | 0.612 | 0.205 | 0.508 | Claude Opus 4.6 (0.79) | Gemma 3 4B (0.28) |
+| Error Detection | 0.821 | 0.194 | 0.580 | DeepSeek-R1 (0.98) | Gemma 3 1B (0.40) |
+| Epistemic Humility | 0.725 | 0.181 | 0.453 | Claude Opus 4.6 (0.88) | Gemma 3 4B (0.43) |
+| Control | 0.766 | 0.251 | 0.723 | Claude Opus 4.6 (0.91) | Gemma 3 1B (0.19) |
+| Canary | 0.656 | 0.417 | 0.992 | Gemini 2.5 Pro (0.99) | Gemma 3 4B (0.00) |
+| Epistemic Revision | 0.747 | 0.174 | 0.502 | Claude Opus 4.6 (0.96) | Gemma 3 1B (0.46) |
+| Learning Monitoring | 0.677 | 0.312 | 0.712 | DeepSeek-R1 (0.97) | Gemma 3 4B (0.25) |
 
-**Overall model ranking:** Claude Opus 4.6 (0.826) > DeepSeek-R1 (0.808) > Gemini 2.5 Flash (0.799) > GPT-5.4 (0.753) > Gemini 2.5 Pro (0.748) > Gemma 3 1B (0.290).
+**Overall model ranking:** Claude Opus 4.6 (0.826) > DeepSeek-R1 (0.808) > Gemini 2.5 Flash (0.799) > GPT-5.4 (0.753) > Gemini 2.5 Pro (0.748) > GPT-5.4 Nano (0.612) > Gemma 3 4B (0.410) > Gemma 3 1B (0.290).
 
-**Insight 1 — Two-tier metacognition pattern.** Scores separate into *monitoring tasks* (canary, epistemic humility, error detection, epistemic revision, control, learning monitoring; mean 0.79) and *prospective self-assessment* (FOK, JOL, calibration; mean 0.53). This 1.5:1 dissociation holds across all 6 models, suggesting that evaluating external information and monitoring ongoing cognition is fundamentally easier than predicting one's own future performance.
+**Insight 1 — Two-tier metacognition pattern.** Scores separate into *monitoring tasks* (canary, epistemic humility, error detection, epistemic revision, control, learning monitoring; mean 0.73) and *prospective self-assessment* (FOK, JOL, calibration; mean 0.50). This 1.5:1 dissociation holds across all 8 models, suggesting that evaluating external information and monitoring ongoing cognition is fundamentally easier than predicting one's own future performance. Even the mid-tier GPT-5.4 Nano maintains a monitoring mean of 0.67 versus a prospective mean of 0.50.
 
-**Insight 2 — Calibration reveals systematic overconfidence.** All frontier models cluster tightly on calibration (0.50–0.59), while Gemma 3 1B collapses to 0.09. The spread (std = 0.176) is driven primarily by the small-model floor effect. Frontier models universally report high confidence (94–99%) even on difficulty-5 items, confirming Chhikara et al. (2025) on systematic overconfidence. The benchmark's composite scoring — 50% extreme-item accuracy, 25% BSS, 25% uncertainty awareness — rewards models that can identify *which specific items* are hard, not just overall accuracy.
+**Insight 2 — Calibration reveals systematic overconfidence.** All frontier models cluster tightly on calibration (0.50–0.59), while small models collapse (Gemma 3 4B: 0.29, Gemma 3 1B: 0.09). The spread (std = 0.178) is driven primarily by the small-model floor effect. Frontier models universally report high confidence (94–99%) even on difficulty-5 items, confirming Chhikara et al. (2025) on systematic overconfidence. The benchmark's composite scoring — 50% extreme-item accuracy, 25% BSS, 25% uncertainty awareness — rewards models that can identify *which specific items* are hard, not just overall accuracy.
 
-**Insight 3 — Strong discriminatory power.** Average cross-model standard deviation = 0.210 across 9 benchmarks (range 0.145–0.347). Canary (std = 0.347) and control (std = 0.266) are the strongest discriminators, separating models that can maintain focused attention from those that cannot. Gemma 3 1B (1B parameters) consistently anchors the floor, scoring 0.00 on canary (complete failure to distinguish fabricated from real facts) and 0.09 on calibration. All 5 frontier models score above 0.75 on the suite overall.
+**Insight 3 — Strong discriminatory power across the model spectrum.** Average cross-model standard deviation = 0.232 across 9 benchmarks (range 0.170–0.417). Canary (std = 0.417) and learning monitoring (std = 0.312) are the strongest discriminators. Notably, the suite separates not just frontier from small models, but creates a clear four-tier hierarchy: frontier (0.75–0.83), mid-tier (0.61), small-capable (0.41), and small-floor (0.29). Both Gemma models score 0.00 on canary (complete failure to distinguish fabricated from real facts).
 
 **Insight 4 — FOK anomaly for Gemini 2.5 Pro.** Gemini 2.5 Pro scores 0.09 on Feeling-of-Knowing — dramatically lower than its strong performance on other tasks (0.59–0.99). This suggests a specific failure in two-phase prospective monitoring (rating confidence *before* answering), possibly due to training that discourages expressing low confidence. This is not a parsing artifact: the model produces valid structured responses but with poorly calibrated pre-answer confidence.
 
-#### Supplementary: Local Bedrock Validation (10 models)
-
-We additionally validated the benchmarks against 10 models via Amazon Bedrock (Claude Opus 4.6, Claude Sonnet 4.6, DeepSeek-R1, GPT-OSS-120B, Llama 3.3 70B, Llama 4 Maverick 17B, Nova Pro, Ministral 3B, Qwen3 Next 80B, GLM 4.7). Cross-model patterns were consistent with Kaggle results: the three-tier structure held, calibration remained the tightest discriminator among frontier models, and Ministral 3B (3B parameters) showed floor effects comparable to Gemma 3 1B.
+**Insight 5 — Scaling reveals diminishing metacognitive returns.** GPT-5.4 Nano (a smaller variant of GPT-5.4) scores 0.612 overall — 81% of the full GPT-5.4's score (0.753). However, the gap is concentrated in prospective tasks: Nano matches GPT-5.4 on JOL (0.73 vs 0.60 — Nano actually exceeds it) and metacognitive control (0.80 vs 0.91), but collapses on learning monitoring (0.41 vs 0.82) and canary (0.68 vs 0.92). This suggests that some metacognitive capabilities (strategic control, learning judgment) transfer well to smaller models, while others (online learning monitoring, contamination discrimination) require scale.
 
 ### Organizational Affiliations
 
