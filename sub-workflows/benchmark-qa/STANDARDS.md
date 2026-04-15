@@ -130,7 +130,7 @@ The markdown cell (cell 0) is the benchmark's public documentation. Judges evalu
 
 ### Style Rules
 
-1. **No LaTeX** — Kaggle renders markdown inconsistently. Use inline code for formulas: `Score = 0.40 × accuracy + 0.30 × (1 - trap_rate)`.
+1. **Use LaTeX for formulas** — Kaggle supports MathJax. Use `$$...$$` display mode for scoring formulas: `$$\text{Score} = 0.40 \times \text{accuracy} + 0.30 \times (1 - \text{trap\_rate})$$`. Do NOT use inline backtick code for formulas.
 2. **No version numbers** — no v2, v3, etc. anywhere in the markdown.
 3. **Track names** — use exactly: Metacognition, Attention, Executive Functions, Learning, Social Cognition.
 4. **Human baselines** — include when available. Format: `**Human baseline:** ~30% accuracy (general public)`.
@@ -163,7 +163,7 @@ The Scoring section must always contain:
 ```markdown
 ## Scoring
 
-`Score = 0.15 × easy + 0.20 × medium + 0.30 × hard + 0.35 × extreme`
+$$\text{Score} = 0.15 \times \text{easy} + 0.20 \times \text{medium} + 0.30 \times \text{hard} + 0.35 \times \text{extreme}$$
 
 | Score | Interpretation |
 |:---:|---|
@@ -171,6 +171,17 @@ The Scoring section must always contain:
 | 0.5–0.8 | Good — handles easy/medium but struggles with hard |
 | 0.2–0.5 | Moderate — significant degradation under difficulty |
 | 0.0–0.2 | Poor — near-chance on most conditions |
+```
+
+For weighted-tier benchmarks, the formula references the tier names from the Methodology table — do NOT duplicate the component table in Scoring.
+
+For multi-component (non-tier) benchmarks like CRT, add a component breakdown table before the interpretation table:
+
+```markdown
+| Component | Weight | Description |
+|-----------|:------:|-------------|
+| Accuracy | 40% | Correct answers across all items |
+| Trap resistance | 30% | 1 − rate of falling for intuitive traps |
 ```
 
 The interpretation table helps judges understand what the scores mean in cognitive terms, not just as numbers.
