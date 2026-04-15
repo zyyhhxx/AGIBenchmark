@@ -17,9 +17,9 @@ We constructed 9 tasks grounded in the Nelson & Narens (1990) metacognitive moni
 
 | Task | Construct | Protocol |
 |------|-----------|----------|
-| **Confidence Calibration** | Retrospective monitoring | Answer diverse questions with 0–100 confidence ratings; score via Brier Skill Score |
-| **Feeling-of-Knowing (FOK)** | Prospective monitoring | Two-phase: rate confidence *before* answering; measures gamma correlation between prediction and outcome |
-| **Judgment-of-Learning (JOL)** | Learning prediction | Study novel word-definition pairs → predict recall → distractor → test; all stimuli invented to prevent contamination |
+| **Retrospective Calibration** | Retrospective monitoring | Answer diverse questions with 0–100 confidence ratings; score via Brier Skill Score |
+| **Feeling of Knowing (FOK)** | Prospective monitoring | Two-phase: rate confidence *before* answering; measures gamma correlation between prediction and outcome |
+| **Judgment of Learning (JOL)** | Learning prediction | Study novel word-definition pairs → predict recall → distractor → test; all stimuli invented to prevent contamination |
 | **Error Detection** | Process monitoring | Review step-by-step solutions containing subtle errors; detect, localize, and rate confidence |
 | **Learning Monitoring** | Online self-assessment | Learn incrementally presented rule system; rate understanding after each rule; compare self-assessment to actual performance |
 | **Metacognitive Control** | Strategic regulation | Given limited "re-read" budget, choose which passage sections to review before answering questions |
@@ -47,7 +47,7 @@ We evaluated 8 models on the [Kaggle Community Benchmarks platform](https://www.
 
 | Task | Mean | Std | Range | Top Model (Score) | Bottom Model (Score) |
 |------|------|-----|-------|-------------------|---------------------|
-| Calibration | 0.448 | 0.178 | 0.493 | Gemini 2.5 Pro (0.59) | Gemma 3 1B (0.09) |
+| Retrospective Calibration | 0.448 | 0.178 | 0.493 | Gemini 2.5 Pro (0.59) | Gemma 3 1B (0.09) |
 | FOK | 0.450 | 0.170 | 0.525 | Claude Opus 4.6 (0.62) | Gemini 2.5 Pro (0.09) |
 | JOL | 0.612 | 0.205 | 0.508 | Claude Opus 4.6 (0.79) | Gemma 3 4B (0.28) |
 | Error Detection | 0.821 | 0.194 | 0.580 | DeepSeek-R1 (0.98) | Gemma 3 1B (0.40) |

@@ -552,7 +552,7 @@ def metacog_epistemic_revision(llm) -> float:
     Tests whether a model can revise learned rules when presented with
     contradicting evidence.
 
-    Score = 0.10 * violation_detection + 0.10 * revision_quality +
+    Score = 0.80 * transfer_accuracy + 0.20 * (1 - perseveration_rate)
     """
     total_results = []
     all_violation_scores = []

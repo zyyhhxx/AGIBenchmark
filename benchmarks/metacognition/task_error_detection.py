@@ -137,7 +137,7 @@ def metacog_error_detection(llm) -> float:
     2. Localize the error (which step)
     3. Rate confidence
 
-    Score = 0.35 * detection_F1 + 0.25 * localization_accuracy
+    Score = 0.30 * weighted_detection + 0.10 * F1 + 0.25 * localization + 0.20 * (1 - ECE) + 0.15 * gamma
     """
     results = []
 
