@@ -252,6 +252,12 @@ Each cognitive track has a writeup in `docs/writeups/`. These are discussion thr
 - Include all works cited in the text — no uncited references, no missing citations
 - Cite seminal papers for each cognitive construct measured
 
+### Word Limit
+
+- **Target:** 1500 words
+- **Maximum:** 2000 words
+- Judges won't read walls of text. Be concise — every sentence should earn its place.
+
 ### Style Rules
 
 1. **Self-contained** — no references to other tracks ("highest of all 5 tracks", "unlike metacognition")
