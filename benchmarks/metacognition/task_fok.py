@@ -2,7 +2,7 @@
 MetaCog Benchmark 2: Feeling-of-Knowing (FOK)
 
 Two-phase prospective metacognitive monitoring benchmark.
-Phase 1: Model rates confidence it CAN answer (0-100) WITHOUT seeing/giving the answer.
+Phase 1: Model rates probability of correct answer (0-100) WITHOUT seeing/giving the answer.
 Phase 2: Model attempts to answer the question.
 
 This separation is critical — it prevents post-hoc rationalization and tests
@@ -43,7 +43,7 @@ from data.fok_questions import FOK_QUESTIONS
 @dataclass
 class FOKJudgment:
     """Phase 1: Feeling-of-knowing judgment (before answering)."""
-    confidence: int  # 0-100: How confident are you that you CAN answer this correctly?
+    confidence: int  # 0-100: Probability that your answer will be correct
     reasoning: str   # Brief explanation of why you feel you do/don't know this
 
 
@@ -243,7 +243,7 @@ def metacog_fok(llm) -> float:
     """Feeling-of-Knowing (FOK) Benchmark.
 
     Two-phase protocol measuring prospective metacognitive monitoring.
-    Phase 1: Rate confidence you CAN answer (without answering).
+    Phase 1: Rate probability of correct answer (without answering).
     Phase 2: Actually answer.
 
     Score = weighted composite:
@@ -261,8 +261,13 @@ def metacog_fok(llm) -> float:
         # ── Phase 1: FOK Judgment (confidence BEFORE answering) ──
         with kbench.chats.new(f"fok_phase1_{i}"):
             phase1_prompt = (
-                f"I'm going to ask you a question. Before answering, I want you to rate "
-                f"how confident you are that you CAN answer it correctly.\n\n"
+                f"I'm going to ask you a question. Before answering, rate the "
+                f"probability (0-100) that your answer will be correct.\n\n"
+                f"Scale: 0 = pure guess, 50 = coin flip, 100 = absolutely certain.\n"
+                f"Examples:\n"
+                f"- 'What is 2+2?' \u2192 confidence: 100 (trivial, certain)\n"
+                f"- 'What is the population of Liechtenstein?' \u2192 confidence: 40-60 (you may know roughly but not exactly)\n"
+                f"- 'What was the 7th word Caesar spoke on March 14?' \u2192 confidence: 0 (unknowable)\n\n"
                 f"Question: {q['question']}\n\n"
                 f"DO NOT answer the question yet. Only rate your confidence.\n\n"
                 f"Respond with ONLY a JSON object:\n"
