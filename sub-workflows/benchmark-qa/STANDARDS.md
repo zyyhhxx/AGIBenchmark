@@ -1,4 +1,4 @@
-# STANDARDS.md — Metacognition (AGI Benchmarks)
+# STANDARDS.md — AGI Benchmark Notebook Standards
 
 ## What a Complete Task Looks Like
 
@@ -10,7 +10,7 @@ A task is PASS when ALL of the following are true:
 4. **Cognitive science rationale** — benchmarks cite relevant literature and explain which cognitive construct is being measured
 5. **Contamination-resistant** — benchmark design avoids testing recall of training data; uses procedurally generated stimuli or novel compositions where possible
 6. **kbench SDK patterns** — notebooks use `@kbench.task` decorators, `.run()` calls, and follow kaggle-benchmarks SDK conventions
-7. **Notebook structure** — see Notebook Quality Standards below
+7. **Notebook structure** — see Code Cell Standards and Markdown Cell Standards below
 8. **Code passes syntax validation** — all notebook code cells compile (`compile(src, name, 'exec')` succeeds); all `.py` files pass `python3 -m py_compile`
 9. **Results are reproducible** — benchmark scores are deterministic given the same model responses (no uncontrolled randomness without fixed seeds)
 
@@ -20,9 +20,7 @@ A task is PASS when ALL of the following are true:
 - Steps list has incomplete coverage (e.g., task said "run benchmarks" but no scores recorded)
 - Findings field is empty
 - Benchmark has no cognitive science rationale or cites no literature
-- Notebook missing `!pip install kaggle-benchmarks` cell
-- Notebook missing `.run()` call
-- Notebook violates any rule in Notebook Quality Standards below
+- Notebook violates any rule in Code Cell Standards or Markdown Cell Standards
 - Python file fails `py_compile` check
 - Scores not in expected [0, 1] range
 - Benchmark is trivially gameable by pattern matching or recall
@@ -47,7 +45,9 @@ When marking a task PASS, the Validator appends to KNOWLEDGE if findings contain
 
 Do NOT update KNOWLEDGE with information already present there.
 
-## Notebook Quality Standards
+---
+
+## Code Cell Standards
 
 Every Kaggle benchmark notebook MUST satisfy ALL of the following. No exceptions.
 
@@ -55,7 +55,7 @@ Every Kaggle benchmark notebook MUST satisfy ALL of the following. No exceptions
 
 | Cell | Type | Contents |
 |------|------|----------|
-| 0 | markdown | Title + methodology description (cognitive science basis, scoring formula, what each condition tests) |
+| 0 | markdown | Benchmark documentation (see Markdown Cell Standards) |
 | 1 | code | `!pip install -q protobuf==5.29.6 kaggle-benchmarks numpy 2>/dev/null` followed by `import kaggle_benchmarks as kbench` |
 | 2 | code | ALL benchmark code inlined (stimuli data + task function). Must include `import kaggle_benchmarks as kbench` at the top. |
 | 3 | code | `task_function.run(llm=kbench.llm)` — the ONLY `.run()` call |
@@ -71,33 +71,80 @@ Every Kaggle benchmark notebook MUST satisfy ALL of the following. No exceptions
 7. **`_strip_think()` in every benchmark** — all benchmarks that parse model output must strip `<think>...</think>` tags before parsing (DeepSeek R1 fix).
 8. **JS-style comment stripping** — benchmarks that parse JSON must strip `//` comments: `re.sub(r'//.*', '', raw)`.
 9. **Task docstring ≤ 255 chars** — the docstring immediately under `@kbench.task()` must be ≤255 characters (Kaggle validation requirement).
-10. **No version numbers in notebooks** — do not include version references (v2, v3, etc.) in task names, markdown cells, or docstrings. The writeup presents only the latest version; previous versions are irrelevant to the reader.
+10. **No version numbers** — do not include version references (v2, v3, etc.) in task names, markdown cells, or docstrings. The writeup presents only the latest version; previous versions are irrelevant to the reader.
+11. **Unique task names** — the `name=` in `@kbench.task()` must not duplicate another notebook's task name on the same track.
+12. **Score in [0, 1]** — all benchmarks must return a float in [0, 1]. Use `np.clip(score, 0, 1)` or equivalent before return.
+13. **Seeded randomness** — all randomness must use seeded RNG (`random.Random(seed)` or `hashlib`-derived). No bare `random.random()` or unseeded `numpy.random`.
 
-### Verification Command
+---
 
-Run this for every notebook before considering it done:
+## Markdown Cell Standards
 
-```python
-import json
-nb = json.load(open('notebooks/FILENAME.ipynb'))
-cells = [c for c in nb['cells'] if c['cell_type'] == 'code']
-assert len(cells) == 3, f"Expected 3 code cells, got {len(cells)}"
-assert sum(1 for c in cells if '.run(' in ''.join(c['source'])) == 1, "Must have exactly 1 .run() call"
-assert 'kbench' in ''.join(cells[0]['source']), "kbench must be in pip cell"
-assert not any('from data.' in ''.join(c['source']) for c in cells), "No local imports"
-assert not any('if __name__' in ''.join(c['source']) for c in cells), "No if __name__"
-# Check task docstring length
-import re
-for c in cells[1:]:
-    src = ''.join(c['source'])
-    for m in re.finditer(r'@kbench\.task\(name="[^"]+"[^)]*\)\s*\ndef\s+\w+\([^)]*\)[^:]*:\s*\n\s*"""(.*?)"""', src, re.DOTALL):
-        assert len(m.group(1).strip()) <= 255, f"Task docstring {len(m.group(1).strip())} chars > 255"
-for i, c in enumerate(cells[1:], 1):
-    compile(''.join(c['source']), f'cell{i}', 'exec')  # Must not raise
-print("ALL CHECKS PASS")
+The markdown cell (cell 0) is the benchmark's public documentation. Judges evaluate methodology quality — this cell directly impacts competition scoring.
+
+### Required Format
+
+```markdown
+# {Benchmark Name}
+
+**Track:** {Cognitive Track Name}
+**Construct:** {Specific cognitive ability being measured}
+
+{1-2 sentence summary: what does this benchmark test and why does it matter?}
+
+## Cognitive Science Background
+
+{Theoretical basis with literature citations — Author (Year) format.}
+{What is this cognitive construct? Why is it important?}
+{Human baseline performance if available.}
+
+## Methodology
+
+{How the benchmark works:}
+{- Protocol: what the model sees, what it must do}
+{- Stimuli design: how items are generated, why they resist contamination}
+{- Conditions/tiers: what each tests and difficulty progression}
+{- Key design decisions: what makes this hard, what prevents gaming}
+
+## Scoring
+
+{Scoring formula — use inline code or plain text, not LaTeX}
+{Score interpretation: what do different ranges mean?}
+
+### References
+
+{Compact citation list: Author (Year), comma-separated}
 ```
 
-### Ground Truth Verification
+### Section Requirements
+
+| Section | Required | Content |
+|---------|:--------:|---------|
+| **Title** | ✅ | `# Benchmark Name` — clear, descriptive, no version numbers |
+| **Track + Construct** | ✅ | Bold metadata lines identifying the cognitive track and specific construct |
+| **Summary** | ✅ | 1-2 sentences explaining what the benchmark tests |
+| **Cognitive Science Background** | ✅ | Literature basis, theoretical grounding, human baselines if known |
+| **Methodology** | ✅ | Protocol, stimuli design, conditions/tiers, design rationale |
+| **Scoring** | ✅ | Formula and score interpretation |
+| **References** | ✅ | Cited authors in compact format |
+
+### Style Rules
+
+1. **No LaTeX** — Kaggle renders markdown inconsistently. Use inline code for formulas: `Score = 0.40 × accuracy + 0.30 × (1 - trap_rate)`.
+2. **No version numbers** — no v2, v3, etc. anywhere in the markdown.
+3. **Track names** — use exactly: Metacognition, Attention, Executive Functions, Learning, Social Cognition.
+4. **Human baselines** — include when available. Format: `**Human baseline:** ~30% accuracy (general public)`.
+5. **Length** — aim for 25-40 lines. Too short = insufficient documentation. Too long = judges won't read it.
+6. **Tier/condition descriptions** — if the benchmark has multiple tiers or conditions, describe each briefly in Methodology.
+7. **No implementation details** — the markdown documents *what* and *why*, not *how* the code works. No function names, variable names, or code snippets.
+
+### Exemplar
+
+The `exec_func_crt.ipynb` markdown cell is the reference standard. It has all required sections, proper citations, human baselines, scoring formula with interpretation table, and appropriate length (42 lines).
+
+---
+
+## Ground Truth Verification
 
 Every benchmark with deterministic stimuli must have a verification script that:
 1. Independently computes expected outputs using the rule/apply functions
@@ -106,3 +153,43 @@ Every benchmark with deterministic stimuli must have a verification script that:
 4. Prints "ALL GROUND TRUTH VERIFIED" on success
 
 This ensures LLM-generated answer keys are correct — we don't trust ourselves to hand-verify.
+
+---
+
+## Verification Command
+
+Run this for every notebook before considering it done:
+
+```python
+import json, re
+nb = json.load(open('notebooks/FILENAME.ipynb'))
+
+# --- Code cell checks ---
+cells = [c for c in nb['cells'] if c['cell_type'] == 'code']
+assert len(cells) == 3, f"Expected 3 code cells, got {len(cells)}"
+assert sum(1 for c in cells if '.run(' in ''.join(c['source'])) == 1, "Must have exactly 1 .run() call"
+assert 'kbench' in ''.join(cells[0]['source']), "kbench must be in pip cell"
+assert not any('from data.' in ''.join(c['source']) for c in cells), "No local imports"
+assert not any('if __name__' in ''.join(c['source']) for c in cells), "No if __name__"
+for c in cells[1:]:
+    src = ''.join(c['source'])
+    for m in re.finditer(r'@kbench\.task\(name="[^"]+"[^)]*\)\s*\ndef\s+\w+\([^)]*\)[^:]*:\s*\n\s*"""(.*?)"""', src, re.DOTALL):
+        assert len(m.group(1).strip()) <= 255, f"Task docstring {len(m.group(1).strip())} chars > 255"
+for i, c in enumerate(cells[1:], 1):
+    compile(''.join(c['source']), f'cell{i}', 'exec')
+
+# --- Markdown cell checks ---
+md_cells = [c for c in nb['cells'] if c['cell_type'] == 'markdown']
+assert len(md_cells) >= 1, "Must have at least 1 markdown cell"
+md = ''.join(md_cells[0]['source'])
+assert md.startswith('# '), "Markdown must start with # Title"
+assert '**Track:**' in md, "Missing Track metadata"
+assert '**Construct:**' in md, "Missing Construct metadata"
+assert '## Cognitive Science Background' in md, "Missing Cognitive Science Background section"
+assert '## Methodology' in md, "Missing Methodology section"
+assert '## Scoring' in md, "Missing Scoring section"
+assert '### References' in md, "Missing References section"
+assert not re.search(r'\b[vV]\d+\b', md), "Version numbers found in markdown"
+
+print("ALL CHECKS PASS")
+```
