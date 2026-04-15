@@ -220,14 +220,15 @@ Each cognitive track has a writeup in `docs/writeups/`. These are discussion thr
 - **Task table** (Task | Construct | Protocol) — one row per benchmark, concise protocol descriptions with citations
 - **Difficulty calibration** paragraph — how each task scales difficulty (tiers, conditions, N-levels)
 - **Test methodology** subsection — design choices that challenge frontier models and prevent gaming (batch presentation, hidden dimensions, probabilistic feedback, etc.). This is where unique benchmark innovations go.
+- **Scoring** — per-task scoring formulas with specific weights and components. Each task's composite must be individually documented. No blanket descriptions.
 - **Contamination resistance** paragraph — how stimuli avoid training data overlap (procedural generation, seeded RNG, novel domains)
 
 **Dataset:**
 - Focus on *how* data is constructed (procedural generation, seeded RNG, inlined stimuli)
 - Quality assurance: ground truth verification, deterministic reproducibility, contamination-resistant design
-- **Scoring formulas** per task — specific weights and components, not blanket descriptions. Each task's composite must be individually documented.
 - Provenance statement: synthetic generation, no copyrighted data, no external dependencies
 - Do NOT list trivial details like item counts per task
+- Do NOT include scoring formulas here — those belong in Task & Benchmark Construction
 
 **Technical Details:**
 - Only substantive implementation challenges (response parsing, format-vs-cognition confounds)

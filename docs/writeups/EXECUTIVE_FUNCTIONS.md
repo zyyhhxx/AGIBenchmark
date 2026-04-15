@@ -32,6 +32,13 @@ We constructed 5 tasks mapping onto the Miyake et al. (2000) three-component fra
 - **Feedback-driven discovery** (WCST): Models receive Correct/Incorrect feedback after each sort but are never told which dimensions exist. They must discover the dimension space, infer the active rule from noisy signals (85% reliable feedback), and detect implicit rule shifts — then adapt to multi-dimensional phases where two dimensions must be satisfied simultaneously.
 - **Computationally harder rules** (task switching): Four compositional rules (prime check, position parity, divisibility, vowel proximity) with congruency-aware item generation prevent ceiling effects that simpler rules produce.
 
+**Scoring:**
+- **CRT:** Difficulty-weighted accuracy (extreme=3.0, hard=2.0, easy=1.0)
+- **N-back:** Accuracy across all conditions (2-back through 5-back, standard and transformation variants)
+- **Task switching:** Composite of 0.10×baseline + 0.25×slow-switch + 0.35×rapid + 0.30×switch-cost metric
+- **ToL:** Move optimality (optimal moves / actual moves)
+- **WCST:** Composite of accuracy (0.25), perseveration avoidance (0.45), and categories completed (0.30)
+
 **Contamination resistance:** CRT uses procedurally generated items with randomizable numeric seeds — classic bat-and-ball style items are replaced with novel algebraic-trap problems. WCST, ToL, N-back, and task switching all use novel stimuli configurations generated with seeded RNG.
 
 ### Dataset
@@ -40,16 +47,7 @@ All stimuli are procedurally generated with deterministic seeds and inlined dire
 
 **Construction methodology:** Each task uses seeded RNG to generate novel stimuli configurations. CRT items use randomizable numeric seeds to produce algebraic-trap problems that replace classic bat-and-ball variants. ToL generates disc-rearrangement configurations with verified optimal solutions. WCST generates card stimuli across hidden dimensions with probabilistic feedback schedules. N-back sequences include algorithmically placed lure trials at N±1 positions. Task switching generates stimuli with congruency-aware selection to control for response bias.
 
-**Quality assurance:** Ground truth verification scripts independently compute expected outputs for every item and compare against stored answer keys. All randomness uses seeded RNG (`random.Random(seed)` or `hashlib`-derived) — no uncontrolled randomness. Scores are clipped to [0, 1] before return.
-
-**Scoring:**
-- **CRT:** Difficulty-weighted accuracy (extreme=3.0, hard=2.0, easy=1.0)
-- **N-back:** Accuracy across all conditions (2-back through 5-back, standard and transformation variants)
-- **Task switching:** Composite of 0.10×baseline + 0.25×slow-switch + 0.35×rapid + 0.30×switch-cost metric
-- **ToL:** Move optimality (optimal moves / actual moves)
-- **WCST:** Composite of accuracy (0.25), perseveration avoidance (0.45), and categories completed (0.30)
-
-**Provenance:** All stimuli are synthetically generated. Classic CRT items are replaced with novel parametric variants to prevent training data contamination. No copyrighted datasets are used.
+**Quality assurance:** Ground truth verification scripts independently compute expected outputs for every item and compare against stored answer keys. All randomness uses seeded RNG (`random.Random(seed)` or `hashlib`-derived) — no uncontrolled randomness. Scores are clipped to [0, 1] before return. All stimuli are synthetically generated with no copyrighted datasets.
 
 ### Technical Details
 
