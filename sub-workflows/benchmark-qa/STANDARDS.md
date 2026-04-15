@@ -251,6 +251,7 @@ Each cognitive track has a writeup in `docs/writeups/`. These are discussion thr
 - Full bibliographic format: Author, Initials. (Year). Title. *Journal*, Volume(Issue), Pages.
 - Include all works cited in the text — no uncited references, no missing citations
 - Cite seminal papers for each cognitive construct measured
+- **Citation completeness check:** The final reference list must be the union of all citations in the notebooks (markdown cells) and all citations in the writeup body. Extract citations from both sources, merge, verify each via web search, and include all in the final list.
 
 ### Word Limit
 

@@ -78,7 +78,16 @@ Independent submission — no organizational affiliation.
 - Miyake, A. et al. (2000). The unity and diversity of executive functions. *Cognitive Psychology*, 41(1), 49–100.
 - Diamond, A. (2013). Executive functions. *Annual Review of Psychology*, 64, 135–168.
 - Frederick, S. (2005). Cognitive reflection and decision making. *Journal of Economic Perspectives*, 19(4), 25–42.
-- Shallice, T. (1982). Specific impairments of planning. *Phil. Trans. R. Soc. B*, 298(1089), 199–209.
-- Grant, D. A. & Berg, E. A. (1948). A behavioral analysis of reinforcement and shifting. *Journal of Experimental Psychology*, 38(4), 404–411.
-- Rogers, R. D. & Monsell, S. (1995). Costs of a predictable switch. *Journal of Experimental Psychology: General*, 124(2), 207–231.
+- Kahneman, D. (2011). *Thinking, Fast and Slow*. Farrar, Straus and Giroux.
+- Toplak, M. E. et al. (2011). The Cognitive Reflection Test as a predictor of performance on heuristics-and-biases tasks. *Memory & Cognition*, 39, 1275–1289.
 - Kirchner, W. K. (1958). Age differences in short-term retention. *Journal of Experimental Psychology*, 55(4), 352–358.
+- Kane, M. J. et al. (2007). Working memory, attention control, and the N-back task. *Journal of Experimental Psychology: LMC*, 33(3), 615–622.
+- Owen, A. M. et al. (2005). N-back working memory paradigm: A meta-analysis of normative functional neuroimaging studies. *Human Brain Mapping*, 25(1), 46–59.
+- Rogers, R. D. & Monsell, S. (1995). Costs of a predictable switch. *Journal of Experimental Psychology: General*, 124(2), 207–231.
+- Meiran, N. (1996). Reconfiguration of processing mode prior to task performance. *Journal of Experimental Psychology: LMC*, 22(6), 1423–1442.
+- Allport, A. et al. (1994). Shifting intentional set. In C. Umiltà & M. Moscovitch (Eds.), *Attention and Performance XV* (pp. 421–452).
+- Shallice, T. (1982). Specific impairments of planning. *Phil. Trans. R. Soc. B*, 298(1089), 199–209.
+- Owen, A. M. et al. (1990). Planning and spatial working memory following frontal lobe lesions. *Neuropsychologia*, 28(10), 1021–1034.
+- Grant, D. A. & Berg, E. A. (1948). A behavioral analysis of reinforcement and shifting. *Journal of Experimental Psychology*, 38(4), 404–411.
+- Milner, B. (1963). Effects of different brain lesions on card sorting. *Archives of Neurology*, 9(1), 90–100.
+- Barceló, F. (2003). The Madrid Card Sorting Test. *Neuropsychologia*, 41(12), 1553–1567.
