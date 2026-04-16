@@ -252,7 +252,7 @@ Each cognitive track has a writeup in `docs/writeups/`. These are discussion thr
 
 ### Word Limit
 
-- **Maximum:** 1500 words
+- **Maximum:** 1500 words (Kaggle's word counter runs ~50 words lower than local `wc -w`; aim for ~1550 locally)
 - Judges won't read walls of text. Be concise — every sentence should earn its place.
 
 ### Style Rules
@@ -260,7 +260,7 @@ Each cognitive track has a writeup in `docs/writeups/`. These are discussion thr
 1. **Self-contained** — no references to other tracks ("highest of all 5 tracks", "unlike metacognition")
 2. **No version numbers** — present the final benchmark design only; no v2/v3/"earlier versions"
 3. **No internal history** — no references to development iterations, redesigns, or previous runs
-4. **Title** — phrased as a research question (e.g., "Can AI Systems Plan, Inhibit, and Adapt?")
+4. **Title** — `# level` heading, phrased as a research question, with a subtitle < 140 characters
 5. **Population std** — use N denominator consistently (not sample std with N-1)
 6. **Score precision** — 2 decimal places in tables, 3 decimal places for Mean/Std/Range
 7. **Insight quality** — every insight must cite specific model scores and connect to cognitive science. No vague observations.

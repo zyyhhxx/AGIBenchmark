@@ -1,4 +1,6 @@
-### Can AI Systems Plan, Inhibit, and Adapt? A 5-Task Executive Functions Benchmark Suite
+# Can AI Systems Plan, Inhibit, and Adapt? A 5-Task Executive Functions Benchmark Suite
+
+Testing planning, inhibition, and cognitive flexibility across 8 models from 1B to frontier scale.
 
 ### Problem Statement
 
@@ -54,9 +56,9 @@ We evaluated 8 models on the [Kaggle Community Benchmarks platform](https://www.
 
 **Overall ranking:** Gemini 2.5 Pro (0.835) > Claude Opus 4.6 (0.785) > Gemini 2.5 Flash (0.769) > DeepSeek-R1 (0.754) > GPT-5.4 (0.670) > GPT-5.4 Nano (0.423) > Gemma 3 4B (0.304) > Gemma 3 1B (0.233).
 
-**Insight 1 — N-back reveals a frontier cliff in working memory.** A sharp divide separates frontier models (three at 1.00, DeepSeek-R1 at 0.99) from the rest (GPT-5.4: 0.29, down to Gemma 3 1B: 0.03). The combination of 5-back depth, transformation variants, and lure trials creates a threshold that collapses sharply below frontier scale.
+**Insight 1 — N-back reveals a frontier cliff in working memory.** A sharp divide separates frontier models (three at 1.00, DeepSeek-R1 at 0.99) from the rest (GPT-5.4: 0.29, down to Gemma 3 1B: 0.03). The combination of 5-back depth, transformation variants, and lure trials creates a threshold that collapses sharply below frontier scale. Notably, human performance at 4-back (~50%) sits between frontier and mid-tier models, suggesting that frontier LLMs have surpassed human working memory capacity in this paradigm.
 
-**Insight 2 — WCST is universally hard under uncertainty.** With a mean of just 0.450, WCST is the hardest benchmark. Hidden dimensions, probabilistic feedback, and multi-dimensional phases make this difficult even for frontier models (Claude Opus: 0.37, Gemini Pro: 0.47). GPT-5.4 (0.77) leads decisively, suggesting set-shifting flexibility under uncertainty is a distinct capability from general reasoning.
+**Insight 2 — WCST is universally hard under uncertainty.** With a mean of just 0.450, WCST is the hardest benchmark. Hidden dimensions, probabilistic feedback, and multi-dimensional phases make this difficult even for frontier models (Claude Opus: 0.37, Gemini Pro: 0.47). GPT-5.4 (0.77) leads decisively — the only model above 0.50 — suggesting set-shifting flexibility under uncertainty is a distinct capability from general reasoning ability.
 
 **Insight 3 — Planning scales with model size.** ToL shows the widest absolute separation (range = 1.000): Gemini 2.5 Pro achieves perfect planning, three frontier models cluster at 0.70–0.85, and small models collapse (Gemma 3 4B: 0.14, Gemma 3 1B: 0.00). Multi-step look-ahead planning appears to be a genuine scale-dependent capability.
 

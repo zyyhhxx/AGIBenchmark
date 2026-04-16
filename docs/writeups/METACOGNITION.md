@@ -1,4 +1,6 @@
-### Does Your AI Know What It Doesn't Know? A 9-Task Metacognition Benchmark Suite
+# Does Your AI Know What It Doesn't Know? A 9-Task Metacognition Benchmark Suite
+
+Measuring self-monitoring, calibration, and cognitive regulation across 8 models from 1B to frontier scale.
 
 ### Problem Statement
 
@@ -53,7 +55,7 @@ We evaluated 8 models on the [Kaggle Community Benchmarks platform](https://www.
 
 **Overall ranking:** Claude Opus 4.6 (0.825) > DeepSeek-R1 (0.813) = Gemini 2.5 Flash (0.813) > Gemini 2.5 Pro (0.808) > GPT-5.4 (0.778) > GPT-5.4 Nano (0.613) > Gemma 3 4B (0.419) > Gemma 3 1B (0.274).
 
-**Insight 1 — Two-tier metacognition pattern.** Scores separate into *monitoring tasks* (canary, epistemic humility, error detection, epistemic revision, control, learning monitoring; mean 0.73) and *prospective self-assessment* (FOK, JOL, calibration; mean 0.55). This 1.3:1 dissociation holds across all 8 models, suggesting that evaluating external information is fundamentally easier than predicting one's own future performance. Even mid-tier GPT-5.4 Nano maintains a monitoring mean of 0.67 versus a prospective mean of 0.50.
+**Insight 1 — Two-tier metacognition pattern.** Scores separate into *monitoring tasks* (canary, epistemic humility, error detection, epistemic revision, control, learning monitoring; mean 0.73) and *prospective self-assessment* (FOK, JOL, calibration; mean 0.54). This 1.4:1 dissociation holds across all 8 models, suggesting that evaluating external information is fundamentally easier than predicting one's own future performance. This mirrors the Nelson & Narens (1990) monitoring→control distinction: monitoring external stimuli engages different processes than prospective self-assessment. Even mid-tier GPT-5.4 Nano maintains a monitoring mean of 0.67 versus a prospective mean of 0.50.
 
 **Insight 2 — Calibration reveals systematic overconfidence.** Frontier models cluster tightly on calibration (0.50–0.59), while small models collapse (Gemma 3 4B: 0.29, Gemma 3 1B: 0.09). Frontier models universally report 94–99% confidence even on the hardest items, confirming Chhikara et al. (2025). The composite scoring rewards models that identify *which specific items* are hard, not just overall accuracy.
 
