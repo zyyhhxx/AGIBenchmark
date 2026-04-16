@@ -16,7 +16,7 @@ We constructed 5 tasks mapping onto the Miyake et al. (2000) three-component fra
 | **N-back** | Working memory updating | 2-back through 5-back with transformation variants and lure trials. Human baseline: ~90% at 2-back, ~50% at 4-back (Kirchner, 1958; Kane et al., 2007) |
 | **Task Switching** | Cognitive flexibility | Batch presentation with 4 compositional rules and post-stimulus cuing (Rogers & Monsell, 1995) |
 | **Tower of London (ToL)** | Multi-step planning | Disc-rearrangement problems requiring optimal move sequences with look-ahead. Human baseline: ~85% at 3 moves, ~55% at 5 moves (Shallice, 1982; Owen et al., 1990) |
-| **WCST** | Set shifting / perseveration | Hidden sorting dimensions, probabilistic feedback, variable shift criteria, and multi-dimensional phases (Grant & Berg, 1948) |
+| **Wisconsin Card Sorting Test (WCST)** | Set shifting / perseveration | Hidden sorting dimensions, probabilistic feedback, variable shift criteria, and multi-dimensional phases (Grant & Berg, 1948) |
 
 **Key design choices** ensure we measure genuine executive processes rather than surface-level task completion:
 
