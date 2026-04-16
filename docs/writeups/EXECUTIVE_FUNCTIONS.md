@@ -58,7 +58,7 @@ We evaluated 8 models on the [Kaggle Community Benchmarks platform](https://www.
 
 **Insight 2 — WCST is universally hard under uncertainty.** With a mean of just 0.450, WCST is the hardest benchmark. Hidden dimensions, probabilistic feedback, and multi-dimensional phases make this difficult even for frontier models (Claude Opus: 0.37, Gemini Pro: 0.47). GPT-5.4 (0.77) leads decisively — the only model above 0.50 — suggesting set-shifting flexibility under uncertainty is a distinct capability from general reasoning ability.
 
-**Insight 3 — Planning scales with model size.** ToL shows the widest absolute separation (range = 1.000): Gemini 2.5 Pro achieves perfect planning, three frontier models cluster at 0.70–0.85, and small models collapse (Gemma 3 4B: 0.14, Gemma 3 1B: 0.00). Multi-step look-ahead planning appears to be a genuine scale-dependent capability.
+**Insight 3 — Planning scales with model size.** ToL shows the widest absolute separation (range = 1.000): Gemini 2.5 Pro achieves perfect planning, three frontier models cluster at 0.70–0.85, and small models collapse (Gemma 3 4B: 0.14, Gemma 3 1B: 0.00). Compared to the human baseline of ~55% at 5 moves, only two frontier models reliably exceed human planning depth. Multi-step look-ahead planning appears to be a genuine scale-dependent capability.
 
 **Insight 4 — No single model dominates all executive functions.** Gemini 2.5 Pro leads ToL, Claude Opus leads CRT, GPT-5.4 leads WCST, and three models tie on task switching. This supports the Miyake et al. (2000) componential model: inhibition, shifting, and updating are separable constructs for LLMs as well. Models that excel at response inhibition (CRT) do not necessarily excel at set shifting (WCST) or planning (ToL).
 
