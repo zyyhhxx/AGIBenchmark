@@ -50,31 +50,31 @@ Each task executes in isolated conversation contexts via `kbench.chats.new()` �
 
 ### Results, Insights, and Conclusions
 
-We evaluated 8 models on the [Kaggle Community Benchmarks platform](https://www.kaggle.com/benchmarks/ianstudy/metacognition-track), spanning frontier (Claude Opus 4.6, DeepSeek-R1, Gemini 2.5 Pro, GPT-5.4), mid-tier (Gemini 2.5 Flash, GPT-5.4 Nano), and small models (Gemma 3 4B, Gemma 3 1B):
+We evaluated 8 models on the [Kaggle Community Benchmarks platform](https://www.kaggle.com/benchmarks/ianstudy/metacognition-track), spanning frontier (DeepSeek-R1, Claude Opus 4.6, Gemini 2.5 Pro, GPT-5.4), mid-tier (Gemini 2.5 Flash, GPT-5.4 Nano), and small models (Gemma 3 4B, Gemma 3 1B):
 
 | Task | Mean | Std | Range | Top Model (Score) | Bottom Model (Score) |
 |------|------|-----|-------|-------------------|---------------------|
-| Retrospective Calibration | 0.448 | 0.166 | 0.493 | Gemini 2.5 Pro (0.59) | Gemma 3 1B (0.09) |
-| FOK | 0.558 | 0.151 | 0.489 | GPT-5.4 (0.77) | Gemma 3 1B (0.28) |
-| JOL | 0.612 | 0.192 | 0.508 | Claude Opus 4.6 (0.79) | Gemma 3 4B (0.28) |
-| Error Detection | 0.821 | 0.182 | 0.580 | DeepSeek-R1 (0.98) | Gemma 3 1B (0.40) |
-| Epistemic Humility | 0.725 | 0.169 | 0.453 | Claude Opus 4.6 (0.88) | Gemma 3 4B (0.43) |
-| Control | 0.766 | 0.235 | 0.723 | Claude Opus 4.6 / Gemini 2.5 Pro / GPT-5.4 (0.91) | Gemma 3 1B (0.19) |
-| Canary | 0.656 | 0.390 | 0.992 | Gemini 2.5 Pro (0.99) | Gemma 3 4B / Gemma 3 1B (0.00) |
-| Epistemic Revision | 0.747 | 0.163 | 0.503 | Claude Opus 4.6 (0.96) | Gemma 3 1B (0.46) |
-| Learning Monitoring | 0.677 | 0.292 | 0.712 | DeepSeek-R1 (0.97) | Gemma 3 4B (0.25) |
+| Retrospective Calibration | 0.46 | 0.17 | 0.51 | Gemini 2.5 Pro (0.61) | Gemma 3 1B (0.09) |
+| FOK | 0.56 | 0.15 | 0.49 | GPT-5.4 (0.77) | Gemma 3 1B (0.28) |
+| JOL | 0.58 | 0.23 | 0.53 | GPT-5.4 (0.80) | Gemma 3 4B (0.26) |
+| Error Detection | 0.80 | 0.18 | 0.57 | Claude Opus 4.6 (0.94) | Gemma 3 1B (0.38) |
+| Epistemic Humility | 0.70 | 0.19 | 0.57 | DeepSeek-R1 (0.93) | Gemma 3 4B (0.36) |
+| Control | 0.76 | 0.24 | 0.74 | Claude Opus 4.6 / GPT-5.4 (0.91) | Gemma 3 1B (0.17) |
+| Canary | 0.61 | 0.37 | 0.92 | GPT-5.4 (0.92) | Gemma 3 4B / Gemma 3 1B (0.00) |
+| Epistemic Revision | 0.76 | 0.15 | 0.50 | Claude Opus 4.6 (0.92) | Gemma 3 1B (0.42) |
+| Learning Monitoring | 0.70 | 0.28 | 0.71 | DeepSeek-R1 (0.96) | Gemma 3 4B (0.26) |
 
-**Overall ranking:** Claude Opus 4.6 (0.825) > DeepSeek-R1 (0.813) = Gemini 2.5 Flash (0.813) > Gemini 2.5 Pro (0.808) > GPT-5.4 (0.778) > GPT-5.4 Nano (0.613) > Gemma 3 4B (0.419) > Gemma 3 1B (0.274).
+**Overall ranking:** DeepSeek-R1 (0.840) > Claude Opus 4.6 (0.810) > Gemini 2.5 Flash (0.808) > GPT-5.4 (0.803) > Gemini 2.5 Pro (0.783) > GPT-5.4 Nano (0.572) > Gemma 3 4B (0.414) > Gemma 3 1B (0.266).
 
-**Insight 1 — Two-tier metacognition pattern.** Scores separate into *monitoring tasks* (canary, epistemic humility, error detection, epistemic revision, control, learning monitoring; mean 0.73) and *prospective self-assessment* (FOK, JOL, calibration; mean 0.54). This 1.4:1 dissociation holds across all 8 models, suggesting that evaluating external information is fundamentally easier than predicting one's own future performance. This mirrors the Nelson & Narens (1990) monitoring→control distinction: monitoring external stimuli engages different processes than prospective self-assessment. Even mid-tier GPT-5.4 Nano maintains a monitoring mean of 0.67 versus a prospective mean of 0.50.
+**Insight 1 — Two-tier metacognition pattern.** Scores separate into *monitoring tasks* (canary, epistemic humility, error detection, epistemic revision, control, learning monitoring; mean 0.72) and *prospective self-assessment* (FOK, JOL, calibration; mean 0.53). This 1.36:1 dissociation holds across all 8 models, suggesting that evaluating external information is fundamentally easier than predicting one's own future performance. This mirrors the Nelson & Narens (1990) monitoring→control distinction: monitoring external stimuli engages different processes than prospective self-assessment. Even mid-tier GPT-5.4 Nano maintains a monitoring mean of 0.68 versus a prospective mean of 0.35.
 
-**Insight 2 — Calibration reveals systematic overconfidence.** Frontier models cluster tightly on calibration (0.50–0.59), while small models collapse (Gemma 3 4B: 0.29, Gemma 3 1B: 0.09). Frontier models universally report 94–99% confidence even on the hardest items. The composite scoring — 50% extreme-item accuracy, 25% BSS, 25% uncertainty awareness — rewards models that identify *which specific items* are hard, not just overall accuracy.
+**Insight 2 — Calibration reveals systematic overconfidence.** Frontier models cluster tightly on calibration (0.55–0.61), while small models collapse (Gemma 3 4B: 0.29, Gemma 3 1B: 0.09). Frontier models universally report 94–99% confidence even on the hardest items. The composite scoring — 50% extreme-item accuracy, 25% BSS, 25% uncertainty awareness — rewards models that identify *which specific items* are hard, not just overall accuracy.
 
-**Insight 3 — Strong discriminatory power across the model spectrum.** Average cross-model std = 0.216 across 9 benchmarks (range 0.151–0.390). Canary (std = 0.390) and learning monitoring (std = 0.312) are the strongest discriminators. The suite creates a clear four-tier hierarchy: frontier (0.78–0.83), mid-tier (0.61), small-capable (0.42), and small-floor (0.27). Both Gemma models score 0.00 on canary — complete failure to distinguish fabricated from real facts.
+**Insight 3 — Strong discriminatory power across the model spectrum.** Average cross-model std = 0.217 across 9 benchmarks (range 0.148–0.370). Canary (std = 0.370) and learning monitoring (std = 0.279) are the strongest discriminators. The suite creates a clear four-tier hierarchy: frontier (0.78–0.84), mid-tier (0.57), small-capable (0.41), and small-floor (0.27). Both Gemma models score 0.00 on canary — complete failure to distinguish fabricated from real facts.
 
 **Insight 4 — FOK reveals the purest test of prospective metacognition.** GPT-5.4 achieves the highest FOK score (0.77), demonstrating strong prospective monitoring — accurately predicting its own performance before answering. Gemma 3 1B scores 0.28, showing poor discrimination between items it will answer correctly versus incorrectly. The two-phase protocol (confidence elicitation in a separate conversation from the answer attempt) isolates prospective monitoring from post-hoc rationalization.
 
-**Insight 5 — Scaling reveals selective metacognitive transfer.** GPT-5.4 Nano scores 0.613 overall — 79% of full GPT-5.4 (0.778). The gap concentrates in specific tasks: Nano collapses on learning monitoring (0.41 vs 0.82) and canary (0.68 vs 0.92), but matches GPT-5.4 on JOL (0.73 vs 0.60) and control (0.80 vs 0.91). Some metacognitive capabilities transfer well to smaller models; others require scale.
+**Insight 5 — Scaling reveals selective metacognitive transfer.** GPT-5.4 Nano scores 0.572 overall — 71% of full GPT-5.4 (0.803). The gap concentrates in prospective tasks: Nano collapses on JOL (0.28 vs 0.80), canary (0.52 vs 0.92), and FOK (0.37 vs 0.77), but retains strong control (0.82 vs 0.91), epistemic revision (0.75 vs 0.79), and error detection (0.80 vs 0.87). Monitoring capabilities transfer more robustly to smaller models than prospective self-assessment.
 
 ### References & Citations
 
