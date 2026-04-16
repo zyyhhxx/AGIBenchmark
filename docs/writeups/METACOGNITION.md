@@ -38,7 +38,7 @@ We constructed 9 tasks grounded in the Nelson & Narens (1990) metacognitive moni
 - **Epistemic Revision:** 0.80×transfer_accuracy + 0.20×(1−perseveration_rate)
 - **Learning Monitoring:** 0.30×gamma + 0.30×learning_accuracy + 0.20×(1−bias) + 0.20×learning_rate
 
-BSS was chosen over raw ECE where applicable because ECE rewards always-hedging-to-50% strategies. All scores normalized to [0, 1].
+All scores normalized to [0, 1].
 
 ### Dataset
 
@@ -46,7 +46,7 @@ All data is inlined directly in the Kaggle notebooks with no external dependenci
 
 ### Technical Details
 
-Each task executes in isolated conversation contexts via `kbench.chats.new()` — critically, FOK and JOL use *separate* contexts for confidence elicitation and answer generation, making it architecturally impossible for models to rationalize confidence post-hoc. Output parsing uses a `_strip_think()` helper to remove chain-of-thought tags, followed by regex-based JSON extraction with graceful fallback, ensuring response *format* failures (e.g., backtick fences, JavaScript-style comments) are separated from genuine *cognitive* failures.
+Each task executes in isolated conversation contexts via `kbench.chats.new()` — critically, FOK and JOL use *separate* contexts for confidence elicitation and answer generation, making it architecturally impossible for models to rationalize confidence post-hoc. Output parsing uses a `_strip_think()` helper to remove chain-of-thought tags, followed by regex-based JSON extraction with graceful fallback, ensuring response *format* failures (e.g., backtick fences, JavaScript-style comments) are separated from genuine *cognitive* failures. All randomness uses seeded RNG for deterministic reproducibility. BSS (Brier Skill Score) was chosen over raw ECE for scoring because ECE rewards always-hedging-to-50% strategies — BSS penalizes models that lack genuine confidence discrimination.
 
 ### Results, Insights, and Conclusions
 
