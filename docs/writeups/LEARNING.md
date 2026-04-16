@@ -1,8 +1,5 @@
 ### Can AI Systems Learn from Experience? A 4-Task Learning Benchmark Suite
 
-### Team
-Yiyang Zeng (Independent researcher)
-
 ### Problem Statement
 
 Learning — the ability to acquire, retain, and transfer knowledge through experience — is perhaps the most fundamental cognitive faculty. Yet LLM evaluations almost exclusively test *what* models already know, not *how* they learn. Pre-trained models are tested on static knowledge; their ability to acquire new information within context, resist interference from competing knowledge, and transfer learned rules to novel situations remains largely unmeasured.

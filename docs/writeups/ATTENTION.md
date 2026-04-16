@@ -1,8 +1,5 @@
 ### Can AI Systems Focus? A 4-Task Attention Benchmark Suite
 
-### Team
-Yiyang Zeng (Independent researcher)
-
 ### Problem Statement
 
 Attention — the ability to selectively focus cognitive resources, sustain vigilance over time, and divide processing across concurrent demands — is a cornerstone of human cognition (Posner, 1980). Despite its centrality, LLM evaluations rarely test attentional mechanisms directly. Standard benchmarks conflate attention with knowledge: a model that "attends" to the right context may simply be retrieving memorized associations rather than dynamically allocating processing resources.

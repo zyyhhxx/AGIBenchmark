@@ -1,8 +1,5 @@
 ### Does Your AI Know What It Doesn't Know? A 9-Task Metacognition Benchmark Suite
 
-### Team
-Yiyang Zeng (Independent researcher)
-
 ### Problem Statement
 
 Current LLM evaluations measure what models *know* but not whether they know *what they know*. Metacognition — the ability to monitor and regulate one's own cognitive processes — is fundamental to trustworthy AI. Existing benchmarks treat confidence as a post-hoc annotation rather than an independently measurable cognitive faculty. We lack evaluations that isolate specific metacognitive processes — prospective monitoring, retrospective calibration, error detection, and strategic control. This benchmark suite addresses: **Can frontier models accurately monitor, evaluate, and regulate their own cognitive processes?**

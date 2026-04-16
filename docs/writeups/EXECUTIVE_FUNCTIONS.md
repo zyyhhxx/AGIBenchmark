@@ -1,8 +1,5 @@
 ### Can AI Systems Plan, Inhibit, and Adapt? A 5-Task Executive Functions Benchmark Suite
 
-### Team
-Yiyang Zeng (Independent researcher)
-
 ### Problem Statement
 
 Executive functions — the higher-order cognitive processes that enable goal-directed behavior through planning, inhibition, and cognitive flexibility — are central to intelligent action (Diamond, 2013). Miyake et al. (2000) identified three core executive components: *inhibition* (suppressing prepotent responses), *shifting* (flexibly switching between tasks or mental sets), and *updating* (maintaining and manipulating working memory).

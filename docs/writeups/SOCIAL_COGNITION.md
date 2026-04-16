@@ -1,8 +1,5 @@
 ### Can AI Systems Understand Minds? A 4-Task Social Cognition Benchmark Suite
 
-### Team
-Yiyang Zeng (Independent researcher)
-
 ### Problem Statement
 
 Social cognition — the ability to process, interpret, and respond to social information — enables humans to navigate the complexities of interpersonal interaction. Central to social cognition is Theory of Mind (ToM): the capacity to attribute mental states (beliefs, desires, intentions) to others and predict their behavior accordingly (Baron-Cohen, Leslie & Frith, 1985). Equally important are pragmatic language abilities — understanding what speakers *mean* beyond what they literally *say* (Grice, 1975) — and the detection of social signals such as sarcasm, irony, and emotional tone.
