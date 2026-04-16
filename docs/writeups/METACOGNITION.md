@@ -46,7 +46,7 @@ All data is inlined directly in the Kaggle notebooks with no external dependenci
 
 ### Technical Details
 
-Each task executes in isolated conversation contexts via `kbench.chats.new()` — critically, FOK and JOL use *separate* contexts for confidence elicitation and answer generation, making it architecturally impossible for models to rationalize confidence post-hoc. Output parsing uses a `_strip_think()` helper to remove chain-of-thought tags, followed by regex-based JSON extraction with graceful fallback, ensuring response *format* failures (e.g., backtick fences, JavaScript-style comments) are separated from genuine *cognitive* failures. All randomness uses seeded RNG for deterministic reproducibility. BSS (Brier Skill Score) was chosen over raw ECE for scoring because ECE rewards always-hedging-to-50% strategies — BSS penalizes models that lack genuine confidence discrimination.
+Each task executes in isolated conversation contexts via `kbench.chats.new()` — critically, FOK and JOL use *separate* contexts for confidence elicitation and answer generation, making it architecturally impossible for models to rationalize confidence post-hoc. Output parsing uses a `_strip_think()` helper to remove chain-of-thought tags, followed by regex-based JSON extraction with graceful fallback, ensuring response *format* failures (e.g., backtick fences, JavaScript-style comments) are separated from genuine *cognitive* failures. All randomness uses seeded RNG for deterministic reproducibility. BSS (Brier Skill Score) was chosen over raw ECE for scoring because ECE rewards always-hedging-to-50% strategies — BSS penalizes models lacking genuine confidence discrimination.
 
 ### Results, Insights, and Conclusions
 
@@ -54,17 +54,17 @@ We evaluated 17 models on the [Kaggle Community Benchmarks platform](https://www
 
 | Task | Mean | Std | Range | Top Model (Score) | Bottom Model (Score) |
 |------|------|-----|-------|-------------------|---------------------|
-| Retrospective Calibration | 0.50 | 0.13 | 0.52 | GLM-5 (0.62) | Gemma 3 1B (0.09) |
-| FOK (n=15) | 0.56 | 0.11 | 0.49 | GPT-5.4 (0.77) | Gemma 3 1B (0.28) |
-| JOL | 0.61 | 0.22 | 0.54 | Qwen3-80B Thinking (0.80) | Gemma 3 4B (0.26) |
+| Retrospective Calibration | 0.50 | 0.14 | 0.52 | GLM-5 (0.62) | Gemma 3 1B (0.09) |
+| FOK | 0.55 | 0.11 | 0.49 | GPT-5.4 (0.77) | Gemma 3 1B (0.28) |
+| JOL | 0.61 | 0.23 | 0.54 | Qwen3-80B Thinking (0.80) | Gemma 3 27B/4B (0.26) |
 | Error Detection | 0.86 | 0.14 | 0.61 | Qwen3-235B Instruct (0.99) | Gemma 3 1B (0.38) |
-| Learning Monitoring | 0.74 | 0.23 | 0.70 | GLM-5 (0.96) | Gemma 3 4B (0.26) |
-| Control | 0.80 | 0.18 | 0.74 | GLM-5 / Opus / GPT-5.4 / Qwen3-80B (0.91) | Gemma 3 1B (0.18) |
-| Epistemic Humility | 0.76 | 0.16 | 0.58 | Claude Haiku 4.5 (0.94) | Gemma 3 4B (0.36) |
+| Learning Monitoring | 0.74 | 0.24 | 0.70 | GLM-5 (0.96) | Gemma 3 4B (0.26) |
+| Control | 0.80 | 0.18 | 0.74 | Opus / GPT-5.4 / GLM-5 / Qwen3-80B (0.91) | Gemma 3 1B (0.18) |
+| Epistemic Humility | 0.76 | 0.17 | 0.58 | Claude Haiku 4.5 (0.94) | Gemma 3 4B (0.36) |
 | Epistemic Revision | 0.78 | 0.13 | 0.50 | Opus / Sonnet / Haiku (0.92) | Gemma 3 1B (0.42) |
-| Canary | 0.61 | 0.34 | 0.99 | GLM-5 (0.99) | Gemma 3 4B / 1B (0.00) |
+| Canary | 0.61 | 0.35 | 0.99 | GLM-5 (0.99) | Gemma 3 4B / 1B (0.00) |
 
-**Overall ranking:** GLM-5 (0.828) > DeepSeek-R1 (0.827) > Claude Opus 4.6 (0.810) > Gemini 2.5 Flash (0.808) > Claude Sonnet 4.6 (0.804) > GPT-5.4 (0.803) > Gemini 2.5 Pro (0.783) > Qwen3-80B Thinking (0.781) > Qwen3-235B Instruct (0.768) > DeepSeek-V3.2 (0.754) > Claude Haiku 4.5 (0.730) > GPT-oss-20B (0.695) > GPT-5.4 Mini (0.578) > GPT-5.4 Nano (0.572) > Gemma 3 27B (0.550) > Gemma 3 4B (0.414) > Gemma 3 1B (0.266).
+**Overall ranking:** DeepSeek-R1 (0.827) > Claude Opus 4.6 (0.810) > Gemini 2.5 Flash (0.808) > Claude Sonnet 4.6 (0.804) > GPT-5.4 (0.803) > GLM-5 (0.791) > Gemini 2.5 Pro (0.783) > Qwen3-80B Thinking (0.781) > Qwen3-235B Instruct (0.768) > DeepSeek-V3.2 (0.754) > Claude Haiku 4.5 (0.730) > GPT-oss-20B (0.695) > GPT-5.4 Mini (0.572) > GPT-5.4 Nano (0.572) > Gemma 3 27B (0.550) > Gemma 3 4B (0.414) > Gemma 3 1B (0.266).
 
 **Insight 1 — Two-tier dissociation confirmed at scale.** The split between *monitoring tasks* (canary, epistemic humility, error detection, epistemic revision, control, learning monitoring; grand mean 0.76) and *prospective self-assessment* (FOK, JOL, calibration; grand mean 0.56) yields the same 1.36:1 ratio observed in the 8-model pilot — now replicated across 17 models and 7 families. The dissociation is universal: every model scores higher on monitoring than prospective self-assessment. GPT-5.4 Nano shows the strongest ratio at 1.93:1, suggesting the gap *widens* at smaller scales as prospective abilities degrade faster.
 
@@ -72,7 +72,7 @@ We evaluated 17 models on the [Kaggle Community Benchmarks platform](https://www
 
 **Insight 3 — Epistemic revision is family-invariant in Claude.** All three Claude models score identically on epistemic revision (0.92) despite Haiku scoring 0.08 lower overall. No other family shows such uniformity on any task. The broader Claude gradient (Opus 0.810 → Sonnet 0.804 → Haiku 0.730) reveals a negligible Opus–Sonnet gap (0.006), while the Sonnet–Haiku drop (0.074) concentrates in canary (0.88→0.58) and control (0.80→0.65). Anthropic's training instills belief-updating capacity that persists across scales.
 
-**Insight 4 — Frontier plateau, open-source parity, scale cliff.** The top 7 frontier models cluster at 0.80–0.83 (mean 0.81). Strong open-source models (Qwen, DeepSeek-V3.2) form a second tier at 0.75–0.78 (mean 0.77) — only 0.04 behind. Below this, a cliff: mid-tier models average 0.67, small models average 0.45. The frontier–open-source gap (0.04) is dwarfed by the open-source–small gap (0.32), suggesting metacognitive competence emerges rapidly with scale then plateaus.
+**Insight 4 — Frontier plateau, open-source parity, scale cliff.** The top 7 frontier models cluster at 0.78–0.83 (mean 0.80). Strong open-source models (Qwen, DeepSeek-V3.2) form a second tier at 0.75–0.78 (mean 0.77) — only 0.04 behind. Below this, a cliff: mid-tier models average 0.71, small models average 0.47. The frontier–open-source gap (0.04) is dwarfed by the open-source–small gap (0.30), suggesting metacognitive competence emerges rapidly with scale then plateaus.
 
 **Insight 5 — Calibration remains the universal ceiling.** Mean calibration (0.50) is the lowest of all 9 tasks. Even frontier models cluster at 0.48–0.62. The composite scoring — 50% extreme-item accuracy, 25% BSS, 25% uncertainty awareness — penalizes universal high confidence on hard items. Predicting *which specific items* will be difficult remains fundamentally harder than any monitoring or control task.
 
