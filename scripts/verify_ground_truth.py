@@ -15,7 +15,7 @@ import random
 import hashlib
 
 # Add benchmarks/learning to path
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'benchmarks', 'learning'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'benchmarks', 'learning'))
 
 from data.rule_systems import (
     # Transfer v3
