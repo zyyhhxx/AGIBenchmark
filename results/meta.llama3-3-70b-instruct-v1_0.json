@@ -1,0 +1,52 @@
+{
+  "model": "meta.llama3-3-70b-instruct-v1:0",
+  "model_label": "Llama 3.3 70B",
+  "timestamp": "2026-08-09T16:56:29.441445+00:00",
+  "scores": {
+    "metacog_canary": {
+      "score": 0.2111,
+      "error": null,
+      "duration_s": 28.3
+    },
+    "metacog_fok": {
+      "score": 0.5677,
+      "error": null,
+      "duration_s": 48.4
+    },
+    "metacog_jol": {
+      "score": 0.3,
+      "error": null,
+      "duration_s": 32.2
+    },
+    "metacog_calibration": {
+      "score": 0.4061,
+      "error": null,
+      "duration_s": 43.3
+    },
+    "metacog_error_detection": {
+      "score": 0.845,
+      "error": null,
+      "duration_s": 49.4
+    },
+    "metacog_learning_monitoring": {
+      "score": 0.5385,
+      "error": null,
+      "duration_s": 81.8
+    },
+    "metacog_control": {
+      "score": 0.6617,
+      "error": null,
+      "duration_s": 12.5
+    },
+    "metacog_epistemic_revision": {
+      "score": 0.79,
+      "error": null,
+      "duration_s": 49.5
+    },
+    "metacog_epistemic_humility": {
+      "score": 0.9129,
+      "error": null,
+      "duration_s": 15.3
+    }
+  }
+}
