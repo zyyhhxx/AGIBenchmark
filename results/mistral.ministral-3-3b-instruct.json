@@ -1,0 +1,12 @@
+{
+  "model": "mistral.ministral-3-3b-instruct",
+  "model_label": "Ministral 3B",
+  "timestamp": "2026-08-09T11:53:58.474565+00:00",
+  "scores": {
+    "metacog_canary": {
+      "score": 0.0,
+      "error": null,
+      "duration_s": 29.1
+    }
+  }
+}

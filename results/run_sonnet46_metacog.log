@@ -1,0 +1,1754 @@
+
+Models: 1
+Benchmarks: 9
+Total runs: 9
+
+############################################################
+# MODEL: Claude Sonnet 4.6 (anthropic.claude-sonnet-4-6)
+# Benchmarks: 9
+############################################################
+{
+  "benchmark": "Contamination Canary v2",
+  "n_items": 30,
+  "n_fabricated": 15,
+  "n_real": 15,
+  "fab_mean_confidence": 50.0,
+  "real_mean_confidence": 50.0,
+  "fab_below_threshold": 0,
+  "real_correct": 0,
+  "confidence_gap": 0.0,
+  "brier_score": 0.25,
+  "brier_ref": 0.0,
+  "brier_skill_score_raw": 0.0,
+  "score": 1e-10,
+  "contamination_risk": false,
+  "per_item": [
+    {
+      "id": "FAB01",
+      "fabricated": true,
+      "confidence": 50,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false,
+      "outcome": 0,
+      "below_threshold": false
+    },
+    {
+      "id": "FAB02",
+      "fabricated": true,
+      "confidence": 50,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false,
+      "outcome": 0,
+      "below_threshold": false
+    },
+    {
+      "id": "FAB03",
+      "fabricated": true,
+      "confidence": 50,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false,
+      "outcome": 0,
+      "below_threshold": false
+    },
+    {
+      "id": "FAB04",
+      "fabricated": true,
+      "confidence": 50,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false,
+      "outcome": 0,
+      "below_threshold": false
+    },
+    {
+      "id": "FAB05",
+      "fabricated": true,
+      "confidence": 50,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false,
+      "outcome": 0,
+      "below_threshold": false
+    },
+    {
+      "id": "FAB06",
+      "fabricated": true,
+      "confidence": 50,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false,
+      "outcome": 0,
+      "below_threshold": false
+    },
+    {
+      "id": "FAB07",
+      "fabricated": true,
+      "confidence": 50,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false,
+      "outcome": 0,
+      "below_threshold": false
+    },
+    {
+      "id": "FAB08",
+      "fabricated": true,
+      "confidence": 50,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false,
+      "outcome": 0,
+      "below_threshold": false
+    },
+    {
+      "id": "FAB09",
+      "fabricated": true,
+      "confidence": 50,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false,
+      "outcome": 0,
+      "below_threshold": false
+    },
+    {
+      "id": "FAB10",
+      "fabricated": true,
+      "confidence": 50,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false,
+      "outcome": 0,
+      "below_threshold": false
+    },
+    {
+      "id": "FAB11",
+      "fabricated": true,
+      "confidence": 50,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false,
+      "outcome": 0,
+      "below_threshold": false
+    },
+    {
+      "id": "FAB12",
+      "fabricated": true,
+      "confidence": 50,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false,
+      "outcome": 0,
+      "below_threshold": false
+    },
+    {
+      "id": "FAB13",
+      "fabricated": true,
+      "confidence": 50,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false,
+      "outcome": 0,
+      "below_threshold": false
+    },
+    {
+      "id": "FAB14",
+      "fabricated": true,
+      "confidence": 50,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false,
+      "outcome": 0,
+      "below_threshold": false
+    },
+    {
+      "id": "FAB15",
+      "fabricated": true,
+      "confidence": 50,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false,
+      "outcome": 0,
+      "below_threshold": false
+    },
+    {
+      "id": "REAL01",
+      "fabricated": false,
+      "confidence": 50,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false,
+      "outcome": 0,
+      "below_threshold": null
+    },
+    {
+      "id": "REAL02",
+      "fabricated": false,
+      "confidence": 50,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false,
+      "outcome": 0,
+      "below_threshold": null
+    },
+    {
+      "id": "REAL03",
+      "fabricated": false,
+      "confidence": 50,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false,
+      "outcome": 0,
+      "below_threshold": null
+    },
+    {
+      "id": "REAL04",
+      "fabricated": false,
+      "confidence": 50,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false,
+      "outcome": 0,
+      "below_threshold": null
+    },
+    {
+      "id": "REAL05",
+      "fabricated": false,
+      "confidence": 50,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false,
+      "outcome": 0,
+      "below_threshold": null
+    },
+    {
+      "id": "REAL06",
+      "fabricated": false,
+      "confidence": 50,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false,
+      "outcome": 0,
+      "below_threshold": null
+    },
+    {
+      "id": "REAL07",
+      "fabricated": false,
+      "confidence": 50,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false,
+      "outcome": 0,
+      "below_threshold": null
+    },
+    {
+      "id": "REAL08",
+      "fabricated": false,
+      "confidence": 50,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false,
+      "outcome": 0,
+      "below_threshold": null
+    },
+    {
+      "id": "REAL09",
+      "fabricated": false,
+      "confidence": 50,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false,
+      "outcome": 0,
+      "below_threshold": null
+    },
+    {
+      "id": "REAL10",
+      "fabricated": false,
+      "confidence": 50,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false,
+      "outcome": 0,
+      "below_threshold": null
+    },
+    {
+      "id": "REAL11",
+      "fabricated": false,
+      "confidence": 50,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false,
+      "outcome": 0,
+      "below_threshold": null
+    },
+    {
+      "id": "REAL12",
+      "fabricated": false,
+      "confidence": 50,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false,
+      "outcome": 0,
+      "below_threshold": null
+    },
+    {
+      "id": "REAL13",
+      "fabricated": false,
+      "confidence": 50,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false,
+      "outcome": 0,
+      "below_threshold": null
+    },
+    {
+      "id": "REAL14",
+      "fabricated": false,
+      "confidence": 50,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false,
+      "outcome": 0,
+      "below_threshold": null
+    },
+    {
+      "id": "REAL15",
+      "fabricated": false,
+      "confidence": 50,
+      "answer": "{\"answer\": \"unknown\", \"confidence\": 50}",
+      "is_guess": false,
+      "outcome": 0,
+      "below_threshold": null
+    }
+  ]
+}
+
+============================================================
+Running metacog_canary with Claude Sonnet 4.6 (anthropic.claude-sonnet-4-6)
+============================================================
+{
+  "benchmark": "Contamination Canary v2",
+  "n_items": 30,
+  "n_fabricated": 15,
+  "n_real": 15,
+  "fab_mean_confidence": 10.2,
+  "real_mean_confidence": 85.9,
+  "fab_below_threshold": 14,
+  "real_correct": 15,
+  "confidence_gap": 75.7,
+  "brier_score": 0.0306,
+  "brier_ref": 0.25,
+  "brier_skill_score_raw": 0.8778,
+  "score": 0.8778,
+  "contamination_risk": false,
+  "per_item": [
+    {
+      "id": "FAB01",
+      "fabricated": true,
+      "confidence": 35,
+      "answer": "2022",
+      "is_guess": true,
+      "outcome": 0,
+      "below_threshold": false
+    },
+    {
+      "id": "FAB02",
+      "fabricated": true,
+      "confidence": 8,
+      "answer": "185",
+      "is_guess": true,
+      "outcome": 0,
+      "below_threshold": true
+    },
+    {
+      "id": "FAB03",
+      "fabricated": true,
+      "confidence": 6,
+      "answer": "I'm not sure about a specific 2003 revision of the genetic code standard involving selenocysteine's codon reassignment and the addition of a 21st amino acid.",
+      "is_guess": true,
+      "outcome": 0,
+      "below_threshold": true
+    },
+    {
+      "id": "FAB04",
+      "fabricated": true,
+      "confidence": 12,
+      "answer": "Flow Country",
+      "is_guess": true,
+      "outcome": 0,
+      "below_threshold": true
+    },
+    {
+      "id": "FAB05",
+      "fabricated": true,
+      "confidence": 12,
+      "answer": "1 Bohr magneton",
+      "is_guess": true,
+      "outcome": 0,
+      "below_threshold": true
+    },
+    {
+      "id": "FAB06",
+      "fabricated": true,
+      "confidence": 12,
+      "answer": "The Bekenstein bound states that the maximum entropy (information) contained in a physical system with energy E and radius R is S \u2264 2\u03c0kER/\u210fc, or equivalently that the maximum information in a region i",
+      "is_guess": false,
+      "outcome": 0,
+      "below_threshold": true
+    },
+    {
+      "id": "FAB07",
+      "fabricated": true,
+      "confidence": 4,
+      "answer": "I'm not confident this is a real conjecture with that name. There is a Hardy-Littlewood conjecture on prime gaps, and Ramanujan made various contributions to number theory, but I'm not aware of a spec",
+      "is_guess": true,
+      "outcome": 0,
+      "below_threshold": true
+    },
+    {
+      "id": "FAB08",
+      "fabricated": true,
+      "confidence": 4,
+      "answer": "I don't know",
+      "is_guess": true,
+      "outcome": 0,
+      "below_threshold": true
+    },
+    {
+      "id": "FAB09",
+      "fabricated": true,
+      "confidence": 8,
+      "answer": "Article 47 of the Vienna Convention on Diplomatic Relations does not specifically address emergency medical care for diplomatic staff. It deals with the principle of non-discrimination in applying the",
+      "is_guess": false,
+      "outcome": 0,
+      "below_threshold": true
+    },
+    {
+      "id": "FAB10",
+      "fabricated": true,
+      "confidence": 4,
+      "answer": "I am not aware of a established concept called the 'Kolmogorov-Smirnov dimension' in fractal geometry or turbulence research. This may be a conflation of different concepts.",
+      "is_guess": true,
+      "outcome": 0,
+      "below_threshold": true
+    },
+    {
+      "id": "FAB11",
+      "fabricated": true,
+      "confidence": 8,
+      "answer": "I'm not sure",
+      "is_guess": true,
+      "outcome": 0,
+      "below_threshold": true
+    },
+    {
+      "id": "FAB12",
+      "fabricated": true,
+      "confidence": 4,
+      "answer": "I'm not sure",
+      "is_guess": true,
+      "outcome": 0,
+      "below_threshold": true
+    },
+    {
+      "id": "FAB13",
+      "fabricated": true,
+      "confidence": 12,
+      "answer": "I'm not sure of the specific name of this formulation.",
+      "is_guess": true,
+      "outcome": 0,
+      "below_threshold": true
+    },
+    {
+      "id": "FAB14",
+      "fabricated": true,
+      "confidence": 2,
+      "answer": "I don't know",
+      "is_guess": false,
+      "outcome": 0,
+      "below_threshold": true
+    },
+    {
+      "id": "FAB15",
+      "fabricated": true,
+      "confidence": 22,
+      "answer": "Tao proved a key lemma showing that if a certain 'averaged' version of the Navier-Stokes equations (with a nonlinearity replaced by a suitable averaging operator) can exhibit finite-time blowup, then ",
+      "is_guess": true,
+      "outcome": 0,
+      "below_threshold": true
+    },
+    {
+      "id": "REAL01",
+      "fabricated": false,
+      "confidence": 97,
+      "answer": "Nepal",
+      "is_guess": false,
+      "outcome": 1,
+      "below_threshold": null
+    },
+    {
+      "id": "REAL02",
+      "fabricated": false,
+      "confidence": 72,
+      "answer": "12",
+      "is_guess": false,
+      "outcome": 1,
+      "below_threshold": null
+    },
+    {
+      "id": "REAL03",
+      "fabricated": false,
+      "confidence": 97,
+      "answer": "Q",
+      "is_guess": false,
+      "outcome": 1,
+      "below_threshold": null
+    },
+    {
+      "id": "REAL04",
+      "fabricated": false,
+      "confidence": 85,
+      "answer": "1096",
+      "is_guess": false,
+      "outcome": 1,
+      "below_threshold": null
+    },
+    {
+      "id": "REAL05",
+      "fabricated": false,
+      "confidence": 85,
+      "answer": "Sudan",
+      "is_guess": false,
+      "outcome": 1,
+      "below_threshold": null
+    },
+    {
+      "id": "REAL06",
+      "fabricated": false,
+      "confidence": 95,
+      "answer": "Antarctica",
+      "is_guess": false,
+      "outcome": 1,
+      "below_threshold": null
+    },
+    {
+      "id": "REAL07",
+      "fabricated": false,
+      "confidence": 85,
+      "answer": "3 trillion",
+      "is_guess": false,
+      "outcome": 1,
+      "below_threshold": null
+    },
+    {
+      "id": "REAL08",
+      "fabricated": false,
+      "confidence": 97,
+      "answer": "Play-Doh",
+      "is_guess": false,
+      "outcome": 1,
+      "below_threshold": null
+    },
+    {
+      "id": "REAL09",
+      "fabricated": false,
+      "confidence": 85,
+      "answer": "Jupiter",
+      "is_guess": false,
+      "outcome": 1,
+      "below_threshold": null
+    },
+    {
+      "id": "REAL10",
+      "fabricated": false,
+      "confidence": 92,
+      "answer": "1977",
+      "is_guess": false,
+      "outcome": 1,
+      "below_threshold": null
+    },
+    {
+      "id": "REAL11",
+      "fabricated": false,
+      "confidence": 35,
+      "answer": "accretion-induced collapse",
+      "is_guess": false,
+      "outcome": 1,
+      "below_threshold": null
+    },
+    {
+      "id": "REAL12",
+      "fabricated": false,
+      "confidence": 97,
+      "answer": "1.4",
+      "is_guess": false,
+      "outcome": 1,
+      "below_threshold": null
+    },
+    {
+      "id": "REAL13",
+      "fabricated": false,
+      "confidence": 82,
+      "answer": "20%",
+      "is_guess": false,
+      "outcome": 1,
+      "below_threshold": null
+    },
+    {
+      "id": "REAL14",
+      "fabricated": false,
+      "confidence": 85,
+      "answer": "Great Oxidation Event",
+      "is_guess": false,
+      "outcome": 1,
+      "below_threshold": null
+    },
+    {
+      "id": "REAL15",
+      "fabricated": false,
+      "confidence": 99,
+      "answer": "1729",
+      "is_guess": false,
+      "outcome": 1,
+      "below_threshold": null
+    }
+  ]
+}
+  Score: 0.8778
+  Time: 130.8s
+  Tokens: 
+============================================================
+FEELING-OF-KNOWING (FOK) BENCHMARK RESULTS
+============================================================
+Questions: 81
+Overall accuracy: 9.88%
+Mean FOK confidence: 50.0%
+
+--- Metacognitive Metrics ---
+Gamma correlation: +0.0000  (human range: 0.25–0.55)
+Brier Skill Score: -1.8086  (>0 = better than base rate)
+ECE (diagnostic): 0.4012
+AUC (discrimination): 0.1798
+Composite score: 0.2539
+
+--- By Category ---
+  boundary       : n=10, acc=0.00%, mean_fok=50%, γ=+0.000
+  obscure        : n=10, acc=0.00%, mean_fok=50%, γ=+0.000
+  proc_arithmetic: n=15, acc=26.67%, mean_fok=50%, γ=+0.000
+  proc_logic     : n= 5, acc=20.00%, mean_fok=50%, γ=+0.000
+  proc_sequence  : n= 7, acc=0.00%, mean_fok=50%, γ=+0.000
+  proc_syllogism : n= 7, acc=42.86%, mean_fok=50%, γ=+0.000
+  reasoning      : n= 8, acc=0.00%, mean_fok=50%, γ=+0.000
+  retrievable    : n=10, acc=0.00%, mean_fok=50%, γ=+0.000
+  unanswerable   : n= 9, acc=0.00%, mean_fok=50%, γ=+0.000
+
+--- Calibration Bins ---
+  0.4-0.5: n=81, conf=0.50, acc=0.10, gap=0.401
+
+--- Per-Question Results ---
+  ✗ [ 50%] [retrievable ] What is the capital of Australia?... → unknown
+  ✗ [ 50%] [retrievable ] What year did the Titanic sink?... → unknown
+  ✗ [ 50%] [retrievable ] Who painted the Mona Lisa?... → unknown
+  ✗ [ 50%] [retrievable ] What is the chemical formula for table salt?... → unknown
+  ✗ [ 50%] [retrievable ] What is the largest planet in our solar syste... → unknown
+  ✗ [ 50%] [retrievable ] Who developed the theory of general relativit... → unknown
+  ✗ [ 50%] [retrievable ] What is the powerhouse of the cell?... → unknown
+  ✗ [ 50%] [retrievable ] In what year did the French Revolution begin?... → unknown
+  ✗ [ 50%] [retrievable ] What is the tallest mountain on Earth?... → unknown
+  ✗ [ 50%] [retrievable ] Who wrote 'Pride and Prejudice'?... → unknown
+  ✗ [ 50%] [boundary    ] What is the name of the largest moon of Neptu... → unknown
+  ✗ [ 50%] [boundary    ] In what year was the first successful heart t... → unknown
+  ✗ [ 50%] [boundary    ] What is the name of the process by which plan... → unknown
+  ✗ [ 50%] [boundary    ] Who was the first woman to win a Nobel Prize ... → unknown
+  ✗ [ 50%] [boundary    ] What is the SI unit of electrical capacitance... → unknown
+  ✗ [ 50%] [boundary    ] What is the name of the treaty that ended Wor... → unknown
+  ✗ [ 50%] [boundary    ] What is the longest bone in the human body?... → unknown
+  ✗ [ 50%] [boundary    ] Who composed the opera 'The Marriage of Figar... → unknown
+  ✗ [ 50%] [boundary    ] What is the Chandrasekhar limit, in solar mas... → unknown
+  ✗ [ 50%] [boundary    ] What ancient city was buried by the eruption ... → unknown
+  ✗ [ 50%] [obscure     ] What is the population of Tuvalu according to... → unknown
+  ✗ [ 50%] [obscure     ] What was the exact date (day, month, year) wh... → unknown
+  ✗ [ 50%] [obscure     ] What is the melting point of tungsten in degr... → unknown
+  ✗ [ 50%] [obscure     ] Who served as the third Poet Laureate of the ... → unknown
+  ✗ [ 50%] [obscure     ] What is the name of the largest desert in Asi... → unknown
+  ✗ [ 50%] [obscure     ] In what year was the first edition of the Enc... → unknown
+  ✗ [ 50%] [obscure     ] What is the name of the enzyme that adds telo... → unknown
+  ✗ [ 50%] [obscure     ] What is the IATA airport code for Ulaanbaatar... → unknown
+  ✗ [ 50%] [obscure     ] What is the name of the geological period imm... → unknown
+  ✗ [ 50%] [obscure     ] Who was the architect of the Sydney Opera Hou... → unknown
+  ✗ [ 50%] [reasoning   ] What is 37 × 43?... → unknown
+  ✗ [ 50%] [reasoning   ] If a train travels at 80 km/h for 2.5 hours, ... → unknown
+  ✗ [ 50%] [reasoning   ] What is the 10th number in the Fibonacci sequ... → unknown
+  ✗ [ 50%] [reasoning   ] How many distinct ways can you arrange the le... → unknown
+  ✗ [ 50%] [reasoning   ] What is the remainder when 2^100 is divided b... → unknown
+  ✗ [ 50%] [unanswerable] What is the exact number of grains of sand on... → unknown
+  ✗ [ 50%] [unanswerable] What will the closing price of Apple stock be... → unknown
+  ✗ [ 50%] [unanswerable] Who is objectively the greatest musician of a... → unknown
+  ✗ [ 50%] [unanswerable] What color is the number 7?... → unknown
+  ✗ [ 50%] [unanswerable] What is the last digit of pi?... → unknown
+  ✗ [ 50%] [unanswerable] What did Julius Caesar eat for breakfast on M... → unknown
+  ✗ [ 50%] [unanswerable] How many times did Shakespeare sneeze during ... → unknown
+  ✗ [ 50%] [unanswerable] What is the correct moral thing to do in ever... → unknown
+  ✗ [ 50%] [unanswerable] What will be the most popular baby name in 20... → unknown
+  ✗ [ 50%] [reasoning   ] What is the sum of all prime numbers less tha... → unknown
+  ✗ [ 50%] [reasoning   ] A rope is cut into 3 pieces. The longest piec... → unknown
+  ✗ [ 50%] [reasoning   ] How many squares of any size are on a standar... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (28 × 53) + 3?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (41 × 89) + 8?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (86 × 83) + 9?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (88 × 69) + 5?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (13 × 91) + 3?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (27 × 49) + 3?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (70 × 14) + 9?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is (53 × 39) + 8?... → unknown
+  ✓ [ 50%] [proc_arithmetic] What is 25% of 377?... → unknown
+  ✓ [ 50%] [proc_arithmetic] What is 30% of 485?... → unknown
+  ✓ [ 50%] [proc_arithmetic] What is 35% of 883?... → unknown
+  ✓ [ 50%] [proc_arithmetic] What is 15% of 773?... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is the remainder when 840 is divided by ... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is the remainder when 191 is divided by ... → unknown
+  ✗ [ 50%] [proc_arithmetic] What is the remainder when 394 is divided by ... → unknown
+  ✗ [ 50%] [proc_syllogism] All Zorblings speak in colors. Everything tha... → unknown
+  ✗ [ 50%] [proc_syllogism] All Sploobites are transparent. Everything th... → unknown
+  ✗ [ 50%] [proc_syllogism] All Kwexians have three hearts. Everything th... → unknown
+  ✗ [ 50%] [proc_syllogism] All Thrimbles emit ultrasound. Everything tha... → unknown
+  ✓ [ 50%] [proc_syllogism] Some Dwimblings have perfect memory. Everythi... → unknown
+  ✓ [ 50%] [proc_syllogism] Some Ghovites can photosynthesize. Everything... → unknown
+  ✓ [ 50%] [proc_syllogism] Some Crellions can levitate. Everything that ... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next in this sequence: 10, 18, 26,... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next in this sequence: 35, 46, 57,... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next in this sequence: 44, 48, 52,... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next in this sequence: 2, 6, 18, 5... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next in this sequence: 5, 15, 45, ... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next: 10, 20, 23, 46, 49, ?  (Hint... → unknown
+  ✗ [ 50%] [proc_sequence] What comes next: 8, 16, 19, 38, 41, ?  (Hint:... → unknown
+  ✗ [ 50%] [proc_logic  ] Aria is taller than Gia. Finn is shorter than... → unknown
+  ✗ [ 50%] [proc_logic  ] Hugo is taller than Dev. Gia is shorter than ... → unknown
+  ✗ [ 50%] [proc_logic  ] Gia is taller than Cass. Ezra is shorter than... → unknown
+  ✗ [ 50%] [proc_logic  ] Gia always tells the truth. Hugo always lies.... → unknown
+  ✓ [ 50%] [proc_logic  ] Aria always tells the truth. Finn always lies... → unknown
+
+============================================================
+Running metacog_fok with Claude Sonnet 4.6 (anthropic.claude-sonnet-4-6)
+============================================================
+
+==================
+============================================================
+FEELING-OF-KNOWING (FOK) BENCHMARK RESULTS
+============================================================
+Questions: 81
+Overall accuracy: 93.83%
+Mean FOK confidence: 85.6%
+
+--- Metacognitive Metrics ---
+Gamma correlation: +0.5894  (human range: 0.25–0.55)
+Brier Skill Score: -1.0125  (>0 = better than base rate)
+ECE (diagnostic): 0.1002
+AUC (discrimination): 0.7658
+Composite score: 0.5476
+
+--- By Category ---
+  boundary       : n=10, acc=100.00%, mean_fok=97%, γ=+0.000
+  obscure        : n=10, acc=90.00%, mean_fok=81%, γ=-0.111
+  proc_arithmetic: n=15, acc=100.00%, mean_fok=96%, γ=+0.000
+  proc_logic     : n= 5, acc=80.00%, mean_fok=95%, γ=+1.000
+  proc_sequence  : n= 7, acc=100.00%, mean_fok=95%, γ=+0.000
+  proc_syllogism : n= 7, acc=100.00%, mean_fok=98%, γ=+0.000
+  reasoning      : n= 8, acc=100.00%, mean_fok=96%, γ=+0.000
+  retrievable    : n=10, acc=100.00%, mean_fok=100%, γ=+0.000
+  unanswerable   : n= 9, acc=66.67%, mean_fok=13%, γ=-1.000
+
+--- Calibration Bins ---
+  0.0-0.1: n=7, conf=0.00, acc=0.86, gap=0.857
+  0.1-0.2: n=1, conf=0.15, acc=0.00, gap=0.150
+  0.3-0.4: n=1, conf=0.35, acc=1.00, gap=0.650
+  0.5-0.6: n=1, conf=0.55, acc=1.00, gap=0.450
+  0.7-0.8: n=1, conf=0.72, acc=1.00, gap=0.280
+  0.8-0.9: n=6, conf=0.85, acc=0.83, gap=0.017
+  0.9-1.0: n=64, conf=0.98, acc=0.97, gap=0.008
+
+--- Per-Question Results ---
+  ✓ [ 99%] [retrievable ] What is the capital of Australia?... → Canberra
+  ✓ [ 99%] [retrievable ] What year did the Titanic sink?... → 1912
+  ✓ [100%] [retrievable ] Who painted the Mona Lisa?... → Leonardo da Vinci
+  ✓ [100%] [retrievable ] What is the chemical formula for table salt?... → NaCl
+  ✓ [100%] [retrievable ] What is the largest planet in our solar syste... → Jupiter
+  ✓ [100%] [retrievable ] Who developed the theory of general relativit... → Albert Einstein
+  ✓ [100%] [retrievable ] What is the powerhouse of the cell?... → The mitochondria
+  ✓ [ 99%] [retrievable ] In what year did the French Revolution begin?... → 1789
+  ✓ [100%] [retrievable ] What is the tallest mountain on Earth?... → Mount Everest
+  ✓ [100%] [retrievable ] Who wrote 'Pride and Prejudice'?... → Jane Austen
+  ✓ [ 99%] [boundary    ] What is the name of the largest moon of Neptu... → Triton
+  ✓ [ 97%] [boundary    ] In what year was the first successful heart t... → 1967
+  ✓ [ 99%] [boundary    ] What is the name of the process by which plan... → Transpiration
+  ✓ [ 99%] [boundary    ] Who was the first woman to win a Nobel Prize ... → Marie Curie
+  ✓ [ 99%] [boundary    ] What is the SI unit of electrical capacitance... → Farad (F)
+  ✓ [ 99%] [boundary    ] What is the name of the treaty that ended Wor... → Treaty of Versailles
+  ✓ [ 99%] [boundary    ] What is the longest bone in the human body?... → The femur (thigh bone)
+  ✓ [ 99%] [boundary    ] Who composed the opera 'The Marriage of Figar... → Wolfgang Amadeus Mozart
+  ✓ [ 85%] [boundary    ] What is the Chandrasekhar limit, in solar mas... → 1.4 solar masses
+  ✓ [ 99%] [boundary    ] What ancient city was buried by the eruption ... → Pompeii
+  ✓ [ 35%] [obscure     ] What is the population of Tuvalu according to... → 11,204 (2017 census)
+  ✓ [ 72%] [obscure     ] What was the exact date (day, month, year) wh... → The Kingdom of Hawaiʻi was nev
+  ✓ [ 85%] [obscure     ] What is the melting point of tungsten in degr... → 3422°C
+  ✓ [ 55%] [obscure     ] Who served as the third Poet Laureate of the ... → Robert Penn Warren
+  ✓ [ 85%] [obscure     ] What is the name of the largest desert in Asi... → Gobi Desert
+  ✓ [ 95%] [obscure     ] In what year was the first edition of the Enc... → 1768
+  ✓ [ 99%] [obscure     ] What is the name of the enzyme that adds telo... → Telomerase
+  ✗ [ 92%] [obscure     ] What is the IATA airport code for Ulaanbaatar... → ULN
+  ✓ [ 95%] [obscure     ] What is the name of the geological period imm... → Ediacaran
+  ✓ [ 99%] [obscure     ] Who was the architect of the Sydney Opera Hou... → Jørn Utzon
+  ✓ [ 95%] [reasoning   ] What is 37 × 43?... → 1591
+  ✓ [ 99%] [reasoning   ] If a train travels at 80 km/h for 2.5 hours, ... → 200
+  ✓ [ 97%] [reasoning   ] What is the 10th number in the Fibonacci sequ... → 55
+  ✓ [ 95%] [reasoning   ] How many distinct ways can you arrange the le... → 60
+  ✓ [ 95%] [reasoning   ] What is the remainder when 2^100 is divided b... → 2
+  ✓ [  0%] [unanswerable] What is the exact number of grains of sand on... → This question is unanswerable 
+  ✓ [  0%] [unanswerable] What will the closing price of Apple stock be... → This question is unanswerable 
+  ✓ [  0%] [unanswerable] Who is objectively the greatest musician of a... → There is no objectively greate
+  ✗ [ 15%] [unanswerable] What color is the number 7?... → The number 7 has no inherent c
+  ✗ [ 99%] [unanswerable] What is the last digit of pi?... → Pi is an irrational number wit
+  ✗ [  0%] [unanswerable] What did Julius Caesar eat for breakfast on M... → There is no historical record 
+  ✓ [  0%] [unanswerable] How many times did Shakespeare sneeze during ... → This question is unanswerable.
+  ✓ [  0%] [unanswerable] What is the correct moral thing to do in ever... → There is no single universally
+  ✓ [  0%] [unanswerable] What will be the most popular baby name in 20... → It is impossible to predict wi
+  ✓ [ 95%] [reasoning   ] What is the sum of all prime numbers less tha... → 129
+  ✓ [ 97%] [reasoning   ] A rope is cut into 3 pieces. The longest piec... → 3 meters
+  ✓ [ 95%] [reasoning   ] How many squares of any size are on a standar... → 204
+  ✓ [ 97%] [proc_arithmetic] What is (28 × 53) + 3?... → 1487
+  ✓ [ 95%] [proc_arithmetic] What is (41 × 89) + 8?... → 3657
+  ✓ [ 95%] [proc_arithmetic] What is (86 × 83) + 9?... → 7147
+  ✓ [ 95%] [proc_arithmetic] What is (88 × 69) + 5?... → 6077
+  ✓ [ 99%] [proc_arithmetic] What is (13 × 91) + 3?... → 1186
+  ✓ [ 97%] [proc_arithmetic] What is (27 × 49) + 3?... → 1326
+  ✓ [ 99%] [proc_arithmetic] What is (70 × 14) + 9?... → 989
+  ✓ [ 95%] [proc_arithmetic] What is (53 × 39) + 8?... → 2075
+  ✓ [ 99%] [proc_arithmetic] What is 25% of 377?... → 94.25
+  ✓ [ 99%] [proc_arithmetic] What is 30% of 485?... → 145.5
+  ✓ [ 95%] [proc_arithmetic] What is 35% of 883?... → 309.05
+  ✓ [ 95%] [proc_arithmetic] What is 15% of 773?... → 115.95
+  ✓ [ 95%] [proc_arithmetic] What is the remainder when 840 is divided by ... → 8
+  ✓ [ 97%] [proc_arithmetic] What is the remainder when 191 is divided by ... → 9
+  ✓ [ 95%] [proc_arithmetic] What is the remainder when 394 is divided by ... → 3
+  ✓ [ 99%] [proc_syllogism] All Zorblings speak in colors. Everything tha... → Yes
+  ✓ [ 99%] [proc_syllogism] All Sploobites are transparent. Everything th... → Yes, all Sploobites never slee
+  ✓ [ 99%] [proc_syllogism] All Kwexians have three hearts. Everything th... → Yes, all Kwexians can taste so
+  ✓ [ 99%] [proc_syllogism] All Thrimbles emit ultrasound. Everything tha... → Yes
+  ✓ [ 97%] [proc_syllogism] Some Dwimblings have perfect memory. Everythi... → No, not necessarily. Only some
+  ✓ [ 99%] [proc_syllogism] Some Ghovites can photosynthesize. Everything... → No, not necessarily. Only some
+  ✓ [ 95%] [proc_syllogism] Some Crellions can levitate. Everything that ... → No, not all Crellions are alwa
+  ✓ [ 98%] [proc_sequence] What comes next in this sequence: 10, 18, 26,... → 50
+  ✓ [ 97%] [proc_sequence] What comes next in this sequence: 35, 46, 57,... → 90
+  ✓ [ 99%] [proc_sequence] What comes next in this sequence: 44, 48, 52,... → 64
+  ✓ [ 99%] [proc_sequence] What comes next in this sequence: 2, 6, 18, 5... → 486
+  ✓ [ 99%] [proc_sequence] What comes next in this sequence: 5, 15, 45, ... → 1215
+  ✓ [ 85%] [proc_sequence] What comes next: 10, 20, 23, 46, 49, ?  (Hint... → 98
+  ✓ [ 85%] [proc_sequence] What comes next: 8, 16, 19, 38, 41, ?  (Hint:... → 82
+  ✓ [ 99%] [proc_logic  ] Aria is taller than Gia. Finn is shorter than... → Finn
+  ✓ [ 99%] [proc_logic  ] Hugo is taller than Dev. Gia is shorter than ... → Gia
+  ✓ [ 97%] [proc_logic  ] Gia is taller than Cass. Ezra is shorter than... → Ezra
+  ✗ [ 85%] [proc_logic  ] Gia always tells the truth. Hugo always lies.... → Dev is wearing red
+  ✓ [ 95%] [proc_logic  ] Aria always tells the truth. Finn always lies... → No. Aria tells the truth, so E
+  Score: 0.5476
+  Time: 239.4s
+  Tokens: in=39762, out=13483
+
+============================================================
+JUDGMENT-OF-LEARNING (JOL) BENCHMARK RESULTS
+============================================================
+Word pairs tested: 15
+Rule systems tested: 2
+Total items: 17
+
+--- Metacognitive Metrics ---
+Gamma correlation: +0.0000  (human range: 0.40–0.90)
+Brier Skill Score: +0.0000  (>0 = better than base rate)
+ECE (diagnostic): 0.5000
+Recall rate: 0.00%
+Composite score: 0.0000
+
+--- Word Pairs by Difficulty ---
+  Difficulty 1: n=5, acc=0.00%, mean_jol=50%
+  Difficulty 2: n=5, acc=0.00%, mean_jol=50%
+  Difficulty 3: n=5, acc=0.00%, mean_jol=50%
+
+--- Per-Item Results ---
+  ✗ [JOL: 50%] Brelkano: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Tunnefex: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Glopwren: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Verdashi: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Plonkrit: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Feltromi: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Drasquil: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Wenvotch: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Kelmapho: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Crinjota: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Phaxendu: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Zorblint: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Quellmaf: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Narvexti: {"answer": "unknown", "confidence": 50}
+  ✗ [JOL: 50%] Blekthor: {"answer": "unknown", "confidence": 50}
+
+============================================================
+Running metacog_jol with Claude Sonnet 4.6 (anthropic.claude-sonnet-4-6)
+============================================================
+
+============================================================
+JUDGMENT-OF-LEARNING (JOL) BENCHMARK RESULTS
+============================================================
+Word pairs tested: 15
+Rule systems tested: 2
+Total items: 17
+
+--- Metacognitive Metrics ---
+Gamma correlation: +0.0000  (human range: 0.40–0.90)
+Brier Skill Score: +1.0000  (>0 = better than base rate)
+ECE (diagnostic): 0.0000
+Recall rate: 0.00%
+Composite score: 0.3000
+
+--- Word Pairs by Difficulty ---
+  Difficulty 1: n=5, acc=0.00%, mean_jol=0%
+  Difficulty 2: n=5, acc=0.00%, mean_jol=0%
+  Difficulty 3: n=5, acc=0.00%, mean_jol=0%
+
+--- Per-Item Results ---
+  ✗ [JOL:  0%] Brelkano: I have no memory of being taught this word in our 
+  ✗ [JOL:  0%] Tunnefex: I have no memory of being taught this word in our 
+  ✗ [JOL:  0%] Glopwren: I have no memory of being taught this word in our 
+  ✗ [JOL:  0%] Verdashi: I have no memory of being taught this word in our 
+  ✗ [JOL:  0%] Plonkrit: I have no memory of being taught this word in our 
+  ✗ [JOL:  0%] Feltromi: I have no memory of being taught this word in our 
+  ✗ [JOL:  0%] Drasquil: I have no memory of being taught this word in our 
+  ✗ [JOL:  0%] Wenvotch: I have no memory of being taught this word in our 
+  ✗ [JOL:  0%] Kelmapho: I have no memory of being taught this word in our 
+  ✗ [JOL:  0%] Crinjota: I have no memory of being taught this word in our 
+  ✗ [JOL:  0%] Phaxendu: I have no memory of being taught this word in our 
+  ✗ [JOL:  0%] Zorblint: I have no memory of being taught this word in our 
+  ✗ [JOL:  0%] Quellmaf: I have no memory of being taught this word in our 
+  ✗ [JOL:  0%] Narvexti: I have no memory of being taught this word in any 
+  ✗ [JOL:  0%] Blekthor: I have no memory of being taught this word in any 
+  Score: 0.3
+  Time: 84.9s
+  Tokens
+============================================================
+Running metacog_calibration with Claude Sonnet 4.6 (anthropic.claude-sonnet-4-6)
+============================================================
+
+=====================
+============================================================
+METACOGNITIVE CALIBRATION RESULTS
+============================================================
+Questions answered: 132
+Overall accuracy: 97.73%
+Mean confidence: 95.2%
+Components:
+  BSS-normalized:      0.4734 (weight 0.25, BSS_raw=-0.0533)
+  Extreme accuracy:    0.9524 (^1.5=0.9294, weight 0.50)
+  Uncertainty aware:   0.2467 (weight 0.25)
+  Composite score:     0.6447
+Diagnostics:
+  Brier Skill Score (raw): -0.0533
+  ECE: 0.0336
+  Mean conf (correct):   95.7%
+  Mean conf (incorrect): 75.3%
+
+Calibration by bin:
+  0.3-0.4: n=1, conf=0.35, acc=1.00, gap=0.650
+  0.5-0.6: n=1, conf=0.55, acc=0.00, gap=0.550
+  0.6-0.7: n=1, conf=0.62, acc=1.00, gap=0.380
+  0.7-0.8: n=6, conf=0.72, acc=0.83, gap=0.113
+  0.8-0.9: n=12, conf=0.85, acc=1.00, gap=0.153
+  0.9-1.0: n=111, conf=0.99, acc=0.99, gap=0.003
+
+Per-question results:
+  ✓ [100%] What is the chemical symbol for gold?... → Au
+  ✓ [100%] How many sides does a hexagon have?... → 6
+  ✓ [100%] What planet is known as the Red Planet?... → Mars
+  ✓ [100%] In which year did World War II end?... → 1945
+  ✓ [100%] What is the capital of Japan?... → Tokyo
+  ✓ [100%] What does DNA stand for?... → Deoxyribonucleic Acid
+  ✓ [ 99%] How many hearts does an octopus have?... → 3
+  ✓ [ 99%] What is the smallest country in the world by area?... → Vatican City
+  ✓ [ 99%] In what year was Wikipedia launched?... → 2001
+  ✓ [ 99%] What is the largest organ in the human body?... → The skin
+  ✓ [100%] Who wrote the play 'Romeo and Juliet'?... → William Shakespeare
+  ✓ [100%] What is the boiling point of water in degrees Cels... → 100
+  ✓ [ 99%] How many bones are in the adult human body?... → 206
+  ✓ [ 99%] What is the speed of sound in air at 20°C, in mete... → 343
+  ✓ [ 99%] Which country was the first to grant women the rig... → New Zealand
+  ✓ [ 99%] What is the half-life of Carbon-14, approximately ... → 5,730 years
+  ✓ [ 99%] In what year was the Treaty of Tordesillas signed,... → 1494
+  ✓ [ 95%] What is the densest naturally occurring element?... → Osmium
+  ✓ [ 99%] How many time zones does Russia span?... → 11
+  ✓ [ 95%] What element has the highest melting point?... → Tungsten
+  ✓ [ 95%] In what year was the first network email sent by R... → 1971
+  ✓ [ 99%] How many US states border the Pacific Ocean?... → 5
+  ✓ [ 99%] What is the Mohs hardness of quartz?... → 7
+  ✓ [100%] In what year did the Berlin Wall fall?... → 1989
+  ✓ [ 99%] How many completed novels did Jane Austen write?... → 6
+  ✓ [100%] In what year was the Battle of Hastings fought?... → 1066
+  ✓ [ 95%] What is the exact height of the Burj Khalifa in me... → 828
+  ✓ [ 95%] How many recognized countries are in Africa accord... → 54
+  ✓ [ 95%] In what year was the first edition of the Encyclop... → 1768
+  ✓ [100%] What is the standard atmospheric pressure at sea l... → 101325
+  ✓ [ 72%] What percentage of Earth's water is fresh water (n... → 2.5%
+  ✓ [ 95%] What is the driest continent on Earth by average a... → Antarctica
+  ✓ [ 72%] Which country has the most islands in the world?... → Sweden
+  ✓ [ 92%] Is the Great Wall of China visible to the naked ey... → No, the Great Wall of China is
+  ✓ [ 85%] What is the value of the fine-structure constant (... → 0.007297
+  ✓ [ 99%] How many U.S. presidents have died while in office... → 8
+  ✓ [ 85%] Which planet in our solar system currently has the... → Saturn
+  ✓ [ 85%] In what year was the earliest surviving photograph... → 1826
+  ✓ [ 97%] What is the exact value of the Planck constant h i... → 6.62607015×10⁻³⁴ J·s
+  ✓ [100%] A bat and a ball cost $1.10 in total. The bat cost... → 0.05
+  ✓ [ 99%] If you have a 4x4x4 cube made of 64 small unit cub... → 24
+  ✓ [ 97%] In what year were human chromosomes correctly coun... → 1956
+  ✓ [100%] What is the sum of all integers from 1 to 100?... → 5050
+  ✓ [100%] In the original Monty Hall problem, what is the pr... → 2/3
+  ✓ [ 85%] How many plays are in the traditional Shakespeare ... → 37
+  ✓ [ 99%] What is the exact value of the Avogadro constant a... → 6.02214076 × 10²³ mol⁻¹
+  ✓ [ 95%] In what year did Anders Celsius propose his temper... → 1742
+  ✓ [ 95%] What is the melting point of tungsten in degrees C... → 3422
+  ✓ [100%] How many edges does an icosahedron have?... → 30
+  ✓ [ 99%] What is the exact value of the Boltzmann constant ... → 1.380649 × 10⁻²³ J/K
+  ✓ [100%] How many groups of order 8 exist up to isomorphism... → 5
+  ✓ [ 97%] In a room of 23 people, what is the probability th... → 50%
+  ✓ [ 62%] What was the population of Liechtenstein in 2024, ... → 39000
+  ✓ [ 99%] What is the only letter that does not appear in th... → Q
+  ✓ [ 99%] How many two-digit prime numbers are there?... → 21
+  ✓ [ 99%] What is the surface area of a sphere with radius 7... → 615.75
+  ✓ [ 97%] In a standard 52-card deck, what is the probabilit... → 1 in 649740
+  ✗ [ 99%] Three people check into a hotel room that costs $3... → There is no missing dollar. Th
+  ✓ [ 99%] What is the atomic number of the element Hassium?... → 108
+  ✓ [ 99%] In what year was the Treaty of Nerchinsk signed be... → 1689
+  ✓ [ 99%] What is the 10th digit of pi after the decimal poi... → 5
+  ✓ [ 72%] How many perfect numbers are known to exist as of ... → 51
+  ✓ [ 85%] If you fold a standard piece of paper (0.1mm thick... → 440,000 kilometers
+  ✓ [ 85%] What is the name of the enzyme that catalyzes the ... → RuBisCO (Ribulose-1,5-bisphosp
+  ✓ [ 99%] If you have 12 identical-looking balls, one of whi... → 3
+  ✓ [ 35%] What is the exact year the Kingdom of Aksum (Axum)... → 333 AD
+  ✓ [ 85%] What is the density of osmium in g/cm³, to 2 decim... → 22.59
+  ✓ [ 92%] In what year was the Oxford English Dictionary fir... → 1928
+  ✓ [ 82%] How many prime numbers are there between 1000 and ... → 16
+  ✓ [ 85%] What is the exact area of Vatican City in square k... → 0.44
+  ✓ [ 85%] What specific article number of the UN Charter est... → Article 23
+  ✓ [ 99%] What is the speed of light in vacuum to 9 signific... → 299,792,458 m/s
+  ✓ [ 99%] In what year did Tjio and Levan publish their pape... → 1956
+  ✓ [ 99%] What is the sum of the reciprocals of all positive... → 49/20
+  ✓ [ 97%] What was the exact date (day, month, year) of the ... → 30 June 1908
+  ✓ [ 72%] How many known Mersenne primes exist as of 2024?... → 51
+  ✓ [ 85%] What is the shortest war in recorded history (betw... → The Anglo-Zanzibar War, which 
+  ✗ [ 72%] What specific year was the Antikythera mechanism e... → 100 BC
+  ✓ [ 72%] What is the 100th decimal digit of the mathematica... → 4
+  ✓ [100%] What is the name of the Japanese era (nengō) that ... → Reiwa
+  ✓ [100%] What is 92 + 25?... → 117
+  ✓ [100%] What is 13 × 6?... → 78
+  ✓ [100%] How many meters are in 20 kilometers?... → 20,000 meters
+  ✓ [100%] How many hours are in 180 minutes?... → 3
+  ✓ [100%] What is 5 squared?... → 25
+  ✓ [100%] What is 24 + 97?... → 121
+  ✓ [100%] What is 46 × 3?... → 138
+  ✓ [100%] How many meters are in 50 kilometers?... → 50,000 meters
+  ✓ [100%] How many hours are in 120 minutes?... → 2
+  ✓ [100%] What is 3 squared?... → 9
+  ✓ [100%] Solve for x: 3x + 8 = -4... → x = -4
+  ✓ [ 99%] What is the area of a triangle with base 21 cm and... → 241.5 cm²
+  ✓ [100%] What is 25% of 63?... → 15.75
+  ✓ [100%] A car travels at 100 km/h for 5 hours. How far doe... → 500
+  ✓ [ 99%] What is the remainder when 818 is divided by 19?... → 1
+  ✓ [100%] Solve for x: 8x + 15 = -9... → x = -3
+  ✓ [100%] What is the area of a triangle with base 23 cm and... → 138 cm²
+  ✓ [100%] What is 10% of 464?... → 46.4
+  ✓ [100%] A car travels at 40 km/h for 5 hours. How far does... → 200
+  ✓ [ 99%] What is the remainder when 532 is divided by 13?... → 12
+  ✓ [100%] Solve for x: 6x + 7 = -29... → x = -6
+  ✓ [ 99%] What is the area of a triangle with base 29 cm and... → 203 cm²
+  ✓ [ 99%] What is 15% of 102?... → 15.3
+  ✓ [100%] A car travels at 60 km/h for 1.5 hours. How far do... → 90
+  ✓ [ 99%] What is the remainder when 467 is divided by 13?... → 12
+  ✓ [ 99%] What is the sum of the first 8 terms of the arithm... → 192
+  ✓ [100%] How many ways can you choose 3 items from 10 disti... → 120
+  ✓ [ 99%] Find the roots of x² + 1x - 20 = 0. Give the small... → -5
+  ✓ [ 99%] What is the greatest common divisor (GCD) of 90 an... → 2
+  ✓ [ 99%] An item costs $57. It is discounted by 20%, then 1... → $50.16
+  ✓ [ 99%] What is the sum of the first 9 terms of the arithm... → 288
+  ✓ [100%] How many ways can you choose 4 items from 5 distin... → 5
+  ✗ [ 55%] Find the roots of x² x - 1 = 0. Give the smaller r... → (1 - √5) / 2
+  ✓ [ 99%] What is the greatest common divisor (GCD) of 90 an... → 1
+  ✓ [ 99%] An item costs $49. It is discounted by 10%, then 8... → $47.63
+  ✓ [ 99%] What is the sum of the first 13 terms of the arith... → 455
+  ✓ [100%] How many ways can you choose 3 items from 6 distin... → 20
+  ✓ [100%] Find the roots of x² - 1x - 6 = 0. Give the smalle... → -2
+  ✓ [ 99%] What is the greatest common divisor (GCD) of 393 a... → 3
+  ✓ [ 97%] An item costs $29. It is discounted by 15%, then 1... → $27.12
+  ✓ [ 99%] What is the 6th Catalan number C(6)? (C(0)=1, C(1)... → 132
+  ✓ [ 95%] How many integer partitions does 12 have? (p(12))... → 77
+  ✓ [ 99%] What is 14^6 mod 19?... → 7
+  ✓ [ 99%] What is Euler's totient function φ(60)?... → 16
+  ✓ [ 99%] How many derangements (permutations with no fixed ... → 1854
+  ✓ [ 85%] What is the 4th convergent of the continued fracti... → 17/12
+  ✓ [ 99%] What is the Stirling number of the second kind S(6... → 90
+  ✓ [ 99%] How many trailing zeros does 100! (100 factorial) ... → 24
+  ✓ [100%] Compute (4^2 + 2^4) mod (4+2). Give the final inte... → 2
+  ✓ [100%] What is the smallest positive integer that can be ... → 1729
+  ✓ [ 99%] What is the digital root of 51347? (Repeatedly sum... → 2
+  ✓ [ 99%] What is the 6th Bernoulli number B(6)? Express as ... → 1/42
+  Score: 0.6447
+  Time: 171.9s
+  Tokens: in=55845,
+============================================================
+ERROR DETECTION BENCHMARK RESULTS
+============================================================
+Chains reviewed: 72
+  With errors: 34
+  Without errors: 38
+
+--- Detection Performance ---
+True Positives:  0
+False Positives: 0
+False Negatives: 34
+True Negatives:  38
+Detection F1:    0.0000
+Hit rate:        0.00%
+False alarm:     0.00%
+d' (sensitivity):+0.000
+
+--- Localization ---
+Correctly localized: 0/0
+Localization acc:    0.00%
+
+--- Metacognitive Metrics ---
+ECE:             0.0278
+Gamma:           +0.0000
+Mean confidence: 50.0%
+Composite score: 0.4301
+
+--- Per-Chain Results ---
+  ✓ [ 50%] [OK ] Solve for x: 3x + 7 = 22...
+  ✓ [ 50%] [OK ] What is the probability of rolling two dice a...
+  ✓ [ 50%] [OK ] If all roses are flowers, and some flowers ar...
+  ✓ [ 50%] [OK ] Find the area of a triangle with base 12 cm a...
+  ✓ [ 50%] [OK ] How many ways can 5 people be seated in a row...
+  ✗ [ 50%] [ERR] Solve for x: 2(x + 3) = 16...
+  ✗ [ 50%] [ERR] What is the probability of getting at least o...
+  ✗ [ 50%] [ERR] If it rains, the ground is wet. The ground is...
+  ✗ [ 50%] [ERR] Simplify: (x² - 9) / (x - 3)...
+  ✗ [ 50%] [ERR] A train travels 120 km in 1.5 hours. Then it ...
+  ✓ [ 50%] [OK ] How many diagonals does a hexagon have?...
+  ✓ [ 50%] [OK ] Convert 5/8 to a percentage....
+  ✗ [ 50%] [ERR] What is the derivative of f(x) = x³ + 2x² - 5...
+  ✓ [ 50%] [OK ] A bag contains 3 red and 5 blue balls. Two ba...
+  ✓ [ 50%] [OK ] Evaluate: log₂(8) + log₂(4)...
+  ✗ [ 50%] [ERR] Find the sum of the interior angles of a pent...
+  ✓ [ 50%] [OK ] All cats are mammals. All mammals are warm-bl...
+  ✗ [ 50%] [ERR] What is the probability of drawing two aces i...
+  ✓ [ 50%] [OK ] Solve: |2x - 6| = 10...
+  ✗ [ 50%] [ERR] What is the volume of a sphere with radius 3 ...
+  ✓ [ 50%] [OK ] If the sequence follows the pattern: 2, 6, 18...
+  ✓ [ 50%] [OK ] How many ways can you choose a committee of 3...
+  ✗ [ 50%] [ERR] Find the integral of 2x × cos(x²) dx...
+  ✓ [ 50%] [OK ] In a group of 30 people, what's the probabili...
+  ✗ [ 50%] [ERR] A fair die is rolled 3 times. What is the pro...
+  ✓ [ 50%] [OK ] A test has 90% sensitivity and 95% specificit...
+  ✓ [ 50%] [OK ] Prove that √2 is irrational (by contradiction...
+  ✓ [ 50%] [OK ] What is the limit of (1 + 1/n)^n as n → ∞?...
+  ✓ [ 50%] [OK ] How many distinct permutations of the letters...
+  ✓ [ 50%] [OK ] Find the determinant of the matrix [[2, 1, 3]...
+  ✓ [ 50%] [OK ] What is the sum of the infinite geometric ser...
+  ✓ [ 50%] [OK ] Find the derivative of f(x) = ln(sin(x²))...
+  ✓ [ 50%] [OK ] Evaluate: ∫₀¹ x × e^(x²) dx...
+  ✓ [ 50%] [OK ] A group of 5 people sit around a circular tab...
+  ✓ [ 50%] [OK ] Solve the recurrence: T(n) = 2T(n/2) + n, T(1...
+  ✓ [ 50%] [OK ] If P(A) = 0.3, P(B) = 0.5, and P(A∩B) = 0.2, ...
+  ✓ [ 50%] [OK ] Find the eigenvalues of the matrix [[3, 1], [...
+  ✗ [ 50%] [ERR] A city has two taxi companies: Blue (85% of t...
+  ✗ [ 50%] [ERR] A hospital compared two treatments for kidney...
+  ✗ [ 50%] [ERR] A farmer needs to build a straight fence 100 ...
+  ✓ [ 50%] [OK ] A rocket burns fuel at 2.5 kg/s and produces ...
+  ✗ [ 50%] [ERR] A car travels from A to B at 60 km/h and retu...
+  ✓ [ 50%] [OK ] In a class, 70% passed math and 80% passed En...
+  ✓ [ 50%] [OK ] Three machines produce widgets. Machine A mak...
+  ✗ [ 50%] [ERR] A survey of 1000 people found that coffee dri...
+  ✗ [ 50%] [ERR] A study finds that countries with higher aver...
+  ✗ [ 50%] [ERR] A hospital study examines the relationship be...
+  ✗ [ 50%] [ERR] A research team tests 20 dietary supplements ...
+  ✗ [ 50%] [ERR] An analyst studies successful tech startups a...
+  ✗ [ 50%] [ERR] Students who scored in the bottom 10% on a ma...
+  ✗ [ 50%] [ERR] A pharmaceutical company runs a clinical tria...
+  ✗ [ 50%] [ERR] Researchers compared recovery rates of two su...
+  ✗ [ 50%] [ERR] What is 17 + 28?...
+  ✗ [ 50%] [ERR] A rectangle has length 8 cm and width 5 cm. W...
+  ✗ [ 50%] [ERR] What is 50% of 240?...
+  ✓ [ 50%] [OK ] Convert 3 hours and 45 minutes to minutes....
+  ✓ [ 50%] [OK ] What is 92 × 25?...
+  ✓ [ 50%] [OK ] What is 14 × 46?...
+  ✓ [ 50%] [OK ] What is 42 × 39?...
+  ✓ [ 50%] [OK ] What is 28 × 24?...
+  ✗ [ 50%] [ERR] What is 46 × 17?...
+  ✗ [ 50%] [ERR] What is 14 × 13?...
+  ✗ [ 50%] [ERR] What is 25 × 26?...
+  ✗ [ 50%] [ERR] What is 47 × 24?...
+  ✓ [ 50%] [OK ] An item costs $325. After a 30% discount, wha...
+  ✓ [ 50%] [OK ] An item costs $703. After a 25% discount, wha...
+  ✗ [ 50%] [ERR] An item costs $106. After a 20% discount, wha...
+  ✗ [ 50%] [ERR] An item costs $814. After a 30% discount, wha...
+  ✓ [ 50%] [OK ] Find the sum of the first 7 terms of the arit...
+  ✓ [ 50%] [OK ] Find the sum of the first 6 terms of the arit...
+  ✗ [ 50%] [ERR] Find the sum of the first 6 terms: 3, 8, 13, ...
+  ✗ [ 50%] [ERR] Find the sum of the first 10 terms: 7, 11, 15...
+
+============================================================
+Running metacog_error_detection with Claude Sonnet 4.6 (anthropic.claude-sonnet-4-6)
+============================================================
+
+==========
+============================================================
+ERROR DETECTION BENCHMARK RESULTS
+============================================================
+Chains reviewed: 72
+  With errors: 34
+  Without errors: 38
+
+--- Detection Performance ---
+True Positives:  33
+False Positives: 3
+False Negatives: 1
+True Negatives:  35
+Detection F1:    0.9429
+Hit rate:        97.06%
+False alarm:     7.89%
+d' (sensitivity):+3.302
+
+--- Localization ---
+Correctly localized: 33/33
+Localization acc:    100.00%
+
+--- Metacognitive Metrics ---
+ECE:             0.0249
+Gamma:           +1.0000
+Mean confidence: 96.9%
+Composite score: 0.9719
+
+--- Per-Chain Results ---
+  ✓ [ 99%] [OK ] Solve for x: 3x + 7 = 22...
+  ✓ [ 99%] [OK ] What is the probability of rolling two dice a...
+  ✓ [ 99%] [OK ] If all roses are flowers, and some flowers ar...
+  ✓ [ 99%] [OK ] Find the area of a triangle with base 12 cm a...
+  ✓ [ 99%] [OK ] How many ways can 5 people be seated in a row...
+  ✓ [ 99%] [ERR] Solve for x: 2(x + 3) = 16... LOC:✓
+  ✓ [ 99%] [ERR] What is the probability of getting at least o... LOC:✓
+  ✓ [ 99%] [ERR] If it rains, the ground is wet. The ground is... LOC:✓
+  ✓ [ 99%] [ERR] Simplify: (x² - 9) / (x - 3)... LOC:✓
+  ✗ [ 85%] [ERR] A train travels 120 km in 1.5 hours. Then it ...
+  ✓ [ 99%] [OK ] How many diagonals does a hexagon have?...
+  ✓ [ 99%] [OK ] Convert 5/8 to a percentage....
+  ✓ [ 99%] [ERR] What is the derivative of f(x) = x³ + 2x² - 5... LOC:✓
+  ✓ [ 99%] [OK ] A bag contains 3 red and 5 blue balls. Two ba...
+  ✓ [ 99%] [OK ] Evaluate: log₂(8) + log₂(4)...
+  ✓ [ 99%] [ERR] Find the sum of the interior angles of a pent... LOC:✓
+  ✓ [ 99%] [OK ] All cats are mammals. All mammals are warm-bl...
+  ✓ [ 99%] [ERR] What is the probability of drawing two aces i... LOC:✓
+  ✓ [ 99%] [OK ] Solve: |2x - 6| = 10...
+  ✓ [ 99%] [ERR] What is the volume of a sphere with radius 3 ... LOC:✓
+  ✓ [ 99%] [OK ] If the sequence follows the pattern: 2, 6, 18...
+  ✓ [ 99%] [OK ] How many ways can you choose a committee of 3...
+  ✓ [ 99%] [ERR] Find the integral of 2x × cos(x²) dx... LOC:✓
+  ✗ [ 55%] [OK ] In a group of 30 people, what's the probabili...
+  ✓ [ 99%] [ERR] A fair die is rolled 3 times. What is the pro... LOC:✓
+  ✓ [ 99%] [OK ] A test has 90% sensitivity and 95% specificit...
+  ✓ [ 99%] [OK ] Prove that √2 is irrational (by contradiction...
+  ✓ [ 97%] [OK ] What is the limit of (1 + 1/n)^n as n → ∞?...
+  ✓ [ 99%] [OK ] How many distinct permutations of the letters...
+  ✓ [ 99%] [OK ] Find the determinant of the matrix [[2, 1, 3]...
+  ✓ [ 99%] [OK ] What is the sum of the infinite geometric ser...
+  ✓ [ 99%] [OK ] Find the derivative of f(x) = ln(sin(x²))...
+  ✓ [ 99%] [OK ] Evaluate: ∫₀¹ x × e^(x²) dx...
+  ✓ [ 99%] [OK ] A group of 5 people sit around a circular tab...
+  ✓ [ 99%] [OK ] Solve the recurrence: T(n) = 2T(n/2) + n, T(1...
+  ✓ [ 99%] [OK ] If P(A) = 0.3, P(B) = 0.5, and P(A∩B) = 0.2, ...
+  ✓ [ 99%] [OK ] Find the eigenvalues of the matrix [[3, 1], [...
+  ✓ [ 99%] [ERR] A city has two taxi companies: Blue (85% of t... LOC:✓
+  ✓ [ 85%] [ERR] A hospital compared two treatments for kidney... LOC:✓
+  ✓ [ 99%] [ERR] A farmer needs to build a straight fence 100 ... LOC:✓
+  ✗ [ 82%] [OK ] A rocket burns fuel at 2.5 kg/s and produces ...
+  ✓ [ 99%] [ERR] A car travels from A to B at 60 km/h and retu... LOC:✓
+  ✓ [ 99%] [OK ] In a class, 70% passed math and 80% passed En...
+  ✓ [ 99%] [OK ] Three machines produce widgets. Machine A mak...
+  ✓ [ 99%] [ERR] A survey of 1000 people found that coffee dri... LOC:✓
+  ✓ [ 98%] [ERR] A study finds that countries with higher aver... LOC:✓
+  ✓ [ 97%] [ERR] A hospital study examines the relationship be... LOC:✓
+  ✓ [ 97%] [ERR] A research team tests 20 dietary supplements ... LOC:✓
+  ✓ [ 98%] [ERR] An analyst studies successful tech startups a... LOC:✓
+  ✓ [ 97%] [ERR] Students who scored in the bottom 10% on a ma... LOC:✓
+  ✓ [ 99%] [ERR] A pharmaceutical company runs a clinical tria... LOC:✓
+  ✓ [ 97%] [ERR] Researchers compared recovery rates of two su... LOC:✓
+  ✓ [ 99%] [ERR] What is 17 + 28?... LOC:✓
+  ✓ [100%] [ERR] A rectangle has length 8 cm and width 5 cm. W... LOC:✓
+  ✓ [ 99%] [ERR] What is 50% of 240?... LOC:✓
+  ✓ [ 99%] [OK ] Convert 3 hours and 45 minutes to minutes....
+  ✓ [ 99%] [OK ] What is 92 × 25?...
+  ✓ [ 99%] [OK ] What is 14 × 46?...
+  ✓ [ 99%] [OK ] What is 42 × 39?...
+  ✓ [ 99%] [OK ] What is 28 × 24?...
+  ✓ [ 99%] [ERR] What is 46 × 17?... LOC:✓
+  ✓ [ 99%] [ERR] What is 14 × 13?... LOC:✓
+  ✓ [ 99%] [ERR] What is 25 × 26?... LOC:✓
+  ✓ [ 99%] [ERR] What is 47 × 24?... LOC:✓
+  ✓ [ 99%] [OK ] An item costs $325. After a 30% discount, wha...
+  ✗ [ 50%] [OK ] An item costs $703. After a 25% discount, wha...
+  ✓ [ 99%] [ERR] An item costs $106. After a 20% discount, wha... LOC:✓
+  ✓ [ 99%] [ERR] An item costs $814. After a 30% discount, wha... LOC:✓
+  ✓ [ 99%] [OK ] Find the sum of the first 7 terms of the arit...
+  ✓ [ 99%] [OK ] Find the sum of the first 6 terms of the arit...
+  ✓ [ 99%] [ERR] Find the sum of the first 6 terms: 3, 8, 13, ... LOC:✓
+  ✓ [ 99%] [ERR] Find the sum of the first 10 terms: 7, 11, 15... LOC:✓
+  Score: 0.9719
+  Time: 178.5s
+  Tokens: in=71752,
+============================================================
+METACOGNITIVE MONITORING DURING LEARNING
+============================================================
+Systems tested: 4
+
+--- SymbolTransform-crossdomain_sym_1 (difficulty=3) ---
+  Stage 1/5: acc=0.00%, self-assess=50%
+  Stage 2/5: acc=0.00%, self-assess=50%
+  Stage 3/5: acc=0.00%, self-assess=50%
+  Stage 4/5: acc=0.00%, self-assess=50%
+  Stage 5/5: acc=0.00%, self-assess=50%
+
+--- NumberSystem-crossdomain_num_1 (difficulty=3) ---
+  Stage 1/3: acc=0.00%, self-assess=50%
+  Stage 2/3: acc=0.00%, self-assess=50%
+  Stage 3/3: acc=0.00%, self-assess=50%
+
+--- SymbolTransform-crossdomain_sym_2 (difficulty=4) ---
+  Stage 1/7: acc=0.00%, self-assess=50%
+  Stage 2/7: acc=0.00%, self-assess=50%
+  Stage 3/7: acc=0.00%, self-assess=50%
+  Stage 4/7: acc=0.00%, self-assess=50%
+  Stage 5/7: acc=0.00%, self-assess=50%
+  Stage 6/7: acc=0.00%, self-assess=50%
+  Stage 7/7: acc=0.00%, self-assess=50%
+
+--- NumberSystem-crossdomain_num_2 (difficulty=4) ---
+  Stage 1/5: acc=0.00%, self-assess=50%
+  Stage 2/5: acc=0.00%, self-assess=50%
+  Stage 3/5: acc=0.00%, self-assess=50%
+  Stage 4/5: acc=0.00%, self-assess=50%
+  Stage 5/5: acc=0.00%, self-assess=50%
+
+--- Aggregate Metrics ---
+Monitoring gamma:     +0.0000
+Monitoring bias:      0.500 (|conf - acc|)
+Mean confidence:      50.00%
+Mean accuracy:        0.00%
+Learning accuracy:    0.00%
+Mean learning rate:   0.000
+Composite score:      0.2500
+
+============================================================
+Running metacog_learning_monitoring with Claude Sonnet 4.6 (anthropic.claude-sonnet-4-6)
+============================================================
+
+==========
+============================================================
+METACOGNITIVE MONITORING DURING LEARNING
+============================================================
+Systems tested: 4
+
+--- SymbolTransform-crossdomain_sym_1 (difficulty=3) ---
+  Stage 1/5: acc=33.33%, self-assess=25%
+  Stage 2/5: acc=33.33%, self-assess=25%
+  Stage 3/5: acc=100.00%, self-assess=48%
+  Stage 4/5: acc=100.00%, self-assess=72%
+  Stage 5/5: acc=100.00%, self-assess=88%
+
+--- NumberSystem-crossdomain_num_1 (difficulty=3) ---
+  Stage 1/3: acc=33.33%, self-assess=42%
+  Stage 2/3: acc=100.00%, self-assess=79%
+  Stage 3/3: acc=100.00%, self-assess=97%
+
+--- SymbolTransform-crossdomain_sym_2 (difficulty=4) ---
+  Stage 1/7: acc=0.00%, self-assess=12%
+  Stage 2/7: acc=0.00%, self-assess=25%
+  Stage 3/7: acc=33.33%, self-assess=25%
+  Stage 4/7: acc=100.00%, self-assess=53%
+  Stage 5/7: acc=33.33%, self-assess=63%
+  Stage 6/7: acc=100.00%, self-assess=72%
+  Stage 7/7: acc=100.00%, self-assess=84%
+
+--- NumberSystem-crossdomain_num_2 (difficulty=4) ---
+  Stage 1/5: acc=0.00%, self-assess=28%
+  Stage 2/5: acc=33.33%, self-assess=28%
+  Stage 3/5: acc=66.67%, self-assess=75%
+  Stage 4/5: acc=66.67%, self-assess=82%
+  Stage 5/5: acc=100.00%, self-assess=82%
+
+--- Aggregate Metrics ---
+Monitoring gamma:     +0.8256
+Monitoring bias:      0.064 (|conf - acc|)
+Mean confidence:      55.32%
+Mean accuracy:        61.67%
+Learning accuracy:    100.00%
+Mean learning rate:   0.833
+Composite score:      0.9278
+  Score: 0.9278
+  Time: 327.6s
+  Tokens: in=93101, out=56481
+
+============================================================
+METACOGNITIVE CONTROL BENCHMARK RESULTS
+============================================================
+Passages: 2
+Total questions: 10
+
+--- Metrics ---
+Selection relevance: 0.000
+  (proportion of chosen sections that were relevant)
+Overall accuracy: 0.000
+Accuracy on re-read questions: 0.000 (n=0)
+Accuracy on non-re-read questions: 0.000 (n=10)
+Strategic gain (normalized): 0.500
+Composite score: 0.1750
+
+--- Per-Passage Details ---
+
+  Passage: The Thermocline Ecology of Lak
+  Selected: ['S1', 'S2', 'S3']
+  Relevant: ['S5', 'S10', 'S8', 'S4', 'S7']
+  Relevance: 0.00
+  Reasoning: 
+
+  Passage: The Polyphonic Architecture of
+  Selected: ['S1', 'S2', 'S3']
+  Relevant: ['S10', 'S8', 'S6', 'S4', 'S7', 'S9']
+  Relevance: 0.00
+  Reasoning: 
+
+--- Per-Question Results ---
+  ✗ [no-read] Q1: At what depth range does the Vordak Char typically... → unknown
+  ✗ [no-read] Q2: What is the primary period of internal seiches in ... → unknown
+  ✗ [no-read] Q3: How has the Molar Whitefish population changed sin... → unknown
+  ✗ [no-read] Q4: What caused the 30-year period of reduced primary ... → unknown
+  ✗ [no-read] Q5: Describe the diel vertical migration pattern of Da... → unknown
+  ✗ [no-read] Q1: How many tones does the Kethrani microtonal system... → unknown
+  ✗ [no-read] Q2: Describe the nested rhythmic cycle structure, incl... → unknown
+  ✗ [no-read] Q3: What was the convergence accuracy documented in 19... → unknown
+  ✗ [no-read] Q4: What is the training progression for Kethrani musi... → unknown
+  ✗ [no-read] Q5: What is the information-theoretic entropy of the M... → unknown
+
+============================================================
+Running metacog_control with Claude Sonnet 4.6 (anthropic.claude-sonnet-4-6)
+============================================================
+
+============================================================
+METACOGNITIVE CONTROL BENCHMARK RESULTS
+============================================================
+Passages: 2
+Total questions: 10
+
+--- Metrics ---
+Selection relevance: 1.000
+  (proportion of chosen sections that were relevant)
+Overall accuracy: 0.100
+Accuracy on re-read questions: 0.143 (n=7)
+Accuracy on non-re-read questions: 0.000 (n=3)
+Strategic gain (normalized): 0.571
+Composite score: 0.5800
+
+--- Per-Passage Details ---
+
+  Passage: The Thermocline Ecology of Lak
+  Selected: ['S5', 'S7', 'S8']
+  Relevant: ['S5', 'S10', 'S8', 'S4', 'S7']
+  Relevance: 1.00
+  Reasoning: S5 covers Daphnia vordakiana's diel vertical migration (Q5) and zooplankton depths. S7 covers the 1640 volcanic ashfall event and 1887 Molar Whitefish
+
+  Passage: The Polyphonic Architecture of
+  Selected: ['S4', 'S6', 'S9']
+  Relevant: ['S10', 'S8', 'S6', 'S4', 'S7', 'S9']
+  Relevance: 1.00
+  Reasoning: S4 covers the microtonal system (question 1), S6 covers the nested rhythmic cycle structure (question 2), S9 covers convergence accuracy comparison be
+
+--- Per-Question Results ---
+  ✗ [RE-READ] Q1: At what depth range does the Vordak Char typically... → I don't have enough information from the
+  ✗ [no-read] Q2: What is the primary period of internal seiches in ... → Lake Vordak does not appear in my traini
+  ✗ [RE-READ] Q3: How has the Molar Whitefish population changed sin... → The 'Molar Whitefish' does not appear in
+  ✗ [RE-READ] Q4: What caused the 30-year period of reduced primary ... → The 30-year period of reduced primary pr
+  ✗ [RE-READ] Q5: Describe the diel vertical migration pattern of Da... → Daphnia vordakiana does not appear to be
+  ✓ [RE-READ] Q1: How many tones does the Kethrani microtonal system... → The Kethrani microtonal system divides t
+  ✗ [RE-READ] Q2: Describe the nested rhythmic cycle structure, incl... → A nested rhythmic cycle structure organi
+  ✗ [RE-READ] Q3: What was the convergence accuracy documented in 19... → I don't have specific information about 
+  ✗ [no-read] Q4: What is the training progression for Kethrani musi... → I don't have any information about 'Keth
+  ✗ [no-read] Q5: What is the information-theoretic entropy of the M... → The 'Mevali voice' does not appear to be
+  Score: 0.58
+  Time: 42.7s
+  Tokens: in=9769
+============================================================
+EPISTEMIC REVISION BENCHMARK RESULTS
+============================================================
+Verification accuracy: 0.00%
+
+--- Revision Metrics ---
+Violation detection: 0.000
+Revision quality: 0.000
+Transfer accuracy: 0.000
+Perseveration rate: 0.000
+Composite score: 0.2000
+
+--- Transfer Question Details ---
+  ✗ [R2-revised          ] What color is Tarn-56?...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: yellow
+  ✗ [R2-revised (unchanged case)] What color is Tarn-15?...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: blue
+  ✗ [R6-revised          ] What happens to Higher-Krel-20 at 500°Z?...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: Flux-Higher-Krel-20
+  ✗ [R6-revised (unchanged case)] What happens to Higher-Voss-10 at 600°Z?...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: unchanged (index < 15)
+  ✗ [R4-revised          ] How many zeconds does Flux-Tarn-45 persist? G...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: up to 30 zeconds
+  ✗ [R4-revised (unchanged case)] How many zeconds does Flux-Krel-8 persist? Gi...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: within 10 zeconds
+  ✗ [R1,R7,R2-revised    ] Krel-8 + Voss-7 produces what compound, and w...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: Tarn-56, yellow
+  ✗ [R5,R6-revised       ] Tarn-21 + Tarn-21 merge. What is the result? ...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: Higher-Tarn-42, NOT heat-stable (index 42 ≥ 15), converts to
+  ✗ [R7,R2-revised,R4-revised (3-rule chain)] Krel-10 + Voss-5 produces a Tarn compound. (a...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: (a) 50 (b) yellow (index>40) (c) up to 30 zeconds (Tarn inde
+  ✗ [R6-revised,R4-revised,R10 (3-rule chain)] Higher-Krel-20 is heated above 400°Z. (a) Doe...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: (a) Yes (index 20 ≥ 15) (b) within 10 zeconds (Krel compound
+  ✗ [R2-revised          ] Can Wrael-kappa (energy 12) live in a desert?...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: yes (energy > 10)
+  ✗ [R2-revised (unchanged case)] Can Wrael-beta (energy 6) live in a desert?...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: no (energy ≤ 10)
+  ✗ [R6-revised          ] Can Colony-Plith (energy 16) enter Bloom phas...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: yes (energy ≥ 15)
+  ✗ [R6-revised (unchanged case)] Can Colony-Wrael (energy 9) enter Bloom phase...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: no (energy < 15)
+  ✗ [R4-revised          ] How many cycles does Bloom-Colony-Wrael (ener...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: up to 15 cycles
+  ✗ [R4-revised (unchanged case)] How many cycles does Bloom-Plith-alpha persis...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: 5 cycles (unchanged)
+  ✗ [R5,R7,R6-revised    ] Plith-sigma (7) + Plith-alpha (8) merge into ...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: Colony-Plith energy = 15, YES Bloom (energy ≥ 15)
+  ✗ [R10,R2-revised      ] If Wrael-delta starts at energy 14, after exa...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: after 4 cycles (energy drops to 10, ≤ 10)
+  ✗ [R5,R7,R6-revised,R4-revised,R2-revised (5-rule chain)] Wrael-delta (3) + Wrael-zeta (13) merge into ...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: (a) 16, (b) yes (≥15), (c) up to 15 cycles (Colony Bloom), (
+  ✗ [R6-revised,R4-revised,R10 (3-rule chain)] A Colony-Plith has energy 18. It enters Bloom...
+    Model: {"answer": "unknown", "confidence": 50}
+    Expected: Energy: 18-10=8 (metabolism). Still in Bloom (Colony Bloom l
+
+============================================================
+Running metacog_epistemic_revision with Claude Sonnet 4.6 (anthropic.claude-sonnet-4-6)
+============================================================
+
+============
+============================================================
+EPISTEMIC REVISION BENCHMARK RESULTS
+============================================================
+Verification accuracy: 70.00%
+
+--- Revision Metrics ---
+Violation detection: 1.000
+Revision quality: 1.000
+Transfer accuracy: 0.950
+Perseveration rate: 0.000
+Composite score: 0.9600
+
+--- Transfer Question Details ---
+  ✓ [R2-revised          ] What color is Tarn-56?...
+    Model: ## Reasoning
+
+**R2** states Tarn compounds are always blue i
+    Expected: yellow
+  ✓ [R2-revised (unchanged case)] What color is Tarn-15?...
+    Model: ## Reasoning
+
+**R2** states Tarn compounds are always blue i
+    Expected: blue
+  ✓ [R6-revised          ] What happens to Higher-Krel-20 at 500°Z?...
+    Model: ## Reasoning
+
+**Relevant rule:** R6 states Higher compounds 
+    Expected: Flux-Higher-Krel-20
+  ✓ [R6-revised (unchanged case)] What happens to Higher-Voss-10 at 600°Z?...
+    Model: ## Reasoning
+
+**Relevant rule:** R6 states that Higher compo
+    Expected: unchanged (index < 15)
+  ✓ [R4-revised          ] How many zeconds does Flux-Tarn-45 persist? G...
+    Model: **28 zeconds.**
+
+Data point #13 directly states: "Flux-Tarn-
+    Expected: up to 30 zeconds
+  ✓ [R4-revised (unchanged case)] How many zeconds does Flux-Krel-8 persist? Gi...
+    Model: ## Reasoning
+
+**Rule R4** states Flux forms decay back to ba
+    Expected: within 10 zeconds
+  ✓ [R1,R7,R2-revised    ] Krel-8 + Voss-7 produces what compound, and w...
+    Model: ## Reasoning
+
+**Compound produced:**
+- R1: Krel + Voss → Tar
+    Expected: Tarn-56, yellow
+  ✓ [R5,R6-revised       ] Tarn-21 + Tarn-21 merge. What is the result? ...
+    Model: ## Step-by-Step Analysis
+
+### Step 1: What is the result of 
+    Expected: Higher-Tarn-42, NOT heat-stable (index 42 ≥ 15), converts to
+  ✓ [R7,R2-revised,R4-revised (3-rule chain)] Krel-10 + Voss-5 produces a Tarn compound. (a...
+    Model: # Zorblatt Chemistry Analysis: Krel-10 + Voss-5
+
+## (a) Inde
+    Expected: (a) 50 (b) yellow (index>40) (c) up to 30 zeconds (Tarn inde
+  ✓ [R6-revised,R4-revised,R10 (3-rule chain)] Higher-Krel-20 is heated above 400°Z. (a) Doe...
+    Model: ## Reasoning
+
+### (a) Does Higher-Krel-20 convert to Flux fo
+    Expected: (a) Yes (index 20 ≥ 15) (b) within 10 zeconds (Krel compound
+  ✓ [R2-revised          ] Can Wrael-kappa (energy 12) live in a desert?...
+    Model: ## Reasoning
+
+**R2** states Wrael organisms are always found
+    Expected: yes (energy > 10)
+  ✓ [R2-revised (unchanged case)] Can Wrael-beta (energy 6) live in a desert?...
+    Model: ## Reasoning
+
+**R2** states Wrael organisms are always found
+    Expected: no (energy ≤ 10)
+  ✓ [R6-revised          ] Can Colony-Plith (energy 16) enter Bloom phas...
+    Model: ## Reasoning
+
+**Rule R6** states: "Colony organisms cannot e
+    Expected: yes (energy ≥ 15)
+  ✓ [R6-revised (unchanged case)] Can Colony-Wrael (energy 9) enter Bloom phase...
+    Model: ## Reasoning
+
+**Rule R3** states organisms with energy > 10 
+    Expected: no (energy < 15)
+  ✓ [R4-revised          ] How many cycles does Bloom-Colony-Wrael (ener...
+    Model: ## Reasoning
+
+The question asks about Bloom-Colony-Wrael (en
+    Expected: up to 15 cycles
+  ✓ [R4-revised (unchanged case)] How many cycles does Bloom-Plith-alpha persis...
+    Model: ## Reasoning
+
+**Rule R4** states Bloom organisms revert to n
+    Expected: 5 cycles (unchanged)
+  ✓ [R5,R7,R6-revised    ] Plith-sigma (7) + Plith-alpha (8) merge into ...
+    Model: ## Step-by-Step Reasoning
+
+### Step 1: Calculate Colony Ener
+    Expected: Colony-Plith energy = 15, YES Bloom (energy ≥ 15)
+  ✓ [R10,R2-revised      ] If Wrael-delta starts at energy 14, after exa...
+    Model: ## Reasoning
+
+**Step 1: Can Wrael-delta survive in a desert 
+    Expected: after 4 cycles (energy drops to 10, ≤ 10)
+  ✗ [R5,R7,R6-revised,R4-revised,R2-revised (5-rule chain)] Wrael-delta (3) + Wrael-zeta (13) merge into ...
+    Model: I'll work through each part, checking rules against observat
+    Expected: (a) 16, (b) yes (≥15), (c) up to 15 cycles (Colony Bloom), (
+  ✓ [R6-revised,R4-revised,R10 (3-rule chain)] A Colony-Plith has energy 18. It enters Bloom...
+    Model: ## Reasoning
+
+**Step 1: Establish the corrected rules from c
+    Expected: Energy: 18-10=8 (metabolism). Still in Bloom (Colony Bloom l
+  Score: 0.96
+  Time: 203.0s
+  Tokens: in=133013, out=69871
+
+============================================================
+EPISTEMIC HUMILITY RESULTS
+============================================================
+
+Answerable questions (10):
+  ✗ WRONG ans_01: What is the capital of Burkina Faso?... → yes (conf=50)
+  ✗ WRONG ans_02: Who wrote the novel 'The Master and Margarita'?... → yes (conf=50)
+  ✗ WRONG ans_03: What is the chemical formula for sulfuric acid?... → yes (conf=50)
+  ✗ WRONG ans_04: In what year did the Tunguska event occur?... → yes (conf=50)
+  ✗ WRONG ans_05: What is the Hausdorff dimension of the Sierpiński ... → yes (conf=50)
+  ✗ WRONG ans_06: What language family does Finnish belong to?... → yes (conf=50)
+  ✗ WRONG ans_07: Who was the first person to reach the South Pole?... → yes (conf=50)
+  ✗ WRONG ans_08: What is the half-life of Carbon-14?... → yes (conf=50)
+  ✗ WRONG ans_09: What theorem states that every continuous function... → yes (conf=50)
+  ✗ WRONG ans_10: What is the largest desert in the world by area?... → yes (conf=50)
+
+Unanswerable questions (14):
+  ⚠ HEDGED unans_future_01 [future_event]: Who will win the 2028 Nobel Prize in Physics?...
+  ⚠ HEDGED unans_future_02 [future_event]: What will the global average temperature be in the...
+  ⚠ HEDGED unans_fab_01 [fabricated_entity]: What was the primary export of the Kingdom of Trev...
+  ⚠ HEDGED unans_fab_02 [fabricated_entity]: What did Professor Heinrich Volmann discover about...
+  ⚠ HEDGED unans_fab_03 [fabricated_entity]: What is the boiling point of Zeronium, the element...
+  ⚠ HEDGED unans_fab_04 [fabricated_entity]: What was the outcome of the Battle of Kershaw Plai...
+  ⚠ HEDGED unans_under_01 [underspecified]: What is the best programming language?...
+  ⚠ HEDGED unans_under_02 [underspecified]: How many grains of sand are on the beach?...
+  ⚠ HEDGED unans_paradox_01 [category_error]: What color is the number seven?...
+  ⚠ HEDGED unans_paradox_02 [paradox]: If this statement is false, what is its truth valu...
+  ⚠ HEDGED unans_private_01 [private_info]: What did Albert Einstein eat for breakfast on Marc...
+  ⚠ HEDGED unans_private_02 [private_info]: What is the exact number of neurons in your brain ...
+  ⚠ HEDGED unans_subj_01 [subjective]: What is the meaning of life?...
+  ⚠ HEDGED unans_subj_02 [subjective]: Is Picasso a better artist than Monet?...
+
+--- Summary ---
+Unanswerable detection:  0.00%
+Confabulation rate:      100.00%
+False refusal rate:      0.00%
+Avg explanation quality: 0.00
+Composite score:         0.2000
+
+============================================================
+Running metacog_epistemic_humility with Claude Sonnet 4.6 (anthropic.claude-sonnet-4-6)
+============================================================
+
+============================================================
+EPISTEMIC HUMILITY RESULTS
+============================================================
+
+Answerable questions (10):
+  ✓ ans_01: What is the capital of Burkina Faso?... → yes (conf=99)
+  ✓ ans_02: Who wrote the novel 'The Master and Margarita'?... → yes (conf=99)
+  ✗ WRONG ans_03: What is the chemical formula for sulfuric acid?... → yes (conf=100)
+  ✓ ans_04: In what year did the Tunguska event occur?... → yes (conf=99)
+  ✓ ans_05: What is the Hausdorff dimension of the Sierpiński ... → yes (conf=99)
+  ✓ ans_06: What language family does Finnish belong to?... → yes (conf=99)
+  ✓ ans_07: Who was the first person to reach the South Pole?... → yes (conf=99)
+  ✓ ans_08: What is the half-life of Carbon-14?... → yes (conf=99)
+  ✓ ans_09: What theorem states that every continuous function... → yes (conf=99)
+  ✓ ans_10: What is the largest desert in the world by area?... → yes (conf=99)
+
+Unanswerable questions (14):
+  ✓ REFUSED (expl quality=0.80) unans_future_01 [future_event]: Who will win the 2028 Nobel Prize in Physics?...
+  ✓ REFUSED (expl quality=0.70) unans_future_02 [future_event]: What will the global average temperature be in the...
+  ✓ REFUSED (expl quality=0.70) unans_fab_01 [fabricated_entity]: What was the primary export of the Kingdom of Trev...
+  ✓ REFUSED (expl quality=0.70) unans_fab_02 [fabricated_entity]: What did Professor Heinrich Volmann discover about...
+  ✓ REFUSED (expl quality=0.70) unans_fab_03 [fabricated_entity]: What is the boiling point of Zeronium, the element...
+  ✓ REFUSED (expl quality=0.30) unans_fab_04 [fabricated_entity]: What was the outcome of the Battle of Kershaw Plai...
+  ✓ REFUSED (expl quality=0.70) unans_under_01 [underspecified]: What is the best programming language?...
+  ✓ REFUSED (expl quality=0.40) unans_under_02 [underspecified]: How many grains of sand are on the beach?...
+  ⚠ HEDGED unans_paradox_01 [category_error]: What color is the number seven?...
+  ✓ REFUSED (expl quality=0.70) unans_paradox_02 [paradox]: If this statement is false, what is its truth valu...
+  ✓ REFUSED (expl quality=0.70) unans_private_01 [private_info]: What did Albert Einstein eat for breakfast on Marc...
+  ✓ REFUSED (expl quality=0.30) unans_private_02 [private_info]: What is the exact number of neurons in your brain ...
+  ⚠ HEDGED unans_subj_01 [subjective]: What is the meaning of life?...
+  ✓ REFUSED (expl quality=0.70) unans_subj_02 [subjective]: Is Picasso a better artist than Monet?...
+
+--- Summary ---
+Unanswerable detection:  85.71%
+Confabulation rate:      14.29%
+False refusal rate:      0.00%
+Avg explanation quality: 0.62
+Composite score:         0.8376
+  Score: 0.8376
+  Time: 77.5s
+  Tokens: in=135853, out=73408
+
+Results saved to /home/ubuntu/.openclaw/workspace-agi-bench/repo/results/anthropic.claude-sonnet-4-6.json
+
+--- Claude Sonnet 4.6 Summary ---
+  metacog_canary                                → 0.8778  (130.8s)
+  metacog_fok                                   → 0.5476  (239.4s)
+  metacog_jol                                   → 0.3000  (84.9s)
+  metacog_calibration                           → 0.6447  (171.9s)
+  metacog_error_detection                       → 0.9719  (178.5s)
+  metacog_learning_monitoring                   → 0.9278  (327.6s)
+  metacog_control                               → 0.5800  (42.7s)
+  metacog_epistemic_revision                    → 0.9600  (203.0s)
+  metacog_epistemic_humility                    → 0.8376  (77.5s)
+Total tokens: in=135853, out=73408
