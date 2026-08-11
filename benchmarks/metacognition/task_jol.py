@@ -1,118 +1,87 @@
 """
-MetaCog Benchmark 3: Judgment-of-Learning (JOL)
+MetaCog Benchmark 3: Judgment-of-Learning (JOL) v2
 
-Tests whether a model can accurately predict its own future recall
-of newly-studied material. Uses NOVEL stimuli (invented words and
-rule systems) that cannot be in training data.
+Tests whether a model can accurately predict its own learning performance
+on NOVEL rule systems and tasks of varying difficulty.
 
 Protocol:
-1. STUDY: Present novel word-definition pairs and rule systems
-2. JOL: For each item, model rates confidence of future recall (0-100)
-3. DISTRACTOR: Interpose unrelated conversation to create temporal distance
-4. TEST: Test recall of studied items
-5. SCORE: Calibration between JOL ratings and actual recall
+1. PREVIEW: Show brief description of each learning challenge
+2. JOL: Rate confidence (0-100) of solving it correctly after studying
+3. STUDY+TEST: Actually present the material and test comprehension
+4. SCORE: Calibration between JOL predictions and actual performance
+
+Why v2:
+- v1 tested verbatim recall within a single context — trivial for LLMs
+- v2 tests PREDICTIVE metacognition: "Can I learn this?" not "Can I echo this?"
+- Challenges range from simple (difficulty 1) to very complex (difficulty 5)
+- Creates genuine variance: models fail hard challenges, succeed easy ones
+- Good metacognition = knowing your capability boundary
 
 Cognitive Science Basis:
-- Arbuckle & Cuddy (1969): JOL paradigm
-- Nelson & Narens (1990): JOL as metacognitive monitoring
-- Key finding: Delayed JOLs are more accurate than immediate JOLs
+- Nelson & Narens (1990): Metacognitive monitoring
+- Dunning-Kruger (1999): Miscalibration of competence predictions
+- Key human finding: JOL accuracy improves with domain expertise
 - Human JOL gamma: 0.40–0.90
 
-Shortcut Resistance:
-- ALL stimuli are invented (no training data contamination)
-- Difficulty varied by imageability and abstractness
-- Rule systems require genuine in-context learning
-- Distractor phase prevents simple echo/repetition
-
-Score: Weighted composite of gamma, Brier Skill Score, and accuracy bonus.
-BSS replaces 1-ECE to fix inverted scoring (always-uncertain scored too high).
+Score: Weighted composite of gamma + Brier Skill Score + sensitivity bonus.
 """
 
 import kaggle_benchmarks as kbench
-from dataclasses import dataclass
 import numpy as np
 import re
 import json
 import random
-from data.jol_stimuli import JOL_WORD_PAIRS, JOL_RULE_SYSTEMS, DISTRACTOR_QUESTIONS
+from data.jol_challenges import LEARNING_CHALLENGES
 
-
-@dataclass
-class JOLRating:
-    """Model's judgment of learning for a studied item."""
-    confidence: int  # 0-100: How confident that you'll recall this later?
-    reasoning: str   # Brief explanation
-
-
-@dataclass
-class RecallAttempt:
-    """Model's recall attempt for a studied word."""
-    definition: str  # Recalled definition
-    confidence: int  # Post-recall confidence (0-100)
-
-
-@dataclass
-class RuleAnswer:
-    """Model's answer to a rule-system test question."""
-    answer: str
-    reasoning: str
-
-
-# ─── Helpers ─────────────────────────────────────────────────────
 
 # ─── Helpers ───────────────────────────────────────────────────────
 
 def _strip_think(text: str) -> str:
-    """Remove <think>...</think> tags that some models wrap around output."""
+    """Remove <think>...</think> tags."""
     return re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL).strip()
 
 
 def normalize(text: str) -> str:
+    """Normalize text for comparison."""
     text = text.lower().strip()
     text = re.sub(r'[^\w\s]', ' ', text)
     text = re.sub(r'\s+', ' ', text).strip()
     return text
 
 
-def recall_match(recalled: str, original: str, threshold: float = 0.5) -> bool:
+def flexible_match(model_answer: str, correct_answer: str) -> bool:
     """
-    Check if recalled definition matches original using word overlap.
-    Threshold = fraction of content words that must appear.
+    Check if model answer matches correct answer flexibly.
+    Handles different formats for numbers, lists, etc.
     """
-    stop_words = {"a", "an", "the", "of", "in", "on", "at", "to", "for", "is",
-                  "that", "which", "and", "or", "but", "with", "by", "from"}
+    ma = normalize(model_answer)
+    ca = normalize(correct_answer)
 
-    orig_words = set(normalize(original).split()) - stop_words
-    recall_words = set(normalize(recalled).split()) - stop_words
-
-    if not orig_words:
+    # Exact match
+    if ca in ma:
         return True
 
-    overlap = len(orig_words & recall_words)
-    return overlap / len(orig_words) >= threshold
+    # Extract numbers from both and compare
+    model_nums = re.findall(r'-?\d+\.?\d*', ma)
+    correct_nums = re.findall(r'-?\d+\.?\d*', ca)
+    if correct_nums and model_nums:
+        # All correct numbers appear in model answer
+        if all(n in model_nums for n in correct_nums):
+            return True
 
+    # Key phrases (split by key words and check containment)
+    ca_words = set(ca.split()) - {"the", "a", "an", "is", "of", "to", "and", "or", "in"}
+    if len(ca_words) >= 3:
+        ma_words = set(ma.split())
+        overlap = len(ca_words & ma_words) / len(ca_words)
+        if overlap >= 0.7:
+            return True
 
-def brier_skill_score(confidences_0_100: list, outcomes_binary: list) -> float:
-    """
-    Brier Skill Score: BSS = 1 - BS / BS_ref
-
-    Rewards BOTH calibration and resolution (discrimination).
-    BS_ref = climatological baseline = base_rate * (1 - base_rate).
-    Returns float in (-inf, 1].
-    """
-    conf = np.array(confidences_0_100) / 100.0
-    out = np.array(outcomes_binary, dtype=float)
-    BS = float(np.mean((conf - out) ** 2))
-    base_rate = float(out.mean())
-    BS_ref = base_rate * (1 - base_rate)
-    if BS_ref < 1e-10:
-        BS_ref = float(np.mean((0.5 - out) ** 2))
-    if BS_ref < 1e-10:
-        return 0.0
-    return 1.0 - BS / BS_ref
+    return False
 
 
 def goodman_kruskal_gamma(x: list, y: list) -> float:
+    """Compute Goodman-Kruskal gamma correlation."""
     n = len(x)
     concordant = 0
     discordant = 0
@@ -131,208 +100,196 @@ def goodman_kruskal_gamma(x: list, y: list) -> float:
     return (concordant - discordant) / denom
 
 
-def compute_ece(confidences: list, accuracies: list, n_bins: int = 5) -> float:
-    """Compute ECE. Using 5 bins due to smaller sample size."""
-    conf = np.array(confidences) / 100.0
-    acc = np.array(accuracies, dtype=float)
-    bin_boundaries = np.linspace(0, 1, n_bins + 1)
-    ece = 0.0
-    total = len(conf)
-    for i in range(n_bins):
-        lo, hi = bin_boundaries[i], bin_boundaries[i + 1]
-        if i == 0:
-            mask = (conf >= lo) & (conf <= hi)
-        else:
-            mask = (conf > lo) & (conf <= hi)
-        if mask.sum() == 0:
-            continue
-        ece += (mask.sum() / total) * abs(acc[mask].mean() - conf[mask].mean())
-    return round(float(ece), 4)
+def brier_skill_score(confidences_0_100: list, outcomes_binary: list) -> float:
+    """
+    Brier Skill Score: BSS = 1 - BS / BS_ref
+    Rewards calibration and resolution.
+    """
+    conf = np.array(confidences_0_100) / 100.0
+    out = np.array(outcomes_binary, dtype=float)
+    BS = float(np.mean((conf - out) ** 2))
+    base_rate = float(out.mean())
+    BS_ref = base_rate * (1 - base_rate)
+    if BS_ref < 1e-10:
+        BS_ref = float(np.mean((0.5 - out) ** 2))
+    if BS_ref < 1e-10:
+        return 0.0
+    return 1.0 - BS / BS_ref
 
 
 # ─── The Benchmark Task ────────────────────────────────────────────
 
 @kbench.task(name="Judgment of Learning")
 def metacog_jol(llm) -> float:
-    """Judgment-of-Learning (JOL) Benchmark.
+    """JOL v2: Predictive Learning Judgment.
 
-    Study → JOL → Distract → Test protocol with novel stimuli.
+    Preview challenges → Predict performance → Attempt → Score calibration.
 
-    Score = 0.40 * gamma_norm + 0.30 * max(0, BSS) + 0.30 * recall_rate
-
-    BSS (Brier Skill Score) replaces the old 1-ECE component to properly
+    Score = 0.40 * gamma_norm + 0.35 * max(0, BSS) + 0.25 * sensitivity_bonus
     """
 
-    all_jol_ratings = []
-    all_accuracies = []
+    # Select 16 challenges (balanced across difficulty levels)
+    challenges = []
+    for diff in [1, 2, 3, 4, 5]:
+        diff_pool = [c for c in LEARNING_CHALLENGES if c["difficulty"] == diff]
+        n_select = min(len(diff_pool), {1: 3, 2: 4, 3: 4, 4: 3, 5: 2}[diff])
+        challenges.extend(random.sample(diff_pool, n_select))
+    random.shuffle(challenges)
+
+    jol_ratings = []
+    outcomes = []
     results_log = []
 
-    # ── Phase 1: STUDY — Present all word-definition pairs ──
-    with kbench.chats.new("study_session"):
-        study_prompt = "I'm going to teach you some new vocabulary words. Study each one carefully.\n\n"
-        for i, pair in enumerate(JOL_WORD_PAIRS):
-            study_prompt += f"{i+1}. **{pair['word']}**: {pair['definition']}\n"
-        study_prompt += "\nPlease confirm you've studied these words by saying 'Ready'."
-        llm.prompt(study_prompt)
+    # ── Phase 1: PREVIEW and JOL ──
+    # Show all challenge previews and collect JOL ratings
+    with kbench.chats.new("jol_preview"):
+        intro = (
+            "I'm going to show you brief descriptions of learning challenges. "
+            "For each one, I'll later present the full material and test you on it. "
+            "Right now, I want you to PREDICT how confident you are that you'll "
+            "solve each one correctly when tested.\n\n"
+            "Rate each 0-100 where:\n"
+            "- 0 = certain I'll get it wrong\n"
+            "- 50 = coin flip\n"
+            "- 100 = certain I'll get it right\n\n"
+            "Here are the challenges:\n\n"
+        )
+        for i, ch in enumerate(challenges):
+            intro += f"{i+1}. {ch['preview']} (you'll study rules then answer a test question)\n"
+        intro += "\nFor each challenge number, rate your confidence. Respond with JSON:\n"
+        intro += '{"ratings": [{"challenge": 1, "confidence": <0-100>}, ...]}'
 
-        # ── Phase 2: JOL — Rate confidence for each item ──
-        for i, pair in enumerate(JOL_WORD_PAIRS):
-            jol_prompt = (
-                f"For the word **{pair['word']}** (which you just studied), "
-                f"rate your confidence (0-100) that you will be able to recall "
-                f"its definition if I ask you later in this conversation, "
-                f"after some unrelated questions.\n\n"
-                f"Respond with ONLY a JSON object:\n"
-                f'{{"confidence": <0-100>, "reasoning": "<brief>"}}'
+        raw = llm.prompt(intro)
+        cleaned = _strip_think(raw)
+
+        # Parse ratings
+        try:
+            # Try to find JSON array
+            match = re.search(r'\{.*\}', cleaned, re.DOTALL)
+            if match:
+                parsed = json.loads(match.group())
+                ratings_list = parsed.get("ratings", [])
+            else:
+                # Try array directly
+                match = re.search(r'\[.*\]', cleaned, re.DOTALL)
+                ratings_list = json.loads(match.group()) if match else []
+
+            # Build rating map
+            rating_map = {}
+            for r in ratings_list:
+                idx = int(r.get("challenge", 0)) - 1
+                conf = max(0, min(100, int(r.get("confidence", 50))))
+                rating_map[idx] = conf
+        except Exception:
+            rating_map = {}
+
+        # Fill in any missing ratings with 50 (neutral)
+        for i in range(len(challenges)):
+            jol_ratings.append(rating_map.get(i, 50))
+
+    # ── Phase 2: STUDY + TEST each challenge ──
+    for i, ch in enumerate(challenges):
+        with kbench.chats.new(f"challenge_{ch['id']}"):
+            # Present the learning material
+            study_prompt = (
+                f"Study the following rules carefully:\n\n"
+                f"{ch['lesson']}\n\n"
+                f"Once you've understood the rules, I'll ask you a test question. "
+                f"Say 'Ready' when prepared."
             )
+            llm.prompt(study_prompt)
 
-            raw = llm.prompt(jol_prompt)
+            # Test question
+            tq = ch["test_questions"][0]
+            test_prompt = (
+                f"Now answer this question using the rules you just learned:\n\n"
+                f"{tq['q']}\n\n"
+                f"Give your final answer concisely. Respond with JSON:\n"
+                f'{{"answer": "<your answer>", "reasoning": "<brief steps>"}}'
+            )
+            raw = llm.prompt(test_prompt)
             cleaned = _strip_think(raw)
             cleaned = re.sub(r'//.*', '', cleaned)
-            try:
-                parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
-                jol_conf = max(0, min(100, int(parsed.get("confidence", 50))))
-            except Exception:
-                jol_conf = 50
 
-            all_jol_ratings.append(jol_conf)
+            try:
+                match = re.search(r'\{.*\}', cleaned, re.DOTALL)
+                parsed = json.loads(match.group())
+                answer = str(parsed.get("answer", cleaned))
+            except Exception:
+                answer = cleaned
+
+            is_correct = flexible_match(answer, tq["a"])
+            outcomes.append(is_correct)
             results_log.append({
-                "word": pair["word"],
-                "definition": pair["definition"],
-                "difficulty": pair["difficulty"],
-                "jol": jol_conf,
+                "id": ch["id"],
+                "difficulty": ch["difficulty"],
+                "jol": jol_ratings[i],
+                "correct": is_correct,
+                "answer": answer[:100],
+                "expected": tq["a"],
             })
 
-        # ── Phase 3: DISTRACTOR — Unrelated questions ──
-        distractors = random.sample(DISTRACTOR_QUESTIONS, min(5, len(DISTRACTOR_QUESTIONS)))
-        for dq in distractors:
-            llm.prompt(dq)
+    # ── Phase 3: Compute Metrics ──
+    gamma = goodman_kruskal_gamma(jol_ratings, [int(o) for o in outcomes])
+    bss = brier_skill_score(jol_ratings, [int(o) for o in outcomes])
+    accuracy = sum(outcomes) / len(outcomes)
 
-        # ── Phase 4: TEST — Recall definitions ──
-        for i, pair in enumerate(JOL_WORD_PAIRS):
-            recall_prompt = (
-                f"Earlier, I taught you the word **{pair['word']}**. "
-                f"What was its definition? Try to recall it as accurately as possible.\n\n"
-                f"Respond with ONLY a JSON object:\n"
-                f'{{"definition": "<recalled definition>", "confidence": <0-100>}}'
-            )
+    # Sensitivity bonus: reward models that show HIGH variance in JOL
+    # (indicates genuine metacognitive engagement, not constant prediction)
+    jol_std = float(np.std(jol_ratings))
+    # Also check if JOL varies with difficulty (should be anti-correlated)
+    difficulties = [ch["difficulty"] for ch in challenges]
+    diff_jol_gamma = goodman_kruskal_gamma(
+        [5 - d for d in difficulties],  # invert so easy=high
+        jol_ratings
+    )
+    # Sensitivity = normalized std (max at std~30) * difficulty awareness
+    sensitivity_bonus = min(1.0, jol_std / 30.0) * max(0.0, (diff_jol_gamma + 1) / 2)
 
-            raw = llm.prompt(recall_prompt)
-            cleaned = _strip_think(raw)
-            cleaned = re.sub(r'//.*', '', cleaned)
-            try:
-                parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
-                recalled_def = str(parsed.get("definition", cleaned))
-            except Exception:
-                recalled_def = cleaned
-
-            is_correct = recall_match(recalled_def, pair["definition"])
-            all_accuracies.append(is_correct)
-            results_log[i]["recalled"] = recalled_def[:100]
-            results_log[i]["is_correct"] = is_correct
-
-    # ── Phase 5: Rule System Test ──
-    rule_jols = []
-    rule_accs = []
-
-    for rs in JOL_RULE_SYSTEMS:
-        with kbench.chats.new(f"rule_{rs['rule_name']}"):
-            # Study rules
-            rules_text = f"Learn the following rule system: **{rs['rule_name']}**\n\n"
-            for r in rs["rules"]:
-                rules_text += f"- {r}\n"
-            rules_text += "\nSay 'Ready' when you've studied these rules."
-            llm.prompt(rules_text)
-
-            # JOL for rule system
-            jol_prompt = (
-                f"Rate your confidence (0-100) that you can correctly apply "
-                f"the {rs['rule_name']} rules to answer test questions.\n\n"
-                f"Respond with ONLY: {{\"confidence\": <0-100>, \"reasoning\": \"<brief>\"}}"
-            )
-            raw = llm.prompt(jol_prompt)
-            cleaned = _strip_think(raw)
-            cleaned = re.sub(r'//.*', '', cleaned)
-            try:
-                parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
-                jol_conf = max(0, min(100, int(parsed.get("confidence", 50))))
-            except Exception:
-                jol_conf = 50
-
-            # Distractor
-            llm.prompt(random.choice(DISTRACTOR_QUESTIONS))
-
-            # Test questions
-            rule_correct = 0
-            for tq in rs["test_questions"]:
-                test_prompt = (
-                    f"Using the {rs['rule_name']} rules you learned, answer:\n"
-                    f"{tq['q']}\n\n"
-                    f"Respond with ONLY: {{\"answer\": \"<answer>\", \"reasoning\": \"<steps>\"}}"
-                )
-                raw = llm.prompt(test_prompt)
-                cleaned = _strip_think(raw)
-                cleaned = re.sub(r'//.*', '', cleaned)
-                try:
-                    parsed = json.loads(re.search(r'\{.*\}', cleaned, re.DOTALL).group())
-                    answer = str(parsed.get("answer", cleaned))
-                except Exception:
-                    answer = cleaned
-
-                correct = normalize(tq["a"]) in normalize(answer)
-                if correct:
-                    rule_correct += 1
-
-            rule_acc = rule_correct / len(rs["test_questions"])
-            # Each rule system contributes one JOL-accuracy pair
-            rule_jols.append(jol_conf)
-            rule_accs.append(rule_acc >= 0.5)  # Binarize: majority correct
-            all_jol_ratings.append(jol_conf)
-            all_accuracies.append(rule_acc >= 0.5)
-
-    # ── Compute Metrics ──
-    gamma = goodman_kruskal_gamma(all_jol_ratings, [int(a) for a in all_accuracies])
-    ece = compute_ece(all_jol_ratings, all_accuracies)
-    recall_rate = sum(all_accuracies) / len(all_accuracies)
-    bss_raw = brier_skill_score(all_jol_ratings, [int(a) for a in all_accuracies])
-
-    # Penalize constant-confidence models: if std(confidences) < 1.0,
-    # gamma is meaningless — remove the free 0.50 gamma_norm score.
-    if np.std(all_jol_ratings) < 1.0:
+    # Penalize constant predictions (std < 5 = no metacognition)
+    if jol_std < 5.0:
         gamma_norm = 0.0
+        sensitivity_bonus = 0.0
     else:
-        gamma_norm = (gamma + 1) / 2
-    score = round(0.40 * gamma_norm + 0.30 * max(0.0, bss_raw) + 0.30 * recall_rate, 4)
+        gamma_norm = (gamma + 1) / 2  # normalize to [0,1]
+
+    score = round(
+        0.40 * gamma_norm +
+        0.35 * max(0.0, bss) +
+        0.25 * sensitivity_bonus,
+        4
+    )
 
     # ── Logging ──
     print(f"\n{'='*60}")
-    print(f"JUDGMENT-OF-LEARNING (JOL) BENCHMARK RESULTS")
+    print(f"JUDGMENT-OF-LEARNING (JOL) v2 BENCHMARK RESULTS")
     print(f"{'='*60}")
-    print(f"Word pairs tested: {len(JOL_WORD_PAIRS)}")
-    print(f"Rule systems tested: {len(JOL_RULE_SYSTEMS)}")
-    print(f"Total items: {len(all_jol_ratings)}")
+    print(f"Challenges tested: {len(challenges)}")
+    print(f"Accuracy: {accuracy:.2%} ({sum(outcomes)}/{len(outcomes)})")
     print(f"\n--- Metacognitive Metrics ---")
-    print(f"Gamma correlation: {gamma:+.4f}  (human range: 0.40–0.90)")
-    print(f"Brier Skill Score: {bss_raw:+.4f}  (>0 = better than base rate)")
-    print(f"ECE (diagnostic): {ece:.4f}")
-    print(f"Recall rate: {recall_rate:.2%}")
+    print(f"Gamma (JOL vs outcome): {gamma:+.4f}  (human range: 0.40–0.90)")
+    print(f"Gamma normalized: {gamma_norm:.4f}")
+    print(f"Brier Skill Score: {bss:+.4f}  (>0 = better than base rate)")
+    print(f"JOL std dev: {jol_std:.1f}  (higher = more varied predictions)")
+    print(f"Difficulty awareness (γ): {diff_jol_gamma:+.4f}")
+    print(f"Sensitivity bonus: {sensitivity_bonus:.4f}")
     print(f"Composite score: {score:.4f}")
 
     # Per-difficulty breakdown
-    print(f"\n--- Word Pairs by Difficulty ---")
-    for diff in [1, 2, 3]:
+    print(f"\n--- By Difficulty ---")
+    for diff in sorted(set(difficulties)):
         items = [r for r in results_log if r["difficulty"] == diff]
         if items:
-            acc = sum(1 for r in items if r.get("is_correct", False)) / len(items)
+            acc = sum(1 for r in items if r["correct"]) / len(items)
             mean_jol = sum(r["jol"] for r in items) / len(items)
-            print(f"  Difficulty {diff}: n={len(items)}, acc={acc:.2%}, mean_jol={mean_jol:.0f}%")
+            print(f"  Difficulty {diff}: n={len(items)}, acc={acc:.0%}, mean_JOL={mean_jol:.0f}%")
 
     # Per-item results
     print(f"\n--- Per-Item Results ---")
     for r in results_log:
-        status = "✓" if r.get("is_correct", False) else "✗"
-        recalled = r.get("recalled", "N/A")
-        print(f"  {status} [JOL:{r['jol']:3d}%] {r['word']}: {recalled[:50]}")
+        status = "✓" if r["correct"] else "✗"
+        print(f"  {status} [D{r['difficulty']}|JOL:{r['jol']:3d}%] {r['id']}: "
+              f"got='{r['answer'][:40]}' exp='{r['expected'][:40]}'")
 
     return score
 
